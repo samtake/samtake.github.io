@@ -52,13 +52,15 @@
   };
 </script>
 
-  <meta name="keywords" content="Swift">
+  <meta name="description" content="常量和变量使用let关键字来声明常量 123let temp = 10``` 使用var关键字来声明变量 var temp = 0temp = 10 1可以在一行中声明多个变量或常量，用逗号分隔 var x=0.1, y=10.1, z=1.0 1234类型标注- 在声明一个变量或常量的时候提供类型标注，来明确变量或常量能够储存值的类型- 添加类型标注的方法是在变量或常量的名字后边加一个冒号，再跟">
+<meta name="keywords" content="Swift">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift基础01">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;01&#x2F;Swift%E5%9F%BA%E7%A1%8001&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
+<meta property="og:description" content="常量和变量使用let关键字来声明常量 123let temp = 10``` 使用var关键字来声明变量 var temp = 0temp = 10 1可以在一行中声明多个变量或常量，用逗号分隔 var x=0.1, y=10.1, z=1.0 1234类型标注- 在声明一个变量或常量的时候提供类型标注，来明确变量或常量能够储存值的类型- 添加类型标注的方法是在变量或常量的名字后边加一个冒号，再跟">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-01T16:04:01.017Z">
+<meta property="og:updated_time" content="2019-11-01T18:47:49.557Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2019/11/01/Swift%E5%9F%BA%E7%A1%8001/">
@@ -245,7 +247,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-02 00:04:01" itemprop="dateModified" datetime="2019-11-02T00:04:01+08:00">2019-11-02</time>
+                <time title="Modified: 2019-11-02 02:47:49" itemprop="dateModified" datetime="2019-11-02T02:47:49+08:00">2019-11-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,7 +272,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h2 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h2><p>使用let关键字来声明常量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let temp = 10</span><br><span class="line">``` </span><br><span class="line">使用var关键字来声明变量</span><br></pre></td></tr></table></figure>
+<p>var temp = 0<br>temp = 10</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以在一行中声明多个变量或常量，用逗号分隔</span><br></pre></td></tr></table></figure>
+<p>var x=0.1, y=10.1, z=1.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">类型标注</span><br><span class="line">- 在声明一个变量或常量的时候提供类型标注，来明确变量或常量能够储存值的类型</span><br><span class="line">- 添加类型标注的方法是在变量或常量的名字后边加一个冒号，再跟一个空格，最后加上要使用的类型名称</span><br><span class="line">- 可以在一行中定义多个相关的变量为相同类型，用逗号分隔，只要在最后的变量名字后边加上类型标注</span><br></pre></td></tr></table></figure>
+<p> var msg: String<br> msg = “message”<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">变量和常量命名</span><br><span class="line">- 几乎可以使用任何自负，甚至包括Unicode字符</span><br><span class="line">- 不能包括空白字符、数学符号、箭头、保留的（或无效的）Unicode码位、连线和制表符。也不能以数字开头。</span><br><span class="line"></span><br><span class="line">打印常量和变量</span><br><span class="line">- print</span><br><span class="line">- 字符串插值</span><br></pre></td></tr></table></figure><br> let str = “show string”<br> print(“显示str(str)”)<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> ## 数值类型</span><br><span class="line"></span><br><span class="line"> ### 整数</span><br><span class="line">- 8，16，32，64位编码的有符号和无符号整数（例如：UInt8,Int8）</span><br><span class="line"></span><br><span class="line">- 通过min和max属性访问每个整数类型的最小值和最大值</span><br><span class="line"></span><br><span class="line">- Int，拥有与当前平台的原生字相同的长度；UInt，与平台长度相关的无符号整数。</span><br></pre></td></tr></table></figure><br>print(“UInt8 min (UInt8.min), UInt8 max (UInt8.max)”)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 浮点数</span><br><span class="line">- Double 64位浮点数，至少有15位数字的精度</span><br><span class="line">- Float 32位浮点数，至少有6位数字的精度</span><br><span class="line"></span><br><span class="line">### Bool</span><br><span class="line">- 表示true和false</span><br><span class="line">- Swift的类型安全机制会阻止你用一个非布尔量的值替代掉Bool</span><br><span class="line"></span><br><span class="line">### 类型别名</span><br><span class="line">- 类型别名是一个为已存在类型定义的一个可选择的名字</span><br><span class="line">- `typealias`</span><br></pre></td></tr></table></figure>
+<p> typealias AudioSample = UInt8<br> let sample: AudioSample = 32</p>
+<pre><code>
+## Tuple</code></pre>
     </div>
 
     
@@ -332,6 +344,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常量和变量"><span class="nav-number">1.</span> <span class="nav-text">常量和变量</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
