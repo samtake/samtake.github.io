@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python基础01</title>
+    <url>/2019/11/02/Python%E5%9F%BA%E7%A1%8001/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Swift基础01</title>
     <url>/2019/11/01/Swift%E5%9F%BA%E7%A1%8001/</url>
     <content><![CDATA[<h2 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h2><h3 id="使用let关键字来声明常量"><a href="#使用let关键字来声明常量" class="headerlink" title="使用let关键字来声明常量"></a>使用let关键字来声明常量</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> temp = 10</span><br></pre></td></tr></table></figure>
@@ -41,6 +46,7 @@
 <li><p>表示true和false</p>
 </li>
 <li><p>Swift的类型安全机制会阻止你用一个非布尔量的值替代掉Bool</p>
+<h3 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h3><p><img src="/.com//Swift_%E6%95%B0%E5%80%BC%E8%8C%83%E5%9B%B4.png" alt="Swift_数值范围"></p>
 <h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3></li>
 <li><p>类型别名是一个为已存在类型定义的一个可选择的名字</p>
 </li>
