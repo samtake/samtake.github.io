@@ -303,7 +303,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-04 00:05:12" itemprop="dateModified" datetime="2019-11-04T00:05:12+08:00">2019-11-04</time>
+                <time title="Modified: 2019-11-04 00:33:16" itemprop="dateModified" datetime="2019-11-04T00:33:16+08:00">2019-11-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -455,7 +455,16 @@
 <h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3><p>字符串和字符相等性(==和==)</p>
 <p>前缀相等hasPrefix(_:)</p>
 <p>后缀相等hasSuffix(_:)</p>
-
+<h2 id="赋值和算术运算符"><a href="#赋值和算术运算符" class="headerlink" title="赋值和算术运算符"></a>赋值和算术运算符</h2><p>一元运算符、二元运算符、三元运算符</p>
+<p>赋值运算符不会返回值</p>
+<h2 id="如何处理算术结果溢出"><a href="#如何处理算术结果溢出" class="headerlink" title="如何处理算术结果溢出"></a>如何处理算术结果溢出</h2><p>在默认情况下，当一个整数赋超过它容量的值时，Swift会报错而不是生成一个无效的数，给我们操作过大或者过小的数的时候提供了额外的安全性</p>
+<p>同时提供了三个算术溢出运算符来让系统支持整数溢出的运算</p>
+<p>溢出加法<code>&amp;+</code></p>
+<p>溢出减法<code>&amp;-</code></p>
+<p>溢出乘法<code>&amp;*</code></p>
+<h3 id="值溢出"><a href="#值溢出" class="headerlink" title="值溢出"></a>值溢出</h3><p>溢出也会发生在有符号整形数值上</p>
+<p>对于无符号与有符号整形数值来说，当出现上溢时，它们会从数值所能容纳的最大数变成最小的数。同样，当发生下溢时，它们会从所能容纳的最小数变成最大的数。</p>
+<h2 id="合并空值运算符"><a href="#合并空值运算符" class="headerlink" title="合并空值运算符"></a>合并空值运算符</h2>
       
     </div>
 
