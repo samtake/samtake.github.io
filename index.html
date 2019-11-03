@@ -303,7 +303,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-03 04:56:21" itemprop="dateModified" datetime="2019-11-03T04:56:21+08:00">2019-11-03</time>
+                <time title="Modified: 2019-11-03 14:52:12" itemprop="dateModified" datetime="2019-11-03T14:52:12+08:00">2019-11-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -331,48 +331,35 @@
           <h2 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h2><h3 id="使用let关键字来声明常量"><a href="#使用let关键字来声明常量" class="headerlink" title="使用let关键字来声明常量"></a>使用let关键字来声明常量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> temp = 10</span><br></pre></td></tr></table></figure>
 <h3 id="使用var关键字来声明变量"><a href="#使用var关键字来声明变量" class="headerlink" title="使用var关键字来声明变量"></a>使用var关键字来声明变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var temp = 0</span><br><span class="line">temp = 10</span><br></pre></td></tr></table></figure>
 <h3 id="可以在一行中声明多个变量或常量，用逗号分隔"><a href="#可以在一行中声明多个变量或常量，用逗号分隔" class="headerlink" title="可以在一行中声明多个变量或常量，用逗号分隔"></a>可以在一行中声明多个变量或常量，用逗号分隔</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var x=0.1, y=10.1, z=1.0</span><br></pre></td></tr></table></figure>
-<h3 id="类型标注"><a href="#类型标注" class="headerlink" title="类型标注"></a>类型标注</h3><ul>
-<li><p>在声明一个变量或常量的时候提供类型标注，来明确变量或常量能够储存值的类型</p>
-</li>
-<li><p>添加类型标注的方法是在变量或常量的名字后边加一个冒号，再跟一个空格，最后加上要使用的类型名称</p>
-</li>
-<li><p>可以在一行中定义多个相关的变量为相同类型，用逗号分隔，只要在最后的变量名字后边加上类型标注</p>
+<h3 id="类型标注"><a href="#类型标注" class="headerlink" title="类型标注"></a>类型标注</h3><p>在声明一个变量或常量的时候提供类型标注，来明确变量或常量能够储存值的类型</p>
+<p>添加类型标注的方法是在变量或常量的名字后边加一个冒号，再跟一个空格，最后加上要使用的类型名称</p>
+<p>可以在一行中定义多个相关的变量为相同类型，用逗号分隔，只要在最后的变量名字后边加上类型标注</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var msg: String</span><br><span class="line">msg = <span class="string">"message"</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="变量和常量命名"><a href="#变量和常量命名" class="headerlink" title="变量和常量命名"></a>变量和常量命名</h3><ul>
-<li>几乎可以使用任何自负，甚至包括Unicode字符</li>
-<li>不能包括空白字符、数学符号、箭头、保留的（或无效的）Unicode码位、连线和制表符。也不能以数字开头。</li>
-</ul>
-</li>
-</ul>
-<h3 id="打印常量和变量"><a href="#打印常量和变量" class="headerlink" title="打印常量和变量"></a>打印常量和变量</h3><ul>
-<li><p>print</p>
-</li>
-<li><p>字符串插值</p>
+<h3 id="变量和常量命名"><a href="#变量和常量命名" class="headerlink" title="变量和常量命名"></a>变量和常量命名</h3><p>几乎可以使用任何自负，甚至包括Unicode字符</p>
+<p>不能包括空白字符、数学符号、箭头、保留的（或无效的）Unicode码位、连线和制表符。也不能以数字开头。</p>
+<h3 id="打印常量和变量"><a href="#打印常量和变量" class="headerlink" title="打印常量和变量"></a>打印常量和变量</h3><p>print</p>
+<p>字符串插值</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> str = <span class="string">"show string"</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"显示str\(str)"</span>)</span><br></pre></td></tr></table></figure>
 
-<h2 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h2><h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><ul>
-<li>8，16，32，64位编码的有符号和无符号整数（例如：UInt8,Int8）</li>
-<li>通过min和max属性访问每个整数类型的最小值和最大值</li>
-<li>Int，拥有与当前平台的原生字相同的长度；UInt，与平台长度相关的无符号整数。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"UInt8 min \(UInt8.min), UInt8 max \(UInt8.max)"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h2><h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><p>8，16，32，64位编码的有符号和无符号整数（例如：UInt8,Int8）</p>
+<p>通过min和max属性访问每个整数类型的最小值和最大值</p>
+<p>Int，拥有与当前平台的原生字相同的长度；UInt，与平台长度相关的无符号整数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"UInt8 min \(UInt8.min), UInt8 max \(UInt8.max)"</span>)</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><p>Double 64位浮点数，至少有15位数字的精度<br>Float 32位浮点数，至少有6位数字的精度</p>
-<h3 id="Bool"><a href="#Bool" class="headerlink" title="Bool"></a>Bool</h3><p>表示true和false<br>Swift的类型安全机制会阻止你用一个非布尔量的值替代掉Bool</p>
+<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><p> Double 64位浮点数，至少有15位数字的精度</p>
+<p> Float 32位浮点数，至少有6位数字的精度</p>
+<h3 id="Bool"><a href="#Bool" class="headerlink" title="Bool"></a>Bool</h3><p>表示true和false</p>
+<p>Swift的类型安全机制会阻止你用一个非布尔量的值替代掉Bool</p>
 <h3 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h3><p><img src="/.com//Swift_%E6%95%B0%E5%80%BC%E8%8C%83%E5%9B%B4.png" alt="Swift_数值范围"></p>
-<h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3></li>
-<li><p>类型别名是一个为已存在类型定义的一个可选择的名字</p>
-</li>
-<li><p><code>typealias</code></p>
+<h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3><p> 类型别名是一个为已存在类型定义的一个可选择的名字<br> <code>typealias</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typealias AudioSample = UInt8</span><br><span class="line"><span class="built_in">let</span> sample: AudioSample = 32</span><br></pre></td></tr></table></figure>
 
 <h2 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h2><h3 id="使用Tuple组合多个值"><a href="#使用Tuple组合多个值" class="headerlink" title="使用Tuple组合多个值"></a>使用Tuple组合多个值</h3><p>元组把多个值合并成单一的复合型的值</p>
-</li>
-</ul>
 <p>元组内的值可以是任何类型，而且可以不必是同一类型</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> error = (1, <span class="string">"没有权限"</span>)</span><br><span class="line"><span class="built_in">print</span>(error.0)</span><br><span class="line"><span class="built_in">print</span>(error.1)</span><br></pre></td></tr></table></figure>
-<h3 id="元素命名"><a href="#元素命名" class="headerlink" title="元素命名"></a>元素命名</h3><p>元组中的每一个元素可以制定对应的元素名称<br>如果没有制定名称的元素也可以使用下标的方式来引用</p>
+<h3 id="元素命名"><a href="#元素命名" class="headerlink" title="元素命名"></a>元素命名</h3><p>元组中的每一个元素可以制定对应的元素名称</p>
+<p>如果没有制定名称的元素也可以使用下标的方式来引用</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> error = (error: 1,  errorMsg: <span class="string">"没有权限"</span>)</span><br><span class="line"><span class="built_in">print</span>(error.error)</span><br><span class="line"><span class="built_in">print</span>(error.errorMsg)</span><br></pre></td></tr></table></figure>
 <h3 id="Tuple修改"><a href="#Tuple修改" class="headerlink" title="Tuple修改"></a>Tuple修改</h3><p>用var定义的元组就是可变元组，let定义的就是不可变元组</p>
 <p><code>不管是可变还是不可变元组，元组在创建后就不能增加和删除元素</code></p>
@@ -419,9 +406,29 @@
 <p>反斜杠只会在代码阅读上方便，输出时没有实际的换行功能<code>\</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> str = <span class="string">""</span><span class="string">"var emptyString = "</span><span class="string">" \</span></span><br><span class="line"><span class="string">var anotherEmptyString = String() \</span></span><br><span class="line"><span class="string">if emptyString.isEmpty &#123; \</span></span><br><span class="line"><span class="string">    print(Noting"</span>) \</span><br><span class="line"><span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">print(str)</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="字面量-1"><a href="#字面量-1" class="headerlink" title="字面量"></a>字面量</h3><p>字符串字面亮是被双引号<code>&quot;</code>包裹的固定顺序的文本字符</p>
-<pre><code class="bash">var str = <span class="string">"some string"</span></code></pre>
+<h3 id="字符串里的特殊字符"><a href="#字符串里的特殊字符" class="headerlink" title="字符串里的特殊字符"></a>字符串里的特殊字符</h3><p>转义特殊字符</p>
+<p>任意的Unicode标量  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h3 id="扩展字符串分隔符"><a href="#扩展字符串分隔符" class="headerlink" title="扩展字符串分隔符"></a>扩展字符串分隔符</h3><p>在字符串字面量中放置扩展分隔符来在字符串中包含特殊字符而不让它们真的生效</p>
+<p>将字符串放在双引号内并由井号#包裹</p>
+<p>如果字符串里有”#则首尾需要两个##(首尾##与包含的”#不一样即可)</p>
+<p>如果你需要字符串中某个特殊符号的效果，使用匹配你包裹的#号数量的#号，并在前面添加转义符号\</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> str = <span class="comment">#"122\n\n444"#</span></span><br><span class="line"><span class="built_in">let</span> str = <span class="comment">#"122\#n\n444"#</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串的可变形"><a href="#字符串的可变形" class="headerlink" title="字符串的可变形"></a>字符串的可变形</h3><p>var 可修改<br>let 不可修改</p>
+<h3 id="字符串是值类型"><a href="#字符串是值类型" class="headerlink" title="字符串是值类型"></a>字符串是值类型</h3><p>String 值在传递给方法或者函数的时候会被复制过去</p>
+<p>赋值给常量和变量的时候也是一样</p>
+<h3 id="操作字符"><a href="#操作字符" class="headerlink" title="操作字符"></a>操作字符</h3><p>for-in 循环遍历String中的每一个独立的Character</p>
+<p>Character类型</p>
+<p>String值可以通过传入Character 数组来构造</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> character <span class="keyword">in</span> <span class="string">"abcdef"</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(character)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> tempCharacters: [Character] = [<span class="string">"d"</span>,<span class="string">"f"</span>,<span class="string">"d"</span>,<span class="string">"h"</span>]</span><br><span class="line"><span class="built_in">let</span> str = String(tempCharacters)</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><p>通过加运算符<code>+</code>创建新字符串</p>
+<p>使用加赋值符号<code>+=</code>在已经存在的String值末尾追加一个String值</p>
+<p>使用String类型的<code>append()</code>方法来给一个String变量的末尾追加character值</p>
+<h3 id="字符串插值"><a href="#字符串插值" class="headerlink" title="字符串插值"></a>字符串插值</h3><p><code>\(some)</code> some代表：混合常量、变量、字面量和表达式的字符串面量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="comment">#"1 * 3 = \#(1*3)."#)</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
