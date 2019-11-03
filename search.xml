@@ -109,7 +109,34 @@
 <p>使用加赋值符号<code>+=</code>在已经存在的String值末尾追加一个String值</p>
 <p>使用String类型的<code>append()</code>方法来给一个String变量的末尾追加character值</p>
 <h3 id="字符串插值"><a href="#字符串插值" class="headerlink" title="字符串插值"></a>字符串插值</h3><p><code>\(some)</code> some代表：混合常量、变量、字面量和表达式的字符串面量</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="comment">#"1 * 3 = \#(1*3)."#)</span></span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="comment">#"1 * 3 = \#(1*3)."#)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串索引"><a href="#字符串索引" class="headerlink" title="字符串索引"></a>字符串索引</h3><p>每个String值都有相关的索引类型，String.index，它相当于每个Character在字符串重的位置</p>
+<p>startIndex属性来访问String中第一个Character的位置。endIndex属性就是String中最后一个字符后的位置</p>
+<p>endIndex属性并不是字符串下表脚本的合法实际参数</p>
+<p>如果String为空，则startIndex与endIndex相等</p>
+<p>使用index(before:)和index(after:)方法来访问给定索引的前后</p>
+<p>要访问给定索引更远的索引，你可以使用index(_:offsetBy:)</p>
+<p>使用indices属性来访问字符串中每个字符的索引</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> hello = <span class="string">"hello"</span></span><br><span class="line">hello[hello.startIndex]</span><br><span class="line">hello[hello.index(before: hello.endIndex)]</span><br><span class="line">hello[hello.index(after: hello.startIndex)]</span><br><span class="line"><span class="built_in">let</span> index = hello.index(hello.startIndex, offsetBy: 2)</span><br><span class="line">hello[index]</span><br></pre></td></tr></table></figure>
+
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>插入字符，使用insert(_:at:)方法</p>
+<p>插入另一个字符串的内容到特定的索引，使用insert(contentsOs:at:)方法</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var welcome = <span class="string">"hello"</span></span><br><span class="line">welcome.insert(<span class="string">"!"</span>, at: welcome.endIndex)</span><br><span class="line"></span><br><span class="line">welcome.insert(contentsOf: <span class="string">"ererer"</span>, at: welcome.index(before: welcome.endIndex))</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>移除字符串remove(at:)</p>
+<p>移除特定范围的字符串removeSubrange(range)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">welcome.remove(at: welcome.index(before: welcome.endIndex))</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> range = welcome.index(welcome.endIndex, offsetBy: -1)..&lt;welcome.endIndex</span><br><span class="line">welcome.removeSubrange(range)</span><br></pre></td></tr></table></figure>
+
+<h3 id="子字符串"><a href="#子字符串" class="headerlink" title="子字符串"></a>子字符串</h3><p>使用下表或者累死prefix(_:)的方法得到的子字符串是SubString类型</p>
+<p>SubString拥有String的大部分方法</p>
+<p>SubString可以转成String类型</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> index3 = hello.lastIndex(of: <span class="string">"o"</span>) ?? hello.endIndex</span><br><span class="line"><span class="built_in">let</span> begin = hello[..&lt;index3]</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> newHello = String(begin)</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3><p>字符串和字符相等性(==和==)</p>
+<p>前缀相等hasPrefix(_:)</p>
+<p>后缀相等hasSuffix(_:)</p>
+]]></content>
       <categories>
         <category>iOS</category>
       </categories>
