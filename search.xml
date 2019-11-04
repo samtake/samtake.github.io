@@ -216,7 +216,28 @@
 <p>溢出乘法<code>&amp;*</code></p>
 <h3 id="值溢出"><a href="#值溢出" class="headerlink" title="值溢出"></a>值溢出</h3><p>溢出也会发生在有符号整形数值上</p>
 <p>对于无符号与有符号整形数值来说，当出现上溢时，它们会从数值所能容纳的最大数变成最小的数。同样，当发生下溢时，它们会从所能容纳的最小数变成最大的数。</p>
-<h2 id="合并空值运算符"><a href="#合并空值运算符" class="headerlink" title="合并空值运算符"></a>合并空值运算符</h2>]]></content>
+<h2 id="合并空值运算符"><a href="#合并空值运算符" class="headerlink" title="合并空值运算符??"></a>合并空值运算符<code>??</code></h2><p>合并空值运算符(a??b)如果选项a有值则展开，如果没有值，是nil，则返回默认值b</p>
+<p>表达式a必须是一个可选类型。表达式b必须与a的存储类型相同。</p>
+<p>实际上它就是相当于三目运算符<code>_?_:_</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">func addTwoNum(num1: Int?, num2: Int2?) -&gt; Int &#123;</span><br><span class="line">    <span class="built_in">return</span> (num1 ?? 0) +(num2 ?? 0)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="区间运算符"><a href="#区间运算符" class="headerlink" title="区间运算符"></a>区间运算符</h2><h3 id="闭区间运算符a-b"><a href="#闭区间运算符a-b" class="headerlink" title="闭区间运算符a...b"></a>闭区间运算符<code>a...b</code></h3><p>定义了从a到b的一组范围，并且包含a和b</p>
+<p>a的值不能大于b的值</p>
+<h3 id="半开区间运算符a-lt-b"><a href="#半开区间运算符a-lt-b" class="headerlink" title="半开区间运算符a..&lt;b"></a>半开区间运算符<code>a..&lt;b</code></h3><p>定义了从a到b但不包含b的区间</p>
+<p>a的值不能大于b的值，如果a与b的值相等，那返回的区间将会是空的</p>
+<h3 id="单侧区间"><a href="#单侧区间" class="headerlink" title="单侧区间"></a>单侧区间</h3><p>比如说，一个包含数组所有的元素的区间，从索引2到数组的结束。在这种情况下，你可以省略区间运算符一侧的值。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names[2...] &#123;</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names[...2] &#123;</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>倒序索引</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> (0..&lt;10&gt;).<span class="function"><span class="title">reversed</span></span>()&#123;</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>区间运算符在字符串上的运用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var welcome = <span class="string">"hello,world"</span></span><br><span class="line"><span class="built_in">let</span> range = welcome.startIndex...welcome.index(welcome.endIndex, offsetBy: -6)</span><br><span class="line">welcome.removeSubrange(range)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(welcome)]</span><br></pre></td></tr></table></figure>
+
+<p>区间运算符在比较类型上的运用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> welcome = <span class="string">"hello,world"</span></span><br><span class="line"><span class="built_in">let</span> interval = <span class="string">"a"</span>...<span class="string">"z"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> welcome &#123;</span><br><span class="line">    <span class="keyword">if</span> !interval.contains(String(c)) &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"\(c)不是小写字母"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2>]]></content>
       <categories>
         <category>iOS</category>
       </categories>
