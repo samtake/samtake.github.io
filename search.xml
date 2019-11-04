@@ -1,10 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>RxSwift</title>
+    <url>/2019/11/04/RxSwift/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>RxSwift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue</title>
+    <url>/2019/11/04/Vue/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++重温</title>
+    <url>/2019/11/04/C++%E9%87%8D%E6%B8%A9/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Go语言基础</title>
+    <url>/2019/11/04/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WebRTC</title>
+    <url>/2019/11/04/WebRTC/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>WebRTC</category>
+      </categories>
+      <tags>
+        <tag>WebRTC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FFmpeg</title>
+    <url>/2019/11/04/FFmpeg/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>FFmpeg</category>
+      </categories>
+      <tags>
+        <tag>FFmpeg</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python基础01</title>
     <url>/2019/11/02/Python%E5%9F%BA%E7%A1%8001/</url>
-    <content><![CDATA[<h3 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h3><p> <img src="/.com//Swift_%E6%95%B0%E5%80%BC%E8%8C%83%E5%9B%B4.png" alt="Swift_数值范围"></p>
-]]></content>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
   </entry>
   <entry>
     <title>Swift基础01</title>
