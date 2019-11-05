@@ -1,6 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PromiseKit</title>
+    <url>/2019/11/05/PromiseKit/</url>
+    <content><![CDATA[<h1 id="then-and-done"><a href="#then-and-done" class="headerlink" title="then and done"></a><code>then</code> and <code>done</code></h1><p>典型使用:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">firstly &#123;</span><br><span class="line">    login()</span><br><span class="line">&#125;.then &#123; creds <span class="keyword">in</span></span><br><span class="line">    fetch(avatar: creds.user)</span><br><span class="line">&#125;.done &#123; image <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">self</span>.imageView = image</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果这段代码使用了<code>completion handlers</code>，它将如下所示:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">login &#123; creds, error <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> creds = creds &#123;</span><br><span class="line">        fetch(avatar: creds.user) &#123; image, error <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> image = image &#123;</span><br><span class="line">                <span class="keyword">self</span>.imageView = image</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>then</code> 只是构造<code>completion handlers</code>的另一种方式, 但也远不止如此。在我们理解的最初阶段，它主要有助于可读性。上面的<code>promise链</code>很容易浏览和理解:一个异步操作一行一行地通向另一个。鉴于Swift的当前状态，它尽可能接近程序代码。</p>
+<p><code>done</code> 和 <code>then</code> ，但是你不能返回一个<code>promise</code>. 这通常是链条中<code>success</code>部分的终点. 上面, 您可以看到我们在 <code>done</code> 时收到了最终的图像，并使用它来设置用户界面。</p>
+<p>两种实现方法的比较:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">login</span><span class="params">()</span></span> -&gt; <span class="type">Promise</span>&lt;<span class="type">Creds</span>&gt;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// Compared with:</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">login</span><span class="params">(completion: <span class="params">(Creds?, Error?)</span></span></span> -&gt; <span class="type">Void</span>)</span><br><span class="line">                        <span class="comment">// ^^ ugh. Optionals. Double optionals.</span></span><br></pre></td></tr></table></figure>
+
+<p>区别在于，对于<code>Promise</code>，您的函数返回<code>Promise</code>，而不是接受和运行回调。链中的每个<code>handler</code>都会返回一个<code>Promise</code>。<code>Promise</code>对象定义了<code>then</code>方法，该方法在链的执行之前等待<code>Promise</code>的完成。锁链按程序解决，一次一个<code>Promise</code>。</p>
+<p><code>Promise</code> 代表异步任务的返回值。它有一个表示它包装的对象类型的类型。例如，在上面的例子中，<code>login</code>是一个返回<code>Promise</code>的函数，该<code>Promise</code>将代表Creds实例。</p>
+<blockquote>
+<p><em>Note</em>: <code>done</code> is new to PromiseKit 5. We previously defined a variant of <code>then</code> that<br>did not require you to return a promise. Unfortunately, this convention often confused<br>Swift and led to odd and hard-to-debug error messages. It also made using PromiseKit<br>more painful. The introduction of <code>done</code> lets you type out promise chains that<br>compile without additional qualification to help the compiler figure out type information.</p>
+</blockquote>
+<hr>
+<p>您可能会注意到，与completion模式不同，promise链似乎<br>忽略errors。事实并非如此！事实上，它有相反的效果:promise<br>链使得errors处理更容易访问，也使得errors更难忽略。</p>
+<h1 id="catch"><a href="#catch" class="headerlink" title="catch"></a><code>catch</code></h1><p>有了promise，errors就会沿着promise链级联，确保你的应用程序<br>健壮，代码清晰:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">firstly &#123;</span><br><span class="line">    login()</span><br><span class="line">&#125;.then &#123; creds <span class="keyword">in</span></span><br><span class="line">    fetch(avatar: creds.user)</span><br><span class="line">&#125;.done &#123; image <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">self</span>.imageView = image</span><br><span class="line">&#125;.<span class="keyword">catch</span> &#123;</span><br><span class="line">    <span class="comment">// any errors in the whole chain land here</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Swift emits a warning if you forget to <code>catch</code> a chain. But we’ll<br>talk about that in more detail later.</p>
+</blockquote>
+<p>每个promise都是一个对象，代表一个单独的异步任务。<br>如果任务失败， promise就会变成rejected。 Chains that contain rejected<br>包含rejected的promise链跳过所有后续的promise。相反，执行下一个捕获。<br>(严格来说，所有后续的捕获处理程序都会被执行。)</p>
+<p><code>completion handler</code>与<code>promise</code>的比较</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handle</span><span class="params">(error: Error)</span></span> &#123;</span><br><span class="line">    <span class="comment">//…</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">login &#123; creds, error <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> creds = creds <span class="keyword">else</span> &#123; <span class="keyword">return</span> handle(error: error!) &#125;</span><br><span class="line">    fetch(avatar: creds.user) &#123; image, error <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> image = image <span class="keyword">else</span> &#123; <span class="keyword">return</span> handle(error: error!) &#125;</span><br><span class="line">        <span class="keyword">self</span>.imageView.image = image</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>guard</code>和<code>error handler</code>的使用有所帮助，但是promise链<br>可读性不言自明。</p>
+<h1 id="ensure"><a href="#ensure" class="headerlink" title="ensure"></a><code>ensure</code></h1><p>我们已经学会了合成异步性。接下来，让我们扩展:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">firstly &#123;</span><br><span class="line">    <span class="type">UIApplication</span>.shared.isNetworkActivityIndicatorVisible = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">return</span> login()</span><br><span class="line">&#125;.then &#123;</span><br><span class="line">    fetch(avatar: $<span class="number">0</span>.user)</span><br><span class="line">&#125;.done &#123;</span><br><span class="line">    <span class="keyword">self</span>.imageView = $<span class="number">0</span></span><br><span class="line">&#125;.ensure &#123;</span><br><span class="line">    <span class="type">UIApplication</span>.shared.isNetworkActivityIndicatorVisible = <span class="literal">false</span></span><br><span class="line">&#125;.<span class="keyword">catch</span> &#123;</span><br><span class="line">    <span class="comment">//…</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不管你的链条的结果是什么——失败还是成功 <code>ensure</code><br>handler 总是被调用.</p>
+<p><code>ensure</code>模式与其等价的完成处理程序进行比较:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="type">UIApplication</span>.shared.isNetworkActivityIndicatorVisible = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handle</span><span class="params">(error: Error)</span></span> &#123;</span><br><span class="line">    <span class="type">UIApplication</span>.shared.isNetworkActivityIndicatorVisible = <span class="literal">false</span></span><br><span class="line">    <span class="comment">//…</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">login &#123; creds, error <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> creds = creds <span class="keyword">else</span> &#123; <span class="keyword">return</span> handle(error: error!) &#125;</span><br><span class="line">    fetch(avatar: creds.user) &#123; image, error <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> image = image <span class="keyword">else</span> &#123; <span class="keyword">return</span> handle(error: error!) &#125;</span><br><span class="line">        <span class="keyword">self</span>.imageView.image = image</span><br><span class="line">        <span class="type">UIApplication</span>.shared.isNetworkActivityIndicatorVisible = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对某人来说，修改这个代码并忘记取消设置是非常容易的<br>导致错误的活动指示器。有了promises，这种类型的错误是<br>几乎不可能:Swift编译器拒绝你在没有<br>使用promises。您几乎不需要审查拉动式请求。</p>
+<blockquote>
+<p><em>Note</em>: PromiseKit has perhaps capriciously switched between the names <code>always</code><br>and <code>ensure</code> for this function several times in the past. Sorry about this. We suck.</p>
+</blockquote>
+<p>You can also use <code>finally</code> as an <code>ensure</code> that terminates the promise chain and does not return a value:<br>您也可以使用<code>finally</code>作为结束的promise链且不返回值的<code>ensure</code>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">spinner(visible: true)</span><br><span class="line"></span><br><span class="line">firstly &#123;</span><br><span class="line">    foo()</span><br><span class="line">&#125;.done &#123;</span><br><span class="line">    //…</span><br><span class="line">&#125;.catch &#123;</span><br><span class="line">    //…</span><br><span class="line">&#125;.finally &#123;</span><br><span class="line">    self.spinner(visible: false)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="when"><a href="#when" class="headerlink" title="when"></a><code>when</code></h1><p>对多个异步操作的completion handlers反应是缓慢的，意味着连续执行:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">operation1 &#123; result1 <span class="keyword">in</span></span><br><span class="line">    operation2 &#123; result2 <span class="keyword">in</span></span><br><span class="line">        finish(result1, result2)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>快速(<em>parallel</em>)路径代码使代码不太清晰</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> result1: …!</span><br><span class="line"><span class="keyword">var</span> result2: …!</span><br><span class="line"><span class="keyword">let</span> group = <span class="type">DispatchGroup</span>()</span><br><span class="line">group.enter()</span><br><span class="line">group.enter()</span><br><span class="line">operation1 &#123;</span><br><span class="line">    result1 = $<span class="number">0</span></span><br><span class="line">    group.leave()</span><br><span class="line">&#125;</span><br><span class="line">operation2 &#123;</span><br><span class="line">    result2 = $<span class="number">0</span></span><br><span class="line">    group.leave()</span><br><span class="line">&#125;</span><br><span class="line">group.notify(queue: .main) &#123;</span><br><span class="line">    finish(result1, result2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果使用Promises就更清晰了:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">firstly &#123;</span><br><span class="line">    when(fulfilled: operation1(), operation2())</span><br><span class="line">&#125;.done &#123; result1, result2 <span class="keyword">in</span></span><br><span class="line">    <span class="comment">//…</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>when</code> promise代表：等待它们解决并返回包含结果的promise。</p>
+<p>与任何promise链一样，如果任何组件promise失败，该链将调用下一个<code>catch</code>。</p>
+<h1 id="PromiseKit-Extensions"><a href="#PromiseKit-Extensions" class="headerlink" title="PromiseKit Extensions"></a>PromiseKit Extensions</h1><p>当我们使用PromiseKit, 我们是想想通过promise来实现<br>异步行为。因此，只要有可能，我们会对苹果的APIs进行扩展，重新构建<br>promise方面的应用编程接口。例如：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">firstly &#123;</span><br><span class="line">    <span class="type">CLLocationManager</span>.promise()</span><br><span class="line">&#125;.then &#123; location <span class="keyword">in</span></span><br><span class="line">    <span class="type">CLGeocoder</span>.reverseGeocode(location)</span><br><span class="line">&#125;.done &#123; placemarks <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">self</span>.placemark.text = <span class="string">"\(placemarks.first)"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>要使用这些扩展，您需要指定子代码:</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">pod <span class="string">"PromiseKit"</span></span><br><span class="line">pod <span class="string">"PromiseKit/CoreLocation"</span></span><br><span class="line">pod <span class="string">"PromiseKit/MapKit"</span></span><br></pre></td></tr></table></figure>
+
+<p>All of these extensions are available at the <a href="https://github.com/PromiseKit" target="_blank" rel="noopener">PromiseKit organization</a>.<br>Go there to see what’s available and to read the source code and documentation. Every file and function<br>has been copiously documented.</p>
+<blockquote>
+<p>We also provide extensions for common libraries such as <a href="https://github.com/PromiseKit/Alamofire-" target="_blank" rel="noopener">Alamofire</a>.</p>
+</blockquote>
+<h1 id="Making-Promises"><a href="#Making-Promises" class="headerlink" title="Making Promises"></a>Making Promises</h1><p>The standard extensions will take you a long way, but sometimes you’ll still need to start chains<br>of your own. Maybe you’re using a third party API that doesn’t provide promises, or perhaps you wrote<br>your own asynchronous system. Either way, it’s easy to add promises. If you look at the code of the<br>standard extensions, you’ll see that it uses the same approach  described below.</p>
+<p>标准的扩展会让你走很长一段路，但是有时候你仍然需要启动链<br>你自己的。也许你使用的是不提供promises的第三方应用编程接口，或者你写道<br>你自己的异步系统。不管怎样，添加promises都很容易。如果你看看<br>标准扩展，您会看到它使用了下面描述的相同方法。</p>
+<p>Let’s say we have the following method:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fetch</span><span class="params">(completion: <span class="params">(String?, Error?)</span></span></span> -&gt; <span class="type">Void</span>)</span><br></pre></td></tr></table></figure>
+
+<p>How do we convert this to a promise? Well, it’s easy:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fetch</span><span class="params">()</span></span> -&gt; <span class="type">Promise</span>&lt;<span class="type">String</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">Promise</span> &#123; fetch(completion: $<span class="number">0</span>.resolve) &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>You may find the expanded version more readable:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fetch</span><span class="params">()</span></span> -&gt; <span class="type">Promise</span>&lt;<span class="type">String</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">Promise</span> &#123; seal <span class="keyword">in</span></span><br><span class="line">        fetch &#123; result, error <span class="keyword">in</span></span><br><span class="line">            seal.resolve(result, error)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The <code>seal</code> object that the <code>Promise</code> initializer provides to you defines<br>many methods for handling garden-variety completion handlers. It even<br>covers a variety of rarer situations, thus making it easy for you to add<br>promises to an existing codebase.</p>
+<blockquote>
+<p><em>Note</em>: We tried to make it so that you could just do <code>Promise(fetch)</code>, but we<br>were not able to make this simpler pattern work universally without requiring<br>extra disambiguation for the Swift compiler. Sorry; we tried.</p>
+</blockquote>
+<blockquote>
+<p><em>Note</em>: In PMK 4, this initializer provided two parameters to your closure:<br><code>fulfill</code> and <code>reject</code>. PMK 5 and 6 give you an object that has both <code>fulfill</code> and<br><code>reject</code> methods, but also many variants of the method <code>resolve</code>. You can<br>typically just pass completion handler parameters to <code>resolve</code> and let Swift figure<br>out which variant to apply to your particular case (as shown in the example above).</p>
+</blockquote>
+<blockquote>
+<p><em>Note</em> <code>Guarantees</code> (below) have a slightly different initializer (since they<br>cannot error) so the parameter to the initializer closure is just a closure. Not<br>a <code>Resolver</code> object. Thus do <code>seal(value)</code> rather than <code>seal.fulfill(value)</code>. This<br>is because there is no variations in what guarantees can be sealed with, they can<br><em>only</em> fulfill.</p>
+</blockquote>
+<h1 id="Guarantee-lt-T-gt"><a href="#Guarantee-lt-T-gt" class="headerlink" title="Guarantee&lt;T&gt;"></a><code>Guarantee&lt;T&gt;</code></h1><p>Since PromiseKit 5, we have provided <code>Guarantee</code> as a supplementary class to<br><code>Promise</code>. We do this to complement Swift’s strong error handling system.</p>
+<p>Guarantees <em>never</em> fail, so they cannot be rejected. A good example is <code>after</code>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firstly &#123;</span><br><span class="line">    after(seconds: 0.1)</span><br><span class="line">&#125;.done &#123;</span><br><span class="line">    // there is no way to add a `catch` because after cannot fail.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Swift warns you if you don’t terminate a regular <code>Promise</code> chain (i.e., not<br>a <code>Guarantee</code> chain). You’re expected to silence this warning by supplying<br>either a <code>catch</code> or a <code>return</code>. (In the latter case, you will then have to <code>catch</code><br>at the point where you receive that promise.)</p>
+<p>Use <code>Guarantee</code>s wherever possible so that your code has error handling where<br>it’s required and no error handling where it’s not required.</p>
+<p>In general, you should be able to use <code>Guarantee</code>s and <code>Promise</code>s interchangeably,<br>We have gone to great lengths to try and ensure this, so please open a ticket<br>if you find an issue.</p>
+<hr>
+<p>If you are creating your own guarantees the syntax is simpler than that of promises;</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fetch</span><span class="params">()</span></span> -&gt; <span class="type">Promise</span>&lt;<span class="type">String</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">Guarantee</span> &#123; seal <span class="keyword">in</span></span><br><span class="line">        fetch &#123; result <span class="keyword">in</span></span><br><span class="line">            seal(result)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Which could be reduced to:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fetch</span><span class="params">()</span></span> -&gt; <span class="type">Promise</span>&lt;<span class="type">String</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">Guarantee</span>(resolver: fetch)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="map-compactMap-etc"><a href="#map-compactMap-etc" class="headerlink" title="map, compactMap, etc."></a><code>map</code>, <code>compactMap</code>, etc.</h1><p><code>then</code> provides you with the result of the previous promise and requires you to return<br>another promise.</p>
+<p><code>map</code> provides you with the result of the previous promise and requires you to return<br>an object or value type.</p>
+<p><code>compactMap</code> provides you with the result of the previous promise and requires you<br>to return an <code>Optional</code>. If you return <code>nil</code>, the chain fails with<br><code>PMKError.compactMap</code>.</p>
+<blockquote>
+<p><em>Rationale</em>: Before PromiseKit 4, <code>then</code> handled all these cases, and it was<br>painful. We hoped the pain would disappear with new Swift versions. However,<br>it has become clear that the various pain points are here to stay. In fact, we<br>as library authors are expected to disambiguate at the naming level of our API.<br>Therefore, we have split the three main kinds of <code>then</code> into <code>then</code>, <code>map</code> and<br><code>done</code>. After using these new functions, we realized this is much nicer in practice,<br>so we added <code>compactMap</code> as well (modeled on <code>Optional.compactMap</code>).</p>
+</blockquote>
+<p><code>compactMap</code> facilitates quick composition of promise chains. For example:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">firstly &#123;</span><br><span class="line">    <span class="type">URLSession</span>.shared.dataTask(.promise, with: rq)</span><br><span class="line">&#125;.compactMap &#123;</span><br><span class="line">    <span class="keyword">try</span> <span class="type">JSONSerialization</span>.jsonObject($<span class="number">0</span>.data) <span class="keyword">as</span>? [<span class="type">String</span>]</span><br><span class="line">&#125;.done &#123; arrayOfStrings <span class="keyword">in</span></span><br><span class="line">    <span class="comment">//…</span></span><br><span class="line">&#125;.<span class="keyword">catch</span> &#123; error <span class="keyword">in</span></span><br><span class="line">    <span class="comment">// Foundation.JSONError if JSON was badly formed</span></span><br><span class="line">    <span class="comment">// PMKError.compactMap if JSON was of different type</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><em>Tip</em>: We also provide most of the functional methods you would expect for sequences,<br>e.g., <code>map</code>, <code>thenMap</code>, <code>compactMapValues</code>, <code>firstValue</code>, etc.</p>
+</blockquote>
+<h1 id="get"><a href="#get" class="headerlink" title="get"></a><code>get</code></h1><p>We provide <code>get</code> as a <code>done</code> that returns the value fed to <code>get</code>.</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">firstly &#123;</span><br><span class="line">    foo()</span><br><span class="line">&#125;.<span class="keyword">get</span> &#123; foo <span class="keyword">in</span></span><br><span class="line">    <span class="comment">//…</span></span><br><span class="line">&#125;.done &#123; foo <span class="keyword">in</span></span><br><span class="line">    <span class="comment">// same foo!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="tap"><a href="#tap" class="headerlink" title="tap"></a><code>tap</code></h1><p>We provide <code>tap</code> for debugging. It’s the same as <code>get</code> but provides the<br><code>Result&lt;T&gt;</code> of the <code>Promise</code> so you can inspect the value of the chain at this<br>point without causing any side effects:</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">firstly &#123;</span><br><span class="line">    foo()</span><br><span class="line">&#125;.tap &#123;</span><br><span class="line">    <span class="built_in">print</span>($<span class="number">0</span>)</span><br><span class="line">&#125;.done &#123;</span><br><span class="line">    <span class="comment">//…</span></span><br><span class="line">&#125;.<span class="keyword">catch</span> &#123;</span><br><span class="line">    <span class="comment">//…</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="Supplement"><a href="#Supplement" class="headerlink" title="Supplement"></a>Supplement</h1><h2 id="firstly"><a href="#firstly" class="headerlink" title="firstly"></a><code>firstly</code></h2><p>We’ve used <code>firstly</code> several times on this page, but what is it, really? In fact,<br>it is just <a href="https://en.wikipedia.org/wiki/Syntactic_sugar" target="_blank" rel="noopener">syntactic sugar</a>.<br>You don’t really need it, but it </p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>PromiseKit</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RxSwift</title>
     <url>/2019/11/04/RxSwift/</url>
     <content><![CDATA[]]></content>
