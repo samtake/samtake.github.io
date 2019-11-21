@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>golang练习笔记</title>
+    <url>/2019/11/21/golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h3><p>空值</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">func <span class="function"><span class="title">variableZeroValue</span></span>() &#123;</span><br><span class="line">	var a int</span><br><span class="line">	var s string</span><br><span class="line">	fmt.Printf(<span class="string">"%d %q\n"</span>, a, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>初始化</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">func <span class="function"><span class="title">variableInitialValue</span></span>() &#123;</span><br><span class="line">	var a, b int = 3, 4</span><br><span class="line">	var s string = <span class="string">"abc"</span></span><br><span class="line">	fmt.Println(a, b, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类型推断</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">func <span class="function"><span class="title">variableTypeDeduction</span></span>() &#123;</span><br><span class="line">	var a, b, c, d = 3, 4, <span class="literal">true</span>, <span class="string">"def"</span></span><br><span class="line">	var s string = <span class="string">"abc"</span></span><br><span class="line">	fmt.Println(a, b, c, d, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>利用冒号定义的简单写法  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">func <span class="function"><span class="title">variableShorter</span></span>() &#123;</span><br><span class="line">	a, b, c, d := 3, 4, <span class="literal">true</span>, <span class="string">"def"</span></span><br><span class="line">	b = 6</span><br><span class="line">	var s string = <span class="string">"abc"</span></span><br><span class="line">	fmt.Println(a, b, c, d, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数外的变量定义(不能使用冒号定义，且它的作用域只在该包内部)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var aa = 55</span><br><span class="line">var ss = <span class="string">"llll"</span></span><br><span class="line">var bb = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var (</span><br><span class="line">	bbb = 666</span><br><span class="line">	sss = <span class="string">"jjj"</span></span><br><span class="line">	ttt = <span class="literal">false</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>go</category>
+      </categories>
+      <tags>
+        <tag>go语言基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AFN表单形式提交图片</title>
+    <url>/2019/11/15/AFN%E8%A1%A8%E5%8D%95%E5%BD%A2%E5%BC%8F%E6%8F%90%E4%BA%A4%E5%9B%BE%E7%89%87/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>PromiseKit</title>
     <url>/2019/11/05/PromiseKit/</url>
     <content><![CDATA[<h1 id="then-and-done"><a href="#then-and-done" class="headerlink" title="then and done"></a><code>then</code> and <code>done</code></h1><p>典型使用:</p>
@@ -369,7 +400,20 @@
 <p>区间运算符在比较类型上的运用</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> welcome = <span class="string">"hello,world"</span></span><br><span class="line"><span class="built_in">let</span> interval = <span class="string">"a"</span>...<span class="string">"z"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> welcome &#123;</span><br><span class="line">    <span class="keyword">if</span> !interval.contains(String(c)) &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"\(c)不是小写字母"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2>]]></content>
+<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><h3 id="位取反运算符"><a href="#位取反运算符" class="headerlink" title="位取反运算符"></a>位取反运算符</h3><p>位取反运算符(~)是对所有位的数字进行取反操作</p>
+<h3 id="位与运算符"><a href="#位与运算符" class="headerlink" title="位与运算符"></a>位与运算符</h3><p>位与运算符(&amp;)是对两个数的比特位进行合并。它会返回一个新的数，只有当这两个数都是1的时候才能返回1。</p>
+<h3 id="位或运算符"><a href="#位或运算符" class="headerlink" title="位或运算符"></a>位或运算符</h3><p>位或运算符(|)是对两个数的比特位进行比较。它会返回一个新的数，只要两个操作位任意一个为1时，那么对应的位数就为1。</p>
+<h3 id="位异或运算符"><a href="#位异或运算符" class="headerlink" title="位异或运算符"></a>位异或运算符</h3><p>位异或运算符(^))，当两个操作数的对应位不相同时，那么该数对应的位数就为1。</p>
+<h3 id="位左移和右移运算符"><a href="#位左移和右移运算符" class="headerlink" title="位左移和右移运算符"></a>位左移和右移运算符</h3><p>位左移(&lt;&lt;)和右移运算符(&gt;&gt;)可以吧所有位数的数字向左或向右移动一个确定的位数。</p>
+<p>位座椅和右移具有给整数乘以或除以二的效果。将一个数左移一位相当于把这个数翻倍，将一个数右移一位相当于把这个数减半。</p>
+<h3 id="无符号整数的唯一操作"><a href="#无符号整数的唯一操作" class="headerlink" title="无符号整数的唯一操作"></a>无符号整数的唯一操作</h3><p>用0填充左移或右移后产生的空白位</p>
+<h3 id="有符号整数的移位操作"><a href="#有符号整数的移位操作" class="headerlink" title="有符号整数的移位操作"></a>有符号整数的移位操作</h3><p>第一位表示整数还是负数（0正数，1负数）</p>
+<h3 id="位运算符应用"><a href="#位运算符应用" class="headerlink" title="位运算符应用"></a>位运算符应用</h3><ul>
+<li>两个数字交换</li>
+<li>求赋符号整形数二进制中1的个数</li>
+<li>判断一个整数是否为为2的整数次幂</li>
+</ul>
+]]></content>
       <categories>
         <category>iOS</category>
       </categories>
@@ -390,7 +434,7 @@
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line"></span><br><span class="line">$ hexo d --g</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>

@@ -52,16 +52,18 @@
   };
 </script>
 
-  <meta name="keywords" content="Vue">
+  <meta name="description" content="定义变量空值 12345func variableZeroValue() &amp;#123;	var a int	var s string	fmt.Printf(&quot;%d %q\n&quot;, a, s)&amp;#125; 初始化 12345func variableInitialValue() &amp;#123;	var a, b int = 3, 4	var s string = &quot;abc&quot;	fmt.Println(a,">
+<meta name="keywords" content="go语言基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;Vue&#x2F;index.html">
+<meta property="og:title" content="golang练习笔记">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
+<meta property="og:description" content="定义变量空值 12345func variableZeroValue() &amp;#123;	var a int	var s string	fmt.Printf(&quot;%d %q\n&quot;, a, s)&amp;#125; 初始化 12345func variableInitialValue() &amp;#123;	var a, b int = 3, 4	var s string = &quot;abc&quot;	fmt.Println(a,">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-04T15:05:01.406Z">
+<meta property="og:updated_time" content="2019-11-21T16:29:20.217Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2019/11/04/Vue/">
+<link rel="canonical" href="http://yoursite.com/2019/11/21/golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -75,7 +77,7 @@
   };
 </script>
 
-  <title>Vue | samtake</title>
+  <title>golang练习笔记 | samtake</title>
   
 
 
@@ -215,7 +217,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/Vue/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/21/golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -228,7 +230,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Vue
+          golang练习笔记
         </h1>
 
         <div class="post-meta">
@@ -237,18 +239,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-11-04 02:12:27 / Modified: 23:05:01" itemprop="dateCreated datePublished" datetime="2019-11-04T02:12:27+08:00">2019-11-04</time>
+              <time title="Created: 2019-11-21 23:55:08" itemprop="dateCreated datePublished" datetime="2019-11-21T23:55:08+08:00">2019-11-21</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-22 00:29:20" itemprop="dateModified" datetime="2019-11-22T00:29:20+08:00">2019-11-22</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
+                  <a href="/categories/go/" itemprop="url" rel="index">
+                    <span itemprop="name">go</span>
                   </a>
                 </span>
             </span>
@@ -264,7 +272,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h3 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h3><p>空值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">variableZeroValue</span></span>() &#123;</span><br><span class="line">	var a int</span><br><span class="line">	var s string</span><br><span class="line">	fmt.Printf(<span class="string">"%d %q\n"</span>, a, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>初始化</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">variableInitialValue</span></span>() &#123;</span><br><span class="line">	var a, b int = 3, 4</span><br><span class="line">	var s string = <span class="string">"abc"</span></span><br><span class="line">	fmt.Println(a, b, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类型推断</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">variableTypeDeduction</span></span>() &#123;</span><br><span class="line">	var a, b, c, d = 3, 4, <span class="literal">true</span>, <span class="string">"def"</span></span><br><span class="line">	var s string = <span class="string">"abc"</span></span><br><span class="line">	fmt.Println(a, b, c, d, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>利用冒号定义的简单写法  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">variableShorter</span></span>() &#123;</span><br><span class="line">	a, b, c, d := 3, 4, <span class="literal">true</span>, <span class="string">"def"</span></span><br><span class="line">	b = 6</span><br><span class="line">	var s string = <span class="string">"abc"</span></span><br><span class="line">	fmt.Println(a, b, c, d, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数外的变量定义(不能使用冒号定义，且它的作用域只在该包内部)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var aa = 55</span><br><span class="line">var ss = <span class="string">"llll"</span></span><br><span class="line">var bb = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var (</span><br><span class="line">	bbb = 666</span><br><span class="line">	sss = <span class="string">"jjj"</span></span><br><span class="line">	ttt = <span class="literal">false</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -273,24 +296,21 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Vue/" rel="tag"># Vue</a>
+              <a href="/tags/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" rel="tag"># go语言基础</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/11/04/C++%E9%87%8D%E6%B8%A9/" rel="next" title="C++重温">
-                  <i class="fa fa-chevron-left"></i> C++重温
+                <a href="/2019/11/15/AFN%E8%A1%A8%E5%8D%95%E5%BD%A2%E5%BC%8F%E6%8F%90%E4%BA%A4%E5%9B%BE%E7%89%87/" rel="next" title="AFN表单形式提交图片">
+                  <i class="fa fa-chevron-left"></i> AFN表单形式提交图片
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/11/04/RxSwift/" rel="prev" title="RxSwift">
-                  RxSwift <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -329,6 +349,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义变量"><span class="nav-number">1.</span> <span class="nav-text">定义变量</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
