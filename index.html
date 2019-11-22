@@ -244,7 +244,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-22 00:39:48" itemprop="dateModified" datetime="2019-11-22T00:39:48+08:00">2019-11-22</time>
+                <time title="Modified: 2019-11-22 10:49:27" itemprop="dateModified" datetime="2019-11-22T10:49:27+08:00">2019-11-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -290,7 +290,9 @@
 <p><code>(u)int</code>, <code>(u)int8</code>, <code>(u)int16</code>, <code>(u)int32</code>, <code>(u)int64</code>, <code>uintptr</code>,</p>
 <p><code>byte</code>, <code>rune</code>,</p>
 <p><code>float32</code>, <code>float64</code>, <code>complex64</code>, <code>complex128</code>,</p>
-<h2 id="常量与枚举"><a href="#常量与枚举" class="headerlink" title="常量与枚举"></a>常量与枚举</h2>
+<h2 id="常量与枚举"><a href="#常量与枚举" class="headerlink" title="常量与枚举"></a>常量与枚举</h2> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> func <span class="function"><span class="title">consts</span></span>() &#123;</span><br><span class="line">	const filename = <span class="string">"abc.txt"</span></span><br><span class="line">	const a, b = 3, 4</span><br><span class="line">	var c int</span><br><span class="line">	c = int(math.Sqrt(a*a + b + b))</span><br><span class="line">	fmt.Println(filename, c)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">enums</span></span>() &#123;</span><br><span class="line">	const (</span><br><span class="line">		cpp = iota</span><br><span class="line">		java</span><br><span class="line">		golang</span><br><span class="line">		swift</span><br><span class="line">		_</span><br><span class="line">		C</span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	const (</span><br><span class="line">		b = 1 &lt;&lt; (10 * iota)</span><br><span class="line">		bb</span><br><span class="line">		bbb</span><br><span class="line">		bbbb</span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	fmt.Println(cpp, java, golang, C)</span><br><span class="line">	fmt.Println(b, bb, bbb, bbbb)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">abc.txt 4</span><br><span class="line">0 1 2 5</span><br><span class="line">1 1024 1048576 1073741824</span><br></pre></td></tr></table></figure>
       
     </div>
 
