@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="samtake">
 <meta property="og:description" content="定义变量空值 12345func variableZeroValue() &amp;#123;	var a int	var s string	fmt.Printf(&quot;%d %q\n&quot;, a, s)&amp;#125; 初始化 12345func variableInitialValue() &amp;#123;	var a, b int = 3, 4	var s string = &quot;abc&quot;	fmt.Println(a,">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-21T16:29:20.217Z">
+<meta property="og:updated_time" content="2019-11-21T16:39:48.133Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2019/11/21/golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/">
@@ -247,7 +247,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-22 00:29:20" itemprop="dateModified" datetime="2019-11-22T00:29:20+08:00">2019-11-22</time>
+                <time title="Modified: 2019-11-22 00:39:48" itemprop="dateModified" datetime="2019-11-22T00:39:48+08:00">2019-11-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -272,7 +272,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h3><p>空值</p>
+        <h2 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h2><p>空值</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">variableZeroValue</span></span>() &#123;</span><br><span class="line">	var a int</span><br><span class="line">	var s string</span><br><span class="line">	fmt.Printf(<span class="string">"%d %q\n"</span>, a, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>初始化</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">variableInitialValue</span></span>() &#123;</span><br><span class="line">	var a, b int = 3, 4</span><br><span class="line">	var s string = <span class="string">"abc"</span></span><br><span class="line">	fmt.Println(a, b, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -288,6 +288,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var aa = 55</span><br><span class="line">var ss = <span class="string">"llll"</span></span><br><span class="line">var bb = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <p>或者</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var (</span><br><span class="line">	bbb = 666</span><br><span class="line">	sss = <span class="string">"jjj"</span></span><br><span class="line">	ttt = <span class="literal">false</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="内建变量类型"><a href="#内建变量类型" class="headerlink" title="内建变量类型"></a>内建变量类型</h2><p><code>bool</code>, <code>string</code>,</p>
+<p><code>(u)int</code>, <code>(u)int8</code>, <code>(u)int16</code>, <code>(u)int32</code>, <code>(u)int64</code>, <code>uintptr</code>,</p>
+<p><code>byte</code>, <code>rune</code>,</p>
+<p><code>float32</code>, <code>float64</code>, <code>complex64</code>, <code>complex128</code>,</p>
+<h2 id="常量与枚举"><a href="#常量与枚举" class="headerlink" title="常量与枚举"></a>常量与枚举</h2>
     </div>
 
     
@@ -349,7 +355,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义变量"><span class="nav-number">1.</span> <span class="nav-text">定义变量</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义变量"><span class="nav-number">1.</span> <span class="nav-text">定义变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内建变量类型"><span class="nav-number">2.</span> <span class="nav-text">内建变量类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量与枚举"><span class="nav-number">3.</span> <span class="nav-text">常量与枚举</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

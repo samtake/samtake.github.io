@@ -3,7 +3,7 @@
   <entry>
     <title>golang练习笔记</title>
     <url>/2019/11/21/golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h3><p>空值</p>
+    <content><![CDATA[<h2 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h2><p>空值</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">func <span class="function"><span class="title">variableZeroValue</span></span>() &#123;</span><br><span class="line">	var a int</span><br><span class="line">	var s string</span><br><span class="line">	fmt.Printf(<span class="string">"%d %q\n"</span>, a, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>初始化</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">func <span class="function"><span class="title">variableInitialValue</span></span>() &#123;</span><br><span class="line">	var a, b int = 3, 4</span><br><span class="line">	var s string = <span class="string">"abc"</span></span><br><span class="line">	fmt.Println(a, b, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -18,7 +18,13 @@
 <p>函数外的变量定义(不能使用冒号定义，且它的作用域只在该包内部)</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var aa = 55</span><br><span class="line">var ss = <span class="string">"llll"</span></span><br><span class="line">var bb = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <p>或者</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var (</span><br><span class="line">	bbb = 666</span><br><span class="line">	sss = <span class="string">"jjj"</span></span><br><span class="line">	ttt = <span class="literal">false</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var (</span><br><span class="line">	bbb = 666</span><br><span class="line">	sss = <span class="string">"jjj"</span></span><br><span class="line">	ttt = <span class="literal">false</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="内建变量类型"><a href="#内建变量类型" class="headerlink" title="内建变量类型"></a>内建变量类型</h2><p><code>bool</code>, <code>string</code>,</p>
+<p><code>(u)int</code>, <code>(u)int8</code>, <code>(u)int16</code>, <code>(u)int32</code>, <code>(u)int64</code>, <code>uintptr</code>,</p>
+<p><code>byte</code>, <code>rune</code>,</p>
+<p><code>float32</code>, <code>float64</code>, <code>complex64</code>, <code>complex128</code>,</p>
+<h2 id="常量与枚举"><a href="#常量与枚举" class="headerlink" title="常量与枚举"></a>常量与枚举</h2>]]></content>
       <categories>
         <category>go</category>
       </categories>
