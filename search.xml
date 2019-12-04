@@ -257,59 +257,117 @@
 <h2 id="panic和recover"><a href="#panic和recover" class="headerlink" title="panic和recover"></a>panic和recover</h2><p>panic<br>停止当前函数执行<br>一直向上返回，执行每一层的defer<br>如果没有遇见recover，程序就退出</p>
 <p>recover<br>仅在defer调用中使用<br>获取panic的值<br>如果无法处理，可重新panic</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">func <span class="function"><span class="title">tryRecover</span></span>() &#123;</span><br><span class="line">	defer <span class="function"><span class="title">func</span></span>() &#123;</span><br><span class="line">		r := recover()</span><br><span class="line">		<span class="keyword">if</span> r == nil &#123;</span><br><span class="line">			fmt.Println(<span class="string">"Nothing to recover. "</span> +</span><br><span class="line">				<span class="string">"Please try uncomment errors "</span> +</span><br><span class="line">				<span class="string">"below."</span>)</span><br><span class="line">			<span class="built_in">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> err, ok := r.(error); ok &#123;</span><br><span class="line">			fmt.Println(<span class="string">"Error occurred:"</span>, err)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			panic(fmt.Sprintf(</span><br><span class="line">				<span class="string">"I don't know what to do: %v"</span>, r))</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"><span class="comment">## 代码覆盖率和性能测试</span></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用pprof进行性能调优"><a href="#使用pprof进行性能调优" class="headerlink" title="使用pprof进行性能调优"></a>使用pprof进行性能调优</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"><span class="comment">## 测试http服务器</span></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<h2 id="生成文档和实力代码"><a href="#生成文档和实力代码" class="headerlink" title="生成文档和实力代码"></a>生成文档和实力代码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"><span class="comment">## Goroutine</span></span><br><span class="line">轻量级“线程”</span><br><span class="line">非抢占式多任务处理，由协程主动交出控制权（Printf是个IO操作，内部做了控制权切换）</span><br><span class="line">多个协程可能在一个或多个线程上运行</span><br><span class="line">```bash</span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	<span class="keyword">for</span> i := 0; i &lt; 1000; i++ &#123;</span><br><span class="line">		go func(i int) &#123;</span><br><span class="line">			<span class="keyword">for</span> &#123;</span><br><span class="line">				fmt.Printf(<span class="string">"hello form goroutine %d\n"</span>, i)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;(i)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	time.Sleep(time.Millisecond)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">func <span class="function"><span class="title">tryGoroutine</span></span>() &#123;</span><br><span class="line">	var a [10]int</span><br><span class="line">	<span class="keyword">for</span> i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">		go func(ii int) &#123;</span><br><span class="line">			<span class="keyword">for</span> &#123;</span><br><span class="line">				a[ii]++</span><br><span class="line">				runtime.Gosched()//主动交出控制权</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;(i)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	time.Sleep(time.Millisecond)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>数据访问的冲突</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">go run -race goroutine.go</span><br></pre></td></tr></table></figure>
+
+<p>查看cpu占用率</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">top</span><br></pre></td></tr></table></figure>
+<p>go语言的调度器</p>
+<p>任何函数只需加上go就能送给调度器运行<br>不需要在定义时区分是否是异步函数<br>调度器在合适的点进行切换<br>使用-race来检测数据访问冲突</p>
+<p>goroutine 可能的切换点<br>I/O、select<br>channel<br>等待锁<br>函数调用（有时会）<br>runtime.Gosched()<br>以上所列只是参考～真实情况就不一定～</p>
+<h2 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## http标准库&amp;其它标准库</span></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<h2 id="gin-amp-增加middleware"><a href="#gin-amp-增加middleware" class="headerlink" title="gin&amp;增加middleware"></a>gin&amp;增加middleware</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>]]></content>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
       <categories>
         <category>go</category>
       </categories>
