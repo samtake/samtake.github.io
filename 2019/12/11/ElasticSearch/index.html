@@ -52,14 +52,18 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="samtake">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;WebRTC&#x2F;index.html">
+  <meta name="description" content="ElasticSearch：全文搜索引擎，它可以快速存储，搜索和分析海量数据，用户包括：维基百科、Stack Overflow、GitHub 特点：不需要简表，配置字段等；只需要存json的文档； 通过docker安装 1docker pull docker.elastic.co&#x2F;elasticsearch&#x2F;elasticsearch:7.5.0  1docker run -p 9200:9200">
+<meta name="keywords" content="ElasticSearch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElasticSearch">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;11&#x2F;ElasticSearch&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
+<meta property="og:description" content="ElasticSearch：全文搜索引擎，它可以快速存储，搜索和分析海量数据，用户包括：维基百科、Stack Overflow、GitHub 特点：不需要简表，配置字段等；只需要存json的文档； 通过docker安装 1docker pull docker.elastic.co&#x2F;elasticsearch&#x2F;elasticsearch:7.5.0  1docker run -p 9200:9200">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-11T15:21:50.786Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/tags/WebRTC/">
+<link rel="canonical" href="http://yoursite.com/2019/12/11/ElasticSearch/">
 
 
 <script id="page-configurations">
@@ -67,13 +71,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Tag: WebRTC | samtake</title>
+  <title>ElasticSearch | samtake</title>
   
 
 
@@ -208,50 +212,106 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">WebRTC
-          <small>Tag</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/ElasticSearch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ElasticSearch
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-11 12:15:14 / Modified: 23:21:50" itemprop="dateCreated datePublished" datetime="2019-12-11T12:15:14+08:00">2019-12-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ElasticSearch/" itemprop="url" rel="index">
+                    <span itemprop="name">ElasticSearch</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
+        <p>ElasticSearch：全文搜索引擎，它可以快速存储，搜索和分析海量数据，用户包括：维基百科、Stack Overflow、GitHub</p>
+<p>特点：不需要简表，配置字段等；只需要存json的文档；</p>
+<p>通过docker安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull docker.elastic.co/elasticsearch/elasticsearch:7.5.0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 9200:9200 -p 9300:9300 -e <span class="string">"discovery.type=single-node"</span> docker.elastic.co/elasticsearch/elasticsearch:7.5.0</span><br></pre></td></tr></table></figure>
+
+<p>安装成功之后访问<code>http://localhost:9200/</code>即可见到对应信息</p>
+<p>链接参考<br><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html" target="_blank" rel="noopener">docker安装ElasticSearch</a></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-04T01:54:53+08:00"
-              content="2019-11-04">
-          11-04
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ElasticSearch/" rel="tag"># ElasticSearch</a>
+          </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/11/04/WebRTC/" itemprop="url">
-            <span itemprop="name">WebRTC</span>
-          </a>
-      </h2>
+        
 
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/12/10/Go%E4%BB%BF%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="Go仿百度网盘学习笔记">
+                  <i class="fa fa-chevron-left"></i> Go仿百度网盘学习笔记
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/12/11/docker%E5%AD%A6%E4%B9%A0/" rel="prev" title="docker学习">
+                  docker学习 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
