@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="samtake">
 <meta property="og:description" content="1.拉取MySQL5.7镜像到本地1234docker pull mysql:5.7# 如果你只需要跑一个mysql实例，不做主从，那么执行以下命令即可，不用再做后面的参考步骤: docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7 # 然后用shell或客户端软件通过配置( 用户名:root 密码:132456 IP">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-09T15:54:33.181Z">
+<meta property="og:updated_time" content="2020-02-09T16:19:34.175Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/02/09/Ubuntu%E4%B8%AD%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%E4%B8%BB%E4%BB%8E%E8%8A%82%E7%82%B9/">
@@ -239,10 +239,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-02-09 15:37:14 / Modified: 23:54:33" itemprop="dateCreated datePublished" datetime="2020-02-09T15:37:14+08:00">2020-02-09</time>
+              <time title="Created: 2020-02-09 15:37:14" itemprop="dateCreated datePublished" datetime="2020-02-09T15:37:14+08:00">2020-02-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-10 00:19:34" itemprop="dateModified" datetime="2020-02-10T00:19:34+08:00">2020-02-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -276,14 +282,14 @@
 
 <h3 id="2-准备MySQL的配置文件"><a href="#2-准备MySQL的配置文件" class="headerlink" title="2.准备MySQL的配置文件"></a>2.准备MySQL的配置文件</h3><p>MySQL5.7安装之后的默认配置文件在/etc/mysql/my.cnf，而自定义的配置文件一般放在/etc/mysql/config.d这个路径下。<br>在本地host主机上自定义的某个目录下（如/data/mysql/conf/），先创建两个文件master.conf和slave.conf，分别用于配置主从两个节点。</p>
 <ul>
-<li>/data/mysql/conf/master.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[client] </span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysql] default-character-set=utf8 </span><br><span class="line">[mysqld] log_bin = <span class="built_in">log</span> <span class="comment">#开启二进制日志，用于从节点的历史复制回放 </span></span><br><span class="line">collation-server = utf8_unicode_ci </span><br><span class="line">init-connect=<span class="string">'SET NAMES utf8'</span> </span><br><span class="line">character-set-server = utf8 server_id = 1 <span class="comment">#需保证主库和从库的server_id不同， 假设主库设为1 </span></span><br><span class="line">replicate-do-db=fileserver <span class="comment">#需要复制的数据库名，需复制多个数据库的话则重复设置这个选项</span></span><br></pre></td></tr></table></figure>
+<li>/data/mysql/conf/master.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[client] </span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysql] </span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysqld] </span><br><span class="line">log_bin = <span class="built_in">log</span> <span class="comment">#开启二进制日志，用于从节点的历史复制回放 </span></span><br><span class="line">collation-server = utf8_unicode_ci </span><br><span class="line">init-connect=<span class="string">'SET NAMES utf8'</span> </span><br><span class="line">character-set-server = utf8 </span><br><span class="line">server_id = 1 <span class="comment">#需保证主库和从库的server_id不同， 假设主库设为1 </span></span><br><span class="line">replicate-do-db=fileserver <span class="comment">#需要复制的数据库名，需复制多个数据库的话则重复设置这个选项</span></span><br></pre></td></tr></table></figure>
 
 
 
 </li>
 </ul>
 <ul>
-<li>/data/mysql/conf/slave.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[client] </span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysql] default-character-set=utf8 </span><br><span class="line">[mysqld] log_bin = <span class="built_in">log</span> <span class="comment">#开启二进制日志，用于从节点的历史复制回放 </span></span><br><span class="line">collation-server = utf8_unicode_ci </span><br><span class="line">init-connect=<span class="string">'SET NAMES utf8'</span> </span><br><span class="line">character-set-server = utf8 server_id = 2 <span class="comment">#需保证主库和从库的server_id不同， 假设从库设为2 </span></span><br><span class="line">replicate-do-db=fileserver <span class="comment">#需要复制的数据库名，需复制多个数据库的话则重复设置这个选项</span></span><br></pre></td></tr></table></figure>
+<li>/data/mysql/conf/slave.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[client] </span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysql] </span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysqld] </span><br><span class="line">log_bin = <span class="built_in">log</span> <span class="comment">#开启二进制日志，用于从节点的历史复制回放 </span></span><br><span class="line">collation-server = utf8_unicode_ci </span><br><span class="line">init-connect=<span class="string">'SET NAMES utf8'</span> </span><br><span class="line">character-set-server = utf8 </span><br><span class="line">server_id = 2 <span class="comment">#需保证主库和从库的server_id不同， 假设从库设为2 </span></span><br><span class="line">replicate-do-db=fileserver <span class="comment">#需要复制的数据库名，需复制多个数据库的话则重复设置这个选项</span></span><br></pre></td></tr></table></figure>
 
 
 </li>
@@ -293,7 +299,7 @@
 <p>运行参数说明:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">–name mysql-master: 容器的名称设为mysql-master </span><br><span class="line">-p 13306:3306: 将host的13306端口映射到容器的3306端口 </span><br><span class="line">-v /data/mysql/conf/master.conf:/etc/mysql/mysql.conf.d/mysqld.cnf ： master.conf配置文件挂载 </span><br><span class="line">-v /data/mysql/datam:/var/lib/mysql ： mysql容器内数据挂载到host的/data/mysql/datam， 用于持久化 </span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 : mysql的root登录密码为123456</span><br></pre></td></tr></table></figure>
 
-<p> 将mysql从节点运行起来<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/mysql/datas </span><br><span class="line">docker run -d --name mysql-slave -p 13307:3306 </span><br><span class="line">-v /data/mysql/conf/slave.conf:/etc/mysql/mysql.conf.d/mysqld.cnf -v /data/mysql/datas:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</span><br></pre></td></tr></table></figure></p>
+<p> 将mysql从节点运行起来<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/mysql/datas </span><br><span class="line">docker run -d --name mysql-slave -p 13307:3306 -v /data/mysql/conf/slave.conf:/etc/mysql/mysql.conf.d/mysqld.cnf -v /data/mysql/datas:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</span><br></pre></td></tr></table></figure></p>
 <p> 运行参数说明: </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">–name mysql-slave: 容器的名称设为mysql-slave </span><br><span class="line">-p 13307:3306: 将host的13307端口映射到容器的3306端口 </span><br><span class="line">-v /data/mysql/conf/master.conf:/etc/mysql/mysql.conf.d/mysqld.cnf ： master.conf配置文件挂载</span><br><span class="line">-v /data/mysql/datam:/var/lib/mysql ： mysql容器内数据挂载到host的/data/mysql/datam， 用于持久化 </span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 : mysql的root登录密码为123456</span><br></pre></td></tr></table></figure>
 
