@@ -52,13 +52,15 @@
   };
 </script>
 
-  <meta name="keywords" content="docker,mysql">
+  <meta name="description" content="拉取mysql 1docker pull mysql  在后台启动mysql容器(–name指定了容器的名称，方便之后进入容器的命令行，MYSQL_ROOT_PASSWORD=hls123指定了mysql的root密码，-d表示在后台运行) 1sudo docker run --name=mysql -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d">
+<meta name="keywords" content="docker,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过docker启动mysql容器">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;20&#x2F;%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8mysql%E5%AE%B9%E5%99%A8&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
+<meta property="og:description" content="拉取mysql 1docker pull mysql  在后台启动mysql容器(–name指定了容器的名称，方便之后进入容器的命令行，MYSQL_ROOT_PASSWORD=hls123指定了mysql的root密码，-d表示在后台运行) 1sudo docker run --name=mysql -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-20T15:13:07.584Z">
+<meta property="og:updated_time" content="2019-12-20T15:51:51.857Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2019/12/20/%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8mysql%E5%AE%B9%E5%99%A8/">
@@ -239,7 +241,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2019-12-20 23:11:48 / Modified: 23:13:07" itemprop="dateCreated datePublished" datetime="2019-12-20T23:11:48+08:00">2019-12-20</time>
+              <time title="Created: 2019-12-20 23:11:48 / Modified: 23:51:51" itemprop="dateCreated datePublished" datetime="2019-12-20T23:11:48+08:00">2019-12-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,7 +272,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>拉取mysql</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
+
+<p>在后台启动mysql容器(–name指定了容器的名称，方便之后进入容器的命令行，MYSQL_ROOT_PASSWORD=hls123指定了mysql的root密码，-d表示在后台运行)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --name=mysql -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql</span><br></pre></td></tr></table></figure>
+
+<p>进入容器bash并进入mysql命令行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql bash</span><br></pre></td></tr></table></figure>
+<p>验证容器状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+
+
+<p>创建mysql容器 1master+1个slave</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name=mysql-master -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name=mysql-slave1 -it -p 3307:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -348,7 +368,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -394,7 +414,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
