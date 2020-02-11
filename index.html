@@ -213,6 +213,76 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/" class="post-title-link" itemprop="url">Navicat使用资料</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-12 00:35:14 / Modified: 00:36:53" itemprop="dateCreated datePublished" datetime="2020-02-12T00:35:14+08:00">2020-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://www.navicat.com.cn/manual/online_manual/cn/navicat/win_manual/index.html#/about_0" target="_blank" rel="noopener">详细的使用手册</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/Ubuntu%E4%B8%AD%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%E4%B8%BB%E4%BB%8E%E8%8A%82%E7%82%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -244,7 +314,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-10 00:27:28" itemprop="dateModified" datetime="2020-02-10T00:27:28+08:00">2020-02-10</time>
+                <time title="Modified: 2020-02-10 01:05:37" itemprop="dateModified" datetime="2020-02-10T01:05:37+08:00">2020-02-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -309,7 +379,7 @@
 <p>在mysql client中执行 (创建用于访问主节点来同步数据的帐号) </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create user slave identified by <span class="string">'slave'</span>; </span><br><span class="line">mysql&gt; GRANT REPLICATION SLAVE ON *.* TO <span class="string">'slave'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'slave'</span>; </span><br><span class="line">mysql&gt; flush privileges; </span><br><span class="line">mysql&gt; create database fileserver default character <span class="built_in">set</span> utf8mb4;</span><br></pre></td></tr></table></figure>
 <p>再获取status, 得到类似如下的输出: </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show master status G; </span><br><span class="line">*************************** 1. row *************************** </span><br><span class="line">File: log.000025 </span><br><span class="line">Position: 155 Binlog_Do_DB: </span><br><span class="line">Binlog_Ignore_DB: </span><br><span class="line">Executed_Gtid_Set: 1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show master status\G; </span><br><span class="line">*************************** 1. row *************************** </span><br><span class="line">File: log.000025 </span><br><span class="line">Position: 155 Binlog_Do_DB: </span><br><span class="line">Binlog_Ignore_DB: </span><br><span class="line">Executed_Gtid_Set: 1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
 
 
 <h3 id="5-登录MySQL从节点配置同步信息"><a href="#5-登录MySQL从节点配置同步信息" class="headerlink" title="5.登录MySQL从节点配置同步信息"></a>5.登录MySQL从节点配置同步信息</h3><ul>
@@ -681,7 +751,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-09 15:30:40" itemprop="dateModified" datetime="2020-02-09T15:30:40+08:00">2020-02-09</time>
+                <time title="Modified: 2020-02-11 13:55:09" itemprop="dateModified" datetime="2020-02-11T13:55:09+08:00">2020-02-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -706,7 +776,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id><a href="#" class="headerlink" title></a></h2>
+          <h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><p>数据库分表<br>水平分表：假设分成256张文件表，按文件Sha1值后两位来切分，则以：tb_${FILE_SHA1}[:-2]的规则到对应表进行存取。</p>
+<p>// OnFileUploadFinished : 文件上传完成，保存meta （插入）<br>// GetFileMeta : 从mysql获取文件元信息（查询）<br>// UpdateFileLocation : 更新文件的存储地址(如文件被转移了)  （更新）<br>涉及源码：db(file.go   mysql(conn.go))</p>
+<p>使用MySQL小结：<br>通过sql.DB来管理数据连接对象<br>通过sql.Open来创建协程安全的sql.DB<br>优先使用Prepared Statement</p>
+<h3 id="4-1用户系统用户表设计-注册和登录"><a href="#4-1用户系统用户表设计-注册和登录" class="headerlink" title="4-1用户系统用户表设计(注册和登录)"></a>4-1用户系统用户表设计(注册和登录)</h3><p>由于原有情况下,唯一索引用在了字段phone上. 而当前插入表的sql语句中, user_name才是应该要保持唯一的, 因此相对于视频所演示的建表语句进行了更新, 具体如下: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `tbl_user` ( </span><br><span class="line">    `id` int(11) NOT NULL AUTO_INCREMENT, </span><br><span class="line">    `user_name` varchar(64) NOT NULL DEFAULT <span class="string">''</span> COMMENT <span class="string">'用户名'</span>, </span><br><span class="line">    `user_pwd` varchar(256) NOT NULL DEFAULT <span class="string">''</span> COMMENT <span class="string">'用户encoded密码'</span>, </span><br><span class="line">    `email` varchar(64) DEFAULT <span class="string">''</span> COMMENT <span class="string">'邮箱'</span>, </span><br><span class="line">    `phone` varchar(128) DEFAULT <span class="string">''</span> COMMENT <span class="string">'手机号'</span>, </span><br><span class="line">    `email_validated` tinyint(1) DEFAULT 0 COMMENT <span class="string">'邮箱是否已验证'</span>, </span><br><span class="line">    `phone_validated` tinyint(1) DEFAULT 0 COMMENT <span class="string">'手机号是否已验证'</span>, </span><br><span class="line">    `signup_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT <span class="string">'注册日期'</span>, </span><br><span class="line">    `last_active` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT <span class="string">'最后活跃时间戳'</span>, </span><br><span class="line">    `profile` text COMMENT <span class="string">'用户属性'</span>, </span><br><span class="line">    `status` int(11) NOT NULL DEFAULT <span class="string">'0'</span> COMMENT <span class="string">'账户状态(启用/禁用/锁定/标记删除等)'</span>, </span><br><span class="line">    PRIMARY KEY (`id`), </span><br><span class="line">    UNIQUE KEY `idx_username` (`user_name`), </span><br><span class="line">    KEY `idx_status` (`status`) </span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</span><br></pre></td></tr></table></figure>
+
+<p>登录<br>// 1. 校验用户名及密码<br>// 2. 生成访问凭证(token)<br>// 3. 登录成功后重定向到首页<br>涉及源码：<br>db(user.go )<br>handle(user.go)</p>
+<p>访问鉴权（验证token的拦截器）<br>handler(auth.go)</p>
+<h3 id="5-hash算法对比以及秒传原理"><a href="#5-hash算法对比以及秒传原理" class="headerlink" title="5.hash算法对比以及秒传原理"></a>5.hash算法对比以及秒传原理</h3><h3 id="6-Redis"><a href="#6-Redis" class="headerlink" title="6.Redis"></a>6.Redis</h3><p>分块上传与断点续传<br>分块上传：文件切成多块，独立上传，上传完成后合并（初始化上传-&gt;上传分块（并行）-&gt;通知上传完成）<br>断点续传：传输暂停或一场终端后，可基于原来进度重传</p>
+<p>小文件不建议分块上传<br>可以并行上传分块，并且可以无序传输<br>分块上传能极大提高传输效率<br>减少传输失败后重试的流量和时间</p>
+<h3 id="7-Ceph"><a href="#7-Ceph" class="headerlink" title="7.Ceph"></a>7.Ceph</h3><p>Ceph:redhat开源出来的分布式存储系统</p>
+<h3 id="8-阿里云对象存储OSS"><a href="#8-阿里云对象存储OSS" class="headerlink" title="8.阿里云对象存储OSS"></a>8.阿里云对象存储OSS</h3><h3 id="9-RabbitMQ"><a href="#9-RabbitMQ" class="headerlink" title="9.RabbitMQ"></a>9.RabbitMQ</h3><p>RabbitMQ:一种开源的消息代理</p>
+<h3 id="10-微服务"><a href="#10-微服务" class="headerlink" title="10.微服务"></a>10.微服务</h3>
       
     </div>
 
@@ -1509,75 +1591,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/Vue/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/04/Vue/" class="post-title-link" itemprop="url">Vue</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2019-11-04 02:12:27 / Modified: 23:05:01" itemprop="dateCreated datePublished" datetime="2019-11-04T02:12:27+08:00">2019-11-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1628,7 +1641,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
