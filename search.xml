@@ -3,7 +3,150 @@
   <entry>
     <title>Redis入门</title>
     <url>/2020/02/12/Redis%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h3 id="Docker-安装-Redis"><a href="#Docker-安装-Redis" class="headerlink" title="Docker 安装 Redis"></a>Docker 安装 Redis</h3><p><code>docker pull redis:latest</code><br>取最新版的 Redis 镜像</p>
+<p><code>docker images</code><br>查看是否已安装了 redis</p>
+<p>运行 redis 容器<br><code>docker run -itd --name redis-test -p 6379:6379 redis</code><br>或者运行redis并设置密码<br><code>docker run -d --name myredis -p 6379:6379 redis --requirepass &quot;mypassword&quot;</code></p>
+<p>其中-p 6379:6379：映射容器服务的 6379 端口到宿主机的 6379 端口。外部可以直接通过宿主机ip:6379 访问到 Redis 的服务。</p>
+<p><code>docker ps</code> 查看容器的运行信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  Desktop docker ps </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                               NAMES</span><br><span class="line">d1f67d1e5fda        redis               <span class="string">"docker-entrypoint.s…"</span>   About a minute ago   Up About a minute   0.0.0.0:6379-&gt;6379/tcp              redis-test</span><br><span class="line">0eee2c1708be        mysql:5.7           <span class="string">"docker-entrypoint.s…"</span>   8 hours ago          Up 8 hours          0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   happy_chandrasekhar</span><br></pre></td></tr></table></figure>
+
+
+<p>最后，通过过 redis-cli 连接测试使用 redis 服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  Desktop docker <span class="built_in">exec</span> -it redis-test /bin/bash</span><br><span class="line">root@d1f67d1e5fda:/data<span class="comment"># redis-cli</span></span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> <span class="built_in">test</span> 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>可以存储的值</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>STRING</td>
+<td>字符串、整数或者浮点数</td>
+<td>对整个字符串或者字符串的其中一部分执行操作；对整数和浮点数执行自增或者自减操作；</td>
+</tr>
+<tr>
+<td>LIST</td>
+<td>列表</td>
+<td>从两端压入或者弹出元素；读取单个或者多个元素；进行修剪，只保留一个范围内的元素；</td>
+</tr>
+<tr>
+<td>SET</td>
+<td>无序集合</td>
+<td>添加、获取、移除单个元素；检查一个元素是否存在于集合中；计算交集、并集、差集；从集合里面随机获取元素；</td>
+</tr>
+<tr>
+<td>HASH</td>
+<td>包含键值对的无序散列表</td>
+<td>添加、获取、删除单个键值对；获取所有键值对；检查某个健是否存在；</td>
+</tr>
+<tr>
+<td>ZSET</td>
+<td>有序集合</td>
+<td>添加、获取、删除元素；根据分值范围或者成员来获取元素；计算一个键的排名；</td>
+</tr>
+</tbody></table>
+<h4 id="STRING"><a href="#STRING" class="headerlink" title="STRING"></a>STRING</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>获取存储在给定健中的值</td>
+</tr>
+<tr>
+<td>SET</td>
+<td>设置存储在给定健中的值</td>
+</tr>
+<tr>
+<td>DEL</td>
+<td>删除存储在给定健中的值（这个命令可以用于所有类型）</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name longshan</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">"longshan"</span></span><br><span class="line">127.0.0.1:6379&gt; del name</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">(nil)</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="LIST"><a href="#LIST" class="headerlink" title="LIST"></a>LIST</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rpush</td>
+<td>获取存储在给定键中的值</td>
+</tr>
+<tr>
+<td>lrange</td>
+<td>设置存储在给定键中的值</td>
+</tr>
+<tr>
+<td>lindex</td>
+<td>删除存储在给定键中的值（这个命令可以用于所有类型）</td>
+</tr>
+<tr>
+<td>lpop</td>
+<td>删除存储在给定键中的值（这个命令可以用于所有类型）</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange list 0-1</span><br><span class="line">(error) ERR wrong number of arguments <span class="keyword">for</span> <span class="string">'lrange'</span> <span class="built_in">command</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 0 -1</span><br><span class="line">1) <span class="string">"item1"</span></span><br><span class="line">2) <span class="string">"item2"</span></span><br><span class="line">3) <span class="string">"item3"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 1</span><br><span class="line">(error) ERR wrong number of arguments <span class="keyword">for</span> <span class="string">'lrange'</span> <span class="built_in">command</span></span><br><span class="line">127.0.0.1:6379&gt; lindex list 1</span><br><span class="line"><span class="string">"item2"</span></span><br><span class="line">127.0.0.1:6379&gt; lpop list</span><br><span class="line"><span class="string">"item1"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 0 -1</span><br><span class="line">1) <span class="string">"item2"</span></span><br><span class="line">2) <span class="string">"item3"</span></span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h4><p>命令    | 行为<br>-|-|-<br>sadd    | 添加一个或多个元素到集合里<br>smembers |    获取集合里面的所有元素<br>sismember |    确定一个给定的值是一个集合的成员<br>srem    | 从集合里删除一个或多个元素</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item1</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item3</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item3</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; smember <span class="built_in">set</span></span><br><span class="line">(error) ERR unknown <span class="built_in">command</span> `smember`, with args beginning with: `<span class="built_in">set</span>`, </span><br><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"item3"</span></span><br><span class="line">2) <span class="string">"item1"</span></span><br><span class="line">3) <span class="string">"item2"</span></span><br><span class="line">127.0.0.1:6379&gt; sismember <span class="built_in">set</span> item5</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; srem <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; srem <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; smenbers <span class="built_in">set</span></span><br><span class="line">(error) ERR unknown <span class="built_in">command</span> `smenbers`, with args beginning with: `<span class="built_in">set</span>`, </span><br><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"item3"</span></span><br><span class="line">2) <span class="string">"item1"</span></span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="HASH"><a href="#HASH" class="headerlink" title="HASH"></a>HASH</h4><p>命令    | 行为<br>-|-|-<br>hset    | 设置 hash 里面一个字段的值<br>hget    | 获取 hash 中域的值<br>hgetall    | 从 hash 中读取全部的域和值<br>hdel    | 删除一个或多个域</p>
+<h4 id="ZSET"><a href="#ZSET" class="headerlink" title="ZSET"></a>ZSET</h4><p>命令    | 行为<br>-|-|-<br>ZADD    | 添加到有序 set 的一个或多个成员，或更新的分数，如果它已经存在<br>ZRANGE    | 根据指定的 index 返回，返回 sorted set 的成员列表<br>ZRANGEBYSCORE    | 返回有序集合中指定分数区间内的成员，分数由低到高排序。<br>ZREM    | 从排序的集合中删除一个或多个成员</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li><p>缓存 - 将热点数据放到内存中，设置内存的最大使用量以及过期淘汰策略来保证缓存的命中率。</p>
+</li>
+<li><p>计数器 - Redis 这种内存数据库能支持计数器频繁的读写操作。</p>
+</li>
+<li><p>应用限流 - 限制一个网站访问流量。</p>
+</li>
+<li><p>消息队列 - 使用 List 数据类型，它是双向链表。</p>
+</li>
+<li><p>查找表 - 使用 HASH 数据类型。</p>
+</li>
+<li><p>交集运算 - 使用 SET 类型，例如求两个用户的共同好友。</p>
+</li>
+<li><p>排行榜 - 使用 ZSET 数据类型。</p>
+</li>
+<li><p>分布式 Session - 多个应用服务器的 Session 都存储到 Redis 中来保证 Session 的一致性。</p>
+</li>
+<li><p>分布式锁 - 除了可以使用 SETNX 实现分布式锁之外，还可以使用官方提供的 RedLock 分布式锁实现。</p>
+</li>
+</ul>
+<h3 id="通过go语言使用Redis"><a href="#通过go语言使用Redis" class="headerlink" title="通过go语言使用Redis"></a>通过go语言使用Redis</h3><p>1.设置一下Redis密码在测试连接</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  egoshop docker rm -f cd93e4361dff                                                 </span><br><span class="line">cd93e4361dff</span><br><span class="line"></span><br><span class="line">➜  egoshop docker run -d --name myredis -p 6379:6379 redis --requirepass <span class="string">"mypassword"</span></span><br><span class="line">f21ed92618bc5a48a95a05fcf73d1fb911b3020616dfd4950b4827dc9559814e</span><br><span class="line">➜  egoshop docker ps                                                                 </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">f21ed92618bc        redis               <span class="string">"docker-entrypoint.s…"</span>   3 seconds ago       Up 1 second         0.0.0.0:6379-&gt;6379/tcp              myredis</span><br><span class="line">0eee2c1708be        mysql:5.7           <span class="string">"docker-entrypoint.s…"</span>   10 hours ago        Up 10 hours         0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   happy_chandrasekhar</span><br><span class="line">➜  egoshop docker <span class="built_in">exec</span> -it myredis /bin/bash</span><br><span class="line">root@f21ed92618bc:/data<span class="comment"># redis-cli</span></span><br><span class="line">127.0.0.1:6379&gt; auth <span class="string">"mypassword"</span></span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>2.创建连接池</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">func newRedisPool() *redis.Pool &#123;</span><br><span class="line">	<span class="built_in">return</span> &amp;redis.Pool&#123;</span><br><span class="line">		MaxIdle:     50,</span><br><span class="line">		MaxActive:   30,</span><br><span class="line">		IdleTimeout: 300 * time.Second,</span><br><span class="line">		Dial: func() (redis.Conn, error) &#123;</span><br><span class="line">			// 1. 打开连接</span><br><span class="line">			c, err := redis.Dial(<span class="string">"tcp"</span>, redisHost)</span><br><span class="line">			<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">				fmt.Println(err)</span><br><span class="line">				<span class="built_in">return</span> nil, err</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			// 2. 访问认证</span><br><span class="line">			<span class="keyword">if</span> _, err = c.Do(<span class="string">"AUTH"</span>, redisPass); err != nil &#123;</span><br><span class="line">				c.Close()</span><br><span class="line">				<span class="built_in">return</span> nil, err</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> c, nil</span><br><span class="line">		&#125;,</span><br><span class="line">		TestOnBorrow: func(conn redis.Conn, t time.Time) error &#123;</span><br><span class="line">			<span class="keyword">if</span> time.Since(t) &lt; time.Minute &#123;</span><br><span class="line">				<span class="built_in">return</span> nil</span><br><span class="line">			&#125;</span><br><span class="line">			_, err := conn.Do(<span class="string">"PING"</span>)</span><br><span class="line">			<span class="built_in">return</span> err</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">init</span></span>() &#123;</span><br><span class="line">	pool = newRedisPool()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func RedisPool() *redis.Pool &#123;</span><br><span class="line">	<span class="built_in">return</span> pool</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.添加数据</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">func <span class="function"><span class="title">UploadHandler</span></span>() &#123;</span><br><span class="line">	// 获得redis的一个连接</span><br><span class="line">	rConn := rPool.RedisPool().Get()</span><br><span class="line">	defer rConn.Close()</span><br><span class="line"></span><br><span class="line">	// 将初信息写入到redis缓存</span><br><span class="line">	rConn.Do(<span class="string">"sadd"</span>, <span class="string">"set"</span>, <span class="string">"uploadHandler"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.查看是否有添加数据</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"upload1"</span></span><br><span class="line">2) <span class="string">"uploadHandler"</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/samtake/goRedisDemo" target="_blank" rel="noopener">具体demo源码</a></p>
+<p>参考资料<br><a href="https://www.runoob.com/docker/docker-install-redis.html" target="_blank" rel="noopener">Docker 安装 Redis</a><br><a href="https://mp.weixin.qq.com/s?src=11&timestamp=1581497616&ver=2153&signature=wJL6PdenqSUgK7dgiXas*bbrDcJzwBzrYoKKYFFfsxW*dYcRnVHqpFKbcYqLDd-bp7DY50iIvxGq8jNMAbQXau-uLB0hPqUJc4erX3MDhbuOrvvtCbw7KY3147aW3KBr&new=1" target="_blank" rel="noopener">Redis 入门指南</a><br><a href="https://www.runoob.com/redis/redis-intro.html" target="_blank" rel="noopener">Redis 简介</a><br><a href></a></p>
+]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+      <tags>
+        <tag>Redis</tag>
+      </tags>
   </entry>
   <entry>
     <title>Navicat使用资料</title>
