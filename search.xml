@@ -13,7 +13,7 @@
 
 
 <p>浏览器打开登录rabbitmq, 入口:<a href="http://localhost:15672" target="_blank" rel="noopener">http://localhost:15672</a><br>默认用户名: guest 密码: guest</p>
-<h3 id="RabbitMQ的工作原理和转发模式"><a href="#RabbitMQ的工作原理和转发模式" class="headerlink" title="RabbitMQ的工作原理和转发模式"></a>RabbitMQ的工作原理和转发模式</h3><p><img src="/.com//RabbitMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png" alt="Alt text"></p>
+<h3 id="RabbitMQ的工作原理和转发模式"><a href="#RabbitMQ的工作原理和转发模式" class="headerlink" title="RabbitMQ的工作原理和转发模式"></a>RabbitMQ的工作原理和转发模式</h3><p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/RabbitMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png" alt></p>
 <h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3>]]></content>
       <categories>
         <category>RabbitMQ</category>
