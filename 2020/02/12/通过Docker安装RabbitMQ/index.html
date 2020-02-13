@@ -61,10 +61,10 @@
 <meta property="og:description" content="RabbitMQ安装123456# &#x2F;Users&#x2F;samtake&#x2F;Documents&#x2F;GitHub&#x2F;www&#x2F;rabbitmq目录可自定义，主要用于目录挂载➜  ~ mkdir -p &#x2F;Users&#x2F;samtake&#x2F;Documents&#x2F;GitHub&#x2F;www&#x2F;rabbitmq➜  ~ docker run -d --hostname rabbit-node1 --name rabbit-node1 -p">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;12&#x2F;%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ&#x2F;RabbitMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;12&#x2F;%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ&#x2F;fantout.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;12&#x2F;%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ&#x2F;fanout.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;12&#x2F;%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ&#x2F;direct.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;12&#x2F;%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ&#x2F;topic.jpeg">
-<meta property="og:updated_time" content="2020-02-13T18:00:26.124Z">
+<meta property="og:updated_time" content="2020-02-13T18:07:22.995Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;12&#x2F;%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ&#x2F;RabbitMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png">
 
@@ -252,7 +252,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-14 02:00:26" itemprop="dateModified" datetime="2020-02-14T02:00:26+08:00">2020-02-14</time>
+                <time title="Modified: 2020-02-14 02:07:22" itemprop="dateModified" datetime="2020-02-14T02:07:22+08:00">2020-02-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -287,10 +287,10 @@
 
 
 <p>浏览器打开登录rabbitmq, 入口:<a href="http://localhost:15672" target="_blank" rel="noopener">http://localhost:15672</a><br>默认用户名: guest 密码: guest</p>
-<h3 id="RabbitMQ的工作原理和转发模式"><a href="#RabbitMQ的工作原理和转发模式" class="headerlink" title="RabbitMQ的工作原理和转发模式"></a>RabbitMQ的工作原理和转发模式</h3><p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/RabbitMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png" alt></p>
-<p>名次解析：<br><code>exchange</code>:消息交换机，决定消息按什么规则，路由到哪个队列。<br><code>queue</code>:消息载体，每个消息都会被投到一个或多个队列。<br><code>binding</code>:绑定，把exchange和queue按照路由规则绑定起来。<br><code>routing key</code>:路由关键字，exchange根据这关键字来投递消息。<br><code>channel</code>:消息通道，客户端的每个连接建立多个channnel。<br><code>producer</code>:消息生产者，用于投递消息的程序。<br><code>consumer</code>:消息消费者，用于接收消息的程序。</p>
+<h3 id="RabbitMQ的UI界面使用测试"><a href="#RabbitMQ的UI界面使用测试" class="headerlink" title="RabbitMQ的UI界面使用测试"></a>RabbitMQ的UI界面使用测试</h3><h3 id="RabbitMQ的工作原理和转发模式"><a href="#RabbitMQ的工作原理和转发模式" class="headerlink" title="RabbitMQ的工作原理和转发模式"></a>RabbitMQ的工作原理和转发模式</h3><p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/RabbitMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png" alt></p>
+<p>名词解析：<br><code>exchange</code>:消息交换机，决定消息按什么规则，路由到哪个队列。<br><code>queue</code>:消息载体，每个消息都会被投到一个或多个队列。<br><code>binding</code>:绑定，把exchange和queue按照路由规则绑定起来。<br><code>routing key</code>:路由关键字，exchange根据这关键字来投递消息。<br><code>channel</code>:消息通道，客户端的每个连接建立多个channnel。<br><code>producer</code>:消息生产者，用于投递消息的程序。<br><code>consumer</code>:消息消费者，用于接收消息的程序。</p>
 <p>exchange的工作模式<br><code>fanout</code>:类似广播，转发到所有绑定交换机的queue。<br><code>direct</code>:类似单播，routing key 和bingding key完美匹配。<br><code>topic</code>:类似组播，转发到符合通配符的queue。<br><code>headers</code>:请求头与消息匹配，才能接收消息。</p>
-<p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/fantout.png" alt></p>
+<p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/fanout.png" alt></p>
 <p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/direct.png" alt></p>
 <p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/topic.jpeg" alt></p>
 <h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p>1.配置</p>
@@ -369,7 +369,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ安装"><span class="nav-number">1.</span> <span class="nav-text">RabbitMQ安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ的工作原理和转发模式"><span class="nav-number">2.</span> <span class="nav-text">RabbitMQ的工作原理和转发模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战"><span class="nav-number">3.</span> <span class="nav-text">实战</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ安装"><span class="nav-number">1.</span> <span class="nav-text">RabbitMQ安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ的UI界面使用测试"><span class="nav-number">2.</span> <span class="nav-text">RabbitMQ的UI界面使用测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ的工作原理和转发模式"><span class="nav-number">3.</span> <span class="nav-text">RabbitMQ的工作原理和转发模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战"><span class="nav-number">4.</span> <span class="nav-text">实战</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
