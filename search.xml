@@ -73,7 +73,20 @@
   <entry>
     <title>Docker-Compose</title>
     <url>/2020/02/15/Docker-Compose/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>Compose 是用于定义和运行多容器 Docker 应用程序的工具。通过 Compose，您可以使用 YML 文件来配置应用程序需要的所有服务。然后，使用一个命令，就可以从 YML 文件配置中创建并启动所有服务。</p>
+<p>Mac 用户不需要单独安装 Compose，因为Docker 桌面版已经包含</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  blogs docker-compose --version</span><br><span class="line">docker-compose version 1.24.1, build 4667896b</span><br></pre></td></tr></table></figure>
+
+<p>Compose 使用的三个步骤：</p>
+<p>1.通过Dockerfile定义容器环境，打包成镜像</p>
+<p>2.通过docker-compose.yml定义各应用服务</p>
+<p>3.通过docker-compose up命令来启动所有容器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># yaml 配置实例</span></span><br><span class="line">version: <span class="string">'3'</span></span><br><span class="line">services:</span><br><span class="line">  web:</span><br><span class="line">    build: .</span><br><span class="line">    ports:</span><br><span class="line">   - <span class="string">"5000:5000"</span></span><br><span class="line">    volumes:</span><br><span class="line">   - .:/code</span><br><span class="line">    - logvolume01:/var/<span class="built_in">log</span></span><br><span class="line">    links:</span><br><span class="line">   - redis</span><br><span class="line">  redis:</span><br><span class="line">    image: redis</span><br><span class="line">volumes:</span><br><span class="line">  logvolume01: &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a href="https://www.runoob.com/docker/docker-compose.html" target="_blank" rel="noopener">Docker Compose</a><br><a href="https://www.bilibili.com/video/av61131351?from=search&seid=5421358312704070453" target="_blank" rel="noopener">实战~如何组织一个多容器项目docker-compose</a></p>
+]]></content>
       <categories>
         <category>Docker</category>
       </categories>
