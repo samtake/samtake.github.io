@@ -1,6 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Dockerfile</title>
+    <url>/2020/02/15/Dockerfile/</url>
+    <content><![CDATA[<p>Dockerfile 是一个用来构建镜像的文本文件，文本内容包含了一条条构建镜像所需的指令和说明。</p>
+<h3 id="主要指令"><a href="#主要指令" class="headerlink" title="主要指令"></a>主要指令</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FROM</td>
+<td>定制的镜像都是基于 FROM 的镜像，例如nginx</td>
+</tr>
+<tr>
+<td>WORKDIR</td>
+<td>指定下面的shell语句指定运行在哪个路径下</td>
+</tr>
+<tr>
+<td>COPY</td>
+<td>将宿主机下的目录文件复制到镜像中去</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>执行后面跟着的命令行命令</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>指定整个镜像运行起来后执行的脚本 (一般都是阻塞式的脚本)</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM alpine</span><br><span class="line">WORKDIR /app</span><br><span class="line">COPY src/  /app</span><br><span class="line">RUN <span class="built_in">echo</span> 321 &gt;&gt; 1.txt</span><br><span class="line">CMD tail -f 1.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="COPY-vs-ADD"><a href="#COPY-vs-ADD" class="headerlink" title="COPY vs ADD"></a>COPY vs ADD</h3><p>两者功能差不多，但是ADD的源文件除了是本地文件资源，还可以是一个url</p>
+<h3 id="CMD-vs-ENTRYPOINT"><a href="#CMD-vs-ENTRYPOINT" class="headerlink" title="CMD vs ENTRYPOINT"></a>CMD vs ENTRYPOINT</h3><h4 id="ENTRYPOINT"><a href="#ENTRYPOINT" class="headerlink" title="ENTRYPOINT"></a>ENTRYPOINT</h4><p>类似于 CMD 指令，但其不会被 docker run 的命令行参数指定的指令所覆盖，而且这些命令行参数会被当作参数送给 ENTRYPOINT 指令指定的程序。</p>
+<p>但是, 如果运行 docker run 时使用了 –entrypoint 选项，此选项的参数可当作要运行的程序覆盖 ENTRYPOINT 指令指定的程序。</p>
+<p>优点：在执行 docker run 的时候可以指定 ENTRYPOINT 运行所需的参数。</p>
+<p>注意：如果 Dockerfile 中如果存在多个 ENTRYPOINT 指令，仅最后一个生效。</p>
+<p>在 Dockerfile 文件的存放目录下，通过<code>docker build -t &lt;镜像名&gt;:&lt;版本号&gt;</code>命令来执行。</p>
+<h4 id="当两者混用时"><a href="#当两者混用时" class="headerlink" title="当两者混用时"></a>当两者混用时</h4><ul>
+<li>entrypoint非json，则以entrypoint为准。</li>
+<li>如果entrypoint和cmd都是json，则以entrypoint+cmd拼接成的shell为准。</li>
+</ul>
+<h3 id="expose"><a href="#expose" class="headerlink" title="expose"></a>expose</h3><p>expose仅仅只是声明端口。</p>
+<p>作用：</p>
+<ul>
+<li>帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射。</li>
+<li>在运行时使用随机端口映射时，也就是 docker run -P 时，会自动随机映射 EXPOSE 的端口。</li>
+</ul>
+<h3 id="VOLUME"><a href="#VOLUME" class="headerlink" title="VOLUME"></a>VOLUME</h3><p>定义匿名数据卷。在启动容器时忘记挂载数据卷，会自动挂载到匿名卷。</p>
+<p>作用：</p>
+<ul>
+<li>避免重要的数据，因容器重启而丢失，这是非常致命的。</li>
+<li>避免容器不断变大。</li>
+</ul>
+<h3 id="ENV"><a href="#ENV" class="headerlink" title="ENV"></a>ENV</h3><p>设置环境变量，定义了环境变量，那么在后续的指令中，就可以使用这个环境变量。</p>
+<h3 id="ARG"><a href="#ARG" class="headerlink" title="ARG"></a>ARG</h3><p>构建参数，与 ENV 作用一至。不过作用域不一样。ARG 设置的环境变量仅对 Dockerfile 内有效，也就是说只有 docker build 的过程中有效，构建好的镜像内不存在此环境变量。</p>
+<h3 id="label"><a href="#label" class="headerlink" title="label"></a>label</h3><p>标识（没实际作用）</p>
+<h3 id="onbuild"><a href="#onbuild" class="headerlink" title="onbuild"></a>onbuild</h3><p><code>onbuild env C = 10</code></p>
+<p>在本次构建镜像的过程中不会执行（假设镜像为 test-build）。当有新的 Dockerfile 使用了之前构建的镜像 FROM test-build </p>
+<h3 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h3><p><a href="https://www.runoob.com/docker/docker-dockerfile.html" target="_blank" rel="noopener">Dockerfile</a><br><a href="https://www.bilibili.com/video/av85895204?from=search&seid=4835159816508980526" target="_blank" rel="noopener">Dockerfile用法全解析</a></p>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker-Compose</title>
+    <url>/2020/02/15/Docker-Compose/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RPC</title>
+    <url>/2020/02/14/RPC/</url>
+    <content><![CDATA[<h3 id="RPC原理"><a href="#RPC原理" class="headerlink" title="RPC原理"></a>RPC原理</h3><p><img src="/2020/02/14/RPC/RPC.png" alt></p>
+<h3 id="RPC与Restful接口的调用"><a href="#RPC与Restful接口的调用" class="headerlink" title="RPC与Restful接口的调用"></a>RPC与Restful接口的调用</h3><p>不关心调用方式，通过网络传输<br>RPC相对高效，http接口相对灵活 </p>
+<p>restful接口更适合终端与服务端之间的交互，rpc更适合微服务的应用间通讯</p>
+<h3 id="ProtoBuf"><a href="#ProtoBuf" class="headerlink" title="ProtoBuf"></a>ProtoBuf</h3><p>ProtoBuf是一种跨语言和跨平台的数据序列化协议；<br>与XML/JSON相比，序列化效率更快、体积更小、更安全；<br>与XML/JSON相比，可读性差、灵活性较低；<br>自带编译器，定义proto源文件，可编译成多种语言的代码；</p>
+<h3 id="gRPC框架"><a href="#gRPC框架" class="headerlink" title="gRPC框架"></a>gRPC框架</h3><p><img src="/2020/02/14/RPC/gRPC.jpeg" alt></p>
+<h3 id="框架go-micro"><a href="#框架go-micro" class="headerlink" title="框架go-micro"></a>框架go-micro</h3><p>专注于微服务的一种RPC框架；<br>提供分布式系统相关的接口集合；</p>
+<p>服务发现：支持服务注册与发现</p>
+<p>负载均衡：rpc服务间的请求调度均衡策略</p>
+<p>同步通信：基于RPC通信，支持单项、双向流通信模式</p>
+<p>异步通信：提供pub\sub通信模型的接口</p>
+<p>高级接口：比如服务发现，提供调用的接口是一致的</p>
+<p><img src="/2020/02/14/RPC/goMicro.png" alt></p>
+]]></content>
+      <categories>
+        <category>RPC</category>
+      </categories>
+      <tags>
+        <tag>RPC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Gin基本了解</title>
+    <url>/2020/02/14/Gin%E5%9F%BA%E6%9C%AC%E4%BA%86%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://github.com/gin-gonic/gin" target="_blank" rel="noopener">gin项目地址</a></p>
+<h3 id="Gin运行流程"><a href="#Gin运行流程" class="headerlink" title="Gin运行流程"></a>Gin运行流程</h3><p><img src="/2020/02/14/Gin%E5%9F%BA%E6%9C%AC%E4%BA%86%E8%A7%A3/gin.png" alt></p>
+<p><code>engine</code>:实现了ServeHTTP接口的handler<br><code>methodTree</code>:根据http请求方法分别维护的路由树<br><code>routerGroup</code>:将路由表分组，方便中间件统一处理<br><code>Context</code>:Gin的上下文，在handler之间传递参数</p>
+]]></content>
+      <categories>
+        <category>Gin</category>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Gin</tag>
+        <tag>Golang</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>通过Docker安装RabbitMQ</title>
     <url>/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/</url>
     <content><![CDATA[<h3 id="RabbitMQ安装"><a href="#RabbitMQ安装" class="headerlink" title="RabbitMQ安装"></a>RabbitMQ安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># /Users/samtake/Documents/GitHub/www/rabbitmq目录可自定义，主要用于目录挂载</span></span><br><span class="line">➜  ~ mkdir -p /Users/samtake/Documents/GitHub/www/rabbitmq</span><br><span class="line">➜  ~ docker run -d --hostname rabbit-node1 --name rabbit-node1 -p 5672:5672 -p15672:15672 -v /Users/samtake/Documents/GitHub/www/rabbitmq:/var/lib/rabbitmq rabbitmq:management</span><br><span class="line">Unable to find image <span class="string">'rabbitmq:management'</span> locally</span><br><span class="line">management: Pulling from library/rabbitmq</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
@@ -271,8 +391,8 @@
         <category>Docker</category>
       </categories>
       <tags>
-        <tag>MySQL</tag>
         <tag>Docker</tag>
+        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
@@ -1057,7 +1177,7 @@
 <p> Float 32位浮点数，至少有6位数字的精度</p>
 <h3 id="Bool"><a href="#Bool" class="headerlink" title="Bool"></a>Bool</h3><p>表示true和false</p>
 <p>Swift的类型安全机制会阻止你用一个非布尔量的值替代掉Bool</p>
-<h3 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h3><p><img src="/.com//Swift_%E6%95%B0%E5%80%BC%E8%8C%83%E5%9B%B4.png" alt="Swift_数值范围"></p>
+<h3 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h3><p><img src="/2019/11/01/Swift%E5%9F%BA%E7%A1%8001/Swift_%E6%95%B0%E5%80%BC%E8%8C%83%E5%9B%B4.png" alt="Swift_数值范围"></p>
 <h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3><p> 类型别名是一个为已存在类型定义的一个可选择的名字<br> <code>typealias</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">typealias AudioSample = UInt8</span><br><span class="line"><span class="built_in">let</span> sample: AudioSample = 32</span><br></pre></td></tr></table></figure>
 
