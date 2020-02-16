@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Golang操作MySQL</title>
+    <url>/2020/02/16/Golang%E6%93%8D%E4%BD%9CMySQL/</url>
+    <content><![CDATA[<p>记录一个报错</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  goRedisDemo git:(master) ✗ go run main.go</span><br><span class="line"><span class="built_in">test</span> mySQL </span><br><span class="line">panic: runtime error: invalid memory address or nil pointer dereference</span><br><span class="line">[signal SIGSEGV: segmentation violation code=0x1 addr=0x20 pc=0x10c1141]</span><br><span class="line"></span><br><span class="line">goroutine 1 [running]:</span><br><span class="line">sync.(*Mutex).Lock(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/sync/mutex.go:74</span><br><span class="line">database/sql.(*DB).conn(0x0, 0x130f9e0, 0xc000018080, 0x1036801, 0xc000000180, 0x300000002, 0xc000000180)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1132 +0x41</span><br><span class="line">database/sql.(*DB).prepare(0x0, 0x130f9e0, 0xc000018080, 0x12c9f84, 0x69, 0x102da01, 0x203000, 0xc0000b3d78, 0xc0000b3d68)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1431 +0x58</span><br><span class="line">database/sql.(*DB).PrepareContext(0x0, 0x130f9e0, 0xc000018080, 0x12c9f84, 0x69, 0x30, 0x30, 0x128eaa0)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1404 +0x99</span><br><span class="line">database/sql.(*DB).Prepare(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1421</span><br><span class="line">goRedisDemo/db.OnFileUploadFinished(0x12bbb58, 0x8, 0x12bbb60, 0x8, 0x0, 0x0, 0x0, 0x0)</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/db/file.go:15 +0x77</span><br><span class="line">goRedisDemo/handler.UploadHandlerDB()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/handler/testDB.go:10 +0x76</span><br><span class="line">main.main()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/main.go:14 +0x7a</span><br><span class="line"><span class="built_in">exit</span> status 2</span><br><span class="line">➜  goRedisDemo git:(master) ✗ go get database/sql</span><br><span class="line">➜  goRedisDemo git:(master) ✗ go get github.com/go-sql-driver/mysql</span><br><span class="line">➜  goRedisDemo git:(master) ✗ go run main.go                       </span><br><span class="line"><span class="built_in">test</span> mySQL </span><br><span class="line">panic: runtime error: invalid memory address or nil pointer dereference</span><br><span class="line">[signal SIGSEGV: segmentation violation code=0x1 addr=0x20 pc=0x10c1141]</span><br><span class="line"></span><br><span class="line">goroutine 1 [running]:</span><br><span class="line">sync.(*Mutex).Lock(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/sync/mutex.go:74</span><br><span class="line">database/sql.(*DB).conn(0x0, 0x130f9e0, 0xc0000b0008, 0x1036801, 0xc000000180, 0x300000002, 0xc000000180)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1132 +0x41</span><br><span class="line">database/sql.(*DB).prepare(0x0, 0x130f9e0, 0xc0000b0008, 0x12c9f84, 0x69, 0x102da01, 0x203000, 0xc0000dfd78, 0xc0000dfd68)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1431 +0x58</span><br><span class="line">database/sql.(*DB).PrepareContext(0x0, 0x130f9e0, 0xc0000b0008, 0x12c9f84, 0x69, 0x30, 0x30, 0x128eaa0)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1404 +0x99</span><br><span class="line">database/sql.(*DB).Prepare(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1421</span><br><span class="line">goRedisDemo/db.OnFileUploadFinished(0x12bbb58, 0x8, 0x12bbb60, 0x8, 0x0, 0x0, 0x0, 0x0)</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/db/file.go:22 +0x77</span><br><span class="line">goRedisDemo/handler.UploadHandlerDB()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/handler/testDB.go:10 +0x76</span><br><span class="line">main.main()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/main.go:14 +0x7a</span><br><span class="line"><span class="built_in">exit</span> status 2</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://blog.51cto.com/zhixinhu/1844734" target="_blank" rel="noopener">查了一下，原来这是Db变量定义的问题，:=只在当前方法内有效。</a></p>
+]]></content>
+      <categories>
+        <category>MySQL</category>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Dockerfile</title>
     <url>/2020/02/15/Dockerfile/</url>
     <content><![CDATA[<p>Dockerfile 是一个用来构建镜像的文本文件，文本内容包含了一条条构建镜像所需的指令和说明。</p>
@@ -330,7 +347,11 @@
 <h3 id="通过docker-exec-it-容器id-bash-来操作mysql"><a href="#通过docker-exec-it-容器id-bash-来操作mysql" class="headerlink" title="通过docker exec -it 容器id bash 来操作mysql"></a>通过docker exec -it 容器id bash 来操作mysql</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  blogs docker ps                      </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">0eee2c1708be        mysql:5.7           <span class="string">"docker-entrypoint.s…"</span>   41 minutes ago      Up 41 minutes       0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   happy_chandrasekhar</span><br><span class="line">➜  blogs docker <span class="built_in">exec</span> -it  0eee2c1708be bash            </span><br><span class="line">root@0eee2c1708be:/<span class="comment"># mysql -uroot -p</span></span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 765627</span><br><span class="line">Server version: 5.7.29 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysql&gt; status;</span><br><span class="line">--------------</span><br><span class="line">mysql  Ver 14.14 Distrib 5.7.29, <span class="keyword">for</span> Linux (x86_64) using  EditLine wrapper</span><br><span class="line"></span><br><span class="line">Connection id:		765627</span><br><span class="line">Current database:	</span><br><span class="line">Current user:		root@localhost</span><br><span class="line">SSL:			Not <span class="keyword">in</span> use</span><br><span class="line">Current pager:		stdout</span><br><span class="line">Using outfile:		<span class="string">''</span></span><br><span class="line">Using delimiter:	;</span><br><span class="line">Server version:		5.7.29 MySQL Community Server (GPL)</span><br><span class="line">Protocol version:	10</span><br><span class="line">Connection:		Localhost via UNIX socket</span><br><span class="line">Server characterset:	latin1</span><br><span class="line">Db     characterset:	latin1</span><br><span class="line">Client characterset:	latin1</span><br><span class="line">Conn.  characterset:	latin1</span><br><span class="line">UNIX socket:		/var/run/mysqld/mysqld.sock</span><br><span class="line">Uptime:			1 hour 2 min 0 sec</span><br><span class="line"></span><br><span class="line">Threads: 2  Questions: 6  Slow queries: 0  Opens: 105  Flush tables: 1  Open tables: 98  Queries per second avg: 0.001</span><br><span class="line">--------------</span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
 
 
-<h3 id="通过navicat连接MySQL"><a href="#通过navicat连接MySQL" class="headerlink" title="通过navicat连接MySQL"></a>通过navicat连接MySQL</h3><p>创建数据表时，一般字符集选择utf8，排序规则选择utf8_general_ci </p>
+<h3 id="在navicat中使用sql语句创建表"><a href="#在navicat中使用sql语句创建表" class="headerlink" title="在navicat中使用sql语句创建表"></a>在navicat中使用sql语句创建表</h3><p>1.进行命令行操作</p>
+<p><img src="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/navicate-console.jpeg" alt></p>
+<p>2.输入mysql<br><img src="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/navicate-soule-mysql.png" alt></p>
+<p>3.右键refresh一下即可见到刚才新建的表tbl_user<br><img src="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/tbl_user.png" alt></p>
+<h3 id="通过navicat连接MySQL"><a href="#通过navicat连接MySQL" class="headerlink" title="通过navicat连接MySQL"></a>通过navicat连接MySQL</h3><p>创建数据库时，一般字符集选择utf8，排序规则选择utf8_general_ci </p>
 <p><a href="https://zhuanlan.zhihu.com/p/44348694" target="_blank" rel="noopener">在Navicat中如何新建数据库和表并做查询</a><br><a href="https://www.navicat.com.cn/manual/online_manual/cn/navicat/win_manual/index.html#/about_0" target="_blank" rel="noopener">Navicat使用手册</a> </p>
 ]]></content>
       <categories>
@@ -393,11 +414,13 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql&gt; stop slave; </span><br><span class="line">mysql&gt; create database fileserver default character <span class="built_in">set</span> utf8mb4; </span><br><span class="line"><span class="comment">#注意其中的日志文件和数值要和上面show master status的值对应 </span></span><br><span class="line">mysql&gt; CHANGE MASTER TO MASTER_HOST=<span class="string">'前两个步骤中获得的mysql master ip'</span>,MASTER_PORT=3306,MASTER_USER=<span class="string">'slave'</span>,MASTER_PASSWORD=<span class="string">'slave'</span>,MASTER_LOG_FILE=<span class="string">'log.000025'</span>,MASTER_LOG_POS=155; </span><br><span class="line">mysql&gt; start slave;</span><br></pre></td></tr></table></figure>
 
 <p>再获取status, 正常应该得到类似如下的输出:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql&gt; show slave status G; </span><br><span class="line">// ... </span><br><span class="line">Slave_IO_Running: Yes </span><br><span class="line">Slave_SQL_Running: Yes </span><br><span class="line">// ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql&gt; show slave status \G; </span><br><span class="line">// ... </span><br><span class="line">Slave_IO_Running: Yes </span><br><span class="line">Slave_SQL_Running: Yes </span><br><span class="line">// ...</span><br></pre></td></tr></table></figure>
 
 
 
 <p>到这时说明主从配置已经完成，可以尝试在主mysql的fileserver数据库里建表操作下，然后在从节点上检查数据是否已经同步过来。</p>
+<h3 id="几个指令"><a href="#几个指令" class="headerlink" title="几个指令"></a>几个指令</h3><p><code>sudo netstat -antup -antup | grep docker</code> 查看docker占用端口<br><code>ifconfig</code> 查看本机ip</p>
+<h3 id="通过docker-compose方式实现"><a href="#通过docker-compose方式实现" class="headerlink" title="通过docker compose方式实现"></a>通过docker compose方式实现</h3><p><a href="https://github.com/mayinghan/mysql-master-slave-service" target="_blank" rel="noopener">https://github.com/mayinghan/mysql-master-slave-service</a></p>
 ]]></content>
       <categories>
         <category>MySQL</category>
@@ -427,7 +450,11 @@
 <p>创建mysql容器 1master+1个slave</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name=mysql-master -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql</span><br></pre></td></tr></table></figure>
 
-
+<p>–name 为容器指定名称，这里是mysql-master</p>
+<p>-p 将容器的指定端口映射到主机的指定端口，这里是将容器的3306端口映射到主机的3306端口</p>
+<p>-e 设置环境变量，这里是指定root账号的密码为hls123</p>
+<p>-d 后台运行容器，并返回容器ID</p>
+<p>docker run –name=mysql-master -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql:[版本号]<br>mysql:版本号 指定运行的mysql版本号</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name=mysql-slave1 -it -p 3307:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
@@ -478,7 +505,7 @@
 <h3 id="服务器Linux下安装Docker社区版-Centos7为例"><a href="#服务器Linux下安装Docker社区版-Centos7为例" class="headerlink" title="服务器Linux下安装Docker社区版(Centos7为例)"></a>服务器Linux下安装Docker社区版(Centos7为例)</h3><ul>
 <li>yum源使用阿里云的源</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/yum.repos.d/</span><br><span class="line"><span class="comment"># 下载阿里云的yum源</span></span><br><span class="line">wget http<span class="string">"mirrors.aliyun.com/repo/Centos-7.repo</span></span><br><span class="line"><span class="string">mv CentOS-Base.repo CentOS-Base.repo.back</span></span><br><span class="line"><span class="string">mv Centos-7.repo CentOS-Base.repo</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/yum.repos.d/</span><br><span class="line"><span class="comment"># 下载阿里云的yum源</span></span><br><span class="line">wget http<span class="string">"mirrors.aliyun.com/repo/Centos-7.repo</span></span><br><span class="line"><span class="string">mv CentOS-Base.repo CentOS-Base.repo.back</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">mv Centos-7.repo CentOS-Base.repo</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>重置yum源</p>
@@ -528,7 +555,7 @@
   <entry>
     <title>Go仿百度网盘学习笔记</title>
     <url>/2019/12/10/Go%E4%BB%BF%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><p>数据库分表<br>水平分表：假设分成256张文件表，按文件Sha1值后两位来切分，则以：tb_${FILE_SHA1}[:-2]的规则到对应表进行存取。</p>
+    <content><![CDATA[<h3 id="3mysql"><a href="#3mysql" class="headerlink" title="3mysql"></a>3mysql</h3><p>数据库分表<br>水平分表：假设分成256张文件表，按文件Sha1值后两位来切分，则以：tb_${FILE_SHA1}[:-2]的规则到对应表进行存取。</p>
 <p>// OnFileUploadFinished : 文件上传完成，保存meta （插入）<br>// GetFileMeta : 从mysql获取文件元信息（查询）<br>// UpdateFileLocation : 更新文件的存储地址(如文件被转移了)  （更新）<br>涉及源码：db(file.go   mysql(conn.go))</p>
 <p>使用MySQL小结：<br>通过sql.DB来管理数据连接对象<br>通过sql.Open来创建协程安全的sql.DB<br>优先使用Prepared Statement</p>
 <h3 id="4-1用户系统用户表设计-注册和登录"><a href="#4-1用户系统用户表设计-注册和登录" class="headerlink" title="4-1用户系统用户表设计(注册和登录)"></a>4-1用户系统用户表设计(注册和登录)</h3><p>由于原有情况下,唯一索引用在了字段phone上. 而当前插入表的sql语句中, user_name才是应该要保持唯一的, 因此相对于视频所演示的建表语句进行了更新, 具体如下: </p>
@@ -538,6 +565,9 @@
 <p>访问鉴权（验证token的拦截器）<br>handler(auth.go)</p>
 <h3 id="5-hash算法对比以及秒传原理"><a href="#5-hash算法对比以及秒传原理" class="headerlink" title="5.hash算法对比以及秒传原理"></a>5.hash算法对比以及秒传原理</h3><h3 id="6-Redis"><a href="#6-Redis" class="headerlink" title="6.Redis"></a>6.Redis</h3><p>分块上传与断点续传<br>分块上传：文件切成多块，独立上传，上传完成后合并（初始化上传-&gt;上传分块（并行）-&gt;通知上传完成）<br>断点续传：传输暂停或一场终端后，可基于原来进度重传</p>
 <p>小文件不建议分块上传<br>可以并行上传分块，并且可以无序传输<br>分块上传能极大提高传输效率<br>减少传输失败后重试的流量和时间</p>
+<p>初始化分块信息<br>上传分块<br>通知分块上传完成<br>取消上传分块<br>查看分块上传的整体状态</p>
+<p>涉及源码：<br>cache(redis(conn.go))</p>
+<p>handler(mpupload.go)</p>
 <h3 id="7-Ceph"><a href="#7-Ceph" class="headerlink" title="7.Ceph"></a>7.Ceph</h3><p>Ceph:redhat开源出来的分布式存储系统</p>
 <h3 id="8-阿里云对象存储OSS"><a href="#8-阿里云对象存储OSS" class="headerlink" title="8.阿里云对象存储OSS"></a>8.阿里云对象存储OSS</h3><h3 id="9-RabbitMQ"><a href="#9-RabbitMQ" class="headerlink" title="9.RabbitMQ"></a>9.RabbitMQ</h3><p>RabbitMQ:一种开源的消息代理</p>
 <h3 id="10-微服务"><a href="#10-微服务" class="headerlink" title="10.微服务"></a>10.微服务</h3>]]></content>

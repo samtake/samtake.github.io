@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="samtake">
 <meta property="og:description" content="1.拉取MySQL5.7镜像到本地1234docker pull mysql:5.7# 如果你只需要跑一个mysql实例，不做主从，那么执行以下命令即可，不用再做后面的参考步骤: docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7 # 然后用shell或客户端软件通过配置( 用户名:root 密码:132456 IP">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-09T17:05:37.857Z">
+<meta property="og:updated_time" content="2020-02-16T11:51:05.785Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/02/09/Ubuntu%E4%B8%AD%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%E4%B8%BB%E4%BB%8E%E8%8A%82%E7%82%B9/">
@@ -247,7 +247,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-10 01:05:37" itemprop="dateModified" datetime="2020-02-10T01:05:37+08:00">2020-02-10</time>
+                <time title="Modified: 2020-02-16 19:51:05" itemprop="dateModified" datetime="2020-02-16T19:51:05+08:00">2020-02-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -328,11 +328,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; stop slave; </span><br><span class="line">mysql&gt; create database fileserver default character <span class="built_in">set</span> utf8mb4; </span><br><span class="line"><span class="comment">#注意其中的日志文件和数值要和上面show master status的值对应 </span></span><br><span class="line">mysql&gt; CHANGE MASTER TO MASTER_HOST=<span class="string">'前两个步骤中获得的mysql master ip'</span>,MASTER_PORT=3306,MASTER_USER=<span class="string">'slave'</span>,MASTER_PASSWORD=<span class="string">'slave'</span>,MASTER_LOG_FILE=<span class="string">'log.000025'</span>,MASTER_LOG_POS=155; </span><br><span class="line">mysql&gt; start slave;</span><br></pre></td></tr></table></figure>
 
 <p>再获取status, 正常应该得到类似如下的输出:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show slave status G; </span><br><span class="line">// ... </span><br><span class="line">Slave_IO_Running: Yes </span><br><span class="line">Slave_SQL_Running: Yes </span><br><span class="line">// ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show slave status \G; </span><br><span class="line">// ... </span><br><span class="line">Slave_IO_Running: Yes </span><br><span class="line">Slave_SQL_Running: Yes </span><br><span class="line">// ...</span><br></pre></td></tr></table></figure>
 
 
 
 <p>到这时说明主从配置已经完成，可以尝试在主mysql的fileserver数据库里建表操作下，然后在从节点上检查数据是否已经同步过来。</p>
+<h3 id="几个指令"><a href="#几个指令" class="headerlink" title="几个指令"></a>几个指令</h3><p><code>sudo netstat -antup -antup | grep docker</code> 查看docker占用端口<br><code>ifconfig</code> 查看本机ip</p>
+<h3 id="通过docker-compose方式实现"><a href="#通过docker-compose方式实现" class="headerlink" title="通过docker compose方式实现"></a>通过docker compose方式实现</h3><p><a href="https://github.com/mayinghan/mysql-master-slave-service" target="_blank" rel="noopener">https://github.com/mayinghan/mysql-master-slave-service</a></p>
 
     </div>
 
@@ -399,7 +401,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-拉取MySQL5-7镜像到本地"><span class="nav-number">1.</span> <span class="nav-text">1.拉取MySQL5.7镜像到本地</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-准备MySQL的配置文件"><span class="nav-number">2.</span> <span class="nav-text">2.准备MySQL的配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Docker分别运行MySQL主-从两个容器"><span class="nav-number">3.</span> <span class="nav-text">3. Docker分别运行MySQL主/从两个容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-登录MySQL主节点配置同步信息"><span class="nav-number">4.</span> <span class="nav-text">4.登录MySQL主节点配置同步信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-登录MySQL从节点配置同步信息"><span class="nav-number">5.</span> <span class="nav-text">5.登录MySQL从节点配置同步信息</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-拉取MySQL5-7镜像到本地"><span class="nav-number">1.</span> <span class="nav-text">1.拉取MySQL5.7镜像到本地</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-准备MySQL的配置文件"><span class="nav-number">2.</span> <span class="nav-text">2.准备MySQL的配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Docker分别运行MySQL主-从两个容器"><span class="nav-number">3.</span> <span class="nav-text">3. Docker分别运行MySQL主/从两个容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-登录MySQL主节点配置同步信息"><span class="nav-number">4.</span> <span class="nav-text">4.登录MySQL主节点配置同步信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-登录MySQL从节点配置同步信息"><span class="nav-number">5.</span> <span class="nav-text">5.登录MySQL从节点配置同步信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几个指令"><span class="nav-number">6.</span> <span class="nav-text">几个指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过docker-compose方式实现"><span class="nav-number">7.</span> <span class="nav-text">通过docker compose方式实现</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -415,14 +417,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
