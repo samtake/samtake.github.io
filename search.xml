@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>阿里云OSS</title>
+    <url>/2020/02/16/%E9%98%BF%E9%87%8C%E4%BA%91OSS/</url>
+    <content><![CDATA[<p><a href="https://help.aliyun.com/document_detail/31947.html?spm=a2c4g.11174283.6.1505.42967da2nUG4r7" target="_blank" rel="noopener">对象存储OSS</a></p>
+<p><a href="https://help.aliyun.com/document_detail/87712.html?spm=a2c4g.11186623.6.890.7b7f3bdb5LHLCm" target="_blank" rel="noopener">SDK go 版本</a></p>
+]]></content>
+      <categories>
+        <category>OSS</category>
+      </categories>
+      <tags>
+        <tag>OSS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Golang操作MySQL</title>
     <url>/2020/02/16/Golang%E6%93%8D%E4%BD%9CMySQL/</url>
     <content><![CDATA[<p>记录一个报错</p>
