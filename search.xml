@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Traefik</title>
+    <url>/2020/02/19/Traefik/</url>
+    <content><![CDATA[<h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>相对nginx，基于容器的微服务反向代理利器<a href="https://github.com/containous/traefik" target="_blank" rel="noopener">Traefik</a>支持动态的配置反向代理.</p>
+<p><img src="/2020/02/19/Traefik/traefik-architecture.png" alt></p>
+<p>如上图左侧公网域名可以通过Traefik监听API动态地转发到右侧的内网服务实例（例如backoffice1服务）。或者说是动态的路由转发。</p>
+<p><code>frontend</code>用于控制访问的路由规则，支持单个规则及正则匹配。<br><code>backend</code>用于匹配一组服务实例，通过轮询方式来选择转发的目标。</p>
+<h3 id="基于Docker-compose与Traefik1-x的容器化部署"><a href="#基于Docker-compose与Traefik1-x的容器化部署" class="headerlink" title="基于Docker-compose与Traefik1.x的容器化部署"></a>基于Docker-compose与Traefik1.x的容器化部署</h3><p>具体参考service_dc和traefik_dc<br><img src="/2020/02/19/Traefik/Traefik-setting.png" alt></p>
+<h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p>|<br>暂<br>|<br>无<br>|</p>
+]]></content>
+      <categories>
+        <category>Traefik</category>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>Traefik</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>go-micro</title>
     <url>/2020/02/19/go-micro/</url>
     <content><![CDATA[<h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>项目地址：<a href="https://github.com/micro/go-micro" target="_blank" rel="noopener">go-micro</a></p>
