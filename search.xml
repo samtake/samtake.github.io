@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>go-micro</title>
+    <url>/2020/02/19/go-micro/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>微服务</category>
+        <category>RPC</category>
+      </categories>
+      <tags>
+        <tag>RPC</tag>
+        <tag>微服务</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>阿里云OSS</title>
     <url>/2020/02/16/%E9%98%BF%E9%87%8C%E4%BA%91OSS/</url>
     <content><![CDATA[<p><a href="https://help.aliyun.com/document_detail/31947.html?spm=a2c4g.11174283.6.1505.42967da2nUG4r7" target="_blank" rel="noopener">对象存储OSS</a></p>
@@ -481,7 +494,7 @@
   </entry>
   <entry>
     <title>docker学习</title>
-    <url>/2019/12/11/docker%E5%AD%A6%E4%B9%A0/</url>
+    <url>/2019/12/11/Docker%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><p>安装<br>1.通过<a href="官网">wwww.docker.com</a>下载桌面版docker<br>2.<a href="https://www.daocloud.io/mirror" target="_blank" rel="noopener">配置Docker镜像站</a><br>3.执行<code>docker run hello-world</code>，看输出完美运行～</p>
 <p>基本概念</p>
 <ul>
@@ -566,8 +579,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Go仿百度网盘学习笔记</title>
-    <url>/2019/12/10/Go%E4%BB%BF%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <title>Golang云存储实战</title>
+    <url>/2019/12/10/Golang%E4%BA%91%E5%AD%98%E5%82%A8%E5%AE%9E%E6%88%98/</url>
     <content><![CDATA[<h3 id="3mysql"><a href="#3mysql" class="headerlink" title="3mysql"></a>3mysql</h3><p>数据库分表<br>水平分表：假设分成256张文件表，按文件Sha1值后两位来切分，则以：tb_${FILE_SHA1}[:-2]的规则到对应表进行存取。</p>
 <p>// OnFileUploadFinished : 文件上传完成，保存meta （插入）<br>// GetFileMeta : 从mysql获取文件元信息（查询）<br>// UpdateFileLocation : 更新文件的存储地址(如文件被转移了)  （更新）<br>涉及源码：db(file.go   mysql(conn.go))</p>
 <p>使用MySQL小结：<br>通过sql.DB来管理数据连接对象<br>通过sql.Open来创建协程安全的sql.DB<br>优先使用Prepared Statement</p>
@@ -583,7 +596,7 @@
 <p>handler(mpupload.go)</p>
 <h3 id="7-Ceph"><a href="#7-Ceph" class="headerlink" title="7.Ceph"></a>7.Ceph</h3><p>Ceph:redhat开源出来的分布式存储系统</p>
 <h3 id="8-阿里云对象存储OSS"><a href="#8-阿里云对象存储OSS" class="headerlink" title="8.阿里云对象存储OSS"></a>8.阿里云对象存储OSS</h3><h3 id="9-RabbitMQ"><a href="#9-RabbitMQ" class="headerlink" title="9.RabbitMQ"></a>9.RabbitMQ</h3><p>RabbitMQ:一种开源的消息代理</p>
-<h3 id="10-微服务"><a href="#10-微服务" class="headerlink" title="10.微服务"></a>10.微服务</h3><p><img src="/2019/12/10/Go%E4%BB%BF%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E5%9B%BE.jpeg" alt="微服务架构图"></p>
+<h3 id="10-微服务"><a href="#10-微服务" class="headerlink" title="10.微服务"></a>10.微服务</h3><p><img src="/2019/12/10/Golang%E4%BA%91%E5%AD%98%E5%82%A8%E5%AE%9E%E6%88%98/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E5%9B%BE.jpeg" alt="微服务架构图"></p>
 <h4 id="基于gin改造用户service"><a href="#基于gin改造用户service" class="headerlink" title="基于gin改造用户service"></a>基于gin改造用户service</h4><h3 id="源码说明"><a href="#源码说明" class="headerlink" title="源码说明:"></a>源码说明:</h3><ul>
 <li>master分支: 通过原生net/http实现各接口功能</li>
 <li>gin分支: 通过Gin框架来改造(微服务化章节之后主要基于Gin框架来进行演示)</li>
@@ -604,15 +617,15 @@
 </ul>
 ]]></content>
       <categories>
-        <category>go</category>
+        <category>Golang</category>
       </categories>
       <tags>
-        <tag>Go仿百度网盘学习笔记</tag>
+        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>
     <title>golang练习笔记</title>
-    <url>/2019/11/21/golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <url>/2019/11/21/Golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h2><p>空值</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">func <span class="function"><span class="title">variableZeroValue</span></span>() &#123;</span><br><span class="line">	var a int</span><br><span class="line">	var s string</span><br><span class="line">	fmt.Printf(<span class="string">"%d %q\n"</span>, a, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>初始化</p>
@@ -1420,6 +1433,9 @@
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"new page title"</span></span><br></pre></td></tr></table></figure>
+
+
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line"></span><br><span class="line">$ hexo d --g</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
