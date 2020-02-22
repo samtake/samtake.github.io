@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>第三方库httprouter</title>
+    <url>/2020/02/21/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93httprouter/</url>
+    <content><![CDATA[<p><a href="https://github.com/julienschmidt/httprouter" target="_blank" rel="noopener">httprouter</a>是一个高可用的http路由请求库。路由器通过请求方法和路径来匹配传入的请求。如果为该路径和方法注册了句柄，路由器会将请求委托给该函数。对于方法GET、POST、PUT、PATCH、DELETE和OPTIONS，存在注册句柄的快捷功能，对于所有其他方法路由器。可以使用手柄。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"github.com/julienschmidt/httprouter"</span></span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">    <span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) &#123;</span><br><span class="line">    fmt.Fprint(w, <span class="string">"Welcome!\n"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func Hello(w http.ResponseWriter, r *http.Request, ps httprouter.Params) &#123;</span><br><span class="line">    fmt.Fprintf(w, <span class="string">"hello, %s!\n"</span>, ps.ByName(<span class="string">"name"</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    router := httprouter.New()</span><br><span class="line">    router.GET(<span class="string">"/"</span>, Index)</span><br><span class="line">    router.GET(<span class="string">"/hello/:name"</span>, Hello)</span><br><span class="line"></span><br><span class="line">    log.Fatal(http.ListenAndServe(<span class="string">":8080"</span>, router))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Golang流媒体网站笔记</title>
+    <url>/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Traefik</title>
     <url>/2020/02/19/Traefik/</url>
     <content><![CDATA[<h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>相对nginx，基于容器的微服务反向代理利器<a href="https://github.com/containous/traefik" target="_blank" rel="noopener">Traefik</a>支持动态的配置反向代理.</p>
@@ -1085,10 +1108,10 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	re := regexp.MustCompile(`[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+`)</span><br><span class="line">	match := re.FindAllString(text, -1)</span><br><span class="line">	fmt.Println(match)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>go</category>
+        <category>Golang</category>
       </categories>
       <tags>
-        <tag>go语言基础</tag>
+        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>
