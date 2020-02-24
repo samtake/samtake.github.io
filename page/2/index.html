@@ -244,7 +244,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-22 18:01:29" itemprop="dateModified" datetime="2020-02-22T18:01:29+08:00">2020-02-22</time>
+                <time title="Modified: 2020-02-24 19:09:41" itemprop="dateModified" datetime="2020-02-24T19:09:41+08:00">2020-02-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -289,6 +289,12 @@
 
 <p>最终main.go可简洁为</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	// gin framework</span><br><span class="line">	router := route.Router()</span><br><span class="line"></span><br><span class="line">	// 启动服务并监听端口</span><br><span class="line">	err := router.Run(config.UploadServiceHost)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"Failed to start server, err:%s\n"</span>, err.Error())</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>学习资料<br><a href="https://www.imooc.com/learn/1175" target="_blank" rel="noopener">Gin入门实战</a></p>
+
       
     </div>
 
