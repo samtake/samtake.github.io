@@ -774,7 +774,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-24 14:03:15" itemprop="dateModified" datetime="2020-02-24T14:03:15+08:00">2020-02-24</time>
+                <time title="Modified: 2020-02-24 16:17:03" itemprop="dateModified" datetime="2020-02-24T16:17:03+08:00">2020-02-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -857,6 +857,38 @@
 <h3 id="5-6"><a href="#5-6" class="headerlink" title="5-6"></a>5-6</h3><p>timer</p>
 <p>setup-&gt;strat{runner task}</p>
 <h3 id="5-7"><a href="#5-7" class="headerlink" title="5-7"></a>5-7</h3><p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/5-7-api.png" alt></p>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="6-1"><a href="#6-1" class="headerlink" title="6-1"></a>6-1</h3><p>Go的模版引擎</p>
+<ul>
+<li>模版引擎是将html解析和元素预置替换生成最终页面的工具</li>
+<li>Go的模版有两种text/template和html/template </li>
+<li>Go的模版采用动态生成的模式</li>
+</ul>
+<p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/6-1-html-template.png" alt></p>
+<h3 id="6-2"><a href="#6-2" class="headerlink" title="6-2"></a>6-2</h3><p>前端代码架构<br><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/6-2-web-document.png" alt></p>
+<p>client.go就是起了proxy转发作用，避免跨域作用。</p>
+<h3 id="6-3"><a href="#6-3" class="headerlink" title="6-3"></a>6-3</h3><p>静态页面渲染</p>
+<h3 id="6-4"><a href="#6-4" class="headerlink" title="6-4"></a>6-4</h3><p>sh build.sh</p>
+<h3 id="6-6-api透传！！！"><a href="#6-6-api透传！！！" class="headerlink" title="6-6 api透传！！！"></a>6-6 api透传！！！</h3><h3 id="6-7-proxy转发"><a href="#6-7-proxy转发" class="headerlink" title="6-7 proxy转发"></a>6-7 proxy转发</h3><p><code>net/url</code>  </p>
+<p><code>net/http/httputil</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func proxyVideoHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) &#123;</span><br><span class="line">	u, _ := url.Parse(<span class="string">"http://"</span> + config.GetLbAddr() + <span class="string">":9000/"</span>)</span><br><span class="line">	proxy := httputil.NewSingleHostReverseProxy(u)</span><br><span class="line">	proxy.ServeHTTP(w, r)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func proxyUploadHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) &#123;</span><br><span class="line">	u, _ := url.Parse(<span class="string">"http://"</span> + config.GetLbAddr() + <span class="string">":9000/"</span>)</span><br><span class="line">	proxy := httputil.NewSingleHostReverseProxy(u)</span><br><span class="line">	proxy.ServeHTTP(w, r)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-11"><a href="#6-11" class="headerlink" title="6-11"></a>6-11</h3><p>js</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><h3 id="7-4"><a href="#7-4" class="headerlink" title="7-4"></a>7-4</h3><p>公共配置，即各模块的config文件。</p>
+<h3 id="7-5-vendor"><a href="#7-5-vendor" class="headerlink" title="7-5  vendor"></a>7-5  vendor</h3><h3 id="7-6-SLB讲解与配置"><a href="#7-6-SLB讲解与配置" class="headerlink" title="7-6 SLB讲解与配置"></a>7-6 SLB讲解与配置</h3><p>阿里云负载均衡配置。</p>
+<h3 id="7-7"><a href="#7-7" class="headerlink" title="7-7"></a>7-7</h3><p>session容错</p>
+<h3 id="7-8-ECS配置"><a href="#7-8-ECS配置" class="headerlink" title="7-8 ECS配置"></a>7-8 ECS配置</h3><h3 id="7-10-部署脚本"><a href="#7-10-部署脚本" class="headerlink" title="7-10 部署脚本"></a>7-10 部署脚本</h3><p>在bin文件夹添加conf.json文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"lb_addr"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">	<span class="string">"oss_addr"</span>: <span class="string">"oss.aliyun.com"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>buildprod.sh</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Build web and other services</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/api</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/api</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/scheduler</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/scheduler</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/streamserver</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/streamserver</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/web</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/web</span><br></pre></td></tr></table></figure>
+
+
+<p><code>deploy.sh</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line">cp -R ./templates ./bin/</span><br><span class="line"></span><br><span class="line">mkdir ./bin/videos</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> bin</span><br><span class="line"></span><br><span class="line">nohup ./api &amp;</span><br><span class="line">nohup ./scheduler &amp;</span><br><span class="line">nohup ./streamserver &amp;</span><br><span class="line">nohup ./web &amp;</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deploy finished"</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="7-11-部署"><a href="#7-11-部署" class="headerlink" title="7-11 部署"></a>7-11 部署</h3><p>sh  buildprod.sh 编译完成后提交二进制文件。或者提交代码到服务器上直接编译</p>
+<p>检查对应server是否启动<code>ps aux | grep &lt;api?stream?scheduler?web&gt;</code></p>
 
       
     </div>
