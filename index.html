@@ -774,7 +774,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-24 01:56:58" itemprop="dateModified" datetime="2020-02-24T01:56:58+08:00">2020-02-24</time>
+                <time title="Modified: 2020-02-24 14:03:15" itemprop="dateModified" datetime="2020-02-24T14:03:15+08:00">2020-02-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -803,7 +803,7 @@
 <p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/api.png" alt></p>
 <p>httprouter的使用</p>
 <p>restlet测试插件 </p>
-<h3 id="3-6"><a href="#3-6" class="headerlink" title="3-6"></a>3-6</h3><p>总体思路：<br>handleer-&gt;validation{1.request,2.user}-&gt;business login -&gt;response</p>
+<h2 id="api"><a href="#api" class="headerlink" title="api"></a>api</h2><h3 id="3-6"><a href="#3-6" class="headerlink" title="3-6"></a>3-6</h3><p>总体思路：<br>handleer-&gt;validation{1.request,2.user}-&gt;business login -&gt;response</p>
 <ol>
 <li>data model</li>
 <li>error handler</li>
@@ -833,6 +833,30 @@
 <p>session负责的流程图：<br><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/3-15-session.png" alt></p>
 <h3 id="3-17"><a href="#3-17" class="headerlink" title="3-17"></a>3-17</h3><p>middleware</p>
 <p>duck typing内容参考<a href="https://samtake.github.io/2020/02/22/Golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">Golang练习笔记</a>15。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> middleWareHandler struct &#123;</span><br><span class="line">	r *httprouter.Router</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func NewMiddleWareHandler(r *httprouter.Router) http.Handler &#123;</span><br><span class="line">	m := middleWareHandler&#123;&#125;</span><br><span class="line">	m.r = r</span><br><span class="line">	<span class="built_in">return</span> m</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (m middleWareHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line">	//check session</span><br><span class="line">	validateUserSession(r)</span><br><span class="line"></span><br><span class="line">	m.r.ServeHTTP(w, r)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func RegisterHandlers() *httprouter.Router &#123;</span><br><span class="line">	router := httprouter.New()</span><br><span class="line">    router.POST(<span class="string">"/user"</span>, CreateUser)</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//response</span><br><span class="line"><span class="built_in">type</span> SignedUp struct &#123;</span><br><span class="line">	Success bool `json:<span class="string">"success"</span>`</span><br><span class="line">	SessionId string `json:<span class="string">"session_id"</span>`</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#添了后缀，在使用时，会返回统一的json格式,如下：</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"success"</span>:XXXXX,</span><br><span class="line">    <span class="string">"session_id"</span>:XXXX</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Streaming"><a href="#Streaming" class="headerlink" title="Streaming"></a>Streaming</h2><h3 id="4-1"><a href="#4-1" class="headerlink" title="4-1"></a>4-1</h3><p>Streaming（视频播放）：</p>
+<ul>
+<li>静态视频，非RTMP（直播的那些都是RTMP）</li>
+<li>独立的服务，可独立部署</li>
+<li>统一的api格式</li>
+</ul>
+<h3 id="4-3"><a href="#4-3" class="headerlink" title="4-3"></a>4-3</h3><p><code>流控</code><br><code>token bucket</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#共享通道 instead of shared memory</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> ConnLimiter struct &#123;</span><br><span class="line">	concurrentConn int</span><br><span class="line">	bucket chan int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func NewConnLimiter(cc int) *ConnLimiter &#123;</span><br><span class="line">	<span class="built_in">return</span> &amp;ConnLimiter &#123;</span><br><span class="line">		concurrentConn: cc,</span><br><span class="line">		bucket: make(chan int, cc),</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (cl *ConnLimiter) GetConn() bool &#123;</span><br><span class="line">	<span class="keyword">if</span> len(cl.bucket) &gt;= cl.concurrentConn &#123;</span><br><span class="line">		log.Printf(<span class="string">"Reached the rate limitation."</span>)</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cl.bucket &lt;- 1</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (cl *ConnLimiter) <span class="function"><span class="title">ReleaseConn</span></span>() &#123;</span><br><span class="line">	c :=&lt;- cl.bucket</span><br><span class="line">	log.Printf(<span class="string">"New connction coming: %d"</span>, c)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5"><a href="#4-5" class="headerlink" title="4-5"></a>4-5</h3><p>在http middleware中嵌入流控</p>
+<h2 id="scheduler"><a href="#scheduler" class="headerlink" title="scheduler"></a>scheduler</h2><h3 id="5-1"><a href="#5-1" class="headerlink" title="5-1"></a>5-1</h3><p><code>scheduler</code>任务调度器，某些不能马上处理的任务放到scheduler，让它定期或者延时触发。</p>
+<p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/5-1-scheduler.png" alt></p>
+<h3 id="5-3"><a href="#5-3" class="headerlink" title="5-3"></a>5-3</h3><p>runner的生产消费者模型实现</p>
+<h3 id="5-5"><a href="#5-5" class="headerlink" title="5-5"></a>5-5</h3><p>task</p>
+<p>api-&gt;videoid-&gt;mysql<br>dispatcher-&gt;mysql-&gt;videoid-&gt;datachannel<br>executor-&gt;datachannel-&gt;videoid-&gt;delete video</p>
+<h3 id="5-6"><a href="#5-6" class="headerlink" title="5-6"></a>5-6</h3><p>timer</p>
+<p>setup-&gt;strat{runner task}</p>
+<h3 id="5-7"><a href="#5-7" class="headerlink" title="5-7"></a>5-7</h3><p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/5-7-api.png" alt></p>
 
       
     </div>
