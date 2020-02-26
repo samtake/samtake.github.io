@@ -244,7 +244,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-26 15:35:56" itemprop="dateModified" datetime="2020-02-26T15:35:56+08:00">2020-02-26</time>
+                <time title="Modified: 2020-02-26 16:04:09" itemprop="dateModified" datetime="2020-02-26T16:04:09+08:00">2020-02-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -326,6 +326,16 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ curl -X GET <span class="string">'http://127.0.0.1:8080/testGetParam?parm1=11111'</span> </span><br><span class="line">11111, %  </span><br><span class="line">➜  ~ curl -X GET <span class="string">'http://127.0.0.1:8080/testGetParam?parm1=11111&amp;parm2=2222'</span></span><br><span class="line">11111, 2222%</span><br></pre></td></tr></table></figure>
 
 
+
+<h3 id="获取body内容"><a href="#获取body内容" class="headerlink" title="获取body内容"></a>获取body内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.POST(<span class="string">"/parmBody"</span>, func(c *gin.Context) &#123;</span><br><span class="line">		bodyBytes, err := ioutil.ReadAll(c.Request.Body)</span><br><span class="line">		<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">			c.String(http.StatusBadRequest, err.Error())</span><br><span class="line">			c.Abort()</span><br><span class="line">		&#125;</span><br><span class="line">		c.Request.Body = ioutil.NopCloser(bytes.NewBuffer(bodyBytes)) //重新回写到缓存才能拿到parm1 parm2</span><br><span class="line">		parm1 := c.PostForm(<span class="string">"parm1"</span>)</span><br><span class="line">		parm2 := c.PostForm(<span class="string">"parm2"</span>)</span><br><span class="line">		c.String(http.StatusOK, <span class="string">"%s %s %s"</span>, parm1, parm2, string(bodyBytes))</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ curl -X POST <span class="string">'http://127.0.0.1:8080/parmBody'</span> -d <span class="string">'parm1=value1&amp;parm2=value2'</span> </span><br><span class="line">value1 value2 parm1=value1&amp;parm2=value2%                                                                                                                               </span><br><span class="line">➜  ~ curl -X POST <span class="string">'http://127.0.0.1:8080/parmBody'</span> -d <span class="string">'&#123;"parm1":"value1","parm2":"value2"&#125;'</span></span><br><span class="line">  &#123;<span class="string">"parm1"</span>:<span class="string">"value1"</span>,<span class="string">"parm2"</span>:<span class="string">"value2"</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="获取bind参数"><a href="#获取bind参数" class="headerlink" title="获取bind参数"></a>获取bind参数</h3>
       
     </div>
 
