@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Golang搭建并行处理管道</title>
+    <url>/2020/03/02/Golang%E6%90%AD%E5%BB%BA%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86%E7%AE%A1%E9%81%93/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Golang练习笔记</title>
     <url>/2020/02/22/Golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h2><p>空值</p>
