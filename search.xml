@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Gitea</title>
+    <url>/2020/03/02/Gitea/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Golang搭建并行处理管道</title>
     <url>/2020/03/02/Golang%E6%90%AD%E5%BB%BA%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86%E7%AE%A1%E9%81%93/</url>
     <content><![CDATA[]]></content>
@@ -879,8 +884,8 @@
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>Gin</tag>
         <tag>Golang</tag>
+        <tag>Gin</tag>
       </tags>
   </entry>
   <entry>
