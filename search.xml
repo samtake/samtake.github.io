@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ant-design学习</title>
+    <url>/2020/03/03/ant-design%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h2 id="前沿"><a href="#前沿" class="headerlink" title="前沿"></a>前沿</h2><p>全篇下来，<a href="https://github.com/sorrycc/blog/issues/62" target="_blank" rel="noopener">umi + dva，完成用户管理的 CURD 应用</a>是重点，太啰嗦看这里就行了！！！</p>
+<h2 id="antd"><a href="#antd" class="headerlink" title="antd"></a>antd</h2><p><a href="https://ant.design/index-cn" target="_blank" rel="noopener">Ant Design</a>,<code>antd</code> 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品。</p>
+<h3 id="目录结构说明"><a href="#目录结构说明" class="headerlink" title="目录结构说明"></a>目录结构说明</h3><ul>
+<li><p>config：配置信息<br><code>config.js</code>全局配置，路由配置<br><code>defaultSettings.js</code>一些默认配置<br><code>plugin.config.js</code>插件配置</p>
+</li>
+<li><p>mock 模拟数据请求的</p>
+</li>
+<li><p>mode_modules 第三方库</p>
+</li>
+<li><p>public 放置第三方文件（比如说图片，第三方的json文件）</p>
+</li>
+<li><p>tests 做一些测试的</p>
+</li>
+<li><p>package.json</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"ant-design-pro"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"private"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">"An out-of-box UI solution for enterprise applications"</span>,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"analyze"</span>: <span class="string">"分析"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"编译"</span>,</span><br><span class="line">    <span class="string">"deploy"</span>: <span class="string">"部署"</span>,</span><br><span class="line">    <span class="string">"fetch:blocks"</span>: <span class="string">"从官网git里面去拉模块"</span>,</span><br><span class="line">    <span class="string">"format-imports"</span>: <span class="string">"代码格式（例如空格）"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"启动"</span>,</span><br><span class="line">    <span class="string">"start:no-mock"</span>: <span class="string">"cross-env MOCK=none umi dev"</span>,</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"测试"</span>,</span><br><span class="line">    <span class="string">"test:all"</span>: <span class="string">"node ./tests/run-tests.js"</span>,</span><br><span class="line">    <span class="string">"test:component"</span>: <span class="string">"umi test ./src/components"</span>,</span><br><span class="line">    <span class="string">"ui"</span>: <span class="string">"umi ui"</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>src</p>
+</li>
+</ul>
+<p><code>assets</code>静态资源<br><code>components</code>组件目录<br><code>e2e</code><br><code>layouts</code>布局<br><code>locales</code>多语言<br><code>models</code>模型目录<br><code>pages</code>页面<br><code>services</code>提供服务，给页面提供请求<br><code>utils</code>工具类<br><code>global.less</code><br><code>global.tsx</code><br><code>manifelst.json</code><br><code>service-worker.js</code><br><code>typings.d.ts</code></p>
+<h3 id="增加新页面"><a href="#增加新页面" class="headerlink" title="增加新页面"></a>增加新页面</h3><p>1.在config-config.js文件的routers节点添加代码</p>
+<p>{name: ‘demo’, path: ‘/demo’, component: ‘./demo’},</p>
+<p>2.在page目录下创建demo目录，并新建一个index.jsx文件。<br>3.添加源码。</p>
+<h2 id="dva"><a href="#dva" class="headerlink" title="dva"></a>dva</h2><ul>
+<li><a href="https://dvajs.com" target="_blank" rel="noopener">dva官网</a></li>
+<li><a href="https://www.bilibili.com/video/av55863089?from=search&seid=7612457114058753391" target="_blank" rel="noopener">dva视频教程</a>，以及练习<a href="https://github.com/samtake/dva" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://www.jianshu.com/p/0568a725f8f9" target="_blank" rel="noopener">dva.js的使用与说明</a></li>
+</ul>
+<h2 id="UmiJS"><a href="#UmiJS" class="headerlink" title="UmiJS"></a>UmiJS</h2><ul>
+<li><a href="https://umijs.org/zh-CN" target="_blank" rel="noopener">UmiJS</a></li>
+<li><a href="https://www.bilibili.com/video/av74033079?p=51" target="_blank" rel="noopener">UmiJS视频教程</a>，以及<a href="https://github.com/plter/ReactCourse20191031" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://www.cnblogs.com/lihuijuan/p/11242976.html" target="_blank" rel="noopener">Ant Design Pro 脚手架+umiJS 实践总结</a></li>
+</ul>
+<h2 id="dva-umi"><a href="#dva-umi" class="headerlink" title="dva + umi"></a>dva + umi</h2><p>主要搞懂model、service的关系</p>
+<ul>
+<li><a href="https://github.com/sorrycc/blog/issues/62" target="_blank" rel="noopener">umi + dva，完成用户管理的 CURD 应用</a></li>
+<li><a href="https://github.com/umijs/umi-example-dva-user-dashboard" target="_blank" rel="noopener">umi-example-dva-user-dashboard</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>ant-design</category>
+      </categories>
+      <tags>
+        <tag>ant-design</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Gitea</title>
     <url>/2020/03/02/Gitea/</url>
     <content><![CDATA[]]></content>
@@ -884,8 +932,8 @@
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>Golang</tag>
         <tag>Gin</tag>
+        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>
