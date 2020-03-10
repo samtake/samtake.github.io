@@ -213,6 +213,76 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/11/%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%95-20200311/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/11/%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%95-20200311/" class="post-title-link" itemprop="url">读书记录-20200311</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-11 01:24:48 / Modified: 01:26:54" itemprop="dateCreated datePublished" datetime="2020-03-11T01:24:48+08:00">2020-03-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index">
+                    <span itemprop="name">读书</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="/2020/03/11/%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%95-20200311/20200311-%E4%B9%A6%E5%8D%95.jpeg" alt></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/03/ant-design%E5%AD%A6%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -351,6 +421,13 @@
 
               <time title="Created: 2020-03-02 17:06:23" itemprop="dateCreated datePublished" datetime="2020-03-02T17:06:23+08:00">2020-03-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-04 15:47:53" itemprop="dateModified" datetime="2020-03-04T15:47:53+08:00">2020-03-04</time>
+              </span>
 
           
 
@@ -363,7 +440,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <p><a href="https://gitea.io/zh-cn/" target="_blank" rel="noopener">Gitea</a>:一个开源社区驱动的轻量级代码托管解决方案</p>
+
       
     </div>
 
@@ -482,7 +560,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-28 00:55:47" itemprop="dateModified" datetime="2020-02-28T00:55:47+08:00">2020-02-28</time>
+                <time title="Modified: 2020-03-04 15:47:53" itemprop="dateModified" datetime="2020-03-04T15:47:53+08:00">2020-03-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -544,13 +622,23 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func printFile(filename string) &#123;</span><br><span class="line">	file, err := os.Open(filename)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		panic(err)</span><br><span class="line">	&#125;</span><br><span class="line">	scanner := bufio.NewScanner(file)</span><br><span class="line">	<span class="keyword">for</span> scanner.<span class="function"><span class="title">Scan</span></span>() &#123;</span><br><span class="line">		fmt.Println(scanner.Text)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>死循环</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">forever</span></span>() &#123;</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"abc"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">func div(a, b int) (q, r int) &#123;</span><br><span class="line">	// <span class="built_in">return</span> a / b, a % b</span><br><span class="line">	q = a / b</span><br><span class="line">	r = a % b</span><br><span class="line">	<span class="built_in">return</span> q, r</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
+<li>返回值类型写在后面</li>
+<li>可返回多个值</li>
+<li>函数作为参数</li>
+<li>没有默认参数，有可选参数</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">func div(a, b int) (q, r int) &#123;</span><br><span class="line">	// <span class="built_in">return</span> a / b, a % b</span><br><span class="line">	q = a / b</span><br><span class="line">	r = a % b</span><br><span class="line">	<span class="built_in">return</span> q, r</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func pow(a, b int) int &#123;</span><br><span class="line">	<span class="built_in">return</span> int(math.Pow(float64(a), float64(b)))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func apply(op func(int, int) int, a, b int) int &#123;</span><br><span class="line">	p := reflect.ValueOf(op).Pointer()</span><br><span class="line">	opName := runtime.FuncForPC(p).Name()</span><br><span class="line">	fmt.Printf(<span class="string">"Calling function %s with args "</span>+<span class="string">"(%d,%d)"</span>, opName, a, b)</span><br><span class="line">	<span class="built_in">return</span> op(a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	q, r := div(8, 6)</span><br><span class="line">	fmt.Println(q, r)</span><br><span class="line"></span><br><span class="line">	fmt.Println(apply(pow, 1, 5))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func pow(a, b int) int &#123;</span><br><span class="line">	<span class="built_in">return</span> int(math.Pow(float64(a), float64(b)))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	q, r := div(8, 6)</span><br><span class="line">	fmt.Println(q, r)</span><br><span class="line"></span><br><span class="line">	fmt.Println(apply(pow, 1, 5))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>或者以匿名函数的形式进行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">	fmt.Println(apply(</span><br><span class="line">		func(a int, b int) int &#123;</span><br><span class="line">			<span class="built_in">return</span> int(math.Pow(</span><br><span class="line">				float64(a), float64(b)))</span><br><span class="line">		&#125;, 1, 5))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>函数作为参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func apply(op func(int, int) int, a, b int) int &#123;</span><br><span class="line">	p := reflect.ValueOf(op).Pointer()</span><br><span class="line">	opName := runtime.FuncForPC(p).Name()</span><br><span class="line">	fmt.Printf(<span class="string">"Calling function %s with args "</span>+</span><br><span class="line">		<span class="string">"(%d, %d)\n"</span>, opName, a, b)</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> op(a, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>可变参数</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func sum(numbers ...int) int &#123;</span><br><span class="line">	s := 0</span><br><span class="line">	<span class="keyword">for</span> i := range numbers &#123;</span><br><span class="line">		s += numbers[i]</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> s</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -596,19 +684,16 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">exp</span></span>() &#123;</span><br><span class="line">	arr3 := [...]int&#123;1, 2, 3, 4&#125; </span><br><span class="line"></span><br><span class="line">	printArray(&amp;arr3)</span><br><span class="line">	fmt.Println(arr3, arr3[0])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func printArray(arr *[4]int) &#123;</span><br><span class="line">	<span class="keyword">for</span> i, v := range arr &#123;</span><br><span class="line">		fmt.Println(i, v)</span><br><span class="line">	&#125;</span><br><span class="line">	arr[0] = 100 //在外面调用时，改变为100</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">	arr := [...]int&#123;0, 1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line">	//s := arr[2:6]</span><br><span class="line">	fmt.Println(<span class="string">"arr[2:6] ="</span>, arr[2:6])</span><br><span class="line">	fmt.Println(<span class="string">"arr[:6] ="</span>, arr[:6])</span><br><span class="line">	fmt.Println(<span class="string">"arr[2:] ="</span>, arr[2:])</span><br><span class="line">	fmt.Println(<span class="string">"arr[:] ="</span>, arr[:])</span><br><span class="line"></span><br><span class="line">	s1 := arr[2:]</span><br><span class="line">	s2 := arr[:]</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"after updateSlice(s1"</span>)</span><br><span class="line">	updateSlice(s1)</span><br><span class="line">	fmt.Println(s1)</span><br><span class="line">	fmt.Println(arr)</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"after updateSlice(s2"</span>)</span><br><span class="line">	updateSlice(s2)</span><br><span class="line">	fmt.Println(s2)</span><br><span class="line">	fmt.Println(arr)</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"printArray"</span>)</span><br><span class="line">	printArray(arr[:])</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"reslice"</span>)</span><br><span class="line">	fmt.Println(s2)</span><br><span class="line">	s2 = s2[:5]</span><br><span class="line">	fmt.Println(s2)</span><br><span class="line">	s2 = s2[2:]</span><br><span class="line">	fmt.Println(s2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">arr[2:6] = [2 3 4 5]</span><br><span class="line">arr[:6] = [0 1 2 3 4 5]</span><br><span class="line">arr[2:] = [2 3 4 5 6 7]</span><br><span class="line">arr[:] = [0 1 2 3 4 5 6 7]</span><br><span class="line">after updateSlice(s1</span><br><span class="line">[100 3 4 5 6 7]</span><br><span class="line">[0 1 100 3 4 5 6 7]</span><br><span class="line">after updateSlice(s2</span><br><span class="line">[100 1 100 3 4 5 6 7]</span><br><span class="line">[100 1 100 3 4 5 6 7]</span><br><span class="line">printArray</span><br><span class="line">0 100</span><br><span class="line">1 50</span><br><span class="line">2 100</span><br><span class="line">3 3</span><br><span class="line">4 4</span><br><span class="line">5 5</span><br><span class="line">6 6</span><br><span class="line">7 7</span><br><span class="line">reslice</span><br><span class="line">[100 50 100 3 4 5 6 7]</span><br><span class="line">[100 50 100 3 4]</span><br><span class="line">[100 3 4]</span><br></pre></td></tr></table></figure>
+<h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">func updateSlice(s []int)&#123;</span><br><span class="line">	s[0] = 100</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">	arr := [...]int&#123;0, 1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line">	//s := arr[2:6]</span><br><span class="line">	fmt.Println(<span class="string">"arr[2:6] ="</span>, arr[2:6])<span class="comment">#arr[2:6] = [2 3 4 5]</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"arr[:6] ="</span>, arr[:6])<span class="comment">#arr[:6] = [0 1 2 3 4 5]</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"arr[2:] ="</span>, arr[2:])<span class="comment">#arr[2:] = [2 3 4 5 6 7]</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"arr[:] ="</span>, arr[:])<span class="comment">#arr[:] = [0 1 2 3 4 5 6 7]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	s1 := arr[2:]</span><br><span class="line">	s2 := arr[:]</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"after updateSlice(s1"</span>)</span><br><span class="line">	updateSlice(s1)</span><br><span class="line">	fmt.Println(s1)</span><br><span class="line">	fmt.Println(arr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 	after updateSlice(s1</span></span><br><span class="line"><span class="comment">#   [100 3 4 5 6 7]</span></span><br><span class="line"><span class="comment"># 	[0 1 100 3 4 5 6 7]</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"after updateSlice(s2"</span>)</span><br><span class="line">	updateSlice(s2)</span><br><span class="line">	fmt.Println(s2)</span><br><span class="line">	fmt.Println(arr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 	after updateSlice(s2</span></span><br><span class="line"><span class="comment"># 	[100 1 100 3 4 5 6 7] </span></span><br><span class="line"><span class="comment"># 	[100 1 100 3 4 5 6 7]</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"printArray"</span>)</span><br><span class="line">	printArray(arr[:])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 	printArray</span></span><br><span class="line"><span class="comment"># 	0 100</span></span><br><span class="line"><span class="comment"># 	1 50</span></span><br><span class="line"><span class="comment"># 	2 100</span></span><br><span class="line"><span class="comment"># 	3 3</span></span><br><span class="line"><span class="comment"># 	4 4</span></span><br><span class="line"><span class="comment">#	 5 5</span></span><br><span class="line"><span class="comment"># 	6 6</span></span><br><span class="line"><span class="comment"># 	7 7</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"reslice"</span>)</span><br><span class="line">	fmt.Println(s2)</span><br><span class="line">	s2 = s2[:5]</span><br><span class="line">	fmt.Println(s2)</span><br><span class="line">	s2 = s2[2:]</span><br><span class="line">	fmt.Println(s2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 	reslice</span></span><br><span class="line"><span class="comment"># 	[100 50 100 3 4 5 6 7]</span></span><br><span class="line"><span class="comment"># 	[100 50 100 3 4]</span></span><br><span class="line"><span class="comment"># 	[100 3 4]</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/02/22/Golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/slice.png" alt="slice"></p>
 <p>slice可以向后扩展，不可以向前扩展<br>s[i]不可以超越len(s)，向后扩展不可以超越底层数组 cap(s)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">sliceExtension</span></span>() &#123;</span><br><span class="line">	fmt.Println(<span class="string">"sliceExtension"</span>)</span><br><span class="line">	arr := [...]int&#123;0, 1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line">	s1 := arr[2:6]</span><br><span class="line">	s2 := s1[3:5]</span><br><span class="line">	fmt.Println(<span class="string">"s1="</span>, s1)</span><br><span class="line">	fmt.Println(<span class="string">"s2="</span>, s2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sliceExtension</span><br><span class="line">s1= [2 3 4 5]</span><br><span class="line">s2= [5 6]</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">sliceExtension</span></span>() &#123;</span><br><span class="line">	fmt.Println(<span class="string">"sliceExtension"</span>)</span><br><span class="line">	arr := [...]int&#123;0, 1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line">	s1 := arr[2:6]</span><br><span class="line">	s2 := s1[3:5]</span><br><span class="line">	fmt.Println(<span class="string">"s1="</span>, s1)</span><br><span class="line">	fmt.Println(<span class="string">"s2="</span>, s2)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># sliceExtension</span></span><br><span class="line"><span class="comment"># s1= [2 3 4 5]</span></span><br><span class="line"><span class="comment"># s2= [5 6]</span></span><br></pre></td></tr></table></figure>
 
 <p>向slice添加元素时，如果超越了cap，系统会重新分配更大的底层数组<br>新的slice里面， ptr len cap都会变掉，所以必须接收append的返回值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">sliceAppend</span></span>() &#123;</span><br><span class="line">	fmt.Println(<span class="string">"slice append"</span>)</span><br><span class="line">	arr := [...]int&#123;0, 1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line">	s1 := arr[2:6]       //2 3 4 5</span><br><span class="line">	s2 := s1[3:5]        //5 6</span><br><span class="line">	s3 := append(s2, 10) //5 6 10</span><br><span class="line">	s4 := append(s3, 11) //5 6 10 11</span><br><span class="line">	s5 := append(s4, 12) //5 6 10 11 12</span><br><span class="line">	fmt.Println(<span class="string">"s3="</span>, s3)</span><br><span class="line">	fmt.Println(<span class="string">"s4="</span>, s4)</span><br><span class="line">	fmt.Println(<span class="string">"s5="</span>, s5)</span><br><span class="line">	fmt.Println(<span class="string">"arr="</span>, arr) //0, 1, 2, 3, 4, 5, 6 10  数组长度不变的</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>s = append(s, value)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">sliceAppend</span></span>() &#123;</span><br><span class="line">	fmt.Println(<span class="string">"slice append"</span>)</span><br><span class="line">	arr := [...]int&#123;0, 1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line">	s1 := arr[2:6]       <span class="comment">#	2 3 4 5</span></span><br><span class="line">	s2 := s1[3:5]        <span class="comment">#	5 6</span></span><br><span class="line">	s3 := append(s2, 10) <span class="comment">#	5 6 10</span></span><br><span class="line">	s4 := append(s3, 11) <span class="comment">#	5 6 10 11</span></span><br><span class="line">	s5 := append(s4, 12) <span class="comment">#	5 6 10 11 12</span></span><br><span class="line">	fmt.Println(<span class="string">"s3="</span>, s3)</span><br><span class="line">	fmt.Println(<span class="string">"s4="</span>, s4)</span><br><span class="line">	fmt.Println(<span class="string">"s5="</span>, s5)</span><br><span class="line">	fmt.Println(<span class="string">"arr="</span>, arr) <span class="comment">#	0, 1, 2, 3, 4, 5, 6 10  数组长度不变的</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>slice的创建</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">sliceCreate</span></span>() &#123;</span><br><span class="line">	var s []int</span><br><span class="line">	<span class="keyword">for</span> i := 0; i &lt; 20; i++ &#123;</span><br><span class="line">		printSlice(s)</span><br><span class="line">		s = append(s, 2*i+1)</span><br><span class="line">	&#125;</span><br><span class="line">	println(s)</span><br><span class="line"></span><br><span class="line">	s1 := []int&#123;2, 3, 5, 6, 8, 2, 5&#125;</span><br><span class="line">	println(s1)</span><br><span class="line"></span><br><span class="line">	s2 := make([]int, 16)</span><br><span class="line">	s3 := make([]int, 10, 32) //32是开辟的空间<span class="built_in">cap</span></span><br><span class="line">	println(<span class="string">"print Slice  s2 s3"</span>)</span><br><span class="line">	printSlice(s2)</span><br><span class="line">	printSlice(s3)</span><br><span class="line"></span><br><span class="line">	println(<span class="string">"Slice copy"</span>)</span><br><span class="line">	copy(s2, s1) //将s1复制给s2</span><br><span class="line">	printSlice(s2)</span><br><span class="line"></span><br><span class="line">	//[2 3 5 6 8 2 5 0 0 0 0 0 0 0 0 0], len=16, <span class="built_in">cap</span>= 16</span><br><span class="line">	//如何删除8</span><br><span class="line">	println(<span class="string">"Slice delete"</span>)</span><br><span class="line">	s2 = append(s2[:4], s2[5:]...)</span><br><span class="line">	printSlice(s2)</span><br><span class="line"></span><br><span class="line">	//删除头尾</span><br><span class="line">	fmt.Println(<span class="string">"pop from front"</span>)</span><br><span class="line">	front := s2[0]</span><br><span class="line">	s2 = s2[1:]</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"pop from back"</span>)</span><br><span class="line">	back := s2[len(s2)-1]</span><br><span class="line">	s2 = s2[:len(s2)-1]</span><br><span class="line">	fmt.Println(front, back)</span><br><span class="line">	printSlice(s2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">sliceCreate</span></span>() &#123;</span><br><span class="line">	var s []int  <span class="comment">#定义一个空slice</span></span><br><span class="line">	<span class="keyword">for</span> i := 0; i &lt; 20; i++ &#123;</span><br><span class="line">		printSlice(s)</span><br><span class="line">		s = append(s, 2*i+1)</span><br><span class="line">	&#125;</span><br><span class="line">	println(s)</span><br><span class="line"></span><br><span class="line">	s1 := []int&#123;2, 3, 5, 6, 8, 2, 5&#125;</span><br><span class="line">	println(s1)</span><br><span class="line"></span><br><span class="line">	s2 := make([]int, 16)</span><br><span class="line">	s3 := make([]int, 10, 32) //32是开辟的空间<span class="built_in">cap</span></span><br><span class="line">	println(<span class="string">"print Slice  s2 s3"</span>)</span><br><span class="line">	printSlice(s2)</span><br><span class="line">	printSlice(s3)</span><br><span class="line"></span><br><span class="line">	println(<span class="string">"Slice copy"</span>)</span><br><span class="line">	copy(s2, s1) <span class="comment"># 将s1复制给s2</span></span><br><span class="line">	printSlice(s2)</span><br><span class="line"></span><br><span class="line">	//[2 3 5 6 8 2 5 0 0 0 0 0 0 0 0 0], len=16, <span class="built_in">cap</span>= 16</span><br><span class="line">	//如何删除8</span><br><span class="line">	println(<span class="string">"Slice delete"</span>)</span><br><span class="line">	s2 = append(s2[:4], s2[5:]...)</span><br><span class="line">	printSlice(s2)</span><br><span class="line"></span><br><span class="line">	//删除头尾</span><br><span class="line">	fmt.Println(<span class="string">"pop from front"</span>)</span><br><span class="line">	front := s2[0]</span><br><span class="line">	s2 = s2[1:]</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"pop from back"</span>)</span><br><span class="line">	back := s2[len(s2)-1]</span><br><span class="line">	s2 = s2[:len(s2)-1]</span><br><span class="line">	fmt.Println(front, back)</span><br><span class="line">	printSlice(s2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> Slice  s2 s3</span><br><span class="line">[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0], len=16, <span class="built_in">cap</span>= 16</span><br><span class="line">[0 0 0 0 0 0 0 0 0 0], len=10, <span class="built_in">cap</span>= 32</span><br><span class="line">Slice copy</span><br><span class="line">[2 3 5 6 8 2 5 0 0 0 0 0 0 0 0 0], len=16, <span class="built_in">cap</span>= 16</span><br><span class="line">Slice delete</span><br><span class="line">[2 3 5 6 2 5 0 0 0 0 0 0 0 0 0], len=15, <span class="built_in">cap</span>= 16</span><br><span class="line">pop from front</span><br><span class="line">pop from back</span><br><span class="line">2 0</span><br><span class="line">[3 5 6 2 5 0 0 0 0 0 0 0 0], len=13, <span class="built_in">cap</span>= 15</span><br></pre></td></tr></table></figure>
@@ -1428,85 +1513,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/Golang%E6%93%8D%E4%BD%9CMySQL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/16/Golang%E6%93%8D%E4%BD%9CMySQL/" class="post-title-link" itemprop="url">Golang操作MySQL</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-16 19:41:03 / Modified: 19:49:52" itemprop="dateCreated datePublished" datetime="2020-02-16T19:41:03+08:00">2020-02-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/Golang/" itemprop="url" rel="index">
-                    <span itemprop="name">Golang</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>记录一个报错</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">➜  goRedisDemo git:(master) ✗ go run main.go</span><br><span class="line"><span class="built_in">test</span> mySQL </span><br><span class="line">panic: runtime error: invalid memory address or nil pointer dereference</span><br><span class="line">[signal SIGSEGV: segmentation violation code=0x1 addr=0x20 pc=0x10c1141]</span><br><span class="line"></span><br><span class="line">goroutine 1 [running]:</span><br><span class="line">sync.(*Mutex).Lock(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/sync/mutex.go:74</span><br><span class="line">database/sql.(*DB).conn(0x0, 0x130f9e0, 0xc000018080, 0x1036801, 0xc000000180, 0x300000002, 0xc000000180)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1132 +0x41</span><br><span class="line">database/sql.(*DB).prepare(0x0, 0x130f9e0, 0xc000018080, 0x12c9f84, 0x69, 0x102da01, 0x203000, 0xc0000b3d78, 0xc0000b3d68)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1431 +0x58</span><br><span class="line">database/sql.(*DB).PrepareContext(0x0, 0x130f9e0, 0xc000018080, 0x12c9f84, 0x69, 0x30, 0x30, 0x128eaa0)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1404 +0x99</span><br><span class="line">database/sql.(*DB).Prepare(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1421</span><br><span class="line">goRedisDemo/db.OnFileUploadFinished(0x12bbb58, 0x8, 0x12bbb60, 0x8, 0x0, 0x0, 0x0, 0x0)</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/db/file.go:15 +0x77</span><br><span class="line">goRedisDemo/handler.UploadHandlerDB()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/handler/testDB.go:10 +0x76</span><br><span class="line">main.main()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/main.go:14 +0x7a</span><br><span class="line"><span class="built_in">exit</span> status 2</span><br><span class="line">➜  goRedisDemo git:(master) ✗ go get database/sql</span><br><span class="line">➜  goRedisDemo git:(master) ✗ go get github.com/go-sql-driver/mysql</span><br><span class="line">➜  goRedisDemo git:(master) ✗ go run main.go                       </span><br><span class="line"><span class="built_in">test</span> mySQL </span><br><span class="line">panic: runtime error: invalid memory address or nil pointer dereference</span><br><span class="line">[signal SIGSEGV: segmentation violation code=0x1 addr=0x20 pc=0x10c1141]</span><br><span class="line"></span><br><span class="line">goroutine 1 [running]:</span><br><span class="line">sync.(*Mutex).Lock(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/sync/mutex.go:74</span><br><span class="line">database/sql.(*DB).conn(0x0, 0x130f9e0, 0xc0000b0008, 0x1036801, 0xc000000180, 0x300000002, 0xc000000180)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1132 +0x41</span><br><span class="line">database/sql.(*DB).prepare(0x0, 0x130f9e0, 0xc0000b0008, 0x12c9f84, 0x69, 0x102da01, 0x203000, 0xc0000dfd78, 0xc0000dfd68)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1431 +0x58</span><br><span class="line">database/sql.(*DB).PrepareContext(0x0, 0x130f9e0, 0xc0000b0008, 0x12c9f84, 0x69, 0x30, 0x30, 0x128eaa0)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1404 +0x99</span><br><span class="line">database/sql.(*DB).Prepare(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1421</span><br><span class="line">goRedisDemo/db.OnFileUploadFinished(0x12bbb58, 0x8, 0x12bbb60, 0x8, 0x0, 0x0, 0x0, 0x0)</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/db/file.go:22 +0x77</span><br><span class="line">goRedisDemo/handler.UploadHandlerDB()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/handler/testDB.go:10 +0x76</span><br><span class="line">main.main()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/main.go:14 +0x7a</span><br><span class="line"><span class="built_in">exit</span> status 2</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://blog.51cto.com/zhixinhu/1844734" target="_blank" rel="noopener">查了一下，原来这是Db变量定义的问题，:=只在当前方法内有效。</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1557,20 +1563,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
