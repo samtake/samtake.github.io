@@ -3,7 +3,27 @@
   <entry>
     <title>lightworks视频剪辑软件基本操作教程</title>
     <url>/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><p><code>LOG</code>放文件内容<br><code>EDIT</code>剪辑<br><code>VFX</code>加文字等效果<br><code>AUDIO</code>添加音频</p>
+<h2 id="LOG"><a href="#LOG" class="headerlink" title="LOG"></a>LOG</h2><p>Project Contents<br>Local Files<br>Audio Network<br>Pond5</p>
+<h2 id="EDIT"><a href="#EDIT" class="headerlink" title="EDIT"></a>EDIT</h2><p>A开头的是视频文件本身自带的音效，点一下变暗后播放就没有这个音效了</p>
+<p>剪切和合并点X键，剪切后可以随意看奥运与组合，点击不要的部分点邮件删除</p>
+<p>右键点击速度可变慢或加快播放速度，不要的话就点删除，跨界见CTRL+Z可以还原上一步操作</p>
+<p>可覆盖原本的音频或家在下面</p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/EDIT-Audio.png" alt></p>
+<h2 id="VFX"><a href="#VFX" class="headerlink" title="VFX"></a>VFX</h2><p>点击+添加文字，改变字体大小和颜色</p>
+<h2 id="AUDIO"><a href="#AUDIO" class="headerlink" title="AUDIO"></a>AUDIO</h2><p>音量大小等修改</p>
+<p>保存文件点右键出口-媒体文件-一般是MP4/AVI 720适宜，当然越大也越清楚，文件内存也越大</p>
+<h1 id="2-界面和新建工程"><a href="#2-界面和新建工程" class="headerlink" title="2.界面和新建工程"></a>2.界面和新建工程</h1><p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial2-setting.png" alt></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial2-project-type.png" alt></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial2-project-contents.png" alt></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial2-project-contents-windows.png" alt></p>
+<h1 id="3-导入素材和新建序列"><a href="#3-导入素材和新建序列" class="headerlink" title="3.导入素材和新建序列"></a>3.导入素材和新建序列</h1>]]></content>
+      <categories>
+        <category>lightworks</category>
+      </categories>
+      <tags>
+        <tag>lightworks</tag>
+      </tags>
   </entry>
   <entry>
     <title>读书记录-20200311</title>
