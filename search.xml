@@ -43,7 +43,14 @@
 <p> <code>j</code> 倒方</p>
 <p> <code>k</code> 停止 </p>
 <p> <code>l</code> 素材向右播放，重复按下<code>j</code>会加速向右播放</p>
-<h1 id="6-添加转场-amp-转场相关设置"><a href="#6-添加转场-amp-转场相关设置" class="headerlink" title="6.添加转场&amp;转场相关设置"></a>6.添加转场&amp;转场相关设置</h1>]]></content>
+<h1 id="6-添加转场-amp-转场相关设置"><a href="#6-添加转场-amp-转场相关设置" class="headerlink" title="6.添加转场&amp;转场相关设置"></a>6.添加转场&amp;转场相关设置</h1><h2 id="添加转场步骤"><a href="#添加转场步骤" class="headerlink" title="添加转场步骤"></a>添加转场步骤</h2><p>先要通过拖动素材，让两个素材的某个部分重叠，留出转场的空间。</p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial6-transitions-steps.png" alt></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial6-transitions-other.png" alt></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial6-transitions-other2.png" alt></p>
+<p>音频和视频转场都是一样～～～操作差不多</p>
+<h2 id="让结尾处渐暗"><a href="#让结尾处渐暗" class="headerlink" title="让结尾处渐暗"></a>让结尾处渐暗</h2><p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial6-transitions-black1.png" alt></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial6-transitions-black2.png" alt></p>
+<h1 id="7-VFX节本操作-amp-剪辑播放速度调整"><a href="#7-VFX节本操作-amp-剪辑播放速度调整" class="headerlink" title="7.VFX节本操作&amp;剪辑播放速度调整"></a>7.VFX节本操作&amp;剪辑播放速度调整</h1>]]></content>
       <categories>
         <category>lightworks</category>
       </categories>
