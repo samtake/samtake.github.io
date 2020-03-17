@@ -17,7 +17,35 @@
 <p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial2-project-type.png" alt></p>
 <p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial2-project-contents.png" alt></p>
 <p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial2-project-contents-windows.png" alt></p>
-<h1 id="3-导入素材和新建序列"><a href="#3-导入素材和新建序列" class="headerlink" title="3.导入素材和新建序列"></a>3.导入素材和新建序列</h1>]]></content>
+<h1 id="3-导入素材和新建序列"><a href="#3-导入素材和新建序列" class="headerlink" title="3.导入素材和新建序列"></a>3.导入素材和新建序列</h1><p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial3-import-setting3.png" alt></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial3-import-setting3.png" alt></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial3-new-serial1.png" alt></p>
+<p>序列之间是不能嵌套的。</p>
+<h1 id="4-时间线操作-amp-选定素材区域插入时间轴"><a href="#4-时间线操作-amp-选定素材区域插入时间轴" class="headerlink" title="4.时间线操作&amp;选定素材区域插入时间轴"></a>4.时间线操作&amp;选定素材区域插入时间轴</h1><p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial4-time-operation.png" alt></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial4-time-blank.png" alt></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial4-time-source.png" alt></p>
+<p>同时时间轴上的素材可以左右拖拉：切换位置、前后时间延长</p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial4-time-source-only.png" alt></p>
+<h1 id="5-时间轴素材调整-amp-音频轨道同步"><a href="#5-时间轴素材调整-amp-音频轨道同步" class="headerlink" title="5.时间轴素材调整&amp;音频轨道同步"></a>5.时间轴素材调整&amp;音频轨道同步</h1><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial5-time-zoom.png" alt></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial5-time-cut1.png" alt></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial5-time-cut2.png" alt></p>
+<p>键盘的加减号是放大和缩小时间轴</p>
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial5-time-cut-method2.png" alt></p>
+<p><code>Slip - Y</code><br><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial5-time-cut-method2-slip.png" alt></p>
+<p>点击空格键播放，选中素材的另外前后素材位置没有变化，播放时长也没有变化，而该选中素材则随着播放，时间慢慢增加。</p>
+<p><code>Slide - T</code></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial5-time-cut-method2-Slide.png" alt></p>
+<p>选中素材没有变化。</p>
+<p><code>Trim In - W</code></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial5-time-cut-method2-trim-in.png" alt></p>
+<p><code>Trim Out - E</code><br>在出点标记处进行延长或缩短</p>
+<p>假设只对视频进行缩减时，这会导致音视频不同轨，处理方法<br><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial5-time-cut-method2-auto-track.png" alt></p>
+<p><img src="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/serial5-time-cut-method2-track-operation.png" alt></p>
+<p> 快捷键</p>
+<p> <code>j</code> 倒方</p>
+<p> <code>k</code> 停止 </p>
+<p> <code>l</code> 素材向右播放，重复按下<code>j</code>会加速向右播放</p>
+<h1 id="6-添加转场-amp-转场相关设置"><a href="#6-添加转场-amp-转场相关设置" class="headerlink" title="6.添加转场&amp;转场相关设置"></a>6.添加转场&amp;转场相关设置</h1>]]></content>
       <categories>
         <category>lightworks</category>
       </categories>
