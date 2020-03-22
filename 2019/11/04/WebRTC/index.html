@@ -52,16 +52,16 @@
   };
 </script>
 
-  <meta name="description" content="WebRTC 1 对 1 音视频实时通话 即两个 WebRTC 终端（上图中的两个大方框）、一个 Signal（信令）服务器和一个 STUN&#x2F;TURN 服务器。 WebRTC 终端负责音视频采集、编解码、NAT 穿越、音视频数据传输。Signal 服务器负责信令处理，如加入房间、离开房间、媒体协商消息的传递等。STUN&#x2F;TURN 服务器负责获取 WebRTC 终端在公网的 IP 地址，以及 NAT">
+  <meta name="description" content="WebRTC 1 对 1 音视频实时通话 即两个 WebRTC 终端（上图中的两个大方框）、一个 Signal（信令）服务器和一个 STUN&#x2F;TURN 服务器。 WebRTC 终端负责音视频采集、编解码、NAT 穿越、音视频数据传输。步骤流程如下：  获取权限（摄像头、麦克风） 本地视频的采集与展示 创建RTCPeerConnection 媒体协商 远端视频的展示  Signal 服务器负责信令处">
 <meta name="keywords" content="WebRTC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebRTC">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
-<meta property="og:description" content="WebRTC 1 对 1 音视频实时通话 即两个 WebRTC 终端（上图中的两个大方框）、一个 Signal（信令）服务器和一个 STUN&#x2F;TURN 服务器。 WebRTC 终端负责音视频采集、编解码、NAT 穿越、音视频数据传输。Signal 服务器负责信令处理，如加入房间、离开房间、媒体协商消息的传递等。STUN&#x2F;TURN 服务器负责获取 WebRTC 终端在公网的 IP 地址，以及 NAT">
+<meta property="og:description" content="WebRTC 1 对 1 音视频实时通话 即两个 WebRTC 终端（上图中的两个大方框）、一个 Signal（信令）服务器和一个 STUN&#x2F;TURN 服务器。 WebRTC 终端负责音视频采集、编解码、NAT 穿越、音视频数据传输。步骤流程如下：  获取权限（摄像头、麦克风） 本地视频的采集与展示 创建RTCPeerConnection 媒体协商 远端视频的展示  Signal 服务器负责信令处">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;webrtc1-1to1.png">
-<meta property="og:updated_time" content="2020-03-22T04:23:10.549Z">
+<meta property="og:updated_time" content="2020-03-22T04:33:44.993Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;webrtc1-1to1.png">
 
@@ -249,7 +249,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-22 12:23:10" itemprop="dateModified" datetime="2020-03-22T12:23:10+08:00">2020-03-22</time>
+                <time title="Modified: 2020-03-22 12:33:44" itemprop="dateModified" datetime="2020-03-22T12:33:44+08:00">2020-03-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -276,7 +276,15 @@
       
         <h1 id="WebRTC-1-对-1-音视频实时通话"><a href="#WebRTC-1-对-1-音视频实时通话" class="headerlink" title="WebRTC 1 对 1 音视频实时通话"></a>WebRTC 1 对 1 音视频实时通话</h1><p><img src="/2019/11/04/WebRTC/webrtc1-1to1.png" alt="过程示意图"></p>
 <p>即两个 WebRTC 终端（上图中的两个大方框）、一个 Signal（信令）服务器和一个 STUN/TURN 服务器。</p>
-<p><code>WebRTC 终端</code>负责音视频采集、编解码、NAT 穿越、音视频数据传输。<br><code>Signal 服务器</code>负责信令处理，如加入房间、离开房间、媒体协商消息的传递等。<br><code>STUN/TURN 服务器</code>负责获取 WebRTC 终端在公网的 IP 地址，以及 NAT 穿越失败后的数据中转。</p>
+<p><code>WebRTC 终端</code>负责音视频采集、编解码、NAT 穿越、音视频数据传输。步骤流程如下：</p>
+<ul>
+<li>获取权限（摄像头、麦克风）</li>
+<li>本地视频的采集与展示</li>
+<li>创建<code>RTCPeerConnection</code></li>
+<li>媒体协商</li>
+<li>远端视频的展示</li>
+</ul>
+<p><code>Signal 服务器</code>负责信令处理，如加入房间、离开房间、媒体协商消息的传递等。<br><code>STUN/TURN 服务器</code>负责获取 WebRTC 终端在公网的 IP 地址，以及 NAT 穿越失败后的数据中转。</p>
 
     </div>
 

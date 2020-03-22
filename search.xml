@@ -1652,7 +1652,15 @@
     <url>/2019/11/04/WebRTC/</url>
     <content><![CDATA[<h1 id="WebRTC-1-对-1-音视频实时通话"><a href="#WebRTC-1-对-1-音视频实时通话" class="headerlink" title="WebRTC 1 对 1 音视频实时通话"></a>WebRTC 1 对 1 音视频实时通话</h1><p><img src="/2019/11/04/WebRTC/webrtc1-1to1.png" alt="过程示意图"></p>
 <p>即两个 WebRTC 终端（上图中的两个大方框）、一个 Signal（信令）服务器和一个 STUN/TURN 服务器。</p>
-<p><code>WebRTC 终端</code>负责音视频采集、编解码、NAT 穿越、音视频数据传输。<br><code>Signal 服务器</code>负责信令处理，如加入房间、离开房间、媒体协商消息的传递等。<br><code>STUN/TURN 服务器</code>负责获取 WebRTC 终端在公网的 IP 地址，以及 NAT 穿越失败后的数据中转。</p>
+<p><code>WebRTC 终端</code>负责音视频采集、编解码、NAT 穿越、音视频数据传输。步骤流程如下：</p>
+<ul>
+<li>获取权限（摄像头、麦克风）</li>
+<li>本地视频的采集与展示</li>
+<li>创建<code>RTCPeerConnection</code></li>
+<li>媒体协商</li>
+<li>远端视频的展示</li>
+</ul>
+<p><code>Signal 服务器</code>负责信令处理，如加入房间、离开房间、媒体协商消息的传递等。<br><code>STUN/TURN 服务器</code>负责获取 WebRTC 终端在公网的 IP 地址，以及 NAT 穿越失败后的数据中转。</p>
 ]]></content>
       <categories>
         <category>WebRTC</category>
