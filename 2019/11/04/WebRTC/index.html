@@ -67,7 +67,9 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;webrtc10-symmetric.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;webrtc10-nat-check.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;turn-demo.png">
-<meta property="og:updated_time" content="2020-03-22T12:54:18.344Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;RTP-protocol-header.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;RTCP-protocol-header.png">
+<meta property="og:updated_time" content="2020-03-22T15:00:18.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;webrtc1-1to1.png">
 
@@ -255,7 +257,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-22 20:54:18" itemprop="dateModified" datetime="2020-03-22T20:54:18+08:00">2020-03-22</time>
+                <time title="Modified: 2020-03-22 23:00:18" itemprop="dateModified" datetime="2020-03-22T23:00:18+08:00">2020-03-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -344,6 +346,11 @@
 <li>连通性检查</li>
 </ul>
 <h1 id="SDP"><a href="#SDP" class="headerlink" title="SDP"></a>SDP</h1><p><code>SDP</code>session description protocol，它是一种信息格式的描述标准，本身不属于传输协议，但是可以被其他传输协议用来交换必要的信息。</p>
+<h1 id="RTP-RTCP"><a href="#RTP-RTCP" class="headerlink" title="RTP/RTCP"></a>RTP/RTCP</h1><p> 一般情况下，在实时互动直播系统传输音视频数据流时，我们并不直接将音视频数据流交给 UDP 传输，而是先给音视频数据加个 RTP 头，然后再交给 UDP 进行传输。</p>
+<p>在使用 RTP 包传输数据时，难免会发生丢包、乱序、抖动等问题，但在处理这些问题之前，它首先要让各端都知道它们自己的网络质量到底是怎样的，这就是 RTCP 的作用。</p>
+<p>各协议头字段如下，SSRC为共享媒体流的源。</p>
+<p><img src="/2019/11/04/WebRTC/RTP-protocol-header.png" alt="RTP"></p>
+<p><img src="/2019/11/04/WebRTC/RTCP-protocol-header.png" alt="RTCP"></p>
 
     </div>
 
@@ -409,7 +416,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WebRTC介绍"><span class="nav-number">1.</span> <span class="nav-text">WebRTC介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WebRTC-1-对-1-音视频实时通话"><span class="nav-number">2.</span> <span class="nav-text">WebRTC 1 对 1 音视频实时通话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NAT"><span class="nav-number">3.</span> <span class="nav-text">NAT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#STUN协议"><span class="nav-number">4.</span> <span class="nav-text">STUN协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TURN协议"><span class="nav-number">5.</span> <span class="nav-text">TURN协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ICE框架"><span class="nav-number">6.</span> <span class="nav-text">ICE框架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SDP"><span class="nav-number">7.</span> <span class="nav-text">SDP</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WebRTC介绍"><span class="nav-number">1.</span> <span class="nav-text">WebRTC介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WebRTC-1-对-1-音视频实时通话"><span class="nav-number">2.</span> <span class="nav-text">WebRTC 1 对 1 音视频实时通话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NAT"><span class="nav-number">3.</span> <span class="nav-text">NAT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#STUN协议"><span class="nav-number">4.</span> <span class="nav-text">STUN协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TURN协议"><span class="nav-number">5.</span> <span class="nav-text">TURN协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ICE框架"><span class="nav-number">6.</span> <span class="nav-text">ICE框架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SDP"><span class="nav-number">7.</span> <span class="nav-text">SDP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RTP-RTCP"><span class="nav-number">8.</span> <span class="nav-text">RTP/RTCP</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -425,7 +432,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

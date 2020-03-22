@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>WebRTC（二）</title>
+    <url>/2020/03/22/WebRTC%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在<a href="https://samtake.github.io/2019/11/04/WebRTC/" target="_blank" rel="noopener">前一篇</a>有对WebRTC以及用到的协议做了一些简单介绍。</p>
+<p>先回忆下WebRTC终端的五个流程：</p>
+<ul>
+<li>获取权限（摄像头、麦克风）</li>
+<li>本地视频的采集与展示</li>
+<li>创建<code>RTCPeerConnection</code></li>
+<li>媒体协商</li>
+<li>远端视频的展示</li>
+</ul>
+<h1 id="媒体协商"><a href="#媒体协商" class="headerlink" title="媒体协商"></a>媒体协商</h1><p>在双方通信时，双方必须清楚彼此使用的编解码器是什么，也必须知道传输过来的音视频流的 SSRC。媒体协商的作用就是让双方找到共同支持的媒体能力，如双方都支持的编解码器，从而最终实现彼此之间的音视频通信。</p>
+<p>步骤：</p>
+<ul>
+<li>创建一个 RTCPeerConnection 对象</li>
+<li>createOffer ，创建 Offer；</li>
+<li>createAnswer，创建 Answer；</li>
+<li>setLocalDescription，设置本地 SDP 信息；</li>
+<li>setRemoteDescription，设置远端的 SDP 信息。</li>
+</ul>
+<p>流程叙述：</p>
+<p>首先，呼叫方创建 Offer 类型的 SDP 消息。创建完成后，调用 setLocalDescriptoin 方法将该 Offer 保存到本地 Local 域，然后通过信令将 Offer 发送给被呼叫方。</p>
+<p>被呼叫方收到 Offer 类型的 SDP 消息后，调用 setRemoteDescription 方法将 Offer 保存到它的 Remote 域。作为应答，被呼叫方要创建 Answer 类型的 SDP 消息，Answer 消息创建成功后，再调用 setLocalDescription 方法将 Answer 类型的 SDP 消息保存到本地的 Local 域。最后，被呼叫方将 Answer 消息通过信令发送给呼叫方。至此，被呼叫方的工作就完部完成了。</p>
+<p>接下来是呼叫方的收尾工作，呼叫方收到 Answer 类型的消息后，调用 RTCPeerConnecton 对象的 setRemoteDescription 方法，将 Answer 保存到它的 Remote 域。</p>
+<p>至此，整个媒体协商过程处理完毕。</p>
+<h1 id="WebRTC建立连接"><a href="#WebRTC建立连接" class="headerlink" title="WebRTC建立连接"></a>WebRTC建立连接</h1><p><img src="/2020/03/22/WebRTC%EF%BC%88%E4%BA%8C%EF%BC%89/1to1-connected.png" alt></p>
+<p>首先会尝试 NAT 穿越，即尝试端到端直连。如果能够穿越成功，那双方就通过直连的方式传输数据，这是最高效的。但如果 NAT 穿越失败，为了保障通信双方的连通性，WebRTC 会使用中继方式，当然使用这种方式传输效率会低一些。</p>
+<p>在整个过程中，WebRTC 使用优先级的方法去建立连接，即局域网内的优先级最高，其次是 NAT 穿越，再次是通过中继服务器进行中转，这样就巧妙地实现了“既要高效传输，又能保证连通率”这个目标。</p>
+]]></content>
+      <categories>
+        <category>WebRTC</category>
+      </categories>
+      <tags>
+        <tag>WebRTC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>lightworks视频剪辑软件基本操作教程</title>
     <url>/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><p><code>LOG</code>放文件内容<br><code>EDIT</code>剪辑<br><code>VFX</code>加文字等效果<br><code>AUDIO</code>添加音频</p>
@@ -748,8 +785,8 @@
         <category>RPC</category>
       </categories>
       <tags>
-        <tag>RPC</tag>
         <tag>微服务</tag>
+        <tag>RPC</tag>
       </tags>
   </entry>
   <entry>
@@ -1026,8 +1063,8 @@
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>Golang</tag>
         <tag>Gin</tag>
+        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>
@@ -1703,6 +1740,11 @@
 <li>连通性检查</li>
 </ul>
 <h1 id="SDP"><a href="#SDP" class="headerlink" title="SDP"></a>SDP</h1><p><code>SDP</code>session description protocol，它是一种信息格式的描述标准，本身不属于传输协议，但是可以被其他传输协议用来交换必要的信息。</p>
+<h1 id="RTP-RTCP"><a href="#RTP-RTCP" class="headerlink" title="RTP/RTCP"></a>RTP/RTCP</h1><p> 一般情况下，在实时互动直播系统传输音视频数据流时，我们并不直接将音视频数据流交给 UDP 传输，而是先给音视频数据加个 RTP 头，然后再交给 UDP 进行传输。</p>
+<p>在使用 RTP 包传输数据时，难免会发生丢包、乱序、抖动等问题，但在处理这些问题之前，它首先要让各端都知道它们自己的网络质量到底是怎样的，这就是 RTCP 的作用。</p>
+<p>各协议头字段如下，SSRC为共享媒体流的源。</p>
+<p><img src="/2019/11/04/WebRTC/RTP-protocol-header.png" alt="RTP"></p>
+<p><img src="/2019/11/04/WebRTC/RTCP-protocol-header.png" alt="RTCP"></p>
 ]]></content>
       <categories>
         <category>WebRTC</category>
