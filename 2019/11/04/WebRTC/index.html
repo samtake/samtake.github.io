@@ -61,7 +61,11 @@
 <meta property="og:description" content="WebRTC 1 对 1 音视频实时通话 即两个 WebRTC 终端（上图中的两个大方框）、一个 Signal（信令）服务器和一个 STUN&#x2F;TURN 服务器。 WebRTC 终端负责音视频采集、编解码、NAT 穿越、音视频数据传输。步骤流程如下：  获取权限（摄像头、麦克风） 本地视频的采集与展示 创建RTCPeerConnection 媒体协商 远端视频的展示  Signal 服务器负责信令处">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;webrtc1-1to1.png">
-<meta property="og:updated_time" content="2020-03-22T04:33:44.993Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;webrtc10-full-cone.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;webrtc10-ip-restricted.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;webrtc10-port-restrcted.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;webrtc10-symmetric.png">
+<meta property="og:updated_time" content="2020-03-22T09:35:17.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;webrtc1-1to1.png">
 
@@ -249,7 +253,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-22 12:33:44" itemprop="dateModified" datetime="2020-03-22T12:33:44+08:00">2020-03-22</time>
+                <time title="Modified: 2020-03-22 17:35:17" itemprop="dateModified" datetime="2020-03-22T17:35:17+08:00">2020-03-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -285,7 +289,22 @@
 <li>远端视频的展示</li>
 </ul>
 <p><code>Signal 服务器</code>负责信令处理，如加入房间、离开房间、媒体协商消息的传递等。<br><code>STUN/TURN 服务器</code>负责获取 WebRTC 终端在公网的 IP 地址，以及 NAT 穿越失败后的数据中转。</p>
+<h1 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h1><p><code>Full Cone</code> 完全锥型NAT<br>当 host 主机通过 NAT 访问外网的 B 主机时，就会在 NAT 上打个“洞”，所有知道这个“洞”的主机都可以通过它与内网主机上的侦听程序通信。<br><code>所谓的“打洞”就是在 NAT 上建立一个内外网的映射表。</code><br>大多数人都选用<code>UDP</code>作为打洞协议.</p>
+<p><img src="/2019/11/04/WebRTC/webrtc10-full-cone.png" alt></p>
+<p><code>ip restricted</code>IP 限制锥型NAT<br>host 主机在 NAT 上“打洞”后，NAT 会对穿越洞口的 IP 地址做限制。只有登记的 IP 地址才可以通过。</p>
+<p>IP 限制锥型 NAT 的映射表是一个 5 元组，即：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	内网 IP，</span><br><span class="line">	内网端口，</span><br><span class="line">	映射的外网 IP，</span><br><span class="line">	映射的外网端口，</span><br><span class="line">	被访问主机的 IP</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p><img src="/2019/11/04/WebRTC/webrtc10-ip-restricted.png" alt></p>
+<p><code>port restrected</code> 端口限制型NAT</p>
+<p>不光在 NAT 上对打洞的 IP 地址做了限制，而且还对具体的端口做了限制。因此，端口限制型 NAT 的映射表是一个 6 元组，其格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	内网 IP，</span><br><span class="line">	内网端口，</span><br><span class="line">	映射的外网 IP，</span><br><span class="line">	映射的外网端口，</span><br><span class="line">	被访问主机的 IP,</span><br><span class="line">	被访问主机的端口</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/11/04/WebRTC/webrtc10-port-restrcted.png" alt></p>
+<p><code>symmetric</code> 对成型NAT<br>host 主机访问 B 时它在 NAT 上打了一个“洞”，而这个“洞”只有 B 主机上提供服务的端口发送的数据才能穿越，这一点与端口限制型 NAT 是一致的。</p>
+<p>但它与端口限制型 NAT 最大的不同在于，如果 host 主机访问 A 时，它会在 NAT 上重新开一个“洞”，而不会使用之前访问 B 时打开的“洞”。也就是说对称型 NAT 对每个连接都使用不同的端口，甚至更换 IP 地址，而端口限制型 NAT 的多个连接则使用同一个端口，这对称型 NAT 与端口限制型 NAT 最大的不同.</p>
+<p><img src="/2019/11/04/WebRTC/webrtc10-symmetric.png" alt></p>
+<h1 id="WebRTC传输其他基本知识"><a href="#WebRTC传输其他基本知识" class="headerlink" title="WebRTC传输其他基本知识"></a>WebRTC传输其他基本知识</h1>
     </div>
 
     
@@ -350,7 +369,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WebRTC-1-对-1-音视频实时通话"><span class="nav-number">1.</span> <span class="nav-text">WebRTC 1 对 1 音视频实时通话</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WebRTC-1-对-1-音视频实时通话"><span class="nav-number">1.</span> <span class="nav-text">WebRTC 1 对 1 音视频实时通话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NAT"><span class="nav-number">2.</span> <span class="nav-text">NAT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WebRTC传输其他基本知识"><span class="nav-number">3.</span> <span class="nav-text">WebRTC传输其他基本知识</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
