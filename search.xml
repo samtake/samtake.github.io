@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>FFmpeg（三）</title>
+    <url>/2020/03/23/FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89/</url>
+    <content><![CDATA[<p><a href="https://samtake.github.io/2019/11/04/FFmpeg/" target="_blank" rel="noopener">FFmpeg-安装及基本概念</a><br><a href="https://samtake.github.io/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="noopener">FFmpeg-命令</a><br><a href="https://github.com/samtake/FFmpeg-demo" target="_blank" rel="noopener">FFmpeg-demo源码地址</a><br>这里记录通过 C语言 操作FFmpeg对多媒体文件的处理</p>
+<h1 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h1><p>常用日志级别（级别由高到底排列）<br>1.AV_LOFG_ERROR<br>2.AV_LOG_WARNING<br>3.AV_LOG_INFO</p>
+<p>启用步骤</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">include &lt;libavutil/log.h&gt;</span><br><span class="line">av_log_set_level(AV_LOG_DEBUG) <span class="comment">#只有该级别以及该级别之上的日志才会打印</span></span><br><span class="line">av_log(NULL,AV_LOG_INFO,<span class="string">"hello world:%s\n"</span>,<span class="string">"op"</span> )</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) clang -g -o ffmpeg_log ffmpeg_log.c -lavutil</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./ffmpeg_log</span><br><span class="line">hello world!</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="文件的删除-amp-重命名"><a href="#文件的删除-amp-重命名" class="headerlink" title="文件的删除&amp;重命名"></a>文件的删除&amp;重命名</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o ffmpeg_del ffmpeg_file.c `pkg-config --libs libavformat`</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ pkg-config --libs libavformat  <span class="comment">#这一命令的作用时：在系统中寻找到libavformat库所在的位置</span></span><br><span class="line">-L/usr/<span class="built_in">local</span>/Cellar/ffmpeg/4.2.2_2/lib -lavformat</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>FFmpeg</category>
+      </categories>
+      <tags>
+        <tag>FFmpeg</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>FFmpeg（二）</title>
     <url>/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
     <content><![CDATA[<p>接着<a href="https://samtake.github.io/2019/11/04/FFmpeg/" target="_blank" rel="noopener">FFmpeg这一篇</a>，这里记录FFmpeg的命令。</p>

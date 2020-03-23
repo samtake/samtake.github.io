@@ -52,14 +52,18 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="samtake">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;lightworks&#x2F;index.html">
+  <meta name="description" content="FFmpeg-安装及基本概念FFmpeg-命令FFmpeg-demo源码地址这里记录通过 C语言 操作FFmpeg对多媒体文件的处理 Log常用日志级别（级别由高到底排列）1.AV_LOFG_ERROR2.AV_LOG_WARNING3.AV_LOG_INFO 启用步骤 123include &amp;lt;libavutil&#x2F;log.h&amp;gt;av_log_set_level(AV_LOG_DEBUG)">
+<meta name="keywords" content="FFmpeg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FFmpeg（三）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;23&#x2F;FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
+<meta property="og:description" content="FFmpeg-安装及基本概念FFmpeg-命令FFmpeg-demo源码地址这里记录通过 C语言 操作FFmpeg对多媒体文件的处理 Log常用日志级别（级别由高到底排列）1.AV_LOFG_ERROR2.AV_LOG_WARNING3.AV_LOG_INFO 启用步骤 123include &amp;lt;libavutil&#x2F;log.h&amp;gt;av_log_set_level(AV_LOG_DEBUG)">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-03-23T11:03:30.083Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/tags/lightworks/">
+<link rel="canonical" href="http://yoursite.com/2020/03/23/FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -67,13 +71,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Tag: lightworks | samtake</title>
+  <title>FFmpeg（三） | samtake</title>
   
 
 
@@ -208,50 +212,103 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">lightworks
-          <small>Tag</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/23/FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          FFmpeg（三）
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-23 17:57:25 / Modified: 19:03:30" itemprop="dateCreated datePublished" datetime="2020-03-23T17:57:25+08:00">2020-03-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
+                    <span itemprop="name">FFmpeg</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
+        <p><a href="https://samtake.github.io/2019/11/04/FFmpeg/" target="_blank" rel="noopener">FFmpeg-安装及基本概念</a><br><a href="https://samtake.github.io/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="noopener">FFmpeg-命令</a><br><a href="https://github.com/samtake/FFmpeg-demo" target="_blank" rel="noopener">FFmpeg-demo源码地址</a><br>这里记录通过 C语言 操作FFmpeg对多媒体文件的处理</p>
+<h1 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h1><p>常用日志级别（级别由高到底排列）<br>1.AV_LOFG_ERROR<br>2.AV_LOG_WARNING<br>3.AV_LOG_INFO</p>
+<p>启用步骤</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">include &lt;libavutil/log.h&gt;</span><br><span class="line">av_log_set_level(AV_LOG_DEBUG) <span class="comment">#只有该级别以及该级别之上的日志才会打印</span></span><br><span class="line">av_log(NULL,AV_LOG_INFO,<span class="string">"hello world:%s\n"</span>,<span class="string">"op"</span> )</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) clang -g -o ffmpeg_log ffmpeg_log.c -lavutil</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./ffmpeg_log</span><br><span class="line">hello world!</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="文件的删除-amp-重命名"><a href="#文件的删除-amp-重命名" class="headerlink" title="文件的删除&amp;重命名"></a>文件的删除&amp;重命名</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o ffmpeg_del ffmpeg_file.c `pkg-config --libs libavformat`</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ pkg-config --libs libavformat  <span class="comment">#这一命令的作用时：在系统中寻找到libavformat库所在的位置</span></span><br><span class="line">-L/usr/<span class="built_in">local</span>/Cellar/ffmpeg/4.2.2_2/lib -lavformat</span><br></pre></td></tr></table></figure>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-15T18:42:28+08:00"
-              content="2020-03-15">
-          03-15
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FFmpeg/" rel="tag"># FFmpeg</a>
+          </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/15/lightworks%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/" itemprop="url">
-            <span itemprop="name">lightworks视频剪辑软件基本操作教程</span>
-          </a>
-      </h2>
+        
 
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="next" title="FFmpeg（二）">
+                  <i class="fa fa-chevron-left"></i> FFmpeg（二）
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -280,6 +337,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Log"><span class="nav-number">1.</span> <span class="nav-text">Log</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件的删除-amp-重命名"><span class="nav-number">2.</span> <span class="nav-text">文件的删除&amp;重命名</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
