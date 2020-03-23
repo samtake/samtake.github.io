@@ -69,7 +69,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;turn-demo.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;RTP-protocol-header.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;RTCP-protocol-header.png">
-<meta property="og:updated_time" content="2020-03-22T15:00:18.838Z">
+<meta property="og:updated_time" content="2020-03-22T15:20:48.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;WebRTC&#x2F;webrtc1-1to1.png">
 
@@ -257,7 +257,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-22 23:00:18" itemprop="dateModified" datetime="2020-03-22T23:00:18+08:00">2020-03-22</time>
+                <time title="Modified: 2020-03-22 23:20:48" itemprop="dateModified" datetime="2020-03-22T23:20:48+08:00">2020-03-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -345,6 +345,9 @@
 <li>对Candidate Pair 排序</li>
 <li>连通性检查</li>
 </ul>
+<p>什么是 Candidate?<br>它表示 WebRTC 与远端通信时使用的协议、IP 地址和端口，一般由以下字段组成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	IP: xxx.xxx.xxx.xxx,</span><br><span class="line">	port: number,</span><br><span class="line">	<span class="built_in">type</span>: host/srflx/relay,</span><br><span class="line">	priority: number,</span><br><span class="line">	protocol: UDP/TCP,</span><br><span class="line">	usernameFragment: string</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，候选者类型中的 host 表示本机候选者，srflx 表示内网主机映射的外网的地址和端口，relay 表示中继候选者。</p>
 <h1 id="SDP"><a href="#SDP" class="headerlink" title="SDP"></a>SDP</h1><p><code>SDP</code>session description protocol，它是一种信息格式的描述标准，本身不属于传输协议，但是可以被其他传输协议用来交换必要的信息。</p>
 <h1 id="RTP-RTCP"><a href="#RTP-RTCP" class="headerlink" title="RTP/RTCP"></a>RTP/RTCP</h1><p> 一般情况下，在实时互动直播系统传输音视频数据流时，我们并不直接将音视频数据流交给 UDP 传输，而是先给音视频数据加个 RTP 头，然后再交给 UDP 进行传输。</p>
 <p>在使用 RTP 包传输数据时，难免会发生丢包、乱序、抖动等问题，但在处理这些问题之前，它首先要让各端都知道它们自己的网络质量到底是怎样的，这就是 RTCP 的作用。</p>
