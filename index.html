@@ -213,6 +213,63 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">FFmpeg（二）</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-23 08:48:46" itemprop="dateCreated datePublished" datetime="2020-03-23T08:48:46+08:00">2020-03-23</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/22/WebRTC%EF%BC%88%E4%BA%8C%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -238,7 +295,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-03-22 20:58:37 / Modified: 23:19:29" itemprop="dateCreated datePublished" datetime="2020-03-22T20:58:37+08:00">2020-03-22</time>
+              <time title="Created: 2020-03-22 20:58:37 / Modified: 23:20:45" itemprop="dateCreated datePublished" datetime="2020-03-22T20:58:37+08:00">2020-03-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1472,87 +1529,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/19/Traefik/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/19/Traefik/" class="post-title-link" itemprop="url">Traefik</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-19 19:02:51 / Modified: 21:25:55" itemprop="dateCreated datePublished" datetime="2020-02-19T19:02:51+08:00">2020-02-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Traefik/" itemprop="url" rel="index">
-                    <span itemprop="name">Traefik</span>
-                  </a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Traefik/Docker/" itemprop="url" rel="index">
-                    <span itemprop="name">Docker</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>相对nginx，基于容器的微服务反向代理利器<a href="https://github.com/containous/traefik" target="_blank" rel="noopener">Traefik</a>支持动态的配置反向代理.</p>
-<p><img src="/2020/02/19/Traefik/traefik-architecture.png" alt></p>
-<p>如上图左侧公网域名可以通过Traefik监听API动态地转发到右侧的内网服务实例（例如backoffice1服务）。或者说是动态的路由转发。</p>
-<p><code>frontend</code>用于控制访问的路由规则，支持单个规则及正则匹配。<br><code>backend</code>用于匹配一组服务实例，通过轮询方式来选择转发的目标。</p>
-<h3 id="基于Docker-compose与Traefik1-x的容器化部署"><a href="#基于Docker-compose与Traefik1-x的容器化部署" class="headerlink" title="基于Docker-compose与Traefik1.x的容器化部署"></a>基于Docker-compose与Traefik1.x的容器化部署</h3><p>具体参考service_dc和traefik_dc<br><img src="/2020/02/19/Traefik/Traefik-setting.png" alt></p>
-<h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p>|<br>暂<br>|<br>无<br>|</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1603,7 +1579,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

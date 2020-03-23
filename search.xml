@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>FFmpeg（二）</title>
+    <url>/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>WebRTC（二）</title>
     <url>/2020/03/22/WebRTC%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在<a href="https://samtake.github.io/2019/11/04/WebRTC/" target="_blank" rel="noopener">前一篇</a>有对WebRTC以及用到的协议做了一些简单介绍。</p>
@@ -785,8 +790,8 @@
         <category>RPC</category>
       </categories>
       <tags>
-        <tag>微服务</tag>
         <tag>RPC</tag>
+        <tag>微服务</tag>
       </tags>
   </entry>
   <entry>
@@ -1063,8 +1068,8 @@
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>Gin</tag>
         <tag>Golang</tag>
+        <tag>Gin</tag>
       </tags>
   </entry>
   <entry>
@@ -1759,7 +1764,7 @@
   <entry>
     <title>FFmpeg</title>
     <url>/2019/11/04/FFmpeg/</url>
-    <content><![CDATA[<h1 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h1><p><a href="http://ffmpeg.org/download.html" target="_blank" rel="noopener">FFmpeg</a>是一个音视频进行处理库，提供了如 ffmpeg, ffplay, ffprobe，来编辑你的音视频文件。</p>
+    <content><![CDATA[<h1 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h1><p><a href="http://ffmpeg.org/download.html" target="_blank" rel="noopener">FFmpeg</a>是一个音视频处理库，提供了如 ffmpeg, ffplay, ffprobe，来编辑你的音视频文件。</p>
 <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>源码安装</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  GitHub git <span class="built_in">clone</span> https://git.ffmpeg.org/ffmpeg.git ffmpeg</span><br><span class="line">Cloning into <span class="string">'ffmpeg'</span>...</span><br><span class="line">remote: Counting objects: 588505, <span class="keyword">done</span>.</span><br><span class="line">remote: Compressing objects: 100% (120835/120835), <span class="keyword">done</span>.</span><br><span class="line">remote: Total 588505 (delta 471727), reused 581424 (delta 466456)</span><br><span class="line">Receiving objects: 100% (588505/588505), 138.43 MiB | 2.74 MiB/s, <span class="keyword">done</span>.</span><br><span class="line">Resolving deltas: 100% (471727/471727), <span class="keyword">done</span>.</span><br><span class="line">Checking out files: 100% (7264/7264), <span class="keyword">done</span>.</span><br><span class="line">➜  GitHub <span class="built_in">cd</span> ffmpeg </span><br><span class="line">➜  ffmpeg git:(master) ls</span><br><span class="line">CONTRIBUTING.md  LICENSE.md       ffbuild          libpostproc</span><br><span class="line">COPYING.GPLv2    MAINTAINERS      fftools          libswresample</span><br><span class="line">COPYING.GPLv3    Makefile         libavcodec       libswscale</span><br><span class="line">COPYING.LGPLv2.1 README.md        libavdevice      presets</span><br><span class="line">COPYING.LGPLv3   RELEASE          libavfilter      tests</span><br><span class="line">CREDITS          compat           libavformat      tools</span><br><span class="line">Changelog        configure        libavresample</span><br><span class="line">INSTALL.md       doc              libavutil</span><br><span class="line">➜  ffmpeg git:(master) ./configure --<span class="built_in">help</span></span><br><span class="line">➜  ffmpeg git:(master) ./configure --<span class="built_in">help</span> | more </span><br><span class="line">Usage: configure [options]</span><br><span class="line">Options: [defaults <span class="keyword">in</span> brackets after descriptions]</span><br><span class="line"></span><br><span class="line">➜  ffmpeg git:(master) ./configure --prefix=/usr/<span class="built_in">local</span>/ffmpeg --<span class="built_in">enable</span>-gpl  --<span class="built_in">enable</span>-nonfree  --<span class="built_in">enable</span>-libfdk-aac  --<span class="built_in">enable</span>-libx264   --<span class="built_in">enable</span>-libx265  --<span class="built_in">enable</span>-filter=delogo  --<span class="built_in">enable</span>-debug  --<span class="built_in">disable</span>-optimizations --<span class="built_in">enable</span>-libspeex  --<span class="built_in">enable</span>-videotoolbox  --<span class="built_in">enable</span>-shared  --<span class="built_in">enable</span>-pthreads  --<span class="built_in">enable</span>-version3  --<span class="built_in">enable</span>-hardcoded-tables --cc=clang --host-cflags=  --host-ldflags=</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">报错、报错、报错、报错、</span><br><span class="line">nasm/yasm not found or too old. Use --<span class="built_in">disable</span>-x86asm <span class="keyword">for</span> a crippled build.</span><br><span class="line">ERROR: libfdk_aac not found</span><br><span class="line">ERROR: speex not found using pkg-config</span><br><span class="line">ERROR: libx264 not found</span><br><span class="line"></span><br><span class="line">前面三种都可以通过brew install来解决，但是libx264怎么搞都拉不下。。。</span><br></pre></td></tr></table></figure>
 
