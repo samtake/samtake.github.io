@@ -42,9 +42,71 @@
 <p>3.ffmpeg如何获取SPS/PPS？<br>codec-&gt;extradata</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clang -g -o extr_video  extr_video.c `pkg-config --libs libavutil libavformat`</span><br><span class="line">./extr_video ./test.mp4  test.h264</span><br><span class="line">ffplay test.h264</span><br></pre></td></tr></table></figure>
 
-<h1 id="mp4转flv"><a href="#mp4转flv" class="headerlink" title="mp4转flv"></a>mp4转flv</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clang -g -o remuxing  remuxing.c `pkg-config --libs  libavformat`</span><br><span class="line">./remuxing ./test.mp4 test.flv</span><br></pre></td></tr></table></figure>
+<h1 id="mp4转flv"><a href="#mp4转flv" class="headerlink" title="mp4转flv"></a>mp4转flv</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">avformat_alloc_output_context2/avformat_free_context</span><br><span class="line"></span><br><span class="line">avformat_new_stream</span><br><span class="line"></span><br><span class="line">avcodec_parameters_copy</span><br><span class="line"></span><br><span class="line">avformat_write_header  <span class="comment">#头</span></span><br><span class="line"></span><br><span class="line">av_interleaved_write_frame  <span class="comment">#头数据</span></span><br><span class="line"></span><br><span class="line">av_write_trailer   <span class="comment">#尾</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="音视频裁剪"><a href="#音视频裁剪" class="headerlink" title="音视频裁剪"></a>音视频裁剪</h1>]]></content>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clang -g -o remuxing  remuxing.c `pkg-config --libs  libavformat`</span><br><span class="line">./remuxing ./test.mp4 test.flv   </span><br><span class="line">ffplay  test.flv</span><br></pre></td></tr></table></figure>
+
+<h1 id="音视频裁剪"><a href="#音视频裁剪" class="headerlink" title="音视频裁剪"></a>音视频裁剪</h1><p>av_seek_frame</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clang -g -o cutvideo  cutvideo.c `pkg-config --libs  libavformat  libavcodec`</span><br><span class="line">./cutvideo  10  20  ./test.mp4 cutvideo.mp4</span><br><span class="line">ffplay cutvideo.mp4</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="FFmpeg编解码概括"><a href="#FFmpeg编解码概括" class="headerlink" title="FFmpeg编解码概括"></a>FFmpeg编解码概括</h1><p>类型：</p>
+<ul>
+<li>H264解码</li>
+<li>H264编码</li>
+<li>AAC解码</li>
+<li>AAC编码</li>
+</ul>
+<p>用到的头文件：</p>
+<ul>
+<li>libavcodec/avcodec.h</li>
+</ul>
+<p>用到的结构体：</p>
+<ul>
+<li>AVCodec编解码结构体</li>
+<li>AVCodecContext 编解码器上下文</li>
+<li>AVFrame 解码后的帧</li>
+</ul>
+<p>结构体内存的分配和释放API：</p>
+<ul>
+<li>av_frame_alloc/av_frame_free()</li>
+<li>avcodec_alloc_context3()</li>
+<li>avcodec_free_context()</li>
+</ul>
+<p>解码步骤：</p>
+<ul>
+<li><code>avcodec_find_decoder</code>查找解码器</li>
+<li><code>avcodec_open2</code>打开解码器</li>
+<li><code>avcodec_decode_video2</code>解码，得到RGB或者YUV数据</li>
+</ul>
+<h1 id="H264编码"><a href="#H264编码" class="headerlink" title="H264编码"></a>H264编码</h1><p>步骤：</p>
+<ul>
+<li><code>avcodec_find_encoder_by_name</code>查看编码器</li>
+<li><code>avcodec_open2</code>设置编码参数，并打开编码器</li>
+<li><code>avcodec_encode_video2</code>编码</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o encode_video  encode_video.c `pkg-config --libs  libavcodec` </span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./encode_video  </span><br><span class="line">Usage: ./encode_video &lt;output file&gt; &lt;codec name&gt;</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./encode_video  encode_video.h264 libx264</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ffplay encode_video.h264</span><br></pre></td></tr></table></figure>
+
+<h1 id="视频转图片"><a href="#视频转图片" class="headerlink" title="视频转图片"></a>视频转图片</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o decode_video  decode_video.c `pkg-config --libs  libavformat libavutil libavcodec libswscale`</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./decode_video ./test.mp4 ./</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="AAC编码"><a href="#AAC编码" class="headerlink" title="AAC编码"></a>AAC编码</h1><p>avcodec_encodec_audio2</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clang -g -o encode_audio encode_audio.c `pkg-config --libs libavcodec`</span><br><span class="line">./encode_audio encode_audio.aac</span><br><span class="line">ffplay  encode_audio.aac</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
       <categories>
         <category>FFmpeg</category>
       </categories>
