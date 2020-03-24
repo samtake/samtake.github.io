@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>FFmpeg（六）</title>
+    <url>/2020/03/24/FFmpeg%EF%BC%88%E5%85%AD%EF%BC%89/</url>
+    <content><![CDATA[<p>如何在IOS下使用FFmpeg？</p>
+]]></content>
+      <categories>
+        <category>FFmpeg</category>
+      </categories>
+      <tags>
+        <tag>FFmpeg</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>FFmpeg（五）</title>
     <url>/2020/03/24/FFmpeg%EF%BC%88%E4%BA%94%EF%BC%89/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>FFmpeg与SDL结合，实现多媒体播放器，内容有：多线程与锁， 锁与条件变量在实际中的应用，音视频同步，seek等。</p>
+]]></content>
       <categories>
         <category>FFmpeg</category>
       </categories>
