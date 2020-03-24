@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>FFmpeg（四）</title>
+    <url>/2020/03/24/FFmpeg%EF%BC%88%E5%9B%9B%EF%BC%89/</url>
+    <content><![CDATA[<p><a href="https://samtake.github.io/2019/11/04/FFmpeg/" target="_blank" rel="noopener">FFmpeg-安装及基本概念</a><br><a href="https://samtake.github.io/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="noopener">FFmpeg-命令</a><br><a href="https://samtake.github.io/2020/03/23/FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89/" target="_blank" rel="noopener">通过 C语言 操作FFmpeg对多媒体文件的处理</a></p>
+<h1 id="SDL简介"><a href="#SDL简介" class="headerlink" title="SDL简介"></a>SDL简介</h1><p><a href="http://libsdl.org/download-2.0.php" target="_blank" rel="noopener">SDL</a>可以对音视频进行渲染，这里主要部分有：安装SDL、使用SDL的基本步骤、SDL窗口渲染、SDL事件处理、SDL彻底理解纹理渲染。</p>
+<h1 id="安装SDL"><a href="#安装SDL" class="headerlink" title="安装SDL"></a>安装SDL</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ brew info SDl2</span><br><span class="line">➜  ~ brew info SDl2</span><br><span class="line">SDl2: stable 2.0.10 (bottled), HEAD</span><br><span class="line">Low-level access to audio, keyboard, mouse, joystick, and graphics</span><br><span class="line">https://www.libsdl.org/</span><br><span class="line">/usr/<span class="built_in">local</span>/Cellar/SDl2/2.0.10 (87 files, 4.6MB)</span><br><span class="line">  Poured from bottle on 2020-03-24 at 14:13:57</span><br><span class="line">From: git://mirrors.ustc.edu.cn/homebrew-core.git//Formula/sdl2.rb</span><br><span class="line">==&gt; Options</span><br><span class="line">--HEAD</span><br><span class="line">	Install HEAD version</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="使用SDL的基本步骤"><a href="#使用SDL的基本步骤" class="headerlink" title="使用SDL的基本步骤"></a>使用SDL的基本步骤</h1><h1 id="SDL窗口渲染"><a href="#SDL窗口渲染" class="headerlink" title="SDL窗口渲染"></a>SDL窗口渲染</h1><h1 id="SDL事件处理"><a href="#SDL事件处理" class="headerlink" title="SDL事件处理"></a>SDL事件处理</h1><h1 id="SDL彻底理解纹理渲染"><a href="#SDL彻底理解纹理渲染" class="headerlink" title="SDL彻底理解纹理渲染"></a>SDL彻底理解纹理渲染</h1>]]></content>
+  </entry>
+  <entry>
     <title>FFmpeg（三）</title>
     <url>/2020/03/23/FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89/</url>
     <content><![CDATA[<p><a href="https://samtake.github.io/2019/11/04/FFmpeg/" target="_blank" rel="noopener">FFmpeg-安装及基本概念</a><br><a href="https://samtake.github.io/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="noopener">FFmpeg-命令</a><br><a href="https://github.com/samtake/FFmpeg-demo" target="_blank" rel="noopener">FFmpeg-demo源码地址</a><br>这里记录通过 C语言 操作FFmpeg对多媒体文件的处理</p>
