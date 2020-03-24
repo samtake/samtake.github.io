@@ -3,7 +3,13 @@
   <entry>
     <title>FFmpeg（六）</title>
     <url>/2020/03/24/FFmpeg%EF%BC%88%E5%85%AD%EF%BC%89/</url>
-    <content><![CDATA[<p>如何在IOS下使用FFmpeg？</p>
+    <content><![CDATA[<h1 id="通过FFmpeg源码使用脚本编译出可以在iOS下使用的SDK"><a href="#通过FFmpeg源码使用脚本编译出可以在iOS下使用的SDK" class="headerlink" title="通过FFmpeg源码使用脚本编译出可以在iOS下使用的SDK"></a>通过FFmpeg源码使用脚本编译出可以在iOS下使用的SDK</h1><p>具体脚本链接：<a href="https://github.com/kewlbear/FFmpeg-iOS-build-script" target="_blank" rel="noopener">FFmpeg-iOS-build-script</a></p>
+<ul>
+<li>在FFmpeg源码的上一级目录添加<code>build-ffmpeg.sh</code>文件</li>
+<li>命令行执行：<code>./build-ffmpeg.sh</code></li>
+<li>如果无执行权限的话执行：<code>chmod 777 ./build-ffmpeg.sh</code></li>
+<li>注意：打包上传到商店时使用的SDK只需要真机的</li>
+</ul>
 ]]></content>
       <categories>
         <category>FFmpeg</category>
