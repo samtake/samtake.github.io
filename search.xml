@@ -31,7 +31,20 @@
 <p>av_read_frame/av_packet_unref</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clang -g -o extr_audio  extr_audio.c `pkg-config --libs libavutil libavformat`</span><br><span class="line">./extr_audio  ./test.mp4  ./test.aac  </span><br><span class="line">ffplay test.aac</span><br></pre></td></tr></table></figure>
 
-<h1 id="抽取多媒体中的H264视频数据"><a href="#抽取多媒体中的H264视频数据" class="headerlink" title="抽取多媒体中的H264视频数据"></a>抽取多媒体中的H264视频数据</h1>]]></content>
+<h1 id="抽取多媒体中的H264视频数据"><a href="#抽取多媒体中的H264视频数据" class="headerlink" title="抽取多媒体中的H264视频数据"></a>抽取多媒体中的H264视频数据</h1><p>先要知道的三点：<br>1.将多媒体中的H264视频数据抽取后，它其实是由一帧一帧压缩后的视频帧组成的，如何区分这一帧一帧的视频帧呢？两种方法：</p>
+<ul>
+<li>在每一帧的长度前面加一个真的长度，当读取第一帧的时候先读取这一帧的长度，根据这一帧的长度在读取帧的数据长度，依次下去。。。</li>
+<li>在每一帧的前面加关键字（特征码），只要遇到特征码就知道这一帧开始了，上一帧结束了。</li>
+</ul>
+<p>2.SPS/PPS（它只有几个字节，不会增加网络负担）<br>解码的视频参数，以及视频帧的宽高（也就是常说的视频分辨率），等等都是存在于SPS/PPS。</p>
+<p>视频播放时，每次切换分辨率都要更新SPS/PPS。</p>
+<p>而在视频直播时，在每个关键帧里面都会有一个SPS/PPS。</p>
+<p>3.ffmpeg如何获取SPS/PPS？<br>codec-&gt;extradata</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clang -g -o extr_video  extr_video.c `pkg-config --libs libavutil libavformat`</span><br><span class="line">./extr_video ./test.mp4  test.h264</span><br><span class="line">ffplay test.h264</span><br></pre></td></tr></table></figure>
+
+<h1 id="mp4转flv"><a href="#mp4转flv" class="headerlink" title="mp4转flv"></a>mp4转flv</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clang -g -o remuxing  remuxing.c `pkg-config --libs  libavformat`</span><br><span class="line">./remuxing ./test.mp4 test.flv</span><br></pre></td></tr></table></figure>
+
+<h1 id="音视频裁剪"><a href="#音视频裁剪" class="headerlink" title="音视频裁剪"></a>音视频裁剪</h1>]]></content>
       <categories>
         <category>FFmpeg</category>
       </categories>

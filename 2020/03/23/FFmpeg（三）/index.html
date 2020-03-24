@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="samtake">
 <meta property="og:description" content="FFmpeg-安装及基本概念FFmpeg-命令FFmpeg-demo源码地址这里记录通过 C语言 操作FFmpeg对多媒体文件的处理 Log常用日志级别（级别由高到底排列）1.AV_LOFG_ERROR2.AV_LOG_WARNING3.AV_LOG_INFO 启用步骤 123include &amp;lt;libavutil&#x2F;log.h&amp;gt;av_log_set_level(AV_LOG_DEBUG)">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-24T02:04:05.042Z">
+<meta property="og:updated_time" content="2020-03-24T03:15:06.602Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/03/23/FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89/">
@@ -247,7 +247,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-24 10:04:05" itemprop="dateModified" datetime="2020-03-24T10:04:05+08:00">2020-03-24</time>
+                <time title="Modified: 2020-03-24 11:15:06" itemprop="dateModified" datetime="2020-03-24T11:15:06+08:00">2020-03-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -300,7 +300,20 @@
 <p>av_read_frame/av_packet_unref</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o extr_audio  extr_audio.c `pkg-config --libs libavutil libavformat`</span><br><span class="line">./extr_audio  ./test.mp4  ./test.aac  </span><br><span class="line">ffplay test.aac</span><br></pre></td></tr></table></figure>
 
-<h1 id="抽取多媒体中的H264视频数据"><a href="#抽取多媒体中的H264视频数据" class="headerlink" title="抽取多媒体中的H264视频数据"></a>抽取多媒体中的H264视频数据</h1>
+<h1 id="抽取多媒体中的H264视频数据"><a href="#抽取多媒体中的H264视频数据" class="headerlink" title="抽取多媒体中的H264视频数据"></a>抽取多媒体中的H264视频数据</h1><p>先要知道的三点：<br>1.将多媒体中的H264视频数据抽取后，它其实是由一帧一帧压缩后的视频帧组成的，如何区分这一帧一帧的视频帧呢？两种方法：</p>
+<ul>
+<li>在每一帧的长度前面加一个真的长度，当读取第一帧的时候先读取这一帧的长度，根据这一帧的长度在读取帧的数据长度，依次下去。。。</li>
+<li>在每一帧的前面加关键字（特征码），只要遇到特征码就知道这一帧开始了，上一帧结束了。</li>
+</ul>
+<p>2.SPS/PPS（它只有几个字节，不会增加网络负担）<br>解码的视频参数，以及视频帧的宽高（也就是常说的视频分辨率），等等都是存在于SPS/PPS。</p>
+<p>视频播放时，每次切换分辨率都要更新SPS/PPS。</p>
+<p>而在视频直播时，在每个关键帧里面都会有一个SPS/PPS。</p>
+<p>3.ffmpeg如何获取SPS/PPS？<br>codec-&gt;extradata</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o extr_video  extr_video.c `pkg-config --libs libavutil libavformat`</span><br><span class="line">./extr_video ./test.mp4  test.h264</span><br><span class="line">ffplay test.h264</span><br></pre></td></tr></table></figure>
+
+<h1 id="mp4转flv"><a href="#mp4转flv" class="headerlink" title="mp4转flv"></a>mp4转flv</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o remuxing  remuxing.c `pkg-config --libs  libavformat`</span><br><span class="line">./remuxing ./test.mp4 test.flv</span><br></pre></td></tr></table></figure>
+
+<h1 id="音视频裁剪"><a href="#音视频裁剪" class="headerlink" title="音视频裁剪"></a>音视频裁剪</h1>
     </div>
 
     
@@ -362,7 +375,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Log"><span class="nav-number">1.</span> <span class="nav-text">Log</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件的删除-amp-重命名"><span class="nav-number">2.</span> <span class="nav-text">文件的删除&amp;重命名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作目录"><span class="nav-number">3.</span> <span class="nav-text">操作目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打印音视频meta信息"><span class="nav-number">4.</span> <span class="nav-text">打印音视频meta信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抽取多媒体中的音频数据"><span class="nav-number">5.</span> <span class="nav-text">抽取多媒体中的音频数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抽取多媒体中的H264视频数据"><span class="nav-number">6.</span> <span class="nav-text">抽取多媒体中的H264视频数据</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Log"><span class="nav-number">1.</span> <span class="nav-text">Log</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件的删除-amp-重命名"><span class="nav-number">2.</span> <span class="nav-text">文件的删除&amp;重命名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作目录"><span class="nav-number">3.</span> <span class="nav-text">操作目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打印音视频meta信息"><span class="nav-number">4.</span> <span class="nav-text">打印音视频meta信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抽取多媒体中的音频数据"><span class="nav-number">5.</span> <span class="nav-text">抽取多媒体中的音频数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抽取多媒体中的H264视频数据"><span class="nav-number">6.</span> <span class="nav-text">抽取多媒体中的H264视频数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mp4转flv"><span class="nav-number">7.</span> <span class="nav-text">mp4转flv</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#音视频裁剪"><span class="nav-number">8.</span> <span class="nav-text">音视频裁剪</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
