@@ -2328,7 +2328,6 @@ ffplay</code></p>
 <li>通过按引用传参，允许被调函数直接访问主调函数中的数据，允许被调函数有选择的修改主调函数中的数据。</li>
 <li>引用实参是其对应的函数调用中实参的别名。</li>
 <li>通过<code>&amp;</code>来标记按引用传参</li>
-<li></li>
 </ul>
 <p>引用以和引用形参</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int squareByValue(int number)&#123;</span><br><span class="line">    <span class="built_in">return</span> number *=number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void squareByReference(int &amp;numberRef)&#123;</span><br><span class="line">    numberRef *=numberRef;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2405,42 +2404,40 @@ ffplay</code></p>
 <li>用于在创建该类对象时初始化该对象。</li>
 <li>是一个特殊的成员函数，它的名字必须与类名相同。</li>
 <li>不能有返回值。</li>
-<li>通常声明为<code>public</code><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class GradeBookConstructor&#123;</span><br><span class="line">    </span><br><span class="line">public:</span><br><span class="line">    </span><br><span class="line">    GradeBookConstructor(string name)&#123;</span><br><span class="line">        setCourseName(name);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void setCourseName(string name)&#123;</span><br><span class="line">        courseName = name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    string <span class="function"><span class="title">getCourseName</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span> courseName;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void <span class="function"><span class="title">displayMessage</span></span>()&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"course  name: "</span>&lt;&lt; getCourseName() &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //定义一个有参成员函数</span><br><span class="line">    void displayMessageWithParms(string courseName)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"grade book"</span>&lt;&lt; courseName &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">private:</span><br><span class="line">    string courseName;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">funcTestGradeBookConstructor</span></span>()&#123;</span><br><span class="line">    GradeBookConstructor myGradeBookConstructor1(<span class="string">"Constructor"</span>);</span><br><span class="line">    GradeBookConstructor myGradeBookConstructor2(<span class="string">"构造函数"</span>);</span><br><span class="line">    </span><br><span class="line">    myGradeBookConstructor1.displayMessage();</span><br><span class="line">    myGradeBookConstructor2.displayMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-输出<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">course  name: Constructor</span><br><span class="line">course  name: 构造函数</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
-
-
-</li>
+<li>通常声明为<code>public</code></li>
 </ul>
-<h1 id="用set函数验证数据"><a href="#用set函数验证数据" class="headerlink" title="用set函数验证数据"></a>用set函数验证数据</h1><ul>
-<li>我们在<code>.h</code>文件中进行类的定义，并包含指定指定类的接口（类的<code>public</code>成员函数）的函数原形。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class VertifyWithSetFunc &#123;</span><br><span class="line">    //instance variables</span><br><span class="line">    </span><br><span class="line">public:</span><br><span class="line">    </span><br><span class="line">    VertifyWithSetFunc(string);</span><br><span class="line">    </span><br><span class="line">    void setCourseName(string);</span><br><span class="line">    string getCourseName();</span><br><span class="line">    </span><br><span class="line">    void displayMessage();</span><br><span class="line">    </span><br><span class="line">private:</span><br><span class="line">    string courseName;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
-<li>在单独的源码文件中定义成员函数：每个成员函数名前面都有类名与二院作用域运算符<code>::</code>，这将每个成员函数绑定到声明成员函数与数据成员的VertifyWithSetFunc类定义上。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">VertifyWithSetFunc::VertifyWithSetFunc(string name)&#123;</span><br><span class="line">    setCourseName(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>我们知道可以通过<code>set</code>函数，可以修改<code>private</code>数据成员的值。这里我们要做的是在<code>set</code>函数进行值得判断。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void VertifyWithSetFunc::setCourseName(string name)&#123;</span><br><span class="line">    <span class="keyword">if</span> (name.length() &lt;= 10) &#123;</span><br><span class="line">        courseName = name ;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (name.length() &gt; 10) &#123;</span><br><span class="line">        courseName = name.substr(0, 10);</span><br><span class="line">        cout&lt;&lt; <span class="string">"name is long than 10 :"</span>&lt;&lt; name &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class GradeBookConstructor&#123;</span><br><span class="line">    </span><br><span class="line">public:</span><br><span class="line">    </span><br><span class="line">    GradeBookConstructor(string name)&#123;</span><br><span class="line">        setCourseName(name);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void setCourseName(string name)&#123;</span><br><span class="line">        courseName = name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    string <span class="function"><span class="title">getCourseName</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span> courseName;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void <span class="function"><span class="title">displayMessage</span></span>()&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"course  name: "</span>&lt;&lt; getCourseName() &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //定义一个有参成员函数</span><br><span class="line">    void displayMessageWithParms(string courseName)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"grade book"</span>&lt;&lt; courseName &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">private:</span><br><span class="line">    string courseName;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">funcTestGradeBookConstructor</span></span>()&#123;</span><br><span class="line">    GradeBookConstructor myGradeBookConstructor1(<span class="string">"Constructor"</span>);</span><br><span class="line">    GradeBookConstructor myGradeBookConstructor2(<span class="string">"构造函数"</span>);</span><br><span class="line">    </span><br><span class="line">    myGradeBookConstructor1.displayMessage();</span><br><span class="line">    myGradeBookConstructor2.displayMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
+
+<p>输出</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">course  name: Constructor</span><br><span class="line">course  name: 构造函数</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="用set函数验证数据"><a href="#用set函数验证数据" class="headerlink" title="用set函数验证数据"></a>用set函数验证数据</h1><p>我们在<code>.h</code>文件中进行类的定义，并包含指定指定类的接口（类的<code>public</code>成员函数）的函数原形。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class VertifyWithSetFunc &#123;</span><br><span class="line">    //instance variables</span><br><span class="line">    </span><br><span class="line">public:</span><br><span class="line">    </span><br><span class="line">    VertifyWithSetFunc(string);</span><br><span class="line">    </span><br><span class="line">    void setCourseName(string);</span><br><span class="line">    string getCourseName();</span><br><span class="line">    </span><br><span class="line">    void displayMessage();</span><br><span class="line">    </span><br><span class="line">private:</span><br><span class="line">    string courseName;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在单独的源码文件中定义成员函数：每个成员函数名前面都有类名与二院作用域运算符<code>::</code>，这将每个成员函数绑定到声明成员函数与数据成员的VertifyWithSetFunc类定义上。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">VertifyWithSetFunc::VertifyWithSetFunc(string name)&#123;</span><br><span class="line">    setCourseName(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们知道可以通过<code>set</code>函数，可以修改<code>private</code>数据成员的值。这里我们要做的是在<code>set</code>函数进行值得判断。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void VertifyWithSetFunc::setCourseName(string name)&#123;</span><br><span class="line">    <span class="keyword">if</span> (name.length() &lt;= 10) &#123;</span><br><span class="line">        courseName = name ;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (name.length() &gt; 10) &#123;</span><br><span class="line">        courseName = name.substr(0, 10);</span><br><span class="line">        cout&lt;&lt; <span class="string">"name is long than 10 :"</span>&lt;&lt; name &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>输出</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">name is long than 10 :test2test2test2test2test2test2test2test2test2test2</span><br><span class="line">vertify1: test1</span><br><span class="line">vertify2: test2test2</span><br></pre></td></tr></table></figure>
 
 
 <h1 id="访问成员函数的三种方式"><a href="#访问成员函数的三种方式" class="headerlink" title="访问成员函数的三种方式"></a>访问成员函数的三种方式</h1><p>访问成员函数的三种方式:</p>
-<ul>
-<li>对象名<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Count counter;</span><br><span class="line">counter.setX(1);</span><br><span class="line">cout &lt;&lt; <span class="string">"counter.setX(1);"</span> ;</span><br><span class="line">counter.print();</span><br></pre></td></tr></table></figure>
+<p>对象名</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Count counter;</span><br><span class="line">counter.setX(1);</span><br><span class="line">cout &lt;&lt; <span class="string">"counter.setX(1);"</span> ;</span><br><span class="line">counter.print();</span><br></pre></td></tr></table></figure>
 
 
 
-</li>
-</ul>
-<ul>
-<li>指向对象的指针<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Count *counterPtr = &amp;counter;</span><br><span class="line">counterPtr-&gt;setX(2);</span><br><span class="line">cout &lt;&lt; <span class="string">"counterPtr-&gt;setX(2);"</span>;</span><br><span class="line">counterPtr-&gt;<span class="built_in">print</span>();</span><br></pre></td></tr></table></figure>
+<p>指向对象的指针</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Count *counterPtr = &amp;counter;</span><br><span class="line">counterPtr-&gt;setX(2);</span><br><span class="line">cout &lt;&lt; <span class="string">"counterPtr-&gt;setX(2);"</span>;</span><br><span class="line">counterPtr-&gt;<span class="built_in">print</span>();</span><br></pre></td></tr></table></figure>
 
+<p>对象的引用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Count &amp;counterRef = counter;</span><br><span class="line">counterRef.setX(3);</span><br><span class="line">cout &lt;&lt; <span class="string">"counterRef.setX(3);"</span>;</span><br><span class="line">counterRef.print();</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<ul>
-<li>对象的引用<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Count &amp;counterRef = counter;</span><br><span class="line">counterRef.setX(3);</span><br><span class="line">cout &lt;&lt; <span class="string">"counterRef.setX(3);"</span>;</span><br><span class="line">counterRef.print();</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
 <p>输出</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">counter.setX(1);1</span><br><span class="line">counterPtr-&gt;setX(2);2</span><br><span class="line">counterRef.setX(3);3</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
 
