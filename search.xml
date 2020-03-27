@@ -6,7 +6,7 @@
     <content><![CDATA[<p><img src="/2020/03/27/OpenGL/opengl-book.jpeg" alt="opengl-book.jpeg"></p>
 <p>啃书了！这本书买了很久都没看完，也忘的差不多了。现在试着用简洁的语言记录学习过程。</p>
 <h1 id="什么是OpenGL"><a href="#什么是OpenGL" class="headerlink" title="什么是OpenGL?"></a>什么是OpenGL?</h1><p>OpenGL是一种可以对图形进行访问的软件库。它的接口与硬件无关，自身不包含任何执行窗口任务或者处理用户输入的函数（这些操作我们需要系统提供的接口来实现）。</p>
-<h1 id="通过OpenGL渲染图像的主要操作"><a href="#通过OpenGL渲染图像的主要操作" class="headerlink" title="通过OpenGL渲染图像的主要操作"></a>通过OpenGL渲染图像的主要操作</h1><ul>
+<h1 id="通过OpenGL渲染图像的主要操作-详细参考：渲染管线流程"><a href="#通过OpenGL渲染图像的主要操作-详细参考：渲染管线流程" class="headerlink" title="通过OpenGL渲染图像的主要操作(详细参考：渲染管线流程)"></a>通过OpenGL渲染图像的主要操作(详细参考：渲染管线流程)</h1><ul>
 <li>设置数据，构建形状</li>
 <li>着色器</li>
 <li>光栅栏化，产生每个片元</li>
