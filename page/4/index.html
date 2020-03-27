@@ -497,7 +497,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-27 12:15:22" itemprop="dateModified" datetime="2020-03-27T12:15:22+08:00">2020-03-27</time>
+                <time title="Modified: 2020-03-27 12:26:14" itemprop="dateModified" datetime="2020-03-27T12:26:14+08:00">2020-03-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -525,25 +525,25 @@
           <h1 id="Vue初体验"><a href="#Vue初体验" class="headerlink" title="Vue初体验"></a>Vue初体验</h1><p><a href="https://cn.vuejs.org/index.html" target="_blank" rel="noopener">Vue官网</a></p>
 <p>在教程安装里给出了多种引入方式，具体<a href="[教程安装]（https://cn.vuejs.org/v2/guide/installation.html）">点击这里</a></p>
 <h2 id="直接-lt-script-gt-引入"><a href="#直接-lt-script-gt-引入" class="headerlink" title="直接&lt;/script&gt;引入"></a>直接<code>&lt;/script&gt;</code>引入</h2><p>在编辑器上输入html回车，这时候就会自动补全以下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    </span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span> dir=<span class="string">"ltr"</span>&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    </span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <p>引入 Vue</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&gt;</span><br><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&gt;</span><br><span class="line">&lt;script src=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p> 在页面输出hello Vue,用浏览器打开文件并检验效果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;hello Vue&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;hello Vue&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
 <p>可以之后我们改造源文件让它与Vue产生关联：new 一个Vue实例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">      el: &apos;#app&apos;,  //挂载到指定节点上</span><br><span class="line">      data: &#123;</span><br><span class="line">        message: &apos;Hello Vue!&apos;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">      el: <span class="string">'#app'</span>,  //挂载到指定节点上</span><br><span class="line">      data: &#123;</span><br><span class="line">        message: <span class="string">'Hello Vue!'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>所挂载的节点需要添加一个id</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;&#123;&#123; message &#125;&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;&#123;&#123; message &#125;&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
 <p>最终源码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;&#123;&#123; message &#125;&#125;&lt;/div&gt;</span><br><span class="line">  &lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&gt;</span><br><span class="line">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">      el: &apos;#app&apos;,  //挂载到指定节点上</span><br><span class="line">      data: &#123;</span><br><span class="line">        message: &apos;Hello Vue!&apos;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span> dir=<span class="string">"ltr"</span>&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;&#123;&#123; message &#125;&#125;&lt;/div&gt;</span><br><span class="line">  &lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&gt;</span><br><span class="line">  &lt;script src=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">      el: <span class="string">'#app'</span>,  //挂载到指定节点上</span><br><span class="line">      data: &#123;</span><br><span class="line">        message: <span class="string">'Hello Vue!'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>此时用浏览器打开即可见到显示Hello Vue!</p>
 <p>参考官方demo <a href="https://scrimba.com/p/pXKqta/cQ3QVcr" target="_blank" rel="noopener">链接</a></p>
 <h2 id="添加方法"><a href="#添加方法" class="headerlink" title="添加方法"></a>添加方法</h2><p>添加显示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;addMethod&quot;&gt;</span><br><span class="line">      &lt;input type=&quot;text&quot; name=&quot;&quot; value=&quot;&quot; v-model=&quot;info&quot;&gt;</span><br><span class="line">      &lt;button type=&quot;button&quot; name=&quot;button&quot; @click=&quot;handleClick&quot;&gt;add&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"addMethod"</span>&gt;</span><br><span class="line">      &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">""</span> value=<span class="string">""</span> v-model=<span class="string">"info"</span>&gt;</span><br><span class="line">      &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"button"</span> @click=<span class="string">"handleClick"</span>&gt;add&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
 <p>其中</p>
 <ul>
@@ -553,230 +553,271 @@
 <li>console.log(this.info) 打印信息，如何查看打印输出：浏览器-右键-检查-Console</li>
 <li>handleClick方法生命在methods对象里面</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &#123;&#123; message &#125;&#125;</span><br><span class="line">    &lt;div class=&quot;addMethod&quot;&gt;</span><br><span class="line">      &lt;input type=&quot;text&quot; name=&quot;&quot; value=&quot;&quot; v-model=&quot;info&quot;&gt;</span><br><span class="line">      &lt;button type=&quot;button&quot; name=&quot;button&quot; @click=&quot;handleClick&quot;&gt;add&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li v-for=&quot;item in list&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&gt;</span><br><span class="line">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">      el: &apos;#app&apos;,  //挂载到指定节点上</span><br><span class="line">      data: &#123;</span><br><span class="line">        message: &apos;Hello Vue!&apos;,</span><br><span class="line">        info: &apos;&apos;,</span><br><span class="line">        list:[],</span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line">        handleClick()&#123;</span><br><span class="line">          //console</span><br><span class="line">          this.list.push(this.info)</span><br><span class="line">          this.info = &apos;&apos;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span> dir=<span class="string">"ltr"</span>&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &#123;&#123; message &#125;&#125;</span><br><span class="line">    &lt;div class=<span class="string">"addMethod"</span>&gt;</span><br><span class="line">      &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">""</span> value=<span class="string">""</span> v-model=<span class="string">"info"</span>&gt;</span><br><span class="line">      &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"button"</span> @click=<span class="string">"handleClick"</span>&gt;add&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li v-for=<span class="string">"item in list"</span>&gt;&#123;&#123;item&#125;&#125;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&gt;</span><br><span class="line">  &lt;script src=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">      el: <span class="string">'#app'</span>,  //挂载到指定节点上</span><br><span class="line">      data: &#123;</span><br><span class="line">        message: <span class="string">'Hello Vue!'</span>,</span><br><span class="line">        info: <span class="string">''</span>,</span><br><span class="line">        list:[],</span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line">        <span class="function"><span class="title">handleClick</span></span>()&#123;</span><br><span class="line">          //console</span><br><span class="line">          this.list.push(this.info)</span><br><span class="line">          this.info = <span class="string">''</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <h2 id="使用自定义组件"><a href="#使用自定义组件" class="headerlink" title="使用自定义组件"></a>使用自定义组件</h2><p>定义名为 todo-item 的新组件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&apos;todo-item&apos;,&#123;</span><br><span class="line">      props:[&apos;item&apos;],</span><br><span class="line">      template: &apos;&lt;li class=&quot;item&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/li&gt;&apos;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'todo-item'</span>,&#123;</span><br><span class="line">      props:[<span class="string">'item'</span>],</span><br><span class="line">      template: <span class="string">'&lt;li class="item"&gt;&#123;&#123;item&#125;&#125;&lt;/li&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>创建一个 todo-item 组件的实例，并传递属性值 <code>v-bind:item=&quot;item&quot;</code>或者简写成<code>:item=&quot;item&quot;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;todo-item v-for=&quot;item in list&quot; :item=&quot;item&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/todo-item&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;todo-item v-for=<span class="string">"item in list"</span> :item=<span class="string">"item"</span>&gt;&#123;&#123;item&#125;&#125;&lt;/todo-item&gt;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">    &lt;style media=&quot;screen&quot;&gt;</span><br><span class="line">      .item &#123;</span><br><span class="line">        color:red;</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &#123;&#123; message &#125;&#125;</span><br><span class="line">    &lt;div class=&quot;addMethod&quot;&gt;</span><br><span class="line">      &lt;input type=&quot;text&quot; name=&quot;&quot; value=&quot;&quot; v-model=&quot;info&quot;&gt;</span><br><span class="line">      &lt;button type=&quot;button&quot; name=&quot;button&quot; @click=&quot;handleClick&quot;&gt;add&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;todo-item v-for=&quot;item in list&quot; :item=&quot;item&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/todo-item&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&gt;</span><br><span class="line">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    Vue.component(&apos;todo-item&apos;,&#123;</span><br><span class="line">      props:[&apos;item&apos;],</span><br><span class="line">      template: &apos;&lt;li class=&quot;item&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/li&gt;&apos;</span><br><span class="line">    &#125;)</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">      el: &apos;#app&apos;,  //挂载到指定节点上</span><br><span class="line">      data: &#123;</span><br><span class="line">        message: &apos;Hello Vue!&apos;,</span><br><span class="line">        info: &apos;&apos;,</span><br><span class="line">        list:[],</span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line">        handleClick()&#123;</span><br><span class="line">          console.log(this.info)</span><br><span class="line">          this.list.push(this.info)//往list数组添加数据</span><br><span class="line">          this.info = &apos;&apos;//每次点击add的同时，清空输入框</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span> dir=<span class="string">"ltr"</span>&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">    &lt;style media=<span class="string">"screen"</span>&gt;</span><br><span class="line">      .item &#123;</span><br><span class="line">        color:red;</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &#123;&#123; message &#125;&#125;</span><br><span class="line">    &lt;div class=<span class="string">"addMethod"</span>&gt;</span><br><span class="line">      &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">""</span> value=<span class="string">""</span> v-model=<span class="string">"info"</span>&gt;</span><br><span class="line">      &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"button"</span> @click=<span class="string">"handleClick"</span>&gt;add&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;todo-item v-for=<span class="string">"item in list"</span> :item=<span class="string">"item"</span>&gt;&#123;&#123;item&#125;&#125;&lt;/todo-item&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&gt;</span><br><span class="line">  &lt;script src=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    Vue.component(<span class="string">'todo-item'</span>,&#123;</span><br><span class="line">      props:[<span class="string">'item'</span>],</span><br><span class="line">      template: <span class="string">'&lt;li class="item"&gt;&#123;&#123;item&#125;&#125;&lt;/li&gt;'</span></span><br><span class="line">    &#125;)</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">      el: <span class="string">'#app'</span>,  //挂载到指定节点上</span><br><span class="line">      data: &#123;</span><br><span class="line">        message: <span class="string">'Hello Vue!'</span>,</span><br><span class="line">        info: <span class="string">''</span>,</span><br><span class="line">        list:[],</span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line">        <span class="function"><span class="title">handleClick</span></span>()&#123;</span><br><span class="line">          console.log(this.info)</span><br><span class="line">          this.list.push(this.info)//往list数组添加数据</span><br><span class="line">          this.info = <span class="string">''</span>//每次点击add的同时，清空输入框</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <p>以上操作有几个缺点</p>
 <ul>
-<li>全局定义：强制要求每个component中的命名不得重复</li>
+<li>全局定义：强制要求每个<code>component</code>中的命名不得重复</li>
 <li>字符串模版：缺乏语法高亮，在html有多行的时候，需要用\</li>
 <li>不支持CSS：意味着当html和JavaScript组件化时，CSS明显被遗漏</li>
 <li>没有构建步骤：限制只能用html和ES5 JavaScript,而不能使用预处理器，如Pug(formerly Jade)和Babel，即每次都需要手动在浏览器上刷新，没有自动热更新。</li>
 </ul>
 <h2 id="npm安装"><a href="#npm安装" class="headerlink" title="npm安装"></a>npm安装</h2><p>安装Vue</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue</span><br></pre></td></tr></table></figure>
 
 <p>安装命令行工具 (CLI)<a href="https://cli.vuejs.org/zh/guide/installation.html" target="_blank" rel="noopener">Vue CLI</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
 
 <p>出现安装问题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm WARN deprecated joi@14.3.1: This module has moved and is now available at @hapi/joi. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues.</span><br><span class="line">npm WARN deprecated topo@3.0.3: This module has moved and is now available at @hapi/topo. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues.</span><br><span class="line">npm WARN deprecated hoek@6.1.3: This module has moved and is now available at @hapi/hoek. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues.</span><br><span class="line">npm WARN deprecated cross-spawn-async@2.2.5: cross-spawn no longer requires a build toolchain, use it instead</span><br><span class="line">npm ERR! Unexpected end of JSON input while parsing near &apos;...TGOVzYcDOP1jLScCp0ACN&apos;</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found in:</span><br><span class="line">npm ERR!     /Users/sam/.npm/_logs/2019-04-29T01_23_19_163Z-debug.log</span><br></pre></td></tr></table></figure>
-<p>清楚一下缓存</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm cache clean --force</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm WARN deprecated joi@14.3.1: This module has moved and is now available at @hapi/joi. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues.</span><br><span class="line">npm WARN deprecated topo@3.0.3: This module has moved and is now available at @hapi/topo. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues.</span><br><span class="line">npm WARN deprecated hoek@6.1.3: This module has moved and is now available at @hapi/hoek. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues.</span><br><span class="line">npm WARN deprecated cross-spawn-async@2.2.5: cross-spawn no longer requires a build toolchain, use it instead</span><br><span class="line">npm ERR! Unexpected end of JSON input <span class="keyword">while</span> parsing near <span class="string">'...TGOVzYcDOP1jLScCp0ACN'</span></span><br><span class="line"></span><br><span class="line">npm ERR! A complete <span class="built_in">log</span> of this run can be found <span class="keyword">in</span>:</span><br><span class="line">npm ERR!     /Users/sam/.npm/_logs/2019-04-29T01_23_19_163Z-debug.log</span><br></pre></td></tr></table></figure>
+
+<p>清楚一下缓存<code>npm cache clean --force</code></p>
 <p>运行<code>vue --version</code>出现版本信息则说明安装成功</p>
-<p>创建新项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create my-app</span><br></pre></td></tr></table></figure>
-
-
+<p>创建新项目<code>vue create my-app</code></p>
 <p>使用默认安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Vue CLI v3.7.0</span><br><span class="line">? Please pick a preset: (Use arrow keys)</span><br><span class="line">❯ default (babel, eslint)</span><br><span class="line">  Manually select features</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Vue CLI v3.7.0</span><br><span class="line">? Please pick a preset: (Use arrow keys)</span><br><span class="line">❯ default (babel, eslint)</span><br><span class="line">  Manually select features</span><br></pre></td></tr></table></figure>
 
 
 <p>启动项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd my-app</span><br><span class="line">npm run serve</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> my-app</span><br><span class="line">npm run serve</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&gt; my-app@0.1.0 serve /Users/sam/Documents/studyUp/my-app</span><br><span class="line">&gt; vue-cli-service serve</span><br><span class="line"></span><br><span class="line"> INFO  Starting development server...</span><br><span class="line"> 98% after emitting CopyPlugin                                                .</span><br><span class="line"> DONE  Compiled successfully in 6412ms                               上午9:53:14</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  App running at:</span><br><span class="line">  - Local:   http://localhost:8080/</span><br><span class="line">  - Network: http://192.168.43.116:8080/</span><br><span class="line"></span><br><span class="line">  Note that the development build is not optimized.</span><br><span class="line">  To create a production build, run npm run build.</span><br><span class="line">```  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">打开localhost:8080即可见到效果。</span><br><span class="line"></span><br><span class="line">![image.png](https://upload-images.jianshu.io/upload_images/3850802-8fcdd44c56b23d35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">其中</span><br><span class="line"></span><br><span class="line">1 	node_modules 整个项目的依赖</span><br><span class="line"></span><br><span class="line">2	pubic ico 图标</span><br><span class="line"></span><br><span class="line">3	pubic index.html 整个项目的载体&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;  跟上面👆直接`&lt;/script&gt;`引入的div一样</span><br><span class="line"></span><br><span class="line">4	src 整个项目的源代码</span><br><span class="line"></span><br><span class="line">5	Main.js  项目入口文件</span><br><span class="line"></span><br><span class="line">6	babel.config.js  babel配置</span><br><span class="line"></span><br><span class="line">7	package.json 依赖包版本</span><br><span class="line"></span><br><span class="line">8	说明</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">将上面的直接&lt;/script&gt;引入的demo改成单文件形式👇三个模块独立</span><br><span class="line"></span><br><span class="line">- 模版 template</span><br><span class="line">- 逻辑 script</span><br><span class="line">- 样式 style</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;样式作用域只在该文件内有效</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">在App.vue文件的模版中替换`div`内容,新建主件TodoItem.vue,在App.vue引入并使用</span><br></pre></td></tr></table></figure>
-<template>
-  <li class="item"></li>
-</template>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&gt; my-app@0.1.0 serve /Users/sam/Documents/studyUp/my-app</span><br><span class="line">&gt; vue-cli-service serve</span><br><span class="line"></span><br><span class="line"> INFO  Starting development server...</span><br><span class="line"> 98% after emitting CopyPlugin                                                .</span><br><span class="line"> DONE  Compiled successfully <span class="keyword">in</span> 6412ms                               上午9:53:14</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  App running at:</span><br><span class="line">  - Local:   http://localhost:8080/</span><br><span class="line">  - Network: http://192.168.43.116:8080/</span><br><span class="line"></span><br><span class="line">  Note that the development build is not optimized.</span><br><span class="line">  To create a production build, run npm run build.</span><br><span class="line">```  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">打开localhost:8080即可见到效果。</span><br><span class="line"></span><br><span class="line">![image.png](https://upload-images.jianshu.io/upload_images/3850802-8fcdd44c56b23d35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">其中</span><br><span class="line"></span><br><span class="line">1 	node_modules 整个项目的依赖</span><br><span class="line"></span><br><span class="line">2	pubic ico 图标</span><br><span class="line"></span><br><span class="line">3	pubic index.html 整个项目的载体&lt;div id=<span class="string">"app"</span>&gt;&lt;/div&gt;  跟上面👆直接`&lt;/script&gt;`引入的div一样</span><br><span class="line"></span><br><span class="line">4	src 整个项目的源代码</span><br><span class="line"></span><br><span class="line">5	Main.js  项目入口文件</span><br><span class="line"></span><br><span class="line">6	babel.config.js  babel配置</span><br><span class="line"></span><br><span class="line">7	package.json 依赖包版本</span><br><span class="line"></span><br><span class="line">8	说明</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">将上面的直接&lt;/script&gt;引入的demo改成单文件形式👇三个模块独立</span><br><span class="line"></span><br><span class="line">- 模版 template</span><br><span class="line">- 逻辑 script</span><br><span class="line">- 样式 style</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;样式作用域只在该文件内有效</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">在App.vue文件的模版中替换`div`内容,新建主件TodoItem.vue,在App.vue引入并使用</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;li class=<span class="string">"item"</span>&gt;&#123;&#123;item&#125;&#125;&lt;/li&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  props: [<span class="string">'item'</span>],</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.item &#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 
-<script>
-export default {
-  props: ['item'],
-}
-</script>
 
-<style scoped>
-.item {
-    color: red;
-}
-</style>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<template>
-  <div id="app">
-    
-    <div class="addMethod">
-      <input type="text" name value v-model="info">
-      <button type="button" name="button" @click="handleClick">add</button>
-    </div>
-    <ul>
-      <todo-item v-for="item in list" :key="item" :item="item"></todo-item>
-    </ul>
-  </div>
-</template>
 
-<script>
-import TodoItem from './components/TodoItem.vue' //引入TodoItem
-export default {
-  name: 'app',
-  data() {
-    return {
-        message: 'hello vue',
-        info: '',
-        list: [],
-    }
-  },
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &#123;&#123; message &#125;&#125;</span><br><span class="line">    &lt;div class=<span class="string">"addMethod"</span>&gt;</span><br><span class="line">      &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">""</span> value=<span class="string">""</span> v-model=<span class="string">"info"</span>&gt;</span><br><span class="line">      &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"button"</span> @click=<span class="string">"handleClick"</span>&gt;add&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;todo-item v-for=<span class="string">"item in list"</span> :key=<span class="string">"item"</span> :item=<span class="string">"item"</span>&gt;&#123;&#123;item&#125;&#125;&lt;/todo-item&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import TodoItem from <span class="string">'./components/TodoItem.vue'</span> //引入TodoItem</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">'app'</span>,</span><br><span class="line">  <span class="function"><span class="title">data</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">        message: <span class="string">'hello vue'</span>,</span><br><span class="line">        info: <span class="string">''</span>,</span><br><span class="line">        list: [],</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    <span class="function"><span class="title">handleClick</span></span>() &#123;</span><br><span class="line">        this.list.push(this.info)</span><br><span class="line">        this.info = <span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  components: &#123;</span><br><span class="line">    TodoItem,       //注册TodoItem</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 
-  methods: {
-    handleClick() {
-        this.list.push(this.info)
-        this.info = ''
-    }
-  },
 
-  components: {
-    TodoItem,       //注册TodoItem
-  }
 
-}
-</script>
 
-<style>
-</style>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;todo-item v-for=<span class="string">"item in list"</span> :key=<span class="string">"item"</span> :item=<span class="string">"item"</span>&gt;&#123;&#123;item&#125;&#125;&lt;/todo-item&gt;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><todo-item v-for="item in list" :key="item" :item="item"></todo-item></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">上面👆是通过属性来传递item，下面👇改成插槽的方式</span><br></pre></td></tr></table></figure>
-<p><span style="font-size:20px"></span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">此时解析由`&lt;li class=&quot;item&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/li&gt;`改成</span><br></pre></td></tr></table></figure>
-<li class="item">
-  <slot></slot>
+<p>上面👆是通过属性来传递item，下面👇改成插槽的方式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span style=<span class="string">"font-size:20px"</span>&gt;&#123;&#123;item&#125;&#125;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>此时解析由<code>&lt;li class=&quot;item&quot;&gt;&lt;/li&gt;</code>改成</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;li class=<span class="string">"item"</span>&gt;</span><br><span class="line">  &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+
+<p>或者给插槽一个名字(具名插槽)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;todo-item v-for=<span class="string">"item in list"</span> :key=<span class="string">"item"</span>&gt;</span><br><span class="line">	&lt;template id=<span class="string">""</span> v-slot:item &gt;</span><br><span class="line">   		&lt;span style=<span class="string">"font-size:20px"</span>&gt;&#123;&#123;item&#125;&#125;&lt;/span&gt;</span><br><span class="line">   &lt;/template&gt;</span><br><span class="line">&lt;/todo-item&gt;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;li class=<span class="string">"item"</span>&gt;</span><br><span class="line">    &lt;slot name=<span class="string">"item"</span>&gt;&lt;/slot&gt;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>作用域插槽(使用场景：由子控件传递值给父控件，供父控件使用修改显示，选中由红变蓝)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;todo-item v-for=<span class="string">"item in list"</span> :key=<span class="string">"item"</span>&gt;</span><br><span class="line">   &lt;template id=<span class="string">""</span> v-slot:item=<span class="string">"itemProps"</span>&gt; 获取checked的值</span><br><span class="line">      &lt;span :style=<span class="string">"&#123;fontSize:'20px', color: itemProps.checked ? 'red' : 'blue' &#125;"</span>&gt;&#123;&#123;item&#125;&#125;&lt;/span&gt;</span><br><span class="line">   &lt;/template&gt;</span><br><span class="line">&lt;/todo-item&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;li class=<span class="string">"item"</span>&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> v-model=<span class="string">"checked"</span>&gt;</span><br><span class="line">    &lt;slot name=<span class="string">"item"</span>  v-bind=<span class="string">"&#123;&#123;checked&#125;&#125;"</span>&gt;&lt;/slot&gt; //将checked 传递出去</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>动手复制代码跑来看看效果吧 👇👇👇👇👇👇👇👇👇</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;li class=<span class="string">"item"</span>&gt;</span><br><span class="line">    &lt;input  <span class="built_in">type</span>=<span class="string">"checkbox"</span> v-model=<span class="string">"checked"</span>&gt;</span><br><span class="line">    &lt;slot name=<span class="string">"item"</span>  v-bind=<span class="string">"&#123;checked&#125;"</span>&gt;&lt;/slot&gt;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  props: [<span class="string">'item'</span>],</span><br><span class="line">  <span class="function"><span class="title">data</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      checked:<span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.item &#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &#123;&#123; message &#125;&#125;</span><br><span class="line">    &lt;div class=<span class="string">"addMethod"</span>&gt;</span><br><span class="line">      &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">""</span> value=<span class="string">""</span> v-model=<span class="string">"info"</span>&gt;</span><br><span class="line">      &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"button"</span> @click=<span class="string">"handleClick"</span>&gt;add&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;todo-item v-for=<span class="string">"item in list"</span> :key=<span class="string">"item"</span>&gt;</span><br><span class="line">        &lt;template id=<span class="string">""</span> v-slot:item=<span class="string">"itemProps"</span>&gt;</span><br><span class="line">          &lt;span :style=<span class="string">"&#123;fontSize:'20px', color: itemProps.checked ? 'red' : 'blue' &#125;"</span>&gt;&#123;&#123;item&#125;&#125;&lt;/span&gt;</span><br><span class="line">        &lt;/template&gt;</span><br><span class="line">      &lt;/todo-item&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import TodoItem from <span class="string">'./components/TodoItem.vue'</span> //引入TodoItem</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">'app'</span>,</span><br><span class="line">  <span class="function"><span class="title">data</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">        message: <span class="string">'hello vue'</span>,</span><br><span class="line">        info: <span class="string">''</span>,</span><br><span class="line">        list: [],</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    <span class="function"><span class="title">handleClick</span></span>() &#123;</span><br><span class="line">        this.list.push(this.info)</span><br><span class="line">        this.info = <span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  components: &#123;</span><br><span class="line">    TodoItem,       //注册TodoItem</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p>atom插件安装依次点击：atom-prefencence-install</p>
+<ul>
+<li>vue-autocomplete</li>
+<li>atom-beautify  代码格式键美化(control+command+b)</li>
+<li>atom-ternjs     js补全</li>
+<li>emmet            自定义代码块</li>
+<li>file-icons</li>
+<li>highlight-selected    选择某段代码自动高亮相同代码</li>
+<li>language-vue    vue语法</li>
+</ul>
+<h1 id="关于组件"><a href="#关于组件" class="headerlink" title="关于组件"></a>关于组件</h1><p>在Vue中,组件:小型的，一个个独立，可以复用的UI模块。它有三大概念：属性、事件、插槽</p>
+<p>属性</p>
+<ul>
+<li>自定义属性props<ul>
+<li>组件props中声明的属性</li>
+</ul>
 </li>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">或者给插槽一个名字(具名插槽)</span><br></pre></td></tr></table></figure>
-<todo-item v-for="item in list" :key="item">
-    <template id v-slot:item>
-           <span style="font-size:20px"></span>
-   </template>
-</todo-item>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<template>
-  <li class="item">
-    <slot name="item"></slot>
-  </li>
-</template>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">作用域插槽(使用场景：由子控件传递值给父控件，供父控件使用修改显示，选中由红变蓝)</span><br></pre></td></tr></table></figure>
-<todo-item v-for="item in list" :key="item">
-   <template id v-slot:item="itemProps"> 获取checked的值
-      <span :style="{fontSize:'20px', color: itemProps.checked ? 'red' : 'blue' }"></span>
-   </template>
-</todo-item>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<template>
-  <li class="item">
-    <input type="checkbox" v-model="checked">
-    <slot name="item" v-bind></slot> //将checked 传递出去
-  </li>
-</template>
+<li>原生属性attrs<ul>
+<li>没有生命的属性，默认自动挂载到组件根元素上</li>
+<li>设置inheritAttrs 为false可以关闭自动挂载    </li>
+</ul>
+</li>
+<li>特殊属性 class、style<ul>
+<li>挂载到组件根元素上</li>
+<li>支持字符串、对象、数组等多种语法</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    name: &#123;&#123; name &#125;&#125;</span><br><span class="line">    &lt;br /&gt;</span><br><span class="line">    <span class="built_in">type</span>: &#123;&#123; <span class="built_in">type</span> &#125;&#125;</span><br><span class="line">    &lt;br /&gt;</span><br><span class="line">    list: &#123;&#123; list &#125;&#125;</span><br><span class="line">    &lt;br /&gt;</span><br><span class="line">    isVisible: &#123;&#123; isVisible &#125;&#125;</span><br><span class="line">    &lt;br /&gt;</span><br><span class="line">    &lt;button @click=<span class="string">"handleClick"</span>&gt;change <span class="built_in">type</span>&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">"PropsDemo"</span>,</span><br><span class="line">  // inheritAttrs: <span class="literal">false</span>,</span><br><span class="line">  // props: [<span class="string">'name'</span>, <span class="string">'type'</span>, <span class="string">'list'</span>, <span class="string">'isVisible'</span>],</span><br><span class="line">  props: &#123;</span><br><span class="line">    name: String,</span><br><span class="line">    <span class="built_in">type</span>: &#123;</span><br><span class="line">      validator: <span class="keyword">function</span>(value) &#123;</span><br><span class="line">        // 这个值必须匹配下列字符串中的一个</span><br><span class="line">        <span class="built_in">return</span> [<span class="string">"success"</span>, <span class="string">"warning"</span>, <span class="string">"danger"</span>].includes(value);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    list: &#123;</span><br><span class="line">      <span class="built_in">type</span>: Array,</span><br><span class="line">      // 对象或数组默认值必须从一个工厂函数获取</span><br><span class="line">      default: () =&gt; []</span><br><span class="line">    &#125;,</span><br><span class="line">    isVisible: &#123;</span><br><span class="line">      <span class="built_in">type</span>: Boolean,</span><br><span class="line">      default: <span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    onChange: &#123;</span><br><span class="line">      <span class="built_in">type</span>: Function,</span><br><span class="line">      default: () =&gt; &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    <span class="function"><span class="title">handleClick</span></span>() &#123;</span><br><span class="line">      // 不要这么做、不要这么做、不要这么做</span><br><span class="line">      // this.type = <span class="string">"warning"</span>;</span><br><span class="line">      // 可以，还可以更好</span><br><span class="line">      this.onChange(this.type === <span class="string">"success"</span> ? <span class="string">"warning"</span> : <span class="string">"success"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">动手复制代码跑来看看效果吧 👇👇👇👇👇👇👇👇👇</span><br></pre></td></tr></table></figure>
-<template>
-  <li class="item">
-    <input type="checkbox" v-model="checked">
-    <slot name="item" v-bind="{checked}"></slot>
-  </li>
-</template>
 
-<script>
-export default {
-  props: ['item'],
-  data() {
-    return {
-      checked:false
-    }
-  }
-}
-</script>
 
-<style scoped>
-.item {
-    color: red;
-}
-</style>
+<p>事件</p>
+<ul>
+<li><p>普通时间</p>
+<ul>
+<li>@click,@input,@change,@xxx等事件</li>
+<li>通过this.$emit(‘xxx’,…)触发    </li>
+</ul>
+</li>
+<li><p>修饰符事件</p>
+<ul>
+<li>@input.trim,@click.stop,@submit.prevent 等</li>
+<li>一般用于原生html元素，自定义组件需要自行开发支持</li>
+</ul>
+</li>
+</ul>
+<pre><code class="bash">&lt;template&gt;
+  &lt;div&gt;
+    name: {{ name || "--" }}
+    &lt;br /&gt;
+    &lt;input :value=<span class="string">"name"</span> @change=<span class="string">"handleChange"</span> /&gt;
+    &lt;br /&gt;
+    &lt;br /&gt;
+    &lt;div @click=<span class="string">"handleDivClick"</span>&gt;
+      &lt;button @click=<span class="string">"handleClick"</span>&gt;重置成功&lt;/button&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+      &lt;button @click.stop=<span class="string">"handleClick"</span>&gt;重置失败&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<template>
-  <div id="app">
-    
-    <div class="addMethod">
-      <input type="text" name value v-model="info">
-      <button type="button" name="button" @click="handleClick">add</button>
-    </div>
-    <ul>
-      <todo-item v-for="item in list" :key="item">
-        <template id v-slot:item="itemProps">
-          <span :style="{fontSize:'20px', color: itemProps.checked ? 'red' : 'blue' }"></span>
-        </template>
-      </todo-item>
-    </ul>
-  </div>
-</template>
-
-<script>
-import TodoItem from './components/TodoItem.vue' //引入TodoItem
-export default {
-  name: 'app',
-  data() {
-    return {
-        message: 'hello vue',
-        info: '',
-        list: [],
-    }
+&lt;script&gt;
+<span class="built_in">export</span> default {
+  name: <span class="string">"EventDemo"</span>,
+  props: {
+    name: String
   },
-
   methods: {
-    handleClick() {
-        this.list.push(this.info)
-        this.info = ''
+    handleChange(e) {
+      this.<span class="variable">$emit</span>(<span class="string">"change"</span>, e.target.value);
+    },
+    <span class="function"><span class="title">handleDivClick</span></span>() {
+      this.<span class="variable">$emit</span>(<span class="string">"change"</span>, <span class="string">""</span>);
+    },
+    handleClick(e) {
+      // 都会失败
+      //e.stopPropagation();
+    }
+  }
+};
+&lt;/script&gt;</code></pre>
+<p>插槽</p>
+<ul>
+<li>普通插槽<ul>
+<li><code>&lt;template slot=&quot;xxx&quot;&gt;...&lt;/template&gt;</code></li>
+<li><code>&lt;template v-slot:xxx&gt;...&lt;/template&gt;</code></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>作用域插槽    <ul>
+<li><code>&lt;template slot=&quot;xxx&quot; slot-scope=&quot;props&quot;&gt;...&lt;/template&gt;</code></li>
+<li><code>&lt;template v-slot:xxx=&quot;props&quot;&gt;...&lt;/template&gt;</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="bash">&lt;template&gt;
+  &lt;div&gt;
+    &lt;slot /&gt;
+    &lt;slot name=<span class="string">"title"</span> /&gt;
+    &lt;slot name=<span class="string">"item"</span> v-bind=<span class="string">"{ value: 'vue' }"</span> /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+<span class="built_in">export</span> default {
+  name: <span class="string">"SlotDemo"</span>
+};
+&lt;/script&gt;</code></pre>
+<p>我们可以理解为万物皆“属性”，即它们都是父组件传递给子组件，然后子组件根据传递的内容来执行对应的行为。请看demo</p>
+<pre><code class="bash">&lt;template&gt;
+  &lt;div&gt;
+    {{ name }}
+    &lt;br /&gt;
+    &lt;button @click=<span class="string">"handleChange"</span>&gt;change name&lt;/button&gt;
+    &lt;br /&gt;
+    &lt;!-- {{ slotDefault }} --&gt;
+    &lt;VNodes :vnodes=<span class="string">"slotDefault"</span> /&gt;
+    &lt;br /&gt;
+    &lt;VNodes :vnodes=<span class="string">"slotTitle"</span> /&gt;
+    &lt;br /&gt;
+    &lt;VNodes :vnodes=<span class="string">"slotScopeItem({ value: 'vue' })"</span> /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+<span class="built_in">export</span> default {
+  name: <span class="string">"BigProps"</span>,
+  components: {
+    VNodes: {
+      functional: <span class="literal">true</span>,
+      render: (h, ctx) =&gt; ctx.props.vnodes
     }
   },
-
-  components: {
-    TodoItem,       //注册TodoItem
+  props: {
+    name: String,
+    onChange: {
+      <span class="built_in">type</span>: Function,
+      default: () =&gt; {}
+    },
+    slotDefault: Array,
+    slotTitle: Array,
+    slotScopeItem: {
+      <span class="built_in">type</span>: Function,
+      default: () =&gt; {}
+    }
+  },
+  methods: {
+    <span class="function"><span class="title">handleChange</span></span>() {
+      this.onChange(<span class="string">"Hello vue!"</span>);
+    }
   }
-
-}
-</script>
-
-<style>
-</style>
-<pre><code>atom插件安装依次点击：atom-prefencence-install
-- vue-autocomplete
-- atom-beautify  代码格式键美化(control+command+b)
-- atom-ternjs     js补全
-- emmet            自定义代码块
-- file-icons
-- highlight-selected    选择某段代码自动高亮相同代码
-- language-vue    vue语法
-
-
-
-
-
-
-
-
-
-
-
+};
+&lt;/script&gt;
 </code></pre>
+<p><a href="https://cn.vuejs.org/v2/guide/components.html" target="_blank" rel="noopener">组件基础</a></p>
+<p><a href="https://cn.vuejs.org/v2/guide/components-registration.html" target="_blank" rel="noopener">组件注册</a></p>
+<p><a href="https://cn.vuejs.org/v2/guide/components-props.html" target="_blank" rel="noopener">Prop</a></p>
+<h1 id="Vue的几个要点"><a href="#Vue的几个要点" class="headerlink" title="Vue的几个要点"></a>Vue的几个要点</h1><ul>
+<li>Vue是单向数据流，不是双向绑定</li>
+<li>Vue的双向绑定不过是语法糖</li>
+<li>Object.defineProperty是用来做响应式更新的，和双向绑定没关系</li>
+</ul>
+<p>v-model来实现双向绑定的实质是：属性的传递和事件的回调来做一个数据更新。所以说它仅仅是语法糖而已。</p>
+<p>对其他属性做双向绑定</p>
+<p><a href>如何触发组件的更新</a>
+　</p>
+<p>　<br>计算属性computed</p>
+<ul>
+<li>减少模版中的计算逻辑</li>
+<li>数据缓存</li>
+<li>以来固定的数据类型（响应式编程）</li>
+</ul>
+<p>侦听器watch中可以执行任何逻辑，如函数节流，Ajax异步获取数据，甚至操作com</p>
+<p>总之，computed能做的，watch都能做，反之则不行；能用computed的尽量用computed；</p>
+<p><a href>生命周期</a></p>
+<p>　<br>　<br><a href>函数时组件</a></p>
+<ul>
+<li>functional:true 可以将它看作一个方法</li>
+<li>无状态、无实力、没有this上下文、无生命周期</li>
+</ul>
+<p><a href>provide</a></p>
+<p><a href>inject</a></p>
+<p>获取跨层级组件实例</p>
+<p>template VS JSX</p>
+<p>　
+　</p>
+
       
     </div>
 
