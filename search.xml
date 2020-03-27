@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>OpenGL（二）</title>
+    <url>/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<p>在<a href="https://samtake.github.io/2020/03/27/OpenGL/" target="_blank" rel="noopener">上篇</a>我们停留在概念上的，现在动手写写代码。</p>
+<p>在<a href="https://www.khronos.org/opengl/wiki/Getting_Started#macOS" target="_blank" rel="noopener">OpenGL官网</a>我们可以看到这么一段话：</p>
+<blockquote>
+<p>macOS<br>Unlike other platforms, where the Operating System and OpenGL implementations are often updated separately, OpenGL updates are included as part of macOS system updates. To obtain the latest OpenGL on macOS, users should upgrade to the latest OS release, which can be found at Apple.com.</p>
+</blockquote>
+<p>换句话来说OpenGL已经集成在我们的Mac系统中，但是我们还需要一些执行窗口任务或者处理用户输入的函数，这里需要用到的库有：</p>
+<ul>
+<li>GLEW</li>
+<li><a href="https://www.glfw.org/docs/latest/quick_guide.html" target="_blank" rel="noopener">GLFW</a></li>
+<li><a href="https://glad.dav1d.de/" target="_blank" rel="noopener">GLAD</a></li>
+</ul>
+<h1 id="安装GLEW、GLEW"><a href="#安装GLEW、GLEW" class="headerlink" title="安装GLEW、GLEW"></a>安装GLEW、GLEW</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  blogs brew install glfw3</span><br><span class="line">Updating Homebrew...</span><br><span class="line">==&gt; Downloading https://homebrew.bintray.com/bottles/glfw-3.3.2.mojave.bottle.tar.gz</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring glfw-3.3.2.mojave.bottle.tar.gz</span><br><span class="line">🍺  /usr/<span class="built_in">local</span>/Cellar/glfw/3.3.2: 14 files, 492.8KB   <span class="comment">#安装位置</span></span><br><span class="line">➜  blogs brew install glew </span><br><span class="line">Updating Homebrew...</span><br><span class="line">==&gt; Downloading https://homebrew.bintray.com/bottles/glew-2.1.0_1.mojave.bottle.tar.gz</span><br><span class="line">==&gt; Downloading from https://akamai.bintray.com/66/66638564b5b9d2d915b97841ef1cc117f701c7ec34707734fa1ce11919c28</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring glew-2.1.0_1.mojave.bottle.tar.gz</span><br><span class="line">🍺  /usr/<span class="built_in">local</span>/Cellar/glew/2.1.0_1: 38 files, 3MB  <span class="comment">#安装位置</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="在Xcode配置GLEW、GLEW"><a href="#在Xcode配置GLEW、GLEW" class="headerlink" title="在Xcode配置GLEW、GLEW"></a>在Xcode配置GLEW、GLEW</h1><p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode1.png" alt="opengl2-xcode1.png"></p>
+<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode2.png" alt="opengl2-xcode2.png"></p>
+<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode3.png" alt="opengl2-xcode3.png"></p>
+<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode4.png" alt="opengl2-xcode4.png"></p>
+<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode5.png" alt="opengl2-xcode5.png"></p>
+<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode6.png" alt="opengl2-xcode6.png"></p>
+<p>添加两个dylib文件的方法时，没有在framework中搜索到这两个文件时，点击add other，然后点击shift+command+G进入<code>/usr/local</code>文件夹对应的安装路径找。</p>
+<h1 id="下载GLAD库"><a href="#下载GLAD库" class="headerlink" title="下载GLAD库"></a>下载GLAD库</h1><p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/glad1.png" alt="glad1.png"></p>
+<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/glad2.png" alt="glad2.png"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ <span class="built_in">cd</span> /Users/samtake/Downloads/glad </span><br><span class="line">➜  glad ls</span><br><span class="line">include src</span><br><span class="line">➜  glad <span class="built_in">alias</span> tree=<span class="string">"find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"</span></span><br><span class="line">➜  glad tree </span><br><span class="line">|____include</span><br><span class="line">| |____KHR</span><br><span class="line">| | |____khrplatform.h</span><br><span class="line">| |____glad</span><br><span class="line">| | |____glad.h</span><br><span class="line">|____src</span><br><span class="line">| |____glad.c</span><br><span class="line">➜  glad</span><br></pre></td></tr></table></figure>
+<p>将include文件夹中的两个文件复制到<code>/usr/local/include</code>内，然后添加<code>glad.c</code>文件到XCode工程中.</p>
+<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p>复制源码代替原有的main.cpp文件，build一下编译通过即可。</p>
+<p><a href="demo.png">demo.png</a></p>
+<p><a href="https://github.com/samtake/helloOpenGL/tree/master/%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA" target="_blank" rel="noopener">demo源码</a></p>
+]]></content>
+      <categories>
+        <category>OpenGL</category>
+      </categories>
+      <tags>
+        <tag>OpenGL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>OpenGL</title>
     <url>/2020/03/27/OpenGL/</url>
     <content><![CDATA[<p><img src="/2020/03/27/OpenGL/opengl-book.jpeg" alt="opengl-book.jpeg"></p>
@@ -1457,8 +1495,8 @@ ffplay</code></p>
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>Golang</tag>
         <tag>Gin</tag>
+        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>

@@ -213,6 +213,84 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/ElasticSearch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/11/ElasticSearch/" class="post-title-link" itemprop="url">ElasticSearch</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-11 12:15:14 / Modified: 23:21:50" itemprop="dateCreated datePublished" datetime="2019-12-11T12:15:14+08:00">2019-12-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ElasticSearch/" itemprop="url" rel="index">
+                    <span itemprop="name">ElasticSearch</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>ElasticSearch：全文搜索引擎，它可以快速存储，搜索和分析海量数据，用户包括：维基百科、Stack Overflow、GitHub</p>
+<p>特点：不需要简表，配置字段等；只需要存json的文档；</p>
+<p>通过docker安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull docker.elastic.co/elasticsearch/elasticsearch:7.5.0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 9200:9200 -p 9300:9300 -e <span class="string">"discovery.type=single-node"</span> docker.elastic.co/elasticsearch/elasticsearch:7.5.0</span><br></pre></td></tr></table></figure>
+
+<p>安装成功之后访问<code>http://localhost:9200/</code>即可见到对应信息</p>
+<p>链接参考<br><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html" target="_blank" rel="noopener">docker安装ElasticSearch</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/Golang%E4%BA%91%E5%AD%98%E5%82%A8%E5%AE%9E%E6%88%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1790,7 +1868,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

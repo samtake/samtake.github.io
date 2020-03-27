@@ -213,6 +213,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">OpenGL（二）</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-27 18:33:03 / Modified: 21:53:49" itemprop="dateCreated datePublished" datetime="2020-03-27T18:33:03+08:00">2020-03-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenGL</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在<a href="https://samtake.github.io/2020/03/27/OpenGL/" target="_blank" rel="noopener">上篇</a>我们停留在概念上的，现在动手写写代码。</p>
+<p>在<a href="https://www.khronos.org/opengl/wiki/Getting_Started#macOS" target="_blank" rel="noopener">OpenGL官网</a>我们可以看到这么一段话：</p>
+<blockquote>
+<p>macOS<br>Unlike other platforms, where the Operating System and OpenGL implementations are often updated separately, OpenGL updates are included as part of macOS system updates. To obtain the latest OpenGL on macOS, users should upgrade to the latest OS release, which can be found at Apple.com.</p>
+</blockquote>
+<p>换句话来说OpenGL已经集成在我们的Mac系统中，但是我们还需要一些执行窗口任务或者处理用户输入的函数，这里需要用到的库有：</p>
+<ul>
+<li>GLEW</li>
+<li><a href="https://www.glfw.org/docs/latest/quick_guide.html" target="_blank" rel="noopener">GLFW</a></li>
+<li><a href="https://glad.dav1d.de/" target="_blank" rel="noopener">GLAD</a></li>
+</ul>
+<h1 id="安装GLEW、GLEW"><a href="#安装GLEW、GLEW" class="headerlink" title="安装GLEW、GLEW"></a>安装GLEW、GLEW</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">➜  blogs brew install glfw3</span><br><span class="line">Updating Homebrew...</span><br><span class="line">==&gt; Downloading https://homebrew.bintray.com/bottles/glfw-3.3.2.mojave.bottle.tar.gz</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring glfw-3.3.2.mojave.bottle.tar.gz</span><br><span class="line">🍺  /usr/<span class="built_in">local</span>/Cellar/glfw/3.3.2: 14 files, 492.8KB   <span class="comment">#安装位置</span></span><br><span class="line">➜  blogs brew install glew </span><br><span class="line">Updating Homebrew...</span><br><span class="line">==&gt; Downloading https://homebrew.bintray.com/bottles/glew-2.1.0_1.mojave.bottle.tar.gz</span><br><span class="line">==&gt; Downloading from https://akamai.bintray.com/66/66638564b5b9d2d915b97841ef1cc117f701c7ec34707734fa1ce11919c28</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring glew-2.1.0_1.mojave.bottle.tar.gz</span><br><span class="line">🍺  /usr/<span class="built_in">local</span>/Cellar/glew/2.1.0_1: 38 files, 3MB  <span class="comment">#安装位置</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="在Xcode配置GLEW、GLEW"><a href="#在Xcode配置GLEW、GLEW" class="headerlink" title="在Xcode配置GLEW、GLEW"></a>在Xcode配置GLEW、GLEW</h1><p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode1.png" alt="opengl2-xcode1.png"></p>
+<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode2.png" alt="opengl2-xcode2.png"></p>
+<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode3.png" alt="opengl2-xcode3.png"></p>
+<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode4.png" alt="opengl2-xcode4.png"></p>
+<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode5.png" alt="opengl2-xcode5.png"></p>
+<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode6.png" alt="opengl2-xcode6.png"></p>
+<p>添加两个dylib文件的方法时，没有在framework中搜索到这两个文件时，点击add other，然后点击shift+command+G进入<code>/usr/local</code>文件夹对应的安装路径找。</p>
+<h1 id="下载GLAD库"><a href="#下载GLAD库" class="headerlink" title="下载GLAD库"></a>下载GLAD库</h1><p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/glad1.png" alt="glad1.png"></p>
+<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/glad2.png" alt="glad2.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ <span class="built_in">cd</span> /Users/samtake/Downloads/glad </span><br><span class="line">➜  glad ls</span><br><span class="line">include src</span><br><span class="line">➜  glad <span class="built_in">alias</span> tree=<span class="string">"find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"</span></span><br><span class="line">➜  glad tree </span><br><span class="line">|____include</span><br><span class="line">| |____KHR</span><br><span class="line">| | |____khrplatform.h</span><br><span class="line">| |____glad</span><br><span class="line">| | |____glad.h</span><br><span class="line">|____src</span><br><span class="line">| |____glad.c</span><br><span class="line">➜  glad</span><br></pre></td></tr></table></figure>
+<p>将include文件夹中的两个文件复制到<code>/usr/local/include</code>内，然后添加<code>glad.c</code>文件到XCode工程中.</p>
+<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p>复制源码代替原有的main.cpp文件，build一下编译通过即可。</p>
+<p><a href="demo.png">demo.png</a></p>
+<p><a href="https://github.com/samtake/helloOpenGL/tree/master/%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA" target="_blank" rel="noopener">demo源码</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/27/OpenGL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1266,118 +1362,6 @@ ffplay</code></p>
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/03/ant-design%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/03/ant-design%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">ant-design学习</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-03-03 17:00:13" itemprop="dateCreated datePublished" datetime="2020-03-03T17:00:13+08:00">2020-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-04 03:07:53" itemprop="dateModified" datetime="2020-03-04T03:07:53+08:00">2020-03-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ant-design/" itemprop="url" rel="index">
-                    <span itemprop="name">ant-design</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>全篇下来太啰嗦，<a href="https://github.com/sorrycc/blog/issues/62" target="_blank" rel="noopener">umi + dva，完成用户管理的 CURD 应用</a>是重点，看这里就行了！！！</p>
-<h2 id="antd"><a href="#antd" class="headerlink" title="antd"></a>antd</h2><p><a href="https://ant.design/index-cn" target="_blank" rel="noopener">Ant Design</a>,<code>antd</code> 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品。</p>
-<h3 id="目录结构说明"><a href="#目录结构说明" class="headerlink" title="目录结构说明"></a>目录结构说明</h3><ul>
-<li><p>config：配置信息<br><code>config.js</code>全局配置，路由配置<br><code>defaultSettings.js</code>一些默认配置<br><code>plugin.config.js</code>插件配置</p>
-</li>
-<li><p>mock 模拟数据请求的</p>
-</li>
-<li><p>mode_modules 第三方库</p>
-</li>
-<li><p>public 放置第三方文件（比如说图片，第三方的json文件）</p>
-</li>
-<li><p>tests 做一些测试的</p>
-</li>
-<li><p>package.json</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"ant-design-pro"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"private"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">"An out-of-box UI solution for enterprise applications"</span>,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"analyze"</span>: <span class="string">"分析"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"编译"</span>,</span><br><span class="line">    <span class="string">"deploy"</span>: <span class="string">"部署"</span>,</span><br><span class="line">    <span class="string">"fetch:blocks"</span>: <span class="string">"从官网git里面去拉模块"</span>,</span><br><span class="line">    <span class="string">"format-imports"</span>: <span class="string">"代码格式（例如空格）"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"启动"</span>,</span><br><span class="line">    <span class="string">"start:no-mock"</span>: <span class="string">"cross-env MOCK=none umi dev"</span>,</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"测试"</span>,</span><br><span class="line">    <span class="string">"test:all"</span>: <span class="string">"node ./tests/run-tests.js"</span>,</span><br><span class="line">    <span class="string">"test:component"</span>: <span class="string">"umi test ./src/components"</span>,</span><br><span class="line">    <span class="string">"ui"</span>: <span class="string">"umi ui"</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>src</p>
-</li>
-</ul>
-<p><code>assets</code>静态资源<br><code>components</code>组件目录<br><code>e2e</code><br><code>layouts</code>布局<br><code>locales</code>多语言<br><code>models</code>模型目录<br><code>pages</code>页面<br><code>services</code>提供服务，给页面提供请求<br><code>utils</code>工具类<br><code>global.less</code><br><code>global.tsx</code><br><code>manifelst.json</code><br><code>service-worker.js</code><br><code>typings.d.ts</code></p>
-<h3 id="增加新页面"><a href="#增加新页面" class="headerlink" title="增加新页面"></a>增加新页面</h3><p>1.在config-config.js文件的routers节点添加代码</p>
-<p>{name: ‘demo’, path: ‘/demo’, component: ‘./demo’},</p>
-<p>2.在page目录下创建demo目录，并新建一个index.jsx文件。<br>3.添加源码。</p>
-<h2 id="dva"><a href="#dva" class="headerlink" title="dva"></a>dva</h2><ul>
-<li><a href="https://dvajs.com" target="_blank" rel="noopener">dva官网</a></li>
-<li><a href="https://www.bilibili.com/video/av55863089?from=search&seid=7612457114058753391" target="_blank" rel="noopener">dva视频教程</a>，以及练习<a href="https://github.com/samtake/dva" target="_blank" rel="noopener">源码</a></li>
-<li><a href="https://www.jianshu.com/p/0568a725f8f9" target="_blank" rel="noopener">dva.js的使用与说明</a></li>
-</ul>
-<h2 id="UmiJS"><a href="#UmiJS" class="headerlink" title="UmiJS"></a>UmiJS</h2><ul>
-<li><a href="https://umijs.org/zh-CN" target="_blank" rel="noopener">UmiJS</a></li>
-<li><a href="https://www.bilibili.com/video/av74033079?p=51" target="_blank" rel="noopener">UmiJS视频教程</a>，以及<a href="https://github.com/plter/ReactCourse20191031" target="_blank" rel="noopener">源码</a></li>
-<li><a href="https://www.cnblogs.com/lihuijuan/p/11242976.html" target="_blank" rel="noopener">Ant Design Pro 脚手架+umiJS 实践总结</a></li>
-</ul>
-<h2 id="dva-umi"><a href="#dva-umi" class="headerlink" title="dva + umi"></a>dva + umi</h2><p>主要搞懂model、service的关系</p>
-<ul>
-<li><a href="https://github.com/sorrycc/blog/issues/62" target="_blank" rel="noopener">umi + dva，完成用户管理的 CURD 应用</a></li>
-<li><a href="https://github.com/umijs/umi-example-dva-user-dashboard" target="_blank" rel="noopener">umi-example-dva-user-dashboard</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1428,7 +1412,7 @@ ffplay</code></p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
