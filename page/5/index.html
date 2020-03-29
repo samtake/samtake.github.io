@@ -213,6 +213,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/FFmpeg/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/04/FFmpeg/" class="post-title-link" itemprop="url">FFmpeg</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-04 01:54:31" itemprop="dateCreated datePublished" datetime="2019-11-04T01:54:31+08:00">2019-11-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-29 12:51:40" itemprop="dateModified" datetime="2020-03-29T12:51:40+08:00">2020-03-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
+                    <span itemprop="name">FFmpeg</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h1><p><a href="http://ffmpeg.org/download.html" target="_blank" rel="noopener">FFmpeg</a>是一个音视频处理库，提供了如 ffmpeg, ffplay, ffprobe，来编辑你的音视频文件。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>源码安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">➜  GitHub git <span class="built_in">clone</span> https://git.ffmpeg.org/ffmpeg.git ffmpeg</span><br><span class="line">Cloning into <span class="string">'ffmpeg'</span>...</span><br><span class="line">remote: Counting objects: 588505, <span class="keyword">done</span>.</span><br><span class="line">remote: Compressing objects: 100% (120835/120835), <span class="keyword">done</span>.</span><br><span class="line">remote: Total 588505 (delta 471727), reused 581424 (delta 466456)</span><br><span class="line">Receiving objects: 100% (588505/588505), 138.43 MiB | 2.74 MiB/s, <span class="keyword">done</span>.</span><br><span class="line">Resolving deltas: 100% (471727/471727), <span class="keyword">done</span>.</span><br><span class="line">Checking out files: 100% (7264/7264), <span class="keyword">done</span>.</span><br><span class="line">➜  GitHub <span class="built_in">cd</span> ffmpeg </span><br><span class="line">➜  ffmpeg git:(master) ls</span><br><span class="line">CONTRIBUTING.md  LICENSE.md       ffbuild          libpostproc</span><br><span class="line">COPYING.GPLv2    MAINTAINERS      fftools          libswresample</span><br><span class="line">COPYING.GPLv3    Makefile         libavcodec       libswscale</span><br><span class="line">COPYING.LGPLv2.1 README.md        libavdevice      presets</span><br><span class="line">COPYING.LGPLv3   RELEASE          libavfilter      tests</span><br><span class="line">CREDITS          compat           libavformat      tools</span><br><span class="line">Changelog        configure        libavresample</span><br><span class="line">INSTALL.md       doc              libavutil</span><br><span class="line">➜  ffmpeg git:(master) ./configure --<span class="built_in">help</span></span><br><span class="line">➜  ffmpeg git:(master) ./configure --<span class="built_in">help</span> | more </span><br><span class="line">Usage: configure [options]</span><br><span class="line">Options: [defaults <span class="keyword">in</span> brackets after descriptions]</span><br><span class="line"></span><br><span class="line">➜  ffmpeg git:(master) ./configure --prefix=/usr/<span class="built_in">local</span>/ffmpeg --<span class="built_in">enable</span>-gpl  --<span class="built_in">enable</span>-nonfree  --<span class="built_in">enable</span>-libfdk-aac  --<span class="built_in">enable</span>-libx264   --<span class="built_in">enable</span>-libx265  --<span class="built_in">enable</span>-filter=delogo  --<span class="built_in">enable</span>-debug  --<span class="built_in">disable</span>-optimizations --<span class="built_in">enable</span>-libspeex  --<span class="built_in">enable</span>-videotoolbox  --<span class="built_in">enable</span>-shared  --<span class="built_in">enable</span>-pthreads  --<span class="built_in">enable</span>-version3  --<span class="built_in">enable</span>-hardcoded-tables --cc=clang --host-cflags=  --host-ldflags=</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">报错、报错、报错、报错、</span><br><span class="line">nasm/yasm not found or too old. Use --<span class="built_in">disable</span>-x86asm <span class="keyword">for</span> a crippled build.</span><br><span class="line">ERROR: libfdk_aac not found</span><br><span class="line">ERROR: speex not found using pkg-config</span><br><span class="line">ERROR: libx264 not found</span><br><span class="line"></span><br><span class="line">前面三种都可以通过brew install来解决，但是libx264怎么搞都拉不下。。。</span><br></pre></td></tr></table></figure>
+
+<p>通过brew安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">➜  ffmpeg git:(master) brew install ffmpeg</span><br><span class="line">Updating Homebrew...</span><br><span class="line">==&gt; Installing dependencies <span class="keyword">for</span> ffmpeg: aom,,,,</span><br><span class="line"></span><br><span class="line">==&gt; Caveats</span><br><span class="line">gettext is keg-only, <span class="built_in">which</span> means it was not symlinked into /usr/<span class="built_in">local</span>,</span><br><span class="line">because macOS provides the BSD gettext library &amp; some software gets confused <span class="keyword">if</span> both are <span class="keyword">in</span> the library path.</span><br><span class="line"></span><br><span class="line">If you need to have gettext first <span class="keyword">in</span> your PATH run:</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">'export PATH="/usr/local/opt/gettext/bin:$PATH"'</span> &gt;&gt; ~/.zshrc</span><br><span class="line"></span><br><span class="line">For compilers to find gettext you may need to <span class="built_in">set</span>:</span><br><span class="line">  <span class="built_in">export</span> LDFLAGS=<span class="string">"-L/usr/local/opt/gettext/lib"</span></span><br><span class="line">  <span class="built_in">export</span> CPPFLAGS=<span class="string">"-I/usr/local/opt/gettext/include"</span></span><br><span class="line">==&gt; Caveats</span><br><span class="line">libffi is keg-only, <span class="built_in">which</span> means it was not symlinked into /usr/<span class="built_in">local</span>,</span><br><span class="line">because some formulae require a newer version of libffi.</span><br><span class="line"></span><br><span class="line">For compilers to find libffi you may need to <span class="built_in">set</span>:</span><br><span class="line">  <span class="built_in">export</span> LDFLAGS=<span class="string">"-L/usr/local/opt/libffi/lib"</span></span><br><span class="line"></span><br><span class="line">For pkg-config to find libffi you may need to <span class="built_in">set</span>:</span><br><span class="line">  <span class="built_in">export</span> PKG_CONFIG_PATH=<span class="string">"/usr/local/opt/libffi/lib/pkgconfig"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">==&gt; Caveats</span><br><span class="line">==&gt; gettext</span><br><span class="line">gettext is keg-only, <span class="built_in">which</span> means it was not symlinked into /usr/<span class="built_in">local</span>,</span><br><span class="line">because macOS provides the BSD gettext library &amp; some software gets confused <span class="keyword">if</span> both are <span class="keyword">in</span> the library path.</span><br><span class="line"></span><br><span class="line">If you need to have gettext first <span class="keyword">in</span> your PATH run:</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">'export PATH="/usr/local/opt/gettext/bin:$PATH"'</span> &gt;&gt; ~/.zshrc</span><br><span class="line"></span><br><span class="line">For compilers to find gettext you may need to <span class="built_in">set</span>:</span><br><span class="line">  <span class="built_in">export</span> LDFLAGS=<span class="string">"-L/usr/local/opt/gettext/lib"</span></span><br><span class="line">  <span class="built_in">export</span> CPPFLAGS=<span class="string">"-I/usr/local/opt/gettext/include"</span></span><br><span class="line"></span><br><span class="line">==&gt; libffi</span><br><span class="line">libffi is keg-only, <span class="built_in">which</span> means it was not symlinked into /usr/<span class="built_in">local</span>,</span><br><span class="line">because some formulae require a newer version of libffi.</span><br><span class="line"></span><br><span class="line">For compilers to find libffi you may need to <span class="built_in">set</span>:</span><br><span class="line">  <span class="built_in">export</span> LDFLAGS=<span class="string">"-L/usr/local/opt/libffi/lib"</span></span><br><span class="line"></span><br><span class="line">For pkg-config to find libffi you may need to <span class="built_in">set</span>:</span><br><span class="line">  <span class="built_in">export</span> PKG_CONFIG_PATH=<span class="string">"/usr/local/opt/libffi/lib/pkgconfig"</span></span><br><span class="line"></span><br><span class="line">==&gt; unbound</span><br><span class="line">To have launchd start unbound now and restart at startup:</span><br><span class="line">  sudo brew services start unbound</span><br><span class="line">==&gt; glib</span><br><span class="line">Bash completion has been installed to:</span><br><span class="line">  /usr/<span class="built_in">local</span>/etc/bash_completion.d</span><br><span class="line">==&gt; tesseract</span><br><span class="line">This formula contains only the <span class="string">"eng"</span>, <span class="string">"osd"</span>, and <span class="string">"snum"</span> language data files.</span><br><span class="line">If you need any other supported languages, run `brew install tesseract-lang`.</span><br></pre></td></tr></table></figure>
+
+
+<p><code>brew info ffmpeg</code>可以看到x264, x265这些包都是有安装的。升级则通过<code>brew update &amp;&amp; brew upgrade ffmpeg</code>.</p>
+<p>第二种方式安装连环境变量都不需要设置，完美极了。</p>
+<h1 id="目录及作用"><a href="#目录及作用" class="headerlink" title="目录及作用"></a>目录及作用</h1><ul>
+<li>libavcodec： 提供了一系列编码器的实现。</li>
+<li>libavformat： 实现在流协议，容器格式及其本IO访问。</li>
+<li>libavutil： 包括了hash器，解码器和各利工具函数。</li>
+<li>libavfilter： 提供了各种音视频过滤器。</li>
+<li>libavdevice： 提供了访问捕获设备和回放设备的接口。</li>
+<li>libswresample： 实现了混音和重采样。</li>
+<li>libswscale： 实现了色彩转换和缩放工能。</li>
+</ul>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p><code>音／视频流</code> 在音视频领域，我们把一路音／视频称为一路流。如我们小时候经常使用VCD看港片，在里边可以选择粤语或国语声音，其实就是CD视频文件中存放了两路音频流，用户可以选择其中一路进行播放。</p>
+<p><code>容器</code> 我们一般把 MP4､ FLV、MOV等文件格式称之为容器。也就是在这些常用格式文件中，可以存放多路音视频文件。以 MP4 为例，就可以存放一路视频流，多路音频流，多路字幕流。</p>
+<p><code>channel</code> 是音频中的概念，称之为声道。在一路音频流中，可以有单声道，双声道或立体声。</p>
+<p>参考链接：</p>
+<p><a href="https://blog.csdn.net/weixin_33985507/article/details/94470495" target="_blank" rel="noopener">https://blog.csdn.net/weixin_33985507/article/details/94470495</a></p>
+<p><a href="https://blog.csdn.net/leixiaohua1020/article/details/15811977" target="_blank" rel="noopener">https://blog.csdn.net/leixiaohua1020/article/details/15811977</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/01/Swift%E5%9F%BA%E7%A1%8001/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -604,7 +704,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

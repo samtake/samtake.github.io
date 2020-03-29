@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>OpenGL-学习教程</title>
+    <url>/2020/03/30/OpenGL-%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<p>世界上最好的OpenGL教程，没有之一：<a href="https://learnopengl-cn.github.io" target="_blank" rel="noopener">LearnOpenGL CN</a></p>
+<p>好好努力！勤奋敲代码！</p>
+]]></content>
+      <categories>
+        <category>OpenGL</category>
+      </categories>
+      <tags>
+        <tag>OpenGL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>OpenGL-着色器</title>
     <url>/2020/03/28/OpenGL-%E7%9D%80%E8%89%B2%E5%99%A8/</url>
     <content><![CDATA[<p>OpenGL分为两个部分：CPU上C++编写，GPU采用GLSL语言编写，后者就是着色器的编写方式。</p>
@@ -1908,8 +1921,8 @@ ffplay</code></p>
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>Gin</tag>
         <tag>Golang</tag>
+        <tag>Gin</tag>
       </tags>
   </entry>
   <entry>
