@@ -244,7 +244,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-29 23:33:23" itemprop="dateModified" datetime="2020-03-29T23:33:23+08:00">2020-03-29</time>
+                <time title="Modified: 2020-03-29 23:34:27" itemprop="dateModified" datetime="2020-03-29T23:34:27+08:00">2020-03-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -305,7 +305,47 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> f = 10.0;</span><br><span class="line">int ten = int(f);</span><br></pre></td></tr></table></figure>
 
 
-<h1 id="聚合类型"><a href="#聚合类型" class="headerlink" title="聚合类型"></a>聚合类型</h1><p>GLSL的向量与矩阵类型<br>|基本数据类型|2D向量|3D向量|矩阵类型|<br>| :—–| :—- | :—- | :—-|<br>| float | vec2 | vec3 | .. |<br>| double | dvec2 | dvec3 | .. |<br>| int | ivec2 | ivec3 | .. |<br>| uint | uvec2 | uvec3 | - |<br>| bool | bvec2 | bvec3 | - | </p>
+<h1 id="聚合类型"><a href="#聚合类型" class="headerlink" title="聚合类型"></a>聚合类型</h1><p>GLSL的向量与矩阵类型 </p>
+<table>
+<thead>
+<tr>
+<th align="left">基本数据类型</th>
+<th align="left">2D向量</th>
+<th align="left">3D向量</th>
+<th align="left">矩阵类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">float</td>
+<td align="left">vec2</td>
+<td align="left">vec3</td>
+<td align="left">..</td>
+</tr>
+<tr>
+<td align="left">double</td>
+<td align="left">dvec2</td>
+<td align="left">dvec3</td>
+<td align="left">..</td>
+</tr>
+<tr>
+<td align="left">int</td>
+<td align="left">ivec2</td>
+<td align="left">ivec3</td>
+<td align="left">..</td>
+</tr>
+<tr>
+<td align="left">uint</td>
+<td align="left">uvec2</td>
+<td align="left">uvec3</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bool</td>
+<td align="left">bvec2</td>
+<td align="left">bvec3</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
 <p>类型声明的变量的初始化：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vec3 velocity = vec3(0.0, 2.0, 3.0);</span><br></pre></td></tr></table></figure>
 
@@ -325,7 +365,27 @@
 <p>或者通过一个从0开始的索引：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> red = color[0];</span><br><span class="line"><span class="built_in">float</span> v_y = velocity[1];</span><br></pre></td></tr></table></figure>
 
-<p>向量分量的访问符<br>| 分量访问符 | 符号描述 |<br>| :—–| :—- |<br>| (X,Y,Z,W) | 与位置相关的分量 |<br>| (r,g,b,a) | 与颜色相关的分量 |<br>| (s,t,p,q) | 与纹理坐标相关的分量 | </p>
+<p>向量分量的访问符</p>
+<table>
+<thead>
+<tr>
+<th align="left">分量访问符</th>
+<th align="left">符号描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">(X,Y,Z,W)</td>
+<td align="left">与位置相关的分量</td>
+</tr>
+<tr>
+<td align="left">(r,g,b,a)</td>
+<td align="left">与颜色相关的分量</td>
+</tr>
+<tr>
+<td align="left">(s,t,p,q)</td>
+<td align="left">与纹理坐标相关的分量</td>
+</tr>
+</tbody></table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vec3 luminance = color.rrr; <span class="comment"># 输入颜色的红色分量来设置一个亮度值</span></span><br><span class="line"></span><br><span class="line">color = colot.abgr; <span class="comment"># 反转color的每个分量</span></span><br></pre></td></tr></table></figure>
 
 <h1 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">struct Partical &#123;</span><br><span class="line">    <span class="built_in">float</span> lifetime;</span><br><span class="line">    vec3 position;</span><br><span class="line">    vec3 velocity;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Partical p = Partical(1.0, pos, vel); <span class="comment"># pos、 vel均为vec3类型</span></span><br></pre></td></tr></table></figure>
