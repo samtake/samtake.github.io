@@ -199,62 +199,62 @@
 <tr>
 <td align="left">4</td>
 <td align="left"><code>*、/、%</code></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><br><br></td>
+<td align="left"><br><br></td>
 </tr>
 <tr>
 <td align="left">5</td>
 <td align="left"><code>+、-</code></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><br><br></td>
+<td align="left"><br><br></td>
 </tr>
 <tr>
 <td align="left">6</td>
 <td align="left"><code>&lt;&lt;、&gt;&gt;</code></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><br><br></td>
+<td align="left"><br><br></td>
 </tr>
 <tr>
 <td align="left">7</td>
 <td align="left"><code>&lt;、&gt;、&lt;=、&gt;=</code></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><br><br></td>
+<td align="left"><br><br></td>
 </tr>
 <tr>
 <td align="left">8</td>
 <td align="left"><code>==、!=</code></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><br><br></td>
+<td align="left"><br><br></td>
 </tr>
 <tr>
 <td align="left">9</td>
 <td align="left"><code>&amp;</code></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><br><br></td>
+<td align="left"><br><br></td>
 </tr>
 <tr>
 <td align="left">10</td>
 <td align="left"><code>^</code></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><br><br></td>
+<td align="left"><br><br></td>
 </tr>
 <tr>
 <td align="left">11</td>
 <td align="left">`</td>
 <td align="left">`</td>
-<td align="left"></td>
+<td align="left"><br><br></td>
 </tr>
 <tr>
 <td align="left">12</td>
 <td align="left"><code>&amp;&amp;</code></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><br><br></td>
+<td align="left"><br><br></td>
 </tr>
 <tr>
 <td align="left">13</td>
 <td align="left"><code>^^</code></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><br><br></td>
+<td align="left"><br><br></td>
 </tr>
 <tr>
 <td align="left">14</td>
@@ -265,8 +265,8 @@
 <tr>
 <td align="left">15</td>
 <td align="left"><code>a?b:c</code></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><br><br></td>
+<td align="left"><br><br></td>
 </tr>
 <tr>
 <td align="left">16</td>
@@ -316,15 +316,15 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#pragma STDGL invariant(all)</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="precise"><a href="#precise" class="headerlink" title="precise"></a>precise</h2><p><code>precise</code>限制符可以设置任何计算中的变量或者函数的返回值。它的作用是增加计算的可复用性</p>
-<h1 id="着色器的预处理器"><a href="#着色器的预处理器" class="headerlink" title="着色器的预处理器"></a>着色器的预处理器</h1><h2 id="预处理命令"><a href="#预处理命令" class="headerlink" title="预处理命令"></a>预处理命令</h2><p>控制常量与宏的定义：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#define</span></span><br><span class="line"><span class="comment">#undef</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">代码的条件编译</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line"><span class="comment">#if</span></span><br><span class="line"><span class="comment">#ifdef</span></span><br><span class="line"><span class="comment">#ifndef</span></span><br><span class="line"><span class="comment">#else</span></span><br><span class="line"><span class="comment">#elif</span></span><br><span class="line"><span class="comment">#endif</span></span><br></pre></td></tr></table></figure>
+<h1 id="着色器的预处理器"><a href="#着色器的预处理器" class="headerlink" title="着色器的预处理器"></a>着色器的预处理器</h1><h2 id="预处理命令"><a href="#预处理命令" class="headerlink" title="预处理命令"></a>预处理命令</h2><p>控制常量与宏的定义</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#define</span></span><br><span class="line"><span class="comment">#undef</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">代码的条件编译</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line"><span class="comment">#if</span></span><br><span class="line"><span class="comment">#ifdef</span></span><br><span class="line"><span class="comment">#ifndef</span></span><br><span class="line"><span class="comment">#else</span></span><br><span class="line"><span class="comment">#elif</span></span><br><span class="line"><span class="comment">#endif</span></span><br></pre></td></tr></table></figure>
 
 <p>强制比那一起将text文字内容插入到着色器的信息日志中</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#error text</span></span><br></pre></td></tr></table></figure>
 
 
 
-<p>控制编译器的替丁选项</p>
+<p>控制编译器的选项</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#pragma options</span></span><br></pre></td></tr></table></figure>
 
 <p>设置编译器支持特定GLSL扩展功能</p>
