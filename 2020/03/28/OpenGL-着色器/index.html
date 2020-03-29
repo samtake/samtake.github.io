@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="samtake">
 <meta property="og:description" content="OpenGL分为两个部分：CPU上C++编写，GPU采用GLSL语言编写，后者就是着色器的编写方式。 基本数据类型   类型 描述    float ieee 32 位浮点数   double ieee 64 位浮点数   int 有符号二进制补码的 32 位整数   uint 无符号的32位整数   bool 布尔值   变量初始化所有变量都必须在声明的同时进行初始化 1234int i,num">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-29T15:34:27.991Z">
+<meta property="og:updated_time" content="2020-03-29T15:36:30.731Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/03/28/OpenGL-%E7%9D%80%E8%89%B2%E5%99%A8/">
@@ -247,7 +247,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-29 23:34:27" itemprop="dateModified" datetime="2020-03-29T23:34:27+08:00">2020-03-29</time>
+                <time title="Modified: 2020-03-29 23:36:30" itemprop="dateModified" datetime="2020-03-29T23:36:30+08:00">2020-03-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -586,10 +586,13 @@
 
 <h2 id="precise"><a href="#precise" class="headerlink" title="precise"></a>precise</h2><p><code>precise</code>限制符可以设置任何计算中的变量或者函数的返回值。它的作用是增加计算的可复用性</p>
 <h1 id="着色器的预处理器"><a href="#着色器的预处理器" class="headerlink" title="着色器的预处理器"></a>着色器的预处理器</h1><h2 id="预处理命令"><a href="#预处理命令" class="headerlink" title="预处理命令"></a>预处理命令</h2><p>控制常量与宏的定义：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define</span></span><br><span class="line"><span class="comment">#undef</span></span><br><span class="line">``` </span><br><span class="line">代码的条件编译</span><br><span class="line">```bash</span><br><span class="line"><span class="comment">#if</span></span><br><span class="line"><span class="comment">#ifdef</span></span><br><span class="line"><span class="comment">#ifndef</span></span><br><span class="line"><span class="comment">#else</span></span><br><span class="line"><span class="comment">#elif</span></span><br><span class="line"><span class="comment">#endif</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define</span></span><br><span class="line"><span class="comment">#undef</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">代码的条件编译</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line"><span class="comment">#if</span></span><br><span class="line"><span class="comment">#ifdef</span></span><br><span class="line"><span class="comment">#ifndef</span></span><br><span class="line"><span class="comment">#else</span></span><br><span class="line"><span class="comment">#elif</span></span><br><span class="line"><span class="comment">#endif</span></span><br></pre></td></tr></table></figure>
 
 <p>强制比那一起将text文字内容插入到着色器的信息日志中</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#error text</span></span><br></pre></td></tr></table></figure>
+
+
+
 <p>控制编译器的替丁选项</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pragma options</span></span><br></pre></td></tr></table></figure>
 
