@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="samtake">
 <meta property="og:description" content="Vue官网 第一个Vue程序在教程安装里给出了多种引入方式，具体点击这里 直接&amp;lt;&#x2F;script&amp;gt;引入在编辑器上输入html回车，这时候就会自动补全以下代码 12345678910&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&quot;en&quot; dir=&quot;ltr&quot;&amp;gt;  &amp;lt;head&amp;gt;    &amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;    &amp;l">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-04-04T16:42:28.254Z">
+<meta property="og:updated_time" content="2020-04-06T09:47:26.714Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2019/11/04/Vue/">
@@ -247,7 +247,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-05 00:42:28" itemprop="dateModified" datetime="2020-04-05T00:42:28+08:00">2020-04-05</time>
+                <time title="Modified: 2020-04-06 17:47:26" itemprop="dateModified" datetime="2020-04-06T17:47:26+08:00">2020-04-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -494,8 +494,37 @@
 <p><a href="https://github.com/tangjinzhou/geektime-vue-1/tree/master/%E6%BC%94%E7%A4%BADEMO%E6%BA%90%E7%A0%81/src/views/1.8" target="_blank" rel="noopener">源码演示</a></p>
 <p>解决跨组件间的属性传递问题。</p>
 <h1 id="获取跨层级组件实例"><a href="#获取跨层级组件实例" class="headerlink" title="获取跨层级组件实例"></a>获取跨层级组件实例</h1><p><a href="https://github.com/tangjinzhou/geektime-vue-1/tree/master/%E6%BC%94%E7%A4%BADEMO%E6%BA%90%E7%A0%81/src/views/1.9" target="_blank" rel="noopener">源码演示</a></p>
-<h1 id="template-VS-JSX"><a href="#template-VS-JSX" class="headerlink" title="template VS JSX"></a>template VS JSX</h1><p><a href="https://github.com/tangjinzhou/geektime-vue-1/tree/master/%E6%BC%94%E7%A4%BADEMO%E6%BA%90%E7%A0%81/src/views/1.10" target="_blank" rel="noopener">源码演示</a>
-　</p>
+<h1 id="template-VS-JSX"><a href="#template-VS-JSX" class="headerlink" title="template VS JSX"></a>template VS JSX</h1><p><a href="https://github.com/tangjinzhou/geektime-vue-1/tree/master/%E6%BC%94%E7%A4%BADEMO%E6%BA%90%E7%A0%81/src/views/1.10" target="_blank" rel="noopener">源码演示</a></p>
+<h1 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h1><p><a href="https://vuex.vuejs.org/zh/" target="_blank" rel="noopener">Vuex</a> 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。</p>
+<ul>
+<li>state，驱动应用的数据源；</li>
+<li>view，以声明方式将 state 映射到视图；</li>
+<li>actions，响应在 view 上的用户输入导致的状态变化。
+　<h1 id="在Vue中使用Vuex"><a href="#在Vue中使用Vuex" class="headerlink" title="在Vue中使用Vuex"></a>在Vue中使用Vuex</h1></li>
+</ul>
+<p><a href="https://github.com/tangjinzhou/geektime-vue-1/tree/master/vuex-demo1" target="_blank" rel="noopener">源码演示</a></p>
+<h1 id="Vuex原理"><a href="#Vuex原理" class="headerlink" title="Vuex原理"></a>Vuex原理</h1><ul>
+<li><code>State</code>提供一个响应式数据</li>
+<li><code>Getter</code>借助Vue的计算属性computed来实现缓存</li>
+<li><code>Mutation</code>更改state方法</li>
+<li><code>Action</code>触发mutation方法</li>
+<li><code>Module</code>Vue.set动态添加state到响应式数据中</li>
+</ul>
+<h1 id="Vue-Router"><a href="#Vue-Router" class="headerlink" title="Vue Router"></a>Vue Router</h1><p><a href="https://router.vuejs.org/zh/" target="_blank" rel="noopener">Vue Router</a></p>
+<p><a href="https://github.com/tangjinzhou/geektime-vue-1/tree/master/router-demo" target="_blank" rel="noopener">源码演示</a></p>
+<h1 id="Nuxt"><a href="#Nuxt" class="headerlink" title="Nuxt"></a>Nuxt</h1><p><a href="https://zh.nuxtjs.org/" target="_blank" rel="noopener">Nuxt</a></p>
+<h1 id="开发插件"><a href="#开发插件" class="headerlink" title="开发插件"></a>开发插件</h1><p>vs code插件：Vetur：代码块功能</p>
+<p>ESLint:代码规范、错误检查、</p>
+<p>Prettier:代码规范提示</p>
+<h1 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h1><p>三种方式：</p>
+<ul>
+<li>jest或者mocha</li>
+<li>@vue/test-utils</li>
+<li>sinon</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vue create XX</span><br><span class="line">Manually select features</span><br><span class="line">除了默认之外还需要勾选 Unit Testing</span><br><span class="line">选用ESLint + Standard config </span><br><span class="line">Lint on save</span><br><span class="line">JEST</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/geektime-geekbang/geektime-vue-1/tree/master/test-demo" target="_blank" rel="noopener">demo</a></p>
 
     </div>
 
@@ -561,7 +590,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个Vue程序"><span class="nav-number">1.</span> <span class="nav-text">第一个Vue程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接-lt-script-gt-引入"><span class="nav-number">1.1.</span> <span class="nav-text">直接&lt;/script&gt;引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加方法"><span class="nav-number">1.2.</span> <span class="nav-text">添加方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用自定义组件"><span class="nav-number">1.3.</span> <span class="nav-text">使用自定义组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm安装"><span class="nav-number">1.4.</span> <span class="nav-text">npm安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件渲染"><span class="nav-number">1.5.</span> <span class="nav-text">条件渲染</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组件基础-amp-组件注册"><span class="nav-number">2.</span> <span class="nav-text">组件基础&amp;组件注册</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性"><span class="nav-number">3.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事件"><span class="nav-number">4.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插槽"><span class="nav-number">5.</span> <span class="nav-text">插槽</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#理解单文件组件"><span class="nav-number">6.</span> <span class="nav-text">理解单文件组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双向绑定和单向数据流不冲突"><span class="nav-number">7.</span> <span class="nav-text">双向绑定和单向数据流不冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#v-model创建双向绑定"><span class="nav-number">7.1.</span> <span class="nav-text">v-model创建双向绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sync修饰符-创建双向绑定"><span class="nav-number">7.2.</span> <span class="nav-text">.sync修饰符 创建双向绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单向数据流"><span class="nav-number">7.3.</span> <span class="nav-text">单向数据流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">7.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何触发组件的更新"><span class="nav-number">8.</span> <span class="nav-text">如何触发组件的更新</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合理应用计算属性和侦听器"><span class="nav-number">9.</span> <span class="nav-text">合理应用计算属性和侦听器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生命周期的应用场景和函数式组件"><span class="nav-number">10.</span> <span class="nav-text">生命周期的应用场景和函数式组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指令的本质是什么"><span class="nav-number">11.</span> <span class="nav-text">指令的本质是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#provide-amp-inject"><span class="nav-number">12.</span> <span class="nav-text">provide &amp; inject</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取跨层级组件实例"><span class="nav-number">13.</span> <span class="nav-text">获取跨层级组件实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#template-VS-JSX"><span class="nav-number">14.</span> <span class="nav-text">template VS JSX</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个Vue程序"><span class="nav-number">1.</span> <span class="nav-text">第一个Vue程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接-lt-script-gt-引入"><span class="nav-number">1.1.</span> <span class="nav-text">直接&lt;/script&gt;引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加方法"><span class="nav-number">1.2.</span> <span class="nav-text">添加方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用自定义组件"><span class="nav-number">1.3.</span> <span class="nav-text">使用自定义组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm安装"><span class="nav-number">1.4.</span> <span class="nav-text">npm安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件渲染"><span class="nav-number">1.5.</span> <span class="nav-text">条件渲染</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组件基础-amp-组件注册"><span class="nav-number">2.</span> <span class="nav-text">组件基础&amp;组件注册</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性"><span class="nav-number">3.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事件"><span class="nav-number">4.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插槽"><span class="nav-number">5.</span> <span class="nav-text">插槽</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#理解单文件组件"><span class="nav-number">6.</span> <span class="nav-text">理解单文件组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双向绑定和单向数据流不冲突"><span class="nav-number">7.</span> <span class="nav-text">双向绑定和单向数据流不冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#v-model创建双向绑定"><span class="nav-number">7.1.</span> <span class="nav-text">v-model创建双向绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sync修饰符-创建双向绑定"><span class="nav-number">7.2.</span> <span class="nav-text">.sync修饰符 创建双向绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单向数据流"><span class="nav-number">7.3.</span> <span class="nav-text">单向数据流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">7.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何触发组件的更新"><span class="nav-number">8.</span> <span class="nav-text">如何触发组件的更新</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合理应用计算属性和侦听器"><span class="nav-number">9.</span> <span class="nav-text">合理应用计算属性和侦听器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生命周期的应用场景和函数式组件"><span class="nav-number">10.</span> <span class="nav-text">生命周期的应用场景和函数式组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指令的本质是什么"><span class="nav-number">11.</span> <span class="nav-text">指令的本质是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#provide-amp-inject"><span class="nav-number">12.</span> <span class="nav-text">provide &amp; inject</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取跨层级组件实例"><span class="nav-number">13.</span> <span class="nav-text">获取跨层级组件实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#template-VS-JSX"><span class="nav-number">14.</span> <span class="nav-text">template VS JSX</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vuex"><span class="nav-number">15.</span> <span class="nav-text">Vuex</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在Vue中使用Vuex"><span class="nav-number">16.</span> <span class="nav-text">在Vue中使用Vuex</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vuex原理"><span class="nav-number">17.</span> <span class="nav-text">Vuex原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-Router"><span class="nav-number">18.</span> <span class="nav-text">Vue Router</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nuxt"><span class="nav-number">19.</span> <span class="nav-text">Nuxt</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发插件"><span class="nav-number">20.</span> <span class="nav-text">开发插件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单元测试"><span class="nav-number">21.</span> <span class="nav-text">单元测试</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
