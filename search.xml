@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>jwt-go</title>
+    <url>/2020/04/09/jwt-go/</url>
+    <content><![CDATA[<p><a href="https://github.com/dgrijalva/jwt-go" target="_blank" rel="noopener">github</a></p>
+<p><a href="https://godoc.org/github.com/dgrijalva/jwt-go" target="_blank" rel="noopener">Documentation</a></p>
+<p>引入包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">go get <span class="string">"github.com/dgrijalva/jwt-go"</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">package common</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"gin_vue_bs/model"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/dgrijalva/jwt-go"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//定义 jwt 加密密钥</span><br><span class="line">var jwtKey = []byte(<span class="string">"a_secret_crect"</span>)</span><br><span class="line"></span><br><span class="line">//Claims .</span><br><span class="line"><span class="built_in">type</span> Claims struct &#123;</span><br><span class="line">	UserID uint</span><br><span class="line">	jwt.StandardClaims</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//ReleaseToken 登录成功则调用该方法发放token.</span><br><span class="line">func ReleaseToken(user model.User) (string, error) &#123;</span><br><span class="line">	expirationTime := time.Now().Add(7 * 24 * time.Hour) //token的过期时间7天</span><br><span class="line">	claims := &amp;Claims&#123;</span><br><span class="line">		UserID: user.ID,</span><br><span class="line">		StandardClaims: jwt.StandardClaims&#123;</span><br><span class="line">			ExpiresAt: expirationTime.Unix(),</span><br><span class="line">			IssuedAt:  time.Now().Unix(), //token发放时间</span><br><span class="line">			Issuer:    <span class="string">"samtake"</span>,         //是谁发放的token</span><br><span class="line">			Subject:   <span class="string">"user token"</span>,      //主题</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)</span><br><span class="line">	tokenString, err := token.SignedString(jwtKey)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">""</span>, err</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> tokenString, nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>gorm</title>
     <url>/2020/04/09/gorm/</url>
     <content><![CDATA[<p><a href="https://gorm.io" target="_blank" rel="noopener">https://gorm.io</a></p>
@@ -1941,8 +1958,8 @@ ffplay</code></p>
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>Golang</tag>
         <tag>Gin</tag>
+        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>

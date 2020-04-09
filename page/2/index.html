@@ -213,6 +213,184 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/23/FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/23/FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89/" class="post-title-link" itemprop="url">FFmpeg（三）</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-23 17:57:25" itemprop="dateCreated datePublished" datetime="2020-03-23T17:57:25+08:00">2020-03-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-24 13:53:43" itemprop="dateModified" datetime="2020-03-24T13:53:43+08:00">2020-03-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
+                    <span itemprop="name">FFmpeg</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://samtake.github.io/2019/11/04/FFmpeg/" target="_blank" rel="noopener">FFmpeg-安装及基本概念</a><br><a href="https://samtake.github.io/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="noopener">FFmpeg-命令</a><br><a href="https://github.com/samtake/FFmpeg-demo" target="_blank" rel="noopener">FFmpeg-demo源码地址</a><br>这里记录通过 C语言 操作FFmpeg对多媒体文件的处理</p>
+<h1 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h1><p>常用日志级别（级别由高到底排列）<br>1.AV_LOFG_ERROR<br>2.AV_LOG_WARNING<br>3.AV_LOG_INFO</p>
+<p>启用步骤</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">include &lt;libavutil/log.h&gt;</span><br><span class="line">av_log_set_level(AV_LOG_DEBUG) <span class="comment">#只有该级别以及该级别之上的日志才会打印</span></span><br><span class="line">av_log(NULL,AV_LOG_INFO,<span class="string">"hello world:%s\n"</span>,<span class="string">"op"</span> )</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) clang -g -o ffmpeg_log ffmpeg_log.c -lavutil</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./ffmpeg_log</span><br><span class="line">hello world!</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="文件的删除-amp-重命名"><a href="#文件的删除-amp-重命名" class="headerlink" title="文件的删除&amp;重命名"></a>文件的删除&amp;重命名</h1><p><code>avpriv_io_move(&quot;111.txt&quot;,&quot;222.txt&quot;);</code>重命名<br><code>avpriv_io_delete(&quot;./mytestfile.txt&quot;);</code>删除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o ffmpeg_del ffmpeg_file.c `pkg-config --libs libavformat`</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ pkg-config --libs libavformat  <span class="comment">#这一命令的作用时：在系统中寻找到libavformat库所在的位置</span></span><br><span class="line">-L/usr/<span class="built_in">local</span>/Cellar/ffmpeg/4.2.2_2/lib -lavformat</span><br></pre></td></tr></table></figure>
+
+<h1 id="操作目录"><a href="#操作目录" class="headerlink" title="操作目录"></a>操作目录</h1><p><code>avio_open_dir</code><br><code>avio_read_dir</code><br><code>avio_free_directory_entry</code><br><code>avio_close_dir</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">av_log(NULL, AV_LOG_INFO, <span class="string">"%12"</span>PRId64<span class="string">"%s \n"</span>,entry-&gt;size,entry-&gt;name);</span><br><span class="line"></span><br><span class="line"><span class="comment"># PRId64 是ffmpeg里面定义的一个宏，ffmpeg里面读取的文件也是64位的。</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o list ffmpeg_list.c `pkg-config --libs libavformat libavutil`</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./list</span><br><span class="line">         186ffmpeg_log.c </span><br><span class="line">        2442build_ffmpeg_for_android.sh </span><br><span class="line">        4433list.c </span><br><span class="line">         818ffmpeg_list.c </span><br><span class="line">          96list.dSYM </span><br><span class="line">          96ffmpeg_del.dSYM </span><br><span class="line">        5209encode_audio.c </span><br><span class="line">        1051read_file.c </span><br><span class="line">       11151extr_video.c </span><br><span class="line">       11027avmerge.c </span><br><span class="line">        9532decode_video.c </span><br><span class="line">        5747cutvideo.c </span><br><span class="line">        8760ffmpeg_del </span><br><span class="line">        4265encode_video.c </span><br><span class="line">        8760ffmpeg_log </span><br><span class="line">        6500extr_audio.c </span><br><span class="line">        9380list </span><br><span class="line">          96android </span><br><span class="line">        1073mediainfo.c </span><br><span class="line">        7020decode_audio.c </span><br><span class="line">         541ffmpeg_file.c </span><br><span class="line">        5132remuxing.c </span><br><span class="line">         448.git </span><br><span class="line">          96ffmpeg_log.dSYM </span><br><span class="line">         803write_file.c </span><br><span class="line">        5066extra_audio_ffapi.c </span><br><span class="line">         288player</span><br></pre></td></tr></table></figure>
+
+<h1 id="打印音视频meta信息"><a href="#打印音视频meta信息" class="headerlink" title="打印音视频meta信息"></a>打印音视频meta信息</h1><p><code>av_register_all</code><br><code>avformat_open_input</code><br><code>av_dump_format(fmt_ctx, 0, &quot;./test.mp4&quot;, 0/**输入信息*/);</code></p>
+<p>输入信息 填0<br>输入信息 填1</p>
+<p><code>avformat_close_input</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o mediainfo mediainfo.c `pkg-config --libs libavutil libavformat`</span><br><span class="line">mediainfo.c:17:5: warning: <span class="string">'av_register_all'</span> is deprecated [-Wdeprecated-declarations]</span><br><span class="line">    av_register_all();</span><br><span class="line">    ^</span><br><span class="line">/usr/<span class="built_in">local</span>/include/libavformat/avformat.h:2049:1: note: <span class="string">'av_register_all'</span> has been explicitly marked deprecated here</span><br><span class="line">attribute_deprecated</span><br><span class="line">^</span><br><span class="line">/usr/<span class="built_in">local</span>/include/libavutil/attributes.h:94:49: note: expanded from macro <span class="string">'attribute_deprecated'</span></span><br><span class="line"><span class="comment">#    define attribute_deprecated __attribute__((deprecated))</span></span><br><span class="line">                                                ^</span><br><span class="line">1 warning generated.</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./mediainfo</span><br><span class="line">Input <span class="comment">#0, mov,mp4,m4a,3gp,3g2,mj2, from './test.mp4':</span></span><br><span class="line">  Metadata:</span><br><span class="line">    major_brand     : mp42</span><br><span class="line">    minor_version   : 0</span><br><span class="line">    compatible_brands: isommp42</span><br><span class="line">    creation_time   : 2020-03-19T07:15:55.000000Z</span><br><span class="line">  Duration: 00:00:55.51, start: 0.000000, bitrate: 8422 kb/s</span><br><span class="line">    Stream <span class="comment">#0:0(eng): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 380 kb/s (default)</span></span><br><span class="line">    Metadata:</span><br><span class="line">      creation_time   : 2020-03-19T07:15:55.000000Z</span><br><span class="line">      handler_name    : Mainconcept MP4 Sound Media Handler</span><br><span class="line">    Stream <span class="comment">#0:1(eng): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709), 1280x720 [SAR 1:1 DAR 16:9], 8040 kb/s, 50 fps, 50 tbr, 50k tbn, 100 tbc (default)</span></span><br><span class="line">    Metadata:</span><br><span class="line">      creation_time   : 2020-03-19T07:15:55.000000Z</span><br><span class="line">      handler_name    : Mainconcept MP4 Video Media Handler</span><br><span class="line">      encoder         : AVC Cod</span><br></pre></td></tr></table></figure>
+
+<h1 id="抽取多媒体中的音频数据"><a href="#抽取多媒体中的音频数据" class="headerlink" title="抽取多媒体中的音频数据"></a>抽取多媒体中的音频数据</h1><p>av_init_packet(&amp;pkt);</p>
+<p>av_find_best_stream</p>
+<p>av_read_frame/av_packet_unref</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o extr_audio  extr_audio.c `pkg-config --libs libavutil libavformat`</span><br><span class="line">./extr_audio  ./test.mp4  ./test.aac  </span><br><span class="line">ffplay test.aac</span><br></pre></td></tr></table></figure>
+
+<h1 id="抽取多媒体中的H264视频数据"><a href="#抽取多媒体中的H264视频数据" class="headerlink" title="抽取多媒体中的H264视频数据"></a>抽取多媒体中的H264视频数据</h1><p>先要知道的三点：<br>1.将多媒体中的H264视频数据抽取后，它其实是由一帧一帧压缩后的视频帧组成的，如何区分这一帧一帧的视频帧呢？两种方法：</p>
+<ul>
+<li>在每一帧的长度前面加一个真的长度，当读取第一帧的时候先读取这一帧的长度，根据这一帧的长度在读取帧的数据长度，依次下去。。。</li>
+<li>在每一帧的前面加关键字（特征码），只要遇到特征码就知道这一帧开始了，上一帧结束了。</li>
+</ul>
+<p>2.SPS/PPS（它只有几个字节，不会增加网络负担）<br>解码的视频参数，以及视频帧的宽高（也就是常说的视频分辨率），等等都是存在于SPS/PPS。</p>
+<p>视频播放时，每次切换分辨率都要更新SPS/PPS。</p>
+<p>而在视频直播时，在每个关键帧里面都会有一个SPS/PPS。</p>
+<p>3.ffmpeg如何获取SPS/PPS？<br>codec-&gt;extradata</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o extr_video  extr_video.c `pkg-config --libs libavutil libavformat`</span><br><span class="line">./extr_video ./test.mp4  test.h264</span><br><span class="line">ffplay test.h264</span><br></pre></td></tr></table></figure>
+
+<h1 id="mp4转flv"><a href="#mp4转flv" class="headerlink" title="mp4转flv"></a>mp4转flv</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">avformat_alloc_output_context2/avformat_free_context</span><br><span class="line"></span><br><span class="line">avformat_new_stream</span><br><span class="line"></span><br><span class="line">avcodec_parameters_copy</span><br><span class="line"></span><br><span class="line">avformat_write_header  <span class="comment">#头</span></span><br><span class="line"></span><br><span class="line">av_interleaved_write_frame  <span class="comment">#头数据</span></span><br><span class="line"></span><br><span class="line">av_write_trailer   <span class="comment">#尾</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o remuxing  remuxing.c `pkg-config --libs  libavformat`</span><br><span class="line">./remuxing ./test.mp4 test.flv   </span><br><span class="line">ffplay  test.flv</span><br></pre></td></tr></table></figure>
+
+<h1 id="音视频裁剪"><a href="#音视频裁剪" class="headerlink" title="音视频裁剪"></a>音视频裁剪</h1><p>av_seek_frame</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o cutvideo  cutvideo.c `pkg-config --libs  libavformat  libavcodec`</span><br><span class="line">./cutvideo  10  20  ./test.mp4 cutvideo.mp4</span><br><span class="line">ffplay cutvideo.mp4</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="FFmpeg编解码概括"><a href="#FFmpeg编解码概括" class="headerlink" title="FFmpeg编解码概括"></a>FFmpeg编解码概括</h1><p>类型：</p>
+<ul>
+<li>H264解码</li>
+<li>H264编码</li>
+<li>AAC解码</li>
+<li>AAC编码</li>
+</ul>
+<p>用到的头文件：</p>
+<ul>
+<li>libavcodec/avcodec.h</li>
+</ul>
+<p>用到的结构体：</p>
+<ul>
+<li>AVCodec编解码结构体</li>
+<li>AVCodecContext 编解码器上下文</li>
+<li>AVFrame 解码后的帧</li>
+</ul>
+<p>结构体内存的分配和释放API：</p>
+<ul>
+<li>av_frame_alloc/av_frame_free()</li>
+<li>avcodec_alloc_context3()</li>
+<li>avcodec_free_context()</li>
+</ul>
+<p>解码步骤：</p>
+<ul>
+<li><code>avcodec_find_decoder</code>查找解码器</li>
+<li><code>avcodec_open2</code>打开解码器</li>
+<li><code>avcodec_decode_video2</code>解码，得到RGB或者YUV数据</li>
+</ul>
+<h1 id="H264编码"><a href="#H264编码" class="headerlink" title="H264编码"></a>H264编码</h1><p>步骤：</p>
+<ul>
+<li><code>avcodec_find_encoder_by_name</code>查看编码器</li>
+<li><code>avcodec_open2</code>设置编码参数，并打开编码器</li>
+<li><code>avcodec_encode_video2</code>编码</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o encode_video  encode_video.c `pkg-config --libs  libavcodec` </span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./encode_video  </span><br><span class="line">Usage: ./encode_video &lt;output file&gt; &lt;codec name&gt;</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./encode_video  encode_video.h264 libx264</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ffplay encode_video.h264</span><br></pre></td></tr></table></figure>
+
+<h1 id="视频转图片"><a href="#视频转图片" class="headerlink" title="视频转图片"></a>视频转图片</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o decode_video  decode_video.c `pkg-config --libs  libavformat libavutil libavcodec libswscale`</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./decode_video ./test.mp4 ./</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="AAC编码"><a href="#AAC编码" class="headerlink" title="AAC编码"></a>AAC编码</h1><p>avcodec_encodec_audio2</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o encode_audio encode_audio.c `pkg-config --libs libavcodec`</span><br><span class="line">./encode_audio encode_audio.aac</span><br><span class="line">ffplay  encode_audio.aac</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1571,171 +1749,6 @@ ffplay</code></p>
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Golang流媒体网站笔记</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-21 16:15:52" itemprop="dateCreated datePublished" datetime="2020-02-21T16:15:52+08:00">2020-02-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-24 16:17:03" itemprop="dateModified" datetime="2020-02-24T16:17:03+08:00">2020-02-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Golang/" itemprop="url" rel="index">
-                    <span itemprop="name">Golang</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/architecture.png" alt></p>
-<p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/api.png" alt></p>
-<p>httprouter的使用</p>
-<p>restlet测试插件 </p>
-<h2 id="api"><a href="#api" class="headerlink" title="api"></a>api</h2><h3 id="3-6"><a href="#3-6" class="headerlink" title="3-6"></a>3-6</h3><p>总体思路：<br>handleer-&gt;validation{1.request,2.user}-&gt;business login -&gt;response</p>
-<ol>
-<li>data model</li>
-<li>error handler</li>
-</ol>
-<p>这个错误接口以后都可以这样写了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package defs</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> Err struct &#123;</span><br><span class="line">	Error string `json:<span class="string">"error"</span>`</span><br><span class="line">	ErrorCode string `json:<span class="string">"error_code"</span>`  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> ErrResponse struct &#123;</span><br><span class="line">	HttpSC int</span><br><span class="line">	Error Err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var (</span><br><span class="line">	ErrorRequestBodyParseFailed = ErrResponse&#123;HttpSC: 400, Error: Err&#123;Error: <span class="string">"Request body is not correct"</span>, ErrorCode: <span class="string">"001"</span>&#125;&#125;</span><br><span class="line">	ErrorNotAuthUser = ErrResponse&#123;HttpSC: 401, Error: Err&#123;Error: <span class="string">"User authentication failed."</span>, ErrorCode: <span class="string">"002"</span>&#125;&#125;</span><br><span class="line">	ErrorDBError = ErrResponse&#123;HttpSC: 500, Error: Err&#123;Error: <span class="string">"DB ops failed"</span>, ErrorCode: <span class="string">"003"</span>&#125;&#125;</span><br><span class="line">	ErrorInternalFaults = ErrResponse&#123;HttpSC: 500, Error: Err&#123;Error: <span class="string">"Internal service error"</span>, ErrorCode: <span class="string">"004"</span>&#125;&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="3-7"><a href="#3-7" class="headerlink" title="3-7"></a>3-7</h3><p>好好理解这里的数据库为什么这样设计</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">create table comments (</span><br><span class="line">	id varchar(64) not null,</span><br><span class="line">	video_id varchar(64),</span><br><span class="line">	author_id int(10),</span><br><span class="line">	content text,</span><br><span class="line">	time datetime default current_timestamp, primary key(id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table sessions (</span><br><span class="line">	session_id tinytext not null,</span><br><span class="line">	TTL tinytext,</span><br><span class="line">	login_name text</span><br><span class="line">);</span><br><span class="line">alter table sessions add primary key (session_id(64));</span><br><span class="line"></span><br><span class="line">create table users (</span><br><span class="line">	id int unsigned not null auto_increment,</span><br><span class="line">	login_name varchar(64),</span><br><span class="line">	<span class="built_in">pwd</span> text not null,</span><br><span class="line">	unique key (login_name),</span><br><span class="line">	primary key (id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table video_del_rec (</span><br><span class="line">	video_id varchar(64) not null,</span><br><span class="line">	primary key (video_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table video_info (</span><br><span class="line">	id varchar(64) not null,</span><br><span class="line">	author_id int(10),</span><br><span class="line">	name text,</span><br><span class="line">	display_ctime text,</span><br><span class="line">	create_time datetime default current_timestamp,</span><br><span class="line">	primary key (id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-
-<p><code>第三范式(Third Normal Form,3rd NF)</code>就是指表中的所有数据元素不但要能唯一地被主关键字所标识,而且它们之间还必须相互独立,不存在其他的函数关系。也就是说，对于一个满足2nd NF 的数据结构来说，表中有可能存在某些数据元素依赖于其他非关键字数据元素的现象,必须消除。</p>
-<p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/sql-design.png" alt></p>
-<h3 id="3-8"><a href="#3-8" class="headerlink" title="3-8"></a>3-8</h3><p>数据库连接还是参考自己写的这个吧<a href="https://github.com/samtake/goRedisDemo" target="_blank" rel="noopener">demo</a>吧。</p>
-<h3 id="3-10"><a href="#3-10" class="headerlink" title="3-10"></a>3-10</h3><p>api_test.go</p>
-<p>参考<a href="https://samtake.github.io/2020/02/22/Golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">Golang练习笔记</a>23测试讲的更详细。</p>
-<h3 id="3-12"><a href="#3-12" class="headerlink" title="3-12"></a>3-12</h3><p>实现和验证video<br><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/3-12.png" alt></p>
-<h3 id="3-13"><a href="#3-13" class="headerlink" title="3-13"></a>3-13</h3><p>Comments</p>
-<p> <img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/3-13-comments.png" alt><br>评论是需要列表出现的</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">func ListComments(vid string, from, to int) ([]*defs.Comment, error) &#123;</span><br><span class="line">	stmtOut, err := dbConn.Prepare(`SELECT comments.id, users.login_name, comments.content FROM comments </span><br><span class="line">		INNER JOIN users ON comments.author_id = users.id </span><br><span class="line">		WHERE comments.video_id = ? AND comments.time &gt; FROM_UNIXTIME(?) AND comments.time &lt;= FROM_UNIXTIME(?)</span><br><span class="line">		ORDER BY comments.time DESC`)</span><br><span class="line"></span><br><span class="line">	var res []*defs.Comment</span><br><span class="line">	</span><br><span class="line">	rows, err := stmtOut.Query(vid, from, to)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Printf(<span class="string">"%s"</span>, err)</span><br><span class="line">		<span class="built_in">return</span> res, err</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> rows.<span class="function"><span class="title">Next</span></span>() &#123;</span><br><span class="line">		var id, name, content string</span><br><span class="line">		<span class="keyword">if</span> err := rows.Scan(&amp;id, &amp;name, &amp;content); err != nil &#123;</span><br><span class="line">			<span class="built_in">return</span> res, err</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		c := &amp;defs.Comment&#123;Id: id, VideoId: vid, Author: name, Content: content&#125;</span><br><span class="line">		res = append(res, c)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	defer stmtOut.Close()</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> res, nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="3-15"><a href="#3-15" class="headerlink" title="3-15"></a>3-15</h3><p><code>session</code>会话，</p>
-<p>session和cookie的区别？</p>
-<p>session负责的流程图：<br><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/3-15-session.png" alt></p>
-<h3 id="3-17"><a href="#3-17" class="headerlink" title="3-17"></a>3-17</h3><p>middleware</p>
-<p>duck typing内容参考<a href="https://samtake.github.io/2020/02/22/Golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">Golang练习笔记</a>15。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> middleWareHandler struct &#123;</span><br><span class="line">	r *httprouter.Router</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func NewMiddleWareHandler(r *httprouter.Router) http.Handler &#123;</span><br><span class="line">	m := middleWareHandler&#123;&#125;</span><br><span class="line">	m.r = r</span><br><span class="line">	<span class="built_in">return</span> m</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (m middleWareHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line">	//check session</span><br><span class="line">	validateUserSession(r)</span><br><span class="line"></span><br><span class="line">	m.r.ServeHTTP(w, r)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func RegisterHandlers() *httprouter.Router &#123;</span><br><span class="line">	router := httprouter.New()</span><br><span class="line">    router.POST(<span class="string">"/user"</span>, CreateUser)</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//response</span><br><span class="line"><span class="built_in">type</span> SignedUp struct &#123;</span><br><span class="line">	Success bool `json:<span class="string">"success"</span>`</span><br><span class="line">	SessionId string `json:<span class="string">"session_id"</span>`</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#添了后缀，在使用时，会返回统一的json格式,如下：</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"success"</span>:XXXXX,</span><br><span class="line">    <span class="string">"session_id"</span>:XXXX</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Streaming"><a href="#Streaming" class="headerlink" title="Streaming"></a>Streaming</h2><h3 id="4-1"><a href="#4-1" class="headerlink" title="4-1"></a>4-1</h3><p>Streaming（视频播放）：</p>
-<ul>
-<li>静态视频，非RTMP（直播的那些都是RTMP）</li>
-<li>独立的服务，可独立部署</li>
-<li>统一的api格式</li>
-</ul>
-<h3 id="4-3"><a href="#4-3" class="headerlink" title="4-3"></a>4-3</h3><p><code>流控</code><br><code>token bucket</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#共享通道 instead of shared memory</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> ConnLimiter struct &#123;</span><br><span class="line">	concurrentConn int</span><br><span class="line">	bucket chan int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func NewConnLimiter(cc int) *ConnLimiter &#123;</span><br><span class="line">	<span class="built_in">return</span> &amp;ConnLimiter &#123;</span><br><span class="line">		concurrentConn: cc,</span><br><span class="line">		bucket: make(chan int, cc),</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (cl *ConnLimiter) GetConn() bool &#123;</span><br><span class="line">	<span class="keyword">if</span> len(cl.bucket) &gt;= cl.concurrentConn &#123;</span><br><span class="line">		log.Printf(<span class="string">"Reached the rate limitation."</span>)</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cl.bucket &lt;- 1</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (cl *ConnLimiter) <span class="function"><span class="title">ReleaseConn</span></span>() &#123;</span><br><span class="line">	c :=&lt;- cl.bucket</span><br><span class="line">	log.Printf(<span class="string">"New connction coming: %d"</span>, c)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-5"><a href="#4-5" class="headerlink" title="4-5"></a>4-5</h3><p>在http middleware中嵌入流控</p>
-<h2 id="scheduler"><a href="#scheduler" class="headerlink" title="scheduler"></a>scheduler</h2><h3 id="5-1"><a href="#5-1" class="headerlink" title="5-1"></a>5-1</h3><p><code>scheduler</code>任务调度器，某些不能马上处理的任务放到scheduler，让它定期或者延时触发。</p>
-<p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/5-1-scheduler.png" alt></p>
-<h3 id="5-3"><a href="#5-3" class="headerlink" title="5-3"></a>5-3</h3><p>runner的生产消费者模型实现</p>
-<h3 id="5-5"><a href="#5-5" class="headerlink" title="5-5"></a>5-5</h3><p>task</p>
-<p>api-&gt;videoid-&gt;mysql<br>dispatcher-&gt;mysql-&gt;videoid-&gt;datachannel<br>executor-&gt;datachannel-&gt;videoid-&gt;delete video</p>
-<h3 id="5-6"><a href="#5-6" class="headerlink" title="5-6"></a>5-6</h3><p>timer</p>
-<p>setup-&gt;strat{runner task}</p>
-<h3 id="5-7"><a href="#5-7" class="headerlink" title="5-7"></a>5-7</h3><p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/5-7-api.png" alt></p>
-<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="6-1"><a href="#6-1" class="headerlink" title="6-1"></a>6-1</h3><p>Go的模版引擎</p>
-<ul>
-<li>模版引擎是将html解析和元素预置替换生成最终页面的工具</li>
-<li>Go的模版有两种text/template和html/template </li>
-<li>Go的模版采用动态生成的模式</li>
-</ul>
-<p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/6-1-html-template.png" alt></p>
-<h3 id="6-2"><a href="#6-2" class="headerlink" title="6-2"></a>6-2</h3><p>前端代码架构<br><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/6-2-web-document.png" alt></p>
-<p>client.go就是起了proxy转发作用，避免跨域作用。</p>
-<h3 id="6-3"><a href="#6-3" class="headerlink" title="6-3"></a>6-3</h3><p>静态页面渲染</p>
-<h3 id="6-4"><a href="#6-4" class="headerlink" title="6-4"></a>6-4</h3><p>sh build.sh</p>
-<h3 id="6-6-api透传！！！"><a href="#6-6-api透传！！！" class="headerlink" title="6-6 api透传！！！"></a>6-6 api透传！！！</h3><h3 id="6-7-proxy转发"><a href="#6-7-proxy转发" class="headerlink" title="6-7 proxy转发"></a>6-7 proxy转发</h3><p><code>net/url</code>  </p>
-<p><code>net/http/httputil</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func proxyVideoHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) &#123;</span><br><span class="line">	u, _ := url.Parse(<span class="string">"http://"</span> + config.GetLbAddr() + <span class="string">":9000/"</span>)</span><br><span class="line">	proxy := httputil.NewSingleHostReverseProxy(u)</span><br><span class="line">	proxy.ServeHTTP(w, r)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func proxyUploadHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) &#123;</span><br><span class="line">	u, _ := url.Parse(<span class="string">"http://"</span> + config.GetLbAddr() + <span class="string">":9000/"</span>)</span><br><span class="line">	proxy := httputil.NewSingleHostReverseProxy(u)</span><br><span class="line">	proxy.ServeHTTP(w, r)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-11"><a href="#6-11" class="headerlink" title="6-11"></a>6-11</h3><p>js</p>
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><h3 id="7-4"><a href="#7-4" class="headerlink" title="7-4"></a>7-4</h3><p>公共配置，即各模块的config文件。</p>
-<h3 id="7-5-vendor"><a href="#7-5-vendor" class="headerlink" title="7-5  vendor"></a>7-5  vendor</h3><h3 id="7-6-SLB讲解与配置"><a href="#7-6-SLB讲解与配置" class="headerlink" title="7-6 SLB讲解与配置"></a>7-6 SLB讲解与配置</h3><p>阿里云负载均衡配置。</p>
-<h3 id="7-7"><a href="#7-7" class="headerlink" title="7-7"></a>7-7</h3><p>session容错</p>
-<h3 id="7-8-ECS配置"><a href="#7-8-ECS配置" class="headerlink" title="7-8 ECS配置"></a>7-8 ECS配置</h3><h3 id="7-10-部署脚本"><a href="#7-10-部署脚本" class="headerlink" title="7-10 部署脚本"></a>7-10 部署脚本</h3><p>在bin文件夹添加conf.json文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"lb_addr"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">	<span class="string">"oss_addr"</span>: <span class="string">"oss.aliyun.com"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>buildprod.sh</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Build web and other services</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/api</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/api</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/scheduler</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/scheduler</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/streamserver</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/streamserver</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/web</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/web</span><br></pre></td></tr></table></figure>
-
-
-<p><code>deploy.sh</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line">cp -R ./templates ./bin/</span><br><span class="line"></span><br><span class="line">mkdir ./bin/videos</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> bin</span><br><span class="line"></span><br><span class="line">nohup ./api &amp;</span><br><span class="line">nohup ./scheduler &amp;</span><br><span class="line">nohup ./streamserver &amp;</span><br><span class="line">nohup ./web &amp;</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deploy finished"</span></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="7-11-部署"><a href="#7-11-部署" class="headerlink" title="7-11 部署"></a>7-11 部署</h3><p>sh  buildprod.sh 编译完成后提交二进制文件。或者提交代码到服务器上直接编译</p>
-<p>检查对应server是否启动<code>ps aux | grep &lt;api?stream?scheduler?web&gt;</code></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1786,7 +1799,7 @@ ffplay</code></p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
