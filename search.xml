@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>dto与dao</title>
+    <url>/2020/04/10/dto%E4%B8%8Edao/</url>
+    <content><![CDATA[<h1 id="dto"><a href="#dto" class="headerlink" title="dto"></a>dto</h1><p><code>dto</code>数据传输对象(Data Transfer Object)，是一种设计模式之间传输数据的软件应用系统。数据传输目标往往是数据访问对象从数据库中检索数据。数据传输对象与数据交互对象或数据访问对象之间的差异是一个以不具有任何行为除了存储和检索的数据（访问和存取器）。</p>
+<p>在golang中目前我遇到是用于控制返回的字段，如：在User中由多个字段，我希望只返回<code>Name</code>和<code>Telephone</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">package dto</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"gin_vue_bs/model"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//UserDto .</span><br><span class="line"><span class="built_in">type</span> UserDto struct &#123;</span><br><span class="line">	Name      string `json:<span class="string">"name"</span>`</span><br><span class="line">	Telephone string `json:<span class="string">"telephone"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//ToUserDto .</span><br><span class="line">func ToUserDto(user model.User) UserDto &#123;</span><br><span class="line">	<span class="built_in">return</span> UserDto&#123;</span><br><span class="line">		Name:      user.Name,</span><br><span class="line">		Telephone: user.Telephone,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	Name      string `gorm:<span class="string">"type:varchar(20);not null"</span>`</span><br><span class="line">	Telephone string `gorm:<span class="string">"varchar(110;not null;unique"</span>`</span><br><span class="line">	Password  string `gorm:<span class="string">"size:255;not null"</span>`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ctx.JSON(http.StatusOK, gin.H&#123;<span class="string">"code"</span>: 200, <span class="string">"data"</span>: gin.H&#123;<span class="string">"user"</span>: dto.ToUserDto(user.(model.User))&#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="dao"><a href="#dao" class="headerlink" title="dao"></a>dao</h1><p><a href="https://baike.sogou.com/v6708028.htm?fromTitle=dao" target="_blank" rel="noopener">dao</a>就叫它数据访问接口吧。</p>
+<p>还有深刻的理解，相关资料：</p>
+<p><a href="http://www.imooc.com/article/33236" target="_blank" rel="noopener">http://www.imooc.com/article/33236</a></p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>jwt-go</title>
     <url>/2020/04/09/jwt-go/</url>
     <content><![CDATA[<p><a href="https://github.com/dgrijalva/jwt-go" target="_blank" rel="noopener">github</a></p>
@@ -1965,8 +1989,8 @@ ffplay</code></p>
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>Gin</tag>
         <tag>Golang</tag>
+        <tag>Gin</tag>
       </tags>
   </entry>
   <entry>

@@ -213,6 +213,88 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/10/dto%E4%B8%8Edao/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/10/dto%E4%B8%8Edao/" class="post-title-link" itemprop="url">dto与dao</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-10 21:33:56 / Modified: 21:44:56" itemprop="dateCreated datePublished" datetime="2020-04-10T21:33:56+08:00">2020-04-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="dto"><a href="#dto" class="headerlink" title="dto"></a>dto</h1><p><code>dto</code>数据传输对象(Data Transfer Object)，是一种设计模式之间传输数据的软件应用系统。数据传输目标往往是数据访问对象从数据库中检索数据。数据传输对象与数据交互对象或数据访问对象之间的差异是一个以不具有任何行为除了存储和检索的数据（访问和存取器）。</p>
+<p>在golang中目前我遇到是用于控制返回的字段，如：在User中由多个字段，我希望只返回<code>Name</code>和<code>Telephone</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package dto</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"gin_vue_bs/model"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//UserDto .</span><br><span class="line"><span class="built_in">type</span> UserDto struct &#123;</span><br><span class="line">	Name      string `json:<span class="string">"name"</span>`</span><br><span class="line">	Telephone string `json:<span class="string">"telephone"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//ToUserDto .</span><br><span class="line">func ToUserDto(user model.User) UserDto &#123;</span><br><span class="line">	<span class="built_in">return</span> UserDto&#123;</span><br><span class="line">		Name:      user.Name,</span><br><span class="line">		Telephone: user.Telephone,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	Name      string `gorm:<span class="string">"type:varchar(20);not null"</span>`</span><br><span class="line">	Telephone string `gorm:<span class="string">"varchar(110;not null;unique"</span>`</span><br><span class="line">	Password  string `gorm:<span class="string">"size:255;not null"</span>`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.JSON(http.StatusOK, gin.H&#123;<span class="string">"code"</span>: 200, <span class="string">"data"</span>: gin.H&#123;<span class="string">"user"</span>: dto.ToUserDto(user.(model.User))&#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="dao"><a href="#dao" class="headerlink" title="dao"></a>dao</h1><p><a href="https://baike.sogou.com/v6708028.htm?fromTitle=dao" target="_blank" rel="noopener">dao</a>就叫它数据访问接口吧。</p>
+<p>还有深刻的理解，相关资料：</p>
+<p><a href="http://www.imooc.com/article/33236" target="_blank" rel="noopener">http://www.imooc.com/article/33236</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/jwt-go/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1312,80 +1394,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/24/FFmpeg%EF%BC%88%E5%9B%9B%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/24/FFmpeg%EF%BC%88%E5%9B%9B%EF%BC%89/" class="post-title-link" itemprop="url">FFmpeg（四）</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-03-24 14:16:30 / Modified: 15:24:37" itemprop="dateCreated datePublished" datetime="2020-03-24T14:16:30+08:00">2020-03-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
-                    <span itemprop="name">FFmpeg</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://samtake.github.io/2019/11/04/FFmpeg/" target="_blank" rel="noopener">FFmpeg-安装及基本概念</a><br><a href="https://samtake.github.io/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="noopener">FFmpeg-命令</a><br><a href="https://samtake.github.io/2020/03/23/FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89/" target="_blank" rel="noopener">通过 C语言 操作FFmpeg对多媒体文件的处理</a></p>
-<h1 id="SDL简介"><a href="#SDL简介" class="headerlink" title="SDL简介"></a>SDL简介</h1><p><a href="http://libsdl.org/download-2.0.php" target="_blank" rel="noopener">SDL</a>可以对音视频进行渲染，这里主要部分有：安装SDL、使用SDL的基本步骤、SDL窗口渲染、SDL事件处理、SDL纹理渲染。</p>
-<h1 id="安装SDL"><a href="#安装SDL" class="headerlink" title="安装SDL"></a>安装SDL</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ brew info SDl2</span><br><span class="line">➜  ~ brew info SDl2</span><br><span class="line">SDl2: stable 2.0.10 (bottled), HEAD</span><br><span class="line">Low-level access to audio, keyboard, mouse, joystick, and graphics</span><br><span class="line">https://www.libsdl.org/</span><br><span class="line">/usr/<span class="built_in">local</span>/Cellar/SDl2/2.0.10 (87 files, 4.6MB)</span><br><span class="line">  Poured from bottle on 2020-03-24 at 14:13:57</span><br><span class="line">From: git://mirrors.ustc.edu.cn/homebrew-core.git//Formula/sdl2.rb</span><br><span class="line">==&gt; Options</span><br><span class="line">--HEAD</span><br><span class="line">	Install HEAD version</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="使用SDL的基本步骤"><a href="#使用SDL的基本步骤" class="headerlink" title="使用SDL的基本步骤"></a>使用SDL的基本步骤</h1><h1 id="SDL窗口渲染"><a href="#SDL窗口渲染" class="headerlink" title="SDL窗口渲染"></a>SDL窗口渲染</h1><h1 id="SDL事件处理"><a href="#SDL事件处理" class="headerlink" title="SDL事件处理"></a>SDL事件处理</h1><h1 id="SDL彻底理解纹理渲染"><a href="#SDL彻底理解纹理渲染" class="headerlink" title="SDL彻底理解纹理渲染"></a>SDL彻底理解纹理渲染</h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1436,7 +1444,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
