@@ -213,6 +213,115 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/Golang%E4%BA%91%E5%AD%98%E5%82%A8%E5%AE%9E%E6%88%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/10/Golang%E4%BA%91%E5%AD%98%E5%82%A8%E5%AE%9E%E6%88%98/" class="post-title-link" itemprop="url">Golang云存储实战</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-10 01:44:24" itemprop="dateCreated datePublished" datetime="2019-12-10T01:44:24+08:00">2019-12-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-22 18:01:29" itemprop="dateModified" datetime="2020-02-22T18:01:29+08:00">2020-02-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="3mysql"><a href="#3mysql" class="headerlink" title="3mysql"></a>3mysql</h3><p>数据库分表<br>水平分表：假设分成256张文件表，按文件Sha1值后两位来切分，则以：tb_${FILE_SHA1}[:-2]的规则到对应表进行存取。</p>
+<p>// OnFileUploadFinished : 文件上传完成，保存meta （插入）<br>// GetFileMeta : 从mysql获取文件元信息（查询）<br>// UpdateFileLocation : 更新文件的存储地址(如文件被转移了)  （更新）<br>涉及源码：db(file.go   mysql(conn.go))</p>
+<p>使用MySQL小结：<br>通过sql.DB来管理数据连接对象<br>通过sql.Open来创建协程安全的sql.DB<br>优先使用Prepared Statement</p>
+<h3 id="4-1用户系统用户表设计-注册和登录"><a href="#4-1用户系统用户表设计-注册和登录" class="headerlink" title="4-1用户系统用户表设计(注册和登录)"></a>4-1用户系统用户表设计(注册和登录)</h3><p>由于原有情况下,唯一索引用在了字段phone上. 而当前插入表的sql语句中, user_name才是应该要保持唯一的, 因此相对于视频所演示的建表语句进行了更新, 具体如下: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `tbl_user` ( </span><br><span class="line">    `id` int(11) NOT NULL AUTO_INCREMENT, </span><br><span class="line">    `user_name` varchar(64) NOT NULL DEFAULT <span class="string">''</span> COMMENT <span class="string">'用户名'</span>, </span><br><span class="line">    `user_pwd` varchar(256) NOT NULL DEFAULT <span class="string">''</span> COMMENT <span class="string">'用户encoded密码'</span>, </span><br><span class="line">    `email` varchar(64) DEFAULT <span class="string">''</span> COMMENT <span class="string">'邮箱'</span>, </span><br><span class="line">    `phone` varchar(128) DEFAULT <span class="string">''</span> COMMENT <span class="string">'手机号'</span>, </span><br><span class="line">    `email_validated` tinyint(1) DEFAULT 0 COMMENT <span class="string">'邮箱是否已验证'</span>, </span><br><span class="line">    `phone_validated` tinyint(1) DEFAULT 0 COMMENT <span class="string">'手机号是否已验证'</span>, </span><br><span class="line">    `signup_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT <span class="string">'注册日期'</span>, </span><br><span class="line">    `last_active` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT <span class="string">'最后活跃时间戳'</span>, </span><br><span class="line">    `profile` text COMMENT <span class="string">'用户属性'</span>, </span><br><span class="line">    `status` int(11) NOT NULL DEFAULT <span class="string">'0'</span> COMMENT <span class="string">'账户状态(启用/禁用/锁定/标记删除等)'</span>, </span><br><span class="line">    PRIMARY KEY (`id`), </span><br><span class="line">    UNIQUE KEY `idx_username` (`user_name`), </span><br><span class="line">    KEY `idx_status` (`status`) </span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</span><br></pre></td></tr></table></figure>
+
+<p>登录<br>// 1. 校验用户名及密码<br>// 2. 生成访问凭证(token)<br>// 3. 登录成功后重定向到首页<br>涉及源码：<br>db(user.go )<br>handle(user.go)</p>
+<p>访问鉴权（验证token的拦截器）<br>handler(auth.go)</p>
+<h3 id="5-hash算法对比以及秒传原理"><a href="#5-hash算法对比以及秒传原理" class="headerlink" title="5.hash算法对比以及秒传原理"></a>5.hash算法对比以及秒传原理</h3><h3 id="6-Redis"><a href="#6-Redis" class="headerlink" title="6.Redis"></a>6.Redis</h3><p>分块上传与断点续传<br>分块上传：文件切成多块，独立上传，上传完成后合并（初始化上传-&gt;上传分块（并行）-&gt;通知上传完成）<br>断点续传：传输暂停或一场终端后，可基于原来进度重传</p>
+<p>小文件不建议分块上传<br>可以并行上传分块，并且可以无序传输<br>分块上传能极大提高传输效率<br>减少传输失败后重试的流量和时间</p>
+<p>初始化分块信息<br>上传分块<br>通知分块上传完成<br>取消上传分块<br>查看分块上传的整体状态</p>
+<p>涉及源码：<br>cache(redis(conn.go))</p>
+<p>handler(mpupload.go)</p>
+<h3 id="7-Ceph"><a href="#7-Ceph" class="headerlink" title="7.Ceph"></a>7.Ceph</h3><p>Ceph:redhat开源出来的分布式存储系统</p>
+<h3 id="8-阿里云对象存储OSS"><a href="#8-阿里云对象存储OSS" class="headerlink" title="8.阿里云对象存储OSS"></a>8.阿里云对象存储OSS</h3><h3 id="9-RabbitMQ"><a href="#9-RabbitMQ" class="headerlink" title="9.RabbitMQ"></a>9.RabbitMQ</h3><p>RabbitMQ:一种开源的消息代理</p>
+<h3 id="10-微服务"><a href="#10-微服务" class="headerlink" title="10.微服务"></a>10.微服务</h3><p><img src="/2019/12/10/Golang%E4%BA%91%E5%AD%98%E5%82%A8%E5%AE%9E%E6%88%98/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E5%9B%BE.jpeg" alt="微服务架构图"></p>
+<h4 id="基于gin改造用户service"><a href="#基于gin改造用户service" class="headerlink" title="基于gin改造用户service"></a>基于gin改造用户service</h4><h4 id="go-micro"><a href="#go-micro" class="headerlink" title="go-micro"></a>go-micro</h4><h3 id="源码说明"><a href="#源码说明" class="headerlink" title="源码说明:"></a>源码说明:</h3><ul>
+<li>master分支: 通过原生net/http实现各接口功能</li>
+<li>gin分支: 通过Gin框架来改造(微服务化章节之后主要基于Gin框架来进行演示)</li>
+<li>pkg分支: 通过go-bindata等工具实现静态资源打包的一个示例</li>
+<li>第九章(RabbitMQ异步存储)章节的代码，可以下载标签为<code>v0.3</code>的版本</li>
+<li>第八章(OSS)及之前章节的代码，可以下载标签为<code>v0.2</code>的版本</li>
+</ul>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li>Go入门: <a href="https://tour.go-zh.org/welcome/1" target="_blank" rel="noopener">语言之旅</a></li>
+<li>MySQL: <a href="https://chhy2009.github.io/document/mysql-reference-manual.pdf" target="_blank" rel="noopener">偶然翻到的一位大牛翻译的使用手册</a></li>
+<li>Redis: <a href="http://redisdoc.com/" target="_blank" rel="noopener">命令手册</a></li>
+<li>Ceph: <a href="http://ceph.org.cn/" target="_blank" rel="noopener">中文社区</a> <a href="http://docs.ceph.org.cn/" target="_blank" rel="noopener">中文文档</a></li>
+<li>RabbitMQ: <a href="http://www.rabbitmq.com/getstarted.html" target="_blank" rel="noopener">英文官方</a> <a href="http://rabbitmq.mr-ping.com/" target="_blank" rel="noopener">一个中文版文档</a></li>
+<li>阿里云OSS: <a href="https://help.aliyun.com/product/31815.html?spm=a2c4g.750001.3.1.47287b13LQI3Ah" target="_blank" rel="noopener">文档首页</a></li>
+<li>gRPC: <a href="http://doc.oschina.net/grpc?t=56831" target="_blank" rel="noopener">官方文档中文版</a></li>
+<li>k8s: <a href="https://www.kubernetes.org.cn/docs" target="_blank" rel="noopener">中文社区</a></li>
+<li>我的手记博客 <a href="http://www.imooc.com/u/6198190" target="_blank" rel="noopener">http://www.imooc.com/u/6198190</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/15/AFN%E8%A1%A8%E5%8D%95%E5%BD%A2%E5%BC%8F%E6%8F%90%E4%BA%A4%E5%9B%BE%E7%89%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -497,7 +606,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-07 20:57:45" itemprop="dateModified" datetime="2020-04-07T20:57:45+08:00">2020-04-07</time>
+                <time title="Modified: 2020-04-15 08:34:13" itemprop="dateModified" datetime="2020-04-15T08:34:13+08:00">2020-04-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -820,7 +929,33 @@
 
 
 <h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p><a href="https://www.antdv.com/components/layout-cn/" target="_blank" rel="noopener">Layout 布局</a></p>
+<h2 id="菜单和路由的结合"><a href="#菜单和路由的结合" class="headerlink" title="菜单和路由的结合"></a>菜单和路由的结合</h2><p><code>layouts</code>文件夹是菜单的布局</p>
+<p><code>router.js</code></p>
+<ul>
+<li>有name的才会渲染到菜单</li>
+<li>不渲染到菜单，可以添加标志位<code>hideInMenu: true,</code></li>
+<li>如果不想让菜单的子路由渲染出来，可以添加标志位：<code>hideChildrenMenu: true,</code></li>
+</ul>
+<h2 id="如何使用echarts第三方库"><a href="#如何使用echarts第三方库" class="headerlink" title="如何使用echarts第三方库"></a>如何使用echarts第三方库</h2><ul>
+<li>npm i  XX</li>
+<li>在component文件夹中进行封装</li>
+<li>第三方库<code>resize-detector</code>的作用是监听空间大小变化</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div ref=<span class="string">"chartDom"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import echarts from <span class="string">"echarts"</span>;</span><br><span class="line">import debounce from <span class="string">"lodash/debounce"</span>;</span><br><span class="line">import &#123; addListener, removeListener &#125; from <span class="string">"resize-detector"</span>;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  props: &#123;</span><br><span class="line">    option: &#123;</span><br><span class="line">      <span class="built_in">type</span>: Object,</span><br><span class="line">      default: () =&gt; &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    option(val) &#123;</span><br><span class="line">      this.chart.setOption(val);</span><br><span class="line">    &#125;</span><br><span class="line">    // option: &#123;</span><br><span class="line">    //   handler(val) &#123;</span><br><span class="line">    //     this.chart.setOption(val);</span><br><span class="line">    //   &#125;,</span><br><span class="line">    //   deep: <span class="literal">true</span></span><br><span class="line">    // &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">created</span></span>() &#123;</span><br><span class="line">    this.resize = debounce(this.resize, 300);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">mounted</span></span>() &#123;</span><br><span class="line">    this.renderChart();</span><br><span class="line">    addListener(this.<span class="variable">$refs</span>.chartDom, this.resize);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">beforeDestroy</span></span>() &#123;</span><br><span class="line">    removeListener(this.<span class="variable">$refs</span>.chartDom, this.resize);</span><br><span class="line">    this.chart.dispose();</span><br><span class="line">    this.chart = null;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    <span class="function"><span class="title">resize</span></span>() &#123;</span><br><span class="line">      console.log(<span class="string">"resize"</span>);</span><br><span class="line">      this.chart.resize();</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">renderChart</span></span>() &#123;</span><br><span class="line">      // 基于准备好的dom，初始化echarts实例</span><br><span class="line">      this.chart = echarts.init(this.<span class="variable">$refs</span>.chartDom);</span><br><span class="line">      this.chart.setOption(this.option);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 
+<h2 id="mock的使用"><a href="#mock的使用" class="headerlink" title="mock的使用"></a>mock的使用</h2><p>1.在mock文件夹创建对应的js文件<br>2.在vue.config.js配置对应的代理<br>3.<code>axios</code>像正常那样请求数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">      proxy: &#123;</span><br><span class="line">        <span class="string">"/api"</span>: &#123;</span><br><span class="line">          target: <span class="string">"http://localhost:3000"</span>,</span><br><span class="line">          bypass: <span class="keyword">function</span>(req, res) &#123;</span><br><span class="line">            <span class="keyword">if</span> (req.headers.accept.indexOf(<span class="string">"html"</span>) !== -1) &#123;</span><br><span class="line">              console.log(<span class="string">"Skipping proxy for browser request."</span>);</span><br><span class="line">              <span class="built_in">return</span> <span class="string">"/index.html"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (process.env.MOCK !== <span class="string">"none"</span>) &#123;</span><br><span class="line">              const name = req.path</span><br><span class="line">                .split(<span class="string">"/api/"</span>)[1]</span><br><span class="line">                .split(<span class="string">"/"</span>)</span><br><span class="line">                .join(<span class="string">"_"</span>);</span><br><span class="line">              const mock = require(`./mock/<span class="variable">$&#123;name&#125;</span>`);</span><br><span class="line">              const result = mock(req.method);</span><br><span class="line">              delete require.cache[require.resolve(`./mock/<span class="variable">$&#123;name&#125;</span>`)];</span><br><span class="line">              <span class="built_in">return</span> res.send(result);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="axios的使用"><a href="#axios的使用" class="headerlink" title="axios的使用"></a>axios的使用</h2><ul>
+<li>切换环境的时候需要执行<code>npm run serve:no-mock</code>才会请求真实服务器</li>
+<li>一般都会对axios进行封装</li>
+</ul>
+<h2 id="表单的使用"><a href="#表单的使用" class="headerlink" title="表单的使用"></a>表单的使用</h2><h2 id="表单的自动校验"><a href="#表单的自动校验" class="headerlink" title="表单的自动校验"></a>表单的自动校验</h2><h2 id="分步表单（Vuex、Vue-router）"><a href="#分步表单（Vuex、Vue-router）" class="headerlink" title="分步表单（Vuex、Vue-router）"></a>分步表单（Vuex、Vue-router）</h2><ul>
+<li>store-module-form.js</li>
+</ul>
+<h2 id="自己封装一个表单"><a href="#自己封装一个表单" class="headerlink" title="自己封装一个表单"></a>自己封装一个表单</h2><p>components-ReceiverAccount.vue</p>
+<h2 id><a href="#" class="headerlink" title></a></h2>
       
     </div>
 
@@ -1697,7 +1832,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

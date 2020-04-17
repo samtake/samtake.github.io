@@ -64,7 +64,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;12&#x2F;E-R%E5%9B%BE&#x2F;%E7%94%A8%E4%BE%8B01.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;12&#x2F;E-R%E5%9B%BE&#x2F;%E7%94%A8%E4%BE%8B02.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;12&#x2F;E-R%E5%9B%BE&#x2F;%E7%94%A8%E4%BE%8B03.png">
-<meta property="og:updated_time" content="2020-04-12T09:32:34.455Z">
+<meta property="og:updated_time" content="2020-04-13T06:41:46.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;12&#x2F;E-R%E5%9B%BE&#x2F;ER01.png">
 
@@ -244,10 +244,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-12 14:46:13 / Modified: 17:32:34" itemprop="dateCreated datePublished" datetime="2020-04-12T14:46:13+08:00">2020-04-12</time>
+              <time title="Created: 2020-04-12 14:46:13" itemprop="dateCreated datePublished" datetime="2020-04-12T14:46:13+08:00">2020-04-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-13 14:41:46" itemprop="dateModified" datetime="2020-04-13T14:41:46+08:00">2020-04-13</time>
+              </span>
 
           
 
@@ -283,7 +289,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//在gorm中，模型的结构以驼峰命名方式书写，在数据表会自动转成对应下划线</span><br><span class="line"></span><br><span class="line">//CmsUserRole .</span><br><span class="line"><span class="built_in">type</span> CmsUserRole struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID     string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	UserID string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"user_id"</span>`</span><br><span class="line">	RoleID string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"role_id"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//CmsUser .</span><br><span class="line"><span class="built_in">type</span> CmsUser struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID       string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	UserName string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"username"</span>`</span><br><span class="line">	Password string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"password"</span>`</span><br><span class="line">	CmsUserRole CmsUserRole `gorm:<span class="string">"foreignkey:CmsUserRoleRefer"</span>` // 将 CmsUserRoleRefer 作为外键</span><br><span class="line">	CmsUserRoleRefer uint</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//CmsRole .</span><br><span class="line"><span class="built_in">type</span> CmsRole struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID          string      `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	Name        string      `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"name"</span>`</span><br><span class="line">	CmsUserRole CmsUserRole `gorm:<span class="string">"foreignkey:CmsUserRoleRefer"</span>` // 将 CmsUserRoleRefer 作为外键</span><br><span class="line">	CmsUserRoleRefer uint</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>到这，你也会发觉用户角色表其实是个中间件。</p>
-<h1 id="资料："><a href="#资料：" class="headerlink" title="资料："></a>资料：</h1><p><a href="https://blog.csdn.net/qq_41306364/article/details/103135904" target="_blank" rel="noopener">【管理系统课程设计】美少女手把手教你后台管理</a><br><a href="https://www.zhihu.com/question/19973018" target="_blank" rel="noopener">在mac上有没有类似PowerDesigner的软件？</a><br><a href="https://www.bilibili.com/video/BV1X7411L7kc?from=search&seid=1650702711585721122" target="_blank" rel="noopener">第1节：7分钟上手ER图</a><br><a href="https://zhuanlan.zhihu.com/p/50448125" target="_blank" rel="noopener">通俗数据库设计（2）E-R图</a><br><a href="https://zhuanlan.zhihu.com/p/88742157" target="_blank" rel="noopener">DBeaver 一个神奇的数据库操作软件</a><br><a href="https://www.zhihu.com/question/20680795/answer/91850640" target="_blank" rel="noopener">如何使用 MySQL workbench 生成 EER 图？</a><br><a href="https://www.zhihu.com/topic/19630983/top-answers" target="_blank" rel="noopener">E-R图专栏</a></p>
+<h1 id="资料："><a href="#资料：" class="headerlink" title="资料："></a>资料：</h1><p><a href="https://blog.csdn.net/qq_41306364/article/details/103135904" target="_blank" rel="noopener">【管理系统课程设计】美少女手把手教你后台管理</a><br><a href="https://www.zhihu.com/question/19973018" target="_blank" rel="noopener">在mac上有没有类似PowerDesigner的软件？</a><br><a href="https://www.bilibili.com/video/BV1X7411L7kc?from=search&seid=1650702711585721122" target="_blank" rel="noopener">第1节：7分钟上手ER图</a><br><a href="https://zhuanlan.zhihu.com/p/50448125" target="_blank" rel="noopener">通俗数据库设计（2）E-R图</a><br><a href="https://www.zhihu.com/question/20680795/answer/91850640" target="_blank" rel="noopener">如何使用 MySQL workbench 生成 EER 图？</a><br><a href="https://www.zhihu.com/topic/19630983/top-answers" target="_blank" rel="noopener">E-R图专栏</a><br><a href="https://www.bilibili.com/video/BV1dE411q7Xf?from=search&seid=12985731220509939471" target="_blank" rel="noopener">visio-数据库模型图</a></p>
 
     </div>
 
@@ -305,6 +311,9 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+                <a href="/2020/04/17/Golang%E8%B0%83%E7%94%A8shell%E8%84%9A%E6%9C%AC/" rel="prev" title="Golang调用shell脚本">
+                  Golang调用shell脚本 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
       </footer>
@@ -359,7 +368,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

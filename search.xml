@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Golang调用shell脚本</title>
+    <url>/2020/04/17/Golang%E8%B0%83%E7%94%A8shell%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>E-R图</title>
     <url>/2020/04/12/E-R%E5%9B%BE/</url>
     <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>E-R图也称实体-联系图(Entity Relationship Diagram)，也就是概念模型，可以用来做数据库设计。今天先记录下该怎么看E-R图，至于软件的操作下次补充记录～</p>
@@ -26,7 +37,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//在gorm中，模型的结构以驼峰命名方式书写，在数据表会自动转成对应下划线</span><br><span class="line"></span><br><span class="line">//CmsUserRole .</span><br><span class="line"><span class="built_in">type</span> CmsUserRole struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID     string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	UserID string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"user_id"</span>`</span><br><span class="line">	RoleID string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"role_id"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//CmsUser .</span><br><span class="line"><span class="built_in">type</span> CmsUser struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID       string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	UserName string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"username"</span>`</span><br><span class="line">	Password string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"password"</span>`</span><br><span class="line">	CmsUserRole CmsUserRole `gorm:<span class="string">"foreignkey:CmsUserRoleRefer"</span>` // 将 CmsUserRoleRefer 作为外键</span><br><span class="line">	CmsUserRoleRefer uint</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//CmsRole .</span><br><span class="line"><span class="built_in">type</span> CmsRole struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID          string      `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	Name        string      `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"name"</span>`</span><br><span class="line">	CmsUserRole CmsUserRole `gorm:<span class="string">"foreignkey:CmsUserRoleRefer"</span>` // 将 CmsUserRoleRefer 作为外键</span><br><span class="line">	CmsUserRoleRefer uint</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>到这，你也会发觉用户角色表其实是个中间件。</p>
-<h1 id="资料："><a href="#资料：" class="headerlink" title="资料："></a>资料：</h1><p><a href="https://blog.csdn.net/qq_41306364/article/details/103135904" target="_blank" rel="noopener">【管理系统课程设计】美少女手把手教你后台管理</a><br><a href="https://www.zhihu.com/question/19973018" target="_blank" rel="noopener">在mac上有没有类似PowerDesigner的软件？</a><br><a href="https://www.bilibili.com/video/BV1X7411L7kc?from=search&seid=1650702711585721122" target="_blank" rel="noopener">第1节：7分钟上手ER图</a><br><a href="https://zhuanlan.zhihu.com/p/50448125" target="_blank" rel="noopener">通俗数据库设计（2）E-R图</a><br><a href="https://zhuanlan.zhihu.com/p/88742157" target="_blank" rel="noopener">DBeaver 一个神奇的数据库操作软件</a><br><a href="https://www.zhihu.com/question/20680795/answer/91850640" target="_blank" rel="noopener">如何使用 MySQL workbench 生成 EER 图？</a><br><a href="https://www.zhihu.com/topic/19630983/top-answers" target="_blank" rel="noopener">E-R图专栏</a></p>
+<h1 id="资料："><a href="#资料：" class="headerlink" title="资料："></a>资料：</h1><p><a href="https://blog.csdn.net/qq_41306364/article/details/103135904" target="_blank" rel="noopener">【管理系统课程设计】美少女手把手教你后台管理</a><br><a href="https://www.zhihu.com/question/19973018" target="_blank" rel="noopener">在mac上有没有类似PowerDesigner的软件？</a><br><a href="https://www.bilibili.com/video/BV1X7411L7kc?from=search&seid=1650702711585721122" target="_blank" rel="noopener">第1节：7分钟上手ER图</a><br><a href="https://zhuanlan.zhihu.com/p/50448125" target="_blank" rel="noopener">通俗数据库设计（2）E-R图</a><br><a href="https://www.zhihu.com/question/20680795/answer/91850640" target="_blank" rel="noopener">如何使用 MySQL workbench 生成 EER 图？</a><br><a href="https://www.zhihu.com/topic/19630983/top-answers" target="_blank" rel="noopener">E-R图专栏</a><br><a href="https://www.bilibili.com/video/BV1dE411q7Xf?from=search&seid=12985731220509939471" target="_blank" rel="noopener">visio-数据库模型图</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -2041,8 +2052,8 @@ ffplay</code></p>
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>Gin</tag>
         <tag>Golang</tag>
+        <tag>Gin</tag>
       </tags>
   </entry>
   <entry>
@@ -2930,7 +2941,33 @@ ffplay</code></p>
 
 
 <h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p><a href="https://www.antdv.com/components/layout-cn/" target="_blank" rel="noopener">Layout 布局</a></p>
-]]></content>
+<h2 id="菜单和路由的结合"><a href="#菜单和路由的结合" class="headerlink" title="菜单和路由的结合"></a>菜单和路由的结合</h2><p><code>layouts</code>文件夹是菜单的布局</p>
+<p><code>router.js</code></p>
+<ul>
+<li>有name的才会渲染到菜单</li>
+<li>不渲染到菜单，可以添加标志位<code>hideInMenu: true,</code></li>
+<li>如果不想让菜单的子路由渲染出来，可以添加标志位：<code>hideChildrenMenu: true,</code></li>
+</ul>
+<h2 id="如何使用echarts第三方库"><a href="#如何使用echarts第三方库" class="headerlink" title="如何使用echarts第三方库"></a>如何使用echarts第三方库</h2><ul>
+<li>npm i  XX</li>
+<li>在component文件夹中进行封装</li>
+<li>第三方库<code>resize-detector</code>的作用是监听空间大小变化</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div ref=<span class="string">"chartDom"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import echarts from <span class="string">"echarts"</span>;</span><br><span class="line">import debounce from <span class="string">"lodash/debounce"</span>;</span><br><span class="line">import &#123; addListener, removeListener &#125; from <span class="string">"resize-detector"</span>;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  props: &#123;</span><br><span class="line">    option: &#123;</span><br><span class="line">      <span class="built_in">type</span>: Object,</span><br><span class="line">      default: () =&gt; &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    option(val) &#123;</span><br><span class="line">      this.chart.setOption(val);</span><br><span class="line">    &#125;</span><br><span class="line">    // option: &#123;</span><br><span class="line">    //   handler(val) &#123;</span><br><span class="line">    //     this.chart.setOption(val);</span><br><span class="line">    //   &#125;,</span><br><span class="line">    //   deep: <span class="literal">true</span></span><br><span class="line">    // &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">created</span></span>() &#123;</span><br><span class="line">    this.resize = debounce(this.resize, 300);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">mounted</span></span>() &#123;</span><br><span class="line">    this.renderChart();</span><br><span class="line">    addListener(this.<span class="variable">$refs</span>.chartDom, this.resize);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">beforeDestroy</span></span>() &#123;</span><br><span class="line">    removeListener(this.<span class="variable">$refs</span>.chartDom, this.resize);</span><br><span class="line">    this.chart.dispose();</span><br><span class="line">    this.chart = null;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    <span class="function"><span class="title">resize</span></span>() &#123;</span><br><span class="line">      console.log(<span class="string">"resize"</span>);</span><br><span class="line">      this.chart.resize();</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">renderChart</span></span>() &#123;</span><br><span class="line">      // 基于准备好的dom，初始化echarts实例</span><br><span class="line">      this.chart = echarts.init(this.<span class="variable">$refs</span>.chartDom);</span><br><span class="line">      this.chart.setOption(this.option);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="mock的使用"><a href="#mock的使用" class="headerlink" title="mock的使用"></a>mock的使用</h2><p>1.在mock文件夹创建对应的js文件<br>2.在vue.config.js配置对应的代理<br>3.<code>axios</code>像正常那样请求数据</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">      proxy: &#123;</span><br><span class="line">        <span class="string">"/api"</span>: &#123;</span><br><span class="line">          target: <span class="string">"http://localhost:3000"</span>,</span><br><span class="line">          bypass: <span class="keyword">function</span>(req, res) &#123;</span><br><span class="line">            <span class="keyword">if</span> (req.headers.accept.indexOf(<span class="string">"html"</span>) !== -1) &#123;</span><br><span class="line">              console.log(<span class="string">"Skipping proxy for browser request."</span>);</span><br><span class="line">              <span class="built_in">return</span> <span class="string">"/index.html"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (process.env.MOCK !== <span class="string">"none"</span>) &#123;</span><br><span class="line">              const name = req.path</span><br><span class="line">                .split(<span class="string">"/api/"</span>)[1]</span><br><span class="line">                .split(<span class="string">"/"</span>)</span><br><span class="line">                .join(<span class="string">"_"</span>);</span><br><span class="line">              const mock = require(`./mock/<span class="variable">$&#123;name&#125;</span>`);</span><br><span class="line">              const result = mock(req.method);</span><br><span class="line">              delete require.cache[require.resolve(`./mock/<span class="variable">$&#123;name&#125;</span>`)];</span><br><span class="line">              <span class="built_in">return</span> res.send(result);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="axios的使用"><a href="#axios的使用" class="headerlink" title="axios的使用"></a>axios的使用</h2><ul>
+<li>切换环境的时候需要执行<code>npm run serve:no-mock</code>才会请求真实服务器</li>
+<li>一般都会对axios进行封装</li>
+</ul>
+<h2 id="表单的使用"><a href="#表单的使用" class="headerlink" title="表单的使用"></a>表单的使用</h2><h2 id="表单的自动校验"><a href="#表单的自动校验" class="headerlink" title="表单的自动校验"></a>表单的自动校验</h2><h2 id="分步表单（Vuex、Vue-router）"><a href="#分步表单（Vuex、Vue-router）" class="headerlink" title="分步表单（Vuex、Vue-router）"></a>分步表单（Vuex、Vue-router）</h2><ul>
+<li>store-module-form.js</li>
+</ul>
+<h2 id="自己封装一个表单"><a href="#自己封装一个表单" class="headerlink" title="自己封装一个表单"></a>自己封装一个表单</h2><p>components-ReceiverAccount.vue</p>
+<h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
       <categories>
         <category>Vue</category>
       </categories>
