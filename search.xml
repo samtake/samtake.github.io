@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Gin JWT Middleware</title>
+    <url>/2020/04/18/Gin-JWT-Middleware/</url>
+    <content><![CDATA[<p>在<a href="https://samtake.github.io/2020/04/09/jwt-go/" target="_blank" rel="noopener">jwt-go</a>中我记录了手动封装一个认证中间件，然后今天在看<a href="https://github.com/wenjianzhang/go-admin" target="_blank" rel="noopener">go-admin</a>后台管理系统源码的时候发现作者用到了一个第三方库<a href="https://github.com/appleboy/gin-jwt" target="_blank" rel="noopener">gin-jwt</a>实现了同样的功能，今天就一起来看一下吧！</p>
+<h1 id="gin-jwt能做什么？"><a href="#gin-jwt能做什么？" class="headerlink" title="gin-jwt能做什么？"></a>gin-jwt能做什么？</h1><ul>
+<li><p><code>gin-jwt</code>是基于<code>jwt-go</code>实现的一个认证中间件，同时也是专为Gin框架实现的。</p>
+</li>
+<li><p><code>gin-jwt</code>提供了额外的函数功能：给登录接口生成token令牌，以及用于刷新token的函数。</p>
+</li>
+</ul>
+<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><p>整个框架就一个<a href="https://github.com/appleboy/gin-jwt/blob/master/auth_jwt.go" target="_blank" rel="noopener">auth_jwt.go</a>文件，共747行代码。我们从头往下看：</p>
+<p>先定义了一个返回值为map类型的接口<br><code>type MapClaims map[string]interface{}</code></p>
+<p>接着就是一个结构体<code>GinJWTMiddleware</code>,还记得我们在使用jwt-go的时候，也会定义一个结构体，里面存放了关于生成token的一些信息，包括：token发放时间、是谁发放的token、主题等，这里也一样：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">type</span> GinJWTMiddleware struct &#123;</span><br><span class="line">	// Realm name to display to the user. Required.</span><br><span class="line">	Realm string</span><br><span class="line"></span><br><span class="line">	// 算法类型： HS256, HS384, HS512默认是 HS256.</span><br><span class="line">	SigningAlgorithm string</span><br><span class="line"></span><br><span class="line">	// 加密密钥.</span><br><span class="line">	Key []byte</span><br><span class="line"></span><br><span class="line">	// 刷新Token有效期.默认一个小时</span><br><span class="line">	MaxRefresh time.Duration</span><br><span class="line"></span><br><span class="line">	// 认证回调函数</span><br><span class="line">	Authenticator func(c *gin.Context) (interface&#123;&#125;, error)</span><br><span class="line"></span><br><span class="line">	// 通过认证后的处理函数</span><br><span class="line">	Authorizator func(data interface&#123;&#125;, c *gin.Context) bool</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	// 认证失败的回调函数</span><br><span class="line">	Unauthorized func(*gin.Context, int, string)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//登录响应函数</span><br><span class="line">	LoginResponse func(*gin.Context, int, string, time.Time)</span><br><span class="line"></span><br><span class="line">	// 超时响应函数</span><br><span class="line">	LogoutResponse func(*gin.Context, int)</span><br><span class="line"></span><br><span class="line">	// 刷新响应函数</span><br><span class="line">	RefreshResponse func(*gin.Context, int, string, time.Time)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数(只列了几个目前见到的)</p>
+<p>登录是返回token</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// LoginHandler can be used by clients to get a jwt token.</span><br><span class="line">// Payload needs to be json <span class="keyword">in</span> the form of &#123;<span class="string">"username"</span>: <span class="string">"USERNAME"</span>, <span class="string">"password"</span>: <span class="string">"PASSWORD"</span>&#125;.</span><br><span class="line">// Reply will be of the form &#123;<span class="string">"token"</span>: <span class="string">"TOKEN"</span>&#125;.</span><br><span class="line">func (mw *GinJWTMiddleware) LoginHandler(c *gin.Context) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>刷新token</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// RefreshHandler can be used to refresh a token. The token still needs to be valid on refresh.</span><br><span class="line">// Shall be put under an endpoint that is using the GinJWTMiddleware.</span><br><span class="line">// Reply will be of the form &#123;<span class="string">"token"</span>: <span class="string">"TOKEN"</span>&#125;.</span><br><span class="line">func (mw *GinJWTMiddleware) RefreshHandler(c *gin.Context) &#123;</span><br><span class="line">	tokenString, expire, err := mw.RefreshToken(c)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		mw.unauthorized(c, http.StatusUnauthorized, mw.HTTPStatusMessageFunc(err, c))</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	mw.RefreshResponse(c, http.StatusOK, tokenString, expire)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>验证API是需要用到，例如检测权限</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// MiddlewareFunc makes GinJWTMiddleware implement the Middleware interface.</span><br><span class="line">func (mw *GinJWTMiddleware) MiddlewareFunc() gin.HandlerFunc &#123;</span><br><span class="line">	<span class="built_in">return</span> func(c *gin.Context) &#123;</span><br><span class="line">		mw.middlewareImpl(c)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>demo地址：<a href="https://github.com/samtake/gin-jwt-demo" target="_blank" rel="noopener">https://github.com/samtake/gin-jwt-demo</a></p>
+<h2 id="测试官方demo"><a href="#测试官方demo" class="headerlink" title="测试官方demo"></a>测试官方demo</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[GIN] 2020/04/18 - 18:29:51 | 200 |    1.502204ms |             ::1 | POST     <span class="string">"/login"</span></span><br><span class="line">[GIN] 2020/04/18 - 18:30:50 | 401 |     112.029µs |             ::1 | GET      <span class="string">"/auth/hello"</span></span><br><span class="line">[GIN] 2020/04/18 - 18:32:55 | 200 |     346.218µs |             ::1 | GET      <span class="string">"/auth/hello"</span></span><br></pre></td></tr></table></figure>
+
+<p>直接请求401</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: 401,</span><br><span class="line">    <span class="string">"message"</span>: <span class="string">"cookie token is empty"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>登录返回token</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: 200,</span><br><span class="line">    <span class="string">"expire"</span>: <span class="string">"2020-04-18T19:29:51+08:00"</span>,</span><br><span class="line">    <span class="string">"token"</span>: <span class="string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODcyMDkzOTEsImlkIjoiYWRtaW4iLCJvcmlnX2lhdCI6MTU4NzIwNTc5MX0.o55urrL-qhUqpqEKK8k8KF8yBqrgZo_EtKmuOW1bHnc"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>携带token请求</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"text"</span>: <span class="string">"Hello World."</span>,</span><br><span class="line">    <span class="string">"userID"</span>: <span class="string">"admin"</span>,</span><br><span class="line">    <span class="string">"userName"</span>: <span class="string">"admin"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="go-admin中的使用"><a href="#go-admin中的使用" class="headerlink" title="go-admin中的使用"></a>go-admin中的使用</h2><p>这里也就记录别人在项目中是怎么使用的，以及有没有可以学习的地方。</p>
+<p><code>auth.go</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">package middleware</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	config2 <span class="string">"go-admin/config"</span></span><br><span class="line">	<span class="string">"go-admin/handler"</span></span><br><span class="line">	jwt <span class="string">"go-admin/pkg/jwtauth"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func AuthInit() (*jwt.GinJWTMiddleware, error) &#123;</span><br><span class="line">	<span class="built_in">return</span> jwt.New(&amp;jwt.GinJWTMiddleware&#123;</span><br><span class="line">		Realm:           <span class="string">"test zone"</span>,</span><br><span class="line">		Key:             []byte(<span class="string">"secret key"</span>),</span><br><span class="line">		Timeout:         time.Hour,</span><br><span class="line">		MaxRefresh:      time.Hour,</span><br><span class="line">		IdentityKey:     config2.ApplicationConfig.JwtSecret,</span><br><span class="line">		PayloadFunc:     handler.PayloadFunc,</span><br><span class="line">		IdentityHandler: handler.IdentityHandler,</span><br><span class="line">		Authenticator:   handler.Authenticator,</span><br><span class="line">		Authorizator:    handler.Authorizator,</span><br><span class="line">		Unauthorized:    handler.Unauthorized,</span><br><span class="line">		TokenLookup:     <span class="string">"header: Authorization, query: token, cookie: jwt"</span>,</span><br><span class="line">		TokenHeadName:   <span class="string">"Bearer"</span>,</span><br><span class="line">		TimeFunc:        time.Now,</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>permission.go</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">package middleware</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">	<span class="string">"go-admin/pkg"</span></span><br><span class="line">	mycasbin <span class="string">"go-admin/pkg/casbin"</span></span><br><span class="line">	<span class="string">"go-admin/pkg/jwtauth"</span></span><br><span class="line">	_ <span class="string">"go-admin/pkg/jwtauth"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//权限检查中间件</span><br><span class="line">func AuthCheckRole() gin.HandlerFunc &#123;</span><br><span class="line">	<span class="built_in">return</span> func(c *gin.Context) &#123;</span><br><span class="line">		data, _ := c.Get(<span class="string">"JWT_PAYLOAD"</span>)</span><br><span class="line">		v := data.(jwtauth.MapClaims)</span><br><span class="line">		e, err := mycasbin.Casbin()</span><br><span class="line">		pkg.HasError(err,<span class="string">""</span>,500)</span><br><span class="line">		//检查权限</span><br><span class="line">		res, err := e.Enforce(v[<span class="string">"rolekey"</span>], c.Request.URL.Path, c.Request.Method)</span><br><span class="line">		log.Println(<span class="string">"----------------"</span>, v[<span class="string">"rolekey"</span>], c.Request.URL.Path, c.Request.Method)</span><br><span class="line"></span><br><span class="line">			pkg.HasError(err,<span class="string">""</span>,500)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> res &#123;</span><br><span class="line">			c.Next()</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">				<span class="string">"status"</span>: 401,</span><br><span class="line">				<span class="string">"msg"</span>:    <span class="string">"对不起，您没有该接口访问权限，请联系管理员"</span>,</span><br><span class="line">			&#125;)</span><br><span class="line">			c.Abort()</span><br><span class="line">			<span class="built_in">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>router.go</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">func InitRouter() *gin.Engine &#123;</span><br><span class="line"></span><br><span class="line">	// the jwt middleware</span><br><span class="line">	authMiddleware, err := middleware.AuthInit()//初始化</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		_ = fmt.Errorf(<span class="string">"JWT Error"</span>, err.Error())</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	r.POST(<span class="string">"/login"</span>, authMiddleware.LoginHandler)  //框架自带</span><br><span class="line"></span><br><span class="line">	// Refresh time can be longer than token timeout</span><br><span class="line">	r.GET(<span class="string">"/refresh_token"</span>, authMiddleware.RefreshHandler)//框架自带</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    apiv1 := r.Group(<span class="string">"/api/v1"</span>)</span><br><span class="line">	&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    auth := r.Group(<span class="string">"/api/v1"</span>)</span><br><span class="line">	auth.Use(authMiddleware.MiddlewareFunc()).Use(middleware.AuthCheckRole())//检测权限</span><br><span class="line">	&#123;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>写到最后发现这里有篇博客写的挺好的，可以看看～<br><a href="https://blog.firerain.me/article/18" target="_blank" rel="noopener">https://blog.firerain.me/article/18</a></p>
+<p>.end</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Golang调用shell脚本</title>
     <url>/2020/04/17/Golang%E8%B0%83%E7%94%A8shell%E8%84%9A%E6%9C%AC/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天在用一些工具处理文件的时候，批量手动操作真会累死人，时间成本不划算，想着怎么用脚本做成自动化，思路大概是每个脚本处理不同的功能，也就没必要将所有功能写到一个脚本了，担心万一某个模块出了问题影响整个流程。然后其中一个功能需要调用某个网页的接口处理，想了好久，请教了下一些前辈，给出的建议就是破解接口，这时候我立刻想到了Go…大概分三步：</p>
@@ -25,7 +78,7 @@
 <p>输出</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1</span><br><span class="line">Execute Shell:./test.sh . finished with output:</span><br><span class="line">start <span class="built_in">test</span> ...</span><br></pre></td></tr></table></figure>
 
-
+<p><a href="https://golangbyexample.com//" target="_blank" rel="noopener">https://golangbyexample.com//</a></p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -2075,8 +2128,8 @@ ffplay</code></p>
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>Golang</tag>
         <tag>Gin</tag>
+        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>
