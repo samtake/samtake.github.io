@@ -213,6 +213,85 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/Golang%E6%93%8D%E4%BD%9CMySQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/16/Golang%E6%93%8D%E4%BD%9CMySQL/" class="post-title-link" itemprop="url">Golang操作MySQL</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-16 19:41:03 / Modified: 19:49:52" itemprop="dateCreated datePublished" datetime="2020-02-16T19:41:03+08:00">2020-02-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>记录一个报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">➜  goRedisDemo git:(master) ✗ go run main.go</span><br><span class="line"><span class="built_in">test</span> mySQL </span><br><span class="line">panic: runtime error: invalid memory address or nil pointer dereference</span><br><span class="line">[signal SIGSEGV: segmentation violation code=0x1 addr=0x20 pc=0x10c1141]</span><br><span class="line"></span><br><span class="line">goroutine 1 [running]:</span><br><span class="line">sync.(*Mutex).Lock(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/sync/mutex.go:74</span><br><span class="line">database/sql.(*DB).conn(0x0, 0x130f9e0, 0xc000018080, 0x1036801, 0xc000000180, 0x300000002, 0xc000000180)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1132 +0x41</span><br><span class="line">database/sql.(*DB).prepare(0x0, 0x130f9e0, 0xc000018080, 0x12c9f84, 0x69, 0x102da01, 0x203000, 0xc0000b3d78, 0xc0000b3d68)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1431 +0x58</span><br><span class="line">database/sql.(*DB).PrepareContext(0x0, 0x130f9e0, 0xc000018080, 0x12c9f84, 0x69, 0x30, 0x30, 0x128eaa0)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1404 +0x99</span><br><span class="line">database/sql.(*DB).Prepare(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1421</span><br><span class="line">goRedisDemo/db.OnFileUploadFinished(0x12bbb58, 0x8, 0x12bbb60, 0x8, 0x0, 0x0, 0x0, 0x0)</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/db/file.go:15 +0x77</span><br><span class="line">goRedisDemo/handler.UploadHandlerDB()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/handler/testDB.go:10 +0x76</span><br><span class="line">main.main()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/main.go:14 +0x7a</span><br><span class="line"><span class="built_in">exit</span> status 2</span><br><span class="line">➜  goRedisDemo git:(master) ✗ go get database/sql</span><br><span class="line">➜  goRedisDemo git:(master) ✗ go get github.com/go-sql-driver/mysql</span><br><span class="line">➜  goRedisDemo git:(master) ✗ go run main.go                       </span><br><span class="line"><span class="built_in">test</span> mySQL </span><br><span class="line">panic: runtime error: invalid memory address or nil pointer dereference</span><br><span class="line">[signal SIGSEGV: segmentation violation code=0x1 addr=0x20 pc=0x10c1141]</span><br><span class="line"></span><br><span class="line">goroutine 1 [running]:</span><br><span class="line">sync.(*Mutex).Lock(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/sync/mutex.go:74</span><br><span class="line">database/sql.(*DB).conn(0x0, 0x130f9e0, 0xc0000b0008, 0x1036801, 0xc000000180, 0x300000002, 0xc000000180)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1132 +0x41</span><br><span class="line">database/sql.(*DB).prepare(0x0, 0x130f9e0, 0xc0000b0008, 0x12c9f84, 0x69, 0x102da01, 0x203000, 0xc0000dfd78, 0xc0000dfd68)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1431 +0x58</span><br><span class="line">database/sql.(*DB).PrepareContext(0x0, 0x130f9e0, 0xc0000b0008, 0x12c9f84, 0x69, 0x30, 0x30, 0x128eaa0)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1404 +0x99</span><br><span class="line">database/sql.(*DB).Prepare(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1421</span><br><span class="line">goRedisDemo/db.OnFileUploadFinished(0x12bbb58, 0x8, 0x12bbb60, 0x8, 0x0, 0x0, 0x0, 0x0)</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/db/file.go:22 +0x77</span><br><span class="line">goRedisDemo/handler.UploadHandlerDB()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/handler/testDB.go:10 +0x76</span><br><span class="line">main.main()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/main.go:14 +0x7a</span><br><span class="line"><span class="built_in">exit</span> status 2</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://blog.51cto.com/zhixinhu/1844734" target="_blank" rel="noopener">查了一下，原来这是Db变量定义的问题，:=只在当前方法内有效。</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/15/Dockerfile/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1343,141 +1422,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/Docker%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/11/Docker%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">Docker学习</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-12-11 16:37:47" itemprop="dateCreated datePublished" datetime="2019-12-11T16:37:47+08:00">2019-12-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-22 18:01:29" itemprop="dateModified" datetime="2020-02-22T18:01:29+08:00">2020-02-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index">
-                    <span itemprop="name">Docker</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><p>安装<br>1.通过<a href="官网">wwww.docker.com</a>下载桌面版docker<br>2.<a href="https://www.daocloud.io/mirror" target="_blank" rel="noopener">配置Docker镜像站</a><br>3.执行<code>docker run hello-world</code>，看输出完美运行～</p>
-<p>基本概念</p>
-<ul>
-<li>镜像（Image）</li>
-<li>容器（Container）</li>
-<li>仓库（Repository）</li>
-</ul>
-<p>镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
-<p>常用操作</p>
-<p>拉取镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//下载官方nginx镜像源，等同于docker pull docker.io/nginx</span><br><span class="line">//也等同于docker pull docker.io/nginx.io/nginx:latest</span><br><span class="line">docker pull nginx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//下载国内镜像源的ubuntu镜像，并制定版本</span><br><span class="line">docker pull registry.docker-cn.com/library/ubuntu:18.04</span><br></pre></td></tr></table></figure>
-
-<p>推送镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//推送镜像到docker hub,需要先注册账号</span><br><span class="line">docker push &lt;你的用户名&gt;/&lt;你打包时定义的镜像名&gt;:&lt;标签，版本号&gt;</span><br><span class="line"></span><br><span class="line">//推送镜像到私有镜像库，需要提前搭建好仓库服务（比如用harbor来搭建）</span><br><span class="line">docker push &lt;私有镜像库域名，如a.b.com&gt;/&lt;项目名称&gt;/镜像名:&lt;标签&gt;</span><br></pre></td></tr></table></figure>
-
-<p>打包镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//提前准备好一个Dockerfile，在Dockerfile相同路径下执行：</span><br><span class="line">docker build -t &lt;指定一个完整的镜像名，比如testdemo:v1.0&gt;</span><br><span class="line">//即可打包出一个本地镜像，然后再通过docker push 就可以推送到远端镜像仓库</span><br></pre></td></tr></table></figure>
-
-<p>启动容器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -d //-d 表示通过daemon方式来启动</span><br><span class="line">-p 13306:3306 //端口映射，将host主机的13306端口和docker容器的3306端口映射起来</span><br><span class="line">-v /etc/mysql:/var/mysql //目录挂载，将容器内的/var/mysql目录挂载到host主机的/etc/mysql目录，可以实现容器内这个目录下的数据持久化，mysql为镜像名（指定加载哪个镜像）</span><br></pre></td></tr></table></figure>
-
-<p>重启或停止或删除容器应用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker ps  //列出目前正在运行的容器列表</span><br><span class="line">docker ps -a //列出所有的容器列表</span><br><span class="line">docker start &lt;容器id&gt;  //通过容器id来重启某个容器，批量操作的话，直接在参数后面再跟对应容器id即可</span><br><span class="line">docker stop &lt;容器id&gt;  //通过容器id来关闭某个容器，批量操作的话，直接在参数后面再跟对应容器id即可</span><br><span class="line">docker rm &lt;容器id&gt;  //通过容器id来删除掉某个已经停止的容器</span><br><span class="line">docker rm -f &lt;容器id&gt;  //通过容器id来删除掉某个正在运行的容器</span><br><span class="line">docker container rm  [trusting_newton]</span><br></pre></td></tr></table></figure>
-
-<p>删除本地镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker rmo &lt;镜像id&gt;</span><br><span class="line">docker rmi -f &lt;镜像id&gt; //强制删除</span><br></pre></td></tr></table></figure>
-
-<p>查看容器日志</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f &lt;容器id&gt;</span><br><span class="line">docker inspect &lt;容器id&gt; //从返回结果中找到LogPath,运行的历史日志会在这个文件里找到</span><br></pre></td></tr></table></figure>
-
-<p>进入容器内</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker  <span class="built_in">exec</span>  -it &lt;容器id&gt;  /bin/bash  //进入容器内并进入它的shell终端</span><br><span class="line">docker  <span class="built_in">exec</span>  -it &lt;容器id&gt; &lt;shell命令&gt;  //在容器内执行shell命令</span><br><span class="line">docker  <span class="built_in">exec</span>  -it &lt;容器id&gt; ls -l        //查看容器内系统跟目录下所有文件或文件夹</span><br><span class="line"><span class="comment"># 进入容器后，可以直接通过exit命令推出容器</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="服务器Linux下安装Docker社区版-Centos7为例"><a href="#服务器Linux下安装Docker社区版-Centos7为例" class="headerlink" title="服务器Linux下安装Docker社区版(Centos7为例)"></a>服务器Linux下安装Docker社区版(Centos7为例)</h3><ul>
-<li>yum源使用阿里云的源</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/yum.repos.d/</span><br><span class="line"><span class="comment"># 下载阿里云的yum源</span></span><br><span class="line">wget http<span class="string">"mirrors.aliyun.com/repo/Centos-7.repo</span></span><br><span class="line"><span class="string">mv CentOS-Base.repo CentOS-Base.repo.back</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">mv Centos-7.repo CentOS-Base.repo</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>重置yum源</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br><span class="line">yum-config-manager --add-repo http://mirros.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装docker</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看阿里云上docker 源信息</span></span><br><span class="line">yum list docker-ce</span><br><span class="line"><span class="comment">#安装docker最新社区版</span></span><br><span class="line">yum -y install docker-ce</span><br><span class="line"><span class="comment">#查看docker信息</span></span><br><span class="line">docker -v</span><br><span class="line"><span class="comment">#启动docker</span></span><br><span class="line">systemctl start docker</span><br><span class="line"><span class="comment">#查看docker详细状态信息</span></span><br><span class="line">docker info</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-<p>参考资料<br><a href="https://github.com/yeasy/docker_practice" target="_blank" rel="noopener">Docker — 从入门到实践</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1523,7 +1472,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
