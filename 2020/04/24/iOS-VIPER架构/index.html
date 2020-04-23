@@ -52,18 +52,15 @@
   };
 </script>
 
-  <meta name="description" content="前言全篇下来太啰嗦，umi + dva，完成用户管理的 CURD 应用是重点，看这里就行了！！！ antdAnt Design,antd 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品。 目录结构说明 config：配置信息config.js全局配置，路由配置defaultSettings.js一些默认配置plugin.config.js插件配置">
-<meta name="keywords" content="ant-design">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ant-design学习">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;03&#x2F;ant-design%E5%AD%A6%E4%B9%A0&#x2F;index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="iOS VIPER架构">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;24&#x2F;iOS-VIPER%E6%9E%B6%E6%9E%84&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
-<meta property="og:description" content="前言全篇下来太啰嗦，umi + dva，完成用户管理的 CURD 应用是重点，看这里就行了！！！ antdAnt Design,antd 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品。 目录结构说明 config：配置信息config.js全局配置，路由配置defaultSettings.js一些默认配置plugin.config.js插件配置">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-03T19:07:53.952Z">
+<meta property="og:updated_time" content="2020-04-23T18:10:23.855Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/03/03/ant-design%E5%AD%A6%E4%B9%A0/">
+<link rel="canonical" href="http://yoursite.com/2020/04/24/iOS-VIPER%E6%9E%B6%E6%9E%84/">
 
 
 <script id="page-configurations">
@@ -77,7 +74,7 @@
   };
 </script>
 
-  <title>ant-design学习 | samtake</title>
+  <title>iOS VIPER架构 | samtake</title>
   
 
 
@@ -217,7 +214,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/03/ant-design%E5%AD%A6%E4%B9%A0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/iOS-VIPER%E6%9E%B6%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -230,7 +227,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          ant-design学习
+          iOS VIPER架构
         </h1>
 
         <div class="post-meta">
@@ -240,25 +237,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-03-03 17:00:13" itemprop="dateCreated datePublished" datetime="2020-03-03T17:00:13+08:00">2020-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-04 03:07:53" itemprop="dateModified" datetime="2020-03-04T03:07:53+08:00">2020-03-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ant-design/" itemprop="url" rel="index">
-                    <span itemprop="name">ant-design</span>
-                  </a>
-                </span>
+              <time title="Created: 2020-04-24 02:10:23" itemprop="dateCreated datePublished" datetime="2020-04-24T02:10:23+08:00">2020-04-24</time>
             </span>
 
           
@@ -272,44 +251,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>全篇下来太啰嗦，<a href="https://github.com/sorrycc/blog/issues/62" target="_blank" rel="noopener">umi + dva，完成用户管理的 CURD 应用</a>是重点，看这里就行了！！！</p>
-<h2 id="antd"><a href="#antd" class="headerlink" title="antd"></a>antd</h2><p><a href="https://ant.design/index-cn" target="_blank" rel="noopener">Ant Design</a>,<code>antd</code> 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品。</p>
-<h3 id="目录结构说明"><a href="#目录结构说明" class="headerlink" title="目录结构说明"></a>目录结构说明</h3><ul>
-<li><p>config：配置信息<br><code>config.js</code>全局配置，路由配置<br><code>defaultSettings.js</code>一些默认配置<br><code>plugin.config.js</code>插件配置</p>
-</li>
-<li><p>mock 模拟数据请求的</p>
-</li>
-<li><p>mode_modules 第三方库</p>
-</li>
-<li><p>public 放置第三方文件（比如说图片，第三方的json文件）</p>
-</li>
-<li><p>tests 做一些测试的</p>
-</li>
-<li><p>package.json</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"ant-design-pro"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"private"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">"An out-of-box UI solution for enterprise applications"</span>,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"analyze"</span>: <span class="string">"分析"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"编译"</span>,</span><br><span class="line">    <span class="string">"deploy"</span>: <span class="string">"部署"</span>,</span><br><span class="line">    <span class="string">"fetch:blocks"</span>: <span class="string">"从官网git里面去拉模块"</span>,</span><br><span class="line">    <span class="string">"format-imports"</span>: <span class="string">"代码格式（例如空格）"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"启动"</span>,</span><br><span class="line">    <span class="string">"start:no-mock"</span>: <span class="string">"cross-env MOCK=none umi dev"</span>,</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"测试"</span>,</span><br><span class="line">    <span class="string">"test:all"</span>: <span class="string">"node ./tests/run-tests.js"</span>,</span><br><span class="line">    <span class="string">"test:component"</span>: <span class="string">"umi test ./src/components"</span>,</span><br><span class="line">    <span class="string">"ui"</span>: <span class="string">"umi ui"</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>src</p>
-</li>
-</ul>
-<p><code>assets</code>静态资源<br><code>components</code>组件目录<br><code>e2e</code><br><code>layouts</code>布局<br><code>locales</code>多语言<br><code>models</code>模型目录<br><code>pages</code>页面<br><code>services</code>提供服务，给页面提供请求<br><code>utils</code>工具类<br><code>global.less</code><br><code>global.tsx</code><br><code>manifelst.json</code><br><code>service-worker.js</code><br><code>typings.d.ts</code></p>
-<h3 id="增加新页面"><a href="#增加新页面" class="headerlink" title="增加新页面"></a>增加新页面</h3><p>1.在config-config.js文件的routers节点添加代码</p>
-<p>{name: ‘demo’, path: ‘/demo’, component: ‘./demo’},</p>
-<p>2.在page目录下创建demo目录，并新建一个index.jsx文件。<br>3.添加源码。</p>
-<h2 id="dva"><a href="#dva" class="headerlink" title="dva"></a>dva</h2><ul>
-<li><a href="https://dvajs.com" target="_blank" rel="noopener">dva官网</a></li>
-<li><a href="https://www.bilibili.com/video/av55863089?from=search&seid=7612457114058753391" target="_blank" rel="noopener">dva视频教程</a>，以及练习<a href="https://github.com/samtake/dva" target="_blank" rel="noopener">源码</a></li>
-<li><a href="https://www.jianshu.com/p/0568a725f8f9" target="_blank" rel="noopener">dva.js的使用与说明</a></li>
-</ul>
-<h2 id="UmiJS"><a href="#UmiJS" class="headerlink" title="UmiJS"></a>UmiJS</h2><ul>
-<li><a href="https://umijs.org/zh-CN" target="_blank" rel="noopener">UmiJS</a></li>
-<li><a href="https://www.bilibili.com/video/av74033079?p=51" target="_blank" rel="noopener">UmiJS视频教程</a>，以及<a href="https://github.com/plter/ReactCourse20191031" target="_blank" rel="noopener">源码</a></li>
-<li><a href="https://www.cnblogs.com/lihuijuan/p/11242976.html" target="_blank" rel="noopener">Ant Design Pro 脚手架+umiJS 实践总结</a></li>
-</ul>
-<h2 id="dva-umi"><a href="#dva-umi" class="headerlink" title="dva + umi"></a>dva + umi</h2><p>主要搞懂model、service的关系</p>
-<ul>
-<li><a href="https://github.com/sorrycc/blog/issues/62" target="_blank" rel="noopener">umi + dva，完成用户管理的 CURD 应用</a></li>
-<li><a href="https://github.com/umijs/umi-example-dva-user-dashboard" target="_blank" rel="noopener">umi-example-dva-user-dashboard</a></li>
-</ul>
-
+        
     </div>
 
     
@@ -317,25 +259,19 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/ant-design/" rel="tag"># ant-design</a>
-          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2020/03/02/Gitea/" rel="next" title="Gitea">
-                  <i class="fa fa-chevron-left"></i> Gitea
+                <a href="/2020/04/22/%E5%9F%BA%E4%BA%8ERBAC%E8%A7%92%E8%89%B2%E7%9A%84%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6/" rel="next" title="基于RBAC角色的访问控制">
+                  <i class="fa fa-chevron-left"></i> 基于RBAC角色的访问控制
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2020/03/11/%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%95-20200311/" rel="prev" title="读书记录-20200311">
-                  读书记录-20200311 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -374,7 +310,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#antd"><span class="nav-number">2.</span> <span class="nav-text">antd</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目录结构说明"><span class="nav-number">2.1.</span> <span class="nav-text">目录结构说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加新页面"><span class="nav-number">2.2.</span> <span class="nav-text">增加新页面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dva"><span class="nav-number">3.</span> <span class="nav-text">dva</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UmiJS"><span class="nav-number">4.</span> <span class="nav-text">UmiJS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dva-umi"><span class="nav-number">5.</span> <span class="nav-text">dva + umi</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
