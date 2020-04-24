@@ -3,7 +3,42 @@
   <entry>
     <title>iOS VIPER架构</title>
     <url>/2020/04/24/iOS-VIPER%E6%9E%B6%E6%9E%84/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="查了一下资料"><a href="#查了一下资料" class="headerlink" title="查了一下资料"></a>查了一下资料</h1><p><code>VIPER</code> View-Interactor-Presenter-Entity-Router</p>
+<p>View</p>
+<ul>
+<li>提供完整的视图，负责视图的组合、布局、更新</li>
+<li>向Presenter提供更新视图的接口</li>
+<li>将View相关的事件发送给Presenter</li>
+</ul>
+<p>Presenter</p>
+<ul>
+<li>接收并处理来自View的事件</li>
+<li>向Interactor请求调用业务逻辑</li>
+<li>向Interactor提供View中的数据</li>
+<li>接收并处理来自Interactor的数据回调事件</li>
+<li>通知View进行更新操作</li>
+<li>通过Router跳转到其他View</li>
+</ul>
+<p>Router（路由）</p>
+<ul>
+<li>提供View之间的跳转功能，减少了模块间的耦合</li>
+<li>初始化VIPER的各个模块</li>
+</ul>
+<p>Interactor（交互器）</p>
+<ul>
+<li>维护主要的业务逻辑功能，向Presenter提供现有的业务用例</li>
+<li>维护、获取、更新Entity</li>
+<li>当有业务相关的事件发生时，处理事件，并通知Presenter</li>
+</ul>
+<p>Entity（实体）</p>
+<ul>
+<li>和Model一样的数据模型</li>
+</ul>
+<blockquote>
+<p>VIPER把MVC中的Controller进一步拆分成了Presenter、Router和Interactor。和MVP中负责业务逻辑的Presenter不同，VIPER的Presenter的主要工作是在View和Interactor之间传递事件，并管理一些View的展示逻辑，主要的业务逻辑实现代码都放在了Interactor里。Interactor的设计里提出了”用例”的概念，也就是把每一个会出现的业务流程封装好，这样可测试性会大大提高。而Router则进一步解决了不同模块之间的耦合。</p>
+</blockquote>
+<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p>ok!!那就按照上面的意思来写个 demo 呗～～</p>
+]]></content>
   </entry>
   <entry>
     <title>基于RBAC角色的访问控制</title>
