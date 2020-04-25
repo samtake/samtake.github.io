@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>go-logging</title>
+    <url>/2020/04/25/go-logging/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>iOS VIPER架构</title>
     <url>/2020/04/24/iOS-VIPER%E6%9E%B6%E6%9E%84/</url>
     <content><![CDATA[<h1 id="查了一下资料"><a href="#查了一下资料" class="headerlink" title="查了一下资料"></a>查了一下资料</h1><p><code>VIPER</code> View-Interactor-Presenter-Entity-Router</p>
@@ -2217,8 +2222,8 @@ ffplay</code></p>
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>Gin</tag>
         <tag>Golang</tag>
+        <tag>Gin</tag>
       </tags>
   </entry>
   <entry>
