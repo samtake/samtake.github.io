@@ -213,6 +213,92 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/" class="post-title-link" itemprop="url">Navicat使用资料</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-12 00:35:14" itemprop="dateCreated datePublished" datetime="2020-02-12T00:35:14+08:00">2020-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-15 16:56:40" itemprop="dateModified" datetime="2020-02-15T16:56:40+08:00">2020-02-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>实操一下</p>
+<p>通过docker来启动一个mysql容器应用<br><code>docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</code></p>
+<h3 id="通过docker-exec-it-容器id-bash-来操作mysql"><a href="#通过docker-exec-it-容器id-bash-来操作mysql" class="headerlink" title="通过docker exec -it 容器id bash 来操作mysql"></a>通过docker exec -it 容器id bash 来操作mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">➜  blogs docker ps                      </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">0eee2c1708be        mysql:5.7           <span class="string">"docker-entrypoint.s…"</span>   41 minutes ago      Up 41 minutes       0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   happy_chandrasekhar</span><br><span class="line">➜  blogs docker <span class="built_in">exec</span> -it  0eee2c1708be bash            </span><br><span class="line">root@0eee2c1708be:/<span class="comment"># mysql -uroot -p</span></span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 765627</span><br><span class="line">Server version: 5.7.29 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysql&gt; status;</span><br><span class="line">--------------</span><br><span class="line">mysql  Ver 14.14 Distrib 5.7.29, <span class="keyword">for</span> Linux (x86_64) using  EditLine wrapper</span><br><span class="line"></span><br><span class="line">Connection id:		765627</span><br><span class="line">Current database:	</span><br><span class="line">Current user:		root@localhost</span><br><span class="line">SSL:			Not <span class="keyword">in</span> use</span><br><span class="line">Current pager:		stdout</span><br><span class="line">Using outfile:		<span class="string">''</span></span><br><span class="line">Using delimiter:	;</span><br><span class="line">Server version:		5.7.29 MySQL Community Server (GPL)</span><br><span class="line">Protocol version:	10</span><br><span class="line">Connection:		Localhost via UNIX socket</span><br><span class="line">Server characterset:	latin1</span><br><span class="line">Db     characterset:	latin1</span><br><span class="line">Client characterset:	latin1</span><br><span class="line">Conn.  characterset:	latin1</span><br><span class="line">UNIX socket:		/var/run/mysqld/mysqld.sock</span><br><span class="line">Uptime:			1 hour 2 min 0 sec</span><br><span class="line"></span><br><span class="line">Threads: 2  Questions: 6  Slow queries: 0  Opens: 105  Flush tables: 1  Open tables: 98  Queries per second avg: 0.001</span><br><span class="line">--------------</span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="在navicat中使用sql语句创建表"><a href="#在navicat中使用sql语句创建表" class="headerlink" title="在navicat中使用sql语句创建表"></a>在navicat中使用sql语句创建表</h3><p>1.进行命令行操作</p>
+<p><img src="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/navicate-console.jpeg" alt></p>
+<p>2.输入mysql<br><img src="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/navicate-soule-mysql.png" alt></p>
+<p>3.右键refresh一下即可见到刚才新建的表tbl_user<br><img src="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/tbl_user.png" alt></p>
+<h3 id="通过navicat连接MySQL"><a href="#通过navicat连接MySQL" class="headerlink" title="通过navicat连接MySQL"></a>通过navicat连接MySQL</h3><p>创建数据库时，一般字符集选择utf8，排序规则选择utf8_general_ci </p>
+<p><a href="https://zhuanlan.zhihu.com/p/44348694" target="_blank" rel="noopener">在Navicat中如何新建数据库和表并做查询</a><br><a href="https://www.navicat.com.cn/manual/online_manual/cn/navicat/win_manual/index.html#/about_0" target="_blank" rel="noopener">Navicat使用手册</a> </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/Ubuntu%E4%B8%AD%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%E4%B8%BB%E4%BB%8E%E8%8A%82%E7%82%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1639,153 +1725,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/WebRTC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/04/WebRTC/" class="post-title-link" itemprop="url">WebRTC</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-11-04 01:54:53" itemprop="dateCreated datePublished" datetime="2019-11-04T01:54:53+08:00">2019-11-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-22 23:20:48" itemprop="dateModified" datetime="2020-03-22T23:20:48+08:00">2020-03-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WebRTC/" itemprop="url" rel="index">
-                    <span itemprop="name">WebRTC</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="WebRTC介绍"><a href="#WebRTC介绍" class="headerlink" title="WebRTC介绍"></a>WebRTC介绍</h1><p><a href="[https://webrtc.org/](https://webrtc.org/)">WebRTC</a>一个由google开源的音视频处理+即时通讯的开源库，优秀的多媒体、跨平台框架。它极其庞大复杂，换句话来说功能很强大，然后就是WebRTC只是定义了客户端的规范，至于服务器可以根据自己的业务场景来实现，一般应用于：</p>
-<ul>
-<li>音视频会议、在线教育</li>
-<li>照相机</li>
-<li>音乐播放器</li>
-<li>共享远程桌面</li>
-<li>录制</li>
-<li>实施人脸识别</li>
-<li>游戏</li>
-<li>文件传输工具</li>
-<li>P2P网络加速</li>
-<li>即时通讯工具</li>
-</ul>
-<h1 id="WebRTC-1-对-1-音视频实时通话"><a href="#WebRTC-1-对-1-音视频实时通话" class="headerlink" title="WebRTC 1 对 1 音视频实时通话"></a>WebRTC 1 对 1 音视频实时通话</h1><p><img src="/2019/11/04/WebRTC/webrtc1-1to1.png" alt="过程示意图"></p>
-<p>即两个 WebRTC 终端（上图中的两个大方框）、一个 Signal（信令）服务器和一个 STUN/TURN 服务器。</p>
-<p><code>WebRTC 终端</code>负责音视频采集、编解码、NAT 穿越、音视频数据传输。步骤流程如下：</p>
-<ul>
-<li>获取权限（摄像头、麦克风）</li>
-<li>本地视频的采集与展示</li>
-<li>创建<code>RTCPeerConnection</code></li>
-<li>媒体协商</li>
-<li>远端视频的展示</li>
-</ul>
-<p><code>Signal 服务器</code>负责信令处理，如加入房间、离开房间、媒体协商消息的传递等。<br><code>STUN/TURN 服务器</code>负责获取 WebRTC 终端在公网的 IP 地址，以及 NAT 穿越失败后的数据中转。</p>
-<h1 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h1><p><code>Full Cone</code> 完全锥型NAT<br>当 host 主机通过 NAT 访问外网的 B 主机时，就会在 NAT 上打个“洞”，所有知道这个“洞”的主机都可以通过它与内网主机上的侦听程序通信。<br><code>所谓的“打洞”就是在 NAT 上建立一个内外网的映射表。</code><br>大多数人都选用<code>UDP</code>作为打洞协议.</p>
-<p><img src="/2019/11/04/WebRTC/webrtc10-full-cone.png" alt></p>
-<p><code>ip restricted</code>IP 限制锥型NAT<br>host 主机在 NAT 上“打洞”后，NAT 会对穿越洞口的 IP 地址做限制。只有登记的 IP 地址才可以通过。</p>
-<p>IP 限制锥型 NAT 的映射表是一个 5 元组，即：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	内网 IP，</span><br><span class="line">	内网端口，</span><br><span class="line">	映射的外网 IP，</span><br><span class="line">	映射的外网端口，</span><br><span class="line">	被访问主机的 IP</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2019/11/04/WebRTC/webrtc10-ip-restricted.png" alt></p>
-<p><code>port restrected</code> 端口限制型NAT</p>
-<p>不光在 NAT 上对打洞的 IP 地址做了限制，而且还对具体的端口做了限制。因此，端口限制型 NAT 的映射表是一个 6 元组，其格式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	内网 IP，</span><br><span class="line">	内网端口，</span><br><span class="line">	映射的外网 IP，</span><br><span class="line">	映射的外网端口，</span><br><span class="line">	被访问主机的 IP,</span><br><span class="line">	被访问主机的端口</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2019/11/04/WebRTC/webrtc10-port-restrcted.png" alt></p>
-<p><code>symmetric</code> 对成型NAT<br>host 主机访问 B 时它在 NAT 上打了一个“洞”，而这个“洞”只有 B 主机上提供服务的端口发送的数据才能穿越，这一点与端口限制型 NAT 是一致的。</p>
-<p>但它与端口限制型 NAT 最大的不同在于，如果 host 主机访问 A 时，它会在 NAT 上重新开一个“洞”，而不会使用之前访问 B 时打开的“洞”。也就是说对称型 NAT 对每个连接都使用不同的端口，甚至更换 IP 地址，而端口限制型 NAT 的多个连接则使用同一个端口，这对称型 NAT 与端口限制型 NAT 最大的不同.</p>
-<p><img src="/2019/11/04/WebRTC/webrtc10-symmetric.png" alt></p>
-<p><code>NAT 类型检测</code>步骤</p>
-<ul>
-<li>判断是否有 NAT 防护</li>
-<li>探测 NAT 环境</li>
-</ul>
-<p><img src="/2019/11/04/WebRTC/webrtc10-nat-check.png" alt></p>
-<h1 id="STUN协议"><a href="#STUN协议" class="headerlink" title="STUN协议"></a>STUN协议</h1><ul>
-<li>STUN存在的目的就是进行NAT穿越。</li>
-<li>STUN是典型的客户端/服务器模式，即：客户端发送请求，服务端进行相应。</li>
-</ul>
-<p>STUN有着两套规范，分别是：<br><code>RFC3489</code>Simple Traversal of UDP Through NAT</p>
-<p>RFC3489定义属性<br>| 属性 | 作用 |  |<br>| :—–| :— | :—- |<br>| 0x001 | mapped-address | 获取客户端映射地址 |<br>| 0x002 | response-address | 指明对于mapped-address的相应应该由哪里发送 |<br>| 0x003 | change-request | 请求服务端使用不同的IP和端口发送响应 |<br>| 0x004 | souce-address | 制定服务器的IP和端口 |<br>| 0x005 | change-addresss | 它是change-addresss请求的响应 |<br>| 0x006 | user-name | 用于安全验证 |<br>| 0x007 | password | 用于安全验证 |<br>| 0x008 | message-integrity | 消息完整性验证 |<br>| 0x009 | error-code | 错误码 |<br>| 0x00a | unknow-attributes | 未知属性 |<br>| 0x00b | peflected-from | 拒约 |</p>
-<p><code>RFC5389</code>Session Traversal Utilities for NAT（它是UDP和TCP都有用到的）</p>
-<h1 id="TURN协议"><a href="#TURN协议" class="headerlink" title="TURN协议"></a>TURN协议</h1><ul>
-<li>目的是解决堆成NAT无法穿越的问题</li>
-<li>其建立在STUN之上，消息格式使用STUN格式消息</li>
-<li>TURN Client要求服务端分配一个公共IP和Port用于接收或发送数据</li>
-</ul>
-<p><img src="/2019/11/04/WebRTC/turn-demo.png" alt></p>
-<h1 id="ICE框架"><a href="#ICE框架" class="headerlink" title="ICE框架"></a>ICE框架</h1><ul>
-<li>收集Candidate（本机所有IP和制定端口）</li>
-<li>对Candidate Pair 排序</li>
-<li>连通性检查</li>
-</ul>
-<p>什么是 Candidate?<br>它表示 WebRTC 与远端通信时使用的协议、IP 地址和端口，一般由以下字段组成：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	IP: xxx.xxx.xxx.xxx,</span><br><span class="line">	port: number,</span><br><span class="line">	<span class="built_in">type</span>: host/srflx/relay,</span><br><span class="line">	priority: number,</span><br><span class="line">	protocol: UDP/TCP,</span><br><span class="line">	usernameFragment: string</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中，候选者类型中的 host 表示本机候选者，srflx 表示内网主机映射的外网的地址和端口，relay 表示中继候选者。</p>
-<h1 id="SDP"><a href="#SDP" class="headerlink" title="SDP"></a>SDP</h1><p><code>SDP</code>session description protocol，它是一种信息格式的描述标准，本身不属于传输协议，但是可以被其他传输协议用来交换必要的信息。</p>
-<h1 id="RTP-RTCP"><a href="#RTP-RTCP" class="headerlink" title="RTP/RTCP"></a>RTP/RTCP</h1><p> 一般情况下，在实时互动直播系统传输音视频数据流时，我们并不直接将音视频数据流交给 UDP 传输，而是先给音视频数据加个 RTP 头，然后再交给 UDP 进行传输。</p>
-<p>在使用 RTP 包传输数据时，难免会发生丢包、乱序、抖动等问题，但在处理这些问题之前，它首先要让各端都知道它们自己的网络质量到底是怎样的，这就是 RTCP 的作用。</p>
-<p>各协议头字段如下，SSRC为共享媒体流的源。</p>
-<p><img src="/2019/11/04/WebRTC/RTP-protocol-header.png" alt="RTP"></p>
-<p><img src="/2019/11/04/WebRTC/RTCP-protocol-header.png" alt="RTCP"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1836,7 +1775,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

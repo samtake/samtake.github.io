@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>架构、技术选型、SAAS、中台、数据分析</title>
+    <url>/2020/04/27/%E6%9E%B6%E6%9E%84%E3%80%81%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E3%80%81SAAS%E3%80%81%E4%B8%AD%E5%8F%B0%E3%80%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<h1 id="架构的技术树"><a href="#架构的技术树" class="headerlink" title="架构的技术树"></a>架构的技术树</h1><p><img src="/2020/04/27/%E6%9E%B6%E6%9E%84%E3%80%81%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E3%80%81SAAS%E3%80%81%E4%B8%AD%E5%8F%B0%E3%80%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E8%90%BD%E6%8B%93%E7%9A%84%E5%85%A8%E8%83%BD%E6%95%99%E5%AE%A4.jpeg" alt="落拓的全能教室.jpeg"></p>
+<p><a href="https://www.processon.com/view/link/5e51378ce4b0c037b5f9d1e3#outline" target="_blank" rel="noopener">极客时间-架构实战案例解析</a></p>
+<h1 id="SAAS软件"><a href="#SAAS软件" class="headerlink" title="SAAS软件"></a>SAAS软件</h1><p><a href="https://www.zhihu.com/question/41359111" target="_blank" rel="noopener">SaaS ERP和传统ERP的区别在哪里？</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/43216852" target="_blank" rel="noopener">Iass、Pass、SasS三种云服务区别</a></p>
+<p>如果在没有任何轮子的情况下，让我来搭的话，技术可能会是这样子：go+vue+…</p>
+<p>但我在GitHub找到了开源的，功能看起来也挺全的了，功能：</p>
+<blockquote>
+<p>基于SpringBoot框架和SaaS模式，立志为中小企业提供开源好用的多租户ERP软件，目前专注进销存+财务功能。主要模块有零售管理、采购管理、销售管理、仓库管理、财务管理、报表查询、系统管理等。支持预付款、收入支出、仓库调拨、组装拆卸、订单等特色功能。拥有库存状况、出入库统计等报表。同时对角色和权限进行了细致全面控制，精确到每个按钮和菜单。</p>
+</blockquote>
+<blockquote>
+<p>价格介绍：开源版只包含基础功能，架构不支持高并发，容易出现问题，如想使用，签订使用协议即可。商业版包含所有功能，一直在更新，价格也在随时变化，目前价格是六万五千元【2020/02/27更新】(需要发票另外算)，负责半年的现有功能维护，提供开发文档、技术支持、疑难问题的解决方案，可根据需要进行功能整合（整合后费用跟着变化），一次性付费，全部源码。商业版包含的功能:<a href="https://gitee.com/doc_wei01/skyeye" target="_blank" rel="noopener">https://gitee.com/doc_wei01/skyeye</a> 。单独的ERP授权价格是12000</p>
+</blockquote>
+<p>地址：<a href="https://github.com/weizhiqiang1995/erp-pro" target="_blank" rel="noopener">erp-pro</a></p>
+<p>Java基础入门之后，这个项目作为学习是个不错的选择。</p>
+<p><a href="https://studygolang.com/articles/24864" target="_blank" rel="noopener">适合SaaS的几种架构比较</a></p>
+<h1 id="大数据、数据分析"><a href="#大数据、数据分析" class="headerlink" title="大数据、数据分析"></a>大数据、数据分析</h1><p><img src="/2020/04/27/%E6%9E%B6%E6%9E%84%E3%80%81%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E3%80%81SAAS%E3%80%81%E4%B8%AD%E5%8F%B0%E3%80%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%9001.jpeg" alt="数据分析01.jpeg"></p>
+<p><a href="https://zhuanlan.zhihu.com/p/26545566" target="_blank" rel="noopener">一文读懂大数据平台——写给大数据开发初学者的话!</a></p>
+<p>这里推荐极客时间出品的《数据分析实战45讲》<br>基础+算法+实战+数据可视化</p>
+<h1 id="中台"><a href="#中台" class="headerlink" title="中台"></a>中台</h1><p><a href="https://zhuanlan.zhihu.com/p/81410765" target="_blank" rel="noopener">阿里中台架构</a></p>
+<p>双数据中台<br><img src="/2020/04/27/%E6%9E%B6%E6%9E%84%E3%80%81%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E3%80%81SAAS%E3%80%81%E4%B8%AD%E5%8F%B0%E3%80%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E8%AF%B4%E9%80%8F%E4%B8%AD%E5%8F%B001.jpeg" alt="说透中台01.jpeg"></p>
+<p>这里推荐王健的《说透中台》</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>各自的技术栈都不一样，做之前先调研：</p>
+<ol>
+<li><p>数据：数据分析用 python，但自己之前接触的大数据行业，像为某些机构做舆论监控的，他们用的却是Java。</p>
+</li>
+<li><p>接口：各业务模块判断未来go语言是趋势，但看有没有具体轮子吧，Java or go ?</p>
+</li>
+<li><p>app： flutter作为跨平台首选毕竟以前用过rn真的不好用，但flutter在iOS上架长期会有不稳定因素（说不定哪天被拒），安卓是没问题的，或者用flutter做成模块被iOS调用进行混合开发也行。</p>
+</li>
+<li><p>小程序： uni-app吧，全平台小程序：微信、头条、支付宝。</p>
+</li>
+<li><p>web前端：vue了。</p>
+</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>go-logging</title>
     <url>/2020/04/25/go-logging/</url>
     <content><![CDATA[]]></content>
