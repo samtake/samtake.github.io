@@ -3,7 +3,113 @@
   <entry>
     <title>Life is simple, i learn Python</title>
     <url>/2020/05/05/Life-is-simple-i-learn-Python/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p><a href="https://www.readwithu.com/Article/PythonBasis/python2/Variable.html" target="_blank" rel="noopener">草根学Python</a></p>
+<p><a href="https://www.runoob.com/python3/python3-data-type.html" target="_blank" rel="noopener">菜鸟教程Python</a></p>
+<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>Number:数字<br>int:整数<br>float:浮点数</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">counter = 100          <span class="comment"># 整型变量</span></span><br><span class="line">miles   = 1000.0       <span class="comment"># 浮点型变量</span></span><br><span class="line">name    = <span class="string">"r00unoob"</span>     <span class="comment"># 字符串</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (counter)</span><br><span class="line"><span class="built_in">print</span> (miles)</span><br><span class="line"><span class="built_in">print</span> (name)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (5/2)  <span class="comment">#除</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (5//2)  <span class="comment">#整除</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (0b10) <span class="comment">#二进制</span></span><br><span class="line"><span class="built_in">print</span> (0o10) <span class="comment">#八进制</span></span><br><span class="line"><span class="built_in">print</span> (0x10) <span class="comment">#十六进制</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (bin(123)) <span class="comment">#bin转二进制</span></span><br><span class="line"><span class="built_in">print</span> (int(0o10)) <span class="comment">#int转十进制</span></span><br><span class="line"><span class="built_in">print</span> (hex(0o10)) <span class="comment">#转十六进制</span></span><br><span class="line"><span class="built_in">print</span> (oct(123)) <span class="comment">#转十六进制</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="布尔"><a href="#布尔" class="headerlink" title="布尔"></a>布尔</h2><p>bool:布尔类型</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (bool(True))</span><br><span class="line"><span class="built_in">print</span> (bool(False))</span><br><span class="line"><span class="built_in">print</span> (bool(None))</span><br><span class="line"><span class="built_in">print</span> (bool(<span class="string">""</span>))</span><br><span class="line"><span class="built_in">print</span> (bool(&#123;&#125;))</span><br><span class="line"><span class="built_in">print</span> (bool([1,2,3]))</span><br></pre></td></tr></table></figure>
+
+<h2 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h2><p>complex:复数</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 字符串</span></span><br><span class="line">单引号、双引号、三个单引号、三个双引号、</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>)</span><br><span class="line"><span class="built_in">print</span> (<span class="string">"i'm hello"</span>)</span><br><span class="line"><span class="built_in">print</span> (<span class="string">'i\'</span>m hello<span class="string">')</span></span><br><span class="line"><span class="string">print ('</span><span class="string">''</span>i<span class="string">'m </span></span><br><span class="line"><span class="string">hello</span></span><br><span class="line"><span class="string">mm</span></span><br><span class="line"><span class="string">nn</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="转移字符"><a href="#转移字符" class="headerlink" title="转移字符"></a>转移字符</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">\n  <span class="comment">#换行</span></span><br><span class="line">\r  <span class="comment">#回车</span></span><br><span class="line">\<span class="string">'  #单引号</span></span><br><span class="line"><span class="string">\t  #横向制表符</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>+<span class="string">'hello'</span>) <span class="comment">#两个字符串的拼接</span></span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>[0])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>[-1])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>[0:3])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>[0:-3])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>[0:30])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>[3:])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hellohellohello</span><br><span class="line">h</span><br><span class="line">o</span><br><span class="line">hel</span><br><span class="line">he</span><br><span class="line">hello</span><br><span class="line">lo</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> ([1,2,3,<span class="string">"hhh"</span>,False])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> ([[1,2,3,<span class="string">"hhh"</span>,False],[7,9],9])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[1, 2, 3, <span class="string">'hhh'</span>, False]</span><br><span class="line">[[1, 2, 3, <span class="string">'hhh'</span>, False], [7, 9], 9]</span><br></pre></td></tr></table></figure>
+
+<h2 id="列表的基本操作"><a href="#列表的基本操作" class="headerlink" title="列表的基本操作"></a>列表的基本操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> ([[1,2,3,<span class="string">"hhh"</span>,False],[7,9],9])  <span class="comment">#列表的组成可以是嵌套列表</span></span><br><span class="line"></span><br><span class="line">myList =  [1,2,3,<span class="string">"hhh"</span>,False]</span><br><span class="line"><span class="built_in">print</span> (myList[3])  <span class="comment">#得到的是一个元素</span></span><br><span class="line"><span class="built_in">print</span> (myList[3:]) <span class="comment">#得到的是一个列表</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">myList2 =  [<span class="string">'添加的元素'</span>]</span><br><span class="line"><span class="built_in">print</span>(myList+myList2)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[[1, 2, 3, <span class="string">'hhh'</span>, False], [7, 9], 9]</span><br><span class="line">hhh</span><br><span class="line">[<span class="string">'hhh'</span>, False]</span><br><span class="line">[1, 2, 3, <span class="string">'hhh'</span>, False, <span class="string">'添加的元素'</span>]</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="tumple"><a href="#tumple" class="headerlink" title="tumple"></a>tumple</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">tup1 = (<span class="string">'Google'</span>, <span class="string">'Runoob'</span>, 1997, 2000)</span><br><span class="line"><span class="built_in">print</span>(tup1)</span><br><span class="line">tup2 = (1, 2, 3, 4, 5 )</span><br><span class="line"><span class="built_in">print</span>(tup2)</span><br><span class="line">tup3 = <span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>   <span class="comment">#  不需要括号也可以</span></span><br><span class="line"><span class="built_in">print</span>(tup3)</span><br><span class="line"></span><br><span class="line">tup4 = ()</span><br><span class="line"><span class="built_in">print</span>(tup4)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(<span class="string">'Google'</span>, <span class="string">'Runoob'</span>, 1997, 2000)</span><br><span class="line">(1, 2, 3, 4, 5)</span><br><span class="line">(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>)</span><br><span class="line">()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#元组中只包含一个元素时，需要在元素后面添加逗号，否则括号会被当作运算符使用</span></span><br><span class="line"></span><br><span class="line">tup1 = (50,)</span><br><span class="line"><span class="built_in">print</span>(tup1)</span><br></pre></td></tr></table></figure>
+
+<h2 id="访问元组"><a href="#访问元组" class="headerlink" title="访问元组"></a>访问元组</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tup1 = (<span class="string">'Google'</span>, <span class="string">'Runoob'</span>, 1997, 2000)</span><br><span class="line">tup2 = (1, 2, 3, 4, 5, 6, 7 )</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (<span class="string">"tup1[0]: "</span>, tup1[0])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">"tup2[1:5]: "</span>, tup2[1:5])</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tup1[0]:  Google</span><br><span class="line">tup2[1:5]:  (2, 3, 4, 5)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="修改元组"><a href="#修改元组" class="headerlink" title="修改元组"></a>修改元组</h2><p>元组中的元素值是不允许修改的，但我们可以对元组进行连接组合</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">tup1 = (12, 34.56)</span><br><span class="line">tup2 = (<span class="string">'abc'</span>, <span class="string">'xyz'</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 以下修改元组元素操作是非法的。</span></span><br><span class="line"><span class="comment"># tup1[0] = 100</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 创建一个新的元组</span></span><br><span class="line">tup3 = tup1 + tup2</span><br><span class="line"><span class="built_in">print</span> (tup3)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(12, 34.56, <span class="string">'abc'</span>, <span class="string">'xyz'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除元组"><a href="#删除元组" class="headerlink" title="删除元组"></a>删除元组</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">tup = (<span class="string">'Google'</span>, <span class="string">'Runoob'</span>, 1997, 2000)</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (tup)</span><br><span class="line">del tup</span><br><span class="line"><span class="built_in">print</span> (<span class="string">"删除后的元组 tup : "</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#print (tup)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>删除之后在使用，会存在报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(<span class="string">'Google'</span>, <span class="string">'Runoob'</span>, 1997, 2000)</span><br><span class="line">删除后的元组 tup : </span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"main.py"</span>, line 9, <span class="keyword">in</span> </span><br><span class="line">    <span class="built_in">print</span> (tup)</span><br><span class="line">NameError: name <span class="string">'tup'</span> is not defined</span><br></pre></td></tr></table></figure>
+<h2 id="元组内置函数"><a href="#元组内置函数" class="headerlink" title="元组内置函数"></a>元组内置函数</h2><table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">len(tuple)</td>
+<td align="center">计算元组元素个数</td>
+</tr>
+<tr>
+<td align="center">max(tuple)</td>
+<td align="center">返回元组中元素最大值</td>
+</tr>
+<tr>
+<td align="center">min(tuple)</td>
+<td align="center">返回元组中元素最小值</td>
+</tr>
+<tr>
+<td align="center">tuple(iterable)</td>
+<td align="center">将可迭代系列转换为元组</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">list1= [<span class="string">'Google'</span>, <span class="string">'Taobao'</span>, <span class="string">'Runoob'</span>, <span class="string">'Baidu'</span>]</span><br><span class="line">tuple1=tuple(list1)</span><br><span class="line"><span class="built_in">print</span>(tuple1)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(<span class="string">'Google'</span>, <span class="string">'Taobao'</span>, <span class="string">'Runoob'</span>, <span class="string">'Baidu'</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>d = {key1 : value1, key2 : value2 }</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dict = &#123;<span class="string">'Alice'</span>: <span class="string">'2341'</span>, <span class="string">'Beth'</span>: <span class="string">'9102'</span>, <span class="string">'Cecil'</span>: <span class="string">'3258'</span>&#125;</span><br><span class="line">dict1 = &#123; <span class="string">'abc'</span>: 456 &#125;</span><br><span class="line">dict2 = &#123; <span class="string">'abc'</span>: 123, 98.6: 37 &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="访问字典"><a href="#访问字典" class="headerlink" title="访问字典"></a>访问字典</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line">dict = &#123;<span class="string">'Name'</span>: <span class="string">'Runoob'</span>, <span class="string">'Age'</span>: 7, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (<span class="string">"dict['Name']: "</span>, dict[<span class="string">'Name'</span>])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">"dict['Age']: "</span>, dict[<span class="string">'Age'</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dict[<span class="string">'Name'</span>]:  Runoob</span><br><span class="line">dict[<span class="string">'Age'</span>]:  7</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改字典"><a href="#修改字典" class="headerlink" title="修改字典"></a>修改字典</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<pre><code class="bash"></code></pre>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
   </entry>
   <entry>
     <title>架构、技术选型、SAAS、中台、数据分析</title>
