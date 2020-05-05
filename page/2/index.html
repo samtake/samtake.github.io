@@ -213,6 +213,94 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/jwt-go/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/09/jwt-go/" class="post-title-link" itemprop="url">jwt-go</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-09 23:27:28" itemprop="dateCreated datePublished" datetime="2020-04-09T23:27:28+08:00">2020-04-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-10 00:19:32" itemprop="dateModified" datetime="2020-04-10T00:19:32+08:00">2020-04-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://github.com/dgrijalva/jwt-go" target="_blank" rel="noopener">github</a></p>
+<p><a href="https://godoc.org/github.com/dgrijalva/jwt-go" target="_blank" rel="noopener">Documentation</a></p>
+<p>引入包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get <span class="string">"github.com/dgrijalva/jwt-go"</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package common</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"gin_vue_bs/model"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/dgrijalva/jwt-go"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//定义 jwt 加密密钥</span><br><span class="line">var jwtKey = []byte(<span class="string">"a_secret_crect"</span>)</span><br><span class="line"></span><br><span class="line">//Claims .</span><br><span class="line"><span class="built_in">type</span> Claims struct &#123;</span><br><span class="line">	UserID uint</span><br><span class="line">	jwt.StandardClaims</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//ReleaseToken 登录成功则调用该方法发放token.</span><br><span class="line">func ReleaseToken(user model.User) (string, error) &#123;</span><br><span class="line">	expirationTime := time.Now().Add(7 * 24 * time.Hour) //token的过期时间7天</span><br><span class="line">	claims := &amp;Claims&#123;</span><br><span class="line">		UserID: user.ID,</span><br><span class="line">		StandardClaims: jwt.StandardClaims&#123;</span><br><span class="line">			ExpiresAt: expirationTime.Unix(),</span><br><span class="line">			IssuedAt:  time.Now().Unix(), //token发放时间</span><br><span class="line">			Issuer:    <span class="string">"samtake"</span>,         //是谁发放的token</span><br><span class="line">			Subject:   <span class="string">"user token"</span>,      //主题</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)</span><br><span class="line">	tokenString, err := token.SignedString(jwtKey)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">""</span>, err</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> tokenString, nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>返回</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: <span class="string">"200"</span>,</span><br><span class="line">    <span class="string">"data"</span>: &#123;</span><br><span class="line">        <span class="string">"token"</span>: <span class="string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOjMsImV4cCI6MTU4NzA1MjA0MiwiaWF0IjoxNTg2NDQ3MjQyLCJpc3MiOiJzYW10YWtlIiwic3ViIjoidXNlciB0b2tlbiJ9.6a50w6SfsQH7XZBW7zu3_FEGFcrWHRAh2DFYTh9hbCo"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"msg"</span>: <span class="string">"登录成功"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>所返回的token由三部分组成：协议头（token的加密协议）、 源码claims储存的信息 、（前面两部分+jwtKey）的哈希值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  blogs <span class="built_in">echo</span> eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9  | base64 -D                                                                                                                                                         </span><br><span class="line">&#123;<span class="string">"alg"</span>:<span class="string">"HS256"</span>,<span class="string">"typ"</span>:<span class="string">"JWT"</span>&#125;%</span><br><span class="line">➜  blogs <span class="built_in">echo</span> eyJVc2VySUQiOjMsImV4cCI6MTU4NzA1MjA0MiwiaWF0IjoxNTg2NDQ3MjQyLCJpc3MiOiJzYW10YWtlIiwic3ViIjoidXNlciB0b2tlbiJ9 | base64 -D     </span><br><span class="line">&#123;<span class="string">"UserID"</span>:3,<span class="string">"exp"</span>:1587052042,<span class="string">"iat"</span>:1586447242,<span class="string">"iss"</span>:<span class="string">"samtake"</span>,<span class="string">"sub"</span>:<span class="string">"user token"</span>&#125;%</span><br><span class="line">➜  blogs <span class="built_in">echo</span> 6a50w6SfsQH7XZBW7zu3_FEGFcrWHRAh2DFYTh9hbCo  | base64 -D     </span><br><span class="line">?tä???]?V?;??Q??!?1XNa%</span><br><span class="line">➜  blogs</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/gorm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1307,184 +1395,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/23/FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/23/FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89/" class="post-title-link" itemprop="url">FFmpeg（三）</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-03-23 17:57:25" itemprop="dateCreated datePublished" datetime="2020-03-23T17:57:25+08:00">2020-03-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-24 13:53:43" itemprop="dateModified" datetime="2020-03-24T13:53:43+08:00">2020-03-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
-                    <span itemprop="name">FFmpeg</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://samtake.github.io/2019/11/04/FFmpeg/" target="_blank" rel="noopener">FFmpeg-安装及基本概念</a><br><a href="https://samtake.github.io/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="noopener">FFmpeg-命令</a><br><a href="https://github.com/samtake/FFmpeg-demo" target="_blank" rel="noopener">FFmpeg-demo源码地址</a><br>这里记录通过 C语言 操作FFmpeg对多媒体文件的处理</p>
-<h1 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h1><p>常用日志级别（级别由高到底排列）<br>1.AV_LOFG_ERROR<br>2.AV_LOG_WARNING<br>3.AV_LOG_INFO</p>
-<p>启用步骤</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">include &lt;libavutil/log.h&gt;</span><br><span class="line">av_log_set_level(AV_LOG_DEBUG) <span class="comment">#只有该级别以及该级别之上的日志才会打印</span></span><br><span class="line">av_log(NULL,AV_LOG_INFO,<span class="string">"hello world:%s\n"</span>,<span class="string">"op"</span> )</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) clang -g -o ffmpeg_log ffmpeg_log.c -lavutil</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./ffmpeg_log</span><br><span class="line">hello world!</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="文件的删除-amp-重命名"><a href="#文件的删除-amp-重命名" class="headerlink" title="文件的删除&amp;重命名"></a>文件的删除&amp;重命名</h1><p><code>avpriv_io_move(&quot;111.txt&quot;,&quot;222.txt&quot;);</code>重命名<br><code>avpriv_io_delete(&quot;./mytestfile.txt&quot;);</code>删除</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o ffmpeg_del ffmpeg_file.c `pkg-config --libs libavformat`</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ pkg-config --libs libavformat  <span class="comment">#这一命令的作用时：在系统中寻找到libavformat库所在的位置</span></span><br><span class="line">-L/usr/<span class="built_in">local</span>/Cellar/ffmpeg/4.2.2_2/lib -lavformat</span><br></pre></td></tr></table></figure>
-
-<h1 id="操作目录"><a href="#操作目录" class="headerlink" title="操作目录"></a>操作目录</h1><p><code>avio_open_dir</code><br><code>avio_read_dir</code><br><code>avio_free_directory_entry</code><br><code>avio_close_dir</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">av_log(NULL, AV_LOG_INFO, <span class="string">"%12"</span>PRId64<span class="string">"%s \n"</span>,entry-&gt;size,entry-&gt;name);</span><br><span class="line"></span><br><span class="line"><span class="comment"># PRId64 是ffmpeg里面定义的一个宏，ffmpeg里面读取的文件也是64位的。</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o list ffmpeg_list.c `pkg-config --libs libavformat libavutil`</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./list</span><br><span class="line">         186ffmpeg_log.c </span><br><span class="line">        2442build_ffmpeg_for_android.sh </span><br><span class="line">        4433list.c </span><br><span class="line">         818ffmpeg_list.c </span><br><span class="line">          96list.dSYM </span><br><span class="line">          96ffmpeg_del.dSYM </span><br><span class="line">        5209encode_audio.c </span><br><span class="line">        1051read_file.c </span><br><span class="line">       11151extr_video.c </span><br><span class="line">       11027avmerge.c </span><br><span class="line">        9532decode_video.c </span><br><span class="line">        5747cutvideo.c </span><br><span class="line">        8760ffmpeg_del </span><br><span class="line">        4265encode_video.c </span><br><span class="line">        8760ffmpeg_log </span><br><span class="line">        6500extr_audio.c </span><br><span class="line">        9380list </span><br><span class="line">          96android </span><br><span class="line">        1073mediainfo.c </span><br><span class="line">        7020decode_audio.c </span><br><span class="line">         541ffmpeg_file.c </span><br><span class="line">        5132remuxing.c </span><br><span class="line">         448.git </span><br><span class="line">          96ffmpeg_log.dSYM </span><br><span class="line">         803write_file.c </span><br><span class="line">        5066extra_audio_ffapi.c </span><br><span class="line">         288player</span><br></pre></td></tr></table></figure>
-
-<h1 id="打印音视频meta信息"><a href="#打印音视频meta信息" class="headerlink" title="打印音视频meta信息"></a>打印音视频meta信息</h1><p><code>av_register_all</code><br><code>avformat_open_input</code><br><code>av_dump_format(fmt_ctx, 0, &quot;./test.mp4&quot;, 0/**输入信息*/);</code></p>
-<p>输入信息 填0<br>输入信息 填1</p>
-<p><code>avformat_close_input</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o mediainfo mediainfo.c `pkg-config --libs libavutil libavformat`</span><br><span class="line">mediainfo.c:17:5: warning: <span class="string">'av_register_all'</span> is deprecated [-Wdeprecated-declarations]</span><br><span class="line">    av_register_all();</span><br><span class="line">    ^</span><br><span class="line">/usr/<span class="built_in">local</span>/include/libavformat/avformat.h:2049:1: note: <span class="string">'av_register_all'</span> has been explicitly marked deprecated here</span><br><span class="line">attribute_deprecated</span><br><span class="line">^</span><br><span class="line">/usr/<span class="built_in">local</span>/include/libavutil/attributes.h:94:49: note: expanded from macro <span class="string">'attribute_deprecated'</span></span><br><span class="line"><span class="comment">#    define attribute_deprecated __attribute__((deprecated))</span></span><br><span class="line">                                                ^</span><br><span class="line">1 warning generated.</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./mediainfo</span><br><span class="line">Input <span class="comment">#0, mov,mp4,m4a,3gp,3g2,mj2, from './test.mp4':</span></span><br><span class="line">  Metadata:</span><br><span class="line">    major_brand     : mp42</span><br><span class="line">    minor_version   : 0</span><br><span class="line">    compatible_brands: isommp42</span><br><span class="line">    creation_time   : 2020-03-19T07:15:55.000000Z</span><br><span class="line">  Duration: 00:00:55.51, start: 0.000000, bitrate: 8422 kb/s</span><br><span class="line">    Stream <span class="comment">#0:0(eng): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 380 kb/s (default)</span></span><br><span class="line">    Metadata:</span><br><span class="line">      creation_time   : 2020-03-19T07:15:55.000000Z</span><br><span class="line">      handler_name    : Mainconcept MP4 Sound Media Handler</span><br><span class="line">    Stream <span class="comment">#0:1(eng): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709), 1280x720 [SAR 1:1 DAR 16:9], 8040 kb/s, 50 fps, 50 tbr, 50k tbn, 100 tbc (default)</span></span><br><span class="line">    Metadata:</span><br><span class="line">      creation_time   : 2020-03-19T07:15:55.000000Z</span><br><span class="line">      handler_name    : Mainconcept MP4 Video Media Handler</span><br><span class="line">      encoder         : AVC Cod</span><br></pre></td></tr></table></figure>
-
-<h1 id="抽取多媒体中的音频数据"><a href="#抽取多媒体中的音频数据" class="headerlink" title="抽取多媒体中的音频数据"></a>抽取多媒体中的音频数据</h1><p>av_init_packet(&amp;pkt);</p>
-<p>av_find_best_stream</p>
-<p>av_read_frame/av_packet_unref</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o extr_audio  extr_audio.c `pkg-config --libs libavutil libavformat`</span><br><span class="line">./extr_audio  ./test.mp4  ./test.aac  </span><br><span class="line">ffplay test.aac</span><br></pre></td></tr></table></figure>
-
-<h1 id="抽取多媒体中的H264视频数据"><a href="#抽取多媒体中的H264视频数据" class="headerlink" title="抽取多媒体中的H264视频数据"></a>抽取多媒体中的H264视频数据</h1><p>先要知道的三点：<br>1.将多媒体中的H264视频数据抽取后，它其实是由一帧一帧压缩后的视频帧组成的，如何区分这一帧一帧的视频帧呢？两种方法：</p>
-<ul>
-<li>在每一帧的长度前面加一个真的长度，当读取第一帧的时候先读取这一帧的长度，根据这一帧的长度在读取帧的数据长度，依次下去。。。</li>
-<li>在每一帧的前面加关键字（特征码），只要遇到特征码就知道这一帧开始了，上一帧结束了。</li>
-</ul>
-<p>2.SPS/PPS（它只有几个字节，不会增加网络负担）<br>解码的视频参数，以及视频帧的宽高（也就是常说的视频分辨率），等等都是存在于SPS/PPS。</p>
-<p>视频播放时，每次切换分辨率都要更新SPS/PPS。</p>
-<p>而在视频直播时，在每个关键帧里面都会有一个SPS/PPS。</p>
-<p>3.ffmpeg如何获取SPS/PPS？<br>codec-&gt;extradata</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o extr_video  extr_video.c `pkg-config --libs libavutil libavformat`</span><br><span class="line">./extr_video ./test.mp4  test.h264</span><br><span class="line">ffplay test.h264</span><br></pre></td></tr></table></figure>
-
-<h1 id="mp4转flv"><a href="#mp4转flv" class="headerlink" title="mp4转flv"></a>mp4转flv</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">avformat_alloc_output_context2/avformat_free_context</span><br><span class="line"></span><br><span class="line">avformat_new_stream</span><br><span class="line"></span><br><span class="line">avcodec_parameters_copy</span><br><span class="line"></span><br><span class="line">avformat_write_header  <span class="comment">#头</span></span><br><span class="line"></span><br><span class="line">av_interleaved_write_frame  <span class="comment">#头数据</span></span><br><span class="line"></span><br><span class="line">av_write_trailer   <span class="comment">#尾</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o remuxing  remuxing.c `pkg-config --libs  libavformat`</span><br><span class="line">./remuxing ./test.mp4 test.flv   </span><br><span class="line">ffplay  test.flv</span><br></pre></td></tr></table></figure>
-
-<h1 id="音视频裁剪"><a href="#音视频裁剪" class="headerlink" title="音视频裁剪"></a>音视频裁剪</h1><p>av_seek_frame</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o cutvideo  cutvideo.c `pkg-config --libs  libavformat  libavcodec`</span><br><span class="line">./cutvideo  10  20  ./test.mp4 cutvideo.mp4</span><br><span class="line">ffplay cutvideo.mp4</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="FFmpeg编解码概括"><a href="#FFmpeg编解码概括" class="headerlink" title="FFmpeg编解码概括"></a>FFmpeg编解码概括</h1><p>类型：</p>
-<ul>
-<li>H264解码</li>
-<li>H264编码</li>
-<li>AAC解码</li>
-<li>AAC编码</li>
-</ul>
-<p>用到的头文件：</p>
-<ul>
-<li>libavcodec/avcodec.h</li>
-</ul>
-<p>用到的结构体：</p>
-<ul>
-<li>AVCodec编解码结构体</li>
-<li>AVCodecContext 编解码器上下文</li>
-<li>AVFrame 解码后的帧</li>
-</ul>
-<p>结构体内存的分配和释放API：</p>
-<ul>
-<li>av_frame_alloc/av_frame_free()</li>
-<li>avcodec_alloc_context3()</li>
-<li>avcodec_free_context()</li>
-</ul>
-<p>解码步骤：</p>
-<ul>
-<li><code>avcodec_find_decoder</code>查找解码器</li>
-<li><code>avcodec_open2</code>打开解码器</li>
-<li><code>avcodec_decode_video2</code>解码，得到RGB或者YUV数据</li>
-</ul>
-<h1 id="H264编码"><a href="#H264编码" class="headerlink" title="H264编码"></a>H264编码</h1><p>步骤：</p>
-<ul>
-<li><code>avcodec_find_encoder_by_name</code>查看编码器</li>
-<li><code>avcodec_open2</code>设置编码参数，并打开编码器</li>
-<li><code>avcodec_encode_video2</code>编码</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o encode_video  encode_video.c `pkg-config --libs  libavcodec` </span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./encode_video  </span><br><span class="line">Usage: ./encode_video &lt;output file&gt; &lt;codec name&gt;</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./encode_video  encode_video.h264 libx264</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ffplay encode_video.h264</span><br></pre></td></tr></table></figure>
-
-<h1 id="视频转图片"><a href="#视频转图片" class="headerlink" title="视频转图片"></a>视频转图片</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o decode_video  decode_video.c `pkg-config --libs  libavformat libavutil libavcodec libswscale`</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./decode_video ./test.mp4 ./</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="AAC编码"><a href="#AAC编码" class="headerlink" title="AAC编码"></a>AAC编码</h1><p>avcodec_encodec_audio2</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o encode_audio encode_audio.c `pkg-config --libs libavcodec`</span><br><span class="line">./encode_audio encode_audio.aac</span><br><span class="line">ffplay  encode_audio.aac</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1535,7 +1445,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

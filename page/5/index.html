@@ -213,6 +213,212 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/Redis%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/12/Redis%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Redis入门</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-12 17:03:51 / Modified: 19:48:41" itemprop="dateCreated datePublished" datetime="2020-02-12T17:03:51+08:00">2020-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Docker-安装-Redis"><a href="#Docker-安装-Redis" class="headerlink" title="Docker 安装 Redis"></a>Docker 安装 Redis</h3><p><code>docker pull redis:latest</code><br>取最新版的 Redis 镜像</p>
+<p><code>docker images</code><br>查看是否已安装了 redis</p>
+<p>运行 redis 容器<br><code>docker run -itd --name redis-test -p 6379:6379 redis</code><br>或者运行redis并设置密码<br><code>docker run -d --name myredis -p 6379:6379 redis --requirepass &quot;mypassword&quot;</code></p>
+<p>其中-p 6379:6379：映射容器服务的 6379 端口到宿主机的 6379 端口。外部可以直接通过宿主机ip:6379 访问到 Redis 的服务。</p>
+<p><code>docker ps</code> 查看容器的运行信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  Desktop docker ps </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                               NAMES</span><br><span class="line">d1f67d1e5fda        redis               <span class="string">"docker-entrypoint.s…"</span>   About a minute ago   Up About a minute   0.0.0.0:6379-&gt;6379/tcp              redis-test</span><br><span class="line">0eee2c1708be        mysql:5.7           <span class="string">"docker-entrypoint.s…"</span>   8 hours ago          Up 8 hours          0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   happy_chandrasekhar</span><br></pre></td></tr></table></figure>
+
+
+<p>最后，通过过 redis-cli 连接测试使用 redis 服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  Desktop docker <span class="built_in">exec</span> -it redis-test /bin/bash</span><br><span class="line">root@d1f67d1e5fda:/data<span class="comment"># redis-cli</span></span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> <span class="built_in">test</span> 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>可以存储的值</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>STRING</td>
+<td>字符串、整数或者浮点数</td>
+<td>对整个字符串或者字符串的其中一部分执行操作；对整数和浮点数执行自增或者自减操作；</td>
+</tr>
+<tr>
+<td>LIST</td>
+<td>列表</td>
+<td>从两端压入或者弹出元素；读取单个或者多个元素；进行修剪，只保留一个范围内的元素；</td>
+</tr>
+<tr>
+<td>SET</td>
+<td>无序集合</td>
+<td>添加、获取、移除单个元素；检查一个元素是否存在于集合中；计算交集、并集、差集；从集合里面随机获取元素；</td>
+</tr>
+<tr>
+<td>HASH</td>
+<td>包含键值对的无序散列表</td>
+<td>添加、获取、删除单个键值对；获取所有键值对；检查某个健是否存在；</td>
+</tr>
+<tr>
+<td>ZSET</td>
+<td>有序集合</td>
+<td>添加、获取、删除元素；根据分值范围或者成员来获取元素；计算一个键的排名；</td>
+</tr>
+</tbody></table>
+<h4 id="STRING"><a href="#STRING" class="headerlink" title="STRING"></a>STRING</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>获取存储在给定健中的值</td>
+</tr>
+<tr>
+<td>SET</td>
+<td>设置存储在给定健中的值</td>
+</tr>
+<tr>
+<td>DEL</td>
+<td>删除存储在给定健中的值（这个命令可以用于所有类型）</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name longshan</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">"longshan"</span></span><br><span class="line">127.0.0.1:6379&gt; del name</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">(nil)</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="LIST"><a href="#LIST" class="headerlink" title="LIST"></a>LIST</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rpush</td>
+<td>获取存储在给定键中的值</td>
+</tr>
+<tr>
+<td>lrange</td>
+<td>设置存储在给定键中的值</td>
+</tr>
+<tr>
+<td>lindex</td>
+<td>删除存储在给定键中的值（这个命令可以用于所有类型）</td>
+</tr>
+<tr>
+<td>lpop</td>
+<td>删除存储在给定键中的值（这个命令可以用于所有类型）</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange list 0-1</span><br><span class="line">(error) ERR wrong number of arguments <span class="keyword">for</span> <span class="string">'lrange'</span> <span class="built_in">command</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 0 -1</span><br><span class="line">1) <span class="string">"item1"</span></span><br><span class="line">2) <span class="string">"item2"</span></span><br><span class="line">3) <span class="string">"item3"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 1</span><br><span class="line">(error) ERR wrong number of arguments <span class="keyword">for</span> <span class="string">'lrange'</span> <span class="built_in">command</span></span><br><span class="line">127.0.0.1:6379&gt; lindex list 1</span><br><span class="line"><span class="string">"item2"</span></span><br><span class="line">127.0.0.1:6379&gt; lpop list</span><br><span class="line"><span class="string">"item1"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 0 -1</span><br><span class="line">1) <span class="string">"item2"</span></span><br><span class="line">2) <span class="string">"item3"</span></span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h4><p>命令    | 行为<br>-|-|-<br>sadd    | 添加一个或多个元素到集合里<br>smembers |    获取集合里面的所有元素<br>sismember |    确定一个给定的值是一个集合的成员<br>srem    | 从集合里删除一个或多个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item1</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item3</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item3</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; smember <span class="built_in">set</span></span><br><span class="line">(error) ERR unknown <span class="built_in">command</span> `smember`, with args beginning with: `<span class="built_in">set</span>`, </span><br><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"item3"</span></span><br><span class="line">2) <span class="string">"item1"</span></span><br><span class="line">3) <span class="string">"item2"</span></span><br><span class="line">127.0.0.1:6379&gt; sismember <span class="built_in">set</span> item5</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; srem <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; srem <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; smenbers <span class="built_in">set</span></span><br><span class="line">(error) ERR unknown <span class="built_in">command</span> `smenbers`, with args beginning with: `<span class="built_in">set</span>`, </span><br><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"item3"</span></span><br><span class="line">2) <span class="string">"item1"</span></span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="HASH"><a href="#HASH" class="headerlink" title="HASH"></a>HASH</h4><p>命令    | 行为<br>-|-|-<br>hset    | 设置 hash 里面一个字段的值<br>hget    | 获取 hash 中域的值<br>hgetall    | 从 hash 中读取全部的域和值<br>hdel    | 删除一个或多个域</p>
+<h4 id="ZSET"><a href="#ZSET" class="headerlink" title="ZSET"></a>ZSET</h4><p>命令    | 行为<br>-|-|-<br>ZADD    | 添加到有序 set 的一个或多个成员，或更新的分数，如果它已经存在<br>ZRANGE    | 根据指定的 index 返回，返回 sorted set 的成员列表<br>ZRANGEBYSCORE    | 返回有序集合中指定分数区间内的成员，分数由低到高排序。<br>ZREM    | 从排序的集合中删除一个或多个成员</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li><p>缓存 - 将热点数据放到内存中，设置内存的最大使用量以及过期淘汰策略来保证缓存的命中率。</p>
+</li>
+<li><p>计数器 - Redis 这种内存数据库能支持计数器频繁的读写操作。</p>
+</li>
+<li><p>应用限流 - 限制一个网站访问流量。</p>
+</li>
+<li><p>消息队列 - 使用 List 数据类型，它是双向链表。</p>
+</li>
+<li><p>查找表 - 使用 HASH 数据类型。</p>
+</li>
+<li><p>交集运算 - 使用 SET 类型，例如求两个用户的共同好友。</p>
+</li>
+<li><p>排行榜 - 使用 ZSET 数据类型。</p>
+</li>
+<li><p>分布式 Session - 多个应用服务器的 Session 都存储到 Redis 中来保证 Session 的一致性。</p>
+</li>
+<li><p>分布式锁 - 除了可以使用 SETNX 实现分布式锁之外，还可以使用官方提供的 RedLock 分布式锁实现。</p>
+</li>
+</ul>
+<h3 id="通过go语言使用Redis"><a href="#通过go语言使用Redis" class="headerlink" title="通过go语言使用Redis"></a>通过go语言使用Redis</h3><p>1.设置一下Redis密码然后测试连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">➜  egoshop docker rm -f cd93e4361dff                                                 </span><br><span class="line">cd93e4361dff</span><br><span class="line"></span><br><span class="line">➜  egoshop docker run -d --name myredis -p 6379:6379 redis --requirepass <span class="string">"mypassword"</span></span><br><span class="line">f21ed92618bc5a48a95a05fcf73d1fb911b3020616dfd4950b4827dc9559814e</span><br><span class="line">➜  egoshop docker ps                                                                 </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">f21ed92618bc        redis               <span class="string">"docker-entrypoint.s…"</span>   3 seconds ago       Up 1 second         0.0.0.0:6379-&gt;6379/tcp              myredis</span><br><span class="line">0eee2c1708be        mysql:5.7           <span class="string">"docker-entrypoint.s…"</span>   10 hours ago        Up 10 hours         0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   happy_chandrasekhar</span><br><span class="line">➜  egoshop docker <span class="built_in">exec</span> -it myredis /bin/bash</span><br><span class="line">root@f21ed92618bc:/data<span class="comment"># redis-cli</span></span><br><span class="line">127.0.0.1:6379&gt; auth <span class="string">"mypassword"</span></span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>2.创建连接池</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">func newRedisPool() *redis.Pool &#123;</span><br><span class="line">	<span class="built_in">return</span> &amp;redis.Pool&#123;</span><br><span class="line">		MaxIdle:     50,</span><br><span class="line">		MaxActive:   30,</span><br><span class="line">		IdleTimeout: 300 * time.Second,</span><br><span class="line">		Dial: func() (redis.Conn, error) &#123;</span><br><span class="line">			// 1. 打开连接</span><br><span class="line">			c, err := redis.Dial(<span class="string">"tcp"</span>, redisHost)</span><br><span class="line">			<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">				fmt.Println(err)</span><br><span class="line">				<span class="built_in">return</span> nil, err</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			// 2. 访问认证</span><br><span class="line">			<span class="keyword">if</span> _, err = c.Do(<span class="string">"AUTH"</span>, redisPass); err != nil &#123;</span><br><span class="line">				c.Close()</span><br><span class="line">				<span class="built_in">return</span> nil, err</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> c, nil</span><br><span class="line">		&#125;,</span><br><span class="line">		TestOnBorrow: func(conn redis.Conn, t time.Time) error &#123;</span><br><span class="line">			<span class="keyword">if</span> time.Since(t) &lt; time.Minute &#123;</span><br><span class="line">				<span class="built_in">return</span> nil</span><br><span class="line">			&#125;</span><br><span class="line">			_, err := conn.Do(<span class="string">"PING"</span>)</span><br><span class="line">			<span class="built_in">return</span> err</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">init</span></span>() &#123;</span><br><span class="line">	pool = newRedisPool()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func RedisPool() *redis.Pool &#123;</span><br><span class="line">	<span class="built_in">return</span> pool</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.添加数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">UploadHandler</span></span>() &#123;</span><br><span class="line">	// 获得redis的一个连接</span><br><span class="line">	rConn := rPool.RedisPool().Get()</span><br><span class="line">	defer rConn.Close()</span><br><span class="line"></span><br><span class="line">	// 将初信息写入到redis缓存</span><br><span class="line">	rConn.Do(<span class="string">"sadd"</span>, <span class="string">"set"</span>, <span class="string">"uploadHandler"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.查看是否有添加数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"upload1"</span></span><br><span class="line">2) <span class="string">"uploadHandler"</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/samtake/goRedisDemo" target="_blank" rel="noopener">具体demo源码</a></p>
+<p>参考资料<br><a href="https://www.runoob.com/redis/redis-intro.html" target="_blank" rel="noopener">Redis 简介</a><br><a href="https://www.runoob.com/docker/docker-install-redis.html" target="_blank" rel="noopener">Docker 安装 Redis</a><br><a href="https://mp.weixin.qq.com/s?src=11&timestamp=1581497616&ver=2153&signature=wJL6PdenqSUgK7dgiXas*bbrDcJzwBzrYoKKYFFfsxW*dYcRnVHqpFKbcYqLDd-bp7DY50iIvxGq8jNMAbQXau-uLB0hPqUJc4erX3MDhbuOrvvtCbw7KY3147aW3KBr&new=1" target="_blank" rel="noopener">Redis 入门指南</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1505,226 +1711,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/C++%E9%87%8D%E6%B8%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/04/C++%E9%87%8D%E6%B8%A9/" class="post-title-link" itemprop="url">C++重温</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-11-04 01:57:17" itemprop="dateCreated datePublished" datetime="2019-11-04T01:57:17+08:00">2019-11-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-27 16:14:58" itemprop="dateModified" datetime="2020-03-27T16:14:58+08:00">2020-03-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://upload-images.jianshu.io/upload_images/3850802-c610324dffd5bcc2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="C艹.jpg"></p>
-<p>demo链接🔗<a href="https://github.com/samtake/C-review" target="_blank" rel="noopener">https://github.com/samtake/C-review</a></p>
-<h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><h2 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h2><p>C++提供了程序内联机制来减少函数调用的开销。在函数定义的返回值类型前面加一个<code>inline</code>关键字，“建议”编译器函数代码复制到程序中，避免函数调用。<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">using std::cout;</span><br><span class="line">using std::cin;</span><br><span class="line">using std::endl;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">inline double cube(const double side)&#123;</span><br><span class="line">    <span class="built_in">return</span> side*side*side;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">testInlineFunction</span></span>()&#123;</span><br><span class="line">    double sideValue;</span><br><span class="line">    <span class="keyword">for</span> (int i=1 ; i&lt;=3 ; i++) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">"enter the side length of your cube:"</span>;</span><br><span class="line">        cin &gt;&gt;sideValue;</span><br><span class="line">        </span><br><span class="line">        cout &lt;&lt; <span class="string">"side="</span> &lt;&lt; sideValue &lt;&lt; <span class="string">"cube="</span> &lt;&lt; cube(sideValue) &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><code>using std::cout;</code>using语句使我们不用重复写<code>std::</code>前缀；或者使用<code>using namespace std;</code>代替。</li>
-</ul>
-<h2 id="引用以及引用形参"><a href="#引用以及引用形参" class="headerlink" title="引用以及引用形参"></a>引用以及引用形参</h2><ul>
-<li>两种传参方式是：按值传递和按引用传递。</li>
-<li>采用按值传递方式传参时，首先生成实参值的副本，然后将该值传递给被调函数。改变副本的值不会影响主调函数中实参的值。</li>
-<li>通过按引用传参，允许被调函数直接访问主调函数中的数据，允许被调函数有选择的修改主调函数中的数据。</li>
-<li>引用实参是其对应的函数调用中实参的别名。</li>
-<li>通过<code>&amp;</code>来标记按引用传参</li>
-</ul>
-<p>引用以和引用形参</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int squareByValue(int number)&#123;</span><br><span class="line">    <span class="built_in">return</span> number *=number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void squareByReference(int &amp;numberRef)&#123;</span><br><span class="line">    numberRef *=numberRef;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>函数体内引用作为别名<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int z = 3;</span><br><span class="line">    int &amp;z_alias = z;//int &amp;z_alias；</span><br><span class="line">    cout &lt;&lt; <span class="string">"z= "</span> &lt;&lt; z &lt;&lt; endl &lt;&lt; <span class="string">" z_alias = "</span>  &lt;&lt;  z_alias &lt;&lt; endl;</span><br><span class="line">    z = 7;</span><br><span class="line">    cout &lt;&lt; <span class="string">"z= "</span> &lt;&lt; z &lt;&lt; endl &lt;&lt; <span class="string">" z_alias = "</span>  &lt;&lt;  z_alias &lt;&lt; endl;</span><br></pre></td></tr></table></figure><br>输出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">z= 3</span><br><span class="line"> z_alias = 3</span><br><span class="line">z= 7</span><br><span class="line"> z_alias = 7</span><br></pre></td></tr></table></figure>
-<p>并且为初始化的引用<code>int &amp;z_alias；</code>会导致错误</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Declaration of reference variable <span class="string">'z_alias'</span> requires an initializer</span><br></pre></td></tr></table></figure>
-
-<h2 id="空形参列表"><a href="#空形参列表" class="headerlink" title="空形参列表"></a>空形参列表</h2><p>在C++中，可以用<code>void</code>指定也可以通过在括号内不写任何语句定义空形参列表。如下两个函数是等价的：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void <span class="built_in">print</span>();</span><br><span class="line">void <span class="built_in">print</span>(void);</span><br></pre></td></tr></table></figure>
-<h2 id="默认实参"><a href="#默认实参" class="headerlink" title="默认实参"></a>默认实参</h2><ul>
-<li>有些程序在多次调用一个函数时经常将相同的实参传递给某个形参，这种情况下，可以将该形参指定默认实参，即传递给该形参的默认值。</li>
-<li>当发生函数调用时，如果省略了对应位置上的实参值，则编译器就会重写该函数调用并将默认值作为实参插入到函数调用中，在执行被调函数时，以该形参的默认值进行运算。</li>
-<li>默认实参必须是函数形参列表中最右边的实参。</li>
-<li>应该在函数名第一次出现时指定默认实参–通常在函数原型中指定。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int boxVolume(int length = 1, int width = 1, int height = 1);</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">testDefaultArgument</span></span>()&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">"default = "</span> &lt;&lt;boxVolume() &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"length  = 2 : "</span> &lt;&lt;boxVolume(2) &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"length  = 2 , width =3 : "</span> &lt;&lt;boxVolume(2,3) &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"length  = 2 , width =3 , height = 4 : "</span> &lt;&lt;boxVolume(2, 3, 4) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int boxVolume(int length, int width, int height)&#123;</span><br><span class="line">    <span class="built_in">return</span> length*width*height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="一元作用域运算符"><a href="#一元作用域运算符" class="headerlink" title="一元作用域运算符"></a>一元作用域运算符</h2><p>C++提供了一元作用域运算符，可以在含有与全局变量名的局部变量的域中访问该全局变量。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int number = 7;</span><br><span class="line">void <span class="function"><span class="title">testUnaryOperation</span></span>()&#123;</span><br><span class="line">    double number = 10.7;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"location number = "</span> &lt;&lt; number &lt;&lt;endl;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"gloable number = "</span> &lt;&lt; ::number &lt;&lt;endl;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">location number = 10.7</span><br><span class="line">gloable number = 7</span><br></pre></td></tr></table></figure>
-
-<h2 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h2><ul>
-<li>C++中允许定义同名的函数，只要这些函数具有不同的形参集合即可（至少在形参类型或形参个数或形参类型的顺序上有区别）。这个功能称为函数重载。</li>
-<li>调用重载函数时，C++编译器通过检查函数调用语句中的实参个数、类型及顺序选择适当的函数。</li>
-<li>重载函数由函数的签名进行区分。</li>
-<li>编译器根据函数形参的个数与类型将每个函数标识符编码，以保证类型安全链接，从而确保可以调用适当的重载函数，也确保实参与形参类型一致。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void <span class="function"><span class="title">functionOverloading</span></span>()&#123;</span><br><span class="line">    cout &lt;&lt; square(7) &lt;&lt;endl;</span><br><span class="line">    cout &lt;&lt; square(0.5) &lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int square(int x)&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">"integer : "</span>;</span><br><span class="line">    <span class="built_in">return</span> x*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">double square(double x)&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">"double : "</span>;</span><br><span class="line">    <span class="built_in">return</span> x*x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-输出<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">integer</span> : 49</span><br><span class="line">double : 0.25</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="函数模版"><a href="#函数模版" class="headerlink" title="函数模版"></a>函数模版</h2><p>重载函数用于对不同数据类型的程序逻辑执行相似操作。如果各种数据类型的程序逻辑和操作是完全相同的，那么使用函数模版可以更加简洁、方便的执行重载。</p>
-<ul>
-<li>所有函数模版定义均以关键字<code>template</code>开始，随后是用尖括号<code>&lt;&gt;</code>括起来的模版形参列表.</li>
-<li>模版列表中的每个形参（称为形式类型形参）前面都加关键字<code>typename</code>和 <code>class</code>。两者含义相同。</li>
-<li>形式类型形参是基本数据类型或用户定义类型的占位符<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">T maximum(T value1, T value2, T value3 ) &#123;</span><br><span class="line">    T maximumValue = value1;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (value2 &gt; maximumValue) &#123;</span><br><span class="line">        maximumValue = value2 ;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (value3 &gt; maximumValue) &#123;</span><br><span class="line">        maximumValue = value3 ;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> maximumValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h1 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h1><p>在C++中通常有main函数以及一个或多个既包含数据成员也包含成员函数的类构成，所以：</p>
-<ul>
-<li>在一个类中，可提供一个或多个成员函数。</li>
-<li>类似的，对象也有属性，在程序中使用对象时带有这些属性。这些属性是对象所属的类的一部分。</li>
-</ul>
-<h2 id="定义一个具有成员函数的类"><a href="#定义一个具有成员函数的类" class="headerlink" title="定义一个具有成员函数的类"></a>定义一个具有成员函数的类</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//定义</span><br><span class="line">class GradeBook &#123;</span><br><span class="line">    //  </span><br><span class="line">public:</span><br><span class="line">    void <span class="function"><span class="title">displayMessage</span></span>()&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"grade book"</span>&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">void <span class="function"><span class="title">funcTestGradeBook</span></span>()&#123;</span><br><span class="line">    GradeBook myGradeBook;</span><br><span class="line">    myGradeBook.displayMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Hello, World!</span><br><span class="line">grade book</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
-<ul>
-<li>类的定义由 <code>class</code>及随后的类名GradeBook开始，类名通常使用驼峰模式拼写，通常首字母大写。</li>
-<li>每个类体由左右打括号<code>{}</code> 括起来。</li>
-<li>类定义由<code>;</code>分号结束。</li>
-<li>成员函数的访问限定符有：<code>public</code>、<code>private</code>、<code>protected</code>三种。</li>
-<li>在定义函数时，必须指定返回值类型。</li>
-<li>成员函数名后的空括号表示该成员函数不需要传参。</li>
-</ul>
-<h2 id="定义一个有参成员函数"><a href="#定义一个有参成员函数" class="headerlink" title="定义一个有参成员函数"></a>定义一个有参成员函数</h2> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//定义一个有参成员函数</span><br><span class="line">    void displayMessageWithParms(string courseName)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"grade book"</span>&lt;&lt; courseName &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>调用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string courseName;</span><br><span class="line">    cout&lt;&lt; <span class="string">"enter course name:"</span>&lt;&lt;endl;</span><br><span class="line">    getline(cin, courseName);</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">    myGradeBook.displayMessageWithParms(<span class="string">"Chinese"</span>);</span><br><span class="line">    myGradeBook.displayMessageWithParms(courseName);</span><br></pre></td></tr></table></figure>
-<p>输出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enter course name:</span><br><span class="line">kjjkjkj</span><br><span class="line"></span><br><span class="line">grade bookChinese</span><br><span class="line">grade bookkjjkjkj</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
-<h2 id="数据成员、set函数与get函数"><a href="#数据成员、set函数与get函数" class="headerlink" title="数据成员、set函数与get函数"></a>数据成员、set函数与get函数</h2><ul>
-<li>在函数定义体重声明的变量称为局部变量，它们只能在从声明它们的行到该函数定义的结束右打括号<code>}</code>的范围内使用。</li>
-<li>类通常包含一个或多个成员函数来操作属于该类特定对象的属性。属性在类定义中表示为变量。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class GradeBookHaveLocalVariable&#123;</span><br><span class="line">public:</span><br><span class="line">    void setCourseName(string name)&#123;</span><br><span class="line">        courseName = name;</span><br><span class="line">    &#125;</span><br><span class="line">    string <span class="function"><span class="title">getCourseName</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span> courseName;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void <span class="function"><span class="title">displayMessage</span></span>()&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"course  name: "</span>&lt;&lt; getCourseName() &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    //定义一个有参成员函数</span><br><span class="line">    void displayMessageWithParms(string courseName)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"grade book"</span>&lt;&lt; courseName &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    string courseName;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>输出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">course  name: 语文</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
-
-<h2 id="用构造函数初始化对象"><a href="#用构造函数初始化对象" class="headerlink" title="用构造函数初始化对象"></a>用构造函数初始化对象</h2><p>构造函数:</p>
-<ul>
-<li>用于在创建该类对象时初始化该对象。</li>
-<li>是一个特殊的成员函数，它的名字必须与类名相同。</li>
-<li>不能有返回值。</li>
-<li>通常声明为<code>public</code></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class GradeBookConstructor&#123;</span><br><span class="line">    </span><br><span class="line">public:</span><br><span class="line">    </span><br><span class="line">    GradeBookConstructor(string name)&#123;</span><br><span class="line">        setCourseName(name);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void setCourseName(string name)&#123;</span><br><span class="line">        courseName = name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    string <span class="function"><span class="title">getCourseName</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span> courseName;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void <span class="function"><span class="title">displayMessage</span></span>()&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"course  name: "</span>&lt;&lt; getCourseName() &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //定义一个有参成员函数</span><br><span class="line">    void displayMessageWithParms(string courseName)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"grade book"</span>&lt;&lt; courseName &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">private:</span><br><span class="line">    string courseName;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">funcTestGradeBookConstructor</span></span>()&#123;</span><br><span class="line">    GradeBookConstructor myGradeBookConstructor1(<span class="string">"Constructor"</span>);</span><br><span class="line">    GradeBookConstructor myGradeBookConstructor2(<span class="string">"构造函数"</span>);</span><br><span class="line">    </span><br><span class="line">    myGradeBookConstructor1.displayMessage();</span><br><span class="line">    myGradeBookConstructor2.displayMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>输出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">course  name: Constructor</span><br><span class="line">course  name: 构造函数</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="用set函数验证数据"><a href="#用set函数验证数据" class="headerlink" title="用set函数验证数据"></a>用set函数验证数据</h1><p>我们在<code>.h</code>文件中进行类的定义，并包含指定指定类的接口（类的<code>public</code>成员函数）的函数原形。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class VertifyWithSetFunc &#123;</span><br><span class="line">    //instance variables</span><br><span class="line">    </span><br><span class="line">public:</span><br><span class="line">    </span><br><span class="line">    VertifyWithSetFunc(string);</span><br><span class="line">    </span><br><span class="line">    void setCourseName(string);</span><br><span class="line">    string getCourseName();</span><br><span class="line">    </span><br><span class="line">    void displayMessage();</span><br><span class="line">    </span><br><span class="line">private:</span><br><span class="line">    string courseName;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>在单独的源码文件中定义成员函数：每个成员函数名前面都有类名与二院作用域运算符<code>::</code>，这将每个成员函数绑定到声明成员函数与数据成员的VertifyWithSetFunc类定义上。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">VertifyWithSetFunc::VertifyWithSetFunc(string name)&#123;</span><br><span class="line">    setCourseName(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>我们知道可以通过<code>set</code>函数，可以修改<code>private</code>数据成员的值。这里我们要做的是在<code>set</code>函数进行值得判断。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void VertifyWithSetFunc::setCourseName(string name)&#123;</span><br><span class="line">    <span class="keyword">if</span> (name.length() &lt;= 10) &#123;</span><br><span class="line">        courseName = name ;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (name.length() &gt; 10) &#123;</span><br><span class="line">        courseName = name.substr(0, 10);</span><br><span class="line">        cout&lt;&lt; <span class="string">"name is long than 10 :"</span>&lt;&lt; name &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name is long than 10 :test2test2test2test2test2test2test2test2test2test2</span><br><span class="line">vertify1: test1</span><br><span class="line">vertify2: test2test2</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="访问成员函数的三种方式"><a href="#访问成员函数的三种方式" class="headerlink" title="访问成员函数的三种方式"></a>访问成员函数的三种方式</h1><p>访问成员函数的三种方式:</p>
-<p>对象名</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Count counter;</span><br><span class="line">counter.setX(1);</span><br><span class="line">cout &lt;&lt; <span class="string">"counter.setX(1);"</span> ;</span><br><span class="line">counter.print();</span><br></pre></td></tr></table></figure>
-
-
-
-<p>指向对象的指针</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Count *counterPtr = &amp;counter;</span><br><span class="line">counterPtr-&gt;setX(2);</span><br><span class="line">cout &lt;&lt; <span class="string">"counterPtr-&gt;setX(2);"</span>;</span><br><span class="line">counterPtr-&gt;<span class="built_in">print</span>();</span><br></pre></td></tr></table></figure>
-
-<p>对象的引用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Count &amp;counterRef = counter;</span><br><span class="line">counterRef.setX(3);</span><br><span class="line">cout &lt;&lt; <span class="string">"counterRef.setX(3);"</span>;</span><br><span class="line">counterRef.print();</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">counter.setX(1);1</span><br><span class="line">counterPtr-&gt;setX(2);2</span><br><span class="line">counterRef.setX(3);3</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
-
-
-
-
-<h1 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h1><p>析构函数(destructor)是一种特殊的成员函数。</p>
-<ul>
-<li>类的析构函数名是在类名前加一个波浪好<code>~</code></li>
-<li>累的析构函数是在删除对象的时候被隐式调用</li>
-<li>析构函数没有形参页不反悔任何值</li>
-<li>析构函数必须是 <code>public</code>类型的</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">CreateAndDestructor::CreateAndDestructor(int ID, string msg)&#123;</span><br><span class="line">    objectID = ID;</span><br><span class="line">    message = msg;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"Object "</span> &lt;&lt; objectID &lt;&lt; <span class="string">" 构造函数 runs  "</span> &lt;&lt;message &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void create(void)&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">"createFunc "</span> &lt;&lt; endl;</span><br><span class="line">    CreateAndDestructor fifth(5, <span class="string">"(local automatic in create)"</span>);</span><br><span class="line">    static CreateAndDestructor sixth(6, <span class="string">"(local automatic in create)"</span>);</span><br><span class="line">    CreateAndDestructor seventh(7, <span class="string">"(local automatic in create)"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CreateAndDestructor::~<span class="function"><span class="title">CreateAndDestructor</span></span>()&#123;</span><br><span class="line">    cout&lt;&lt;(objectID ==1 || objectID == 6 ? <span class="string">"\n"</span> : <span class="string">""</span>);</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"Object "</span> &lt;&lt; objectID &lt;&lt; <span class="string">" 析构函数 runs   "</span> &lt;&lt;message &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">testCreateAndDestructor</span></span>()&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">"testFunc "</span> &lt;&lt; endl;</span><br><span class="line">    CreateAndDestructor second(2, <span class="string">"(local automatic in testFunc)"</span>);</span><br><span class="line">    static CreateAndDestructor third(3, <span class="string">"(local automatic in testFunc)"</span>);</span><br><span class="line">    </span><br><span class="line">    create();</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"testFunc : "</span> &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    CreateAndDestructor forth(4, <span class="string">"(local automatic in testFunc)"</span>);</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"\ntestFunc end \n"</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">testFunc </span><br><span class="line">Object 2 构造函数 runs  (<span class="built_in">local</span> automatic <span class="keyword">in</span> testFunc)</span><br><span class="line">Object 3 构造函数 runs  (<span class="built_in">local</span> automatic <span class="keyword">in</span> testFunc)</span><br><span class="line">createFunc </span><br><span class="line">Object 5 构造函数 runs  (<span class="built_in">local</span> automatic <span class="keyword">in</span> create)</span><br><span class="line">Object 6 构造函数 runs  (<span class="built_in">local</span> automatic <span class="keyword">in</span> create)</span><br><span class="line">Object 7 构造函数 runs  (<span class="built_in">local</span> automatic <span class="keyword">in</span> create)</span><br><span class="line">Object 7 析构函数 runs   (<span class="built_in">local</span> automatic <span class="keyword">in</span> create)</span><br><span class="line">Object 5 析构函数 runs   (<span class="built_in">local</span> automatic <span class="keyword">in</span> create)</span><br><span class="line">testFunc : </span><br><span class="line">Object 4 构造函数 runs  (<span class="built_in">local</span> automatic <span class="keyword">in</span> testFunc)</span><br><span class="line"></span><br><span class="line">testFunc end </span><br><span class="line"></span><br><span class="line">Object 4 析构函数 runs   (<span class="built_in">local</span> automatic <span class="keyword">in</span> testFunc)</span><br><span class="line">Object 2 析构函数 runs   (<span class="built_in">local</span> automatic <span class="keyword">in</span> testFunc)</span><br><span class="line"></span><br><span class="line">Object 6 析构函数 runs   (<span class="built_in">local</span> automatic <span class="keyword">in</span> create)</span><br><span class="line">Object 3 析构函数 runs   (<span class="built_in">local</span> automatic <span class="keyword">in</span> testFunc)</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在全局作用域内定义的对象的构造函数在该文件中的任何其他函数（包括<code>main</code>函数）开始执行之前执行。</li>
-<li>在<code>main</code>函数终止时，调用响应的析构函数。<code>exit</code>函数强制程序立即终止并且不执行自动对象的析构函数。</li>
-<li>自动局部对象的 <code>析构函数</code>在执行到达定义该对象的程序点是调用，<code>对应的析构函数</code>是在该对象离开该对像所在的作用域时调用。</li>
-<li><code>static</code>局部对象的<code>析构函数</code>只在执行第一次到达定义对象的程序点时调用一次,<code>对应的析构函数</code>是在<code>main</code>函数终止时或者<code>exit</code>函数时调用。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1775,7 +1761,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

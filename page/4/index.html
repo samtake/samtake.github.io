@@ -213,6 +213,171 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Golang流媒体网站笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-21 16:15:52" itemprop="dateCreated datePublished" datetime="2020-02-21T16:15:52+08:00">2020-02-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-24 16:17:03" itemprop="dateModified" datetime="2020-02-24T16:17:03+08:00">2020-02-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/architecture.png" alt></p>
+<p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/api.png" alt></p>
+<p>httprouter的使用</p>
+<p>restlet测试插件 </p>
+<h2 id="api"><a href="#api" class="headerlink" title="api"></a>api</h2><h3 id="3-6"><a href="#3-6" class="headerlink" title="3-6"></a>3-6</h3><p>总体思路：<br>handleer-&gt;validation{1.request,2.user}-&gt;business login -&gt;response</p>
+<ol>
+<li>data model</li>
+<li>error handler</li>
+</ol>
+<p>这个错误接口以后都可以这样写了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package defs</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> Err struct &#123;</span><br><span class="line">	Error string `json:<span class="string">"error"</span>`</span><br><span class="line">	ErrorCode string `json:<span class="string">"error_code"</span>`  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> ErrResponse struct &#123;</span><br><span class="line">	HttpSC int</span><br><span class="line">	Error Err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var (</span><br><span class="line">	ErrorRequestBodyParseFailed = ErrResponse&#123;HttpSC: 400, Error: Err&#123;Error: <span class="string">"Request body is not correct"</span>, ErrorCode: <span class="string">"001"</span>&#125;&#125;</span><br><span class="line">	ErrorNotAuthUser = ErrResponse&#123;HttpSC: 401, Error: Err&#123;Error: <span class="string">"User authentication failed."</span>, ErrorCode: <span class="string">"002"</span>&#125;&#125;</span><br><span class="line">	ErrorDBError = ErrResponse&#123;HttpSC: 500, Error: Err&#123;Error: <span class="string">"DB ops failed"</span>, ErrorCode: <span class="string">"003"</span>&#125;&#125;</span><br><span class="line">	ErrorInternalFaults = ErrResponse&#123;HttpSC: 500, Error: Err&#123;Error: <span class="string">"Internal service error"</span>, ErrorCode: <span class="string">"004"</span>&#125;&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-7"><a href="#3-7" class="headerlink" title="3-7"></a>3-7</h3><p>好好理解这里的数据库为什么这样设计</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">create table comments (</span><br><span class="line">	id varchar(64) not null,</span><br><span class="line">	video_id varchar(64),</span><br><span class="line">	author_id int(10),</span><br><span class="line">	content text,</span><br><span class="line">	time datetime default current_timestamp, primary key(id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table sessions (</span><br><span class="line">	session_id tinytext not null,</span><br><span class="line">	TTL tinytext,</span><br><span class="line">	login_name text</span><br><span class="line">);</span><br><span class="line">alter table sessions add primary key (session_id(64));</span><br><span class="line"></span><br><span class="line">create table users (</span><br><span class="line">	id int unsigned not null auto_increment,</span><br><span class="line">	login_name varchar(64),</span><br><span class="line">	<span class="built_in">pwd</span> text not null,</span><br><span class="line">	unique key (login_name),</span><br><span class="line">	primary key (id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table video_del_rec (</span><br><span class="line">	video_id varchar(64) not null,</span><br><span class="line">	primary key (video_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table video_info (</span><br><span class="line">	id varchar(64) not null,</span><br><span class="line">	author_id int(10),</span><br><span class="line">	name text,</span><br><span class="line">	display_ctime text,</span><br><span class="line">	create_time datetime default current_timestamp,</span><br><span class="line">	primary key (id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+<p><code>第三范式(Third Normal Form,3rd NF)</code>就是指表中的所有数据元素不但要能唯一地被主关键字所标识,而且它们之间还必须相互独立,不存在其他的函数关系。也就是说，对于一个满足2nd NF 的数据结构来说，表中有可能存在某些数据元素依赖于其他非关键字数据元素的现象,必须消除。</p>
+<p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/sql-design.png" alt></p>
+<h3 id="3-8"><a href="#3-8" class="headerlink" title="3-8"></a>3-8</h3><p>数据库连接还是参考自己写的这个吧<a href="https://github.com/samtake/goRedisDemo" target="_blank" rel="noopener">demo</a>吧。</p>
+<h3 id="3-10"><a href="#3-10" class="headerlink" title="3-10"></a>3-10</h3><p>api_test.go</p>
+<p>参考<a href="https://samtake.github.io/2020/02/22/Golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">Golang练习笔记</a>23测试讲的更详细。</p>
+<h3 id="3-12"><a href="#3-12" class="headerlink" title="3-12"></a>3-12</h3><p>实现和验证video<br><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/3-12.png" alt></p>
+<h3 id="3-13"><a href="#3-13" class="headerlink" title="3-13"></a>3-13</h3><p>Comments</p>
+<p> <img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/3-13-comments.png" alt><br>评论是需要列表出现的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">func ListComments(vid string, from, to int) ([]*defs.Comment, error) &#123;</span><br><span class="line">	stmtOut, err := dbConn.Prepare(`SELECT comments.id, users.login_name, comments.content FROM comments </span><br><span class="line">		INNER JOIN users ON comments.author_id = users.id </span><br><span class="line">		WHERE comments.video_id = ? AND comments.time &gt; FROM_UNIXTIME(?) AND comments.time &lt;= FROM_UNIXTIME(?)</span><br><span class="line">		ORDER BY comments.time DESC`)</span><br><span class="line"></span><br><span class="line">	var res []*defs.Comment</span><br><span class="line">	</span><br><span class="line">	rows, err := stmtOut.Query(vid, from, to)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Printf(<span class="string">"%s"</span>, err)</span><br><span class="line">		<span class="built_in">return</span> res, err</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> rows.<span class="function"><span class="title">Next</span></span>() &#123;</span><br><span class="line">		var id, name, content string</span><br><span class="line">		<span class="keyword">if</span> err := rows.Scan(&amp;id, &amp;name, &amp;content); err != nil &#123;</span><br><span class="line">			<span class="built_in">return</span> res, err</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		c := &amp;defs.Comment&#123;Id: id, VideoId: vid, Author: name, Content: content&#125;</span><br><span class="line">		res = append(res, c)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	defer stmtOut.Close()</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> res, nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="3-15"><a href="#3-15" class="headerlink" title="3-15"></a>3-15</h3><p><code>session</code>会话，</p>
+<p>session和cookie的区别？</p>
+<p>session负责的流程图：<br><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/3-15-session.png" alt></p>
+<h3 id="3-17"><a href="#3-17" class="headerlink" title="3-17"></a>3-17</h3><p>middleware</p>
+<p>duck typing内容参考<a href="https://samtake.github.io/2020/02/22/Golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">Golang练习笔记</a>15。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> middleWareHandler struct &#123;</span><br><span class="line">	r *httprouter.Router</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func NewMiddleWareHandler(r *httprouter.Router) http.Handler &#123;</span><br><span class="line">	m := middleWareHandler&#123;&#125;</span><br><span class="line">	m.r = r</span><br><span class="line">	<span class="built_in">return</span> m</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (m middleWareHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line">	//check session</span><br><span class="line">	validateUserSession(r)</span><br><span class="line"></span><br><span class="line">	m.r.ServeHTTP(w, r)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func RegisterHandlers() *httprouter.Router &#123;</span><br><span class="line">	router := httprouter.New()</span><br><span class="line">    router.POST(<span class="string">"/user"</span>, CreateUser)</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//response</span><br><span class="line"><span class="built_in">type</span> SignedUp struct &#123;</span><br><span class="line">	Success bool `json:<span class="string">"success"</span>`</span><br><span class="line">	SessionId string `json:<span class="string">"session_id"</span>`</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#添了后缀，在使用时，会返回统一的json格式,如下：</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"success"</span>:XXXXX,</span><br><span class="line">    <span class="string">"session_id"</span>:XXXX</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Streaming"><a href="#Streaming" class="headerlink" title="Streaming"></a>Streaming</h2><h3 id="4-1"><a href="#4-1" class="headerlink" title="4-1"></a>4-1</h3><p>Streaming（视频播放）：</p>
+<ul>
+<li>静态视频，非RTMP（直播的那些都是RTMP）</li>
+<li>独立的服务，可独立部署</li>
+<li>统一的api格式</li>
+</ul>
+<h3 id="4-3"><a href="#4-3" class="headerlink" title="4-3"></a>4-3</h3><p><code>流控</code><br><code>token bucket</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#共享通道 instead of shared memory</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> ConnLimiter struct &#123;</span><br><span class="line">	concurrentConn int</span><br><span class="line">	bucket chan int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func NewConnLimiter(cc int) *ConnLimiter &#123;</span><br><span class="line">	<span class="built_in">return</span> &amp;ConnLimiter &#123;</span><br><span class="line">		concurrentConn: cc,</span><br><span class="line">		bucket: make(chan int, cc),</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (cl *ConnLimiter) GetConn() bool &#123;</span><br><span class="line">	<span class="keyword">if</span> len(cl.bucket) &gt;= cl.concurrentConn &#123;</span><br><span class="line">		log.Printf(<span class="string">"Reached the rate limitation."</span>)</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cl.bucket &lt;- 1</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (cl *ConnLimiter) <span class="function"><span class="title">ReleaseConn</span></span>() &#123;</span><br><span class="line">	c :=&lt;- cl.bucket</span><br><span class="line">	log.Printf(<span class="string">"New connction coming: %d"</span>, c)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5"><a href="#4-5" class="headerlink" title="4-5"></a>4-5</h3><p>在http middleware中嵌入流控</p>
+<h2 id="scheduler"><a href="#scheduler" class="headerlink" title="scheduler"></a>scheduler</h2><h3 id="5-1"><a href="#5-1" class="headerlink" title="5-1"></a>5-1</h3><p><code>scheduler</code>任务调度器，某些不能马上处理的任务放到scheduler，让它定期或者延时触发。</p>
+<p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/5-1-scheduler.png" alt></p>
+<h3 id="5-3"><a href="#5-3" class="headerlink" title="5-3"></a>5-3</h3><p>runner的生产消费者模型实现</p>
+<h3 id="5-5"><a href="#5-5" class="headerlink" title="5-5"></a>5-5</h3><p>task</p>
+<p>api-&gt;videoid-&gt;mysql<br>dispatcher-&gt;mysql-&gt;videoid-&gt;datachannel<br>executor-&gt;datachannel-&gt;videoid-&gt;delete video</p>
+<h3 id="5-6"><a href="#5-6" class="headerlink" title="5-6"></a>5-6</h3><p>timer</p>
+<p>setup-&gt;strat{runner task}</p>
+<h3 id="5-7"><a href="#5-7" class="headerlink" title="5-7"></a>5-7</h3><p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/5-7-api.png" alt></p>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="6-1"><a href="#6-1" class="headerlink" title="6-1"></a>6-1</h3><p>Go的模版引擎</p>
+<ul>
+<li>模版引擎是将html解析和元素预置替换生成最终页面的工具</li>
+<li>Go的模版有两种text/template和html/template </li>
+<li>Go的模版采用动态生成的模式</li>
+</ul>
+<p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/6-1-html-template.png" alt></p>
+<h3 id="6-2"><a href="#6-2" class="headerlink" title="6-2"></a>6-2</h3><p>前端代码架构<br><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/6-2-web-document.png" alt></p>
+<p>client.go就是起了proxy转发作用，避免跨域作用。</p>
+<h3 id="6-3"><a href="#6-3" class="headerlink" title="6-3"></a>6-3</h3><p>静态页面渲染</p>
+<h3 id="6-4"><a href="#6-4" class="headerlink" title="6-4"></a>6-4</h3><p>sh build.sh</p>
+<h3 id="6-6-api透传！！！"><a href="#6-6-api透传！！！" class="headerlink" title="6-6 api透传！！！"></a>6-6 api透传！！！</h3><h3 id="6-7-proxy转发"><a href="#6-7-proxy转发" class="headerlink" title="6-7 proxy转发"></a>6-7 proxy转发</h3><p><code>net/url</code>  </p>
+<p><code>net/http/httputil</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func proxyVideoHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) &#123;</span><br><span class="line">	u, _ := url.Parse(<span class="string">"http://"</span> + config.GetLbAddr() + <span class="string">":9000/"</span>)</span><br><span class="line">	proxy := httputil.NewSingleHostReverseProxy(u)</span><br><span class="line">	proxy.ServeHTTP(w, r)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func proxyUploadHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) &#123;</span><br><span class="line">	u, _ := url.Parse(<span class="string">"http://"</span> + config.GetLbAddr() + <span class="string">":9000/"</span>)</span><br><span class="line">	proxy := httputil.NewSingleHostReverseProxy(u)</span><br><span class="line">	proxy.ServeHTTP(w, r)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-11"><a href="#6-11" class="headerlink" title="6-11"></a>6-11</h3><p>js</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><h3 id="7-4"><a href="#7-4" class="headerlink" title="7-4"></a>7-4</h3><p>公共配置，即各模块的config文件。</p>
+<h3 id="7-5-vendor"><a href="#7-5-vendor" class="headerlink" title="7-5  vendor"></a>7-5  vendor</h3><h3 id="7-6-SLB讲解与配置"><a href="#7-6-SLB讲解与配置" class="headerlink" title="7-6 SLB讲解与配置"></a>7-6 SLB讲解与配置</h3><p>阿里云负载均衡配置。</p>
+<h3 id="7-7"><a href="#7-7" class="headerlink" title="7-7"></a>7-7</h3><p>session容错</p>
+<h3 id="7-8-ECS配置"><a href="#7-8-ECS配置" class="headerlink" title="7-8 ECS配置"></a>7-8 ECS配置</h3><h3 id="7-10-部署脚本"><a href="#7-10-部署脚本" class="headerlink" title="7-10 部署脚本"></a>7-10 部署脚本</h3><p>在bin文件夹添加conf.json文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"lb_addr"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">	<span class="string">"oss_addr"</span>: <span class="string">"oss.aliyun.com"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>buildprod.sh</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Build web and other services</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/api</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/api</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/scheduler</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/scheduler</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/streamserver</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/streamserver</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/web</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/web</span><br></pre></td></tr></table></figure>
+
+
+<p><code>deploy.sh</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line">cp -R ./templates ./bin/</span><br><span class="line"></span><br><span class="line">mkdir ./bin/videos</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> bin</span><br><span class="line"></span><br><span class="line">nohup ./api &amp;</span><br><span class="line">nohup ./scheduler &amp;</span><br><span class="line">nohup ./streamserver &amp;</span><br><span class="line">nohup ./web &amp;</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deploy finished"</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="7-11-部署"><a href="#7-11-部署" class="headerlink" title="7-11 部署"></a>7-11 部署</h3><p>sh  buildprod.sh 编译完成后提交二进制文件。或者提交代码到服务器上直接编译</p>
+<p>检查对应server是否启动<code>ps aux | grep &lt;api?stream?scheduler?web&gt;</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/19/Traefik/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1178,212 +1343,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/Redis%E5%85%A5%E9%97%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/12/Redis%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Redis入门</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-12 17:03:51 / Modified: 19:48:41" itemprop="dateCreated datePublished" datetime="2020-02-12T17:03:51+08:00">2020-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Docker-安装-Redis"><a href="#Docker-安装-Redis" class="headerlink" title="Docker 安装 Redis"></a>Docker 安装 Redis</h3><p><code>docker pull redis:latest</code><br>取最新版的 Redis 镜像</p>
-<p><code>docker images</code><br>查看是否已安装了 redis</p>
-<p>运行 redis 容器<br><code>docker run -itd --name redis-test -p 6379:6379 redis</code><br>或者运行redis并设置密码<br><code>docker run -d --name myredis -p 6379:6379 redis --requirepass &quot;mypassword&quot;</code></p>
-<p>其中-p 6379:6379：映射容器服务的 6379 端口到宿主机的 6379 端口。外部可以直接通过宿主机ip:6379 访问到 Redis 的服务。</p>
-<p><code>docker ps</code> 查看容器的运行信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  Desktop docker ps </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                               NAMES</span><br><span class="line">d1f67d1e5fda        redis               <span class="string">"docker-entrypoint.s…"</span>   About a minute ago   Up About a minute   0.0.0.0:6379-&gt;6379/tcp              redis-test</span><br><span class="line">0eee2c1708be        mysql:5.7           <span class="string">"docker-entrypoint.s…"</span>   8 hours ago          Up 8 hours          0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   happy_chandrasekhar</span><br></pre></td></tr></table></figure>
-
-
-<p>最后，通过过 redis-cli 连接测试使用 redis 服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  Desktop docker <span class="built_in">exec</span> -it redis-test /bin/bash</span><br><span class="line">root@d1f67d1e5fda:/data<span class="comment"># redis-cli</span></span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> <span class="built_in">test</span> 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th>可以存储的值</th>
-<th>操作</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>STRING</td>
-<td>字符串、整数或者浮点数</td>
-<td>对整个字符串或者字符串的其中一部分执行操作；对整数和浮点数执行自增或者自减操作；</td>
-</tr>
-<tr>
-<td>LIST</td>
-<td>列表</td>
-<td>从两端压入或者弹出元素；读取单个或者多个元素；进行修剪，只保留一个范围内的元素；</td>
-</tr>
-<tr>
-<td>SET</td>
-<td>无序集合</td>
-<td>添加、获取、移除单个元素；检查一个元素是否存在于集合中；计算交集、并集、差集；从集合里面随机获取元素；</td>
-</tr>
-<tr>
-<td>HASH</td>
-<td>包含键值对的无序散列表</td>
-<td>添加、获取、删除单个键值对；获取所有键值对；检查某个健是否存在；</td>
-</tr>
-<tr>
-<td>ZSET</td>
-<td>有序集合</td>
-<td>添加、获取、删除元素；根据分值范围或者成员来获取元素；计算一个键的排名；</td>
-</tr>
-</tbody></table>
-<h4 id="STRING"><a href="#STRING" class="headerlink" title="STRING"></a>STRING</h4><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>行为</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>GET</td>
-<td>获取存储在给定健中的值</td>
-</tr>
-<tr>
-<td>SET</td>
-<td>设置存储在给定健中的值</td>
-</tr>
-<tr>
-<td>DEL</td>
-<td>删除存储在给定健中的值（这个命令可以用于所有类型）</td>
-</tr>
-</tbody></table>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name longshan</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">"longshan"</span></span><br><span class="line">127.0.0.1:6379&gt; del name</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">(nil)</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="LIST"><a href="#LIST" class="headerlink" title="LIST"></a>LIST</h4><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>行为</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>rpush</td>
-<td>获取存储在给定键中的值</td>
-</tr>
-<tr>
-<td>lrange</td>
-<td>设置存储在给定键中的值</td>
-</tr>
-<tr>
-<td>lindex</td>
-<td>删除存储在给定键中的值（这个命令可以用于所有类型）</td>
-</tr>
-<tr>
-<td>lpop</td>
-<td>删除存储在给定键中的值（这个命令可以用于所有类型）</td>
-</tr>
-</tbody></table>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange list 0-1</span><br><span class="line">(error) ERR wrong number of arguments <span class="keyword">for</span> <span class="string">'lrange'</span> <span class="built_in">command</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 0 -1</span><br><span class="line">1) <span class="string">"item1"</span></span><br><span class="line">2) <span class="string">"item2"</span></span><br><span class="line">3) <span class="string">"item3"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 1</span><br><span class="line">(error) ERR wrong number of arguments <span class="keyword">for</span> <span class="string">'lrange'</span> <span class="built_in">command</span></span><br><span class="line">127.0.0.1:6379&gt; lindex list 1</span><br><span class="line"><span class="string">"item2"</span></span><br><span class="line">127.0.0.1:6379&gt; lpop list</span><br><span class="line"><span class="string">"item1"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 0 -1</span><br><span class="line">1) <span class="string">"item2"</span></span><br><span class="line">2) <span class="string">"item3"</span></span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h4><p>命令    | 行为<br>-|-|-<br>sadd    | 添加一个或多个元素到集合里<br>smembers |    获取集合里面的所有元素<br>sismember |    确定一个给定的值是一个集合的成员<br>srem    | 从集合里删除一个或多个元素</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item1</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item3</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item3</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; smember <span class="built_in">set</span></span><br><span class="line">(error) ERR unknown <span class="built_in">command</span> `smember`, with args beginning with: `<span class="built_in">set</span>`, </span><br><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"item3"</span></span><br><span class="line">2) <span class="string">"item1"</span></span><br><span class="line">3) <span class="string">"item2"</span></span><br><span class="line">127.0.0.1:6379&gt; sismember <span class="built_in">set</span> item5</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; srem <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; srem <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; smenbers <span class="built_in">set</span></span><br><span class="line">(error) ERR unknown <span class="built_in">command</span> `smenbers`, with args beginning with: `<span class="built_in">set</span>`, </span><br><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"item3"</span></span><br><span class="line">2) <span class="string">"item1"</span></span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="HASH"><a href="#HASH" class="headerlink" title="HASH"></a>HASH</h4><p>命令    | 行为<br>-|-|-<br>hset    | 设置 hash 里面一个字段的值<br>hget    | 获取 hash 中域的值<br>hgetall    | 从 hash 中读取全部的域和值<br>hdel    | 删除一个或多个域</p>
-<h4 id="ZSET"><a href="#ZSET" class="headerlink" title="ZSET"></a>ZSET</h4><p>命令    | 行为<br>-|-|-<br>ZADD    | 添加到有序 set 的一个或多个成员，或更新的分数，如果它已经存在<br>ZRANGE    | 根据指定的 index 返回，返回 sorted set 的成员列表<br>ZRANGEBYSCORE    | 返回有序集合中指定分数区间内的成员，分数由低到高排序。<br>ZREM    | 从排序的集合中删除一个或多个成员</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
-<li><p>缓存 - 将热点数据放到内存中，设置内存的最大使用量以及过期淘汰策略来保证缓存的命中率。</p>
-</li>
-<li><p>计数器 - Redis 这种内存数据库能支持计数器频繁的读写操作。</p>
-</li>
-<li><p>应用限流 - 限制一个网站访问流量。</p>
-</li>
-<li><p>消息队列 - 使用 List 数据类型，它是双向链表。</p>
-</li>
-<li><p>查找表 - 使用 HASH 数据类型。</p>
-</li>
-<li><p>交集运算 - 使用 SET 类型，例如求两个用户的共同好友。</p>
-</li>
-<li><p>排行榜 - 使用 ZSET 数据类型。</p>
-</li>
-<li><p>分布式 Session - 多个应用服务器的 Session 都存储到 Redis 中来保证 Session 的一致性。</p>
-</li>
-<li><p>分布式锁 - 除了可以使用 SETNX 实现分布式锁之外，还可以使用官方提供的 RedLock 分布式锁实现。</p>
-</li>
-</ul>
-<h3 id="通过go语言使用Redis"><a href="#通过go语言使用Redis" class="headerlink" title="通过go语言使用Redis"></a>通过go语言使用Redis</h3><p>1.设置一下Redis密码然后测试连接</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">➜  egoshop docker rm -f cd93e4361dff                                                 </span><br><span class="line">cd93e4361dff</span><br><span class="line"></span><br><span class="line">➜  egoshop docker run -d --name myredis -p 6379:6379 redis --requirepass <span class="string">"mypassword"</span></span><br><span class="line">f21ed92618bc5a48a95a05fcf73d1fb911b3020616dfd4950b4827dc9559814e</span><br><span class="line">➜  egoshop docker ps                                                                 </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">f21ed92618bc        redis               <span class="string">"docker-entrypoint.s…"</span>   3 seconds ago       Up 1 second         0.0.0.0:6379-&gt;6379/tcp              myredis</span><br><span class="line">0eee2c1708be        mysql:5.7           <span class="string">"docker-entrypoint.s…"</span>   10 hours ago        Up 10 hours         0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   happy_chandrasekhar</span><br><span class="line">➜  egoshop docker <span class="built_in">exec</span> -it myredis /bin/bash</span><br><span class="line">root@f21ed92618bc:/data<span class="comment"># redis-cli</span></span><br><span class="line">127.0.0.1:6379&gt; auth <span class="string">"mypassword"</span></span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
-<p>2.创建连接池</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">func newRedisPool() *redis.Pool &#123;</span><br><span class="line">	<span class="built_in">return</span> &amp;redis.Pool&#123;</span><br><span class="line">		MaxIdle:     50,</span><br><span class="line">		MaxActive:   30,</span><br><span class="line">		IdleTimeout: 300 * time.Second,</span><br><span class="line">		Dial: func() (redis.Conn, error) &#123;</span><br><span class="line">			// 1. 打开连接</span><br><span class="line">			c, err := redis.Dial(<span class="string">"tcp"</span>, redisHost)</span><br><span class="line">			<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">				fmt.Println(err)</span><br><span class="line">				<span class="built_in">return</span> nil, err</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			// 2. 访问认证</span><br><span class="line">			<span class="keyword">if</span> _, err = c.Do(<span class="string">"AUTH"</span>, redisPass); err != nil &#123;</span><br><span class="line">				c.Close()</span><br><span class="line">				<span class="built_in">return</span> nil, err</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> c, nil</span><br><span class="line">		&#125;,</span><br><span class="line">		TestOnBorrow: func(conn redis.Conn, t time.Time) error &#123;</span><br><span class="line">			<span class="keyword">if</span> time.Since(t) &lt; time.Minute &#123;</span><br><span class="line">				<span class="built_in">return</span> nil</span><br><span class="line">			&#125;</span><br><span class="line">			_, err := conn.Do(<span class="string">"PING"</span>)</span><br><span class="line">			<span class="built_in">return</span> err</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">init</span></span>() &#123;</span><br><span class="line">	pool = newRedisPool()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func RedisPool() *redis.Pool &#123;</span><br><span class="line">	<span class="built_in">return</span> pool</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3.添加数据</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">UploadHandler</span></span>() &#123;</span><br><span class="line">	// 获得redis的一个连接</span><br><span class="line">	rConn := rPool.RedisPool().Get()</span><br><span class="line">	defer rConn.Close()</span><br><span class="line"></span><br><span class="line">	// 将初信息写入到redis缓存</span><br><span class="line">	rConn.Do(<span class="string">"sadd"</span>, <span class="string">"set"</span>, <span class="string">"uploadHandler"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>4.查看是否有添加数据</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"upload1"</span></span><br><span class="line">2) <span class="string">"uploadHandler"</span></span><br></pre></td></tr></table></figure>
-
-<p><a href="https://github.com/samtake/goRedisDemo" target="_blank" rel="noopener">具体demo源码</a></p>
-<p>参考资料<br><a href="https://www.runoob.com/redis/redis-intro.html" target="_blank" rel="noopener">Redis 简介</a><br><a href="https://www.runoob.com/docker/docker-install-redis.html" target="_blank" rel="noopener">Docker 安装 Redis</a><br><a href="https://mp.weixin.qq.com/s?src=11&timestamp=1581497616&ver=2153&signature=wJL6PdenqSUgK7dgiXas*bbrDcJzwBzrYoKKYFFfsxW*dYcRnVHqpFKbcYqLDd-bp7DY50iIvxGq8jNMAbQXau-uLB0hPqUJc4erX3MDhbuOrvvtCbw7KY3147aW3KBr&new=1" target="_blank" rel="noopener">Redis 入门指南</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1434,7 +1393,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
