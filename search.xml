@@ -32,7 +32,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[[1, 2, 3, <span class="string">'hhh'</span>, False], [7, 9], 9]</span><br><span class="line">hhh</span><br><span class="line">[<span class="string">'hhh'</span>, False]</span><br><span class="line">[1, 2, 3, <span class="string">'hhh'</span>, False, <span class="string">'添加的元素'</span>]</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="tumple"><a href="#tumple" class="headerlink" title="tumple"></a>tumple</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">tup1 = (<span class="string">'Google'</span>, <span class="string">'Runoob'</span>, 1997, 2000)</span><br><span class="line"><span class="built_in">print</span>(tup1)</span><br><span class="line">tup2 = (1, 2, 3, 4, 5 )</span><br><span class="line"><span class="built_in">print</span>(tup2)</span><br><span class="line">tup3 = <span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>   <span class="comment">#  不需要括号也可以</span></span><br><span class="line"><span class="built_in">print</span>(tup3)</span><br><span class="line"></span><br><span class="line">tup4 = ()</span><br><span class="line"><span class="built_in">print</span>(tup4)</span><br></pre></td></tr></table></figure>
+<h2 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">tup1 = (<span class="string">'Google'</span>, <span class="string">'Runoob'</span>, 1997, 2000)</span><br><span class="line"><span class="built_in">print</span>(tup1)</span><br><span class="line">tup2 = (1, 2, 3, 4, 5 )</span><br><span class="line"><span class="built_in">print</span>(tup2)</span><br><span class="line">tup3 = <span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>   <span class="comment">#  不需要括号也可以</span></span><br><span class="line"><span class="built_in">print</span>(tup3)</span><br><span class="line"></span><br><span class="line">tup4 = ()</span><br><span class="line"><span class="built_in">print</span>(tup4)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(<span class="string">'Google'</span>, <span class="string">'Runoob'</span>, 1997, 2000)</span><br><span class="line">(1, 2, 3, 4, 5)</span><br><span class="line">(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>)</span><br><span class="line">()</span><br></pre></td></tr></table></figure>
 
@@ -92,18 +92,28 @@
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dict[<span class="string">'Name'</span>]:  Runoob</span><br><span class="line">dict[<span class="string">'Age'</span>]:  7</span><br></pre></td></tr></table></figure>
 
-<h2 id="修改字典"><a href="#修改字典" class="headerlink" title="修改字典"></a>修改字典</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<h2 id="修改字典"><a href="#修改字典" class="headerlink" title="修改字典"></a>修改字典</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line">dict = &#123;<span class="string">'Name'</span>: <span class="string">'Runoob'</span>, <span class="string">'Age'</span>: 7, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br><span class="line"> </span><br><span class="line">dict[<span class="string">'Age'</span>] = 8               <span class="comment"># 更新 Age</span></span><br><span class="line">dict[<span class="string">'School'</span>] = <span class="string">"菜鸟教程"</span>  <span class="comment"># 添加信息</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (<span class="string">"dict['Age']: "</span>, dict[<span class="string">'Age'</span>])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">"dict['School']: "</span>, dict[<span class="string">'School'</span>])</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dict[<span class="string">'Age'</span>]:  8</span><br><span class="line">dict[<span class="string">'School'</span>]:  菜鸟教程</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<h2 id="删除字典元素"><a href="#删除字典元素" class="headerlink" title="删除字典元素"></a>删除字典元素</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line">dict = &#123;<span class="string">'School'</span>: <span class="string">'社会'</span>,<span class="string">'Name'</span>: <span class="string">'Runoob'</span>, <span class="string">'Age'</span>: 7, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">#del dict['Name'] # 删除键 'Name'</span></span><br><span class="line"><span class="comment">#dict.clear()     # 清空字典</span></span><br><span class="line"><span class="comment">#del dict         # 删除字典</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (<span class="string">"dict['Age']: "</span>, dict[<span class="string">'Age'</span>])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">"dict['School']: "</span>, dict[<span class="string">'School'</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dict[<span class="string">'Age'</span>]:  7</span><br><span class="line">dict[<span class="string">'School'</span>]:  社会</span><br></pre></td></tr></table></figure>
+
+<p>键必须不可变，所以可以用数字，字符串或元组充当，而用列表就不行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line">dict = &#123;[<span class="string">'Name'</span>]: <span class="string">'Runoob'</span>, <span class="string">'Age'</span>: 7&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (<span class="string">"dict['Name']: "</span>, dict[<span class="string">'Name'</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">11111Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"main.py"</span>, line 3, <span class="keyword">in</span> </span><br><span class="line">    dict = &#123;[<span class="string">'Name'</span>]: <span class="string">'Runoob'</span>, <span class="string">'Age'</span>: 7&#125;</span><br><span class="line">TypeError: unhashable <span class="built_in">type</span>: <span class="string">'list'</span></span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<p>内置函数<br>| 方法 | 描述 |<br>| :—–:| :—-: |<br>|         len(dict) | 计算字典元素个数，即键的总数 |<br>| str(dict) | 输出字典，以可打印的字符串表示 |<br>|type(variable)|返回输入的变量类型，如果变量是字典就返回字典类型|</p>
+<p>内置方法<br>| 方法 | 描述 |<br>| :—–| :—-|<br>|radiansdict.clear()|删除字典内所有元素|<br>|radiansdict.copy()|返回一个字典的浅复制|<br>|radiansdict.fromkeys()|创建一个新字典，以序列seq中元素做字典的键，val为字典所有键对应的初始值|<br>|radiansdict.get(key, default=None)|返回指定键的值，如果值不在字典中返回default值|<br>|key in dict|如果键在字典dict里返回true，否则返回false|<br>|radiansdict.items()|以列表返回可遍历的(键, 值) 元组数组|<br>|radiansdict.keys()|返回一个迭代器，可以使用 list() 来转换为列表|<br>|radiansdict.setdefault(key, default=None)|和get()类似, 但如果键不存在于字典中，将会添加键并将值设为default|<br>|radiansdict.update(dict2)|把字典dict2的键/值对更新到dict里|<br>|radiansdict.values()|返回一个迭代器，可以使用 list() 来转换为列表|<br>|pop(key[,default])|删除字典给定键 key 所对应的值，返回值为被删除的值。key值必须给出。 否则，返回default值。|<br>|popitem()|随机返回并删除字典中的最后一对键和值|</p>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>集合（set）是一个无序的不重复元素序列。</p>
+<p>可以使用大括号 { } 或者 set() 函数创建集合，注意：创建一个空集合必须用 set() 而不是 { }，因为 { } 是用来创建一个空字典。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">parame = &#123;value01,value02,...&#125;</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line"><span class="built_in">set</span>(value)</span><br></pre></td></tr></table></figure>
 
-<pre><code class="bash"></code></pre>
-]]></content>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Python</category>
       </categories>
@@ -3815,6 +3825,7 @@ ffplay</code></p>
 <td align="center">单元格</td>
 </tr>
 </tbody></table>
+<p><a href="http://support.typora.io/Draw-Diagrams-With-Markdown/" target="_blank" rel="noopener">tyora 流程图文档</a></p>
 ]]></content>
   </entry>
 </search>
