@@ -213,6 +213,76 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/21/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93httprouter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/21/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93httprouter/" class="post-title-link" itemprop="url">第三方库httprouter</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-21 20:09:04 / Modified: 20:44:53" itemprop="dateCreated datePublished" datetime="2020-02-21T20:09:04+08:00">2020-02-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://github.com/julienschmidt/httprouter" target="_blank" rel="noopener">httprouter</a>是一个高可用的http路由请求库。路由器通过请求方法和路径来匹配传入的请求。如果为该路径和方法注册了句柄，路由器会将请求委托给该函数。对于方法GET、POST、PUT、PATCH、DELETE和OPTIONS，存在注册句柄的快捷功能，对于所有其他方法路由器。可以使用手柄。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"github.com/julienschmidt/httprouter"</span></span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">    <span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) &#123;</span><br><span class="line">    fmt.Fprint(w, <span class="string">"Welcome!\n"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func Hello(w http.ResponseWriter, r *http.Request, ps httprouter.Params) &#123;</span><br><span class="line">    fmt.Fprintf(w, <span class="string">"hello, %s!\n"</span>, ps.ByName(<span class="string">"name"</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    router := httprouter.New()</span><br><span class="line">    router.GET(<span class="string">"/"</span>, Index)</span><br><span class="line">    router.GET(<span class="string">"/hello/:name"</span>, Hello)</span><br><span class="line"></span><br><span class="line">    log.Fatal(http.ListenAndServe(<span class="string">":8080"</span>, router))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1238,111 +1308,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/" class="post-title-link" itemprop="url">通过Docker安装RabbitMQ</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-12 23:45:30" itemprop="dateCreated datePublished" datetime="2020-02-12T23:45:30+08:00">2020-02-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-14 02:07:22" itemprop="dateModified" datetime="2020-02-14T02:07:22+08:00">2020-02-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/RabbitMQ/" itemprop="url" rel="index">
-                    <span itemprop="name">RabbitMQ</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="RabbitMQ安装"><a href="#RabbitMQ安装" class="headerlink" title="RabbitMQ安装"></a>RabbitMQ安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /Users/samtake/Documents/GitHub/www/rabbitmq目录可自定义，主要用于目录挂载</span></span><br><span class="line">➜  ~ mkdir -p /Users/samtake/Documents/GitHub/www/rabbitmq</span><br><span class="line">➜  ~ docker run -d --hostname rabbit-node1 --name rabbit-node1 -p 5672:5672 -p15672:15672 -v /Users/samtake/Documents/GitHub/www/rabbitmq:/var/lib/rabbitmq rabbitmq:management</span><br><span class="line">Unable to find image <span class="string">'rabbitmq:management'</span> locally</span><br><span class="line">management: Pulling from library/rabbitmq</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>报错提示,手动添加一下docker分享目录即可。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">The path /www/rabbitmq</span><br><span class="line">is not shared from OS X and is not known to Docker.</span><br><span class="line">You can configure shared paths from Docker -&gt; Preferences... -&gt; File Sharing.</span><br><span class="line">See https://docs.docker.com/docker-for-mac/osxfs/<span class="comment">#namespaces for more info.</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ docker ps | grep rabbit</span><br><span class="line">75d0ec6821fc        rabbitmq:management   <span class="string">"docker-entrypoint.s…"</span>   About a minute ago   Up About a minute   4369/tcp, 5671/tcp, 0.0.0.0:5672-&gt;5672/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:15672-&gt;15672/tcp   rabbit-node1</span><br></pre></td></tr></table></figure>
-
-
-<p>浏览器打开登录rabbitmq, 入口:<a href="http://localhost:15672" target="_blank" rel="noopener">http://localhost:15672</a><br>默认用户名: guest 密码: guest</p>
-<h3 id="RabbitMQ的UI界面使用测试"><a href="#RabbitMQ的UI界面使用测试" class="headerlink" title="RabbitMQ的UI界面使用测试"></a>RabbitMQ的UI界面使用测试</h3><h3 id="RabbitMQ的工作原理和转发模式"><a href="#RabbitMQ的工作原理和转发模式" class="headerlink" title="RabbitMQ的工作原理和转发模式"></a>RabbitMQ的工作原理和转发模式</h3><p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/RabbitMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png" alt></p>
-<p>名词解析：<br><code>exchange</code>:消息交换机，决定消息按什么规则，路由到哪个队列。<br><code>queue</code>:消息载体，每个消息都会被投到一个或多个队列。<br><code>binding</code>:绑定，把exchange和queue按照路由规则绑定起来。<br><code>routing key</code>:路由关键字，exchange根据这关键字来投递消息。<br><code>channel</code>:消息通道，客户端的每个连接建立多个channnel。<br><code>producer</code>:消息生产者，用于投递消息的程序。<br><code>consumer</code>:消息消费者，用于接收消息的程序。</p>
-<p>exchange的工作模式<br><code>fanout</code>:类似广播，转发到所有绑定交换机的queue。<br><code>direct</code>:类似单播，routing key 和bingding key完美匹配。<br><code>topic</code>:类似组播，转发到符合通配符的queue。<br><code>headers</code>:请求头与消息匹配，才能接收消息。</p>
-<p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/fanout.png" alt></p>
-<p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/direct.png" alt></p>
-<p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/topic.jpeg" alt></p>
-<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p>1.配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const (</span><br><span class="line">	// AsyncTransferEnable : 是否开启文件异步转移(默认同步)</span><br><span class="line">	AsyncTransferEnable = <span class="literal">true</span></span><br><span class="line">	// RabbitURL : rabbitmq服务的入口url</span><br><span class="line">	RabbitURL = <span class="string">"amqp://guest:guest@127.0.0.1:5672/"</span></span><br><span class="line">	// TransExchangeName : 用于文件transfer的交换机</span><br><span class="line">	TransExchangeName = <span class="string">"uploadserver.trans"</span></span><br><span class="line">	// TransOSSQueueName : oss转移队列名</span><br><span class="line">	TransOSSQueueName = <span class="string">"uploadserver.trans.oss"</span></span><br><span class="line">	// TransOSSErrQueueName : oss转移失败后写入另一个队列的队列名</span><br><span class="line">	TransOSSErrQueueName = <span class="string">"uploadserver.trans.oss.err"</span></span><br><span class="line">	// TransOSSRoutingKey : routingkey</span><br><span class="line">	TransOSSRoutingKey = <span class="string">"oss"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-
-
-<p>2.生产者</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">init</span></span>() &#123;</span><br><span class="line">	// 是否开启异步转移功能，开启时才初始化rabbitMQ连接</span><br><span class="line">	<span class="keyword">if</span> !config.AsyncTransferEnable &#123;</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> <span class="function"><span class="title">initChannel</span></span>() &#123;</span><br><span class="line">		channel.NotifyClose(notifyClose)</span><br><span class="line">	&#125;</span><br><span class="line">	// 断线自动重连</span><br><span class="line">	go <span class="function"><span class="title">func</span></span>() &#123;</span><br><span class="line">		<span class="keyword">for</span> &#123;</span><br><span class="line">			select &#123;</span><br><span class="line">			<span class="keyword">case</span> msg := &lt;-notifyClose:</span><br><span class="line">				conn = nil</span><br><span class="line">				channel = nil</span><br><span class="line">				log.Printf(<span class="string">"onNotifyChannelClosed: %+v\n"</span>, msg)</span><br><span class="line">				initChannel()</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func initChannel() bool &#123;</span><br><span class="line">	//1.判断channel是否已经创建</span><br><span class="line">	<span class="keyword">if</span> channel != nil &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//2.获得rabbitMQ的一个连接</span><br><span class="line">	conn, err := amqp.Dial(config.RabbitURL)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Println(err.Error())</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//3.打开一个channel，用于消息的发布与接收等</span><br><span class="line">	channel, err = conn.Channel()</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Println(err.Error())</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Publish : 发布消息</span><br><span class="line">func Publish(exchange, routingKey string, msg []byte) bool &#123;</span><br><span class="line">	//1.判断channel是否正常</span><br><span class="line">	<span class="keyword">if</span> !<span class="function"><span class="title">initChannel</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//2.执行消息发布</span><br><span class="line">	err := channel.Publish(</span><br><span class="line">		exchange,</span><br><span class="line">		routingKey,</span><br><span class="line">		<span class="literal">false</span>, // 如果没有对应的queue, 就会丢弃这条消息</span><br><span class="line">		<span class="literal">false</span>, //</span><br><span class="line">		amqp.Publishing&#123;</span><br><span class="line">			ContentType: <span class="string">"text/plain"</span>, //明文编码</span><br><span class="line">			Body:        msg,</span><br><span class="line">		&#125;,</span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Println(err.Error())</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>3.消费者</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">var <span class="keyword">done</span> chan bool</span><br><span class="line"></span><br><span class="line">// StartConsume : 开始监听队列，获取消息</span><br><span class="line">func StartConsume(qName, cName string, callback func(msg []byte) bool) &#123;</span><br><span class="line">	//1.通过channel.Consume获得消息信道</span><br><span class="line">	msgs, err := channel.Consume(</span><br><span class="line">		qName,</span><br><span class="line">		cName,</span><br><span class="line">		<span class="literal">true</span>,  //自动应答</span><br><span class="line">		<span class="literal">false</span>, // 非唯一的消费者</span><br><span class="line">		<span class="literal">false</span>, // rabbitMQ只能设置为<span class="literal">false</span></span><br><span class="line">		<span class="literal">false</span>, // noWait, <span class="literal">false</span>表示会阻塞直到有消息过来</span><br><span class="line">		nil)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">done</span> = make(chan bool)</span><br><span class="line"></span><br><span class="line">	go <span class="function"><span class="title">func</span></span>() &#123;</span><br><span class="line">		// 2.循环读取channel的数据</span><br><span class="line">		<span class="keyword">for</span> d := range msgs &#123;</span><br><span class="line">			//3.调用callback方法来处理新的消息</span><br><span class="line">			processErr := callback(d.Body)</span><br><span class="line">			<span class="keyword">if</span> processErr &#123;</span><br><span class="line">				// TODO: 将任务写入另一个队列，用于异常情况的重试</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	// 接收<span class="keyword">done</span>的信号, 没有信息过来则会一直阻塞，避免该函数退出</span><br><span class="line">	&lt;-<span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">	// 关闭通道</span><br><span class="line">	channel.Close()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// StopConsume : 停止监听队列</span><br><span class="line">func <span class="function"><span class="title">StopConsume</span></span>() &#123;</span><br><span class="line">	<span class="keyword">done</span> &lt;- <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p><a href="https://github.com/samtake/goRedisDemo" target="_blank" rel="noopener">demo</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1393,7 +1358,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
