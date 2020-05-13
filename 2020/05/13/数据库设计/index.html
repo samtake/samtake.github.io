@@ -52,15 +52,15 @@
   };
 </script>
 
-  <meta name="description" content="目录表设计  DDL。 表字段类型选择。 3范式，三种表间关系：一对一，一对多，多对多。  表使用  基本查询语句。 SQL语句优先级。 链接查询：子查询，组合查询。 select…from…where…group by…having…order by..limit  DDL库的创建create database 库名；create database if not existe 库名； 更改库的字">
+  <meta name="description" content="目录表设计  DDL（Data Definition Language）数据库模式定义语言 表字段类型选择。 3范式，三种表间关系：一对一，一对多，多对多。  表使用  基本查询语句。 SQL语句优先级。 链接查询：子查询，组合查询。 select…from…where…group by…having…order by..limit  DDL库的创建create database 库名；creat">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库设计">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;05&#x2F;13&#x2F;%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
-<meta property="og:description" content="目录表设计  DDL。 表字段类型选择。 3范式，三种表间关系：一对一，一对多，多对多。  表使用  基本查询语句。 SQL语句优先级。 链接查询：子查询，组合查询。 select…from…where…group by…having…order by..limit  DDL库的创建create database 库名；create database if not existe 库名； 更改库的字">
+<meta property="og:description" content="目录表设计  DDL（Data Definition Language）数据库模式定义语言 表字段类型选择。 3范式，三种表间关系：一对一，一对多，多对多。  表使用  基本查询语句。 SQL语句优先级。 链接查询：子查询，组合查询。 select…from…where…group by…having…order by..limit  DDL库的创建create database 库名；creat">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-13T03:40:24.071Z">
+<meta property="og:updated_time" content="2020-05-13T07:05:49.445Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/05/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/">
@@ -241,7 +241,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-05-13 10:14:22 / Modified: 11:40:24" itemprop="dateCreated datePublished" datetime="2020-05-13T10:14:22+08:00">2020-05-13</time>
+              <time title="Created: 2020-05-13 10:14:22 / Modified: 15:05:49" itemprop="dateCreated datePublished" datetime="2020-05-13T10:14:22+08:00">2020-05-13</time>
             </span>
 
           
@@ -257,7 +257,7 @@
       
         <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>表设计</p>
 <ul>
-<li>DDL。</li>
+<li>DDL（Data Definition Language）数据库模式定义语言</li>
 <li>表字段类型选择。</li>
 <li>3范式，三种表间关系：一对一，一对多，多对多。</li>
 </ul>
@@ -503,7 +503,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create table 表名（</span><br><span class="line">         字段名   字段类型   列级约束，</span><br><span class="line">       字段名  字段类型，</span><br><span class="line">       表级约束</span><br><span class="line">）</span><br><span class="line">create table stuinfo（</span><br><span class="line">    id  int primary  key,</span><br><span class="line">    stuname  varchar(20)  not  null,</span><br><span class="line">    gender   char(1)  check(gender=<span class="string">'男'</span> or gender = <span class="string">'女'</span>），</span><br><span class="line">    age  int default  18</span><br><span class="line">   majorid  int foreign key references major（id）</span><br><span class="line">）；</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="添加表级约束"><a href="#添加表级约束" class="headerlink" title="添加表级约束"></a>添加表级约束</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create table stuinfo（</span><br><span class="line">    id  int ,</span><br><span class="line">    stuname  varchar(20) ,</span><br><span class="line">    gender   char(1) ，</span><br><span class="line">    age  int，</span><br><span class="line">   majorid  int，</span><br><span class="line">   </span><br><span class="line">   constraint pk primary  key（id）,<span class="comment">#主键</span></span><br><span class="line">   constraint uq unique（seat），<span class="comment">#唯一键</span></span><br><span class="line">   constraint ck check(gender=<span class="string">'男'</span> or gender = <span class="string">'女'</span>），</span><br><span class="line">   constraint fk_syuinfo_major   foreign key(majorid) references major（id）<span class="comment">#外键</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="添加表级约束"><a href="#添加表级约束" class="headerlink" title="添加表级约束"></a>添加表级约束</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">create table stuinfo（</span><br><span class="line">    id  int ,</span><br><span class="line">    stuname  varchar(20) ,</span><br><span class="line">    gender   char(1) ，</span><br><span class="line">    age  int，</span><br><span class="line">   majorid  int，</span><br><span class="line">   </span><br><span class="line">   constraint pk primary  key（id）,<span class="comment">#主键</span></span><br><span class="line">   constraint uq unique（seat），<span class="comment">#唯一键</span></span><br><span class="line">   constraint ck check(gender=<span class="string">'男'</span> or gender = <span class="string">'女'</span>），</span><br><span class="line">   constraint fk_syuinfo_major   foreign key(majorid) references major（id）<span class="comment">#外键</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
 <p>在各个字段的最下面添加：&lt;<code>constraint</code> 约束名&gt; 约束类型（字段名）</p>
 <h1 id="主键与唯一的对比"><a href="#主键与唯一的对比" class="headerlink" title="主键与唯一的对比"></a>主键与唯一的对比</h1><ul>
@@ -537,6 +537,220 @@
 </li>
 </ul>
 <h1 id="修改表时删除约束"><a href="#修改表时删除约束" class="headerlink" title="修改表时删除约束"></a>修改表时删除约束</h1><p>删除非空 <code>alter table 表名 modify column 列名 varchar（20） null；</code><br>删除默认约束 <code>alter table 表名 modify column 列名  int；</code><br>删除主键 <code>alter table 表名 drop primary key；</code><br>删除唯一 <code>alter table 表名 drop index 列名；</code><br>删除外键 <code>alter table 表名 drop foreign key 列名；</code></p>
+<h1 id="3范式"><a href="#3范式" class="headerlink" title="3范式"></a>3范式</h1><h2 id="第一范式（1NF）"><a href="#第一范式（1NF）" class="headerlink" title="第一范式（1NF）"></a>第一范式（1NF）</h2><p>保证每列的原子性。如果数据库表中的所有字段值都是不可分解的原子值，就说明该数据库满足了第一范式。</p>
+<p>例如将地址的拆分：</p>
+<table>
+<thead>
+<tr>
+<th align="left">编号</th>
+<th align="left">姓名</th>
+<th align="left">地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">张三</td>
+<td align="left">广东广州天河</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">李四</td>
+<td align="left">广东佛山禅城</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">王五</td>
+<td align="left">广东广州科学城</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">编号</th>
+<th align="left">姓名</th>
+<th align="left">省份</th>
+<th align="left">城市</th>
+<th align="left">地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">张三</td>
+<td align="left">广东</td>
+<td align="left">广州</td>
+<td align="left">天河</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">李四</td>
+<td align="left">广东</td>
+<td align="left">佛山</td>
+<td align="left">禅城</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">王五</td>
+<td align="left">广东</td>
+<td align="left">广州</td>
+<td align="left">科学城</td>
+</tr>
+</tbody></table>
+<h2 id="第二范式（2NF）"><a href="#第二范式（2NF）" class="headerlink" title="第二范式（2NF）"></a>第二范式（2NF）</h2><p>保证一张表只描述一件事情。<br>在满足第一范式的基础上，数据库表中不存在非关键字段对任一候选关键字段的部分函数依赖，也即所有非关键字段都完全依赖于任一组候选关键字。</p>
+<p>举例：<br>| 学号    | 姓名    | 年龄 | 课程 | 成绩 | 学分 |<br>| :—–| :—–| :—-|  :—-|  :—-|  :—-|<br>| 1 | 张三  | 20 | 数学 | 90 | 1 |<br>| 2 | 李四  | 20 | 语文 | 90 | 1 |<br>| 3 | 王五  | 20 | 英语 | 50 | 1 |</p>
+<p>上表满足第一范式，即每个字段不可再分，但这张表的设计并不满足第二范式。因为这张表里面描述了两件事情：学生信息、课程信息，”学分”完全依赖于”课程名称”、”姓名”与”年龄”完全依赖于”学号”。这么做的后果是：</p>
+<ul>
+<li><p>数据冗余：同一门课程由n个学生选修，”学分”重复n-1次；同一个学生选修了m门课程，姓名和年龄重复m-1次</p>
+</li>
+<li><p>更新异常：若调整了某门课程的学分，数据表中所有行的”学分”值都需要更新，否则会出现同一门课程学分不同的情况</p>
+</li>
+<li><p>插入异常：假设要开一门新课程，暂时没有人选修，那么由于没有”学号”关键字，”课程”与”学分”也无法记录入数据库</p>
+</li>
+<li><p>删除异常：假设一批学生已经完成课程的选修，这些选修记录就应该从数据库表中删除。但是，与此同时，”课程”和”学分”也被删除了，显然，这最终可能会导致插入异常</p>
+</li>
+</ul>
+<p>优化后的表设计如下：<br>| 学号    | 姓名    | 年龄 |<br>| :—–| :—–| :—-|<br>| 1 | 张三  | 20 |<br>| 2 | 李四  | 20 |<br>| 3 | 王五  | 20 |</p>
+<table>
+<thead>
+<tr>
+<th align="left">课程</th>
+<th align="left">学分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">数学</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">语文</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">英语</td>
+<td align="left">1</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">学号</th>
+<th align="left">课程</th>
+<th align="left">成绩</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">数学</td>
+<td align="left">90</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">语文</td>
+<td align="left">90</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">英语</td>
+<td align="left">50</td>
+</tr>
+</tbody></table>
+<p>增加了表，将学生信息与课程信息通过一张中间表关联，很好地解决了上面的几个问题，这就是第二范式的中心—-保证一张表只讲一件事情。</p>
+<h2 id="第三范式（3NF）"><a href="#第三范式（3NF）" class="headerlink" title="第三范式（3NF）"></a>第三范式（3NF）</h2><p>数据库表中如果不存在非关键字段任一候选关键字段的传递函数依赖则符合第三范式，所谓传递函数依赖指的是如果存在”A–&gt;B–&gt;C”的决定关系，则C传递函数依赖于A。也就是说<code>中的字段和主键直接对应不依靠其他中间字段，说白了就是，决定某字段值的必须是主键。</code></p>
+<p>举例：</p>
+<table>
+<thead>
+<tr>
+<th align="left">学号</th>
+<th align="left">姓名</th>
+<th align="left">年龄</th>
+<th align="left">学院地点</th>
+<th align="left">学院电话</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">张三</td>
+<td align="left">20</td>
+<td align="left">计算机学院</td>
+<td align="left">9号楼</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">李四</td>
+<td align="left">20</td>
+<td align="left">计算机学院</td>
+<td align="left">9号楼</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">王五</td>
+<td align="left">20</td>
+<td align="left">计算机学院</td>
+<td align="left">9号楼</td>
+</tr>
+</tbody></table>
+<p>从这张数据库表结构中可以看出：</p>
+<ul>
+<li><p>“姓名”、”年龄”、”学院”和主键”学号”直接关联。</p>
+</li>
+<li><p>但是”学院地点”、”学院电话”却不直接和主键”学号”相关联，和”学院电话”直接相关联的是”学院”。</p>
+</li>
+<li><p>如果表结构这么设计，同样会造成和第二范式一样的数据冗余、更新异常、插入异常、删除异常的问题。</p>
+</li>
+</ul>
+<p>优化后的表设计：</p>
+<table>
+<thead>
+<tr>
+<th align="left">学院</th>
+<th align="left">学院地点</th>
+<th align="left">学院电话</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">计算机学院</td>
+<td align="left">9号楼</td>
+<td align="left">11111</td>
+</tr>
+<tr>
+<td align="left">艺术学院</td>
+<td align="left">8号楼</td>
+<td align="left">11112</td>
+</tr>
+<tr>
+<td align="left">机电学院</td>
+<td align="left">7号楼</td>
+<td align="left">11113</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">学号</th>
+<th align="left">姓名</th>
+<th align="left">年龄</th>
+<th align="left">学院</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">张三</td>
+<td align="left">20</td>
+<td align="left">计算机学院</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">李四</td>
+<td align="left">20</td>
+<td align="left">计算机学院</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">王五</td>
+<td align="left">20</td>
+<td align="left">计算机学院</td>
+</tr>
+</tbody></table>
+<p>文章参考：<br><a href="https://zhuanlan.zhihu.com/p/72197799" target="_blank" rel="noopener">MySQL数据库三范式</a></p>
 
     </div>
 
@@ -599,7 +813,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDL"><span class="nav-number">2.</span> <span class="nav-text">DDL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表字段类型"><span class="nav-number">3.</span> <span class="nav-text">表字段类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数值型"><span class="nav-number">3.1.</span> <span class="nav-text">数值型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小数"><span class="nav-number">3.2.</span> <span class="nav-text">小数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符型"><span class="nav-number">3.3.</span> <span class="nav-text">字符型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期"><span class="nav-number">3.4.</span> <span class="nav-text">日期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见约束"><span class="nav-number">3.5.</span> <span class="nav-text">常见约束</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建表时添加约束"><span class="nav-number">4.</span> <span class="nav-text">创建表时添加约束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加列级约束"><span class="nav-number">4.1.</span> <span class="nav-text">添加列级约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加表级约束"><span class="nav-number">4.2.</span> <span class="nav-text">添加表级约束</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主键与唯一的对比"><span class="nav-number">5.</span> <span class="nav-text">主键与唯一的对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#外键"><span class="nav-number">6.</span> <span class="nav-text">外键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改表时添加约束"><span class="nav-number">7.</span> <span class="nav-text">修改表时添加约束</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改表时删除约束"><span class="nav-number">8.</span> <span class="nav-text">修改表时删除约束</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDL"><span class="nav-number">2.</span> <span class="nav-text">DDL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表字段类型"><span class="nav-number">3.</span> <span class="nav-text">表字段类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数值型"><span class="nav-number">3.1.</span> <span class="nav-text">数值型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小数"><span class="nav-number">3.2.</span> <span class="nav-text">小数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符型"><span class="nav-number">3.3.</span> <span class="nav-text">字符型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期"><span class="nav-number">3.4.</span> <span class="nav-text">日期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见约束"><span class="nav-number">3.5.</span> <span class="nav-text">常见约束</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建表时添加约束"><span class="nav-number">4.</span> <span class="nav-text">创建表时添加约束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加列级约束"><span class="nav-number">4.1.</span> <span class="nav-text">添加列级约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加表级约束"><span class="nav-number">4.2.</span> <span class="nav-text">添加表级约束</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主键与唯一的对比"><span class="nav-number">5.</span> <span class="nav-text">主键与唯一的对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#外键"><span class="nav-number">6.</span> <span class="nav-text">外键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改表时添加约束"><span class="nav-number">7.</span> <span class="nav-text">修改表时添加约束</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改表时删除约束"><span class="nav-number">8.</span> <span class="nav-text">修改表时删除约束</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3范式"><span class="nav-number">9.</span> <span class="nav-text">3范式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一范式（1NF）"><span class="nav-number">9.1.</span> <span class="nav-text">第一范式（1NF）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二范式（2NF）"><span class="nav-number">9.2.</span> <span class="nav-text">第二范式（2NF）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三范式（3NF）"><span class="nav-number">9.3.</span> <span class="nav-text">第三范式（3NF）</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
