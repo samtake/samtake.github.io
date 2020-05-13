@@ -16,7 +16,7 @@
 <li>链接查询：子查询，组合查询。</li>
 <li>select…from…where…group by…having…order by..limit</li>
 </ul>
-<h1 id="表设计"><a href="#表设计" class="headerlink" title="表设计"></a>表设计</h1><h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><p>库的创建<br><code>create database 库名；</code><br><code>create database if not existe 库名；</code></p>
+<h1 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h1><p>库的创建<br><code>create database 库名；</code><br><code>create database if not existe 库名；</code></p>
 <p>更改库的字符集<br><code>alter database books character set gbk；</code></p>
 <p>库的删除<br><code>drop database if exists 库名；</code></p>
 <p>表的创建</p>
@@ -43,7 +43,7 @@
 
 </li>
 </ul>
-<h2 id="表字段类型"><a href="#表字段类型" class="headerlink" title="表字段类型"></a>表字段类型</h2><h3 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h3><table>
+<h1 id="表字段类型"><a href="#表字段类型" class="headerlink" title="表字段类型"></a>表字段类型</h1><h2 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h2><table>
 <thead>
 <tr>
 <th align="left">场景</th>
@@ -97,7 +97,7 @@
 <li><p>如果不设置长度会有默认的长度<br>  zerofill（零填充，默认无符号），显示结果的最大宽度，不过会在左边用0填充</p>
 </li>
 </ul>
-<h3 id="小数"><a href="#小数" class="headerlink" title="小数"></a>小数</h3><table>
+<h2 id="小数"><a href="#小数" class="headerlink" title="小数"></a>小数</h2><table>
 <thead>
 <tr>
 <th align="left">场景</th>
@@ -129,7 +129,7 @@
 <li><p>选择类型越简单越好，保存数值越小越好</p>
 </li>
 </ul>
-<h3 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h3><table>
+<h2 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h2><table>
 <thead>
 <tr>
 <th align="left">场景</th>
@@ -151,7 +151,7 @@
 <td align="left">较长的二进制数据</td>
 </tr>
 </tbody></table>
-<h3 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h3><table>
+<h2 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h2><table>
 <thead>
 <tr>
 <th align="left">场景</th>

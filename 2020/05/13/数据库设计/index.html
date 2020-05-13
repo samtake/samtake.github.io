@@ -52,15 +52,15 @@
   };
 </script>
 
-  <meta name="description" content="目录表设计  DDL。 表字段类型选择。 3范式，三种表间关系：一对一，一对多，多对多。  表使用  基本查询语句。 SQL语句优先级。 链接查询：子查询，组合查询。 select…from…where…group by…having…order by..limit  表设计DDL库的创建create database 库名；create database if not existe 库名； 更改">
+  <meta name="description" content="目录表设计  DDL。 表字段类型选择。 3范式，三种表间关系：一对一，一对多，多对多。  表使用  基本查询语句。 SQL语句优先级。 链接查询：子查询，组合查询。 select…from…where…group by…having…order by..limit  DDL库的创建create database 库名；create database if not existe 库名； 更改库的字">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库设计">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;05&#x2F;13&#x2F;%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
-<meta property="og:description" content="目录表设计  DDL。 表字段类型选择。 3范式，三种表间关系：一对一，一对多，多对多。  表使用  基本查询语句。 SQL语句优先级。 链接查询：子查询，组合查询。 select…from…where…group by…having…order by..limit  表设计DDL库的创建create database 库名；create database if not existe 库名； 更改">
+<meta property="og:description" content="目录表设计  DDL。 表字段类型选择。 3范式，三种表间关系：一对一，一对多，多对多。  表使用  基本查询语句。 SQL语句优先级。 链接查询：子查询，组合查询。 select…from…where…group by…having…order by..limit  DDL库的创建create database 库名；create database if not existe 库名； 更改库的字">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-13T03:37:56.523Z">
+<meta property="og:updated_time" content="2020-05-13T03:40:24.071Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/05/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/">
@@ -241,7 +241,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-05-13 10:14:22 / Modified: 11:37:56" itemprop="dateCreated datePublished" datetime="2020-05-13T10:14:22+08:00">2020-05-13</time>
+              <time title="Created: 2020-05-13 10:14:22 / Modified: 11:40:24" itemprop="dateCreated datePublished" datetime="2020-05-13T10:14:22+08:00">2020-05-13</time>
             </span>
 
           
@@ -268,7 +268,7 @@
 <li>链接查询：子查询，组合查询。</li>
 <li>select…from…where…group by…having…order by..limit</li>
 </ul>
-<h1 id="表设计"><a href="#表设计" class="headerlink" title="表设计"></a>表设计</h1><h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><p>库的创建<br><code>create database 库名；</code><br><code>create database if not existe 库名；</code></p>
+<h1 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h1><p>库的创建<br><code>create database 库名；</code><br><code>create database if not existe 库名；</code></p>
 <p>更改库的字符集<br><code>alter database books character set gbk；</code></p>
 <p>库的删除<br><code>drop database if exists 库名；</code></p>
 <p>表的创建</p>
@@ -295,7 +295,7 @@
 
 </li>
 </ul>
-<h2 id="表字段类型"><a href="#表字段类型" class="headerlink" title="表字段类型"></a>表字段类型</h2><h3 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h3><table>
+<h1 id="表字段类型"><a href="#表字段类型" class="headerlink" title="表字段类型"></a>表字段类型</h1><h2 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h2><table>
 <thead>
 <tr>
 <th align="left">场景</th>
@@ -349,7 +349,7 @@
 <li><p>如果不设置长度会有默认的长度<br>  zerofill（零填充，默认无符号），显示结果的最大宽度，不过会在左边用0填充</p>
 </li>
 </ul>
-<h3 id="小数"><a href="#小数" class="headerlink" title="小数"></a>小数</h3><table>
+<h2 id="小数"><a href="#小数" class="headerlink" title="小数"></a>小数</h2><table>
 <thead>
 <tr>
 <th align="left">场景</th>
@@ -381,7 +381,7 @@
 <li><p>选择类型越简单越好，保存数值越小越好</p>
 </li>
 </ul>
-<h3 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h3><table>
+<h2 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h2><table>
 <thead>
 <tr>
 <th align="left">场景</th>
@@ -403,7 +403,7 @@
 <td align="left">较长的二进制数据</td>
 </tr>
 </tbody></table>
-<h3 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h3><table>
+<h2 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h2><table>
 <thead>
 <tr>
 <th align="left">场景</th>
@@ -599,7 +599,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表设计"><span class="nav-number">2.</span> <span class="nav-text">表设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DDL"><span class="nav-number">2.1.</span> <span class="nav-text">DDL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表字段类型"><span class="nav-number">2.2.</span> <span class="nav-text">表字段类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数值型"><span class="nav-number">2.2.1.</span> <span class="nav-text">数值型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小数"><span class="nav-number">2.2.2.</span> <span class="nav-text">小数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符型"><span class="nav-number">2.2.3.</span> <span class="nav-text">字符型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期"><span class="nav-number">2.2.4.</span> <span class="nav-text">日期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见约束"><span class="nav-number">2.3.</span> <span class="nav-text">常见约束</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建表时添加约束"><span class="nav-number">3.</span> <span class="nav-text">创建表时添加约束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加列级约束"><span class="nav-number">3.1.</span> <span class="nav-text">添加列级约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加表级约束"><span class="nav-number">3.2.</span> <span class="nav-text">添加表级约束</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主键与唯一的对比"><span class="nav-number">4.</span> <span class="nav-text">主键与唯一的对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#外键"><span class="nav-number">5.</span> <span class="nav-text">外键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改表时添加约束"><span class="nav-number">6.</span> <span class="nav-text">修改表时添加约束</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改表时删除约束"><span class="nav-number">7.</span> <span class="nav-text">修改表时删除约束</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDL"><span class="nav-number">2.</span> <span class="nav-text">DDL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表字段类型"><span class="nav-number">3.</span> <span class="nav-text">表字段类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数值型"><span class="nav-number">3.1.</span> <span class="nav-text">数值型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小数"><span class="nav-number">3.2.</span> <span class="nav-text">小数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符型"><span class="nav-number">3.3.</span> <span class="nav-text">字符型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期"><span class="nav-number">3.4.</span> <span class="nav-text">日期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见约束"><span class="nav-number">3.5.</span> <span class="nav-text">常见约束</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建表时添加约束"><span class="nav-number">4.</span> <span class="nav-text">创建表时添加约束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加列级约束"><span class="nav-number">4.1.</span> <span class="nav-text">添加列级约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加表级约束"><span class="nav-number">4.2.</span> <span class="nav-text">添加表级约束</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主键与唯一的对比"><span class="nav-number">5.</span> <span class="nav-text">主键与唯一的对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#外键"><span class="nav-number">6.</span> <span class="nav-text">外键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改表时添加约束"><span class="nav-number">7.</span> <span class="nav-text">修改表时添加约束</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改表时删除约束"><span class="nav-number">8.</span> <span class="nav-text">修改表时删除约束</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
