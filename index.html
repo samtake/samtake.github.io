@@ -239,6 +239,13 @@
 
               <time title="Created: 2020-05-14 18:20:03" itemprop="dateCreated datePublished" datetime="2020-05-14T18:20:03+08:00">2020-05-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-15 15:45:34" itemprop="dateModified" datetime="2020-05-15T15:45:34+08:00">2020-05-15</time>
+              </span>
 
           
 
@@ -251,7 +258,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <p>Mac首选brew安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap go-swagger/go-swagger</span><br><span class="line">brew install go-swagger</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">swagger generate spec -o ./swagger.json --scan-models</span><br><span class="line">swagger serve -F=swagger swagger.json</span><br></pre></td></tr></table></figure>
+<p>其中 swagger.json文件是使用过命令行来生成的，然后进去编写自己的规则。</p>
+<p>小编直接拉去别的项目swagger.json文件时，跑起来出错了，你只需要通过swagger命令行创建后再复制内容进去即可。<br><code>No operations defined in spec!</code></p>
+<p><img src="/2020/05/14/swagger%E7%9A%84%E4%BD%BF%E7%94%A8/swagger01.png" alt="swagger01.png"></p>
+<p>资料：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/136521497" target="_blank" rel="noopener">如何使用 SwaggerUI 创建 Golang API 文档？</a></p>
+<p><a href="https://blog.csdn.net/qq_37493556/article/details/104081138" target="_blank" rel="noopener">go-swagger安装及使用</a></p>
+
       
     </div>
 
@@ -2046,7 +2064,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
