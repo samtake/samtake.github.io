@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>通过drawio插件在vs code上画流程图</title>
+    <url>/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/</url>
+    <content><![CDATA[<h1 id="打开vs-code-搜索并安装插件drawio"><a href="#打开vs-code-搜索并安装插件drawio" class="headerlink" title="打开vs code 搜索并安装插件drawio"></a>打开vs code 搜索并安装插件drawio</h1><p><img src="/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/drawio01.png" alt="drawio01"></p>
+<h1 id="创建一个后缀为drawio的文件，即可惊醒流程图的编辑"><a href="#创建一个后缀为drawio的文件，即可惊醒流程图的编辑" class="headerlink" title="创建一个后缀为drawio的文件，即可惊醒流程图的编辑"></a>创建一个后缀为drawio的文件，即可惊醒流程图的编辑</h1><p><img src="/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/drawio02.png" alt="drawio02"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>swagger的使用</title>
     <url>/2020/05/14/swagger%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>Mac首选brew安装：</p>
