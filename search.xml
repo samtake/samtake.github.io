@@ -1269,8 +1269,9 @@
 
 
 <h1 id="dao"><a href="#dao" class="headerlink" title="dao"></a>dao</h1><p><a href="https://baike.sogou.com/v6708028.htm?fromTitle=dao" target="_blank" rel="noopener">dao</a>就叫它数据访问接口吧。</p>
+<p>举一个例子先，例如我们比较常见的 Service 层和 DAO 层的操作，Service 处理完逻辑之后，交给 DAO 层进行持久化，或者需要调用 DAO 层从持久化中获取一些必要的数据；在测试的时候，我们很多时候不希望真的持久化或者从持久化中获取数据，那么就会对 DAO 层进行一些 Mock。</p>
 <p>还有深刻的理解，相关资料：</p>
-<p><a href="http://www.imooc.com/article/33236" target="_blank" rel="noopener">http://www.imooc.com/article/33236</a></p>
+<p><a href="http://www.imooc.com/article/33236" target="_blank" rel="noopener">http://www.imooc.com/article/33236</a><br><a href="https://www.cnblogs.com/makor/p/ut-in-go-lang.html" target="_blank" rel="noopener">https://www.cnblogs.com/makor/p/ut-in-go-lang.html</a></p>
 ]]></content>
       <categories>
         <category>Golang</category>
