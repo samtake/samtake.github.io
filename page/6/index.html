@@ -213,6 +213,84 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/ElasticSearch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/11/ElasticSearch/" class="post-title-link" itemprop="url">ElasticSearch</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-11 12:15:14 / Modified: 23:21:50" itemprop="dateCreated datePublished" datetime="2019-12-11T12:15:14+08:00">2019-12-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ElasticSearch/" itemprop="url" rel="index">
+                    <span itemprop="name">ElasticSearch</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>ElasticSearch：全文搜索引擎，它可以快速存储，搜索和分析海量数据，用户包括：维基百科、Stack Overflow、GitHub</p>
+<p>特点：不需要简表，配置字段等；只需要存json的文档；</p>
+<p>通过docker安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull docker.elastic.co/elasticsearch/elasticsearch:7.5.0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 9200:9200 -p 9300:9300 -e <span class="string">"discovery.type=single-node"</span> docker.elastic.co/elasticsearch/elasticsearch:7.5.0</span><br></pre></td></tr></table></figure>
+
+<p>安装成功之后访问<code>http://localhost:9200/</code>即可见到对应信息</p>
+<p>链接参考<br><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html" target="_blank" rel="noopener">docker安装ElasticSearch</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/Golang%E4%BA%91%E5%AD%98%E5%82%A8%E5%AE%9E%E6%88%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -244,7 +322,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-04 19:44:06" itemprop="dateModified" datetime="2020-06-04T19:44:06+08:00">2020-06-04</time>
+                <time title="Modified: 2020-06-04 19:49:12" itemprop="dateModified" datetime="2020-06-04T19:49:12+08:00">2020-06-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -284,7 +362,7 @@
 <p>handler(mpupload.go)</p>
 <h3 id="7-Ceph"><a href="#7-Ceph" class="headerlink" title="7.Ceph"></a>7.Ceph</h3><p>Ceph:redhat开源出来的分布式存储系统</p>
 <h3 id="8-阿里云对象存储OSS"><a href="#8-阿里云对象存储OSS" class="headerlink" title="8.阿里云对象存储OSS"></a>8.阿里云对象存储OSS</h3><h4 id="8-3-OSS术语"><a href="#8-3-OSS术语" class="headerlink" title="8-3 OSS术语"></a>8-3 OSS术语</h4><p><img src="/2019/12/10/Golang%E4%BA%91%E5%AD%98%E5%82%A8%E5%AE%9E%E6%88%98/oss01.png" alt="oss01.png"></p>
-<h3 id="9-RabbitMQ"><a href="#9-RabbitMQ" class="headerlink" title="9.RabbitMQ"></a>9.RabbitMQ</h3><p>RabbitMQ:一种开源的消息代理</p>
+<h4 id="8-4-OSS网页具体操作"><a href="#8-4-OSS网页具体操作" class="headerlink" title="8-4 OSS网页具体操作"></a>8-4 OSS网页具体操作</h4><h3 id="9-RabbitMQ"><a href="#9-RabbitMQ" class="headerlink" title="9.RabbitMQ"></a>9.RabbitMQ</h3><p>RabbitMQ:一种开源的消息代理</p>
 <h3 id="10-微服务"><a href="#10-微服务" class="headerlink" title="10.微服务"></a>10.微服务</h3><p><img src="/2019/12/10/Golang%E4%BA%91%E5%AD%98%E5%82%A8%E5%AE%9E%E6%88%98/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E5%9B%BE.jpeg" alt="微服务架构图"></p>
 <h4 id="基于gin改造用户service"><a href="#基于gin改造用户service" class="headerlink" title="基于gin改造用户service"></a>基于gin改造用户service</h4><h4 id="go-micro"><a href="#go-micro" class="headerlink" title="go-micro"></a>go-micro</h4><h3 id="源码说明"><a href="#源码说明" class="headerlink" title="源码说明:"></a>源码说明:</h3><ul>
 <li>master分支: 通过原生net/http实现各接口功能</li>
@@ -1834,7 +1912,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
