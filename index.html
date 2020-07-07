@@ -213,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-final-%E5%85%B3%E9%94%AE%E5%AD%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -227,7 +227,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">Java 的类和对象</a>
+            <a href="/2020/07/07/Java-final-%E5%85%B3%E9%94%AE%E5%AD%97/" class="post-title-link" itemprop="url">Java final 关键字</a>
         </h1>
 
         <div class="post-meta">
@@ -236,9 +236,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-07-07 16:36:53 / Modified: 16:44:15" itemprop="dateCreated datePublished" datetime="2020-07-07T16:36:53+08:00">2020-07-07</time>
+              <time title="Created: 2020-07-07 17:13:08" itemprop="dateCreated datePublished" datetime="2020-07-07T17:13:08+08:00">2020-07-07</time>
             </span>
 
           
@@ -252,49 +251,508 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>类和对象是 Java 中最基本的两个概念，可以说撑起了面向对象编程（OOP）的一片天。对象可以是现实中看得见的任何物体（一只特立独行的猪），也可以是想象中的任何虚拟物体（能七十二变的孙悟空），Java 通过类（class）来定义这些物体，有什么状态（通过字段，或者叫成员变量定义，比如说猪的颜色是纯色还是花色），有什么行为（通过方法定义，比如说猪会吃，会睡觉）。</p>
-<p>来，让我来定义一个简单的类给你看看。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>默认情况下，每个 Java 类都会有一个空的构造方法，尽管它在源代码中是缺省的，但却可以通过反编译字节码看到它。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public <span class="function"><span class="title">Pig</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
 
-<p>没错，就是多出来的那个 public Pig() {}，参数是空的，方法体是空的。我们可以通过 new 关键字利用这个构造方法来创建一个对象，代码如下所示：</p>
-<p><code>Pig pig = new Pig();</code><br>当然了，我们也可以主动添加带参的构造方法。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public Pig(String color) &#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这时候，再查看反编译后的字节码时，你会发现缺省的无参构造方法消失了——和源代码一模一样。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public Pig(String color) &#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这意味着无法通过 new Pig() 来创建对象了——编译器会提醒你追加参数。<br><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4qlT4mDRicCQaibG0ZE7cNz2eicA1ZqsQogETnw965kn345ZMKOCQ8kpJA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
-<p>比如说你将代码修改为 new Pig(“纯白色”)，或者添加无参的构造方法。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public Pig(String color) &#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="function"><span class="title">Pig</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用无参构造方法创建的对象状态默认值为 null（color 字符串为引用类型），如果是基本类型的话，默认值为对应基本类型的默认值，比如说 int 为 0，更详细的见下图。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4Tx5gfpmYOxmM9MD0G0cma6hMeZGNthibEtk4WKeEaBCINn3vz9v1Gyg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
-<p>（图片中有一处错误，boolean 的默认值为 false）</p>
-<p>接下来，我们来创建多个 Pig 对象，它的颜色各不相同。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class PigTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Pig pigNoColor = new Pig();</span><br><span class="line">        Pig pigWhite = new Pig(<span class="string">"纯白色"</span>);</span><br><span class="line">        Pig pigBlack = new Pig(<span class="string">"纯黑色"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>你看，我们创建了 3 个不同花色的 Pig 对象，全部来自于一个类，由此可见类的重要性，只需要定义一次，就可以多次使用。</p>
-<p>那假如我想改变对象的状态呢？该怎么办？目前毫无办法，因为没有任何可以更改状态的方法，直接修改 color 是行不通的，因为它的访问权限修饰符是 private 的。</p>
-<p>最好的办法就是为 Pig 类追加 getter/setter 方法，就像下面这样：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public String <span class="function"><span class="title">getColor</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> color;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void setColor(String color) &#123;</span><br><span class="line">    this.color = color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过 setColor() 方法来修改，通过 getColor() 方法获取状态，它们的权限修饰符是 public 的。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Pig pigNoColor = new Pig();</span><br><span class="line">pigNoColor.setColor(<span class="string">"花色"</span>);</span><br><span class="line">System.out.println(pigNoColor.getColor()); // 花色</span><br></pre></td></tr></table></figure>
-<p>为什么要这样设计呢？可以直接将 color 字段的访问权限修饰符换成是 public 的啊，不就和 getter/setter 一样的效果了吗？</p>
-<p>因为有些情况，某些字段是不允许被随意修改的，它只有在对象创建的时候初始化一次，比如说猪的年龄，它只能每年长一岁（举个例子），没有月光宝盒让它变回去。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private int age;</span><br><span class="line"></span><br><span class="line">public int <span class="function"><span class="title">getAge</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void <span class="function"><span class="title">increaseAge</span></span>() &#123;</span><br><span class="line">    this.age++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>你看，age 就没有 setter 方法，只有一个每年可以调用一次的 increaseAge() 方法和 getter 方法。如果把 age 的访问权限修饰符更改为 public，age 就完全失去控制了，可以随意将其重置为 0 或者负数。</p>
-<p>访问权限修饰符对于 Java 来说，非常重要，目前共有四种：public、private、protected 和 default（缺省）。</p>
-<p>一个类只能使用 public 或者 default 修饰，public 修饰的类你之前已经见到过了，现在我来定义一个缺省权限修饰符的类给你欣赏一下。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class Dog &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>哈哈，其实也没啥可以欣赏的。缺省意味着这个类可以被同一个包下的其他类进行访问；而 public 意味着这个类可以被所有包下的类进行访问。</p>
-<p>假如硬要通过 private 和 protected 来修饰类的话，编译器会生气的，它不同意。<br><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4kXJf6Eib5g1EowI1m1cbhy5ib9fCnsj54H60dtg1pQTPtUn2mlIB8U5A/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
-<p>private 可以用来修饰类的构造方法、字段和方法，只能被当前类进行访问。protected 也可以用来修饰类的构造方法、字段和方法，但它的权限范围更宽一些，可以被同一个包中的类进行访问，或者当前类的子类。</p>
-<p>可以通过下面这张图来对比一下四个权限修饰符之间的差别：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4sicJJJBlGyVFfCibicE0LsViab6xX4tImpdlvOexIfTRE6gtribUISkae5A/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
-<ul>
-<li>同一个类中，不管是哪种权限修饰符，都可以访问；</li>
-<li>同一个包下，private 修饰的无法访问；</li>
-<li>子类可以访问 public 和 protected 修饰的；</li>
-<li>public 修饰符面向世界，哈哈，可以被所有的地方访问到。</li>
-</ul>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E6%9E%9A%E4%B8%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-%E6%9E%9A%E4%B8%BE/" class="post-title-link" itemprop="url">Java 枚举</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-07 17:12:52" itemprop="dateCreated datePublished" datetime="2020-07-07T17:12:52+08:00">2020-07-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-static-%E5%85%B3%E9%94%AE%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-static-%E5%85%B3%E9%94%AE%E5%AD%97/" class="post-title-link" itemprop="url">Java static 关键字</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-07 17:12:35" itemprop="dateCreated datePublished" datetime="2020-07-07T17:12:35+08:00">2020-07-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E9%87%8D%E5%86%99%E5%92%8C%E9%87%8D%E8%BD%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-%E9%87%8D%E5%86%99%E5%92%8C%E9%87%8D%E8%BD%BD/" class="post-title-link" itemprop="url">Java 重写和重载</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-07 17:12:17" itemprop="dateCreated datePublished" datetime="2020-07-07T17:12:17+08:00">2020-07-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-super-%E5%85%B3%E9%94%AE%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-super-%E5%85%B3%E9%94%AE%E5%AD%97/" class="post-title-link" itemprop="url">Java super 关键字</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-07 17:12:06" itemprop="dateCreated datePublished" datetime="2020-07-07T17:12:06+08:00">2020-07-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-this-%E5%85%B3%E9%94%AE%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-this-%E5%85%B3%E9%94%AE%E5%AD%97/" class="post-title-link" itemprop="url">Java this 关键字</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-07 17:11:51" itemprop="dateCreated datePublished" datetime="2020-07-07T17:11:51+08:00">2020-07-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E7%BB%A7%E6%89%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-%E7%BB%A7%E6%89%BF/" class="post-title-link" itemprop="url">Java 继承</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-07 17:11:36" itemprop="dateCreated datePublished" datetime="2020-07-07T17:11:36+08:00">2020-07-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E6%8E%A5%E5%8F%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-%E6%8E%A5%E5%8F%A3/" class="post-title-link" itemprop="url">Java 接口</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-07 16:51:56" itemprop="dateCreated datePublished" datetime="2020-07-07T16:51:56+08:00">2020-07-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E6%8A%BD%E8%B1%A1%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-%E6%8A%BD%E8%B1%A1%E7%B1%BB/" class="post-title-link" itemprop="url">Java 抽象类</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-07 16:48:03 / Modified: 16:50:19" itemprop="dateCreated datePublished" datetime="2020-07-07T16:48:03+08:00">2020-07-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>当我们要完成的任务是确定的，但具体的方式需要随后开个会投票的话，Java 的抽象类就派上用场了。这句话怎么理解呢？搬个小板凳坐好，听我来给你讲讲。</p>
+<h1 id="01、抽象类的-5-个关键点"><a href="#01、抽象类的-5-个关键点" class="headerlink" title="01、抽象类的 5 个关键点"></a>01、抽象类的 5 个关键点</h1><p>1）定义抽象类的时候需要用到关键字 abstract，放在 class 关键字前。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbstractPlayer &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于抽象类的命名，阿里出品的 Java 开发手册上有强调，“抽象类命名要使用 Abstract 或 Base 开头”，记住了哦。</p>
+<p>2）抽象类不能被实例化，但可以有子类。</p>
+<p>尝试通过 new 关键字实例化的话，编译器会报错，提示“类是抽象的，不能实例化”。</p>
+<p>通过 extends 关键字可以继承抽象类，继承后，BasketballPlayer 类就是 AbstractPlayer 的子类。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public class BasketballPlayer extends AbstractPlayer &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3）如果一个类定义了一个或多个抽象方法，那么这个类必须是抽象类。</p>
+<p>当在一个普通类（没有使用 abstract 关键字修饰）中定义了抽象方法，编译器就会有两处错误提示。</p>
+<p>第一处在类级别上，提醒你“这个类必须通过 abstract 关键字定义”，or 的那个信息没必要，见下图。</p>
+<p>第二处在方法级别上，提醒你“抽象方法所在的类不是抽象的”，见下图。</p>
+<p>4）抽象类可以同时声明抽象方法和具体方法，也可以什么方法都没有，但没必要。就像下面这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbstractPlayer &#123;</span><br><span class="line">    abstract void play();</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">sleep</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"运动员也要休息而不是挑战极限"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5）抽象类派生的子类必须实现父类中定义的抽象方法。比如说，抽象类中定义了 play() 方法，子类中就必须实现。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class BasketballPlayer extends AbstractPlayer &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void <span class="function"><span class="title">play</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是张伯伦，篮球场上得过 100 分"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果没有实现的话，编译器会提醒你“子类必须实现抽象方法”，见下图。</p>
+<h1 id="02、什么时候用抽象类"><a href="#02、什么时候用抽象类" class="headerlink" title="02、什么时候用抽象类"></a>02、什么时候用抽象类</h1><p>与抽象类息息相关的还有一个概念，就是接口，我们留到下一篇文章中详细说，因为要说的知识点还是蛮多的。你现在只需要有这样一个概念就好，接口是对行为的抽象，抽象类是对整个类（包含成员变量和行为）进行抽象。</p>
+<p>（是不是有点明白又有点不明白，别着急，翘首以盼地等下一篇文章出炉吧）</p>
+<p>除了接口之外，还有一个概念就是具体的类，就是不通过 abstract 修饰的普通类，见下面这段代码中的定义。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class BasketballPlayer &#123;</span><br><span class="line">   public void <span class="function"><span class="title">play</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是詹姆斯，现役第一人"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有接口，有具体类，那什么时候该使用抽象类呢？</p>
+<p>1）我们希望一些通用的功能被多个子类复用。比如说，AbstractPlayer 抽象类中有一个普通的方法 sleep()，表明所有运动员都需要休息，那么这个方法就可以被子类复用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbstractPlayer &#123;</span><br><span class="line">    public void <span class="function"><span class="title">sleep</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"运动员也要休息而不是挑战极限"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然 AbstractPlayer 类可以不是抽象类——把 abstract 修饰符去掉也能满足这种场景。但 AbstractPlayer 类可能还会有一个或者多个抽象方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">BasketballPlayer 继承了 AbstractPlayer 类，也就拥有了 sleep() 方法。</span><br><span class="line"></span><br><span class="line">public class BasketballPlayer extends AbstractPlayer &#123;</span><br><span class="line">&#125;</span><br><span class="line">BasketballPlayer 对象可以直接调用 sleep() 方法：</span><br><span class="line"></span><br><span class="line">BasketballPlayer basketballPlayer = new BasketballPlayer();</span><br><span class="line">basketballPlayer.sleep();</span><br><span class="line">FootballPlayer 继承了 AbstractPlayer 类，也就拥有了 sleep() 方法。</span><br><span class="line"></span><br><span class="line">public class FootballPlayer extends AbstractPlayer &#123;</span><br><span class="line">&#125;</span><br><span class="line">FootballPlayer 对象也可以直接调用 sleep() 方法：</span><br><span class="line"></span><br><span class="line">FootballPlayer footballPlayer = new FootballPlayer();</span><br><span class="line">footballPlayer.sleep();</span><br></pre></td></tr></table></figure>
+<p>2）我们需要在抽象类中定义好 API，然后在子类中扩展实现。比如说，AbstractPlayer  抽象类中有一个抽象方法 play()，定义所有运动员都可以从事某项运动，但需要对应子类去扩展实现。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbstractPlayer &#123;</span><br><span class="line">    abstract void play();</span><br><span class="line">&#125;</span><br><span class="line">BasketballPlayer 继承了 AbstractPlayer 类，扩展实现了自己的 play() 方法。</span><br><span class="line"></span><br><span class="line">public class BasketballPlayer extends AbstractPlayer &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void <span class="function"><span class="title">play</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是张伯伦，我篮球场上得过 100 分，"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">FootballPlayer 继承了 AbstractPlayer 类，扩展实现了自己的 play() 方法。</span><br><span class="line"></span><br><span class="line">public class FootballPlayer extends AbstractPlayer &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void <span class="function"><span class="title">play</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是C罗，我能接住任意高度的头球"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3）如果父类与子类之间的关系符合 is-a 的层次关系，就可以使用抽象类，比如说篮球运动员是运动员，足球运动员是运动员。</p>
+<h1 id="03、具体示例"><a href="#03、具体示例" class="headerlink" title="03、具体示例"></a>03、具体示例</h1><p>为了进一步展示抽象类的特性，我们再来看一个具体的示例。假设现在有一个文件，里面的内容非常简单——“Hello World”，现在需要有一个读取器将内容读取出来，最好能按照大写的方式，或者小写的方式。</p>
+<p>这时候，最好定义一个抽象类，比如说 BaseFileReader：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public abstract class BaseFileReader &#123;</span><br><span class="line">    protected Path filePath;</span><br><span class="line"></span><br><span class="line">    protected BaseFileReader(Path filePath) &#123;</span><br><span class="line">        this.filePath = filePath;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;String&gt; readFile() throws IOException &#123;</span><br><span class="line">        <span class="built_in">return</span> Files.lines(filePath)</span><br><span class="line">                .map(this::mapFileLine).collect(Collectors.toList());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected abstract String mapFileLine(String line);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>filePath 为文件路径，使用 protected 修饰，表明该成员变量可以在需要时被子类访问。</p>
+<p>readFile() 方法用来读取文件，方法体里面调用了抽象方法 mapFileLine()——需要子类扩展实现大小写的方式。</p>
+<p>你看，BaseFileReader 设计的就非常合理，并且易于扩展，子类只需要专注于具体的大小写实现方式就可以了。</p>
+<p>小写的方式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class LowercaseFileReader extends BaseFileReader &#123;</span><br><span class="line">    protected LowercaseFileReader(Path filePath) &#123;</span><br><span class="line">        super(filePath);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected String mapFileLine(String line) &#123;</span><br><span class="line">        <span class="built_in">return</span> line.toLowerCase();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">大写的方式：</span><br><span class="line"></span><br><span class="line">public class UppercaseFileReader extends BaseFileReader &#123;</span><br><span class="line">    protected UppercaseFileReader(Path filePath) &#123;</span><br><span class="line">        super(filePath);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected String mapFileLine(String line) &#123;</span><br><span class="line">        <span class="built_in">return</span> line.toUpperCase();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你看，从文件里面一行一行读取内容的代码被子类复用了——抽象类 BaseFileReader 类中定义的普通方法 readFile()。与此同时，子类只需要专注于自己该做的工作，LowercaseFileReader 以小写的方式读取文件内容，UppercaseFileReader 以大写的方式读取文件内容。</p>
+<p>接下来，我们来新建一个测试类 FileReaderTest：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class FileReaderTest &#123;</span><br><span class="line">    public static void main(String[] args) throws URISyntaxException, IOException &#123;</span><br><span class="line">        URL location = FileReaderTest.class.getClassLoader().getResource(<span class="string">"helloworld.txt"</span>);</span><br><span class="line">        Path path = Paths.get(location.toURI());</span><br><span class="line">        BaseFileReader lowercaseFileReader = new LowercaseFileReader(path);</span><br><span class="line">        BaseFileReader uppercaseFileReader = new UppercaseFileReader(path);</span><br><span class="line">        System.out.println(lowercaseFileReader.readFile());</span><br><span class="line">        System.out.println(uppercaseFileReader.readFile());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>项目的 resource 目录下有一个文本文件，名字叫 helloworld.txt。</p>
+<p>可以通过 ClassLoader.getResource() 的方式获取到该文件的 URI 路径，然后就可以使用 LowercaseFileReader 和 UppercaseFileReader 两种方式读取到文本内容了。</p>
+<p>输出结果如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[hello world]</span><br><span class="line">[HELLO WORLD]</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -314,7 +772,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E5%85%B3%E9%94%AE%E5%AD%97/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -328,7 +786,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/07/07/Java-%E5%85%B3%E9%94%AE%E5%AD%97/" class="post-title-link" itemprop="url">Java 关键字</a>
+            <a href="/2020/07/07/Java-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Java 构造方法</a>
         </h1>
 
         <div class="post-meta">
@@ -337,9 +795,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-07-07 16:10:38 / Modified: 16:15:05" itemprop="dateCreated datePublished" datetime="2020-07-07T16:10:38+08:00">2020-07-07</time>
+              <time title="Created: 2020-07-07 16:45:01" itemprop="dateCreated datePublished" datetime="2020-07-07T16:45:01+08:00">2020-07-07</time>
             </span>
 
           
@@ -353,1157 +810,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>关键字属于保留字，在 Java 中具有特殊的含义，比如说 public、final、static、new 等等，它们不能用来作为变量名。为了便于你作为参照，我列举了 48 个常用的关键字，你可以瞅一瞅。</p>
-<p><code>abstract：</code> abstract 关键字用于声明抽象类——可以有抽象和非抽象方法。</p>
-<p><code>boolean：</code> boolean 关键字用于将变量声明为布尔值类型，它只有 true 和 false 两个值。</p>
-<p><code>break：</code> break 关键字用于中断循环或 switch 语句。</p>
-<p><code>byte：</code> byte 关键字用于声明一个可以容纳 8 个比特的变量。</p>
-<p><code>case：</code>  case 关键字用于在 switch 语句中标记条件的值。</p>
-<p><code>catch：</code>  catch 关键字用于捕获 try 语句中的异常。</p>
-<p><code>char：</code>  char 关键字用于声明一个可以容纳无符号 16 位比特的 Unicode 字符的变量。</p>
-<p><code>class：</code>  class 关键字用于声明一个类。</p>
-<p><code>continue：</code>  continue 关键字用于继续下一个循环。它可以在指定条件下跳过其余代码。</p>
-<p><code>default：</code>  default 关键字用于指定 switch 语句中除去 case 条件之外的默认代码块。</p>
-<p><code>do：</code>  do 关键字通常和 while 关键字配合使用，do 后紧跟循环体。</p>
-<p><code>double：</code> double 关键字用于声明一个可以容纳 64 位浮点数的变量。</p>
-<p><code>else：</code>  else 关键字用于指示 if 语句中的备用分支。</p>
-<p><code>enum：</code>  enum（枚举）关键字用于定义一组固定的常量。</p>
-<p><code>extends：</code>  extends 关键字用于指示一个类是从另一个类或接口继承的。</p>
-<p><code>final：</code>  final 关键字用于指示该变量是不可更改的。</p>
-<p><code>finally：</code>  finally 关键字和 try-catch 配合使用，表示无论是否处理异常，总是执行 finally 块中的代码。</p>
-<p><code>float：</code>  float 关键字用于声明一个可以容纳 32 位浮点数的变量。</p>
-<p><code>for：</code>  for 关键字用于启动一个 for 循环，如果循环次数是固定的，建议使用 for 循环。</p>
-<p><code>if：</code>  if 关键字用于指定条件，如果条件为真，则执行对应代码。</p>
-<p><code>implements：</code>  implements 关键字用于实现接口。</p>
-<p><code>import：</code>  import 关键字用于导入对应的类或者接口。</p>
-<p><code>instanceof：</code>  instanceof 关键字用于判断对象是否属于某个类型（class）。</p>
-<p><code>int：</code>  int 关键字用于声明一个可以容纳 32 位带符号的整数变量。</p>
-<p><code>interface：</code>  interface 关键字用于声明接口——只能具有抽象方法。</p>
-<p><code>long：</code>  long 关键字用于声明一个可以容纳 64 位整数的变量。</p>
-<p><code>native：</code>  native 关键字用于指定一个方法是通过调用本机接口（非 Java）实现的。</p>
-<p><code>new：</code>  new 关键字用于创建一个新的对象。</p>
-<p><code>null：</code>  如果一个变量是空的（什么引用也没有指向），就可以将它赋值为 null。</p>
-<p><code>package：</code>  package 关键字用于声明类所在的包。</p>
-<p><code>private：</code>  private 关键字是一个访问修饰符，表示方法或变量只对当前类可见。</p>
-<p><code>protected：</code>  protected 关键字也是一个访问修饰符，表示方法或变量对同一包内的类和所有子类可见。</p>
-<p><code>public：</code>  public 关键字是另外一个访问修饰符，除了可以声明方法和变量（所有类可见），还可以声明类。main() 方法必须声明为 public。</p>
-<p><code>return：</code>  return 关键字用于在代码执行完成后返回（一个值）。</p>
-<p><code>short：</code> short 关键字用于声明一个可以容纳 16 位整数的变量。</p>
-<p><code>static：</code>  static 关键字表示该变量或方法是静态变量或静态方法。</p>
-<p><code>strictfp：</code>   strictfp 关键字并不常见，通常用于修饰一个方法，确保方法体内的浮点数运算在每个平台上执行的结果相同。</p>
-<p><code>super：</code>  super 关键字可用于调用父类的方法或者变量。</p>
-<p><code>switch：</code>  switch 关键字通常用于三个（以上）的条件判断。</p>
-<p><code>synchronized：</code>  synchronized 关键字用于指定多线程代码中的同步方法、变量或者代码块。</p>
-<p><code>this：</code>  this 关键字可用于在方法或构造函数中引用当前对象。</p>
-<p><code>throw：</code>  throw 关键字主动抛出异常。</p>
-<p><code>throws：</code>  throws 关键字用于声明异常。</p>
-<p><code>transient：</code>  transient 关键字在序列化的使用用到，它修饰的字段不会被序列化。</p>
-<p><code>try：</code>  try 关键字用于包裹要捕获异常的代码块。</p>
-<p><code>void：</code>  void 关键字用于指定方法没有返回值。</p>
-<p><code>volatile：</code>  volatile 关键字保证了不同线程对它修饰的变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。</p>
-<p><code>while：</code>  如果循环次数不固定，建议使用 while 循环。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/07/07/Java-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">Java 基本数据类型</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-07 15:48:52 / Modified: 16:10:06" itemprop="dateCreated datePublished" datetime="2020-07-07T15:48:52+08:00">2020-07-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <table>
-<thead>
-<tr>
-<th align="left">数据类型</th>
-<th align="center">默认值</th>
-<th align="center">大小</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">boolean</td>
-<td align="center">false</td>
-<td align="center">1比特</td>
-</tr>
-<tr>
-<td align="left">char</td>
-<td align="center">‘\u0000’</td>
-<td align="center">2字节</td>
-</tr>
-<tr>
-<td align="left">byte</td>
-<td align="center">0</td>
-<td align="center">1字节</td>
-</tr>
-<tr>
-<td align="left">short</td>
-<td align="center">0</td>
-<td align="center">2字节</td>
-</tr>
-<tr>
-<td align="left">int</td>
-<td align="center">0</td>
-<td align="center">4字节</td>
-</tr>
-<tr>
-<td align="left">long</td>
-<td align="center">0L</td>
-<td align="center">8字节</td>
-</tr>
-<tr>
-<td align="left">float</td>
-<td align="center">0.0f</td>
-<td align="center">4字节</td>
-</tr>
-<tr>
-<td align="left">double</td>
-<td align="center">0.0</td>
-<td align="center">8字节</td>
-</tr>
-</tbody></table>
-<h1 id="01、布尔"><a href="#01、布尔" class="headerlink" title="01、布尔"></a>01、布尔</h1><p>布尔（boolean）仅用于存储两个值：true 和 false，也就是真和假，通常用于条件的判断。代码示例：</p>
-<p><code>boolean flag = true;</code></p>
-<h1 id="02、byte"><a href="#02、byte" class="headerlink" title="02、byte"></a>02、byte</h1><p>byte 的取值范围在 -128 和 127 之间，包含 127。最小值为 -128，最大值为 127，默认值为 0。</p>
-<p>在网络传输的过程中，为了节省空间，常用字节来作为数据的传输方式。代码示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">byte a = 10;</span><br><span class="line">byte b = -10;</span><br></pre></td></tr></table></figure>
-<h1 id="03、short"><a href="#03、short" class="headerlink" title="03、short"></a>03、short</h1><p>short 的取值范围在 -32,768 和 32,767 之间，包含 32,767。最小值为 -32,768，最大值为 32,767，默认值为 0。代码示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">short s = 10000;</span><br><span class="line">short r = -5000;</span><br></pre></td></tr></table></figure>
-<h1 id="04、int"><a href="#04、int" class="headerlink" title="04、int"></a>04、int</h1><p>int 的取值范围在 -2,147,483,648（-2 ^ 31）和 2,147,483,647（2 ^ 31 -1）（含）之间，默认值为 0。如果没有特殊需求，整形数据就用 int。代码示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a = 100000;</span><br><span class="line">int b = -200000;</span><br></pre></td></tr></table></figure>
-<h1 id="05、long"><a href="#05、long" class="headerlink" title="05、long"></a>05、long</h1><p>long 的取值范围在 -9,223,372,036,854,775,808(-2^63) 和 9,223,372,036,854,775,807(2^63 -1)（含）之间，默认值为 0。如果 int 存储不下，就用 long，整形数据就用 int。代码示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">long a = 100000L; </span><br><span class="line">long b = -200000L;</span><br></pre></td></tr></table></figure>
-<p>为了和 int 作区分，long 型变量在声明的时候，末尾要带上大写的“L”。不用小写的“l”，是因为小写的“l”容易和数字“1”混淆。</p>
-<h1 id="06、float"><a href="#06、float" class="headerlink" title="06、float"></a>06、float</h1><p>float 是单精度的浮点数，遵循 IEEE 754（二进制浮点数算术标准），取值范围是无限的，默认值为 0.0f。float 不适合用于精确的数值，比如说货币。代码示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> f1 = 234.5f;</span><br></pre></td></tr></table></figure>
-<p>为了和 double 作区分，float 型变量在声明的时候，末尾要带上小写的“f”。不需要使用大写的“F”，是因为小写的“f”很容易辨别。</p>
-<h1 id="07、double"><a href="#07、double" class="headerlink" title="07、double"></a>07、double</h1><p>double 是双精度的浮点数，遵循 IEEE 754（二进制浮点数算术标准），取值范围也是无限的，默认值为 0.0。double 同样不适合用于精确的数值，比如说货币。代码示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">double d1 = 12.3</span><br></pre></td></tr></table></figure>
-<p>那精确的数值用什么表示呢？最好使用 BigDecimal，它可以表示一个任意大小且精度完全准确的浮点数。针对货币类型的数值，也可以先乘以 100 转成整形进行处理。</p>
-<p>Tips：单精度是这样的格式，1 位符号，8 位指数，23 位小数，有效位数为 7 位。<br><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4TbicpHDicMXVQjYk6bOk13VPchuw8vz7kaB6sukCj9JzxE2G5gWLWibCg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
-<p>双精度是这样的格式，1 位符号，11 位指数，52 为小数，有效位数为 16 位。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4OGQDpVOWgiaKD5a74SiaThVvlrr6As1okvvy3vdfQ54Z2ZniaV8DE2rRg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt><br>取值范围取决于指数位，计算精度取决于小数位（尾数）。小数位越多，则能表示的数越大，那么计算精度则越高。</p>
-<p>一个数由若干位数字组成，其中影响测量精度的数字称作有效数字，也称有效数位。有效数字指科学计算中用以表示一个浮点数精度的那些数字。一般地，指一个用小数形式表示的浮点数中，从第一个非零的数字算起的所有数字。如 1.24 和 0.00124 的有效数字都有 3 位。</p>
-<h1 id="08、char"><a href="#08、char" class="headerlink" title="08、char"></a>08、char</h1><p>char 可以表示一个 16 位的 Unicode 字符，其值范围在 ‘\u0000’（0）和 ‘\uffff’（65,535）（包含）之间。代码示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">char letterA = <span class="string">'A'</span>; // 用英文的单引号包裹住。</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-main/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/07/Java-main/" class="post-title-link" itemprop="url">Java main()</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-07 15:45:28 / Modified: 15:48:01" itemprop="dateCreated datePublished" datetime="2020-07-07T15:45:28+08:00">2020-07-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>每个程序都需要一个入口，对于 Java 程序来说，入口就是 main 方法。</p>
-<p>public static void main(<code>String[] args</code>) {}<br>public、static、void 这 3 个关键字在前面的内容已经介绍过了，如果觉得回去找比较麻烦的话，这里再贴一下：</p>
-<p>public 关键字是另外一个访问修饰符，除了可以声明方法和变量（所有类可见），还可以声明类。main() 方法必须声明为 public。</p>
-<p>static 关键字表示该变量或方法是静态变量或静态方法，可以直接通过类访问，不需要实例化对象来访问。</p>
-<p>void 关键字用于指定方法没有返回值。</p>
-<p>另外，main 关键字为方法的名字，Java 虚拟机在执行程序时会寻找这个标识符；args 为 main() 方法的参数名，它的类型为一个 String 数组，也就是说，在使用 java 命令执行程序的时候，可以给 main() 方法传递字符串数组作为参数。</p>
-<p>java HelloWorld 沉默王二 沉默王三<br>javac 命令用来编译程序，java 命令用来执行程序，HelloWorld 为这段程序的类名，沉默王二和沉默王三为字符串数组，中间通过空格隔开，然后就可以在 main() 方法中通过 args[0] 和 args[1] 获取传递的参数值了。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class HelloWorld &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"沉默王二"</span>.equals(args[0])) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"沉默王三"</span>.equals(args[1])) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>main() 方法的写法并不是唯一的，还有其他几种变体，尽管它们可能并不常见，可以简单来了解一下。</p>
-<p>第二种，把方括号 [] 往 args 靠近而不是 String 靠近：</p>
-<p><code>public static void main(String []args) { }</code><br>第三种，把方括号 [] 放在 args 的右侧：</p>
-<p><code>public static void main(String args[]) { }</code><br>第四种，还可以把数组形式换成可变参数的形式：</p>
-<p><code>public static void main(String...args) { }</code><br>第五种，在 main() 方法上添加另外一个修饰符 strictfp，用于强调在处理浮点数时的兼容性：</p>
-<p><code>public strictfp static void main(String[] args) { }</code><br>也可以在 main() 方法上添加 final 关键字或者 synchronized 关键字。</p>
-<p>第六种，还可以为 args 参数添加 final 关键字：</p>
-<p><code>public static void main(final String[] args) { }</code><br>第七种，最复杂的一种，所有可以添加的关键字统统添加上：</p>
-<p><code>final static synchronized strictfp void main(final String[] args) { }</code><br>当然了，并不需要为了装逼特意把 main() 方法写成上面提到的这些形式，使用 IDE 提供的默认形式就可以了。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E5%8C%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/07/Java-%E5%8C%85/" class="post-title-link" itemprop="url">Java 包</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-07 15:10:31 / Modified: 15:45:49" itemprop="dateCreated datePublished" datetime="2020-07-07T15:10:31+08:00">2020-07-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在 Java 中，我们使用 package（包）对相关的类、接口和子包进行分组。这样做的好处有：</p>
-<p>使相关类型更容易查找<br>避免命名冲突，比如说 <code>com.itwanger.Hello</code> 和 <code>com.itwangsan.Hello</code> 不同<br>通过包和访问权限控制符来限定类的可见性</p>
-<h1 id="01、创建一个包"><a href="#01、创建一个包" class="headerlink" title="01、创建一个包"></a>01、创建一个包</h1><p>package com.itwanger;<br>可以使用 package 关键字来定义一个包名，需要注意的是，这行代码必须处于一个类中的第一行。强烈建议在包中声明类，不要缺省，否则就失去了包结构的带来的好处。</p>
-<p>包的命名应该遵守以下规则：</p>
-<p>应该全部是小写字母<br>可以包含多个单词，单词之间使用“.”连接，比如说 java.lang<br>名称由公司名或者组织名确定，采用倒序的方式，比如说，我个人博客的域名是 <a href="http://www.itwanger.com，所以我创建的包名是就是" target="_blank" rel="noopener">www.itwanger.com，所以我创建的包名是就是</a> com.itwanger.xxxx。<br>每个包或者子包都在磁盘上有自己的目录结构，如果 Java 文件时在 com.itwanger.xxxx 包下，那么该文件所在的目录结构就应该是 com-&gt;itwanger-&gt;xxxx。</p>
-<h1 id="02、使用包"><a href="#02、使用包" class="headerlink" title="02、使用包"></a>02、使用包</h1><p>让我们在名为 test 的子包里新建一个 Cmower 类：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package com.itwanger.test;</span><br><span class="line"></span><br><span class="line">public class Cmower &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果需要在另外一个包中使用 Cmower 类，就需要通过 import 关键字将其引入。有两种方式可供选择，第一种，<code>使用 * 导入包下所有的类：</code></p>
-<p><code>import com.itwanger.test.*;</code></p>
-<p>第二种，使用类名导入该类：</p>
-<p>import com.itwanger.test.Cmower;<br>Java 和第三方类库提供了很多包可供使用，可以通过上述的方式导入类库使用。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package com.itwanger.test;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class CmowerTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        List&lt;Cmower&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">        list.add(new Cmower());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="03、全名"><a href="#03、全名" class="headerlink" title="03、全名"></a>03、全名</h1><p>有时，我们可能会使用来自不同包下的两个具有相同名称的类。例如，我们可能同时使用 java.sql.Date 和 java.util.Date。<code>当我们遇到命名冲突时，我们需要对至少一个类使用全名（包名+类名）。</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;com.itwanger.test.Cmower&gt; list1 = new ArrayList&lt;&gt;();</span><br><span class="line">list.add(new com.itwanger.test.Cmower());</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/Python%E6%A0%B9%E6%8D%AEexcel%E8%A1%A8%E6%A0%BC%E7%BC%96%E5%8F%B7%E5%8C%B9%E9%85%8Dcsv%E7%9A%84url/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/24/Python%E6%A0%B9%E6%8D%AEexcel%E8%A1%A8%E6%A0%BC%E7%BC%96%E5%8F%B7%E5%8C%B9%E9%85%8Dcsv%E7%9A%84url/" class="post-title-link" itemprop="url">Python根据excel表格编号匹配csv的url</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-06-24 10:57:23 / Modified: 11:06:54" itemprop="dateCreated datePublished" datetime="2020-06-24T10:57:23+08:00">2020-06-24</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><p><code>export_urls.csv</code>是阿里云oss导出的url表，其中有四个列表字段，依次是：id,barcode,type,serial,img_url</p>
-</li>
-<li><p><code>2.xlsx</code> 是所依据的excel表格，固定的第一列是barcode。</p>
-</li>
-<li><p><code>data.xlsx</code>是生成的结果数据。</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line">import re</span><br><span class="line">import pandas as pd</span><br><span class="line">from openpyxl import Workbook</span><br><span class="line"></span><br><span class="line">rz = re.compile(r<span class="string">'/(\d+-\d)-.+jpg'</span>)</span><br><span class="line"></span><br><span class="line">d = &#123;&#125;</span><br><span class="line"></span><br><span class="line">dkey = &#123;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def open_csv():</span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> file_paths:</span><br><span class="line">        ex = pd.read_csv(file)</span><br><span class="line">        exs = ex.values.tolist()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> exs:</span><br><span class="line">            url = i[4]</span><br><span class="line">            url_id = rz.findall(url)</span><br><span class="line">            <span class="built_in">print</span>(url_id)</span><br><span class="line">            <span class="keyword">if</span> len(url_id)== 0 :</span><br><span class="line">                <span class="built_in">continue</span></span><br><span class="line">            url_id = url_id[0]</span><br><span class="line">            <span class="keyword">if</span> url_id not <span class="keyword">in</span> d:</span><br><span class="line">                d.update(&#123;url_id: [url]&#125;)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                d[url_id].append(url)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items():</span><br><span class="line">        ks = str(k).split(<span class="string">'-'</span>)</span><br><span class="line">        k1 = ks[0]</span><br><span class="line">        k2 = ks[1]</span><br><span class="line">        <span class="keyword">if</span> k1 not <span class="keyword">in</span> dkey:</span><br><span class="line">            <span class="keyword">if</span> str(k2) == <span class="string">'1'</span>:</span><br><span class="line">                dkey.update(&#123;k1: &#123;<span class="string">'0'</span>: [], <span class="string">'1'</span>: v&#125;&#125;)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dkey.update(&#123;k1: &#123;<span class="string">'0'</span>: v, <span class="string">'1'</span>: []&#125;&#125;)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> str(k2) == <span class="string">'1'</span>:</span><br><span class="line">                dkey[k1][<span class="string">'1'</span>].extend(v)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dkey[k1][<span class="string">'0'</span>].extend(v)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> k, v <span class="keyword">in</span> dkey.items():</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">type</span>(k), v)</span><br><span class="line">        wb.append([str(k), str(v[<span class="string">'0'</span>]), str(v[<span class="string">'1'</span>])])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> orl_key:</span><br><span class="line">        <span class="keyword">if</span> str(i) not <span class="keyword">in</span> dkey:</span><br><span class="line">            <span class="built_in">print</span>(<span class="built_in">type</span>(i), <span class="string">'iii'</span>)</span><br><span class="line">            wb.append([str(i)])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    orl_urlids = pd.read_excel(r<span class="string">'2.xlsx'</span>)</span><br><span class="line">    orl_urls = orl_urlids.values.tolist()</span><br><span class="line">    orl_key = [i[0] <span class="keyword">for</span> i <span class="keyword">in</span> orl_urls]</span><br><span class="line"></span><br><span class="line">    wk = Workbook()</span><br><span class="line">    wb = wk.active</span><br><span class="line"></span><br><span class="line">    file_paths = [<span class="string">'./export_urls.csv'</span>]</span><br><span class="line">    open_csv()</span><br><span class="line">    wk.save(r<span class="string">'data.xlsx'</span>)</span><br><span class="line">    <span class="comment"># """</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/20/gorm-Model%E7%9A%84%E5%8C%85%E5%90%AB%E5%AD%97%E6%AE%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/20/gorm-Model%E7%9A%84%E5%8C%85%E5%90%AB%E5%AD%97%E6%AE%B5/" class="post-title-link" itemprop="url">gorm.Model的包含字段</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-20 10:31:06 / Modified: 10:38:18" itemprop="dateCreated datePublished" datetime="2020-05-20T10:31:06+08:00">2020-05-20</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://github.com/jinzhu/gorm/blob/master/model.go" target="_blank" rel="noopener">gorm.Model</a>源码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package gorm</span><br><span class="line"></span><br><span class="line">import <span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">// Model base model definition, including fields `ID`, `CreatedAt`, `UpdatedAt`, `DeletedAt`, <span class="built_in">which</span> could be embedded <span class="keyword">in</span> your models</span><br><span class="line">//    <span class="built_in">type</span> User struct &#123;</span><br><span class="line">//      gorm.Model</span><br><span class="line">//    &#125;</span><br><span class="line"><span class="built_in">type</span> Model struct &#123;</span><br><span class="line">	ID        uint `gorm:<span class="string">"primary_key"</span>`</span><br><span class="line">	CreatedAt time.Time</span><br><span class="line">	UpdatedAt time.Time</span><br><span class="line">	DeletedAt *time.Time `sql:<span class="string">"index"</span>`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>所以我们创建结构体的时候的就不需要包含这几个字段了，不然后会报错</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import (</span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	Id            int        `json:<span class="string">"id"</span> form:<span class="string">"id"</span> gorm:<span class="string">"primary_key"</span>` // 主键ID</span><br><span class="line">	CreatedAt     time.Time  `gorm:<span class="string">""</span>json:<span class="string">"createdAt"</span>`                // 创建时间</span><br><span class="line">	UpdatedAt     time.Time  `gorm:<span class="string">""</span>json:<span class="string">"updatedAt"</span>`                // 更新时间</span><br><span class="line">	DeletedAt     *time.Time `gorm:<span class="string">"index"</span>json:<span class="string">"deletedAt"</span>`           // 删除时间</span><br><span class="line">	Name          string     `gorm:<span class="string">"not null;"</span>json:<span class="string">"name"</span>`            // 姓名</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (*User) TableName() string &#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"user"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (m *User) IsAdministrator() bool &#123;</span><br><span class="line">	<span class="keyword">if</span> m == nil || m.Id &lt;= 0 &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> m.Role == 0 || m.Role == 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>报错</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">panic: Error 1146: Table <span class="string">'XXXX.user'</span> doesn<span class="string">'t exist</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">goroutine 1 [running]:</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.mysql.HasIndex(0x1a3ebc0, 0xc0000fe240, 0x203000, 0x19037e8, 0x4, 0xc00059ddc0, 0x13, 0x30c8300)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/dialect_mysql.go:189 +0x31f</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).addIndex(0xc0004ec380, 0x18ecd00, 0xc00059ddc0, 0x13, 0xc00037b5a0, 0x2, 0x2)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1212 +0x8d</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*DB).AddIndex(0xc00001dee0, 0xc00059ddc0, 0x13, 0xc00037b5a0, 0x2, 0x2, 0x1)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/main.go:706 +0xac</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).autoIndex(0xc000559900, 0xc000559900)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1312 +0x9a0</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).createTable(0xc000559900, 0x19037e8)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1194 +0x792</span></span><br></pre></td></tr></table></figure>
-
-<p>改成</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import (</span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/jinzhu/gorm"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	Name          string    `gorm:<span class="string">"not null;"</span>json:<span class="string">"name"</span>`     // 姓名</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (*User) TableName() string &#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"user"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (m *User) IsAdministrator() bool &#123;</span><br><span class="line">	<span class="keyword">if</span> m == nil || m.ID &lt;= 0 &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> m.Role == 0 || m.Role == 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/" class="post-title-link" itemprop="url">通过drawio插件在vs code上画流程图</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-19 15:38:21 / Modified: 15:40:50" itemprop="dateCreated datePublished" datetime="2020-05-19T15:38:21+08:00">2020-05-19</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="打开vs-code-搜索并安装插件drawio"><a href="#打开vs-code-搜索并安装插件drawio" class="headerlink" title="打开vs code 搜索并安装插件drawio"></a>打开vs code 搜索并安装插件drawio</h1><p><img src="/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/drawio01.png" alt="drawio01"></p>
-<h1 id="创建一个后缀为drawio的文件，即可惊醒流程图的编辑"><a href="#创建一个后缀为drawio的文件，即可惊醒流程图的编辑" class="headerlink" title="创建一个后缀为drawio的文件，即可惊醒流程图的编辑"></a>创建一个后缀为drawio的文件，即可惊醒流程图的编辑</h1><p><img src="/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/drawio02.png" alt="drawio02"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/14/swagger%E7%9A%84%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/14/swagger%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">swagger的使用</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-14 18:20:03" itemprop="dateCreated datePublished" datetime="2020-05-14T18:20:03+08:00">2020-05-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-15 15:45:34" itemprop="dateModified" datetime="2020-05-15T15:45:34+08:00">2020-05-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Mac首选brew安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap go-swagger/go-swagger</span><br><span class="line">brew install go-swagger</span><br></pre></td></tr></table></figure>
-
-<p>使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">swagger generate spec -o ./swagger.json --scan-models</span><br><span class="line">swagger serve -F=swagger swagger.json</span><br></pre></td></tr></table></figure>
-<p>其中 swagger.json文件是使用过命令行来生成的，然后进去编写自己的规则。</p>
-<p>小编直接拉去别的项目swagger.json文件时，跑起来出错了，你只需要通过swagger命令行创建后再复制内容进去即可。<br><code>No operations defined in spec!</code></p>
-<p><img src="/2020/05/14/swagger%E7%9A%84%E4%BD%BF%E7%94%A8/swagger01.png" alt="swagger01.png"></p>
-<p>资料：</p>
-<p><a href="https://zhuanlan.zhihu.com/p/136521497" target="_blank" rel="noopener">如何使用 SwaggerUI 创建 Golang API 文档？</a></p>
-<p><a href="https://blog.csdn.net/qq_37493556/article/details/104081138" target="_blank" rel="noopener">go-swagger安装及使用</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" class="post-title-link" itemprop="url">数据库设计</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-13 10:14:22 / Modified: 15:05:49" itemprop="dateCreated datePublished" datetime="2020-05-13T10:14:22+08:00">2020-05-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>表设计</p>
-<ul>
-<li>DDL（Data Definition Language）数据库模式定义语言</li>
-<li>表字段类型选择。</li>
-<li>3范式，三种表间关系：一对一，一对多，多对多。</li>
-</ul>
-<p>表使用</p>
-<ul>
-<li>基本查询语句。</li>
-<li>SQL语句优先级。</li>
-<li>链接查询：子查询，组合查询。</li>
-<li>select…from…where…group by…having…order by..limit</li>
-</ul>
-<h1 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h1><p>库的创建<br><code>create database 库名；</code><br><code>create database if not existe 库名；</code></p>
-<p>更改库的字符集<br><code>alter database books character set gbk；</code></p>
-<p>库的删除<br><code>drop database if exists 库名；</code></p>
-<p>表的创建</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create table 表名（</span><br><span class="line">    列名  列的类型【（长度）约束】</span><br><span class="line">    列名  列的类型【（长度）约束】</span><br><span class="line">   .......</span><br><span class="line">    列名  列的类型【（长度）约束】）</span><br><span class="line"></span><br><span class="line">create table book(</span><br><span class="line">    id  int,</span><br><span class="line">    bname varchar(20),</span><br><span class="line">    prince double,</span><br><span class="line">    authorid int,</span><br><span class="line">    publishbate datetime)</span><br></pre></td></tr></table></figure>
-
-
-<p>表的修改<br><code>alter table 表名 add/drop/modify/change column 列名 列类型 约束；</code></p>
-<ul>
-<li>修改列名 <code>alter table 表名 change column 旧列名 新列名 类型；</code></li>
-<li>修改列的类型及约束 <code>alter table 表名 modify column 列名 要修改的类型</code></li>
-<li>添加新列 <code>alter table author add column annual double；</code></li>
-<li>删除列 <code>alter table author drop column annual ；</code></li>
-<li>修改表名 <code>alter table  author rename to bookauthor;</code></li>
-<li>表的删除 <code>drop table if exists 表名；</code></li>
-<li>查看 <code>show tables</code> </li>
-</ul>
-<ul>
-<li><p>通用的写法</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">drop database <span class="keyword">if</span> exists 旧库名；</span><br><span class="line"></span><br><span class="line">create batabase 新库名；</span><br><span class="line"></span><br><span class="line">drop table <span class="keyword">if</span> exists 旧表名；</span><br><span class="line"></span><br><span class="line">create table 表名（）；</span><br><span class="line"></span><br><span class="line">desc 表名 （查看表结构）</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表的复制 </p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.仅仅复制表的结构</span></span><br><span class="line">create table 新表名  like  author；</span><br><span class="line"><span class="comment">#2.复制表的结构+数据</span></span><br><span class="line">create table 新表名</span><br><span class="line">select *from 旧表名；</span><br><span class="line"><span class="comment">#3.只复制部分数据</span></span><br><span class="line">create teble 新表名</span><br><span class="line">select 列名，..</span><br><span class="line">from 旧表名</span><br><span class="line"><span class="built_in">where</span> 筛选条件；</span><br><span class="line"><span class="comment">#4.仅仅复制某些结构</span></span><br><span class="line">create table 新表名 </span><br><span class="line">select 列名，..</span><br><span class="line">from 旧表名</span><br><span class="line"><span class="built_in">where</span>  0（谁都不满足的条件）；</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h1 id="表字段类型"><a href="#表字段类型" class="headerlink" title="表字段类型"></a>表字段类型</h1><h2 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h2><table>
-<thead>
-<tr>
-<th align="left">场景</th>
-<th align="left">类型</th>
-<th align="left">字节</th>
-<th align="left">举例</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">-</td>
-<td align="left">tinyint</td>
-<td align="left">1</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">smallint</td>
-<td align="left">2</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">mediumint</td>
-<td align="left">3</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">int<br>integer</td>
-<td align="left">4<br>4</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">bigint</td>
-<td align="left">1</td>
-<td align="left">8</td>
-<td align="left">-</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>如何设置有符号和无符号<br>  默认是有符号，设置无符号追加unsigned</p>
-</li>
-<li><p>插入数值超出整型范围<br>  报异常：out of range，并且插入的是临界值</p>
-</li>
-<li><p>如果不设置长度会有默认的长度<br>  zerofill（零填充，默认无符号），显示结果的最大宽度，不过会在左边用0填充</p>
-</li>
-</ul>
-<h2 id="小数"><a href="#小数" class="headerlink" title="小数"></a>小数</h2><table>
-<thead>
-<tr>
-<th align="left">场景</th>
-<th align="left">类型</th>
-<th align="left">举例</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">-</td>
-<td align="left">dec<br>decimal</td>
-<td align="left">dec(M,D)<br>decimal(M,D)</td>
-<td align="left">定点型</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">float<br>double</td>
-<td align="left">float(M,D)<br>double(M,D)</td>
-<td align="left">浮点型</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>M是整数部位加小数部位的总长度，D是小数点后保留的位数<br>  超过插入的是临界值</p>
-</li>
-<li><p>M和D都可省略，如果是decimal，M默认为10，D默认为0<br>  如果是float和double，则会根据插入的数值决定</p>
-</li>
-<li><p>定点型精确度较高，要求插入数值精度较高优先用，如货币运算等则等<br>  其他一般用float就可以。</p>
-</li>
-<li><p>选择类型越简单越好，保存数值越小越好</p>
-</li>
-</ul>
-<h2 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h2><table>
-<thead>
-<tr>
-<th align="left">场景</th>
-<th align="left">类型</th>
-<th align="left">举例</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">较短的文本</td>
-<td align="left">char<br>varchar</td>
-<td align="left">char(M)<br>varchar(M)</td>
-<td align="left">M表示最大的字符数，可省略，默认为1 固定长度的字符 比较耗费空间 <br> M表示最大的字符数，不可省略 可变长度的字符 比较节省空间</td>
-</tr>
-<tr>
-<td align="left">较长的文本</td>
-<td align="left">text<br>blob</td>
-<td align="left">-</td>
-<td align="left">较长的二进制数据</td>
-</tr>
-</tbody></table>
-<h2 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h2><table>
-<thead>
-<tr>
-<th align="left">场景</th>
-<th align="left">类型</th>
-<th align="left">举例</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">-</td>
-<td align="left">date</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">datetime</td>
-<td align="left">-</td>
-<td align="left">datetime范围1000-1-1—-9999-12-31，不受时区影响</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">timestamp</td>
-<td align="left">-</td>
-<td align="left">受时区影响</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">time</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">year</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-</tbody></table>
-<h2 id="常见约束"><a href="#常见约束" class="headerlink" title="常见约束"></a>常见约束</h2><table>
-<thead>
-<tr>
-<th align="left">场景</th>
-<th align="left">字段</th>
-<th align="left">举例</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">-</td>
-<td align="left">not null</td>
-<td align="left">-</td>
-<td align="left">非空，用于保证该字段的值不能为空，如姓名、学号</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">default</td>
-<td align="left">-</td>
-<td align="left">默认，用于保证该字段有默认值，如性别</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">primary key</td>
-<td align="left">-</td>
-<td align="left">主键，用于保证该字段的值具有唯一性，并且非空，如学号、员工编号</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">unique</td>
-<td align="left">-</td>
-<td align="left">唯一、用于保证该字段的值具有唯一性，可以为空，如座位号</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">check</td>
-<td align="left">-</td>
-<td align="left">检查约束，mysql中不支持，如年龄、性别</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">foreign key</td>
-<td align="left">-</td>
-<td align="left">外键，用于限制两个表的关系，用于保证该字段的值必须来自主表的关联列的值。在从表添加外键约束，用于引用主表中某列的值。</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>添加约束的时机：创建表时/修改表时</p>
-</li>
-<li><p>约束的添加分类：</p>
-<ul>
-<li>列级约束：六大约束语法都支持但外键约束没有效果</li>
-<li>表级约束;除了非空、默认，其他的都支持</li>
-</ul>
-</li>
-</ul>
-<h1 id="创建表时添加约束"><a href="#创建表时添加约束" class="headerlink" title="创建表时添加约束"></a>创建表时添加约束</h1><h2 id="添加列级约束"><a href="#添加列级约束" class="headerlink" title="添加列级约束"></a>添加列级约束</h2><p>直接在字段名和类型后面追加 约束类型即可<br>只支持：默认、非空、主键、唯一</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create table 表名（</span><br><span class="line">         字段名   字段类型   列级约束，</span><br><span class="line">       字段名  字段类型，</span><br><span class="line">       表级约束</span><br><span class="line">）</span><br><span class="line">create table stuinfo（</span><br><span class="line">    id  int primary  key,</span><br><span class="line">    stuname  varchar(20)  not  null,</span><br><span class="line">    gender   char(1)  check(gender=<span class="string">'男'</span> or gender = <span class="string">'女'</span>），</span><br><span class="line">    age  int default  18</span><br><span class="line">   majorid  int foreign key references major（id）</span><br><span class="line">）；</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="添加表级约束"><a href="#添加表级约束" class="headerlink" title="添加表级约束"></a>添加表级约束</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">create table stuinfo（</span><br><span class="line">    id  int ,</span><br><span class="line">    stuname  varchar(20) ,</span><br><span class="line">    gender   char(1) ，</span><br><span class="line">    age  int，</span><br><span class="line">   majorid  int，</span><br><span class="line">   </span><br><span class="line">   constraint pk primary  key（id）,<span class="comment">#主键</span></span><br><span class="line">   constraint uq unique（seat），<span class="comment">#唯一键</span></span><br><span class="line">   constraint ck check(gender=<span class="string">'男'</span> or gender = <span class="string">'女'</span>），</span><br><span class="line">   constraint fk_syuinfo_major   foreign key(majorid) references major（id）<span class="comment">#外键</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>在各个字段的最下面添加：&lt;<code>constraint</code> 约束名&gt; 约束类型（字段名）</p>
-<h1 id="主键与唯一的对比"><a href="#主键与唯一的对比" class="headerlink" title="主键与唯一的对比"></a>主键与唯一的对比</h1><ul>
-<li>主键：保持唯一性 / 不允许为空/一个表中只至少有一个/两个列可以组合为一个主键但不推荐</li>
-<li>唯一：保持唯一性 / 允许为空 /可以有多个/可以组合但不推荐</li>
-</ul>
-<h1 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h1><ul>
-<li><p>要求在从表设置外键关系</p>
-</li>
-<li><p>从表的外键列的类型和主表的关联列的类型要求一致或兼容，名称无要求</p>
-</li>
-<li><p>主表的关联列必须是一个key（一般是主键或唯一）</p>
-</li>
-<li><p>插入数据时，先插入主表数据再插入从表</p>
-</li>
-<li><p>删除数据先删除从表再删除主表</p>
-</li>
-</ul>
-<h1 id="修改表时添加约束"><a href="#修改表时添加约束" class="headerlink" title="修改表时添加约束"></a>修改表时添加约束</h1><p>列级约束：<code>alter table 表名 modify column 字段名 字段类型 新约束；</code></p>
-<p>表级约束：<code>alter table 表名 add &lt;constriaint 约束名&gt; 约束类型（字段名）&lt;外键的引用&gt;；</code></p>
-<ul>
-<li><p>添加非空约束 <code>alter table 表名 modify column 列名 要修改的类型  not null</code></p>
-</li>
-<li><p>默认约束 <code>alter table 表名 modify column 列名 int default 18</code></p>
-</li>
-<li><p>添加主键<br>  <code>列级约束 alter table 表名 modify column 列名 int default key；</code><br>  <code>表级约束  alter table 表名 add primary key(列名)</code></p>
-</li>
-<li><p>添加唯一<br>  <code>列级约束  alter table 表名 add primary key(列名) 要修改的类型  notnull</code><br>  <code>表级约束   alter table 表名 add unique（列名）</code> </p>
-</li>
-<li><p>添加外键 <code>alter table 表名 add foreign key（majorid） references major（id）</code></p>
-</li>
-</ul>
-<h1 id="修改表时删除约束"><a href="#修改表时删除约束" class="headerlink" title="修改表时删除约束"></a>修改表时删除约束</h1><p>删除非空 <code>alter table 表名 modify column 列名 varchar（20） null；</code><br>删除默认约束 <code>alter table 表名 modify column 列名  int；</code><br>删除主键 <code>alter table 表名 drop primary key；</code><br>删除唯一 <code>alter table 表名 drop index 列名；</code><br>删除外键 <code>alter table 表名 drop foreign key 列名；</code></p>
-<h1 id="3范式"><a href="#3范式" class="headerlink" title="3范式"></a>3范式</h1><h2 id="第一范式（1NF）"><a href="#第一范式（1NF）" class="headerlink" title="第一范式（1NF）"></a>第一范式（1NF）</h2><p>保证每列的原子性。如果数据库表中的所有字段值都是不可分解的原子值，就说明该数据库满足了第一范式。</p>
-<p>例如将地址的拆分：</p>
-<table>
-<thead>
-<tr>
-<th align="left">编号</th>
-<th align="left">姓名</th>
-<th align="left">地址</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">张三</td>
-<td align="left">广东广州天河</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">李四</td>
-<td align="left">广东佛山禅城</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">王五</td>
-<td align="left">广东广州科学城</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="left">编号</th>
-<th align="left">姓名</th>
-<th align="left">省份</th>
-<th align="left">城市</th>
-<th align="left">地址</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">张三</td>
-<td align="left">广东</td>
-<td align="left">广州</td>
-<td align="left">天河</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">李四</td>
-<td align="left">广东</td>
-<td align="left">佛山</td>
-<td align="left">禅城</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">王五</td>
-<td align="left">广东</td>
-<td align="left">广州</td>
-<td align="left">科学城</td>
-</tr>
-</tbody></table>
-<h2 id="第二范式（2NF）"><a href="#第二范式（2NF）" class="headerlink" title="第二范式（2NF）"></a>第二范式（2NF）</h2><p>保证一张表只描述一件事情。<br>在满足第一范式的基础上，数据库表中不存在非关键字段对任一候选关键字段的部分函数依赖，也即所有非关键字段都完全依赖于任一组候选关键字。</p>
-<p>举例：<br>| 学号    | 姓名    | 年龄 | 课程 | 成绩 | 学分 |<br>| :—–| :—–| :—-|  :—-|  :—-|  :—-|<br>| 1 | 张三  | 20 | 数学 | 90 | 1 |<br>| 2 | 李四  | 20 | 语文 | 90 | 1 |<br>| 3 | 王五  | 20 | 英语 | 50 | 1 |</p>
-<p>上表满足第一范式，即每个字段不可再分，但这张表的设计并不满足第二范式。因为这张表里面描述了两件事情：学生信息、课程信息，”学分”完全依赖于”课程名称”、”姓名”与”年龄”完全依赖于”学号”。这么做的后果是：</p>
-<ul>
-<li><p>数据冗余：同一门课程由n个学生选修，”学分”重复n-1次；同一个学生选修了m门课程，姓名和年龄重复m-1次</p>
-</li>
-<li><p>更新异常：若调整了某门课程的学分，数据表中所有行的”学分”值都需要更新，否则会出现同一门课程学分不同的情况</p>
-</li>
-<li><p>插入异常：假设要开一门新课程，暂时没有人选修，那么由于没有”学号”关键字，”课程”与”学分”也无法记录入数据库</p>
-</li>
-<li><p>删除异常：假设一批学生已经完成课程的选修，这些选修记录就应该从数据库表中删除。但是，与此同时，”课程”和”学分”也被删除了，显然，这最终可能会导致插入异常</p>
-</li>
-</ul>
-<p>优化后的表设计如下：<br>| 学号    | 姓名    | 年龄 |<br>| :—–| :—–| :—-|<br>| 1 | 张三  | 20 |<br>| 2 | 李四  | 20 |<br>| 3 | 王五  | 20 |</p>
-<table>
-<thead>
-<tr>
-<th align="left">课程</th>
-<th align="left">学分</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">数学</td>
-<td align="left">1</td>
-</tr>
-<tr>
-<td align="left">语文</td>
-<td align="left">1</td>
-</tr>
-<tr>
-<td align="left">英语</td>
-<td align="left">1</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="left">学号</th>
-<th align="left">课程</th>
-<th align="left">成绩</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">数学</td>
-<td align="left">90</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">语文</td>
-<td align="left">90</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">英语</td>
-<td align="left">50</td>
-</tr>
-</tbody></table>
-<p>增加了表，将学生信息与课程信息通过一张中间表关联，很好地解决了上面的几个问题，这就是第二范式的中心—-保证一张表只讲一件事情。</p>
-<h2 id="第三范式（3NF）"><a href="#第三范式（3NF）" class="headerlink" title="第三范式（3NF）"></a>第三范式（3NF）</h2><p>数据库表中如果不存在非关键字段任一候选关键字段的传递函数依赖则符合第三范式，所谓传递函数依赖指的是如果存在”A–&gt;B–&gt;C”的决定关系，则C传递函数依赖于A。也就是说<code>中的字段和主键直接对应不依靠其他中间字段，说白了就是，决定某字段值的必须是主键。</code></p>
-<p>举例：</p>
-<table>
-<thead>
-<tr>
-<th align="left">学号</th>
-<th align="left">姓名</th>
-<th align="left">年龄</th>
-<th align="left">学院地点</th>
-<th align="left">学院电话</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">张三</td>
-<td align="left">20</td>
-<td align="left">计算机学院</td>
-<td align="left">9号楼</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">李四</td>
-<td align="left">20</td>
-<td align="left">计算机学院</td>
-<td align="left">9号楼</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">王五</td>
-<td align="left">20</td>
-<td align="left">计算机学院</td>
-<td align="left">9号楼</td>
-</tr>
-</tbody></table>
-<p>从这张数据库表结构中可以看出：</p>
-<ul>
-<li><p>“姓名”、”年龄”、”学院”和主键”学号”直接关联。</p>
-</li>
-<li><p>但是”学院地点”、”学院电话”却不直接和主键”学号”相关联，和”学院电话”直接相关联的是”学院”。</p>
-</li>
-<li><p>如果表结构这么设计，同样会造成和第二范式一样的数据冗余、更新异常、插入异常、删除异常的问题。</p>
-</li>
-</ul>
-<p>优化后的表设计：</p>
-<table>
-<thead>
-<tr>
-<th align="left">学院</th>
-<th align="left">学院地点</th>
-<th align="left">学院电话</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">计算机学院</td>
-<td align="left">9号楼</td>
-<td align="left">11111</td>
-</tr>
-<tr>
-<td align="left">艺术学院</td>
-<td align="left">8号楼</td>
-<td align="left">11112</td>
-</tr>
-<tr>
-<td align="left">机电学院</td>
-<td align="left">7号楼</td>
-<td align="left">11113</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="left">学号</th>
-<th align="left">姓名</th>
-<th align="left">年龄</th>
-<th align="left">学院</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">张三</td>
-<td align="left">20</td>
-<td align="left">计算机学院</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">李四</td>
-<td align="left">20</td>
-<td align="left">计算机学院</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">王五</td>
-<td align="left">20</td>
-<td align="left">计算机学院</td>
-</tr>
-</tbody></table>
-<p>文章参考：<br><a href="https://zhuanlan.zhihu.com/p/72197799" target="_blank" rel="noopener">MySQL数据库三范式</a></p>
-
       
     </div>
 
@@ -1522,7 +829,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1568,7 +875,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
