@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"avatar":"/images/avatar.gif","rounded":false,"rotated":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="samtake">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;7&#x2F;index.html">
+<meta property="og:site_name" content="samtake">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/page/7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>samtake</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">samtake</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">10000*365=27.3972603</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/C++%E9%87%8D%E6%B8%A9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/04/C++%E9%87%8D%E6%B8%A9/" class="post-title-link" itemprop="url">C++重温</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-04 01:57:17" itemprop="dateCreated datePublished" datetime="2019-11-04T01:57:17+08:00">2019-11-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-27 16:14:58" itemprop="dateModified" datetime="2020-03-27T16:14:58+08:00">2020-03-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://upload-images.jianshu.io/upload_images/3850802-c610324dffd5bcc2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="C艹.jpg"></p>
+<p>demo链接🔗<a href="https://github.com/samtake/C-review" target="_blank" rel="noopener">https://github.com/samtake/C-review</a></p>
+<h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><h2 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h2><p>C++提供了程序内联机制来减少函数调用的开销。在函数定义的返回值类型前面加一个<code>inline</code>关键字，“建议”编译器函数代码复制到程序中，避免函数调用。<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">using std::cout;</span><br><span class="line">using std::cin;</span><br><span class="line">using std::endl;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">inline double cube(const double side)&#123;</span><br><span class="line">    <span class="built_in">return</span> side*side*side;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">testInlineFunction</span></span>()&#123;</span><br><span class="line">    double sideValue;</span><br><span class="line">    <span class="keyword">for</span> (int i=1 ; i&lt;=3 ; i++) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">"enter the side length of your cube:"</span>;</span><br><span class="line">        cin &gt;&gt;sideValue;</span><br><span class="line">        </span><br><span class="line">        cout &lt;&lt; <span class="string">"side="</span> &lt;&lt; sideValue &lt;&lt; <span class="string">"cube="</span> &lt;&lt; cube(sideValue) &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>using std::cout;</code>using语句使我们不用重复写<code>std::</code>前缀；或者使用<code>using namespace std;</code>代替。</li>
+</ul>
+<h2 id="引用以及引用形参"><a href="#引用以及引用形参" class="headerlink" title="引用以及引用形参"></a>引用以及引用形参</h2><ul>
+<li>两种传参方式是：按值传递和按引用传递。</li>
+<li>采用按值传递方式传参时，首先生成实参值的副本，然后将该值传递给被调函数。改变副本的值不会影响主调函数中实参的值。</li>
+<li>通过按引用传参，允许被调函数直接访问主调函数中的数据，允许被调函数有选择的修改主调函数中的数据。</li>
+<li>引用实参是其对应的函数调用中实参的别名。</li>
+<li>通过<code>&amp;</code>来标记按引用传参</li>
+</ul>
+<p>引用以和引用形参</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int squareByValue(int number)&#123;</span><br><span class="line">    <span class="built_in">return</span> number *=number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void squareByReference(int &amp;numberRef)&#123;</span><br><span class="line">    numberRef *=numberRef;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数体内引用作为别名<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int z = 3;</span><br><span class="line">    int &amp;z_alias = z;//int &amp;z_alias；</span><br><span class="line">    cout &lt;&lt; <span class="string">"z= "</span> &lt;&lt; z &lt;&lt; endl &lt;&lt; <span class="string">" z_alias = "</span>  &lt;&lt;  z_alias &lt;&lt; endl;</span><br><span class="line">    z = 7;</span><br><span class="line">    cout &lt;&lt; <span class="string">"z= "</span> &lt;&lt; z &lt;&lt; endl &lt;&lt; <span class="string">" z_alias = "</span>  &lt;&lt;  z_alias &lt;&lt; endl;</span><br></pre></td></tr></table></figure><br>输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">z= 3</span><br><span class="line"> z_alias = 3</span><br><span class="line">z= 7</span><br><span class="line"> z_alias = 7</span><br></pre></td></tr></table></figure>
+<p>并且为初始化的引用<code>int &amp;z_alias；</code>会导致错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Declaration of reference variable <span class="string">'z_alias'</span> requires an initializer</span><br></pre></td></tr></table></figure>
+
+<h2 id="空形参列表"><a href="#空形参列表" class="headerlink" title="空形参列表"></a>空形参列表</h2><p>在C++中，可以用<code>void</code>指定也可以通过在括号内不写任何语句定义空形参列表。如下两个函数是等价的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void <span class="built_in">print</span>();</span><br><span class="line">void <span class="built_in">print</span>(void);</span><br></pre></td></tr></table></figure>
+<h2 id="默认实参"><a href="#默认实参" class="headerlink" title="默认实参"></a>默认实参</h2><ul>
+<li>有些程序在多次调用一个函数时经常将相同的实参传递给某个形参，这种情况下，可以将该形参指定默认实参，即传递给该形参的默认值。</li>
+<li>当发生函数调用时，如果省略了对应位置上的实参值，则编译器就会重写该函数调用并将默认值作为实参插入到函数调用中，在执行被调函数时，以该形参的默认值进行运算。</li>
+<li>默认实参必须是函数形参列表中最右边的实参。</li>
+<li>应该在函数名第一次出现时指定默认实参–通常在函数原型中指定。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int boxVolume(int length = 1, int width = 1, int height = 1);</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">testDefaultArgument</span></span>()&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">"default = "</span> &lt;&lt;boxVolume() &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"length  = 2 : "</span> &lt;&lt;boxVolume(2) &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"length  = 2 , width =3 : "</span> &lt;&lt;boxVolume(2,3) &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"length  = 2 , width =3 , height = 4 : "</span> &lt;&lt;boxVolume(2, 3, 4) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int boxVolume(int length, int width, int height)&#123;</span><br><span class="line">    <span class="built_in">return</span> length*width*height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="一元作用域运算符"><a href="#一元作用域运算符" class="headerlink" title="一元作用域运算符"></a>一元作用域运算符</h2><p>C++提供了一元作用域运算符，可以在含有与全局变量名的局部变量的域中访问该全局变量。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int number = 7;</span><br><span class="line">void <span class="function"><span class="title">testUnaryOperation</span></span>()&#123;</span><br><span class="line">    double number = 10.7;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"location number = "</span> &lt;&lt; number &lt;&lt;endl;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"gloable number = "</span> &lt;&lt; ::number &lt;&lt;endl;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">location number = 10.7</span><br><span class="line">gloable number = 7</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h2><ul>
+<li>C++中允许定义同名的函数，只要这些函数具有不同的形参集合即可（至少在形参类型或形参个数或形参类型的顺序上有区别）。这个功能称为函数重载。</li>
+<li>调用重载函数时，C++编译器通过检查函数调用语句中的实参个数、类型及顺序选择适当的函数。</li>
+<li>重载函数由函数的签名进行区分。</li>
+<li>编译器根据函数形参的个数与类型将每个函数标识符编码，以保证类型安全链接，从而确保可以调用适当的重载函数，也确保实参与形参类型一致。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void <span class="function"><span class="title">functionOverloading</span></span>()&#123;</span><br><span class="line">    cout &lt;&lt; square(7) &lt;&lt;endl;</span><br><span class="line">    cout &lt;&lt; square(0.5) &lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int square(int x)&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">"integer : "</span>;</span><br><span class="line">    <span class="built_in">return</span> x*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">double square(double x)&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">"double : "</span>;</span><br><span class="line">    <span class="built_in">return</span> x*x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+输出<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">integer</span> : 49</span><br><span class="line">double : 0.25</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="函数模版"><a href="#函数模版" class="headerlink" title="函数模版"></a>函数模版</h2><p>重载函数用于对不同数据类型的程序逻辑执行相似操作。如果各种数据类型的程序逻辑和操作是完全相同的，那么使用函数模版可以更加简洁、方便的执行重载。</p>
+<ul>
+<li>所有函数模版定义均以关键字<code>template</code>开始，随后是用尖括号<code>&lt;&gt;</code>括起来的模版形参列表.</li>
+<li>模版列表中的每个形参（称为形式类型形参）前面都加关键字<code>typename</code>和 <code>class</code>。两者含义相同。</li>
+<li>形式类型形参是基本数据类型或用户定义类型的占位符<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">T maximum(T value1, T value2, T value3 ) &#123;</span><br><span class="line">    T maximumValue = value1;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (value2 &gt; maximumValue) &#123;</span><br><span class="line">        maximumValue = value2 ;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (value3 &gt; maximumValue) &#123;</span><br><span class="line">        maximumValue = value3 ;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> maximumValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h1 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h1><p>在C++中通常有main函数以及一个或多个既包含数据成员也包含成员函数的类构成，所以：</p>
+<ul>
+<li>在一个类中，可提供一个或多个成员函数。</li>
+<li>类似的，对象也有属性，在程序中使用对象时带有这些属性。这些属性是对象所属的类的一部分。</li>
+</ul>
+<h2 id="定义一个具有成员函数的类"><a href="#定义一个具有成员函数的类" class="headerlink" title="定义一个具有成员函数的类"></a>定义一个具有成员函数的类</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//定义</span><br><span class="line">class GradeBook &#123;</span><br><span class="line">    //  </span><br><span class="line">public:</span><br><span class="line">    void <span class="function"><span class="title">displayMessage</span></span>()&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"grade book"</span>&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">void <span class="function"><span class="title">funcTestGradeBook</span></span>()&#123;</span><br><span class="line">    GradeBook myGradeBook;</span><br><span class="line">    myGradeBook.displayMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Hello, World!</span><br><span class="line">grade book</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>类的定义由 <code>class</code>及随后的类名GradeBook开始，类名通常使用驼峰模式拼写，通常首字母大写。</li>
+<li>每个类体由左右打括号<code>{}</code> 括起来。</li>
+<li>类定义由<code>;</code>分号结束。</li>
+<li>成员函数的访问限定符有：<code>public</code>、<code>private</code>、<code>protected</code>三种。</li>
+<li>在定义函数时，必须指定返回值类型。</li>
+<li>成员函数名后的空括号表示该成员函数不需要传参。</li>
+</ul>
+<h2 id="定义一个有参成员函数"><a href="#定义一个有参成员函数" class="headerlink" title="定义一个有参成员函数"></a>定义一个有参成员函数</h2> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//定义一个有参成员函数</span><br><span class="line">    void displayMessageWithParms(string courseName)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"grade book"</span>&lt;&lt; courseName &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string courseName;</span><br><span class="line">    cout&lt;&lt; <span class="string">"enter course name:"</span>&lt;&lt;endl;</span><br><span class="line">    getline(cin, courseName);</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">    myGradeBook.displayMessageWithParms(<span class="string">"Chinese"</span>);</span><br><span class="line">    myGradeBook.displayMessageWithParms(courseName);</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enter course name:</span><br><span class="line">kjjkjkj</span><br><span class="line"></span><br><span class="line">grade bookChinese</span><br><span class="line">grade bookkjjkjkj</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
+<h2 id="数据成员、set函数与get函数"><a href="#数据成员、set函数与get函数" class="headerlink" title="数据成员、set函数与get函数"></a>数据成员、set函数与get函数</h2><ul>
+<li>在函数定义体重声明的变量称为局部变量，它们只能在从声明它们的行到该函数定义的结束右打括号<code>}</code>的范围内使用。</li>
+<li>类通常包含一个或多个成员函数来操作属于该类特定对象的属性。属性在类定义中表示为变量。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class GradeBookHaveLocalVariable&#123;</span><br><span class="line">public:</span><br><span class="line">    void setCourseName(string name)&#123;</span><br><span class="line">        courseName = name;</span><br><span class="line">    &#125;</span><br><span class="line">    string <span class="function"><span class="title">getCourseName</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span> courseName;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void <span class="function"><span class="title">displayMessage</span></span>()&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"course  name: "</span>&lt;&lt; getCourseName() &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    //定义一个有参成员函数</span><br><span class="line">    void displayMessageWithParms(string courseName)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"grade book"</span>&lt;&lt; courseName &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    string courseName;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">course  name: 语文</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
+
+<h2 id="用构造函数初始化对象"><a href="#用构造函数初始化对象" class="headerlink" title="用构造函数初始化对象"></a>用构造函数初始化对象</h2><p>构造函数:</p>
+<ul>
+<li>用于在创建该类对象时初始化该对象。</li>
+<li>是一个特殊的成员函数，它的名字必须与类名相同。</li>
+<li>不能有返回值。</li>
+<li>通常声明为<code>public</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class GradeBookConstructor&#123;</span><br><span class="line">    </span><br><span class="line">public:</span><br><span class="line">    </span><br><span class="line">    GradeBookConstructor(string name)&#123;</span><br><span class="line">        setCourseName(name);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void setCourseName(string name)&#123;</span><br><span class="line">        courseName = name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    string <span class="function"><span class="title">getCourseName</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span> courseName;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void <span class="function"><span class="title">displayMessage</span></span>()&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"course  name: "</span>&lt;&lt; getCourseName() &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //定义一个有参成员函数</span><br><span class="line">    void displayMessageWithParms(string courseName)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">"grade book"</span>&lt;&lt; courseName &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">private:</span><br><span class="line">    string courseName;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">funcTestGradeBookConstructor</span></span>()&#123;</span><br><span class="line">    GradeBookConstructor myGradeBookConstructor1(<span class="string">"Constructor"</span>);</span><br><span class="line">    GradeBookConstructor myGradeBookConstructor2(<span class="string">"构造函数"</span>);</span><br><span class="line">    </span><br><span class="line">    myGradeBookConstructor1.displayMessage();</span><br><span class="line">    myGradeBookConstructor2.displayMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">course  name: Constructor</span><br><span class="line">course  name: 构造函数</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="用set函数验证数据"><a href="#用set函数验证数据" class="headerlink" title="用set函数验证数据"></a>用set函数验证数据</h1><p>我们在<code>.h</code>文件中进行类的定义，并包含指定指定类的接口（类的<code>public</code>成员函数）的函数原形。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class VertifyWithSetFunc &#123;</span><br><span class="line">    //instance variables</span><br><span class="line">    </span><br><span class="line">public:</span><br><span class="line">    </span><br><span class="line">    VertifyWithSetFunc(string);</span><br><span class="line">    </span><br><span class="line">    void setCourseName(string);</span><br><span class="line">    string getCourseName();</span><br><span class="line">    </span><br><span class="line">    void displayMessage();</span><br><span class="line">    </span><br><span class="line">private:</span><br><span class="line">    string courseName;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在单独的源码文件中定义成员函数：每个成员函数名前面都有类名与二院作用域运算符<code>::</code>，这将每个成员函数绑定到声明成员函数与数据成员的VertifyWithSetFunc类定义上。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">VertifyWithSetFunc::VertifyWithSetFunc(string name)&#123;</span><br><span class="line">    setCourseName(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们知道可以通过<code>set</code>函数，可以修改<code>private</code>数据成员的值。这里我们要做的是在<code>set</code>函数进行值得判断。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void VertifyWithSetFunc::setCourseName(string name)&#123;</span><br><span class="line">    <span class="keyword">if</span> (name.length() &lt;= 10) &#123;</span><br><span class="line">        courseName = name ;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (name.length() &gt; 10) &#123;</span><br><span class="line">        courseName = name.substr(0, 10);</span><br><span class="line">        cout&lt;&lt; <span class="string">"name is long than 10 :"</span>&lt;&lt; name &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name is long than 10 :test2test2test2test2test2test2test2test2test2test2</span><br><span class="line">vertify1: test1</span><br><span class="line">vertify2: test2test2</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="访问成员函数的三种方式"><a href="#访问成员函数的三种方式" class="headerlink" title="访问成员函数的三种方式"></a>访问成员函数的三种方式</h1><p>访问成员函数的三种方式:</p>
+<p>对象名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Count counter;</span><br><span class="line">counter.setX(1);</span><br><span class="line">cout &lt;&lt; <span class="string">"counter.setX(1);"</span> ;</span><br><span class="line">counter.print();</span><br></pre></td></tr></table></figure>
+
+
+
+<p>指向对象的指针</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Count *counterPtr = &amp;counter;</span><br><span class="line">counterPtr-&gt;setX(2);</span><br><span class="line">cout &lt;&lt; <span class="string">"counterPtr-&gt;setX(2);"</span>;</span><br><span class="line">counterPtr-&gt;<span class="built_in">print</span>();</span><br></pre></td></tr></table></figure>
+
+<p>对象的引用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Count &amp;counterRef = counter;</span><br><span class="line">counterRef.setX(3);</span><br><span class="line">cout &lt;&lt; <span class="string">"counterRef.setX(3);"</span>;</span><br><span class="line">counterRef.print();</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">counter.setX(1);1</span><br><span class="line">counterPtr-&gt;setX(2);2</span><br><span class="line">counterRef.setX(3);3</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h1><p>析构函数(destructor)是一种特殊的成员函数。</p>
+<ul>
+<li>类的析构函数名是在类名前加一个波浪好<code>~</code></li>
+<li>累的析构函数是在删除对象的时候被隐式调用</li>
+<li>析构函数没有形参页不反悔任何值</li>
+<li>析构函数必须是 <code>public</code>类型的</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">CreateAndDestructor::CreateAndDestructor(int ID, string msg)&#123;</span><br><span class="line">    objectID = ID;</span><br><span class="line">    message = msg;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"Object "</span> &lt;&lt; objectID &lt;&lt; <span class="string">" 构造函数 runs  "</span> &lt;&lt;message &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void create(void)&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">"createFunc "</span> &lt;&lt; endl;</span><br><span class="line">    CreateAndDestructor fifth(5, <span class="string">"(local automatic in create)"</span>);</span><br><span class="line">    static CreateAndDestructor sixth(6, <span class="string">"(local automatic in create)"</span>);</span><br><span class="line">    CreateAndDestructor seventh(7, <span class="string">"(local automatic in create)"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CreateAndDestructor::~<span class="function"><span class="title">CreateAndDestructor</span></span>()&#123;</span><br><span class="line">    cout&lt;&lt;(objectID ==1 || objectID == 6 ? <span class="string">"\n"</span> : <span class="string">""</span>);</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"Object "</span> &lt;&lt; objectID &lt;&lt; <span class="string">" 析构函数 runs   "</span> &lt;&lt;message &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">testCreateAndDestructor</span></span>()&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">"testFunc "</span> &lt;&lt; endl;</span><br><span class="line">    CreateAndDestructor second(2, <span class="string">"(local automatic in testFunc)"</span>);</span><br><span class="line">    static CreateAndDestructor third(3, <span class="string">"(local automatic in testFunc)"</span>);</span><br><span class="line">    </span><br><span class="line">    create();</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"testFunc : "</span> &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    CreateAndDestructor forth(4, <span class="string">"(local automatic in testFunc)"</span>);</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">"\ntestFunc end \n"</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">testFunc </span><br><span class="line">Object 2 构造函数 runs  (<span class="built_in">local</span> automatic <span class="keyword">in</span> testFunc)</span><br><span class="line">Object 3 构造函数 runs  (<span class="built_in">local</span> automatic <span class="keyword">in</span> testFunc)</span><br><span class="line">createFunc </span><br><span class="line">Object 5 构造函数 runs  (<span class="built_in">local</span> automatic <span class="keyword">in</span> create)</span><br><span class="line">Object 6 构造函数 runs  (<span class="built_in">local</span> automatic <span class="keyword">in</span> create)</span><br><span class="line">Object 7 构造函数 runs  (<span class="built_in">local</span> automatic <span class="keyword">in</span> create)</span><br><span class="line">Object 7 析构函数 runs   (<span class="built_in">local</span> automatic <span class="keyword">in</span> create)</span><br><span class="line">Object 5 析构函数 runs   (<span class="built_in">local</span> automatic <span class="keyword">in</span> create)</span><br><span class="line">testFunc : </span><br><span class="line">Object 4 构造函数 runs  (<span class="built_in">local</span> automatic <span class="keyword">in</span> testFunc)</span><br><span class="line"></span><br><span class="line">testFunc end </span><br><span class="line"></span><br><span class="line">Object 4 析构函数 runs   (<span class="built_in">local</span> automatic <span class="keyword">in</span> testFunc)</span><br><span class="line">Object 2 析构函数 runs   (<span class="built_in">local</span> automatic <span class="keyword">in</span> testFunc)</span><br><span class="line"></span><br><span class="line">Object 6 析构函数 runs   (<span class="built_in">local</span> automatic <span class="keyword">in</span> create)</span><br><span class="line">Object 3 析构函数 runs   (<span class="built_in">local</span> automatic <span class="keyword">in</span> testFunc)</span><br><span class="line">Program ended with <span class="built_in">exit</span> code: 0</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在全局作用域内定义的对象的构造函数在该文件中的任何其他函数（包括<code>main</code>函数）开始执行之前执行。</li>
+<li>在<code>main</code>函数终止时，调用响应的析构函数。<code>exit</code>函数强制程序立即终止并且不执行自动对象的析构函数。</li>
+<li>自动局部对象的 <code>析构函数</code>在执行到达定义该对象的程序点是调用，<code>对应的析构函数</code>是在该对象离开该对像所在的作用域时调用。</li>
+<li><code>static</code>局部对象的<code>析构函数</code>只在执行第一次到达定义对象的程序点时调用一次,<code>对应的析构函数</code>是在<code>main</code>函数终止时或者<code>exit</code>函数时调用。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/WebRTC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/04/WebRTC/" class="post-title-link" itemprop="url">WebRTC</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-04 01:54:53" itemprop="dateCreated datePublished" datetime="2019-11-04T01:54:53+08:00">2019-11-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-22 23:20:48" itemprop="dateModified" datetime="2020-03-22T23:20:48+08:00">2020-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WebRTC/" itemprop="url" rel="index">
+                    <span itemprop="name">WebRTC</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="WebRTC介绍"><a href="#WebRTC介绍" class="headerlink" title="WebRTC介绍"></a>WebRTC介绍</h1><p><a href="[https://webrtc.org/](https://webrtc.org/)">WebRTC</a>一个由google开源的音视频处理+即时通讯的开源库，优秀的多媒体、跨平台框架。它极其庞大复杂，换句话来说功能很强大，然后就是WebRTC只是定义了客户端的规范，至于服务器可以根据自己的业务场景来实现，一般应用于：</p>
+<ul>
+<li>音视频会议、在线教育</li>
+<li>照相机</li>
+<li>音乐播放器</li>
+<li>共享远程桌面</li>
+<li>录制</li>
+<li>实施人脸识别</li>
+<li>游戏</li>
+<li>文件传输工具</li>
+<li>P2P网络加速</li>
+<li>即时通讯工具</li>
+</ul>
+<h1 id="WebRTC-1-对-1-音视频实时通话"><a href="#WebRTC-1-对-1-音视频实时通话" class="headerlink" title="WebRTC 1 对 1 音视频实时通话"></a>WebRTC 1 对 1 音视频实时通话</h1><p><img src="/2019/11/04/WebRTC/webrtc1-1to1.png" alt="过程示意图"></p>
+<p>即两个 WebRTC 终端（上图中的两个大方框）、一个 Signal（信令）服务器和一个 STUN/TURN 服务器。</p>
+<p><code>WebRTC 终端</code>负责音视频采集、编解码、NAT 穿越、音视频数据传输。步骤流程如下：</p>
+<ul>
+<li>获取权限（摄像头、麦克风）</li>
+<li>本地视频的采集与展示</li>
+<li>创建<code>RTCPeerConnection</code></li>
+<li>媒体协商</li>
+<li>远端视频的展示</li>
+</ul>
+<p><code>Signal 服务器</code>负责信令处理，如加入房间、离开房间、媒体协商消息的传递等。<br><code>STUN/TURN 服务器</code>负责获取 WebRTC 终端在公网的 IP 地址，以及 NAT 穿越失败后的数据中转。</p>
+<h1 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h1><p><code>Full Cone</code> 完全锥型NAT<br>当 host 主机通过 NAT 访问外网的 B 主机时，就会在 NAT 上打个“洞”，所有知道这个“洞”的主机都可以通过它与内网主机上的侦听程序通信。<br><code>所谓的“打洞”就是在 NAT 上建立一个内外网的映射表。</code><br>大多数人都选用<code>UDP</code>作为打洞协议.</p>
+<p><img src="/2019/11/04/WebRTC/webrtc10-full-cone.png" alt></p>
+<p><code>ip restricted</code>IP 限制锥型NAT<br>host 主机在 NAT 上“打洞”后，NAT 会对穿越洞口的 IP 地址做限制。只有登记的 IP 地址才可以通过。</p>
+<p>IP 限制锥型 NAT 的映射表是一个 5 元组，即：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	内网 IP，</span><br><span class="line">	内网端口，</span><br><span class="line">	映射的外网 IP，</span><br><span class="line">	映射的外网端口，</span><br><span class="line">	被访问主机的 IP</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/11/04/WebRTC/webrtc10-ip-restricted.png" alt></p>
+<p><code>port restrected</code> 端口限制型NAT</p>
+<p>不光在 NAT 上对打洞的 IP 地址做了限制，而且还对具体的端口做了限制。因此，端口限制型 NAT 的映射表是一个 6 元组，其格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	内网 IP，</span><br><span class="line">	内网端口，</span><br><span class="line">	映射的外网 IP，</span><br><span class="line">	映射的外网端口，</span><br><span class="line">	被访问主机的 IP,</span><br><span class="line">	被访问主机的端口</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/11/04/WebRTC/webrtc10-port-restrcted.png" alt></p>
+<p><code>symmetric</code> 对成型NAT<br>host 主机访问 B 时它在 NAT 上打了一个“洞”，而这个“洞”只有 B 主机上提供服务的端口发送的数据才能穿越，这一点与端口限制型 NAT 是一致的。</p>
+<p>但它与端口限制型 NAT 最大的不同在于，如果 host 主机访问 A 时，它会在 NAT 上重新开一个“洞”，而不会使用之前访问 B 时打开的“洞”。也就是说对称型 NAT 对每个连接都使用不同的端口，甚至更换 IP 地址，而端口限制型 NAT 的多个连接则使用同一个端口，这对称型 NAT 与端口限制型 NAT 最大的不同.</p>
+<p><img src="/2019/11/04/WebRTC/webrtc10-symmetric.png" alt></p>
+<p><code>NAT 类型检测</code>步骤</p>
+<ul>
+<li>判断是否有 NAT 防护</li>
+<li>探测 NAT 环境</li>
+</ul>
+<p><img src="/2019/11/04/WebRTC/webrtc10-nat-check.png" alt></p>
+<h1 id="STUN协议"><a href="#STUN协议" class="headerlink" title="STUN协议"></a>STUN协议</h1><ul>
+<li>STUN存在的目的就是进行NAT穿越。</li>
+<li>STUN是典型的客户端/服务器模式，即：客户端发送请求，服务端进行相应。</li>
+</ul>
+<p>STUN有着两套规范，分别是：<br><code>RFC3489</code>Simple Traversal of UDP Through NAT</p>
+<p>RFC3489定义属性<br>| 属性 | 作用 |  |<br>| :—–| :— | :—- |<br>| 0x001 | mapped-address | 获取客户端映射地址 |<br>| 0x002 | response-address | 指明对于mapped-address的相应应该由哪里发送 |<br>| 0x003 | change-request | 请求服务端使用不同的IP和端口发送响应 |<br>| 0x004 | souce-address | 制定服务器的IP和端口 |<br>| 0x005 | change-addresss | 它是change-addresss请求的响应 |<br>| 0x006 | user-name | 用于安全验证 |<br>| 0x007 | password | 用于安全验证 |<br>| 0x008 | message-integrity | 消息完整性验证 |<br>| 0x009 | error-code | 错误码 |<br>| 0x00a | unknow-attributes | 未知属性 |<br>| 0x00b | peflected-from | 拒约 |</p>
+<p><code>RFC5389</code>Session Traversal Utilities for NAT（它是UDP和TCP都有用到的）</p>
+<h1 id="TURN协议"><a href="#TURN协议" class="headerlink" title="TURN协议"></a>TURN协议</h1><ul>
+<li>目的是解决堆成NAT无法穿越的问题</li>
+<li>其建立在STUN之上，消息格式使用STUN格式消息</li>
+<li>TURN Client要求服务端分配一个公共IP和Port用于接收或发送数据</li>
+</ul>
+<p><img src="/2019/11/04/WebRTC/turn-demo.png" alt></p>
+<h1 id="ICE框架"><a href="#ICE框架" class="headerlink" title="ICE框架"></a>ICE框架</h1><ul>
+<li>收集Candidate（本机所有IP和制定端口）</li>
+<li>对Candidate Pair 排序</li>
+<li>连通性检查</li>
+</ul>
+<p>什么是 Candidate?<br>它表示 WebRTC 与远端通信时使用的协议、IP 地址和端口，一般由以下字段组成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	IP: xxx.xxx.xxx.xxx,</span><br><span class="line">	port: number,</span><br><span class="line">	<span class="built_in">type</span>: host/srflx/relay,</span><br><span class="line">	priority: number,</span><br><span class="line">	protocol: UDP/TCP,</span><br><span class="line">	usernameFragment: string</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，候选者类型中的 host 表示本机候选者，srflx 表示内网主机映射的外网的地址和端口，relay 表示中继候选者。</p>
+<h1 id="SDP"><a href="#SDP" class="headerlink" title="SDP"></a>SDP</h1><p><code>SDP</code>session description protocol，它是一种信息格式的描述标准，本身不属于传输协议，但是可以被其他传输协议用来交换必要的信息。</p>
+<h1 id="RTP-RTCP"><a href="#RTP-RTCP" class="headerlink" title="RTP/RTCP"></a>RTP/RTCP</h1><p> 一般情况下，在实时互动直播系统传输音视频数据流时，我们并不直接将音视频数据流交给 UDP 传输，而是先给音视频数据加个 RTP 头，然后再交给 UDP 进行传输。</p>
+<p>在使用 RTP 包传输数据时，难免会发生丢包、乱序、抖动等问题，但在处理这些问题之前，它首先要让各端都知道它们自己的网络质量到底是怎样的，这就是 RTCP 的作用。</p>
+<p>各协议头字段如下，SSRC为共享媒体流的源。</p>
+<p><img src="/2019/11/04/WebRTC/RTP-protocol-header.png" alt="RTP"></p>
+<p><img src="/2019/11/04/WebRTC/RTCP-protocol-header.png" alt="RTCP"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/FFmpeg/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/04/FFmpeg/" class="post-title-link" itemprop="url">FFmpeg</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-04 01:54:31" itemprop="dateCreated datePublished" datetime="2019-11-04T01:54:31+08:00">2019-11-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-29 12:51:40" itemprop="dateModified" datetime="2020-03-29T12:51:40+08:00">2020-03-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
+                    <span itemprop="name">FFmpeg</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h1><p><a href="http://ffmpeg.org/download.html" target="_blank" rel="noopener">FFmpeg</a>是一个音视频处理库，提供了如 ffmpeg, ffplay, ffprobe，来编辑你的音视频文件。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>源码安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">➜  GitHub git <span class="built_in">clone</span> https://git.ffmpeg.org/ffmpeg.git ffmpeg</span><br><span class="line">Cloning into <span class="string">'ffmpeg'</span>...</span><br><span class="line">remote: Counting objects: 588505, <span class="keyword">done</span>.</span><br><span class="line">remote: Compressing objects: 100% (120835/120835), <span class="keyword">done</span>.</span><br><span class="line">remote: Total 588505 (delta 471727), reused 581424 (delta 466456)</span><br><span class="line">Receiving objects: 100% (588505/588505), 138.43 MiB | 2.74 MiB/s, <span class="keyword">done</span>.</span><br><span class="line">Resolving deltas: 100% (471727/471727), <span class="keyword">done</span>.</span><br><span class="line">Checking out files: 100% (7264/7264), <span class="keyword">done</span>.</span><br><span class="line">➜  GitHub <span class="built_in">cd</span> ffmpeg </span><br><span class="line">➜  ffmpeg git:(master) ls</span><br><span class="line">CONTRIBUTING.md  LICENSE.md       ffbuild          libpostproc</span><br><span class="line">COPYING.GPLv2    MAINTAINERS      fftools          libswresample</span><br><span class="line">COPYING.GPLv3    Makefile         libavcodec       libswscale</span><br><span class="line">COPYING.LGPLv2.1 README.md        libavdevice      presets</span><br><span class="line">COPYING.LGPLv3   RELEASE          libavfilter      tests</span><br><span class="line">CREDITS          compat           libavformat      tools</span><br><span class="line">Changelog        configure        libavresample</span><br><span class="line">INSTALL.md       doc              libavutil</span><br><span class="line">➜  ffmpeg git:(master) ./configure --<span class="built_in">help</span></span><br><span class="line">➜  ffmpeg git:(master) ./configure --<span class="built_in">help</span> | more </span><br><span class="line">Usage: configure [options]</span><br><span class="line">Options: [defaults <span class="keyword">in</span> brackets after descriptions]</span><br><span class="line"></span><br><span class="line">➜  ffmpeg git:(master) ./configure --prefix=/usr/<span class="built_in">local</span>/ffmpeg --<span class="built_in">enable</span>-gpl  --<span class="built_in">enable</span>-nonfree  --<span class="built_in">enable</span>-libfdk-aac  --<span class="built_in">enable</span>-libx264   --<span class="built_in">enable</span>-libx265  --<span class="built_in">enable</span>-filter=delogo  --<span class="built_in">enable</span>-debug  --<span class="built_in">disable</span>-optimizations --<span class="built_in">enable</span>-libspeex  --<span class="built_in">enable</span>-videotoolbox  --<span class="built_in">enable</span>-shared  --<span class="built_in">enable</span>-pthreads  --<span class="built_in">enable</span>-version3  --<span class="built_in">enable</span>-hardcoded-tables --cc=clang --host-cflags=  --host-ldflags=</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">报错、报错、报错、报错、</span><br><span class="line">nasm/yasm not found or too old. Use --<span class="built_in">disable</span>-x86asm <span class="keyword">for</span> a crippled build.</span><br><span class="line">ERROR: libfdk_aac not found</span><br><span class="line">ERROR: speex not found using pkg-config</span><br><span class="line">ERROR: libx264 not found</span><br><span class="line"></span><br><span class="line">前面三种都可以通过brew install来解决，但是libx264怎么搞都拉不下。。。</span><br></pre></td></tr></table></figure>
+
+<p>通过brew安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">➜  ffmpeg git:(master) brew install ffmpeg</span><br><span class="line">Updating Homebrew...</span><br><span class="line">==&gt; Installing dependencies <span class="keyword">for</span> ffmpeg: aom,,,,</span><br><span class="line"></span><br><span class="line">==&gt; Caveats</span><br><span class="line">gettext is keg-only, <span class="built_in">which</span> means it was not symlinked into /usr/<span class="built_in">local</span>,</span><br><span class="line">because macOS provides the BSD gettext library &amp; some software gets confused <span class="keyword">if</span> both are <span class="keyword">in</span> the library path.</span><br><span class="line"></span><br><span class="line">If you need to have gettext first <span class="keyword">in</span> your PATH run:</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">'export PATH="/usr/local/opt/gettext/bin:$PATH"'</span> &gt;&gt; ~/.zshrc</span><br><span class="line"></span><br><span class="line">For compilers to find gettext you may need to <span class="built_in">set</span>:</span><br><span class="line">  <span class="built_in">export</span> LDFLAGS=<span class="string">"-L/usr/local/opt/gettext/lib"</span></span><br><span class="line">  <span class="built_in">export</span> CPPFLAGS=<span class="string">"-I/usr/local/opt/gettext/include"</span></span><br><span class="line">==&gt; Caveats</span><br><span class="line">libffi is keg-only, <span class="built_in">which</span> means it was not symlinked into /usr/<span class="built_in">local</span>,</span><br><span class="line">because some formulae require a newer version of libffi.</span><br><span class="line"></span><br><span class="line">For compilers to find libffi you may need to <span class="built_in">set</span>:</span><br><span class="line">  <span class="built_in">export</span> LDFLAGS=<span class="string">"-L/usr/local/opt/libffi/lib"</span></span><br><span class="line"></span><br><span class="line">For pkg-config to find libffi you may need to <span class="built_in">set</span>:</span><br><span class="line">  <span class="built_in">export</span> PKG_CONFIG_PATH=<span class="string">"/usr/local/opt/libffi/lib/pkgconfig"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">==&gt; Caveats</span><br><span class="line">==&gt; gettext</span><br><span class="line">gettext is keg-only, <span class="built_in">which</span> means it was not symlinked into /usr/<span class="built_in">local</span>,</span><br><span class="line">because macOS provides the BSD gettext library &amp; some software gets confused <span class="keyword">if</span> both are <span class="keyword">in</span> the library path.</span><br><span class="line"></span><br><span class="line">If you need to have gettext first <span class="keyword">in</span> your PATH run:</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">'export PATH="/usr/local/opt/gettext/bin:$PATH"'</span> &gt;&gt; ~/.zshrc</span><br><span class="line"></span><br><span class="line">For compilers to find gettext you may need to <span class="built_in">set</span>:</span><br><span class="line">  <span class="built_in">export</span> LDFLAGS=<span class="string">"-L/usr/local/opt/gettext/lib"</span></span><br><span class="line">  <span class="built_in">export</span> CPPFLAGS=<span class="string">"-I/usr/local/opt/gettext/include"</span></span><br><span class="line"></span><br><span class="line">==&gt; libffi</span><br><span class="line">libffi is keg-only, <span class="built_in">which</span> means it was not symlinked into /usr/<span class="built_in">local</span>,</span><br><span class="line">because some formulae require a newer version of libffi.</span><br><span class="line"></span><br><span class="line">For compilers to find libffi you may need to <span class="built_in">set</span>:</span><br><span class="line">  <span class="built_in">export</span> LDFLAGS=<span class="string">"-L/usr/local/opt/libffi/lib"</span></span><br><span class="line"></span><br><span class="line">For pkg-config to find libffi you may need to <span class="built_in">set</span>:</span><br><span class="line">  <span class="built_in">export</span> PKG_CONFIG_PATH=<span class="string">"/usr/local/opt/libffi/lib/pkgconfig"</span></span><br><span class="line"></span><br><span class="line">==&gt; unbound</span><br><span class="line">To have launchd start unbound now and restart at startup:</span><br><span class="line">  sudo brew services start unbound</span><br><span class="line">==&gt; glib</span><br><span class="line">Bash completion has been installed to:</span><br><span class="line">  /usr/<span class="built_in">local</span>/etc/bash_completion.d</span><br><span class="line">==&gt; tesseract</span><br><span class="line">This formula contains only the <span class="string">"eng"</span>, <span class="string">"osd"</span>, and <span class="string">"snum"</span> language data files.</span><br><span class="line">If you need any other supported languages, run `brew install tesseract-lang`.</span><br></pre></td></tr></table></figure>
+
+
+<p><code>brew info ffmpeg</code>可以看到x264, x265这些包都是有安装的。升级则通过<code>brew update &amp;&amp; brew upgrade ffmpeg</code>.</p>
+<p>第二种方式安装连环境变量都不需要设置，完美极了。</p>
+<h1 id="目录及作用"><a href="#目录及作用" class="headerlink" title="目录及作用"></a>目录及作用</h1><ul>
+<li>libavcodec： 提供了一系列编码器的实现。</li>
+<li>libavformat： 实现在流协议，容器格式及其本IO访问。</li>
+<li>libavutil： 包括了hash器，解码器和各利工具函数。</li>
+<li>libavfilter： 提供了各种音视频过滤器。</li>
+<li>libavdevice： 提供了访问捕获设备和回放设备的接口。</li>
+<li>libswresample： 实现了混音和重采样。</li>
+<li>libswscale： 实现了色彩转换和缩放工能。</li>
+</ul>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p><code>音／视频流</code> 在音视频领域，我们把一路音／视频称为一路流。如我们小时候经常使用VCD看港片，在里边可以选择粤语或国语声音，其实就是CD视频文件中存放了两路音频流，用户可以选择其中一路进行播放。</p>
+<p><code>容器</code> 我们一般把 MP4､ FLV、MOV等文件格式称之为容器。也就是在这些常用格式文件中，可以存放多路音视频文件。以 MP4 为例，就可以存放一路视频流，多路音频流，多路字幕流。</p>
+<p><code>channel</code> 是音频中的概念，称之为声道。在一路音频流中，可以有单声道，双声道或立体声。</p>
+<p>参考链接：</p>
+<p><a href="https://blog.csdn.net/weixin_33985507/article/details/94470495" target="_blank" rel="noopener">https://blog.csdn.net/weixin_33985507/article/details/94470495</a></p>
+<p><a href="https://blog.csdn.net/leixiaohua1020/article/details/15811977" target="_blank" rel="noopener">https://blog.csdn.net/leixiaohua1020/article/details/15811977</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/01/Swift%E5%9F%BA%E7%A1%8001/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/01/Swift%E5%9F%BA%E7%A1%8001/" class="post-title-link" itemprop="url">Swift基础01</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-01 23:59:54" itemprop="dateCreated datePublished" datetime="2019-11-01T23:59:54+08:00">2019-11-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-14 01:04:25" itemprop="dateModified" datetime="2019-11-14T01:04:25+08:00">2019-11-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h2><h3 id="使用let关键字来声明常量"><a href="#使用let关键字来声明常量" class="headerlink" title="使用let关键字来声明常量"></a>使用let关键字来声明常量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> temp = 10</span><br></pre></td></tr></table></figure>
+<h3 id="使用var关键字来声明变量"><a href="#使用var关键字来声明变量" class="headerlink" title="使用var关键字来声明变量"></a>使用var关键字来声明变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var temp = 0</span><br><span class="line">temp = 10</span><br></pre></td></tr></table></figure>
+<h3 id="可以在一行中声明多个变量或常量，用逗号分隔"><a href="#可以在一行中声明多个变量或常量，用逗号分隔" class="headerlink" title="可以在一行中声明多个变量或常量，用逗号分隔"></a>可以在一行中声明多个变量或常量，用逗号分隔</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var x=0.1, y=10.1, z=1.0</span><br></pre></td></tr></table></figure>
+<h3 id="类型标注"><a href="#类型标注" class="headerlink" title="类型标注"></a>类型标注</h3><p>在声明一个变量或常量的时候提供类型标注，来明确变量或常量能够储存值的类型</p>
+<p>添加类型标注的方法是在变量或常量的名字后边加一个冒号，再跟一个空格，最后加上要使用的类型名称</p>
+<p>可以在一行中定义多个相关的变量为相同类型，用逗号分隔，只要在最后的变量名字后边加上类型标注</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var msg: String</span><br><span class="line">msg = <span class="string">"message"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="变量和常量命名"><a href="#变量和常量命名" class="headerlink" title="变量和常量命名"></a>变量和常量命名</h3><p>几乎可以使用任何自负，甚至包括Unicode字符</p>
+<p>不能包括空白字符、数学符号、箭头、保留的（或无效的）Unicode码位、连线和制表符。也不能以数字开头。</p>
+<h3 id="打印常量和变量"><a href="#打印常量和变量" class="headerlink" title="打印常量和变量"></a>打印常量和变量</h3><p>print</p>
+<p>字符串插值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> str = <span class="string">"show string"</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"显示str\(str)"</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h2><h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><p>8，16，32，64位编码的有符号和无符号整数（例如：UInt8,Int8）</p>
+<p>通过min和max属性访问每个整数类型的最小值和最大值</p>
+<p>Int，拥有与当前平台的原生字相同的长度；UInt，与平台长度相关的无符号整数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"UInt8 min \(UInt8.min), UInt8 max \(UInt8.max)"</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><p> Double 64位浮点数，至少有15位数字的精度</p>
+<p> Float 32位浮点数，至少有6位数字的精度</p>
+<h3 id="Bool"><a href="#Bool" class="headerlink" title="Bool"></a>Bool</h3><p>表示true和false</p>
+<p>Swift的类型安全机制会阻止你用一个非布尔量的值替代掉Bool</p>
+<h3 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h3><p><img src="/2019/11/01/Swift%E5%9F%BA%E7%A1%8001/Swift_%E6%95%B0%E5%80%BC%E8%8C%83%E5%9B%B4.png" alt="Swift_数值范围"></p>
+<h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3><p> 类型别名是一个为已存在类型定义的一个可选择的名字<br> <code>typealias</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typealias AudioSample = UInt8</span><br><span class="line"><span class="built_in">let</span> sample: AudioSample = 32</span><br></pre></td></tr></table></figure>
+
+<h2 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h2><h3 id="使用Tuple组合多个值"><a href="#使用Tuple组合多个值" class="headerlink" title="使用Tuple组合多个值"></a>使用Tuple组合多个值</h3><p>元组把多个值合并成单一的复合型的值</p>
+<p>元组内的值可以是任何类型，而且可以不必是同一类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> error = (1, <span class="string">"没有权限"</span>)</span><br><span class="line"><span class="built_in">print</span>(error.0)</span><br><span class="line"><span class="built_in">print</span>(error.1)</span><br></pre></td></tr></table></figure>
+<h3 id="元素命名"><a href="#元素命名" class="headerlink" title="元素命名"></a>元素命名</h3><p>元组中的每一个元素可以制定对应的元素名称</p>
+<p>如果没有制定名称的元素也可以使用下标的方式来引用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> error = (error: 1,  errorMsg: <span class="string">"没有权限"</span>)</span><br><span class="line"><span class="built_in">print</span>(error.error)</span><br><span class="line"><span class="built_in">print</span>(error.errorMsg)</span><br></pre></td></tr></table></figure>
+<h3 id="Tuple修改"><a href="#Tuple修改" class="headerlink" title="Tuple修改"></a>Tuple修改</h3><p>用var定义的元组就是可变元组，let定义的就是不可变元组</p>
+<p><code>不管是可变还是不可变元组，元组在创建后就不能增加和删除元素</code></p>
+<p>可以对可变元组的元素进行修改，但是不能改变其类型</p>
+<p>Any类型可以改为任何类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var error:(errorCode: Int, errorMsg:Any) = (errorCode: 1, errorMsg: <span class="string">"没有权限"</span>)</span><br><span class="line">error.errorCode = 2</span><br><span class="line">error.errorMsg = 3</span><br><span class="line"><span class="built_in">print</span>(error)</span><br></pre></td></tr></table></figure>
+<h3 id="分解"><a href="#分解" class="headerlink" title="分解"></a>分解</h3><p>可以将一个元组的内容分解成单独的常量或变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> error = (1, <span class="string">"没有权限"</span>)</span><br><span class="line"><span class="built_in">let</span> (error, errorMsg) = error</span><br><span class="line"><span class="built_in">print</span>(error)</span><br><span class="line"><span class="built_in">print</span>(errorMsg)</span><br></pre></td></tr></table></figure>
+<p>如果只需要使用其中的一部分数据，不需要的数据可以用下划线<code>_</code>代替</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> error = (1, <span class="string">"没有权限"</span>)</span><br><span class="line"><span class="built_in">let</span> (_, errorMsg) = error</span><br><span class="line"><span class="built_in">print</span>(errorMsg)</span><br></pre></td></tr></table></figure>
+<h3 id="作为函数返回值"><a href="#作为函数返回值" class="headerlink" title="作为函数返回值"></a>作为函数返回值</h3><p>使用Tuple为函数返回多个值</p>
+<p>返回值的Tuple可以在函数的返回类型部分被命名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func requestWithUrl(url: String) -&gt; (errorCode: Int, errorMsg: String) &#123;</span><br><span class="line">    <span class="built_in">return</span> (1, <span class="string">"没有权限"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> error = requestWithUrl(url: <span class="string">""</span>)</span><br><span class="line"><span class="built_in">print</span>(error)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h2><p>通过在变量类型后面加<code>?</code>表示：这里有一个值，它表示x，或者这里根本没有值</p>
+<p>可以通过给可选变量赋值一个nil来将之设置为没有值</p>
+<p>在Swift中，nil不是指针，他是值缺失的一种特殊类型，任何类型的可选类项都可以设置成nil而不仅仅是对西那个类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var str : String? = nil</span><br></pre></td></tr></table></figure>
+
+<h3 id="Optional-if"><a href="#Optional-if" class="headerlink" title="Optional-if"></a>Optional-if</h3><p>可选项是没法直接食用的，需要用!展开之后才能使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str : String? = <span class="string">"abc"</span></span><br><span class="line"><span class="keyword">if</span> str != nil &#123;</span><br><span class="line">    <span class="built_in">let</span> cont = str!.count</span><br><span class="line">    <span class="built_in">print</span>(count)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Optional-绑定"><a href="#Optional-绑定" class="headerlink" title="Optional-绑定"></a>Optional-绑定</h3><p>可以使用可选项的绑定来判断是否包含值，如果包含就把值赋给一个临时的常量或者变量</p>
+<p>可选绑定可以与if和while的语句使用来检查可选项内部的值，并赋值给一个变量或常量 </p>
+<p>同一个if语句中包含多个可选项绑定时，用逗号分隔开即可。如果人一个选项绑定结果是nil或者布尔值为false，那么整个if判断会被看作false</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str : String? = <span class="string">"abc"</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">let</span> actualStr = str &#123;</span><br><span class="line">    <span class="built_in">let</span> cont = str!.count</span><br><span class="line">    <span class="built_in">print</span>(count)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Optional-隐式展开"><a href="#Optional-隐式展开" class="headerlink" title="Optional-隐式展开"></a>Optional-隐式展开</h3><p>有些可选项一旦被设定值之后，就会一直拥有值，在这种情况下，就可以去掉检查的需求，也不必每次访问的时候都进行展开</p>
+<p>通过在声明的类型后边添加一个叹号<code>!</code>而非问好来书写隐式展开可选项</p>
+<p>隐式展开可选项主要被用于Swift类的初始化过程中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str : String! = <span class="string">"abc"</span></span><br><span class="line"><span class="built_in">let</span> cont = str!.count</span><br><span class="line"><span class="built_in">print</span>(count)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Optional-可选链"><a href="#Optional-可选链" class="headerlink" title="Optional-可选链"></a>Optional-可选链</h3><p>可选项后面加问号</p>
+<p>如果可选项不为nil，返回一个可选项结果，否则返回nil</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var str : String? = <span class="string">"abc"</span></span><br><span class="line"><span class="built_in">let</span> cont = str?.count</span><br><span class="line"><span class="keyword">if</span> count != nil &#123;</span><br><span class="line">    <span class="built_in">let</span> lastIndex = count! - 1</span><br><span class="line">    <span class="built_in">print</span>(lastIndex)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="初始化空串"><a href="#初始化空串" class="headerlink" title="初始化空串"></a>初始化空串</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var emptyString = <span class="string">""</span></span><br><span class="line">var anotherEmptyString = String()</span><br><span class="line"><span class="keyword">if</span> emptyString.isEmpty &#123;</span><br><span class="line">    <span class="built_in">print</span>(Noting<span class="string">")</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><p>字符串字面亮是被双引号<code>&quot;</code>包裹的固定顺序的文本字符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var str = <span class="string">"some string"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="多行字面量"><a href="#多行字面量" class="headerlink" title="多行字面量"></a>多行字面量</h3><p>字多行符串字面量是被三个双引号<code>&quot;&quot;&quot;</code>引起来的一系列字符</p>
+<p>开始和结束默认不会有换行符</p>
+<p>反斜杠只会在代码阅读上方便，输出时没有实际的换行功能<code>\</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> str = <span class="string">""</span><span class="string">"var emptyString = "</span><span class="string">" \</span></span><br><span class="line"><span class="string">var anotherEmptyString = String() \</span></span><br><span class="line"><span class="string">if emptyString.isEmpty &#123; \</span></span><br><span class="line"><span class="string">    print(Noting"</span>) \</span><br><span class="line"><span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">print(str)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串里的特殊字符"><a href="#字符串里的特殊字符" class="headerlink" title="字符串里的特殊字符"></a>字符串里的特殊字符</h3><p>转义特殊字符</p>
+<p>任意的Unicode标量  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="扩展字符串分隔符"><a href="#扩展字符串分隔符" class="headerlink" title="扩展字符串分隔符"></a>扩展字符串分隔符</h3><p>在字符串字面量中放置扩展分隔符来在字符串中包含特殊字符而不让它们真的生效</p>
+<p>将字符串放在双引号内并由井号#包裹</p>
+<p>如果字符串里有”#则首尾需要两个##(首尾##与包含的”#不一样即可)</p>
+<p>如果你需要字符串中某个特殊符号的效果，使用匹配你包裹的#号数量的#号，并在前面添加转义符号\</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> str = <span class="comment">#"122\n\n444"#</span></span><br><span class="line"><span class="built_in">let</span> str = <span class="comment">#"122\#n\n444"#</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串的可变形"><a href="#字符串的可变形" class="headerlink" title="字符串的可变形"></a>字符串的可变形</h3><p>var 可修改<br>let 不可修改</p>
+<h3 id="字符串是值类型"><a href="#字符串是值类型" class="headerlink" title="字符串是值类型"></a>字符串是值类型</h3><p>String 值在传递给方法或者函数的时候会被复制过去</p>
+<p>赋值给常量和变量的时候也是一样</p>
+<h3 id="操作字符"><a href="#操作字符" class="headerlink" title="操作字符"></a>操作字符</h3><p>for-in 循环遍历String中的每一个独立的Character</p>
+<p>Character类型</p>
+<p>String值可以通过传入Character 数组来构造</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> character <span class="keyword">in</span> <span class="string">"abcdef"</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(character)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> tempCharacters: [Character] = [<span class="string">"d"</span>,<span class="string">"f"</span>,<span class="string">"d"</span>,<span class="string">"h"</span>]</span><br><span class="line"><span class="built_in">let</span> str = String(tempCharacters)</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><p>通过加运算符<code>+</code>创建新字符串</p>
+<p>使用加赋值符号<code>+=</code>在已经存在的String值末尾追加一个String值</p>
+<p>使用String类型的<code>append()</code>方法来给一个String变量的末尾追加character值</p>
+<h3 id="字符串插值"><a href="#字符串插值" class="headerlink" title="字符串插值"></a>字符串插值</h3><p><code>\(some)</code> some代表：混合常量、变量、字面量和表达式的字符串面量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="comment">#"1 * 3 = \#(1*3)."#)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串索引"><a href="#字符串索引" class="headerlink" title="字符串索引"></a>字符串索引</h3><p>每个String值都有相关的索引类型，String.index，它相当于每个Character在字符串重的位置</p>
+<p>startIndex属性来访问String中第一个Character的位置。endIndex属性就是String中最后一个字符后的位置</p>
+<p>endIndex属性并不是字符串下表脚本的合法实际参数</p>
+<p>如果String为空，则startIndex与endIndex相等</p>
+<p>使用index(before:)和index(after:)方法来访问给定索引的前后</p>
+<p>要访问给定索引更远的索引，你可以使用index(_:offsetBy:)</p>
+<p>使用indices属性来访问字符串中每个字符的索引</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> hello = <span class="string">"hello"</span></span><br><span class="line">hello[hello.startIndex]</span><br><span class="line">hello[hello.index(before: hello.endIndex)]</span><br><span class="line">hello[hello.index(after: hello.startIndex)]</span><br><span class="line"><span class="built_in">let</span> index = hello.index(hello.startIndex, offsetBy: 2)</span><br><span class="line">hello[index]</span><br></pre></td></tr></table></figure>
+
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>插入字符，使用insert(_:at:)方法</p>
+<p>插入另一个字符串的内容到特定的索引，使用insert(contentsOs:at:)方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var welcome = <span class="string">"hello"</span></span><br><span class="line">welcome.insert(<span class="string">"!"</span>, at: welcome.endIndex)</span><br><span class="line"></span><br><span class="line">welcome.insert(contentsOf: <span class="string">"ererer"</span>, at: welcome.index(before: welcome.endIndex))</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>移除字符串remove(at:)</p>
+<p>移除特定范围的字符串removeSubrange(range)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">welcome.remove(at: welcome.index(before: welcome.endIndex))</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> range = welcome.index(welcome.endIndex, offsetBy: -1)..&lt;welcome.endIndex</span><br><span class="line">welcome.removeSubrange(range)</span><br></pre></td></tr></table></figure>
+
+<h3 id="子字符串"><a href="#子字符串" class="headerlink" title="子字符串"></a>子字符串</h3><p>使用下表或者累死prefix(_:)的方法得到的子字符串是SubString类型</p>
+<p>SubString拥有String的大部分方法</p>
+<p>SubString可以转成String类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> index3 = hello.lastIndex(of: <span class="string">"o"</span>) ?? hello.endIndex</span><br><span class="line"><span class="built_in">let</span> begin = hello[..&lt;index3]</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> newHello = String(begin)</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3><p>字符串和字符相等性(==和==)</p>
+<p>前缀相等hasPrefix(_:)</p>
+<p>后缀相等hasSuffix(_:)</p>
+<h2 id="赋值和算术运算符"><a href="#赋值和算术运算符" class="headerlink" title="赋值和算术运算符"></a>赋值和算术运算符</h2><p>一元运算符、二元运算符、三元运算符</p>
+<p>赋值运算符不会返回值</p>
+<h2 id="如何处理算术结果溢出"><a href="#如何处理算术结果溢出" class="headerlink" title="如何处理算术结果溢出"></a>如何处理算术结果溢出</h2><p>在默认情况下，当一个整数赋超过它容量的值时，Swift会报错而不是生成一个无效的数，给我们操作过大或者过小的数的时候提供了额外的安全性</p>
+<p>同时提供了三个算术溢出运算符来让系统支持整数溢出的运算</p>
+<p>溢出加法<code>&amp;+</code></p>
+<p>溢出减法<code>&amp;-</code></p>
+<p>溢出乘法<code>&amp;*</code></p>
+<h3 id="值溢出"><a href="#值溢出" class="headerlink" title="值溢出"></a>值溢出</h3><p>溢出也会发生在有符号整形数值上</p>
+<p>对于无符号与有符号整形数值来说，当出现上溢时，它们会从数值所能容纳的最大数变成最小的数。同样，当发生下溢时，它们会从所能容纳的最小数变成最大的数。</p>
+<h2 id="合并空值运算符"><a href="#合并空值运算符" class="headerlink" title="合并空值运算符??"></a>合并空值运算符<code>??</code></h2><p>合并空值运算符(a??b)如果选项a有值则展开，如果没有值，是nil，则返回默认值b</p>
+<p>表达式a必须是一个可选类型。表达式b必须与a的存储类型相同。</p>
+<p>实际上它就是相当于三目运算符<code>_?_:_</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func addTwoNum(num1: Int?, num2: Int2?) -&gt; Int &#123;</span><br><span class="line">    <span class="built_in">return</span> (num1 ?? 0) +(num2 ?? 0)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="区间运算符"><a href="#区间运算符" class="headerlink" title="区间运算符"></a>区间运算符</h2><h3 id="闭区间运算符a-b"><a href="#闭区间运算符a-b" class="headerlink" title="闭区间运算符a...b"></a>闭区间运算符<code>a...b</code></h3><p>定义了从a到b的一组范围，并且包含a和b</p>
+<p>a的值不能大于b的值</p>
+<h3 id="半开区间运算符a-lt-b"><a href="#半开区间运算符a-lt-b" class="headerlink" title="半开区间运算符a..&lt;b"></a>半开区间运算符<code>a..&lt;b</code></h3><p>定义了从a到b但不包含b的区间</p>
+<p>a的值不能大于b的值，如果a与b的值相等，那返回的区间将会是空的</p>
+<h3 id="单侧区间"><a href="#单侧区间" class="headerlink" title="单侧区间"></a>单侧区间</h3><p>比如说，一个包含数组所有的元素的区间，从索引2到数组的结束。在这种情况下，你可以省略区间运算符一侧的值。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names[2...] &#123;</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names[...2] &#123;</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>倒序索引</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> (0..&lt;10&gt;).<span class="function"><span class="title">reversed</span></span>()&#123;</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>区间运算符在字符串上的运用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var welcome = <span class="string">"hello,world"</span></span><br><span class="line"><span class="built_in">let</span> range = welcome.startIndex...welcome.index(welcome.endIndex, offsetBy: -6)</span><br><span class="line">welcome.removeSubrange(range)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(welcome)]</span><br></pre></td></tr></table></figure>
+
+<p>区间运算符在比较类型上的运用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> welcome = <span class="string">"hello,world"</span></span><br><span class="line"><span class="built_in">let</span> interval = <span class="string">"a"</span>...<span class="string">"z"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> welcome &#123;</span><br><span class="line">    <span class="keyword">if</span> !interval.contains(String(c)) &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"\(c)不是小写字母"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><h3 id="位取反运算符"><a href="#位取反运算符" class="headerlink" title="位取反运算符"></a>位取反运算符</h3><p>位取反运算符(~)是对所有位的数字进行取反操作</p>
+<h3 id="位与运算符"><a href="#位与运算符" class="headerlink" title="位与运算符"></a>位与运算符</h3><p>位与运算符(&amp;)是对两个数的比特位进行合并。它会返回一个新的数，只有当这两个数都是1的时候才能返回1。</p>
+<h3 id="位或运算符"><a href="#位或运算符" class="headerlink" title="位或运算符"></a>位或运算符</h3><p>位或运算符(|)是对两个数的比特位进行比较。它会返回一个新的数，只要两个操作位任意一个为1时，那么对应的位数就为1。</p>
+<h3 id="位异或运算符"><a href="#位异或运算符" class="headerlink" title="位异或运算符"></a>位异或运算符</h3><p>位异或运算符(^))，当两个操作数的对应位不相同时，那么该数对应的位数就为1。</p>
+<h3 id="位左移和右移运算符"><a href="#位左移和右移运算符" class="headerlink" title="位左移和右移运算符"></a>位左移和右移运算符</h3><p>位左移(&lt;&lt;)和右移运算符(&gt;&gt;)可以吧所有位数的数字向左或向右移动一个确定的位数。</p>
+<p>位座椅和右移具有给整数乘以或除以二的效果。将一个数左移一位相当于把这个数翻倍，将一个数右移一位相当于把这个数减半。</p>
+<h3 id="无符号整数的唯一操作"><a href="#无符号整数的唯一操作" class="headerlink" title="无符号整数的唯一操作"></a>无符号整数的唯一操作</h3><p>用0填充左移或右移后产生的空白位</p>
+<h3 id="有符号整数的移位操作"><a href="#有符号整数的移位操作" class="headerlink" title="有符号整数的移位操作"></a>有符号整数的移位操作</h3><p>第一位表示整数还是负数（0正数，1负数）</p>
+<h3 id="位运算符应用"><a href="#位运算符应用" class="headerlink" title="位运算符应用"></a>位运算符应用</h3><ul>
+<li>两个数字交换</li>
+<li>求赋符号整形数二进制中1的个数</li>
+<li>判断一个整数是否为为2的整数次幂</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/01/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/01/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-01 18:28:06" itemprop="dateCreated datePublished" datetime="2019-11-01T18:28:06+08:00">2019-11-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-06 20:37:38" itemprop="dateModified" datetime="2020-05-06T20:37:38+08:00">2020-05-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"new page title"</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line"></span><br><span class="line">$ hexo d --g</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>Markdown 表格<br><code>-:</code> 设置内容和标题栏居右对齐。<br><code>:-</code> 设置内容和标题栏居左对齐。<br><code>:-:</code> 设置内容和标题栏居中对齐。</p>
+<table>
+<thead>
+<tr>
+<th align="left">左对齐</th>
+<th align="right">右对齐</th>
+<th align="center">居中对齐</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">单元格</td>
+<td align="right">单元格</td>
+<td align="center">单元格</td>
+</tr>
+<tr>
+<td align="left">单元格</td>
+<td align="right">单元格</td>
+<td align="center">单元格</td>
+</tr>
+</tbody></table>
+<p><a href="http://support.typora.io/Draw-Diagrams-With-Markdown/" target="_blank" rel="noopener">tyora 流程图文档</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Sam"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Sam</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/samtake" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;samtake" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:943430195@qq.com" title="E-Mail &amp;rarr; mailto:943430195@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sam</span>
+</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.3
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

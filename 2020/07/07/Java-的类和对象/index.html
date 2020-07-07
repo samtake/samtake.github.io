@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"avatar":"/images/avatar.gif","rounded":false,"rotated":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="类和对象是 Java 中最基本的两个概念，可以说撑起了面向对象编程（OOP）的一片天。对象可以是现实中看得见的任何物体（一只特立独行的猪），也可以是想象中的任何虚拟物体（能七十二变的孙悟空），Java 通过类（class）来定义这些物体，有什么状态（通过字段，或者叫成员变量定义，比如说猪的颜色是纯色还是花色），有什么行为（通过方法定义，比如说猪会吃，会睡觉）。 来，让我来定义一个简单的类给你看看。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 的类和对象">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;07&#x2F;Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1&#x2F;index.html">
+<meta property="og:site_name" content="samtake">
+<meta property="og:description" content="类和对象是 Java 中最基本的两个概念，可以说撑起了面向对象编程（OOP）的一片天。对象可以是现实中看得见的任何物体（一只特立独行的猪），也可以是想象中的任何虚拟物体（能七十二变的孙悟空），Java 通过类（class）来定义这些物体，有什么状态（通过字段，或者叫成员变量定义，比如说猪的颜色是纯色还是花色），有什么行为（通过方法定义，比如说猪会吃，会睡觉）。 来，让我来定义一个简单的类给你看看。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;mmbiz.qpic.cn&#x2F;mmbiz_png&#x2F;z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4qlT4mDRicCQaibG0ZE7cNz2eicA1ZqsQogETnw965kn345ZMKOCQ8kpJA&#x2F;640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https:&#x2F;&#x2F;mmbiz.qpic.cn&#x2F;mmbiz_png&#x2F;z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4Tx5gfpmYOxmM9MD0G0cma6hMeZGNthibEtk4WKeEaBCINn3vz9v1Gyg&#x2F;640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https:&#x2F;&#x2F;mmbiz.qpic.cn&#x2F;mmbiz_png&#x2F;z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4kXJf6Eib5g1EowI1m1cbhy5ib9fCnsj54H60dtg1pQTPtUn2mlIB8U5A&#x2F;640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https:&#x2F;&#x2F;mmbiz.qpic.cn&#x2F;mmbiz_png&#x2F;z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4sicJJJBlGyVFfCibicE0LsViab6xX4tImpdlvOexIfTRE6gtribUISkae5A&#x2F;640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:updated_time" content="2020-07-07T08:44:15.872Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;mmbiz.qpic.cn&#x2F;mmbiz_png&#x2F;z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4qlT4mDRicCQaibG0ZE7cNz2eicA1ZqsQogETnw965kn345ZMKOCQ8kpJA&#x2F;640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+
+<link rel="canonical" href="http://yoursite.com/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Java 的类和对象 | samtake</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">samtake</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">10000*365=27.3972603</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java 的类和对象
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-07 16:36:53 / Modified: 16:44:15" itemprop="dateCreated datePublished" datetime="2020-07-07T16:36:53+08:00">2020-07-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>类和对象是 Java 中最基本的两个概念，可以说撑起了面向对象编程（OOP）的一片天。对象可以是现实中看得见的任何物体（一只特立独行的猪），也可以是想象中的任何虚拟物体（能七十二变的孙悟空），Java 通过类（class）来定义这些物体，有什么状态（通过字段，或者叫成员变量定义，比如说猪的颜色是纯色还是花色），有什么行为（通过方法定义，比如说猪会吃，会睡觉）。</p>
+<p>来，让我来定义一个简单的类给你看看。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>默认情况下，每个 Java 类都会有一个空的构造方法，尽管它在源代码中是缺省的，但却可以通过反编译字节码看到它。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public <span class="function"><span class="title">Pig</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>没错，就是多出来的那个 public Pig() {}，参数是空的，方法体是空的。我们可以通过 new 关键字利用这个构造方法来创建一个对象，代码如下所示：</p>
+<p><code>Pig pig = new Pig();</code><br>当然了，我们也可以主动添加带参的构造方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public Pig(String color) &#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时候，再查看反编译后的字节码时，你会发现缺省的无参构造方法消失了——和源代码一模一样。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public Pig(String color) &#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这意味着无法通过 new Pig() 来创建对象了——编译器会提醒你追加参数。<br><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4qlT4mDRicCQaibG0ZE7cNz2eicA1ZqsQogETnw965kn345ZMKOCQ8kpJA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
+<p>比如说你将代码修改为 new Pig(“纯白色”)，或者添加无参的构造方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public Pig(String color) &#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="function"><span class="title">Pig</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用无参构造方法创建的对象状态默认值为 null（color 字符串为引用类型），如果是基本类型的话，默认值为对应基本类型的默认值，比如说 int 为 0，更详细的见下图。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4Tx5gfpmYOxmM9MD0G0cma6hMeZGNthibEtk4WKeEaBCINn3vz9v1Gyg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
+<p>（图片中有一处错误，boolean 的默认值为 false）</p>
+<p>接下来，我们来创建多个 Pig 对象，它的颜色各不相同。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class PigTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Pig pigNoColor = new Pig();</span><br><span class="line">        Pig pigWhite = new Pig(<span class="string">"纯白色"</span>);</span><br><span class="line">        Pig pigBlack = new Pig(<span class="string">"纯黑色"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你看，我们创建了 3 个不同花色的 Pig 对象，全部来自于一个类，由此可见类的重要性，只需要定义一次，就可以多次使用。</p>
+<p>那假如我想改变对象的状态呢？该怎么办？目前毫无办法，因为没有任何可以更改状态的方法，直接修改 color 是行不通的，因为它的访问权限修饰符是 private 的。</p>
+<p>最好的办法就是为 Pig 类追加 getter/setter 方法，就像下面这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public String <span class="function"><span class="title">getColor</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> color;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void setColor(String color) &#123;</span><br><span class="line">    this.color = color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过 setColor() 方法来修改，通过 getColor() 方法获取状态，它们的权限修饰符是 public 的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Pig pigNoColor = new Pig();</span><br><span class="line">pigNoColor.setColor(<span class="string">"花色"</span>);</span><br><span class="line">System.out.println(pigNoColor.getColor()); // 花色</span><br></pre></td></tr></table></figure>
+<p>为什么要这样设计呢？可以直接将 color 字段的访问权限修饰符换成是 public 的啊，不就和 getter/setter 一样的效果了吗？</p>
+<p>因为有些情况，某些字段是不允许被随意修改的，它只有在对象创建的时候初始化一次，比如说猪的年龄，它只能每年长一岁（举个例子），没有月光宝盒让它变回去。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private int age;</span><br><span class="line"></span><br><span class="line">public int <span class="function"><span class="title">getAge</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void <span class="function"><span class="title">increaseAge</span></span>() &#123;</span><br><span class="line">    this.age++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你看，age 就没有 setter 方法，只有一个每年可以调用一次的 increaseAge() 方法和 getter 方法。如果把 age 的访问权限修饰符更改为 public，age 就完全失去控制了，可以随意将其重置为 0 或者负数。</p>
+<p>访问权限修饰符对于 Java 来说，非常重要，目前共有四种：public、private、protected 和 default（缺省）。</p>
+<p>一个类只能使用 public 或者 default 修饰，public 修饰的类你之前已经见到过了，现在我来定义一个缺省权限修饰符的类给你欣赏一下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class Dog &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>哈哈，其实也没啥可以欣赏的。缺省意味着这个类可以被同一个包下的其他类进行访问；而 public 意味着这个类可以被所有包下的类进行访问。</p>
+<p>假如硬要通过 private 和 protected 来修饰类的话，编译器会生气的，它不同意。<br><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4kXJf6Eib5g1EowI1m1cbhy5ib9fCnsj54H60dtg1pQTPtUn2mlIB8U5A/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
+<p>private 可以用来修饰类的构造方法、字段和方法，只能被当前类进行访问。protected 也可以用来修饰类的构造方法、字段和方法，但它的权限范围更宽一些，可以被同一个包中的类进行访问，或者当前类的子类。</p>
+<p>可以通过下面这张图来对比一下四个权限修饰符之间的差别：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4sicJJJBlGyVFfCibicE0LsViab6xX4tImpdlvOexIfTRE6gtribUISkae5A/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
+<ul>
+<li>同一个类中，不管是哪种权限修饰符，都可以访问；</li>
+<li>同一个包下，private 修饰的无法访问；</li>
+<li>子类可以访问 public 和 protected 修饰的；</li>
+<li>public 修饰符面向世界，哈哈，可以被所有的地方访问到。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/07/07/Java-%E5%85%B3%E9%94%AE%E5%AD%97/" rel="next" title="Java 关键字">
+                  <i class="fa fa-chevron-left"></i> Java 关键字
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Sam"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Sam</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/samtake" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;samtake" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:943430195@qq.com" title="E-Mail &amp;rarr; mailto:943430195@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sam</span>
+</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.3
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

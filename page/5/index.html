@@ -213,6 +213,539 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Golang流媒体网站笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-21 16:15:52" itemprop="dateCreated datePublished" datetime="2020-02-21T16:15:52+08:00">2020-02-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-24 16:17:03" itemprop="dateModified" datetime="2020-02-24T16:17:03+08:00">2020-02-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/architecture.png" alt></p>
+<p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/api.png" alt></p>
+<p>httprouter的使用</p>
+<p>restlet测试插件 </p>
+<h2 id="api"><a href="#api" class="headerlink" title="api"></a>api</h2><h3 id="3-6"><a href="#3-6" class="headerlink" title="3-6"></a>3-6</h3><p>总体思路：<br>handleer-&gt;validation{1.request,2.user}-&gt;business login -&gt;response</p>
+<ol>
+<li>data model</li>
+<li>error handler</li>
+</ol>
+<p>这个错误接口以后都可以这样写了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package defs</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> Err struct &#123;</span><br><span class="line">	Error string `json:<span class="string">"error"</span>`</span><br><span class="line">	ErrorCode string `json:<span class="string">"error_code"</span>`  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> ErrResponse struct &#123;</span><br><span class="line">	HttpSC int</span><br><span class="line">	Error Err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var (</span><br><span class="line">	ErrorRequestBodyParseFailed = ErrResponse&#123;HttpSC: 400, Error: Err&#123;Error: <span class="string">"Request body is not correct"</span>, ErrorCode: <span class="string">"001"</span>&#125;&#125;</span><br><span class="line">	ErrorNotAuthUser = ErrResponse&#123;HttpSC: 401, Error: Err&#123;Error: <span class="string">"User authentication failed."</span>, ErrorCode: <span class="string">"002"</span>&#125;&#125;</span><br><span class="line">	ErrorDBError = ErrResponse&#123;HttpSC: 500, Error: Err&#123;Error: <span class="string">"DB ops failed"</span>, ErrorCode: <span class="string">"003"</span>&#125;&#125;</span><br><span class="line">	ErrorInternalFaults = ErrResponse&#123;HttpSC: 500, Error: Err&#123;Error: <span class="string">"Internal service error"</span>, ErrorCode: <span class="string">"004"</span>&#125;&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-7"><a href="#3-7" class="headerlink" title="3-7"></a>3-7</h3><p>好好理解这里的数据库为什么这样设计</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">create table comments (</span><br><span class="line">	id varchar(64) not null,</span><br><span class="line">	video_id varchar(64),</span><br><span class="line">	author_id int(10),</span><br><span class="line">	content text,</span><br><span class="line">	time datetime default current_timestamp, primary key(id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table sessions (</span><br><span class="line">	session_id tinytext not null,</span><br><span class="line">	TTL tinytext,</span><br><span class="line">	login_name text</span><br><span class="line">);</span><br><span class="line">alter table sessions add primary key (session_id(64));</span><br><span class="line"></span><br><span class="line">create table users (</span><br><span class="line">	id int unsigned not null auto_increment,</span><br><span class="line">	login_name varchar(64),</span><br><span class="line">	<span class="built_in">pwd</span> text not null,</span><br><span class="line">	unique key (login_name),</span><br><span class="line">	primary key (id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table video_del_rec (</span><br><span class="line">	video_id varchar(64) not null,</span><br><span class="line">	primary key (video_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table video_info (</span><br><span class="line">	id varchar(64) not null,</span><br><span class="line">	author_id int(10),</span><br><span class="line">	name text,</span><br><span class="line">	display_ctime text,</span><br><span class="line">	create_time datetime default current_timestamp,</span><br><span class="line">	primary key (id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+<p><code>第三范式(Third Normal Form,3rd NF)</code>就是指表中的所有数据元素不但要能唯一地被主关键字所标识,而且它们之间还必须相互独立,不存在其他的函数关系。也就是说，对于一个满足2nd NF 的数据结构来说，表中有可能存在某些数据元素依赖于其他非关键字数据元素的现象,必须消除。</p>
+<p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/sql-design.png" alt></p>
+<h3 id="3-8"><a href="#3-8" class="headerlink" title="3-8"></a>3-8</h3><p>数据库连接还是参考自己写的这个吧<a href="https://github.com/samtake/goRedisDemo" target="_blank" rel="noopener">demo</a>吧。</p>
+<h3 id="3-10"><a href="#3-10" class="headerlink" title="3-10"></a>3-10</h3><p>api_test.go</p>
+<p>参考<a href="https://samtake.github.io/2020/02/22/Golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">Golang练习笔记</a>23测试讲的更详细。</p>
+<h3 id="3-12"><a href="#3-12" class="headerlink" title="3-12"></a>3-12</h3><p>实现和验证video<br><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/3-12.png" alt></p>
+<h3 id="3-13"><a href="#3-13" class="headerlink" title="3-13"></a>3-13</h3><p>Comments</p>
+<p> <img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/3-13-comments.png" alt><br>评论是需要列表出现的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">func ListComments(vid string, from, to int) ([]*defs.Comment, error) &#123;</span><br><span class="line">	stmtOut, err := dbConn.Prepare(`SELECT comments.id, users.login_name, comments.content FROM comments </span><br><span class="line">		INNER JOIN users ON comments.author_id = users.id </span><br><span class="line">		WHERE comments.video_id = ? AND comments.time &gt; FROM_UNIXTIME(?) AND comments.time &lt;= FROM_UNIXTIME(?)</span><br><span class="line">		ORDER BY comments.time DESC`)</span><br><span class="line"></span><br><span class="line">	var res []*defs.Comment</span><br><span class="line">	</span><br><span class="line">	rows, err := stmtOut.Query(vid, from, to)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Printf(<span class="string">"%s"</span>, err)</span><br><span class="line">		<span class="built_in">return</span> res, err</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> rows.<span class="function"><span class="title">Next</span></span>() &#123;</span><br><span class="line">		var id, name, content string</span><br><span class="line">		<span class="keyword">if</span> err := rows.Scan(&amp;id, &amp;name, &amp;content); err != nil &#123;</span><br><span class="line">			<span class="built_in">return</span> res, err</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		c := &amp;defs.Comment&#123;Id: id, VideoId: vid, Author: name, Content: content&#125;</span><br><span class="line">		res = append(res, c)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	defer stmtOut.Close()</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> res, nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="3-15"><a href="#3-15" class="headerlink" title="3-15"></a>3-15</h3><p><code>session</code>会话，</p>
+<p>session和cookie的区别？</p>
+<p>session负责的流程图：<br><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/3-15-session.png" alt></p>
+<h3 id="3-17"><a href="#3-17" class="headerlink" title="3-17"></a>3-17</h3><p>middleware</p>
+<p>duck typing内容参考<a href="https://samtake.github.io/2020/02/22/Golang%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">Golang练习笔记</a>15。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> middleWareHandler struct &#123;</span><br><span class="line">	r *httprouter.Router</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func NewMiddleWareHandler(r *httprouter.Router) http.Handler &#123;</span><br><span class="line">	m := middleWareHandler&#123;&#125;</span><br><span class="line">	m.r = r</span><br><span class="line">	<span class="built_in">return</span> m</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (m middleWareHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line">	//check session</span><br><span class="line">	validateUserSession(r)</span><br><span class="line"></span><br><span class="line">	m.r.ServeHTTP(w, r)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func RegisterHandlers() *httprouter.Router &#123;</span><br><span class="line">	router := httprouter.New()</span><br><span class="line">    router.POST(<span class="string">"/user"</span>, CreateUser)</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//response</span><br><span class="line"><span class="built_in">type</span> SignedUp struct &#123;</span><br><span class="line">	Success bool `json:<span class="string">"success"</span>`</span><br><span class="line">	SessionId string `json:<span class="string">"session_id"</span>`</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#添了后缀，在使用时，会返回统一的json格式,如下：</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"success"</span>:XXXXX,</span><br><span class="line">    <span class="string">"session_id"</span>:XXXX</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Streaming"><a href="#Streaming" class="headerlink" title="Streaming"></a>Streaming</h2><h3 id="4-1"><a href="#4-1" class="headerlink" title="4-1"></a>4-1</h3><p>Streaming（视频播放）：</p>
+<ul>
+<li>静态视频，非RTMP（直播的那些都是RTMP）</li>
+<li>独立的服务，可独立部署</li>
+<li>统一的api格式</li>
+</ul>
+<h3 id="4-3"><a href="#4-3" class="headerlink" title="4-3"></a>4-3</h3><p><code>流控</code><br><code>token bucket</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#共享通道 instead of shared memory</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> ConnLimiter struct &#123;</span><br><span class="line">	concurrentConn int</span><br><span class="line">	bucket chan int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func NewConnLimiter(cc int) *ConnLimiter &#123;</span><br><span class="line">	<span class="built_in">return</span> &amp;ConnLimiter &#123;</span><br><span class="line">		concurrentConn: cc,</span><br><span class="line">		bucket: make(chan int, cc),</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (cl *ConnLimiter) GetConn() bool &#123;</span><br><span class="line">	<span class="keyword">if</span> len(cl.bucket) &gt;= cl.concurrentConn &#123;</span><br><span class="line">		log.Printf(<span class="string">"Reached the rate limitation."</span>)</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cl.bucket &lt;- 1</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (cl *ConnLimiter) <span class="function"><span class="title">ReleaseConn</span></span>() &#123;</span><br><span class="line">	c :=&lt;- cl.bucket</span><br><span class="line">	log.Printf(<span class="string">"New connction coming: %d"</span>, c)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5"><a href="#4-5" class="headerlink" title="4-5"></a>4-5</h3><p>在http middleware中嵌入流控</p>
+<h2 id="scheduler"><a href="#scheduler" class="headerlink" title="scheduler"></a>scheduler</h2><h3 id="5-1"><a href="#5-1" class="headerlink" title="5-1"></a>5-1</h3><p><code>scheduler</code>任务调度器，某些不能马上处理的任务放到scheduler，让它定期或者延时触发。</p>
+<p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/5-1-scheduler.png" alt></p>
+<h3 id="5-3"><a href="#5-3" class="headerlink" title="5-3"></a>5-3</h3><p>runner的生产消费者模型实现</p>
+<h3 id="5-5"><a href="#5-5" class="headerlink" title="5-5"></a>5-5</h3><p>task</p>
+<p>api-&gt;videoid-&gt;mysql<br>dispatcher-&gt;mysql-&gt;videoid-&gt;datachannel<br>executor-&gt;datachannel-&gt;videoid-&gt;delete video</p>
+<h3 id="5-6"><a href="#5-6" class="headerlink" title="5-6"></a>5-6</h3><p>timer</p>
+<p>setup-&gt;strat{runner task}</p>
+<h3 id="5-7"><a href="#5-7" class="headerlink" title="5-7"></a>5-7</h3><p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/5-7-api.png" alt></p>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="6-1"><a href="#6-1" class="headerlink" title="6-1"></a>6-1</h3><p>Go的模版引擎</p>
+<ul>
+<li>模版引擎是将html解析和元素预置替换生成最终页面的工具</li>
+<li>Go的模版有两种text/template和html/template </li>
+<li>Go的模版采用动态生成的模式</li>
+</ul>
+<p><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/6-1-html-template.png" alt></p>
+<h3 id="6-2"><a href="#6-2" class="headerlink" title="6-2"></a>6-2</h3><p>前端代码架构<br><img src="/2020/02/21/Golang%E6%B5%81%E5%AA%92%E4%BD%93%E7%BD%91%E7%AB%99%E7%AC%94%E8%AE%B0/6-2-web-document.png" alt></p>
+<p>client.go就是起了proxy转发作用，避免跨域作用。</p>
+<h3 id="6-3"><a href="#6-3" class="headerlink" title="6-3"></a>6-3</h3><p>静态页面渲染</p>
+<h3 id="6-4"><a href="#6-4" class="headerlink" title="6-4"></a>6-4</h3><p>sh build.sh</p>
+<h3 id="6-6-api透传！！！"><a href="#6-6-api透传！！！" class="headerlink" title="6-6 api透传！！！"></a>6-6 api透传！！！</h3><h3 id="6-7-proxy转发"><a href="#6-7-proxy转发" class="headerlink" title="6-7 proxy转发"></a>6-7 proxy转发</h3><p><code>net/url</code>  </p>
+<p><code>net/http/httputil</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func proxyVideoHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) &#123;</span><br><span class="line">	u, _ := url.Parse(<span class="string">"http://"</span> + config.GetLbAddr() + <span class="string">":9000/"</span>)</span><br><span class="line">	proxy := httputil.NewSingleHostReverseProxy(u)</span><br><span class="line">	proxy.ServeHTTP(w, r)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func proxyUploadHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) &#123;</span><br><span class="line">	u, _ := url.Parse(<span class="string">"http://"</span> + config.GetLbAddr() + <span class="string">":9000/"</span>)</span><br><span class="line">	proxy := httputil.NewSingleHostReverseProxy(u)</span><br><span class="line">	proxy.ServeHTTP(w, r)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-11"><a href="#6-11" class="headerlink" title="6-11"></a>6-11</h3><p>js</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><h3 id="7-4"><a href="#7-4" class="headerlink" title="7-4"></a>7-4</h3><p>公共配置，即各模块的config文件。</p>
+<h3 id="7-5-vendor"><a href="#7-5-vendor" class="headerlink" title="7-5  vendor"></a>7-5  vendor</h3><h3 id="7-6-SLB讲解与配置"><a href="#7-6-SLB讲解与配置" class="headerlink" title="7-6 SLB讲解与配置"></a>7-6 SLB讲解与配置</h3><p>阿里云负载均衡配置。</p>
+<h3 id="7-7"><a href="#7-7" class="headerlink" title="7-7"></a>7-7</h3><p>session容错</p>
+<h3 id="7-8-ECS配置"><a href="#7-8-ECS配置" class="headerlink" title="7-8 ECS配置"></a>7-8 ECS配置</h3><h3 id="7-10-部署脚本"><a href="#7-10-部署脚本" class="headerlink" title="7-10 部署脚本"></a>7-10 部署脚本</h3><p>在bin文件夹添加conf.json文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"lb_addr"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">	<span class="string">"oss_addr"</span>: <span class="string">"oss.aliyun.com"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>buildprod.sh</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Build web and other services</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/api</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/api</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/scheduler</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/scheduler</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/streamserver</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/streamserver</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/work/src/github.com/avenssi/video_server/web</span><br><span class="line">env GOOS=linux GOARCH=amd64 go build -o ../bin/web</span><br></pre></td></tr></table></figure>
+
+
+<p><code>deploy.sh</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line">cp -R ./templates ./bin/</span><br><span class="line"></span><br><span class="line">mkdir ./bin/videos</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> bin</span><br><span class="line"></span><br><span class="line">nohup ./api &amp;</span><br><span class="line">nohup ./scheduler &amp;</span><br><span class="line">nohup ./streamserver &amp;</span><br><span class="line">nohup ./web &amp;</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deploy finished"</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="7-11-部署"><a href="#7-11-部署" class="headerlink" title="7-11 部署"></a>7-11 部署</h3><p>sh  buildprod.sh 编译完成后提交二进制文件。或者提交代码到服务器上直接编译</p>
+<p>检查对应server是否启动<code>ps aux | grep &lt;api?stream?scheduler?web&gt;</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/19/Traefik/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/19/Traefik/" class="post-title-link" itemprop="url">Traefik</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-19 19:02:51 / Modified: 21:25:55" itemprop="dateCreated datePublished" datetime="2020-02-19T19:02:51+08:00">2020-02-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Traefik/" itemprop="url" rel="index">
+                    <span itemprop="name">Traefik</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Traefik/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>相对nginx，基于容器的微服务反向代理利器<a href="https://github.com/containous/traefik" target="_blank" rel="noopener">Traefik</a>支持动态的配置反向代理.</p>
+<p><img src="/2020/02/19/Traefik/traefik-architecture.png" alt></p>
+<p>如上图左侧公网域名可以通过Traefik监听API动态地转发到右侧的内网服务实例（例如backoffice1服务）。或者说是动态的路由转发。</p>
+<p><code>frontend</code>用于控制访问的路由规则，支持单个规则及正则匹配。<br><code>backend</code>用于匹配一组服务实例，通过轮询方式来选择转发的目标。</p>
+<h3 id="基于Docker-compose与Traefik1-x的容器化部署"><a href="#基于Docker-compose与Traefik1-x的容器化部署" class="headerlink" title="基于Docker-compose与Traefik1.x的容器化部署"></a>基于Docker-compose与Traefik1.x的容器化部署</h3><p>具体参考service_dc和traefik_dc<br><img src="/2020/02/19/Traefik/Traefik-setting.png" alt></p>
+<h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p>|<br>暂<br>|<br>无<br>|</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/19/go-micro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/19/go-micro/" class="post-title-link" itemprop="url">go-micro</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-19 12:36:02" itemprop="dateCreated datePublished" datetime="2020-02-19T12:36:02+08:00">2020-02-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-04 19:36:49" itemprop="dateModified" datetime="2020-04-04T19:36:49+08:00">2020-04-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">微服务</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/RPC/" itemprop="url" rel="index">
+                    <span itemprop="name">RPC</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>项目地址：<a href="https://github.com/micro/go-micro" target="_blank" rel="noopener">go-micro</a></p>
+<p>go-micro提供的接口功能</p>
+<p><code>服务发现</code>支持服务注册与发现，底层支持etcd、consul、k8s<br><code>负载均衡</code>rpc服务间的请求调度均衡策略<br><code>同步通信</code>基于RPC通信，支持单向、双向流通道模式<br><code>一步通信</code>提供pub、sub通信模型的接口<br><code>高级接口</code>比如服务发现，提供调用的接口是一致的</p>
+<p><img src="/2020/02/19/go-micro/go-micro.png" alt></p>
+<p><code>broker</code>异步通信<br><code>codec</code>消息编码，可以动态编码<br><code>registry</code>服务注册与发现<br><code>selector</code>负载均衡<br><code>transport</code> 基于RPC的通信模块接口</p>
+<h3 id="账号系统微服务"><a href="#账号系统微服务" class="headerlink" title="账号系统微服务"></a>账号系统微服务</h3><p>新建一个文件<code>XXX.proto</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">syntax = <span class="string">"proto3"</span>;</span><br><span class="line"></span><br><span class="line">package go.micro.service.user;</span><br><span class="line"></span><br><span class="line">service UserService &#123;</span><br><span class="line">    // 用户注册</span><br><span class="line">    rpc Signup(ReqSignup) returns (RespSignup) &#123;&#125;</span><br><span class="line">    // 用户登录</span><br><span class="line">    rpc Signin(ReqSignin) returns (RespSignin) &#123;&#125;</span><br><span class="line">    // 获取用户信息</span><br><span class="line">    rpc UserInfo(ReqUserInfo) returns (RespUserInfo) &#123;&#125;</span><br><span class="line">    // 获取用户文件</span><br><span class="line">    rpc UserFiles(ReqUserFile) returns (RespUserFile) &#123;&#125;</span><br><span class="line">   // 获取用户文件</span><br><span class="line">    rpc UserFileRename(ReqUserFileRename) returns (RespUserFileRename) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message ReqSignup &#123;</span><br><span class="line">    string username = 1;</span><br><span class="line">    string password = 2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message RespSignup &#123;</span><br><span class="line">    int32 code = 1;</span><br><span class="line">    string message = 2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message ReqSignin &#123;</span><br><span class="line">    string username = 1;</span><br><span class="line">    string password = 2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message RespSignin &#123;</span><br><span class="line">    int32 code = 1;</span><br><span class="line">    string token = 2;</span><br><span class="line">    string message = 3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message ReqUserInfo &#123;</span><br><span class="line">    string username = 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message RespUserInfo &#123;</span><br><span class="line">    int32 code = 1;</span><br><span class="line">    string message =2;</span><br><span class="line">    string username =3;</span><br><span class="line">    string email = 4;</span><br><span class="line">    string phone = 5;</span><br><span class="line">    string signupAt = 6;</span><br><span class="line">    string lastActiveAt = 7;</span><br><span class="line">    int32 status = 8;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message ReqUserFile &#123;</span><br><span class="line">    string username = 1;</span><br><span class="line">    int32 <span class="built_in">limit</span> = 2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message RespUserFile &#123;</span><br><span class="line">    int32 code = 1;</span><br><span class="line">    string message =2;</span><br><span class="line">    bytes fileData = 3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message ReqUserFileRename &#123;</span><br><span class="line">  string username = 1;</span><br><span class="line">  string filehash = 2;</span><br><span class="line">  string newFileName = 3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message RespUserFileRename &#123;</span><br><span class="line">  int32 code = 1;</span><br><span class="line">  string message =2;</span><br><span class="line">  bytes fileData = 3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>执行指令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">protoc --proto_path=service/account/proto --go_out=service/account/proto --micro_out=service/account/proto service/account/proto/user.proto</span><br></pre></td></tr></table></figure>
+
+<p>这时候会生成两个文件<br><code>XXX.micro.go</code>以及<code>XXX.pb.go</code></p>
+<p>handler调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">package handler</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"context"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"filestore-server/common"</span></span><br><span class="line">	<span class="string">"filestore-server/config"</span></span><br><span class="line">	cfg <span class="string">"filestore-server/config"</span></span><br><span class="line">	proto <span class="string">"filestore-server/service/account/proto"</span></span><br><span class="line">	dbcli <span class="string">"filestore-server/service/dbproxy/client"</span></span><br><span class="line">	<span class="string">"filestore-server/util"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">// User : 用于实现UserServiceHandler接口的对象</span><br><span class="line"><span class="built_in">type</span> User struct&#123;&#125;</span><br><span class="line"></span><br><span class="line">// GenToken : 生成token</span><br><span class="line">func GenToken(username string) string &#123;</span><br><span class="line">	// 40位字符:md5(username+timestamp+token_salt)+timestamp[:8]</span><br><span class="line">	ts := fmt.Sprintf(<span class="string">"%x"</span>, time.Now().Unix())</span><br><span class="line">	tokenPrefix := util.MD5([]byte(username + ts + <span class="string">"_tokensalt"</span>))</span><br><span class="line">	<span class="built_in">return</span> tokenPrefix + ts[:8]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Signup : 处理用户注册请求</span><br><span class="line">func (u *User) Signup(ctx context.Context, req *proto.ReqSignup, res *proto.RespSignup) error &#123;</span><br><span class="line">	username := req.Username</span><br><span class="line">	passwd := req.Password</span><br><span class="line"></span><br><span class="line">	// 参数简单校验</span><br><span class="line">	<span class="keyword">if</span> len(username) &lt; 3 || len(passwd) &lt; 5 &#123;</span><br><span class="line">		res.Code = common.StatusParamInvalid</span><br><span class="line">		res.Message = <span class="string">"注册参数无效"</span></span><br><span class="line">		<span class="built_in">return</span> nil</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 对密码进行加盐及取Sha1值加密</span><br><span class="line">	encPasswd := util.Sha1([]byte(passwd + cfg.PasswordSalt))</span><br><span class="line">	// 将用户信息注册到用户表中</span><br><span class="line">	dbResp, err := dbcli.UserSignup(username, encPasswd)</span><br><span class="line">	<span class="keyword">if</span> err == nil &amp;&amp; dbResp.Suc &#123;</span><br><span class="line">		res.Code = common.StatusOK</span><br><span class="line">		res.Message = <span class="string">"注册成功"</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		res.Code = common.StatusRegisterFailed</span><br><span class="line">		res.Message = <span class="string">"注册失败"</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> nil</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Signin : 处理用户登录请求</span><br><span class="line">func (u *User) Signin(ctx context.Context, req *proto.ReqSignin, res *proto.RespSignin) error &#123;</span><br><span class="line">	username := req.Username</span><br><span class="line">	password := req.Password</span><br><span class="line"></span><br><span class="line">	encPasswd := util.Sha1([]byte(password + config.PasswordSalt))</span><br><span class="line"></span><br><span class="line">	// 1. 校验用户名及密码</span><br><span class="line">	dbResp, err := dbcli.UserSignin(username, encPasswd)</span><br><span class="line">	<span class="keyword">if</span> err != nil || !dbResp.Suc &#123;</span><br><span class="line">		res.Code = common.StatusLoginFailed</span><br><span class="line">		<span class="built_in">return</span> nil</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 2. 生成访问凭证(token)</span><br><span class="line">	token := GenToken(username)</span><br><span class="line">	upRes, err := dbcli.UpdateToken(username, token)</span><br><span class="line">	<span class="keyword">if</span> err != nil || !upRes.Suc &#123;</span><br><span class="line">		res.Code = common.StatusServerError</span><br><span class="line">		<span class="built_in">return</span> nil</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 3. 登录成功, 返回token</span><br><span class="line">	res.Code = common.StatusOK</span><br><span class="line">	res.Token = token</span><br><span class="line">	<span class="built_in">return</span> nil</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// UserInfo ： 查询用户信息</span><br><span class="line">func (u *User) UserInfo(ctx context.Context, req *proto.ReqUserInfo, res *proto.RespUserInfo) error &#123;</span><br><span class="line">	// 查询用户信息</span><br><span class="line">	dbResp, err := dbcli.GetUserInfo(req.Username)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		res.Code = common.StatusServerError</span><br><span class="line">		res.Message = <span class="string">"服务错误"</span></span><br><span class="line">		<span class="built_in">return</span> nil</span><br><span class="line">	&#125;</span><br><span class="line">	// 查不到对应的用户信息</span><br><span class="line">	<span class="keyword">if</span> !dbResp.Suc &#123;</span><br><span class="line">		res.Code = common.StatusUserNotExists</span><br><span class="line">		res.Message = <span class="string">"用户不存在"</span></span><br><span class="line">		<span class="built_in">return</span> nil</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	user := dbcli.ToTableUser(dbResp.Data)</span><br><span class="line"></span><br><span class="line">	// 3. 组装并且响应用户数据</span><br><span class="line">	res.Code = common.StatusOK</span><br><span class="line">	res.Username = user.Username</span><br><span class="line">	res.SignupAt = user.SignupAt</span><br><span class="line">	res.LastActiveAt = user.LastActiveAt</span><br><span class="line">	res.Status = int32(user.Status)</span><br><span class="line">	// TODO: 需增加接口支持完善用户信息(email/phone等)</span><br><span class="line">	res.Email = user.Email</span><br><span class="line">	res.Phone = user.Phone</span><br><span class="line">	<span class="built_in">return</span> nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建一个main.go作为单独的微服务启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/micro/go-micro"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"filestore-server/service/account/handler"</span></span><br><span class="line">	proto <span class="string">"filestore-server/service/account/proto"</span></span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    //创建一个service</span><br><span class="line">	service := micro.NewService(</span><br><span class="line">		// service := k8s.NewService(</span><br><span class="line">		micro.Name(<span class="string">"go.micro.service.user"</span>),</span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	// 初始化service, 解析命令行参数等</span><br><span class="line">	service.Init()</span><br><span class="line"></span><br><span class="line">	// 初始化dbproxy client</span><br><span class="line">	dbproxy.Init(service)</span><br><span class="line"></span><br><span class="line">	proto.RegisterUserServiceHandler(service.Server(), new(handler.User))</span><br><span class="line">	<span class="keyword">if</span> err := service.Run(); err != nil &#123;</span><br><span class="line">		log.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行<code>go run service/account/main.go --registry=consul</code>指定注册中心为consul</p>
+<p>打开浏览器，访问consul的web界面:<br><a href="localhost:8500/ui/dcl/services" target="_blank" rel="noopener">localhost:8500/ui/dcl/services</a></p>
+<h3 id="网关微服务"><a href="#网关微服务" class="headerlink" title="网关微服务"></a>网关微服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br></pre></td><td class="code"><pre><span class="line">package handler</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"context"</span></span><br><span class="line">	<span class="string">"filestore-server/common"</span></span><br><span class="line">	<span class="string">"filestore-server/util"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">	micro <span class="string">"github.com/micro/go-micro"</span></span><br><span class="line"></span><br><span class="line">	cmn <span class="string">"filestore-server/common"</span></span><br><span class="line">	userProto <span class="string">"filestore-server/service/account/proto"</span></span><br><span class="line">	dlProto <span class="string">"filestore-server/service/download/proto"</span></span><br><span class="line">	upProto <span class="string">"filestore-server/service/upload/proto"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">var (</span><br><span class="line">	userCli userProto.UserService</span><br><span class="line">	upCli   upProto.UploadService</span><br><span class="line">	dlCli   dlProto.DownloadService</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">init</span></span>() &#123;</span><br><span class="line">	service := micro.NewService()</span><br><span class="line">	// 初始化， 解析命令行参数等</span><br><span class="line">	service.Init()</span><br><span class="line"></span><br><span class="line">	// 初始化一个account服务的客户端</span><br><span class="line">	userCli = userProto.NewUserService(<span class="string">"go.micro.service.user"</span>, service.Client())</span><br><span class="line">	// 初始化一个upload服务的客户端</span><br><span class="line">	upCli = upProto.NewUploadService(<span class="string">"go.micro.service.upload"</span>, service.Client())</span><br><span class="line">	// 初始化一个download服务的客户端</span><br><span class="line">	dlCli = dlProto.NewDownloadService(<span class="string">"go.micro.service.download"</span>, service.Client())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// SignupHandler : 响应注册页面</span><br><span class="line">func SignupHandler(c *gin.Context) &#123;</span><br><span class="line">	c.Redirect(http.StatusFound, <span class="string">"/static/view/signup.html"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// DoSignupHandler : 处理注册post请求</span><br><span class="line">func DoSignupHandler(c *gin.Context) &#123;</span><br><span class="line">	username := c.Request.FormValue(<span class="string">"username"</span>)</span><br><span class="line">	passwd := c.Request.FormValue(<span class="string">"password"</span>)</span><br><span class="line"></span><br><span class="line">	resp, err := userCli.Signup(context.TODO(), &amp;userProto.ReqSignup&#123;</span><br><span class="line">		Username: username,</span><br><span class="line">		Password: passwd,</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Println(err.Error())</span><br><span class="line">		c.Status(http.StatusInternalServerError)</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">		<span class="string">"code"</span>: resp.Code,</span><br><span class="line">		<span class="string">"msg"</span>:  resp.Message,</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// SigninHandler : 响应登录页面</span><br><span class="line">func SigninHandler(c *gin.Context) &#123;</span><br><span class="line">	c.Redirect(http.StatusFound, <span class="string">"/static/view/signin.html"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// DoSigninHandler : 处理登录post请求</span><br><span class="line">func DoSigninHandler(c *gin.Context) &#123;</span><br><span class="line">	username := c.Request.FormValue(<span class="string">"username"</span>)</span><br><span class="line">	password := c.Request.FormValue(<span class="string">"password"</span>)</span><br><span class="line"></span><br><span class="line">	rpcResp, err := userCli.Signin(context.TODO(), &amp;userProto.ReqSignin&#123;</span><br><span class="line">		Username: username,</span><br><span class="line">		Password: password,</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Println(err.Error())</span><br><span class="line">		c.Status(http.StatusInternalServerError)</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> rpcResp.Code != cmn.StatusOK &#123;</span><br><span class="line">		c.JSON(200, gin.H&#123;</span><br><span class="line">			<span class="string">"msg"</span>:  <span class="string">"登录失败"</span>,</span><br><span class="line">			<span class="string">"code"</span>: rpcResp.Code,</span><br><span class="line">		&#125;)</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 动态获取上传入口地址</span><br><span class="line">	upEntryResp, err := upCli.UploadEntry(context.TODO(), &amp;upProto.ReqEntry&#123;&#125;)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Println(err.Error())</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> upEntryResp.Code != cmn.StatusOK &#123;</span><br><span class="line">		log.Println(upEntryResp.Message)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 动态获取下载入口地址</span><br><span class="line">	dlEntryResp, err := dlCli.DownloadEntry(context.TODO(), &amp;dlProto.ReqEntry&#123;&#125;)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Println(err.Error())</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> dlEntryResp.Code != cmn.StatusOK &#123;</span><br><span class="line">		log.Println(dlEntryResp.Message)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 登录成功，返回用户信息</span><br><span class="line">	cliResp := util.RespMsg&#123;</span><br><span class="line">		Code: int(common.StatusOK),</span><br><span class="line">		Msg:  <span class="string">"登录成功"</span>,</span><br><span class="line">		Data: struct &#123;</span><br><span class="line">			Location      string</span><br><span class="line">			Username      string</span><br><span class="line">			Token         string</span><br><span class="line">			UploadEntry   string</span><br><span class="line">			DownloadEntry string</span><br><span class="line">		&#125;&#123;</span><br><span class="line">			Location:      <span class="string">"/static/view/home.html"</span>,</span><br><span class="line">			Username:      username,</span><br><span class="line">			Token:         rpcResp.Token,</span><br><span class="line">			UploadEntry:   upEntryResp.Entry,</span><br><span class="line">			DownloadEntry: dlEntryResp.Entry,</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">	c.Data(http.StatusOK, <span class="string">"application/json"</span>, cliResp.JSONBytes())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// UserInfoHandler ： 查询用户信息</span><br><span class="line">func UserInfoHandler(c *gin.Context) &#123;</span><br><span class="line">	// 1. 解析请求参数</span><br><span class="line">	username := c.Request.FormValue(<span class="string">"username"</span>)</span><br><span class="line"></span><br><span class="line">	resp, err := userCli.UserInfo(context.TODO(), &amp;userProto.ReqUserInfo&#123;</span><br><span class="line">		Username: username,</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Println(err.Error())</span><br><span class="line">		c.Status(http.StatusInternalServerError)</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 3. 组装并且响应用户数据</span><br><span class="line">	cliResp := util.RespMsg&#123;</span><br><span class="line">		Code: 0,</span><br><span class="line">		Msg:  <span class="string">"OK"</span>,</span><br><span class="line">		Data: gin.H&#123;</span><br><span class="line">			<span class="string">"Username"</span>: username,</span><br><span class="line">			<span class="string">"SignupAt"</span>: resp.SignupAt,</span><br><span class="line">			// TODO: 完善其他字段信息</span><br><span class="line">			<span class="string">"LastActive"</span>: resp.LastActiveAt,</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">	c.Data(http.StatusOK, <span class="string">"application/json"</span>, cliResp.JSONBytes())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>路由</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package route</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"filestore-server/service/apigw/handler"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">// Router : 网关api路由</span><br><span class="line">func Router() *gin.Engine &#123;</span><br><span class="line">	router := gin.Default()</span><br><span class="line"></span><br><span class="line">	router.Static(<span class="string">"/static/"</span>, <span class="string">"./static"</span>)</span><br><span class="line"></span><br><span class="line">	// 注册</span><br><span class="line">	router.GET(<span class="string">"/user/signup"</span>, handler.SignupHandler)</span><br><span class="line">	router.POST(<span class="string">"/user/signup"</span>, handler.DoSignupHandler)</span><br><span class="line">	// 登录</span><br><span class="line">	router.GET(<span class="string">"/user/signin"</span>, handler.SigninHandler)</span><br><span class="line">	router.POST(<span class="string">"/user/signin"</span>, handler.DoSigninHandler)</span><br><span class="line">	// 用户查询</span><br><span class="line">	router.POST(<span class="string">"/user/info"</span>, handler.UserInfoHandler)</span><br><span class="line"></span><br><span class="line">	// 用户文件查询</span><br><span class="line">	router.POST(<span class="string">"/file/query"</span>, handler.FileQueryHandler)</span><br><span class="line">	// 用户文件修改(重命名)</span><br><span class="line">	router.POST(<span class="string">"/file/update"</span>, handler.FileMetaUpdateHandler)</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> router</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>main.go</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"filestore-server/service/apigw/route"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	r := route.Router()</span><br><span class="line">	r.Run(<span class="string">":8080"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>运行<code>go run service/apigw/main.go --registry=consul</code>指定注册中心为consul</p>
+<h3 id="文件上传微服务"><a href="#文件上传微服务" class="headerlink" title="文件上传微服务"></a>文件上传微服务</h3><p>文件上传需要用到RPC微服务间通信</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package rpc</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"context"</span></span><br><span class="line">	cfg <span class="string">"filestore-server/service/upload/config"</span></span><br><span class="line">	upProto <span class="string">"filestore-server/service/upload/proto"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">// Upload : upload结构体</span><br><span class="line"><span class="built_in">type</span> Upload struct&#123;&#125;</span><br><span class="line"></span><br><span class="line">// UploadEntry : 获取上传入口</span><br><span class="line">func (u *Upload) UploadEntry(</span><br><span class="line">	ctx context.Context,</span><br><span class="line">	req *upProto.ReqEntry,</span><br><span class="line">	res *upProto.RespEntry) error &#123;</span><br><span class="line"></span><br><span class="line">	res.Entry = cfg.UploadEntry</span><br><span class="line">	<span class="built_in">return</span> nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	micro <span class="string">"github.com/micro/go-micro"</span></span><br><span class="line"></span><br><span class="line">	cfg <span class="string">"filestore-server/service/upload/config"</span></span><br><span class="line">	upProto <span class="string">"filestore-server/service/upload/proto"</span></span><br><span class="line">	<span class="string">"filestore-server/service/upload/route"</span></span><br><span class="line">	upRpc <span class="string">"filestore-server/service/upload/rpc"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">startRpcService</span></span>() &#123;</span><br><span class="line">	service := micro.NewService(</span><br><span class="line">		micro.Name(<span class="string">"go.micro.service.upload"</span>), // 服务名称</span><br><span class="line">		micro.RegisterTTL(time.Second*10),     // TTL指定从上一次心跳间隔起，超过这个时间服务会被服务发现移除</span><br><span class="line">		micro.RegisterInterval(time.Second*5), // 让服务在指定时间内重新注册，保持TTL获取的注册时间有效</span><br><span class="line">	)</span><br><span class="line">	service.Init()</span><br><span class="line"></span><br><span class="line">	upProto.RegisterUploadServiceHandler(service.Server(), new(upRpc.Upload))</span><br><span class="line">	<span class="keyword">if</span> err := service.Run(); err != nil &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">startApiService</span></span>() &#123;</span><br><span class="line">	router := route.Router()</span><br><span class="line">	router.Run(cfg.UploadServiceHost)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	// api 服务</span><br><span class="line">	go startApiService()</span><br><span class="line"></span><br><span class="line">	// rpc 服务</span><br><span class="line">	startRpcService()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="通过shell脚本启动整个项目的微服务-service-start-all-sh-根据实际情况修改所需要的文件目录"><a href="#通过shell脚本启动整个项目的微服务-service-start-all-sh-根据实际情况修改所需要的文件目录" class="headerlink" title="通过shell脚本启动整个项目的微服务./service/start-all.sh(根据实际情况修改所需要的文件目录)"></a>通过shell脚本启动整个项目的微服务<code>./service/start-all.sh</code>(根据实际情况修改所需要的文件目录)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查service进程</span></span><br><span class="line"><span class="function"><span class="title">check_process</span></span>() &#123;</span><br><span class="line">    sleep 1</span><br><span class="line">    res=`ps aux | grep -v grep | grep <span class="string">"service/bin"</span> | grep <span class="variable">$1</span>`</span><br><span class="line">    <span class="keyword">if</span> [[ <span class="variable">$res</span> != <span class="string">''</span> ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[32m 已启动 \033[0m"</span> <span class="string">"<span class="variable">$1</span>"</span></span><br><span class="line">        <span class="built_in">return</span> 1</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[31m 启动失败 \033[0m"</span> <span class="string">"<span class="variable">$1</span>"</span></span><br><span class="line">        <span class="built_in">return</span> 0</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译service可执行文件</span></span><br><span class="line"><span class="function"><span class="title">build_service</span></span>() &#123;</span><br><span class="line">    go build -o service/bin/<span class="variable">$1</span> service/<span class="variable">$1</span>/main.go</span><br><span class="line">    resbin=`ls service/bin/ | grep <span class="variable">$1</span>`</span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"\033[32m 编译完成: \033[0m service/bin/<span class="variable">$resbin</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动service</span></span><br><span class="line"><span class="function"><span class="title">run_service</span></span>() &#123;</span><br><span class="line">    nohup ./service/bin/<span class="variable">$1</span> --registry=consul &gt;&gt; <span class="variable">$logpath</span>/<span class="variable">$1</span>.<span class="built_in">log</span> 2&gt;&amp;1 &amp;</span><br><span class="line">    sleep 1</span><br><span class="line">    check_process <span class="variable">$1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建运行日志目录</span></span><br><span class="line">logpath=/Users/samtake/Documents/GitHub/www/data/<span class="built_in">log</span>/filestore-server <span class="comment">#/data/log/filestore-server</span></span><br><span class="line"></span><br><span class="line">mkdir -p <span class="variable">$logpath</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到工程根目录</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/filestore-server</span><br><span class="line"><span class="comment">#cd /data/go/work/src/filestore-server</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 微服务可以用supervisor做进程管理工具；</span></span><br><span class="line"><span class="comment"># 或者也可以通过docker/k8s进行部署</span></span><br><span class="line"></span><br><span class="line">services=<span class="string">"</span></span><br><span class="line"><span class="string">dbproxy</span></span><br><span class="line"><span class="string">upload</span></span><br><span class="line"><span class="string">download</span></span><br><span class="line"><span class="string">transfer</span></span><br><span class="line"><span class="string">account</span></span><br><span class="line"><span class="string">apigw</span></span><br><span class="line"><span class="string">"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行编译service</span></span><br><span class="line"><span class="keyword">for</span> service <span class="keyword">in</span> <span class="variable">$services</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    build_service <span class="variable">$service</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行启动service</span></span><br><span class="line"><span class="keyword">for</span> service <span class="keyword">in</span> <span class="variable">$services</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    run_service <span class="variable">$service</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'微服务启动完毕.'</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="go-micro学习资料"><a href="#go-micro学习资料" class="headerlink" title="go-micro学习资料"></a><code>go-micro</code>学习资料</h3><p>Go-Micro 基础篇 【1】Hello World:<a href="https://www.bilibili.com/video/av75269275?from=search&seid=13701687009895043479" target="_blank" rel="noopener">视频</a> &amp; <a href="https://github.com/micro-in-cn/learning-videos/blob/master/docs/hello-world/doc.md" target="_blank" rel="noopener">文档</a></p>
+<p>#72 Go-Micro 编写微服务实战: <a href="https://www.bilibili.com/video/av79892065?from=search&seid=13701687009895043479" target="_blank" rel="noopener">视频地址</a></p>
+<p><a href="https://github.com/micro-in-cn" target="_blank" rel="noopener">Micro 中国站</a></p>
+<p><a href="https://www.bilibili.com/video/BV18E411o7c5" target="_blank" rel="noopener">#62 Go-Micro 微服务框架介绍（一） by 舒先 【 Go 夜读 】</a></p>
+<p><a href="https://www.bilibili.com/video/BV1fJ411t7gg" target="_blank" rel="noopener">#72 Go-Micro 编写微服务实战 【 Go 夜读 】</a></p>
+<p><a href="https://www.bilibili.com/video/BV1VE41157LP" target="_blank" rel="noopener">#79 Go-Micro 运行时工具集 【 Go 夜读 】</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/%E9%98%BF%E9%87%8C%E4%BA%91OSS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/16/%E9%98%BF%E9%87%8C%E4%BA%91OSS/" class="post-title-link" itemprop="url">阿里云OSS</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-16 20:21:02" itemprop="dateCreated datePublished" datetime="2020-02-16T20:21:02+08:00">2020-02-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-17 00:41:35" itemprop="dateModified" datetime="2020-02-17T00:41:35+08:00">2020-02-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OSS/" itemprop="url" rel="index">
+                    <span itemprop="name">OSS</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://help.aliyun.com/document_detail/31947.html?spm=a2c4g.11174283.6.1505.42967da2nUG4r7" target="_blank" rel="noopener">对象存储OSS</a></p>
+<p><a href="https://help.aliyun.com/document_detail/87712.html?spm=a2c4g.11186623.6.890.7b7f3bdb5LHLCm" target="_blank" rel="noopener">SDK go 版本</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/Golang%E6%93%8D%E4%BD%9CMySQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/16/Golang%E6%93%8D%E4%BD%9CMySQL/" class="post-title-link" itemprop="url">Golang操作MySQL</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-16 19:41:03 / Modified: 19:49:52" itemprop="dateCreated datePublished" datetime="2020-02-16T19:41:03+08:00">2020-02-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>记录一个报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">➜  goRedisDemo git:(master) ✗ go run main.go</span><br><span class="line"><span class="built_in">test</span> mySQL </span><br><span class="line">panic: runtime error: invalid memory address or nil pointer dereference</span><br><span class="line">[signal SIGSEGV: segmentation violation code=0x1 addr=0x20 pc=0x10c1141]</span><br><span class="line"></span><br><span class="line">goroutine 1 [running]:</span><br><span class="line">sync.(*Mutex).Lock(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/sync/mutex.go:74</span><br><span class="line">database/sql.(*DB).conn(0x0, 0x130f9e0, 0xc000018080, 0x1036801, 0xc000000180, 0x300000002, 0xc000000180)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1132 +0x41</span><br><span class="line">database/sql.(*DB).prepare(0x0, 0x130f9e0, 0xc000018080, 0x12c9f84, 0x69, 0x102da01, 0x203000, 0xc0000b3d78, 0xc0000b3d68)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1431 +0x58</span><br><span class="line">database/sql.(*DB).PrepareContext(0x0, 0x130f9e0, 0xc000018080, 0x12c9f84, 0x69, 0x30, 0x30, 0x128eaa0)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1404 +0x99</span><br><span class="line">database/sql.(*DB).Prepare(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1421</span><br><span class="line">goRedisDemo/db.OnFileUploadFinished(0x12bbb58, 0x8, 0x12bbb60, 0x8, 0x0, 0x0, 0x0, 0x0)</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/db/file.go:15 +0x77</span><br><span class="line">goRedisDemo/handler.UploadHandlerDB()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/handler/testDB.go:10 +0x76</span><br><span class="line">main.main()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/main.go:14 +0x7a</span><br><span class="line"><span class="built_in">exit</span> status 2</span><br><span class="line">➜  goRedisDemo git:(master) ✗ go get database/sql</span><br><span class="line">➜  goRedisDemo git:(master) ✗ go get github.com/go-sql-driver/mysql</span><br><span class="line">➜  goRedisDemo git:(master) ✗ go run main.go                       </span><br><span class="line"><span class="built_in">test</span> mySQL </span><br><span class="line">panic: runtime error: invalid memory address or nil pointer dereference</span><br><span class="line">[signal SIGSEGV: segmentation violation code=0x1 addr=0x20 pc=0x10c1141]</span><br><span class="line"></span><br><span class="line">goroutine 1 [running]:</span><br><span class="line">sync.(*Mutex).Lock(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/sync/mutex.go:74</span><br><span class="line">database/sql.(*DB).conn(0x0, 0x130f9e0, 0xc0000b0008, 0x1036801, 0xc000000180, 0x300000002, 0xc000000180)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1132 +0x41</span><br><span class="line">database/sql.(*DB).prepare(0x0, 0x130f9e0, 0xc0000b0008, 0x12c9f84, 0x69, 0x102da01, 0x203000, 0xc0000dfd78, 0xc0000dfd68)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1431 +0x58</span><br><span class="line">database/sql.(*DB).PrepareContext(0x0, 0x130f9e0, 0xc0000b0008, 0x12c9f84, 0x69, 0x30, 0x30, 0x128eaa0)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1404 +0x99</span><br><span class="line">database/sql.(*DB).Prepare(...)</span><br><span class="line">        /usr/<span class="built_in">local</span>/go/src/database/sql/sql.go:1421</span><br><span class="line">goRedisDemo/db.OnFileUploadFinished(0x12bbb58, 0x8, 0x12bbb60, 0x8, 0x0, 0x0, 0x0, 0x0)</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/db/file.go:22 +0x77</span><br><span class="line">goRedisDemo/handler.UploadHandlerDB()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/handler/testDB.go:10 +0x76</span><br><span class="line">main.main()</span><br><span class="line">        /Users/samtake/Documents/GitHub/goRedisDemo/main.go:14 +0x7a</span><br><span class="line"><span class="built_in">exit</span> status 2</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://blog.51cto.com/zhixinhu/1844734" target="_blank" rel="noopener">查了一下，原来这是Db变量定义的问题，:=只在当前方法内有效。</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/15/Dockerfile/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -810,674 +1343,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/Redis%E5%85%A5%E9%97%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/12/Redis%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Redis入门</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-12 17:03:51 / Modified: 19:48:41" itemprop="dateCreated datePublished" datetime="2020-02-12T17:03:51+08:00">2020-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Docker-安装-Redis"><a href="#Docker-安装-Redis" class="headerlink" title="Docker 安装 Redis"></a>Docker 安装 Redis</h3><p><code>docker pull redis:latest</code><br>取最新版的 Redis 镜像</p>
-<p><code>docker images</code><br>查看是否已安装了 redis</p>
-<p>运行 redis 容器<br><code>docker run -itd --name redis-test -p 6379:6379 redis</code><br>或者运行redis并设置密码<br><code>docker run -d --name myredis -p 6379:6379 redis --requirepass &quot;mypassword&quot;</code></p>
-<p>其中-p 6379:6379：映射容器服务的 6379 端口到宿主机的 6379 端口。外部可以直接通过宿主机ip:6379 访问到 Redis 的服务。</p>
-<p><code>docker ps</code> 查看容器的运行信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  Desktop docker ps </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                               NAMES</span><br><span class="line">d1f67d1e5fda        redis               <span class="string">"docker-entrypoint.s…"</span>   About a minute ago   Up About a minute   0.0.0.0:6379-&gt;6379/tcp              redis-test</span><br><span class="line">0eee2c1708be        mysql:5.7           <span class="string">"docker-entrypoint.s…"</span>   8 hours ago          Up 8 hours          0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   happy_chandrasekhar</span><br></pre></td></tr></table></figure>
-
-
-<p>最后，通过过 redis-cli 连接测试使用 redis 服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  Desktop docker <span class="built_in">exec</span> -it redis-test /bin/bash</span><br><span class="line">root@d1f67d1e5fda:/data<span class="comment"># redis-cli</span></span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> <span class="built_in">test</span> 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th>可以存储的值</th>
-<th>操作</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>STRING</td>
-<td>字符串、整数或者浮点数</td>
-<td>对整个字符串或者字符串的其中一部分执行操作；对整数和浮点数执行自增或者自减操作；</td>
-</tr>
-<tr>
-<td>LIST</td>
-<td>列表</td>
-<td>从两端压入或者弹出元素；读取单个或者多个元素；进行修剪，只保留一个范围内的元素；</td>
-</tr>
-<tr>
-<td>SET</td>
-<td>无序集合</td>
-<td>添加、获取、移除单个元素；检查一个元素是否存在于集合中；计算交集、并集、差集；从集合里面随机获取元素；</td>
-</tr>
-<tr>
-<td>HASH</td>
-<td>包含键值对的无序散列表</td>
-<td>添加、获取、删除单个键值对；获取所有键值对；检查某个健是否存在；</td>
-</tr>
-<tr>
-<td>ZSET</td>
-<td>有序集合</td>
-<td>添加、获取、删除元素；根据分值范围或者成员来获取元素；计算一个键的排名；</td>
-</tr>
-</tbody></table>
-<h4 id="STRING"><a href="#STRING" class="headerlink" title="STRING"></a>STRING</h4><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>行为</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>GET</td>
-<td>获取存储在给定健中的值</td>
-</tr>
-<tr>
-<td>SET</td>
-<td>设置存储在给定健中的值</td>
-</tr>
-<tr>
-<td>DEL</td>
-<td>删除存储在给定健中的值（这个命令可以用于所有类型）</td>
-</tr>
-</tbody></table>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name longshan</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">"longshan"</span></span><br><span class="line">127.0.0.1:6379&gt; del name</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">(nil)</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="LIST"><a href="#LIST" class="headerlink" title="LIST"></a>LIST</h4><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>行为</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>rpush</td>
-<td>获取存储在给定键中的值</td>
-</tr>
-<tr>
-<td>lrange</td>
-<td>设置存储在给定键中的值</td>
-</tr>
-<tr>
-<td>lindex</td>
-<td>删除存储在给定键中的值（这个命令可以用于所有类型）</td>
-</tr>
-<tr>
-<td>lpop</td>
-<td>删除存储在给定键中的值（这个命令可以用于所有类型）</td>
-</tr>
-</tbody></table>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange list 0-1</span><br><span class="line">(error) ERR wrong number of arguments <span class="keyword">for</span> <span class="string">'lrange'</span> <span class="built_in">command</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 0 -1</span><br><span class="line">1) <span class="string">"item1"</span></span><br><span class="line">2) <span class="string">"item2"</span></span><br><span class="line">3) <span class="string">"item3"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 1</span><br><span class="line">(error) ERR wrong number of arguments <span class="keyword">for</span> <span class="string">'lrange'</span> <span class="built_in">command</span></span><br><span class="line">127.0.0.1:6379&gt; lindex list 1</span><br><span class="line"><span class="string">"item2"</span></span><br><span class="line">127.0.0.1:6379&gt; lpop list</span><br><span class="line"><span class="string">"item1"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 0 -1</span><br><span class="line">1) <span class="string">"item2"</span></span><br><span class="line">2) <span class="string">"item3"</span></span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h4><p>命令    | 行为<br>-|-|-<br>sadd    | 添加一个或多个元素到集合里<br>smembers |    获取集合里面的所有元素<br>sismember |    确定一个给定的值是一个集合的成员<br>srem    | 从集合里删除一个或多个元素</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item1</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item3</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item3</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; smember <span class="built_in">set</span></span><br><span class="line">(error) ERR unknown <span class="built_in">command</span> `smember`, with args beginning with: `<span class="built_in">set</span>`, </span><br><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"item3"</span></span><br><span class="line">2) <span class="string">"item1"</span></span><br><span class="line">3) <span class="string">"item2"</span></span><br><span class="line">127.0.0.1:6379&gt; sismember <span class="built_in">set</span> item5</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; srem <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; srem <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; smenbers <span class="built_in">set</span></span><br><span class="line">(error) ERR unknown <span class="built_in">command</span> `smenbers`, with args beginning with: `<span class="built_in">set</span>`, </span><br><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"item3"</span></span><br><span class="line">2) <span class="string">"item1"</span></span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="HASH"><a href="#HASH" class="headerlink" title="HASH"></a>HASH</h4><p>命令    | 行为<br>-|-|-<br>hset    | 设置 hash 里面一个字段的值<br>hget    | 获取 hash 中域的值<br>hgetall    | 从 hash 中读取全部的域和值<br>hdel    | 删除一个或多个域</p>
-<h4 id="ZSET"><a href="#ZSET" class="headerlink" title="ZSET"></a>ZSET</h4><p>命令    | 行为<br>-|-|-<br>ZADD    | 添加到有序 set 的一个或多个成员，或更新的分数，如果它已经存在<br>ZRANGE    | 根据指定的 index 返回，返回 sorted set 的成员列表<br>ZRANGEBYSCORE    | 返回有序集合中指定分数区间内的成员，分数由低到高排序。<br>ZREM    | 从排序的集合中删除一个或多个成员</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
-<li><p>缓存 - 将热点数据放到内存中，设置内存的最大使用量以及过期淘汰策略来保证缓存的命中率。</p>
-</li>
-<li><p>计数器 - Redis 这种内存数据库能支持计数器频繁的读写操作。</p>
-</li>
-<li><p>应用限流 - 限制一个网站访问流量。</p>
-</li>
-<li><p>消息队列 - 使用 List 数据类型，它是双向链表。</p>
-</li>
-<li><p>查找表 - 使用 HASH 数据类型。</p>
-</li>
-<li><p>交集运算 - 使用 SET 类型，例如求两个用户的共同好友。</p>
-</li>
-<li><p>排行榜 - 使用 ZSET 数据类型。</p>
-</li>
-<li><p>分布式 Session - 多个应用服务器的 Session 都存储到 Redis 中来保证 Session 的一致性。</p>
-</li>
-<li><p>分布式锁 - 除了可以使用 SETNX 实现分布式锁之外，还可以使用官方提供的 RedLock 分布式锁实现。</p>
-</li>
-</ul>
-<h3 id="通过go语言使用Redis"><a href="#通过go语言使用Redis" class="headerlink" title="通过go语言使用Redis"></a>通过go语言使用Redis</h3><p>1.设置一下Redis密码然后测试连接</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">➜  egoshop docker rm -f cd93e4361dff                                                 </span><br><span class="line">cd93e4361dff</span><br><span class="line"></span><br><span class="line">➜  egoshop docker run -d --name myredis -p 6379:6379 redis --requirepass <span class="string">"mypassword"</span></span><br><span class="line">f21ed92618bc5a48a95a05fcf73d1fb911b3020616dfd4950b4827dc9559814e</span><br><span class="line">➜  egoshop docker ps                                                                 </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">f21ed92618bc        redis               <span class="string">"docker-entrypoint.s…"</span>   3 seconds ago       Up 1 second         0.0.0.0:6379-&gt;6379/tcp              myredis</span><br><span class="line">0eee2c1708be        mysql:5.7           <span class="string">"docker-entrypoint.s…"</span>   10 hours ago        Up 10 hours         0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   happy_chandrasekhar</span><br><span class="line">➜  egoshop docker <span class="built_in">exec</span> -it myredis /bin/bash</span><br><span class="line">root@f21ed92618bc:/data<span class="comment"># redis-cli</span></span><br><span class="line">127.0.0.1:6379&gt; auth <span class="string">"mypassword"</span></span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
-<p>2.创建连接池</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">func newRedisPool() *redis.Pool &#123;</span><br><span class="line">	<span class="built_in">return</span> &amp;redis.Pool&#123;</span><br><span class="line">		MaxIdle:     50,</span><br><span class="line">		MaxActive:   30,</span><br><span class="line">		IdleTimeout: 300 * time.Second,</span><br><span class="line">		Dial: func() (redis.Conn, error) &#123;</span><br><span class="line">			// 1. 打开连接</span><br><span class="line">			c, err := redis.Dial(<span class="string">"tcp"</span>, redisHost)</span><br><span class="line">			<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">				fmt.Println(err)</span><br><span class="line">				<span class="built_in">return</span> nil, err</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			// 2. 访问认证</span><br><span class="line">			<span class="keyword">if</span> _, err = c.Do(<span class="string">"AUTH"</span>, redisPass); err != nil &#123;</span><br><span class="line">				c.Close()</span><br><span class="line">				<span class="built_in">return</span> nil, err</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> c, nil</span><br><span class="line">		&#125;,</span><br><span class="line">		TestOnBorrow: func(conn redis.Conn, t time.Time) error &#123;</span><br><span class="line">			<span class="keyword">if</span> time.Since(t) &lt; time.Minute &#123;</span><br><span class="line">				<span class="built_in">return</span> nil</span><br><span class="line">			&#125;</span><br><span class="line">			_, err := conn.Do(<span class="string">"PING"</span>)</span><br><span class="line">			<span class="built_in">return</span> err</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">init</span></span>() &#123;</span><br><span class="line">	pool = newRedisPool()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func RedisPool() *redis.Pool &#123;</span><br><span class="line">	<span class="built_in">return</span> pool</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3.添加数据</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">UploadHandler</span></span>() &#123;</span><br><span class="line">	// 获得redis的一个连接</span><br><span class="line">	rConn := rPool.RedisPool().Get()</span><br><span class="line">	defer rConn.Close()</span><br><span class="line"></span><br><span class="line">	// 将初信息写入到redis缓存</span><br><span class="line">	rConn.Do(<span class="string">"sadd"</span>, <span class="string">"set"</span>, <span class="string">"uploadHandler"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>4.查看是否有添加数据</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"upload1"</span></span><br><span class="line">2) <span class="string">"uploadHandler"</span></span><br></pre></td></tr></table></figure>
-
-<p><a href="https://github.com/samtake/goRedisDemo" target="_blank" rel="noopener">具体demo源码</a></p>
-<p>参考资料<br><a href="https://www.runoob.com/redis/redis-intro.html" target="_blank" rel="noopener">Redis 简介</a><br><a href="https://www.runoob.com/docker/docker-install-redis.html" target="_blank" rel="noopener">Docker 安装 Redis</a><br><a href="https://mp.weixin.qq.com/s?src=11&timestamp=1581497616&ver=2153&signature=wJL6PdenqSUgK7dgiXas*bbrDcJzwBzrYoKKYFFfsxW*dYcRnVHqpFKbcYqLDd-bp7DY50iIvxGq8jNMAbQXau-uLB0hPqUJc4erX3MDhbuOrvvtCbw7KY3147aW3KBr&new=1" target="_blank" rel="noopener">Redis 入门指南</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/" class="post-title-link" itemprop="url">Navicat使用资料</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-12 00:35:14" itemprop="dateCreated datePublished" datetime="2020-02-12T00:35:14+08:00">2020-02-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-15 16:56:40" itemprop="dateModified" datetime="2020-02-15T16:56:40+08:00">2020-02-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>实操一下</p>
-<p>通过docker来启动一个mysql容器应用<br><code>docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</code></p>
-<h3 id="通过docker-exec-it-容器id-bash-来操作mysql"><a href="#通过docker-exec-it-容器id-bash-来操作mysql" class="headerlink" title="通过docker exec -it 容器id bash 来操作mysql"></a>通过docker exec -it 容器id bash 来操作mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">➜  blogs docker ps                      </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">0eee2c1708be        mysql:5.7           <span class="string">"docker-entrypoint.s…"</span>   41 minutes ago      Up 41 minutes       0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   happy_chandrasekhar</span><br><span class="line">➜  blogs docker <span class="built_in">exec</span> -it  0eee2c1708be bash            </span><br><span class="line">root@0eee2c1708be:/<span class="comment"># mysql -uroot -p</span></span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 765627</span><br><span class="line">Server version: 5.7.29 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysql&gt; status;</span><br><span class="line">--------------</span><br><span class="line">mysql  Ver 14.14 Distrib 5.7.29, <span class="keyword">for</span> Linux (x86_64) using  EditLine wrapper</span><br><span class="line"></span><br><span class="line">Connection id:		765627</span><br><span class="line">Current database:	</span><br><span class="line">Current user:		root@localhost</span><br><span class="line">SSL:			Not <span class="keyword">in</span> use</span><br><span class="line">Current pager:		stdout</span><br><span class="line">Using outfile:		<span class="string">''</span></span><br><span class="line">Using delimiter:	;</span><br><span class="line">Server version:		5.7.29 MySQL Community Server (GPL)</span><br><span class="line">Protocol version:	10</span><br><span class="line">Connection:		Localhost via UNIX socket</span><br><span class="line">Server characterset:	latin1</span><br><span class="line">Db     characterset:	latin1</span><br><span class="line">Client characterset:	latin1</span><br><span class="line">Conn.  characterset:	latin1</span><br><span class="line">UNIX socket:		/var/run/mysqld/mysqld.sock</span><br><span class="line">Uptime:			1 hour 2 min 0 sec</span><br><span class="line"></span><br><span class="line">Threads: 2  Questions: 6  Slow queries: 0  Opens: 105  Flush tables: 1  Open tables: 98  Queries per second avg: 0.001</span><br><span class="line">--------------</span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="在navicat中使用sql语句创建表"><a href="#在navicat中使用sql语句创建表" class="headerlink" title="在navicat中使用sql语句创建表"></a>在navicat中使用sql语句创建表</h3><p>1.进行命令行操作</p>
-<p><img src="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/navicate-console.jpeg" alt></p>
-<p>2.输入mysql<br><img src="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/navicate-soule-mysql.png" alt></p>
-<p>3.右键refresh一下即可见到刚才新建的表tbl_user<br><img src="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/tbl_user.png" alt></p>
-<h3 id="通过navicat连接MySQL"><a href="#通过navicat连接MySQL" class="headerlink" title="通过navicat连接MySQL"></a>通过navicat连接MySQL</h3><p>创建数据库时，一般字符集选择utf8，排序规则选择utf8_general_ci </p>
-<p><a href="https://zhuanlan.zhihu.com/p/44348694" target="_blank" rel="noopener">在Navicat中如何新建数据库和表并做查询</a><br><a href="https://www.navicat.com.cn/manual/online_manual/cn/navicat/win_manual/index.html#/about_0" target="_blank" rel="noopener">Navicat使用手册</a> </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/Ubuntu%E4%B8%AD%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%E4%B8%BB%E4%BB%8E%E8%8A%82%E7%82%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/09/Ubuntu%E4%B8%AD%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%E4%B8%BB%E4%BB%8E%E8%8A%82%E7%82%B9/" class="post-title-link" itemprop="url">Ubuntu中通过Docker安装配置MySQL主从节点</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-09 15:37:14" itemprop="dateCreated datePublished" datetime="2020-02-09T15:37:14+08:00">2020-02-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-16 19:51:05" itemprop="dateModified" datetime="2020-02-16T19:51:05+08:00">2020-02-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/Docker/" itemprop="url" rel="index">
-                    <span itemprop="name">Docker</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-拉取MySQL5-7镜像到本地"><a href="#1-拉取MySQL5-7镜像到本地" class="headerlink" title="1.拉取MySQL5.7镜像到本地"></a>1.拉取MySQL5.7镜像到本地</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:5.7</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果你只需要跑一个mysql实例，不做主从，那么执行以下命令即可，不用再做后面的参考步骤: docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7 </span></span><br><span class="line"><span class="comment"># 然后用shell或客户端软件通过配置( 用户名:root 密码:132456 IP:你的本机ip 端口:3306)来登录即可</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-准备MySQL的配置文件"><a href="#2-准备MySQL的配置文件" class="headerlink" title="2.准备MySQL的配置文件"></a>2.准备MySQL的配置文件</h3><p>MySQL5.7安装之后的默认配置文件在/etc/mysql/my.cnf，而自定义的配置文件一般放在/etc/mysql/config.d这个路径下。<br>在本地host主机上自定义的某个目录下（如/data/mysql/conf/），先创建两个文件master.conf和slave.conf，分别用于配置主从两个节点。</p>
-<ul>
-<li>/data/mysql/conf/master.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[client] </span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysql] </span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysqld] </span><br><span class="line">log_bin = <span class="built_in">log</span> <span class="comment">#开启二进制日志，用于从节点的历史复制回放 </span></span><br><span class="line">collation-server = utf8_unicode_ci </span><br><span class="line">init-connect=<span class="string">'SET NAMES utf8'</span> </span><br><span class="line">character-set-server = utf8 </span><br><span class="line">server_id = 1 <span class="comment">#需保证主库和从库的server_id不同， 假设主库设为1 </span></span><br><span class="line">replicate-do-db=fileserver <span class="comment">#需要复制的数据库名，需复制多个数据库的话则重复设置这个选项</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li>/data/mysql/conf/slave.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[client] </span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysql] </span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysqld] </span><br><span class="line">log_bin = <span class="built_in">log</span> <span class="comment">#开启二进制日志，用于从节点的历史复制回放 </span></span><br><span class="line">collation-server = utf8_unicode_ci </span><br><span class="line">init-connect=<span class="string">'SET NAMES utf8'</span> </span><br><span class="line">character-set-server = utf8 </span><br><span class="line">server_id = 2 <span class="comment">#需保证主库和从库的server_id不同， 假设从库设为2 </span></span><br><span class="line">replicate-do-db=fileserver <span class="comment">#需要复制的数据库名，需复制多个数据库的话则重复设置这个选项</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h3 id="3-Docker分别运行MySQL主-从两个容器"><a href="#3-Docker分别运行MySQL主-从两个容器" class="headerlink" title="3. Docker分别运行MySQL主/从两个容器"></a>3. Docker分别运行MySQL主/从两个容器</h3><p>将mysql主节点运行起来 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/mysql/datam </span><br><span class="line">docker run -d --name mysql-master -p 13306:3306 -v /data/mysql/conf/master.conf:/etc/mysql/mysql.conf.d/mysqld.cnf -v /data/mysql/datam:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</span><br></pre></td></tr></table></figure>
-<p>运行参数说明:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">–name mysql-master: 容器的名称设为mysql-master </span><br><span class="line">-p 13306:3306: 将host的13306端口映射到容器的3306端口 </span><br><span class="line">-v /data/mysql/conf/master.conf:/etc/mysql/mysql.conf.d/mysqld.cnf ： master.conf配置文件挂载 </span><br><span class="line">-v /data/mysql/datam:/var/lib/mysql ： mysql容器内数据挂载到host的/data/mysql/datam， 用于持久化 </span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 : mysql的root登录密码为123456</span><br></pre></td></tr></table></figure>
-
-<p> 将mysql从节点运行起来<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/mysql/datas </span><br><span class="line">docker run -d --name mysql-slave -p 13307:3306 -v /data/mysql/conf/slave.conf:/etc/mysql/mysql.conf.d/mysqld.cnf -v /data/mysql/datas:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</span><br></pre></td></tr></table></figure></p>
-<p> 运行参数说明: </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">–name mysql-slave: 容器的名称设为mysql-slave </span><br><span class="line">-p 13307:3306: 将host的13307端口映射到容器的3306端口 </span><br><span class="line">-v /data/mysql/conf/master.conf:/etc/mysql/mysql.conf.d/mysqld.cnf ： master.conf配置文件挂载</span><br><span class="line">-v /data/mysql/datam:/var/lib/mysql ： mysql容器内数据挂载到host的/data/mysql/datam， 用于持久化 </span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 : mysql的root登录密码为123456</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-登录MySQL主节点配置同步信息"><a href="#4-登录MySQL主节点配置同步信息" class="headerlink" title="4.登录MySQL主节点配置同步信息"></a>4.登录MySQL主节点配置同步信息</h3><p>宿主机安装mysql客户端 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y mysql-client</span><br></pre></td></tr></table></figure>
-
-<p>登录mysql </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 192.168.1.xx 是你本机的内网ip </span></span><br><span class="line">mysql -u root -h 192.168.1.xx -P13306 -p123456</span><br></pre></td></tr></table></figure>
-
-<p>在mysql client中执行 (创建用于访问主节点来同步数据的帐号) </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create user slave identified by <span class="string">'slave'</span>; </span><br><span class="line">mysql&gt; GRANT REPLICATION SLAVE ON *.* TO <span class="string">'slave'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'slave'</span>; </span><br><span class="line">mysql&gt; flush privileges; </span><br><span class="line">mysql&gt; create database fileserver default character <span class="built_in">set</span> utf8mb4;</span><br></pre></td></tr></table></figure>
-<p>再获取status, 得到类似如下的输出: </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show master status\G; </span><br><span class="line">*************************** 1. row *************************** </span><br><span class="line">File: log.000025 </span><br><span class="line">Position: 155 Binlog_Do_DB: </span><br><span class="line">Binlog_Ignore_DB: </span><br><span class="line">Executed_Gtid_Set: 1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="5-登录MySQL从节点配置同步信息"><a href="#5-登录MySQL从节点配置同步信息" class="headerlink" title="5.登录MySQL从节点配置同步信息"></a>5.登录MySQL从节点配置同步信息</h3><ul>
-<li><p>查看mysql master的容器独立ip地址 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker inspect --format=<span class="string">'&#123;&#123;.NetworkSettings.IPAddress&#125;&#125;'</span> mysql-master </span><br><span class="line"><span class="comment"># 比如输出得到: 172.17.0.2</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>另开一个tab登录mysql </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 192.168.1.xx 是你本机的内网ip </span></span><br><span class="line">mysql -u root -h 192.168.1.xx -P13307 -p123456</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在mysql client中操作: </p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; stop slave; </span><br><span class="line">mysql&gt; create database fileserver default character <span class="built_in">set</span> utf8mb4; </span><br><span class="line"><span class="comment">#注意其中的日志文件和数值要和上面show master status的值对应 </span></span><br><span class="line">mysql&gt; CHANGE MASTER TO MASTER_HOST=<span class="string">'前两个步骤中获得的mysql master ip'</span>,MASTER_PORT=3306,MASTER_USER=<span class="string">'slave'</span>,MASTER_PASSWORD=<span class="string">'slave'</span>,MASTER_LOG_FILE=<span class="string">'log.000025'</span>,MASTER_LOG_POS=155; </span><br><span class="line">mysql&gt; start slave;</span><br></pre></td></tr></table></figure>
-
-<p>再获取status, 正常应该得到类似如下的输出:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show slave status \G; </span><br><span class="line">// ... </span><br><span class="line">Slave_IO_Running: Yes </span><br><span class="line">Slave_SQL_Running: Yes </span><br><span class="line">// ...</span><br></pre></td></tr></table></figure>
-
-
-
-<p>到这时说明主从配置已经完成，可以尝试在主mysql的fileserver数据库里建表操作下，然后在从节点上检查数据是否已经同步过来。</p>
-<h3 id="几个指令"><a href="#几个指令" class="headerlink" title="几个指令"></a>几个指令</h3><p><code>sudo netstat -antup -antup | grep docker</code> 查看docker占用端口<br><code>ifconfig</code> 查看本机ip</p>
-<h3 id="通过docker-compose方式实现"><a href="#通过docker-compose方式实现" class="headerlink" title="通过docker compose方式实现"></a>通过docker compose方式实现</h3><p><a href="https://github.com/mayinghan/mysql-master-slave-service" target="_blank" rel="noopener">https://github.com/mayinghan/mysql-master-slave-service</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/20/%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8mysql%E5%AE%B9%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/20/%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8mysql%E5%AE%B9%E5%99%A8/" class="post-title-link" itemprop="url">通过Docker启动MySQL容器</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-12-20 23:11:48" itemprop="dateCreated datePublished" datetime="2019-12-20T23:11:48+08:00">2019-12-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-22 18:01:29" itemprop="dateModified" datetime="2020-02-22T18:01:29+08:00">2020-02-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index">
-                    <span itemprop="name">Docker</span>
-                  </a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>拉取mysql</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
-
-<p>在后台启动mysql容器(–name指定了容器的名称，方便之后进入容器的命令行，MYSQL_ROOT_PASSWORD=hls123指定了mysql的root密码，-d表示在后台运行)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --name=mysql -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql</span><br></pre></td></tr></table></figure>
-
-<p>进入容器bash并进入mysql命令行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql bash</span><br></pre></td></tr></table></figure>
-<p>验证容器状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
-
-
-
-<p>创建mysql容器 1master+1个slave</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name=mysql-master -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql</span><br></pre></td></tr></table></figure>
-
-<p>–name 为容器指定名称，这里是mysql-master</p>
-<p>-p 将容器的指定端口映射到主机的指定端口，这里是将容器的3306端口映射到主机的3306端口</p>
-<p>-e 设置环境变量，这里是指定root账号的密码为hls123</p>
-<p>-d 后台运行容器，并返回容器ID</p>
-<p>docker run –name=mysql-master -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql:[版本号]<br>mysql:版本号 指定运行的mysql版本号</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name=mysql-slave1 -it -p 3307:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/Docker%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/11/Docker%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">Docker学习</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-12-11 16:37:47" itemprop="dateCreated datePublished" datetime="2019-12-11T16:37:47+08:00">2019-12-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-24 02:08:21" itemprop="dateModified" datetime="2020-04-24T02:08:21+08:00">2020-04-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index">
-                    <span itemprop="name">Docker</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><p>安装<br>1.通过<a href="官网">wwww.docker.com</a>下载桌面版docker<br>2.<a href="https://www.daocloud.io/mirror" target="_blank" rel="noopener">配置Docker镜像站</a><br>3.执行<code>docker run hello-world</code>，看输出完美运行～</p>
-<p>基本概念</p>
-<ul>
-<li>镜像（Image）</li>
-<li>容器（Container）</li>
-<li>仓库（Repository）</li>
-</ul>
-<p>镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
-<p>常用操作</p>
-<p>拉取镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//下载官方nginx镜像源，等同于docker pull docker.io/nginx</span><br><span class="line">//也等同于docker pull docker.io/nginx.io/nginx:latest</span><br><span class="line">docker pull nginx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//下载国内镜像源的ubuntu镜像，并制定版本</span><br><span class="line">docker pull registry.docker-cn.com/library/ubuntu:18.04</span><br></pre></td></tr></table></figure>
-
-<p>推送镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//推送镜像到docker hub,需要先注册账号</span><br><span class="line">docker push &lt;你的用户名&gt;/&lt;你打包时定义的镜像名&gt;:&lt;标签，版本号&gt;</span><br><span class="line"></span><br><span class="line">//推送镜像到私有镜像库，需要提前搭建好仓库服务（比如用harbor来搭建）</span><br><span class="line">docker push &lt;私有镜像库域名，如a.b.com&gt;/&lt;项目名称&gt;/镜像名:&lt;标签&gt;</span><br></pre></td></tr></table></figure>
-
-<p>打包镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//提前准备好一个Dockerfile，在Dockerfile相同路径下执行：</span><br><span class="line">docker build -t &lt;指定一个完整的镜像名，比如testdemo:v1.0&gt;</span><br><span class="line">//即可打包出一个本地镜像，然后再通过docker push 就可以推送到远端镜像仓库</span><br></pre></td></tr></table></figure>
-
-<p>启动容器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -d //-d 表示通过daemon方式来启动</span><br><span class="line">-p 13306:3306 //端口映射，将host主机的13306端口和docker容器的3306端口映射起来</span><br><span class="line">-v /etc/mysql:/var/mysql //目录挂载，将容器内的/var/mysql目录挂载到host主机的/etc/mysql目录，可以实现容器内这个目录下的数据持久化，mysql为镜像名（指定加载哪个镜像）</span><br></pre></td></tr></table></figure>
-
-<p>重启或停止或删除容器应用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker ps  //列出目前正在运行的容器列表</span><br><span class="line">docker ps -a //列出所有的容器列表</span><br><span class="line">docker start &lt;容器id&gt;  //通过容器id来重启某个容器，批量操作的话，直接在参数后面再跟对应容器id即可</span><br><span class="line">docker stop &lt;容器id&gt;  //通过容器id来关闭某个容器，批量操作的话，直接在参数后面再跟对应容器id即可</span><br><span class="line">docker rm &lt;容器id&gt;  //通过容器id来删除掉某个已经停止的容器</span><br><span class="line">docker rm -f &lt;容器id&gt;  //通过容器id来删除掉某个正在运行的容器</span><br><span class="line">docker container rm  [trusting_newton]</span><br></pre></td></tr></table></figure>
-
-<p>删除本地镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker rmo &lt;镜像id&gt;</span><br><span class="line">docker rmi -f &lt;镜像id&gt; //强制删除</span><br></pre></td></tr></table></figure>
-
-<p>查看容器日志</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f &lt;容器id&gt;</span><br><span class="line">docker inspect &lt;容器id&gt; //从返回结果中找到LogPath,运行的历史日志会在这个文件里找到</span><br></pre></td></tr></table></figure>
-
-<p>进入容器内</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker  <span class="built_in">exec</span>  -it &lt;容器id&gt;  /bin/bash  //进入容器内并进入它的shell终端</span><br><span class="line">docker  <span class="built_in">exec</span>  -it &lt;容器id&gt; &lt;shell命令&gt;  //在容器内执行shell命令</span><br><span class="line">docker  <span class="built_in">exec</span>  -it &lt;容器id&gt; ls -l        //查看容器内系统跟目录下所有文件或文件夹</span><br><span class="line"><span class="comment"># 进入容器后，可以直接通过exit命令推出容器</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="服务器Linux下安装Docker社区版-Centos7为例"><a href="#服务器Linux下安装Docker社区版-Centos7为例" class="headerlink" title="服务器Linux下安装Docker社区版(Centos7为例)"></a>服务器Linux下安装Docker社区版(Centos7为例)</h3><ul>
-<li>yum源使用阿里云的源</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/yum.repos.d/</span><br><span class="line"><span class="comment"># 下载阿里云的yum源</span></span><br><span class="line">wget http<span class="string">"mirrors.aliyun.com/repo/Centos-7.repo</span></span><br><span class="line"><span class="string">mv CentOS-Base.repo CentOS-Base.repo.back</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">mv Centos-7.repo CentOS-Base.repo</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>重置yum源</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br><span class="line">yum-config-manager --add-repo http://mirros.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装docker</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看阿里云上docker 源信息</span></span><br><span class="line">yum list docker-ce</span><br><span class="line"><span class="comment">#安装docker最新社区版</span></span><br><span class="line">yum -y install docker-ce</span><br><span class="line"><span class="comment">#查看docker信息</span></span><br><span class="line">docker -v</span><br><span class="line"><span class="comment">#启动docker</span></span><br><span class="line">systemctl start docker</span><br><span class="line"><span class="comment">#查看docker详细状态信息</span></span><br><span class="line">docker info</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-<p>参考资料<br><a href="https://github.com/yeasy/docker_practice" target="_blank" rel="noopener">Docker — 从入门到实践</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1523,7 +1393,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1536,7 +1406,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

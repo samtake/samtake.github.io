@@ -213,6 +213,883 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/05/Life-is-simple-i-learn-Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/Life-is-simple-i-learn-Python/" class="post-title-link" itemprop="url">Life is simple, i learn Python</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-05-05 10:37:27" itemprop="dateCreated datePublished" datetime="2020-05-05T10:37:27+08:00">2020-05-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-10 23:41:40" itemprop="dateModified" datetime="2020-05-10T23:41:40+08:00">2020-05-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://www.readwithu.com/Article/PythonBasis/python2/Variable.html" target="_blank" rel="noopener">草根学Python</a></p>
+<p><a href="https://www.runoob.com/python3/python3-data-type.html" target="_blank" rel="noopener">菜鸟教程Python</a></p>
+<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>Number:数字<br>int:整数<br>float:浮点数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">counter = 100          <span class="comment"># 整型变量</span></span><br><span class="line">miles   = 1000.0       <span class="comment"># 浮点型变量</span></span><br><span class="line">name    = <span class="string">"r00unoob"</span>     <span class="comment"># 字符串</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (counter)</span><br><span class="line"><span class="built_in">print</span> (miles)</span><br><span class="line"><span class="built_in">print</span> (name)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (5/2)  <span class="comment">#除</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (5//2)  <span class="comment">#整除</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (0b10) <span class="comment">#二进制</span></span><br><span class="line"><span class="built_in">print</span> (0o10) <span class="comment">#八进制</span></span><br><span class="line"><span class="built_in">print</span> (0x10) <span class="comment">#十六进制</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (bin(123)) <span class="comment">#bin转二进制</span></span><br><span class="line"><span class="built_in">print</span> (int(0o10)) <span class="comment">#int转十进制</span></span><br><span class="line"><span class="built_in">print</span> (hex(0o10)) <span class="comment">#转十六进制</span></span><br><span class="line"><span class="built_in">print</span> (oct(123)) <span class="comment">#转十六进制</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="布尔"><a href="#布尔" class="headerlink" title="布尔"></a>布尔</h2><p>bool:布尔类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (bool(True))</span><br><span class="line"><span class="built_in">print</span> (bool(False))</span><br><span class="line"><span class="built_in">print</span> (bool(None))</span><br><span class="line"><span class="built_in">print</span> (bool(<span class="string">""</span>))</span><br><span class="line"><span class="built_in">print</span> (bool(&#123;&#125;))</span><br><span class="line"><span class="built_in">print</span> (bool([1,2,3]))</span><br></pre></td></tr></table></figure>
+
+<h2 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h2><p>complex:复数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 字符串</span></span><br><span class="line">单引号、双引号、三个单引号、三个双引号、</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>)</span><br><span class="line"><span class="built_in">print</span> (<span class="string">"i'm hello"</span>)</span><br><span class="line"><span class="built_in">print</span> (<span class="string">'i\'</span>m hello<span class="string">')</span></span><br><span class="line"><span class="string">print ('</span><span class="string">''</span>i<span class="string">'m </span></span><br><span class="line"><span class="string">hello</span></span><br><span class="line"><span class="string">mm</span></span><br><span class="line"><span class="string">nn</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="转移字符"><a href="#转移字符" class="headerlink" title="转移字符"></a>转移字符</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\n  <span class="comment">#换行</span></span><br><span class="line">\r  <span class="comment">#回车</span></span><br><span class="line">\<span class="string">'  #单引号</span></span><br><span class="line"><span class="string">\t  #横向制表符</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>+<span class="string">'hello'</span>) <span class="comment">#两个字符串的拼接</span></span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>[0])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>[-1])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>[0:3])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>[0:-3])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>[0:30])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>[3:])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hellohellohello</span><br><span class="line">h</span><br><span class="line">o</span><br><span class="line">hel</span><br><span class="line">he</span><br><span class="line">hello</span><br><span class="line">lo</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> ([1,2,3,<span class="string">"hhh"</span>,False])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> ([[1,2,3,<span class="string">"hhh"</span>,False],[7,9],9])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3, <span class="string">'hhh'</span>, False]</span><br><span class="line">[[1, 2, 3, <span class="string">'hhh'</span>, False], [7, 9], 9]</span><br></pre></td></tr></table></figure>
+
+<h2 id="列表的基本操作"><a href="#列表的基本操作" class="headerlink" title="列表的基本操作"></a>列表的基本操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> ([[1,2,3,<span class="string">"hhh"</span>,False],[7,9],9])  <span class="comment">#列表的组成可以是嵌套列表</span></span><br><span class="line"></span><br><span class="line">myList =  [1,2,3,<span class="string">"hhh"</span>,False]</span><br><span class="line"><span class="built_in">print</span> (myList[3])  <span class="comment">#得到的是一个元素</span></span><br><span class="line"><span class="built_in">print</span> (myList[3:]) <span class="comment">#得到的是一个列表</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">myList2 =  [<span class="string">'添加的元素'</span>]</span><br><span class="line"><span class="built_in">print</span>(myList+myList2)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[[1, 2, 3, <span class="string">'hhh'</span>, False], [7, 9], 9]</span><br><span class="line">hhh</span><br><span class="line">[<span class="string">'hhh'</span>, False]</span><br><span class="line">[1, 2, 3, <span class="string">'hhh'</span>, False, <span class="string">'添加的元素'</span>]</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">tup1 = (<span class="string">'Google'</span>, <span class="string">'Runoob'</span>, 1997, 2000)</span><br><span class="line"><span class="built_in">print</span>(tup1)</span><br><span class="line">tup2 = (1, 2, 3, 4, 5 )</span><br><span class="line"><span class="built_in">print</span>(tup2)</span><br><span class="line">tup3 = <span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>   <span class="comment">#  不需要括号也可以</span></span><br><span class="line"><span class="built_in">print</span>(tup3)</span><br><span class="line"></span><br><span class="line">tup4 = ()</span><br><span class="line"><span class="built_in">print</span>(tup4)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="string">'Google'</span>, <span class="string">'Runoob'</span>, 1997, 2000)</span><br><span class="line">(1, 2, 3, 4, 5)</span><br><span class="line">(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>)</span><br><span class="line">()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#元组中只包含一个元素时，需要在元素后面添加逗号，否则括号会被当作运算符使用</span></span><br><span class="line"></span><br><span class="line">tup1 = (50,)</span><br><span class="line"><span class="built_in">print</span>(tup1)</span><br></pre></td></tr></table></figure>
+
+<h2 id="访问元组"><a href="#访问元组" class="headerlink" title="访问元组"></a>访问元组</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tup1 = (<span class="string">'Google'</span>, <span class="string">'Runoob'</span>, 1997, 2000)</span><br><span class="line">tup2 = (1, 2, 3, 4, 5, 6, 7 )</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (<span class="string">"tup1[0]: "</span>, tup1[0])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">"tup2[1:5]: "</span>, tup2[1:5])</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tup1[0]:  Google</span><br><span class="line">tup2[1:5]:  (2, 3, 4, 5)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="修改元组"><a href="#修改元组" class="headerlink" title="修改元组"></a>修改元组</h2><p>元组中的元素值是不允许修改的，但我们可以对元组进行连接组合</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">tup1 = (12, 34.56)</span><br><span class="line">tup2 = (<span class="string">'abc'</span>, <span class="string">'xyz'</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 以下修改元组元素操作是非法的。</span></span><br><span class="line"><span class="comment"># tup1[0] = 100</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 创建一个新的元组</span></span><br><span class="line">tup3 = tup1 + tup2</span><br><span class="line"><span class="built_in">print</span> (tup3)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(12, 34.56, <span class="string">'abc'</span>, <span class="string">'xyz'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除元组"><a href="#删除元组" class="headerlink" title="删除元组"></a>删除元组</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">tup = (<span class="string">'Google'</span>, <span class="string">'Runoob'</span>, 1997, 2000)</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (tup)</span><br><span class="line">del tup</span><br><span class="line"><span class="built_in">print</span> (<span class="string">"删除后的元组 tup : "</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#print (tup)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (<span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>删除之后在使用，会存在报错：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="string">'Google'</span>, <span class="string">'Runoob'</span>, 1997, 2000)</span><br><span class="line">删除后的元组 tup : </span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"main.py"</span>, line 9, <span class="keyword">in</span> </span><br><span class="line">    <span class="built_in">print</span> (tup)</span><br><span class="line">NameError: name <span class="string">'tup'</span> is not defined</span><br></pre></td></tr></table></figure>
+<h2 id="元组内置函数"><a href="#元组内置函数" class="headerlink" title="元组内置函数"></a>元组内置函数</h2><table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">len(tuple)</td>
+<td align="center">计算元组元素个数</td>
+</tr>
+<tr>
+<td align="center">max(tuple)</td>
+<td align="center">返回元组中元素最大值</td>
+</tr>
+<tr>
+<td align="center">min(tuple)</td>
+<td align="center">返回元组中元素最小值</td>
+</tr>
+<tr>
+<td align="center">tuple(iterable)</td>
+<td align="center">将可迭代系列转换为元组</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">list1= [<span class="string">'Google'</span>, <span class="string">'Taobao'</span>, <span class="string">'Runoob'</span>, <span class="string">'Baidu'</span>]</span><br><span class="line">tuple1=tuple(list1)</span><br><span class="line"><span class="built_in">print</span>(tuple1)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="string">'Google'</span>, <span class="string">'Taobao'</span>, <span class="string">'Runoob'</span>, <span class="string">'Baidu'</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>d = {key1 : value1, key2 : value2 }</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;<span class="string">'Alice'</span>: <span class="string">'2341'</span>, <span class="string">'Beth'</span>: <span class="string">'9102'</span>, <span class="string">'Cecil'</span>: <span class="string">'3258'</span>&#125;</span><br><span class="line">dict1 = &#123; <span class="string">'abc'</span>: 456 &#125;</span><br><span class="line">dict2 = &#123; <span class="string">'abc'</span>: 123, 98.6: 37 &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="访问字典"><a href="#访问字典" class="headerlink" title="访问字典"></a>访问字典</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line">dict = &#123;<span class="string">'Name'</span>: <span class="string">'Runoob'</span>, <span class="string">'Age'</span>: 7, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (<span class="string">"dict['Name']: "</span>, dict[<span class="string">'Name'</span>])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">"dict['Age']: "</span>, dict[<span class="string">'Age'</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dict[<span class="string">'Name'</span>]:  Runoob</span><br><span class="line">dict[<span class="string">'Age'</span>]:  7</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改字典"><a href="#修改字典" class="headerlink" title="修改字典"></a>修改字典</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line">dict = &#123;<span class="string">'Name'</span>: <span class="string">'Runoob'</span>, <span class="string">'Age'</span>: 7, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br><span class="line"> </span><br><span class="line">dict[<span class="string">'Age'</span>] = 8               <span class="comment"># 更新 Age</span></span><br><span class="line">dict[<span class="string">'School'</span>] = <span class="string">"菜鸟教程"</span>  <span class="comment"># 添加信息</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (<span class="string">"dict['Age']: "</span>, dict[<span class="string">'Age'</span>])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">"dict['School']: "</span>, dict[<span class="string">'School'</span>])</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dict[<span class="string">'Age'</span>]:  8</span><br><span class="line">dict[<span class="string">'School'</span>]:  菜鸟教程</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除字典元素"><a href="#删除字典元素" class="headerlink" title="删除字典元素"></a>删除字典元素</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line">dict = &#123;<span class="string">'School'</span>: <span class="string">'社会'</span>,<span class="string">'Name'</span>: <span class="string">'Runoob'</span>, <span class="string">'Age'</span>: 7, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">#del dict['Name'] # 删除键 'Name'</span></span><br><span class="line"><span class="comment">#dict.clear()     # 清空字典</span></span><br><span class="line"><span class="comment">#del dict         # 删除字典</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (<span class="string">"dict['Age']: "</span>, dict[<span class="string">'Age'</span>])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">"dict['School']: "</span>, dict[<span class="string">'School'</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dict[<span class="string">'Age'</span>]:  7</span><br><span class="line">dict[<span class="string">'School'</span>]:  社会</span><br></pre></td></tr></table></figure>
+
+<p>键必须不可变，所以可以用数字，字符串或元组充当，而用列表就不行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line">dict = &#123;[<span class="string">'Name'</span>]: <span class="string">'Runoob'</span>, <span class="string">'Age'</span>: 7&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (<span class="string">"dict['Name']: "</span>, dict[<span class="string">'Name'</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">11111Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"main.py"</span>, line 3, <span class="keyword">in</span> </span><br><span class="line">    dict = &#123;[<span class="string">'Name'</span>]: <span class="string">'Runoob'</span>, <span class="string">'Age'</span>: 7&#125;</span><br><span class="line">TypeError: unhashable <span class="built_in">type</span>: <span class="string">'list'</span></span><br></pre></td></tr></table></figure>
+
+
+<p>内置函数<br>| 方法 | 描述 |<br>| :—–:| :—-: |<br>|         len(dict) | 计算字典元素个数，即键的总数 |<br>| str(dict) | 输出字典，以可打印的字符串表示 |<br>|type(variable)|返回输入的变量类型，如果变量是字典就返回字典类型|</p>
+<p>内置方法<br>| 方法 | 描述 |<br>| :—–| :—-|<br>|radiansdict.clear()|删除字典内所有元素|<br>|radiansdict.copy()|返回一个字典的浅复制|<br>|radiansdict.fromkeys()|创建一个新字典，以序列seq中元素做字典的键，val为字典所有键对应的初始值|<br>|radiansdict.get(key, default=None)|返回指定键的值，如果值不在字典中返回default值|<br>|key in dict|如果键在字典dict里返回true，否则返回false|<br>|radiansdict.items()|以列表返回可遍历的(键, 值) 元组数组|<br>|radiansdict.keys()|返回一个迭代器，可以使用 list() 来转换为列表|<br>|radiansdict.setdefault(key, default=None)|和get()类似, 但如果键不存在于字典中，将会添加键并将值设为default|<br>|radiansdict.update(dict2)|把字典dict2的键/值对更新到dict里|<br>|radiansdict.values()|返回一个迭代器，可以使用 list() 来转换为列表|<br>|pop(key[,default])|删除字典给定键 key 所对应的值，返回值为被删除的值。key值必须给出。 否则，返回default值。|<br>|popitem()|随机返回并删除字典中的最后一对键和值|</p>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>集合（set）是一个无序的不重复元素序列。</p>
+<p>可以使用大括号 { } 或者 set() 函数创建集合，注意：创建一个空集合必须用 set() 而不是 { }，因为 { } 是用来创建一个空字典。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parame = &#123;value01,value02,...&#125;</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line"><span class="built_in">set</span>(value)</span><br></pre></td></tr></table></figure>
+
+<p>集合具有去重功能</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">basket = &#123;<span class="string">'apple'</span>, <span class="string">'orange'</span>, <span class="string">'apple'</span>, <span class="string">'pear'</span>, <span class="string">'orange'</span>, <span class="string">'banana'</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(basket)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">'pear'</span>, <span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'orange'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>快速判断元素是否在集合内</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">a = &#123;x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">'abracadabra'</span> <span class="keyword">if</span> x not <span class="keyword">in</span> <span class="string">'abc'</span>&#125;</span><br><span class="line">a = <span class="built_in">set</span>(<span class="string">'abracadabra'</span>)</span><br><span class="line">b = <span class="built_in">set</span>(<span class="string">'alacazam'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"a:"</span>,a)  </span><br><span class="line"><span class="built_in">print</span>(<span class="string">"集合a中包含而集合b中不包含的元素:"</span>,a - b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"集合a或b中包含的所有元素:"</span>,a | b )  </span><br><span class="line"><span class="built_in">print</span>(<span class="string">"集合a和b中都包含了的元素:"</span>,a &amp; b)  </span><br><span class="line"><span class="built_in">print</span>(<span class="string">"不同时包含于a和b的元素:"</span>,a ^ b)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a: &#123;<span class="string">'r'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>&#125;</span><br><span class="line">集合a中包含而集合b中不包含的元素: &#123;<span class="string">'b'</span>, <span class="string">'r'</span>, <span class="string">'d'</span>&#125;</span><br><span class="line">集合a或b中包含的所有元素: &#123;<span class="string">'z'</span>, <span class="string">'r'</span>, <span class="string">'a'</span>, <span class="string">'l'</span>, <span class="string">'b'</span>, <span class="string">'m'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>&#125;</span><br><span class="line">集合a和b中都包含了的元素: &#123;<span class="string">'c'</span>, <span class="string">'a'</span>&#125;</span><br><span class="line">不同时包含于a和b的元素: &#123;<span class="string">'z'</span>, <span class="string">'r'</span>, <span class="string">'l'</span>, <span class="string">'b'</span>, <span class="string">'m'</span>, <span class="string">'d'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类似列表推导式，同样集合支持集合推导式(Set comprehension)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">a = &#123;x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">'abracadabra'</span> <span class="keyword">if</span> x not <span class="keyword">in</span> <span class="string">'abc'</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"a:"</span>,a)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a: &#123;<span class="string">'r'</span>, <span class="string">'d'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="集合的基本操作"><a href="#集合的基本操作" class="headerlink" title="集合的基本操作"></a>集合的基本操作</h2><p>添加元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">thisset = <span class="built_in">set</span>((<span class="string">"Google"</span>, <span class="string">"Runoob"</span>, <span class="string">"Taobao"</span>))</span><br><span class="line">thisset.add(<span class="string">"Facebook"</span>)</span><br><span class="line"><span class="built_in">print</span>(thisset)</span><br><span class="line">thisset.update(&#123;1,3&#125;)</span><br><span class="line"><span class="built_in">print</span>(thisset)</span><br><span class="line">thisset.update([1,4],[5,6])  </span><br><span class="line"><span class="built_in">print</span>(thisset)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">'Google'</span>, <span class="string">'Runoob'</span>, <span class="string">'Taobao'</span>, <span class="string">'Facebook'</span>&#125;</span><br><span class="line">&#123;1, <span class="string">'Taobao'</span>, 3, <span class="string">'Runoob'</span>, <span class="string">'Facebook'</span>, <span class="string">'Google'</span>&#125;</span><br><span class="line">&#123;1, <span class="string">'Taobao'</span>, 3, 4, 5, 6, <span class="string">'Runoob'</span>, <span class="string">'Facebook'</span>, <span class="string">'Google'</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>移除元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">thisset.remove(<span class="string">"Taobao"</span>) <span class="comment"># 不存在会发生错误</span></span><br><span class="line"></span><br><span class="line">thisset.discard(<span class="string">"Taobao"</span>) <span class="comment">#不存在不会发生错误</span></span><br><span class="line"></span><br><span class="line">// pop 方法会对集合进行无序的排列，然后将这个无序排列集合的左面第一个元素进行删除</span><br><span class="line">thisset.pop() <span class="comment">#随机删除集合中的一个元素</span></span><br></pre></td></tr></table></figure>
+
+
+<p>计算集合元素个数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">len(thisset)</span><br></pre></td></tr></table></figure>
+
+<p>清空集合</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">thisset.clear()</span><br></pre></td></tr></table></figure>
+
+<p>判断元素是否在集合中存在</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Runoob"</span> <span class="keyword">in</span> thisset</span><br></pre></td></tr></table></figure>
+
+<p>集合内置方法完整列表<br>| 方法    | 描述|<br>| :—–| :—-|<br>| add()    | 为集合添加元素<br>| clear()    | 移除集合中的所有元素<br>| copy()    | 拷贝一个集合<br>| difference()    | 返回多个集合的差集<br>| difference_update()    | 移除集合中的元素，该元素在指定的集合也存在。<br>| discard()    | 删除集合中指定的元素<br>| intersection()    | 返回集合的交集<br>| intersection_update()    | 返回集合的交集。<br>| isdisjoint()    | 判断两个集合是否包含相同的元素，如果没有返回 True，否则返回 False。<br>issubset()    | 判断指定集合是否为该方法参数集合的子集。<br>issuperset()    | 判断该方法的参数集合是否为指定集合的子集<br>pop()    | 随机移除元素<br>remove()    | 移除指定元素<br>symmetric_difference()    | 返回两个集合中不重复的元素集合。<br>| symmetric_difference_update()    | 移除当前集合中在另外一个指定集合相同的元素，并将另外一个指定集合中不同的元素插入到当前集合中。<br>| union()    | 返回两个集合的并集<br>| update()    | 给集合添加元素</p>
+<h1 id="end-关键字"><a href="#end-关键字" class="headerlink" title="end 关键字"></a>end 关键字</h1><p>关键字end可以用于将结果输出到同一行，或者在输出的末尾添加不同的字符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># Fibonacci series: 斐波纳契数列</span></span><br><span class="line"><span class="comment"># 两个元素的总和确定了下一个数</span></span><br><span class="line">a, b = 0, 1</span><br><span class="line"><span class="keyword">while</span> b &lt; 1000:</span><br><span class="line">    <span class="built_in">print</span>(b, end=<span class="string">','</span>)</span><br><span class="line">    a, b = b, a+b</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,</span><br></pre></td></tr></table></figure>
+
+<h1 id="条件控制"><a href="#条件控制" class="headerlink" title="条件控制"></a>条件控制</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> condition_1:</span><br><span class="line">    statement_block_1</span><br><span class="line"><span class="keyword">elif</span> condition_2:</span><br><span class="line">    statement_block_2</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    statement_block_3</span><br></pre></td></tr></table></figure>
+<p>if 嵌套：可以把 if…elif…else 结构放在另外一个 if…elif…else 结构中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 表达式1:</span><br><span class="line">    语句</span><br><span class="line">    <span class="keyword">if</span> 表达式2:</span><br><span class="line">        语句</span><br><span class="line">    <span class="keyword">elif</span> 表达式3:</span><br><span class="line">        语句</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        语句</span><br><span class="line"><span class="keyword">elif</span> 表达式4:</span><br><span class="line">    语句</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    语句</span><br></pre></td></tr></table></figure>
+
+<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><p>while</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> 判断条件(condition)：</span><br><span class="line">    执行语句(statements)……</span><br></pre></td></tr></table></figure>
+
+<p>while 循环使用 else 语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> &lt;expr&gt;:</span><br><span class="line">    &lt;statement(s)&gt;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    &lt;additional_statement(s)&gt;</span><br></pre></td></tr></table></figure>
+
+<p>for中使用了 break 语句，break 语句用于跳出当前循环体：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line">sites = [<span class="string">"Baidu"</span>, <span class="string">"Google"</span>,<span class="string">"Runoob"</span>,<span class="string">"Taobao"</span>]</span><br><span class="line"><span class="keyword">for</span> site <span class="keyword">in</span> sites:</span><br><span class="line">    <span class="keyword">if</span> site == <span class="string">"Runoob"</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"菜鸟教程!"</span>)</span><br><span class="line">        <span class="built_in">break</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"循环数据 "</span> + site)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"没有循环数据!"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"完成循环!"</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">循环数据 Baidu</span><br><span class="line">循环数据 Google</span><br><span class="line">菜鸟教程!</span><br><span class="line">完成循环!</span><br></pre></td></tr></table></figure>
+
+
+<p>range()函数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(5):</span><br><span class="line">	     <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+
+
+<p>使用range指定区间的值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(5,9) :</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td></tr></table></figure>
+
+
+<p>使range以指定数字开始并指定不同的增量(甚至可以是负数，有时这也叫做’步长’):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(0, 10, 3) :</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"负数"</span>)	</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(-10, -100, -30) :</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">3</span><br><span class="line">6</span><br><span class="line">9</span><br><span class="line">负数</span><br><span class="line">-10</span><br><span class="line">-40</span><br><span class="line">-70</span><br></pre></td></tr></table></figure>
+
+
+<p>结合range()和len()函数以遍历一个序列的索引</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line">a = [<span class="string">'Google'</span>, <span class="string">'Baidu'</span>, <span class="string">'Runoob'</span>, <span class="string">'Taobao'</span>, <span class="string">'QQ'</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(a)):</span><br><span class="line">	<span class="built_in">print</span>(i, a[i])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 Google</span><br><span class="line">1 Baidu</span><br><span class="line">2 Runoob</span><br><span class="line">3 Taobao</span><br><span class="line">4 QQ</span><br></pre></td></tr></table></figure>
+
+<p>使用range()函数来创建一个列表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line">myList=list(range(5))</span><br><span class="line"><span class="built_in">print</span>(myList)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[0, 1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
+
+<h1 id="break-和-continue-语句及循环中的-else-子句"><a href="#break-和-continue-语句及循环中的-else-子句" class="headerlink" title="break 和 continue 语句及循环中的 else 子句"></a>break 和 continue 语句及循环中的 else 子句</h1><p><code>break</code> 语句可以跳出 <code>for</code> 和 <code>while</code> 的循环体。如果你从 <code>for</code> 或 <code>while</code> 循环中终止，任何对应的循环 <code>else</code> 块将不执行。</p>
+<p><code>continue</code> 语句被用来告诉 Python 跳过当前循环块中的剩余语句，然后继续进行下一轮循环</p>
+<p>while 中使用 break：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line">n = 5</span><br><span class="line"><span class="keyword">while</span> n &gt; 0:</span><br><span class="line">    n -= 1</span><br><span class="line">    <span class="keyword">if</span> n == 2:</span><br><span class="line">        <span class="built_in">break</span></span><br><span class="line">    <span class="built_in">print</span>(n)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">'循环结束。'</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">3</span><br><span class="line">循环结束。</span><br></pre></td></tr></table></figure>
+
+<p>while 中使用 continue：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">n = 5</span><br><span class="line"><span class="keyword">while</span> n &gt; 0:</span><br><span class="line">    n -= 1</span><br><span class="line">    <span class="keyword">if</span> n == 2:</span><br><span class="line">        <span class="built_in">continue</span></span><br><span class="line">    <span class="built_in">print</span>(n)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">'循环结束。'</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">3</span><br><span class="line">1</span><br><span class="line">0</span><br><span class="line">循环结束。</span><br></pre></td></tr></table></figure>
+<h1 id="pass-语句"><a href="#pass-语句" class="headerlink" title="pass 语句"></a>pass 语句</h1><p>pass 不做任何事情，一般用做占位语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> True:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"...."</span>)</span><br><span class="line">	pass  <span class="comment"># 等待键盘中断 (Ctrl+C)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><ul>
+<li>迭代器是一个可以记住遍历的位置的对象。</li>
+<li>迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完结束。迭代器只能往前不会后退。</li>
+<li>迭代器有两个基本的方法：iter() 和 next()。</li>
+</ul>
+<p>字符串，列表或元组对象都可用于创建迭代器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">list=[1,2,3,4]</span><br><span class="line">it = iter(list)    <span class="comment"># 创建迭代器对象</span></span><br><span class="line"><span class="built_in">print</span> (next(it))   <span class="comment"># 输出迭代器的下一个元素</span></span><br><span class="line"><span class="built_in">print</span> (next(it))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<p>使用for语句遍历迭代器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">list=[1,2,3,4]</span><br><span class="line">it = iter(list)    <span class="comment"># 创建迭代器对象</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> it:</span><br><span class="line">    <span class="built_in">print</span> (x, end=<span class="string">" "</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 4</span><br></pre></td></tr></table></figure>
+
+<p>使用next()遍历迭代器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">import sys         <span class="comment"># 引入 sys 模块</span></span><br><span class="line"> </span><br><span class="line">list=[1,2,3,4]</span><br><span class="line">it = iter(list)    <span class="comment"># 创建迭代器对象</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span> True:</span><br><span class="line">    try:</span><br><span class="line">        <span class="built_in">print</span> (next(it))</span><br><span class="line">    except StopIteration:</span><br><span class="line">        sys.exit()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="创建一个迭代器"><a href="#创建一个迭代器" class="headerlink" title="创建一个迭代器"></a>创建一个迭代器</h2><ul>
+<li><p>把一个类作为一个迭代器使用需要在类中实现两个方法 <strong>iter</strong>() 与 <strong>next</strong>() 。</p>
+</li>
+<li><p>Python 的构造函数为 <strong>init</strong>(), 它会在对象初始化的时候执行。</p>
+</li>
+<li><p><code>__iter__()</code> 方法返回一个特殊的迭代器对象， 这个迭代器对象实现了 <code>__next__()</code> 方法并通过 StopIteration 异常标识迭代的完成。</p>
+</li>
+<li><p><code>__next__()</code> 方法会返回下一个迭代器对象。</p>
+</li>
+</ul>
+<p>创建一个返回数字的迭代器，初始值为 1，逐步递增 1</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class MyNumbers:</span><br><span class="line">  def __iter__(self):</span><br><span class="line">    self.a = 1</span><br><span class="line">    <span class="built_in">return</span> self</span><br><span class="line"> </span><br><span class="line">  def __next__(self):</span><br><span class="line">    x = self.a</span><br><span class="line">    self.a += 1</span><br><span class="line">    <span class="built_in">return</span> x</span><br><span class="line"> </span><br><span class="line">myclass = MyNumbers()</span><br><span class="line">myiter = iter(myclass)</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(next(myiter))</span><br><span class="line"><span class="built_in">print</span>(next(myiter))</span><br><span class="line"><span class="built_in">print</span>(next(myiter))</span><br><span class="line"><span class="built_in">print</span>(next(myiter))</span><br><span class="line"><span class="built_in">print</span>(next(myiter))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="StopIteration"><a href="#StopIteration" class="headerlink" title="StopIteration"></a>StopIteration</h2><p>StopIteration 异常用于标识迭代的完成，防止出现无限循环的情况，在 <strong>next</strong>() 方法中我们可以设置在完成指定循环次数后触发 StopIteration 异常来结束迭代。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class MyNumbers:</span><br><span class="line">  def __iter__(self):</span><br><span class="line">    self.a = 1</span><br><span class="line">    <span class="built_in">return</span> self</span><br><span class="line"> </span><br><span class="line">  def __next__(self):</span><br><span class="line">    <span class="keyword">if</span> self.a &lt;= 20:</span><br><span class="line">      x = self.a</span><br><span class="line">      self.a += 1</span><br><span class="line">      <span class="built_in">return</span> x</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      raise StopIteration</span><br><span class="line"> </span><br><span class="line">myclass = MyNumbers()</span><br><span class="line">myiter = iter(myclass)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> myiter:</span><br><span class="line">  <span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td></tr></table></figure>
+
+<h1 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h1><ul>
+<li><p>在 Python 中，使用了 <code>yield</code> 的函数被称为生成器（generator）。</p>
+</li>
+<li><p>跟普通函数不同的是，生成器是一个返回迭代器的函数，只能用于迭代操作，更简单点理解生成器就是一个迭代器。</p>
+</li>
+<li><p>在调用生成器运行的过程中，每次遇到 yield 时函数会暂停并保存当前所有的运行信息，返回 yield 的值, 并在下一次执行 next() 方法时从当前位置继续运行。</p>
+</li>
+<li><p>调用一个生成器函数，返回的是一个迭代器对象。</p>
+</li>
+</ul>
+<p>使用 <code>yield</code> 实现斐波那契数列：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">import sys</span><br><span class="line"> </span><br><span class="line">def fibonacci(n): <span class="comment"># 生成器函数 - 斐波那契</span></span><br><span class="line">    a, b, counter = 0, 1, 0</span><br><span class="line">    <span class="keyword">while</span> True:</span><br><span class="line">        <span class="keyword">if</span> (counter &gt; n): </span><br><span class="line">            <span class="built_in">return</span></span><br><span class="line">        yield a</span><br><span class="line">        a, b = b, a + b</span><br><span class="line">        counter += 1</span><br><span class="line">f = fibonacci(10) <span class="comment"># f 是一个迭代器，由生成器返回生成</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span> True:</span><br><span class="line">    try:</span><br><span class="line">        <span class="built_in">print</span> (next(f), end=<span class="string">" "</span>)</span><br><span class="line">    except StopIteration:</span><br><span class="line">        sys.exit()</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/27/%E6%9E%B6%E6%9E%84%E3%80%81%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E3%80%81SAAS%E3%80%81%E4%B8%AD%E5%8F%B0%E3%80%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/27/%E6%9E%B6%E6%9E%84%E3%80%81%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E3%80%81SAAS%E3%80%81%E4%B8%AD%E5%8F%B0%E3%80%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">架构、技术选型、SAAS、中台、数据分析</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-27 11:34:07 / Modified: 18:18:55" itemprop="dateCreated datePublished" datetime="2020-04-27T11:34:07+08:00">2020-04-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="概念名词"><a href="#概念名词" class="headerlink" title="概念名词"></a>概念名词</h1><h2 id="SAAS"><a href="#SAAS" class="headerlink" title="SAAS"></a>SAAS</h2><p>SAAS是Software-as-a-Service（软件即服务）的简称.</p>
+<ul>
+<li>厂商将应用软件统一部署在自己的服务器上，客户可以根据自己实际需求，通过互联网向厂商定购所需的应用软件服务，按定购的服务多少和时间长短向厂商支付费用，并通过互联网获得厂商提供的服务.</li>
+<li>用户不用再购买软件，而改用向提供商租用基于Web的软件，来管理企业经营活动，且无需对软件进行维护，服务提供商会全权管理和维护软件，软件厂商在向客户提供互联网应用的同时，也提供软件的离线操作和本地数据存储，让用户随时随地都可以使用其定购的软件和服务.</li>
+</ul>
+<h2 id="ERP"><a href="#ERP" class="headerlink" title="ERP"></a>ERP</h2><p>ERP系统是企业资源计划的简称.</p>
+<ul>
+<li>ERP系统主要功能：有产品采集、产品管理、分类管理、订单管理、物流管理、报表管理.</li>
+<li>软件举例：进销存软件、</li>
+</ul>
+<h2 id="CRM"><a href="#CRM" class="headerlink" title="CRM"></a>CRM</h2><p>CRM即客户关系管理.</p>
+<ul>
+<li>通常所指的CRM，指用计算机自动化分析销售、市场营销、客户服务以及应用等流程的软件系统.</li>
+</ul>
+<h2 id="BI"><a href="#BI" class="headerlink" title="BI"></a>BI</h2><p>BI（Business Intelligence），商业智能,又称商业智能或商务智能.</p>
+<ul>
+<li>指用数据仓库技术、在线分析处理技术、数据挖掘和数据展现技术进行数据分析以实现商业价值。</li>
+<li>商业智能通常可以将企业中现有的数据转化为知识，帮助企业做出明智的业务经营决策的工具。</li>
+</ul>
+<h2 id="SAP"><a href="#SAP" class="headerlink" title="SAP"></a>SAP</h2><p>它一般指的是一家生产设计Erp系统的公司简称。</p>
+<ul>
+<li>SAP公司是全球最大的企业管理和协同化商务解决方案供应商、世界第三大的独立软件供应商、全球第二大云公司。</li>
+</ul>
+<h2 id="BPO"><a href="#BPO" class="headerlink" title="BPO"></a>BPO</h2><p>BPO(Business Process Outsourcing)商业流程委外,又称业务流程外包或经营外包.</p>
+<ul>
+<li>是指把特定的商业工序外派给第三方服务供应商.</li>
+</ul>
+<h2 id="SOA"><a href="#SOA" class="headerlink" title="SOA"></a>SOA</h2><p>SOA（Service-Oriented Architecture），面向服务的体系结构。</p>
+<ul>
+<li>SOA是一种根据业务流程（Business Process）来组织功能，并将功能封装成为可互操作的服务的软件架构。</li>
+</ul>
+<h1 id="大数据、数据分析"><a href="#大数据、数据分析" class="headerlink" title="大数据、数据分析"></a>大数据、数据分析</h1><p><img src="/2020/04/27/%E6%9E%B6%E6%9E%84%E3%80%81%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E3%80%81SAAS%E3%80%81%E4%B8%AD%E5%8F%B0%E3%80%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%9001.jpeg" alt="数据分析01.jpeg"></p>
+<p><a href="https://zhuanlan.zhihu.com/p/26545566" target="_blank" rel="noopener">一文读懂大数据平台——写给大数据开发初学者的话!</a></p>
+<p>这里推荐极客时间出品的《数据分析实战45讲》<br>基础+算法+实战+数据可视化</p>
+<h1 id="中台"><a href="#中台" class="headerlink" title="中台"></a>中台</h1><p><a href="https://zhuanlan.zhihu.com/p/81410765" target="_blank" rel="noopener">阿里中台架构</a></p>
+<p>双中台<br><img src="/2020/04/27/%E6%9E%B6%E6%9E%84%E3%80%81%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E3%80%81SAAS%E3%80%81%E4%B8%AD%E5%8F%B0%E3%80%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E8%AF%B4%E9%80%8F%E4%B8%AD%E5%8F%B001.jpeg" alt="说透中台01.jpeg"></p>
+<p>这里推荐王健的《说透中台》</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>各自的技术栈都不一样，做之前先调研：</p>
+<ol>
+<li><p>数据：数据分析用 python，但自己之前接触的大数据行业，像为某些机构做舆论监控的，他们用的却是Java。</p>
+</li>
+<li><p>接口：判断未来go语言是趋势，但看有没有具体轮子吧，Java or go ?</p>
+</li>
+<li><p>app： flutter作为跨平台首选毕竟以前用过rn真的不好用，但flutter在iOS上架长期会有不稳定因素（说不定哪天被拒），安卓是没问题的，或者用flutter做成模块被iOS调用进行混合开发也行。</p>
+</li>
+<li><p>小程序： uni-app吧，全平台小程序：微信、头条、支付宝。</p>
+</li>
+<li><p>web前端：vue了。</p>
+</li>
+</ol>
+<p>资料</p>
+<p><a href="https://www.processon.com/view/link/5e51378ce4b0c037b5f9d1e3#outline" target="_blank" rel="noopener">极客时间-架构实战案例解析</a></p>
+<p><a href="https://www.zhihu.com/question/41359111" target="_blank" rel="noopener">SaaS ERP和传统ERP的区别在哪里？</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/43216852" target="_blank" rel="noopener">Iass、Pass、SasS三种云服务区别</a></p>
+<p><a href="https://github.com/weizhiqiang1995/erp-pro" target="_blank" rel="noopener">erp-pro</a></p>
+<p><a href="https://studygolang.com/articles/24864" target="_blank" rel="noopener">适合SaaS的几种架构比较</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/go-logging/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/25/go-logging/" class="post-title-link" itemprop="url">go-logging</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-25 14:00:38" itemprop="dateCreated datePublished" datetime="2020-04-25T14:00:38+08:00">2020-04-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/iOS-VIPER%E6%9E%B6%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/24/iOS-VIPER%E6%9E%B6%E6%9E%84/" class="post-title-link" itemprop="url">iOS VIPER架构</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-24 02:10:23 / Modified: 19:28:22" itemprop="dateCreated datePublished" datetime="2020-04-24T02:10:23+08:00">2020-04-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="查了一下资料"><a href="#查了一下资料" class="headerlink" title="查了一下资料"></a>查了一下资料</h1><p><code>VIPER</code> View-Interactor-Presenter-Entity-Router</p>
+<p>View</p>
+<ul>
+<li>提供完整的视图，负责视图的组合、布局、更新</li>
+<li>向Presenter提供更新视图的接口</li>
+<li>将View相关的事件发送给Presenter</li>
+</ul>
+<p>Presenter</p>
+<ul>
+<li>接收并处理来自View的事件</li>
+<li>向Interactor请求调用业务逻辑</li>
+<li>向Interactor提供View中的数据</li>
+<li>接收并处理来自Interactor的数据回调事件</li>
+<li>通知View进行更新操作</li>
+<li>通过Router跳转到其他View</li>
+</ul>
+<p>Router（路由）</p>
+<ul>
+<li>提供View之间的跳转功能，减少了模块间的耦合</li>
+<li>初始化VIPER的各个模块</li>
+</ul>
+<p>Interactor（交互器）</p>
+<ul>
+<li>维护主要的业务逻辑功能，向Presenter提供现有的业务用例</li>
+<li>维护、获取、更新Entity</li>
+<li>当有业务相关的事件发生时，处理事件，并通知Presenter</li>
+</ul>
+<p>Entity（实体）</p>
+<ul>
+<li>和Model一样的数据模型</li>
+</ul>
+<blockquote>
+<p>VIPER把MVC中的Controller进一步拆分成了Presenter、Router和Interactor。和MVP中负责业务逻辑的Presenter不同，VIPER的Presenter的主要工作是在View和Interactor之间传递事件，并管理一些View的展示逻辑，主要的业务逻辑实现代码都放在了Interactor里。Interactor的设计里提出了”用例”的概念，也就是把每一个会出现的业务流程封装好，这样可测试性会大大提高。而Router则进一步解决了不同模块之间的耦合。</p>
+</blockquote>
+<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p>ok!!那就按照上面的意思来写个 demo 呗～～</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/22/%E5%9F%BA%E4%BA%8ERBAC%E8%A7%92%E8%89%B2%E7%9A%84%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/22/%E5%9F%BA%E4%BA%8ERBAC%E8%A7%92%E8%89%B2%E7%9A%84%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6/" class="post-title-link" itemprop="url">基于RBAC角色的访问控制</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-22 14:48:41" itemprop="dateCreated datePublished" datetime="2020-04-22T14:48:41+08:00">2020-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-28 10:33:35" itemprop="dateModified" datetime="2020-04-28T10:33:35+08:00">2020-04-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><code>RBAC</code>（Role-Based Access Control ）基于角色的访问控制。</p>
+<p><code>casbin</code>是一个强大的、高效的开源访问控制框架，其权限管理机制支持多种访问控制模型。</p>
+<p><code>gorm-adapter</code>使用这个库,Casbin可以从Gorm加载政策支持的数据库或保存政策。</p>
+<h1 id="理解casbin的使用"><a href="#理解casbin的使用" class="headerlink" title="理解casbin的使用"></a>理解casbin的使用</h1><p>具体可以看这篇文章：<a href="https://zupzup.org/casbin-http-role-auth/" target="_blank" rel="noopener">Basic Role-Based HTTP Authorization in Go with Casbin</a>(中文翻译为<a href="https://studygolang.com/articles/12323" target="_blank" rel="noopener">在 Go 语言中使用 casbin 实现基于角色的 HTTP 权限控制</a>)，具体<a href="https://github.com/samtake/casbin-demo" target="_blank" rel="noopener">demo</a>我也加了详细注释。</p>
+<p>这里有几个需要弄懂的：</p>
+<p>模型文件的配置<code>auth_model.conf</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[request_definition]</span><br><span class="line">r = sub, obj, act</span><br><span class="line"></span><br><span class="line">[policy_definition]</span><br><span class="line">p = sub, obj, act</span><br><span class="line"></span><br><span class="line">[policy_effect]</span><br><span class="line">e = some(<span class="built_in">where</span> (p.eft == allow))</span><br><span class="line"></span><br><span class="line">[matchers]</span><br><span class="line">m = r.sub == p.sub &amp;&amp; keyMatch(r.obj, p.obj) &amp;&amp; (r.act == p.act || p.act == <span class="string">"*"</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Model CONF 至少应包含四个部分:<code>[request_definition]</code>, <code>[policy_definition]</code>, <code>[policy_effect]</code>, <code>[matchers]</code></p>
+</li>
+<li><p>如果 model 使用 RBAC, 还需要添加<code>[role_definition]</code>部分。</p>
+</li>
+<li><p>sub, obj, act 表示经典三元组: 访问实体 (Subject)，访问资源 (Object) 和访问方法 (Action)</p>
+</li>
+<li><p><a href="https://casbin.org/docs/zh-CN/syntax-for-models" target="_blank" rel="noopener">更具体的可以直接看官方文档</a></p>
+</li>
+</ul>
+<p>策略文件<code>policy.csv</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p, admin, /*, *</span><br><span class="line">p, anonymous, /login, *</span><br><span class="line">p, member, /<span class="built_in">logout</span>, *</span><br><span class="line">p, member, /member/*, *</span><br></pre></td></tr></table></figure>
+<ul>
+<li>admin 角色可以访问所有内容</li>
+<li>member 角色可以访问以 /member/ 开头的路径和 logout 路径</li>
+<li>未认证用户可以登陆</li>
+</ul>
+<h1 id="gorm-adapter"><a href="#gorm-adapter" class="headerlink" title="gorm-adapter"></a>gorm-adapter</h1><p>在上个个例子中，策略文件就是一个简单的 csv 文件，描述了哪些角色可以访问哪些路径等。但在实际项目中策略文件一般都会存储在数据库，这时候就用到了<a href="https://github.com/casbin/gorm-adapter" target="_blank" rel="noopener">gorm-adapter</a></p>
+<p>直接看官方给出的demo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"github.com/casbin/casbin/v2"</span></span><br><span class="line">	gormadapter <span class="string">"github.com/casbin/gorm-adapter/v2"</span></span><br><span class="line">	_ <span class="string">"github.com/go-sql-driver/mysql"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    //初始化一个Gorm adapter 并在Casbin enforcer中使用它:</span><br><span class="line">    //Gorm adapter会使用一个名叫casbin的MySQL数据库</span><br><span class="line">    //如果不存在，将会自动创建</span><br><span class="line">    //或者通过 gormadapter.NewAdapterByDB(gormInstance)读取一个已经存在的数据库  </span><br><span class="line"></span><br><span class="line">	a, _ := gormadapter.NewAdapter(<span class="string">"mysql"</span>, <span class="string">"mysql_username:mysql_password@tcp(127.0.0.1:3306)/"</span>)</span><br><span class="line">	e, _ := casbin.NewEnforcer(<span class="string">"examples/rbac_model.conf"</span>, a)</span><br><span class="line">	</span><br><span class="line">	// Or you can use an existing DB <span class="string">"abc"</span> like this:</span><br><span class="line">	// The adapter will use the table named <span class="string">"casbin_rule"</span>.</span><br><span class="line">	// If it doesn<span class="string">'t exist, the adapter will create it automatically.</span></span><br><span class="line"><span class="string">	// a := gormadapter.NewAdapter("mysql", "mysql_username:mysql_password@tcp(127.0.0.1:3306)/abc", true)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	e.LoadPolicy()//从数据库加载策略</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	e.Enforce("alice", "data1", "read")// 检查许可</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	// 更改策略</span></span><br><span class="line"><span class="string">	// e.AddPolicy(...)</span></span><br><span class="line"><span class="string">	// e.RemovePolicy(...)</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	e.SavePolicy()//保存策略</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="实际项目举例"><a href="#实际项目举例" class="headerlink" title="实际项目举例"></a>实际项目举例</h1><p><code>rbac_model.conf</code>模型文件配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[request_definition]</span><br><span class="line">r = sub, obj, act</span><br><span class="line"></span><br><span class="line">[policy_definition]</span><br><span class="line">p = sub, obj, act</span><br><span class="line"></span><br><span class="line">[role_definition]</span><br><span class="line">g = _, _</span><br><span class="line"></span><br><span class="line">[policy_effect]</span><br><span class="line">e = some(<span class="built_in">where</span> (p.eft == allow))</span><br><span class="line"></span><br><span class="line">[matchers]</span><br><span class="line">m = r.sub == p.sub &amp;&amp; ParamsMatch(r.obj,p.obj) &amp;&amp; r.act == p.act</span><br></pre></td></tr></table></figure>
+
+<p><code>qmplus.sql</code>表的定义并通过sql往数据库添加数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> Navicat Premium Data Transfer</span><br><span class="line"></span><br><span class="line"> Source Server         : qmplus</span><br><span class="line"> Source Server Type    : MySQL</span><br><span class="line"> Source Server Version : 50644</span><br><span class="line"> Source Host           : localhost:3306</span><br><span class="line"> Source Schema         : qmplus</span><br><span class="line"></span><br><span class="line"> Target Server Type    : MySQL</span><br><span class="line"> Target Server Version : 50644</span><br><span class="line"> File Encoding         : 65001</span><br><span class="line"></span><br><span class="line"> Date: 15/04/2020 17:48:50</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">SET NAMES utf8mb4;</span><br><span class="line">SET FOREIGN_KEY_CHECKS = 0;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Table structure <span class="keyword">for</span> casbin_rule</span><br><span class="line">-- ----------------------------</span><br><span class="line">DROP TABLE IF EXISTS `casbin_rule`;</span><br><span class="line">CREATE TABLE `casbin_rule`  (</span><br><span class="line">  `p_type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v0` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v1` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v2` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v3` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v4` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v5` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL</span><br><span class="line">) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Records of casbin_rule</span><br><span class="line">-- ----------------------------</span><br><span class="line">INSERT INTO `casbin_rule` VALUES (<span class="string">'p'</span>, <span class="string">'8881'</span>, <span class="string">'/base/login'</span>, <span class="string">'POST'</span>, <span class="string">''</span>, <span class="string">''</span>, <span class="string">''</span>);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>更新Casbin规则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func UpdateCasbinApi(oldPath string, newPath string, oldMethod string, newMethod string) error &#123;</span><br><span class="line">	var cs []model.CasbinModel</span><br><span class="line">	err := global.GVA_DB.Table(<span class="string">"casbin_rule"</span>).Where(<span class="string">"v1 = ? AND v2 = ?"</span>, oldPath, oldMethod).Find(&amp;cs).Updates(map[string]string&#123;</span><br><span class="line">		<span class="string">"v1"</span>: newPath,</span><br><span class="line">		<span class="string">"v2"</span>: newMethod,</span><br><span class="line">	&#125;).Error</span><br><span class="line">	<span class="built_in">return</span> err</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>GVA_DB</code>就是全局定义的gorm.DB实例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var (</span><br><span class="line">	GVA_DB     *gorm.DB</span><br><span class="line">	...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>资料</p>
+<p><a href="https://zhuanlan.zhihu.com/p/63769951" target="_blank" rel="noopener">RBAC用户、角色、权限、组设计方案</a><br><a href="https://casbin.org/docs/zh-CN/rbac" target="_blank" rel="noopener">casbin 基于角色的访问控制</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/Gin-JWT-Middleware/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -662,795 +1539,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/jwt-go/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/09/jwt-go/" class="post-title-link" itemprop="url">jwt-go</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-04-09 23:27:28" itemprop="dateCreated datePublished" datetime="2020-04-09T23:27:28+08:00">2020-04-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-10 00:19:32" itemprop="dateModified" datetime="2020-04-10T00:19:32+08:00">2020-04-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Golang/" itemprop="url" rel="index">
-                    <span itemprop="name">Golang</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://github.com/dgrijalva/jwt-go" target="_blank" rel="noopener">github</a></p>
-<p><a href="https://godoc.org/github.com/dgrijalva/jwt-go" target="_blank" rel="noopener">Documentation</a></p>
-<p>引入包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get <span class="string">"github.com/dgrijalva/jwt-go"</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package common</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"gin_vue_bs/model"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/dgrijalva/jwt-go"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//定义 jwt 加密密钥</span><br><span class="line">var jwtKey = []byte(<span class="string">"a_secret_crect"</span>)</span><br><span class="line"></span><br><span class="line">//Claims .</span><br><span class="line"><span class="built_in">type</span> Claims struct &#123;</span><br><span class="line">	UserID uint</span><br><span class="line">	jwt.StandardClaims</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//ReleaseToken 登录成功则调用该方法发放token.</span><br><span class="line">func ReleaseToken(user model.User) (string, error) &#123;</span><br><span class="line">	expirationTime := time.Now().Add(7 * 24 * time.Hour) //token的过期时间7天</span><br><span class="line">	claims := &amp;Claims&#123;</span><br><span class="line">		UserID: user.ID,</span><br><span class="line">		StandardClaims: jwt.StandardClaims&#123;</span><br><span class="line">			ExpiresAt: expirationTime.Unix(),</span><br><span class="line">			IssuedAt:  time.Now().Unix(), //token发放时间</span><br><span class="line">			Issuer:    <span class="string">"samtake"</span>,         //是谁发放的token</span><br><span class="line">			Subject:   <span class="string">"user token"</span>,      //主题</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)</span><br><span class="line">	tokenString, err := token.SignedString(jwtKey)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">""</span>, err</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> tokenString, nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>返回</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: <span class="string">"200"</span>,</span><br><span class="line">    <span class="string">"data"</span>: &#123;</span><br><span class="line">        <span class="string">"token"</span>: <span class="string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOjMsImV4cCI6MTU4NzA1MjA0MiwiaWF0IjoxNTg2NDQ3MjQyLCJpc3MiOiJzYW10YWtlIiwic3ViIjoidXNlciB0b2tlbiJ9.6a50w6SfsQH7XZBW7zu3_FEGFcrWHRAh2DFYTh9hbCo"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"msg"</span>: <span class="string">"登录成功"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>所返回的token由三部分组成：协议头（token的加密协议）、 源码claims储存的信息 、（前面两部分+jwtKey）的哈希值：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  blogs <span class="built_in">echo</span> eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9  | base64 -D                                                                                                                                                         </span><br><span class="line">&#123;<span class="string">"alg"</span>:<span class="string">"HS256"</span>,<span class="string">"typ"</span>:<span class="string">"JWT"</span>&#125;%</span><br><span class="line">➜  blogs <span class="built_in">echo</span> eyJVc2VySUQiOjMsImV4cCI6MTU4NzA1MjA0MiwiaWF0IjoxNTg2NDQ3MjQyLCJpc3MiOiJzYW10YWtlIiwic3ViIjoidXNlciB0b2tlbiJ9 | base64 -D     </span><br><span class="line">&#123;<span class="string">"UserID"</span>:3,<span class="string">"exp"</span>:1587052042,<span class="string">"iat"</span>:1586447242,<span class="string">"iss"</span>:<span class="string">"samtake"</span>,<span class="string">"sub"</span>:<span class="string">"user token"</span>&#125;%</span><br><span class="line">➜  blogs <span class="built_in">echo</span> 6a50w6SfsQH7XZBW7zu3_FEGFcrWHRAh2DFYTh9hbCo  | base64 -D     </span><br><span class="line">?tä???]?V?;??Q??!?1XNa%</span><br><span class="line">➜  blogs</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/gorm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/09/gorm/" class="post-title-link" itemprop="url">gorm</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-04-09 18:31:28" itemprop="dateCreated datePublished" datetime="2020-04-09T18:31:28+08:00">2020-04-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-11 15:07:11" itemprop="dateModified" datetime="2020-04-11T15:07:11+08:00">2020-04-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Golang/" itemprop="url" rel="index">
-                    <span itemprop="name">Golang</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://gorm.io" target="_blank" rel="noopener">https://gorm.io</a></p>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><code>ORM</code>分别代表：<br>|O|R|M|<br>|:—-|:—|:—-|<br>|Object|Relational|Mapping|<br>|对象|关系|映射|<br>|程序中的对象/实例|关系型数据库|-|<br>|例如Go中的结构体实例|例如MySQL|-|</p>
-<p>MySQL与 Go的对应关系：<br>数据表     &lt;-&gt;     结构体<br>数据行     &lt;-&gt;     结构体实例<br>字段     &lt;-&gt;     结构体字段    </p>
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"math/rand"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/e421083458/gorm"</span> //https://gorm.io</span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">	_ <span class="string">"github.com/go-sql-driver/mysql"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	Name      string `gorm:<span class="string">"type:varchar(20);not null"</span>`</span><br><span class="line">	Telephone string `gorm:<span class="string">"varchar(110;not null;unique"</span>`</span><br><span class="line">	Password  string `gorm:<span class="string">"size:255;not null"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">	db := InitDb()</span><br><span class="line">	defer db.Close()</span><br><span class="line"></span><br><span class="line">	r := gin.New()</span><br><span class="line">	r.Use(gin.Logger())</span><br><span class="line"></span><br><span class="line">	r.Use(gin.Recovery())</span><br><span class="line"></span><br><span class="line">	r.POST(<span class="string">"/api/auth/register"</span>, func(ctx *gin.Context) &#123;</span><br><span class="line">		//获取参数</span><br><span class="line">		name := ctx.PostForm(<span class="string">"name"</span>)</span><br><span class="line">		telephone := ctx.PostForm(<span class="string">"telephone"</span>)</span><br><span class="line">		password := ctx.PostForm(<span class="string">"password"</span>)</span><br><span class="line"></span><br><span class="line">		//验证数据</span><br><span class="line">		<span class="keyword">if</span> len(telephone) != 11 &#123;</span><br><span class="line">			ctx.JSON(http.StatusServiceUnavailable,</span><br><span class="line">				gin.H&#123;<span class="string">"code"</span>: 422, <span class="string">"msg"</span>: <span class="string">"手机号必须为11为"</span>&#125;)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> len(password) &lt; 6 &#123;</span><br><span class="line">			ctx.JSON(http.StatusUnprocessableEntity,</span><br><span class="line">				gin.H&#123;<span class="string">"code"</span>: 422, <span class="string">"msg"</span>: <span class="string">"密码不能少于6位"</span>&#125;)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		//名称如果没有传，则返回随机字符串</span><br><span class="line">		<span class="keyword">if</span> len(name) == 0 &#123;</span><br><span class="line">			name = RandomString(10)</span><br><span class="line">		&#125;</span><br><span class="line">		//判断手机号是否存在</span><br><span class="line">		<span class="keyword">if</span> isTelephoneExist(db, telephone) &#123;</span><br><span class="line">			ctx.JSON(http.StatusUnprocessableEntity,</span><br><span class="line">				gin.H&#123;<span class="string">"code"</span>: 422, <span class="string">"msg"</span>: <span class="string">"用户已经存在"</span>&#125;)</span><br><span class="line">			<span class="built_in">return</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		//创建用户</span><br><span class="line">		newUser := User&#123;</span><br><span class="line">			Name:      name,</span><br><span class="line">			Telephone: telephone,</span><br><span class="line">			Password:  password,</span><br><span class="line">		&#125;</span><br><span class="line">		db.Create(&amp;newUser)</span><br><span class="line"></span><br><span class="line">		//返回结果</span><br><span class="line">		ctx.JSON(200, gin.H&#123;</span><br><span class="line">			<span class="string">"msg"</span>: <span class="string">"注册成功"</span>,</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	panic(r.Run(<span class="string">":8099"</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func isTelephoneExist(db *gorm.DB, telephone string) bool &#123;</span><br><span class="line">	var user User</span><br><span class="line">	db.Where(<span class="string">"telephone = ?"</span>, telephone).First(&amp;user)</span><br><span class="line">	<span class="keyword">if</span> user.ID != 0 &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//返回随机字符串</span><br><span class="line">func RandomString(n int) string &#123;</span><br><span class="line">	var letters = []byte(<span class="string">"iasdhjklfhascvxnjklasdfhjkasdfklasdfhnjklasdfjklasdfjklfasdsdfjk"</span>)</span><br><span class="line">	result := make([]byte, n)</span><br><span class="line"></span><br><span class="line">	rand.Seed(time.Now().Unix())</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := range result &#123;</span><br><span class="line">		result[i] = letters[rand.Intn(len(letters))]</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> string(result)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func InitDb() *gorm.DB &#123;</span><br><span class="line">	driverName := <span class="string">"mysql"</span></span><br><span class="line">	host := <span class="string">"127.0.0.1"</span></span><br><span class="line">	port := <span class="string">"3306"</span></span><br><span class="line">	database := <span class="string">"gin_vue_bs"</span></span><br><span class="line">	username := <span class="string">"root"</span></span><br><span class="line">	passwoed := <span class="string">"123456"</span></span><br><span class="line">	charset := <span class="string">"utf8"</span></span><br><span class="line">	args := fmt.Sprintf(<span class="string">"%s:%s@tcp(%s:%s)/%s?charset=%s&amp;parseTime=true"</span>,</span><br><span class="line">		username,</span><br><span class="line">		passwoed,</span><br><span class="line">		host,</span><br><span class="line">		port,</span><br><span class="line">		database,</span><br><span class="line">		charset)</span><br><span class="line"></span><br><span class="line">	db, err := gorm.Open(driverName, args)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		panic(<span class="string">"failed to connect database,err"</span> + err.Error())</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//创建数据表</span><br><span class="line">	db.AutoMigrate(&amp;User&#123;&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> db</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/2020/04/09/gorm/gorm01.png" alt="gorm01.png"></p>
-<p><img src="/2020/04/09/gorm/gorm02.png" alt="gorm02.png"></p>
-<p>#</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/30/OpenGL-%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/30/OpenGL-%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">OpenGL-学习教程</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-03-30 01:14:44" itemprop="dateCreated datePublished" datetime="2020-03-30T01:14:44+08:00">2020-03-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-09 18:37:13" itemprop="dateModified" datetime="2020-04-09T18:37:13+08:00">2020-04-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenGL</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>世界上最好的OpenGL教程，没有之一：<a href="https://learnopengl-cn.github.io" target="_blank" rel="noopener">LearnOpenGL CN</a></p>
-<p>好好努力！勤奋敲码！</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/OpenGL-%E7%9D%80%E8%89%B2%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/28/OpenGL-%E7%9D%80%E8%89%B2%E5%99%A8/" class="post-title-link" itemprop="url">OpenGL-着色器</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-03-28 16:54:55" itemprop="dateCreated datePublished" datetime="2020-03-28T16:54:55+08:00">2020-03-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-29 23:40:38" itemprop="dateModified" datetime="2020-03-29T23:40:38+08:00">2020-03-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenGL</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>OpenGL分为两个部分：CPU上C++编写，GPU采用GLSL语言编写，后者就是着色器的编写方式。</p>
-<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><table>
-<thead>
-<tr>
-<th align="left">类型</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">float</td>
-<td align="left">ieee 32 位浮点数</td>
-</tr>
-<tr>
-<td align="left">double</td>
-<td align="left">ieee 64 位浮点数</td>
-</tr>
-<tr>
-<td align="left">int</td>
-<td align="left">有符号二进制补码的 32 位整数</td>
-</tr>
-<tr>
-<td align="left">uint</td>
-<td align="left">无符号的32位整数</td>
-</tr>
-<tr>
-<td align="left">bool</td>
-<td align="left">布尔值</td>
-</tr>
-</tbody></table>
-<h1 id="变量初始化"><a href="#变量初始化" class="headerlink" title="变量初始化"></a>变量初始化</h1><p>所有变量都必须在声明的同时进行初始化</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int i,nums = 1500;</span><br><span class="line"><span class="built_in">float</span> force,g = -9.8;</span><br><span class="line">bool falling = <span class="literal">true</span>;</span><br><span class="line">double pi = 3.145555LF;</span><br></pre></td></tr></table></figure>
-
-<h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><p>所有其他的数值转换都需要提供显示的转换构造函数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> f = 10.0;</span><br><span class="line">int ten = int(f);</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="聚合类型"><a href="#聚合类型" class="headerlink" title="聚合类型"></a>聚合类型</h1><p>GLSL的向量与矩阵类型 </p>
-<table>
-<thead>
-<tr>
-<th align="left">基本数据类型</th>
-<th align="left">2D向量</th>
-<th align="left">3D向量</th>
-<th align="left">矩阵类型</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">float</td>
-<td align="left">vec2</td>
-<td align="left">vec3</td>
-<td align="left">..</td>
-</tr>
-<tr>
-<td align="left">double</td>
-<td align="left">dvec2</td>
-<td align="left">dvec3</td>
-<td align="left">..</td>
-</tr>
-<tr>
-<td align="left">int</td>
-<td align="left">ivec2</td>
-<td align="left">ivec3</td>
-<td align="left">..</td>
-</tr>
-<tr>
-<td align="left">uint</td>
-<td align="left">uvec2</td>
-<td align="left">uvec3</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">bool</td>
-<td align="left">bvec2</td>
-<td align="left">bvec3</td>
-<td align="left">-</td>
-</tr>
-</tbody></table>
-<p>类型声明的变量的初始化：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vec3 velocity = vec3(0.0, 2.0, 3.0);</span><br></pre></td></tr></table></figure>
-
-
-<p>类型之间的等价转换：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ivec3 steps = ivec3(velocity);</span><br></pre></td></tr></table></figure>
-
-
-<p>向量之间的转换：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 减短</span></span><br><span class="line">vec4 color;</span><br><span class="line">vec3 RGB = vec3(color);//只取了color的前面三个分量R、G、B</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加长</span></span><br><span class="line">vec3 white = vec3(1.0);//white = (1.0, 1.0, 1.0)</span><br><span class="line"></span><br><span class="line">vec4 translate = vec4(white, 0.5);</span><br></pre></td></tr></table></figure>
-
-
-<p>注意⚠️：传入的数据将首先填充列，再填充行。</p>
-<h1 id="访问向量和矩阵中的元素"><a href="#访问向量和矩阵中的元素" class="headerlink" title="访问向量和矩阵中的元素"></a>访问向量和矩阵中的元素</h1><p>向量中的各个分量可以通过名称访问：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> red = color.r;</span><br><span class="line"><span class="built_in">float</span> v_y = velocity.y;</span><br></pre></td></tr></table></figure>
-
-<p>或者通过一个从0开始的索引：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> red = color[0];</span><br><span class="line"><span class="built_in">float</span> v_y = velocity[1];</span><br></pre></td></tr></table></figure>
-
-<p>向量分量的访问符</p>
-<table>
-<thead>
-<tr>
-<th align="left">分量访问符</th>
-<th align="left">符号描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">(X,Y,Z,W)</td>
-<td align="left">与位置相关的分量</td>
-</tr>
-<tr>
-<td align="left">(r,g,b,a)</td>
-<td align="left">与颜色相关的分量</td>
-</tr>
-<tr>
-<td align="left">(s,t,p,q)</td>
-<td align="left">与纹理坐标相关的分量</td>
-</tr>
-</tbody></table>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vec3 luminance = color.rrr; <span class="comment"># 输入颜色的红色分量来设置一个亮度值</span></span><br><span class="line"></span><br><span class="line">color = colot.abgr; <span class="comment"># 反转color的每个分量</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">struct Partical &#123;</span><br><span class="line">    <span class="built_in">float</span> lifetime;</span><br><span class="line">    vec3 position;</span><br><span class="line">    vec3 velocity;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Partical p = Partical(1.0, pos, vel); <span class="comment"># pos、 vel均为vec3类型</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>数组的声明</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> coffee[3];        <span class="comment">#有三个float元素的数组</span></span><br><span class="line"><span class="built_in">float</span>[3]  coffee;       <span class="comment">#同上</span></span><br><span class="line">int indices;            <span class="comment">#为定义维数</span></span><br></pre></td></tr></table></figure>
-
-<p>静态初始化一个数组的值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> coffee[3]  = <span class="built_in">float</span>[3](2.00, 3.00, 5.23);</span><br></pre></td></tr></table></figure>
-<p>操作一个数组中的所有值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(int i = 0; i&lt;coffee.length(); i++)&#123;</span><br><span class="line">    coffee[i] *= 2.0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>获取列数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mat3x4 m;</span><br><span class="line">int c = m.length();         <span class="comment"># m包含的列数为3</span></span><br><span class="line">int r = m[0].length();      <span class="comment"># 第0个列向量中分量的个数为4</span></span><br></pre></td></tr></table></figure>
-<h1 id="存储限制符"><a href="#存储限制符" class="headerlink" title="存储限制符"></a>存储限制符</h1><table>
-<thead>
-<tr>
-<th align="left">类型修饰符</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">const</td>
-<td align="left">将一个变量定义为只读形式。如果它初始化时用的是一个编译时变量，那么它本身也会成为编译时常量</td>
-</tr>
-<tr>
-<td align="left">in</td>
-<td align="left">设置这个变量为着色器阶段的输入变量</td>
-</tr>
-<tr>
-<td align="left">out</td>
-<td align="left">设置这个变量为着色器阶段的输出变量</td>
-</tr>
-<tr>
-<td align="left">uniform</td>
-<td align="left">设置这个变量为用户应用程序传递给着色器的数据，它对于给定的图元而言是一个常量</td>
-</tr>
-<tr>
-<td align="left">buffer</td>
-<td align="left">设置应用程序共享的一块可读写的内存。这块内存也作为着色器中的存储缓存使用</td>
-</tr>
-<tr>
-<td align="left">shared</td>
-<td align="left">设置变量是本地工作组中共享的。它只能用于计算着色器中</td>
-</tr>
-</tbody></table>
-<p>获取uniform变量的索引并且设置具体值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GLint timeLoc;                                      <span class="comment">#着色器中的uniform变量time的索引</span></span><br><span class="line">GLfloat timeValue;                                  <span class="comment">#程序运行的时间</span></span><br><span class="line">timeLoc = glGetUniformLocation(program, <span class="string">"time"</span>)     <span class="comment">#返回着色器中nuiform变量time对应的索引值</span></span><br><span class="line">glUniformlf(timeLoc, timeValue);                    <span class="comment">#设置uniform变量timeLoc的值</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="算术操作符"><a href="#算术操作符" class="headerlink" title="算术操作符"></a>算术操作符</h1><table>
-<thead>
-<tr>
-<th align="left">优先级</th>
-<th align="left">操作符</th>
-<th align="left">可用类型</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">()</td>
-<td align="left">-</td>
-<td align="left">成组的操作</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left"><br>[]<br> <br>f()<br>  <br>.<br> <br>++、–<br></td>
-<td align="left"><br>[数组、矩阵、向量]<br> <br>函数<br>  <br>结构体<br> <br>算术类型<br></td>
-<td align="left"><br>数组的下标<br> <br>函数的调用、构造函数<br>  <br>访问结构体的域变量/方法<br> <br>后置递增/递减<br></td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left"><br>++、–<br> <br>+、-<br>  <br>~<br> <br>!<br></td>
-<td align="left"><br>算术类型<br> <br>算术类型<br>  <br>整型<br> <br>布尔型<br></td>
-<td align="left"><br>前置递增/递减<br> <br><br>  <br><br> <br><br></td>
-</tr>
-<tr>
-<td align="left">4</td>
-<td align="left"><code>*、/、%</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">5</td>
-<td align="left"><code>+、-</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">6</td>
-<td align="left"><code>&lt;&lt;、&gt;&gt;</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">7</td>
-<td align="left"><code>&lt;、&gt;、&lt;=、&gt;=</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">8</td>
-<td align="left"><code>==、!=</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">9</td>
-<td align="left"><code>&amp;</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">10</td>
-<td align="left"><code>^</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">11</td>
-<td align="left">`</td>
-<td align="left">`</td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">12</td>
-<td align="left"><code>&amp;&amp;</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">13</td>
-<td align="left"><code>^^</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">14</td>
-<td align="left">`</td>
-<td align="left"></td>
-<td align="left">`</td>
-</tr>
-<tr>
-<td align="left">15</td>
-<td align="left"><code>a?b:c</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">16</td>
-<td align="left"><br><code>==</code><br> <br><code>+=、-=</code><br>  <br><code>*=、/=</code><br> <br><code>%=、&lt;&lt;=、&gt;&gt;=</code><br> <br>`&amp;=、^=、</td>
-<td align="left">=`<br></td>
-<td align="left"><br>任意<br> <br>算术类型<br>  <br>算术类型<br>  <br>整型<br> <br>整型<br></td>
-</tr>
-<tr>
-<td align="left">17</td>
-<td align="left"><code>,</code></td>
-<td align="left">任意</td>
-<td align="left">操作符序列</td>
-</tr>
-</tbody></table>
-<h1 id="操作符重载"><a href="#操作符重载" class="headerlink" title="操作符重载"></a>操作符重载</h1><h1 id="流控制"><a href="#流控制" class="headerlink" title="流控制"></a>流控制</h1><table>
-<thead>
-<tr>
-<th align="left">语句</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">break</td>
-<td align="left">终止循环体的运行，并且继续执行循环体外的内容</td>
-</tr>
-<tr>
-<td align="left">continue</td>
-<td align="left">终止循环体内当前迭代过程的执行，跳转到代码块开始部分并继续执行下一次迭代的内容</td>
-</tr>
-<tr>
-<td align="left">return</td>
-<td align="left">从当前子例程返回，可以待会一个函数返回值</td>
-</tr>
-<tr>
-<td align="left">discard</td>
-<td align="left">丢弃当前的片元，终止着色器的执行。discard语句只在片元着色器中有效</td>
-</tr>
-</tbody></table>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> HornerEval(<span class="built_in">float</span> coffee[10], <span class="built_in">float</span> x);</span><br><span class="line"></span><br><span class="line"><span class="built_in">float</span> HornerEval(<span class="built_in">float</span> coffee[10], <span class="built_in">float</span> x)&#123;</span><br><span class="line">    ...+</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="计算的不变性"><a href="#计算的不变性" class="headerlink" title="计算的不变性"></a>计算的不变性</h1><p>GLSL无法保证在不同的着色器中，两个完全相同的计算式会得到完全一样的结果。为了解决这个问题，需要用到<code>invariant</code>或者<code>precise</code>关键字。</p>
-<h2 id="invariant"><a href="#invariant" class="headerlink" title="invariant"></a>invariant</h2><p>将一个内置的输出变量声明为<code>invariant</code>，也可以声明一个用户自定义的变量为<code>invariant</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">invariant gl_Position;</span><br><span class="line">invariant centroid out vec3 Color</span><br></pre></td></tr></table></figure>
-
-<p>在调试过程中，可能需要将着色器中的所有可变量都设置为<code>invariant</code>。可以通过顶点着色器的预编译命令<code>pragma</code>来完成：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pragma STDGL invariant(all)</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="precise"><a href="#precise" class="headerlink" title="precise"></a>precise</h2><p><code>precise</code>限制符可以设置任何计算中的变量或者函数的返回值。它的作用是增加计算的可复用性</p>
-<h1 id="着色器的预处理器"><a href="#着色器的预处理器" class="headerlink" title="着色器的预处理器"></a>着色器的预处理器</h1><h2 id="预处理命令"><a href="#预处理命令" class="headerlink" title="预处理命令"></a>预处理命令</h2><p>控制常量与宏的定义</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define</span></span><br><span class="line"><span class="comment">#undef</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">代码的条件编译</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line"><span class="comment">#if</span></span><br><span class="line"><span class="comment">#ifdef</span></span><br><span class="line"><span class="comment">#ifndef</span></span><br><span class="line"><span class="comment">#else</span></span><br><span class="line"><span class="comment">#elif</span></span><br><span class="line"><span class="comment">#endif</span></span><br></pre></td></tr></table></figure>
-
-<p>强制比那一起将text文字内容插入到着色器的信息日志中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#error text</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>控制编译器的选项</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pragma options</span></span><br></pre></td></tr></table></figure>
-
-<p>设置编译器支持特定GLSL扩展功能</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#extension options</span></span><br></pre></td></tr></table></figure>
-
-<p>设置当前使用的GLSL版本名称</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#version number</span></span><br></pre></td></tr></table></figure>
-
-
-<p>设置诊断行号</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#line options</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define NUM_ELEMENTS 10</span></span><br></pre></td></tr></table></figure>
-
-<p>取消之前定义过的宏</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#undef LPos</span></span><br></pre></td></tr></table></figure>
-
-
-<h1 id="数据快接口"><a href="#数据快接口" class="headerlink" title="数据快接口"></a>数据快接口</h1><p>着色器与应用程序之间，或者着色器个阶段之间共享的变量可以组织为变量块的形式。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">uniform b &#123;     //限定符可以为：uniform、<span class="keyword">in</span>、out、buffer</span><br><span class="line">    vec4 v1;    //块中的变量列表</span><br><span class="line">    vec1 v2;    //</span><br><span class="line">&#125;;              //访问匿名块成员时使用v1、v2</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">uniform b &#123;     //</span><br><span class="line">    vec4 v1;    //</span><br><span class="line">    vec1 v2;    //</span><br><span class="line">&#125;name;          ////访问匿名块成员时使用name.v1、name.v2</span><br></pre></td></tr></table></figure>
-
-<h1 id="着色器的编译"><a href="#着色器的编译" class="headerlink" title="着色器的编译"></a>着色器的编译</h1><p>创建着色器对象且通过链接生成可执行着色器程序的流程：（两部分）</p>
-<p>（第一部分）对于每个着色器都会：</p>
-<ul>
-<li>创建一个着色器对象。</li>
-<li>将着色器源代码编译为对象。</li>
-<li>验证着色器的比那一是否成功。</li>
-</ul>
-<p>（第二部分）将多个着色器对象链接为一个着色器程序：</p>
-<ul>
-<li>创建一个着色器程序。</li>
-<li>将着色器对象关联到着色器程序。</li>
-<li>链接着色器程序。</li>
-<li>判断着色器的链接过程是否成功完成。</li>
-<li>使用着色器来处理顶点和片元。</li>
-</ul>
-<h1 id="着色器子程序"><a href="#着色器子程序" class="headerlink" title="着色器子程序"></a>着色器子程序</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//第一步</span><br><span class="line">subroutine vec4 LightFunc(vec4);</span><br><span class="line"></span><br><span class="line">//第二步</span><br><span class="line">subroutine (LightFunc) vec4 ambient(vec3 n) </span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">return</span> Materials.ambient;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">subroutine (LightFunc) vec4 diffuse(vec3 n)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">return</span> Materials.diffuse * max(dot (normalize(n), LightVec.xyz), 0.0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//第三步</span><br><span class="line">subroutine uniform LightFunc materialShader;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/OpenGL%EF%BC%88%E4%B8%89%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/28/OpenGL%EF%BC%88%E4%B8%89%EF%BC%89/" class="post-title-link" itemprop="url">OpenGL（三）</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-03-28 14:27:25 / Modified: 16:42:05" itemprop="dateCreated datePublished" datetime="2020-03-28T14:27:25+08:00">2020-03-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenGL</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>从这篇开始，我们就跟着课本源码边调试边熟悉OpenGL函数的使用了。里面涉及的C++语法后面会在《C++重温》这里作补充。拿到课本源码，我们需要通过Cmake编译出Mac上运行的Xcode程序。</p>
-<blockquote>
-<p>01-keypress.cpp</p>
-</blockquote>
-<h1 id="程序概括"><a href="#程序概括" class="headerlink" title="程序概括"></a>程序概括</h1><p>程序先执行init函数<code>void KeyPressExample::Initialize(const char * title)</code>再执行display函数<code>void KeyPressExample::Display(bool auto_redraw)</code>.</p>
-<p>按下键盘会调用<code>void KeyPressExample::OnKey(int key, int scancode, int action, int mods)</code></p>
-<p>程序窗口缩放<code>void KeyPressExample::Resize(int width, int height)</code></p>
-<h1 id="init函数说明"><a href="#init函数说明" class="headerlink" title="init函数说明"></a>init函数说明</h1><p><code>glGenVertexArrays( NumVAOs, VAOs );</code><br>分配NumVAOs个未使用的对象名到数组VAOs中，用作顶点数组对象。再看下其数组定义：GLuint  VAOs[NumVAOs];</p>
-<p><code>glBindVertexArray( VAOs[Triangles] );</code><br>VAOs[Triangles]</p>
-<ul>
-<li>输入的变量array非0，且为<code>glGenVertexArrays</code>所分配时，激活顶点数组对象，并直接影响对象中所保存的顶点数组状态。</li>
-<li>array为0，OpenGL不再使用之前绑定的顶点数组。</li>
-<li>array不是<code>glGenVertexArrays</code>所分配的，或者它已经被<code>glDeleteVertexArray</code>函数释放了，这时会产生一个无效错误。</li>
-</ul>
-<p><code>glGenBuffers( NumBuffers, Buffers );</code><br>分配NumBuffers个当前未使用的缓存对象名称，并保存到Buffers数组中。</p>
-<p><code>glBindBuffer( GL_ARRAY_BUFFER, Buffers[ArrayBuffer] );</code></p>
-<ul>
-<li>如果绑定到一个已经创建的缓存对象，那么他将成为当前GL_ARRAY_BUFFER中被激活的缓存对象。</li>
-<li>如果绑定的Buffers[ArrayBuffer]值为0，那么OpenGL将不再对当前GL_ARRAY_BUFFER使用任何缓存对象。</li>
-</ul>
-<p><code>glBufferData( GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW );</code><br>将数据载入缓存对象。</p>
-<p><code>glVertexAttribPointer( vPosition, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0) );</code><br>将输入顶点着色器的数据 关联到 一个顶点属性的数组。</p>
-<p><code>glEnableVertexAttribArray( vPosition );</code><br>启用顶点属性数组。</p>
-<h1 id="display函数说明"><a href="#display函数说明" class="headerlink" title="display函数说明"></a>display函数说明</h1><p><code>glClear( GL_COLOR_BUFFER_BIT );</code><br>清屏。</p>
-<p><code>glBindVertexArray( VAOs[Triangles] );</code></p>
-<p><code>glDrawArrays( GL_TRIANGLES, 0, NumVertices );</code><br>开始绘制。</p>
-<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p>程序默认效果<br><img src="/2020/03/28/OpenGL%EF%BC%88%E4%B8%89%EF%BC%89/keypress1.png" alt="keypress1.png"></p>
-<p>按下键盘字母M的效果<br><img src="/2020/03/28/OpenGL%EF%BC%88%E4%B8%89%EF%BC%89/keypress2.png" alt="keypress2.png"></p>
-<h1 id="详细源码"><a href="#详细源码" class="headerlink" title="详细源码"></a>详细源码</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line">//////////////////////////////////////////////////////////////////////////////</span><br><span class="line">//</span><br><span class="line">//  Triangles.cpp</span><br><span class="line">//</span><br><span class="line">//////////////////////////////////////////////////////////////////////////////</span><br><span class="line"></span><br><span class="line"><span class="comment">#include &lt;vermilion.h&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#include "vgl.h"</span></span><br><span class="line"><span class="comment">#include "vapp.h"</span></span><br><span class="line"><span class="comment">#include "LoadShaders.h"</span></span><br><span class="line"></span><br><span class="line">enum VAO_IDs &#123; Triangles, NumVAOs &#125;;</span><br><span class="line">enum Buffer_IDs &#123; ArrayBuffer, NumBuffers &#125;;</span><br><span class="line">enum Attrib_IDs &#123; vPosition = 0 &#125;;</span><br><span class="line"></span><br><span class="line">GLuint  VAOs[NumVAOs];</span><br><span class="line">GLuint  Buffers[NumBuffers];</span><br><span class="line"></span><br><span class="line">const GLuint  NumVertices = 6;</span><br><span class="line"></span><br><span class="line">BEGIN_APP_DECLARATION(KeyPressExample)</span><br><span class="line">    virtual void Initialize(const char * title);</span><br><span class="line">    virtual void Display(bool auto_redraw);</span><br><span class="line">    virtual void Finalize(void);</span><br><span class="line">    virtual void Resize(int width, int height);</span><br><span class="line">    void OnKey(int key, int scancode, int action, int mods);</span><br><span class="line">END_APP_DECLARATION()</span><br><span class="line"></span><br><span class="line">DEFINE_APP(KeyPressExample, <span class="string">"Key Press Example"</span>)</span><br><span class="line">//----------------------------------------------------------------------------</span><br><span class="line">//</span><br><span class="line">// init</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">void KeyPressExample::Initialize(const char * title)</span><br><span class="line">&#123;</span><br><span class="line">    //typedef class VermilionApplication base</span><br><span class="line">    base::Initialize(title);</span><br><span class="line"></span><br><span class="line">    glGenVertexArrays( NumVAOs, VAOs );</span><br><span class="line">    glBindVertexArray( VAOs[Triangles] );</span><br><span class="line"></span><br><span class="line">    GLfloat  vertices[NumVertices][2] = &#123;</span><br><span class="line">        &#123; -0.90f, -0.90f &#125;, &#123;  0.85f, -0.90f &#125;, &#123; -0.90f,  0.85f &#125;,  // Triangle 1</span><br><span class="line">        &#123;  0.90f, -0.85f &#125;, &#123;  0.90f,  0.90f &#125;, &#123; -0.85f,  0.90f &#125;   // Triangle 2</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    glGenBuffers( NumBuffers, Buffers );</span><br><span class="line">    glBindBuffer( GL_ARRAY_BUFFER, Buffers[ArrayBuffer] );</span><br><span class="line">    glBufferData( GL_ARRAY_BUFFER, sizeof(vertices),</span><br><span class="line">                  vertices, GL_STATIC_DRAW );</span><br><span class="line"></span><br><span class="line">    ShaderInfo  shaders[] = &#123;</span><br><span class="line">        &#123; GL_VERTEX_SHADER, <span class="string">"../media/shaders/keypress/keypress.vert"</span> &#125;,</span><br><span class="line">        &#123; GL_FRAGMENT_SHADER, <span class="string">"../media/shaders/keypress/keypress.frag"</span> &#125;,</span><br><span class="line">        &#123; GL_NONE, NULL &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    GLuint program = LoadShaders( shaders );</span><br><span class="line">    glUseProgram( program );</span><br><span class="line"></span><br><span class="line">    glVertexAttribPointer( vPosition, 2, GL_FLOAT,</span><br><span class="line">                           GL_FALSE, 0, BUFFER_OFFSET(0) );</span><br><span class="line">    glEnableVertexAttribArray( vPosition );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void KeyPressExample::OnKey(int key, int scancode, int action, int mods)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (action == GLFW_PRESS)</span><br><span class="line">    &#123;</span><br><span class="line">        switch (key)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> GLFW_KEY_M:</span><br><span class="line">                &#123;</span><br><span class="line">                    static GLenum  mode = GL_FILL;</span><br><span class="line"></span><br><span class="line">                    mode = ( mode == GL_FILL ? GL_LINE : GL_FILL );</span><br><span class="line">                    glPolygonMode( GL_FRONT_AND_BACK, mode );</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    base::OnKey(key, scancode, action, mods);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//----------------------------------------------------------------------------</span><br><span class="line">//</span><br><span class="line">// display</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">void KeyPressExample::Display(bool auto_redraw)</span><br><span class="line">&#123;</span><br><span class="line">    glClear( GL_COLOR_BUFFER_BIT );</span><br><span class="line"></span><br><span class="line">    glBindVertexArray( VAOs[Triangles] );</span><br><span class="line">    // GL_TRIANGLES并没有指定是画三角形的边沿还是内部也画，</span><br><span class="line">    glDrawArrays( GL_TRIANGLES, 0, NumVertices );</span><br><span class="line"></span><br><span class="line">    base::Display(auto_redraw);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void KeyPressExample::Resize(int width, int height)</span><br><span class="line">&#123;</span><br><span class="line">    glViewport(0, 0, width, height);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void KeyPressExample::Finalize(void)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1496,7 +1589,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1509,7 +1602,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
