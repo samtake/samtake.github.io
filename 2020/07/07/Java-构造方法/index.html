@@ -52,12 +52,15 @@
   };
 </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="假设现在有一个 Writer 类，它有两个字段，姓名和年纪： 123456789101112public class Writer &amp;#123;    private String name;    private int age;    @Override    public String toString() &amp;#123;        return &quot;Writer&amp;#123;&quot; +">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java 构造方法">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;07&#x2F;Java-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
+<meta property="og:description" content="假设现在有一个 Writer 类，它有两个字段，姓名和年纪： 123456789101112public class Writer &amp;#123;    private String name;    private int age;    @Override    public String toString() &amp;#123;        return &quot;Writer&amp;#123;&quot; +">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-07T08:45:01.695Z">
+<meta property="og:updated_time" content="2020-07-15T02:33:25.283Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/07/07/Java-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/">
@@ -239,6 +242,13 @@
 
               <time title="Created: 2020-07-07 16:45:01" itemprop="dateCreated datePublished" datetime="2020-07-07T16:45:01+08:00">2020-07-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 10:33:25" itemprop="dateModified" datetime="2020-07-15T10:33:25+08:00">2020-07-15</time>
+              </span>
 
           
 
@@ -251,7 +261,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>假设现在有一个 Writer 类，它有两个字段，姓名和年纪：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Writer &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String <span class="function"><span class="title">toString</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"Writer&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\'</span><span class="string">' +</span></span><br><span class="line"><span class="string">                ", age=" + age +</span></span><br><span class="line"><span class="string">                '</span>&#125;<span class="string">';</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>重写了 toString() 方法，用于打印 Writer 类的详情。由于没有构造方法，意味着当我们创建 Writer 对象时，它的字段值并没有初始化：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Writer writer = new Writer();</span><br><span class="line">System.out.println(writer.toString());</span><br></pre></td></tr></table></figure>
+<p>输出结果如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Writer&#123;name=<span class="string">'null'</span>, age=0&#125;</span><br></pre></td></tr></table></figure>
+<p>name 是字符串类型，所以默认值为 null，age 为 int 类型，所以默认值为 0。</p>
+<p>让我们为 Writer 类主动加一个无参的构造方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public <span class="function"><span class="title">Writer</span></span>() &#123;</span><br><span class="line">    this.name = <span class="string">""</span>;</span><br><span class="line">    this.age = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>构造方法也是一个方法，只不过它没有返回值，默认返回创建对象的类型。需要注意的是，当前构造方法没有参数，它被称为无参构造方法。如果我们没有主动创建无参构造方法的话，编译器会隐式地自动添加一个无参的构造方法。这就是为什么，一开始虽然没有构造方法，却可以使用 new Writer() 创建对象的原因，只不过，所有的字段都被初始化成了默认值。</p>
+<p>接下来，让我们添加一个有参的构造方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public Writer(String name, int age) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，我们创建 Writer 对象的时候就可以通过对字段值初始化值了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Writer writer1 = new Writer(<span class="string">"沉默王二"</span>,18);</span><br><span class="line">System.out.println(writer1.toString());</span><br></pre></td></tr></table></figure>
+<p>来看一下打印结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Writer&#123;name=<span class="string">'沉默王二'</span>, age=18&#125;</span><br></pre></td></tr></table></figure>
+<p>可以根据字段的数量添加不同参数数量的构造方法，比如说，我们可以单独为 name 字段添加一个构造方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Writer(String name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了能够兼顾 age 字段，我们可以通过 this 关键字调用其他的构造方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Writer(String name) &#123;</span><br><span class="line">    this(name,18);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>把作者的年龄都默认初始化为 18。如果需要使用父类的构造方法，还可以使用 super 关键字，手册后面有详细的介绍。</p>
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
+
     </div>
 
     
@@ -259,6 +292,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
 
         
 
