@@ -60,8 +60,15 @@
 <meta property="og:site_name" content="samtake">
 <meta property="og:description" content="先来个提纲挈领（唉呀妈呀，成语区博主上线了）吧：  static 关键字可用于变量、方法、代码块和内部类，表示某个特定的成员只属于某个类本身，而不是该类的某个对象。  01、静态变量静态变量也叫类变量，它属于一个类，而不是这个类的对象。 123456789101112131415161718192021222324252627public class Writer &amp;#123;    privat">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-15T02:23:29.840Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;07&#x2F;Java-static-%E5%85%B3%E9%94%AE%E5%AD%97&#x2F;1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;07&#x2F;Java-static-%E5%85%B3%E9%94%AE%E5%AD%97&#x2F;2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;07&#x2F;Java-static-%E5%85%B3%E9%94%AE%E5%AD%97&#x2F;3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;07&#x2F;Java-static-%E5%85%B3%E9%94%AE%E5%AD%97&#x2F;4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;07&#x2F;Java-static-%E5%85%B3%E9%94%AE%E5%AD%97&#x2F;5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;07&#x2F;Java-static-%E5%85%B3%E9%94%AE%E5%AD%97&#x2F;6.png">
+<meta property="og:updated_time" content="2020-07-15T09:27:10.856Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;07&#x2F;Java-static-%E5%85%B3%E9%94%AE%E5%AD%97&#x2F;1.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/07/07/Java-static-%E5%85%B3%E9%94%AE%E5%AD%97/">
 
@@ -247,7 +254,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-15 10:23:29" itemprop="dateModified" datetime="2020-07-15T10:23:29+08:00">2020-07-15</time>
+                <time title="Modified: 2020-07-15 17:27:10" itemprop="dateModified" datetime="2020-07-15T17:27:10+08:00">2020-07-15</time>
               </span>
 
           
@@ -265,7 +272,7 @@
 <blockquote>
 <p>static 关键字可用于变量、方法、代码块和内部类，表示某个特定的成员只属于某个类本身，而不是该类的某个对象。</p>
 </blockquote>
-<p>01、静态变量<br>静态变量也叫类变量，它属于一个类，而不是这个类的对象。</p>
+<h1 id="01、静态变量"><a href="#01、静态变量" class="headerlink" title="01、静态变量"></a>01、静态变量</h1><p>静态变量也叫类变量，它属于一个类，而不是这个类的对象。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Writer &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">    public static int countOfWriters;</span><br><span class="line"></span><br><span class="line">    public Writer(String name, int age) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">        countOfWriters++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String <span class="function"><span class="title">getName</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int <span class="function"><span class="title">getAge</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>其中，countOfWriters 被称为静态变量，它有别于 name 和 age 这两个成员变量，因为它前面多了一个修饰符 static。</p>
@@ -274,22 +281,22 @@
 <p>按照上面的逻辑，你应该能推理得出，countOfWriters 的值此时应该为 2 而不是 1。从内存的角度来看，静态变量将会存储在 Java 虚拟机中一个名叫“Metaspace”（元空间，Java 8 之后）的特定池中。</p>
 <p>静态变量和成员变量有着很大的不同，成员变量的值属于某个对象，不同的对象之间，值是不共享的；但静态变量不是的，它可以用来统计对象的数量，因为它是共享的。就像上面例子中的 countOfWriters，创建一个对象的时候，它的值为 1，创建两个对象的时候，它的值就为 2。</p>
 <p>简单小结一下：</p>
-<p>1）由于静态变量属于一个类，所以不要通过对象引用来访问，而应该直接通过类名来访问；</p>
+<p>1）由于静态变量属于一个类，所以不要通过对象引用来访问，而应该直接通过类名来访问；<br><img src="/2020/07/07/Java-static-%E5%85%B3%E9%94%AE%E5%AD%97/1.png" alt></p>
 <p>2）不需要初始化类就可以访问静态变量。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class WriterDemo &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(Writer.countOfWriters); // 输出 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>02、静态方法<br>静态方法也叫类方法，它和静态变量类似，属于一个类，而不是这个类的对象。</p>
+<h1 id="02、静态方法"><a href="#02、静态方法" class="headerlink" title="02、静态方法"></a>02、静态方法</h1><p>静态方法也叫类方法，它和静态变量类似，属于一个类，而不是这个类的对象。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static void setCountOfWriters(int countOfWriters) &#123;</span><br><span class="line">    Writer.countOfWriters = countOfWriters;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>setCountOfWriters() 就是一个静态方法，它由 static 关键字修饰。</p>
-<p>如果你用过 java.lang.Math 类或者 Apache 的一些工具类（比如说 StringUtils）的话，对静态方法一定不会感动陌生。</p>
-<p>Math 类的几乎所有方法都是静态的，可以直接通过类名来调用，不需要创建类的对象。</p>
+<p>如果你用过 java.lang.Math 类或者 Apache 的一些工具类（比如说 StringUtils）的话，对静态方法一定不会感动陌生。<br><img src="/2020/07/07/Java-static-%E5%85%B3%E9%94%AE%E5%AD%97/2.png" alt></p>
+<p>Math 类的几乎所有方法都是静态的，可以直接通过类名来调用，不需要创建类的对象。<br><img src="/2020/07/07/Java-static-%E5%85%B3%E9%94%AE%E5%AD%97/3.png" alt></p>
 <p>简单小结一下：</p>
 <p>1）Java 中的静态方法在编译时解析，因为静态方法不能被重写（方法重写发生在运行时阶段，为了多态）。</p>
-<p>2）抽象方法不能是静态的。</p>
+<p>2）抽象方法不能是静态的。<br><img src="/2020/07/07/Java-static-%E5%85%B3%E9%94%AE%E5%AD%97/4.png" alt></p>
 <p>3）静态方法不能使用 this 和 super 关键字。</p>
 <p>4）成员方法可以直接访问其他成员方法和成员变量。</p>
 <p>5）成员方法也可以直接方法静态方法和静态变量。</p>
 <p>6）静态方法可以访问所有其他静态方法和静态变量。</p>
-<p>7）静态方法无法直接访问成员方法和成员变量。</p>
+<p>7）静态方法无法直接访问成员方法和成员变量。<br><img src="/2020/07/07/Java-static-%E5%85%B3%E9%94%AE%E5%AD%97/5.png" alt></p>
 <p>03、静态代码块<br>静态代码块可以用来初始化静态变量，尽管静态方法也可以在声明的时候直接初始化，但有些时候，我们需要多行代码来完成初始化。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class StaticBlockDemo &#123;</span><br><span class="line">    public static List&lt;String&gt; writes = new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    static &#123;</span><br><span class="line">        writes.add(<span class="string">"沉默王二"</span>);</span><br><span class="line">        writes.add(<span class="string">"沉默王三"</span>);</span><br><span class="line">        writes.add(<span class="string">"沉默王四"</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"第一块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static &#123;</span><br><span class="line">        writes.add(<span class="string">"沉默王五"</span>);</span><br><span class="line">        writes.add(<span class="string">"沉默王六"</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"第二块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>writes 是一个静态的 ArrayList，所以不太可能在声明的时候完成初始化，因此需要在静态代码块中完成初始化。</p>
@@ -303,7 +310,8 @@
 <p>简单小结一下：</p>
 <p>1）静态内部类不能访问外部类的所有成员变量。</p>
 <p>2）静态内部类可以访问外部类的所有静态变量，包括私有静态变量。</p>
-<p>3）外部类不能声明为 static。</p>
+<p>3）外部类不能声明为 <code>static</code>。<br><img src="/2020/07/07/Java-static-%E5%85%B3%E9%94%AE%E5%AD%97/6.png" alt></p>
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
 
     </div>
 
@@ -369,6 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#01、静态变量"><span class="nav-number">1.</span> <span class="nav-text">01、静态变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#02、静态方法"><span class="nav-number">2.</span> <span class="nav-text">02、静态方法</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
