@@ -213,6 +213,109 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E6%8A%BD%E8%B1%A1%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-%E6%8A%BD%E8%B1%A1%E7%B1%BB/" class="post-title-link" itemprop="url">Java 抽象类</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-07 16:48:03 / Modified: 16:50:19" itemprop="dateCreated datePublished" datetime="2020-07-07T16:48:03+08:00">2020-07-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>当我们要完成的任务是确定的，但具体的方式需要随后开个会投票的话，Java 的抽象类就派上用场了。这句话怎么理解呢？搬个小板凳坐好，听我来给你讲讲。</p>
+<h1 id="01、抽象类的-5-个关键点"><a href="#01、抽象类的-5-个关键点" class="headerlink" title="01、抽象类的 5 个关键点"></a>01、抽象类的 5 个关键点</h1><p>1）定义抽象类的时候需要用到关键字 abstract，放在 class 关键字前。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbstractPlayer &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于抽象类的命名，阿里出品的 Java 开发手册上有强调，“抽象类命名要使用 Abstract 或 Base 开头”，记住了哦。</p>
+<p>2）抽象类不能被实例化，但可以有子类。</p>
+<p>尝试通过 new 关键字实例化的话，编译器会报错，提示“类是抽象的，不能实例化”。</p>
+<p>通过 extends 关键字可以继承抽象类，继承后，BasketballPlayer 类就是 AbstractPlayer 的子类。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public class BasketballPlayer extends AbstractPlayer &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3）如果一个类定义了一个或多个抽象方法，那么这个类必须是抽象类。</p>
+<p>当在一个普通类（没有使用 abstract 关键字修饰）中定义了抽象方法，编译器就会有两处错误提示。</p>
+<p>第一处在类级别上，提醒你“这个类必须通过 abstract 关键字定义”，or 的那个信息没必要，见下图。</p>
+<p>第二处在方法级别上，提醒你“抽象方法所在的类不是抽象的”，见下图。</p>
+<p>4）抽象类可以同时声明抽象方法和具体方法，也可以什么方法都没有，但没必要。就像下面这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbstractPlayer &#123;</span><br><span class="line">    abstract void play();</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">sleep</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"运动员也要休息而不是挑战极限"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5）抽象类派生的子类必须实现父类中定义的抽象方法。比如说，抽象类中定义了 play() 方法，子类中就必须实现。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class BasketballPlayer extends AbstractPlayer &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void <span class="function"><span class="title">play</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是张伯伦，篮球场上得过 100 分"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果没有实现的话，编译器会提醒你“子类必须实现抽象方法”，见下图。</p>
+<h1 id="02、什么时候用抽象类"><a href="#02、什么时候用抽象类" class="headerlink" title="02、什么时候用抽象类"></a>02、什么时候用抽象类</h1><p>与抽象类息息相关的还有一个概念，就是接口，我们留到下一篇文章中详细说，因为要说的知识点还是蛮多的。你现在只需要有这样一个概念就好，接口是对行为的抽象，抽象类是对整个类（包含成员变量和行为）进行抽象。</p>
+<p>（是不是有点明白又有点不明白，别着急，翘首以盼地等下一篇文章出炉吧）</p>
+<p>除了接口之外，还有一个概念就是具体的类，就是不通过 abstract 修饰的普通类，见下面这段代码中的定义。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class BasketballPlayer &#123;</span><br><span class="line">   public void <span class="function"><span class="title">play</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是詹姆斯，现役第一人"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有接口，有具体类，那什么时候该使用抽象类呢？</p>
+<p>1）我们希望一些通用的功能被多个子类复用。比如说，AbstractPlayer 抽象类中有一个普通的方法 sleep()，表明所有运动员都需要休息，那么这个方法就可以被子类复用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbstractPlayer &#123;</span><br><span class="line">    public void <span class="function"><span class="title">sleep</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"运动员也要休息而不是挑战极限"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然 AbstractPlayer 类可以不是抽象类——把 abstract 修饰符去掉也能满足这种场景。但 AbstractPlayer 类可能还会有一个或者多个抽象方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">BasketballPlayer 继承了 AbstractPlayer 类，也就拥有了 sleep() 方法。</span><br><span class="line"></span><br><span class="line">public class BasketballPlayer extends AbstractPlayer &#123;</span><br><span class="line">&#125;</span><br><span class="line">BasketballPlayer 对象可以直接调用 sleep() 方法：</span><br><span class="line"></span><br><span class="line">BasketballPlayer basketballPlayer = new BasketballPlayer();</span><br><span class="line">basketballPlayer.sleep();</span><br><span class="line">FootballPlayer 继承了 AbstractPlayer 类，也就拥有了 sleep() 方法。</span><br><span class="line"></span><br><span class="line">public class FootballPlayer extends AbstractPlayer &#123;</span><br><span class="line">&#125;</span><br><span class="line">FootballPlayer 对象也可以直接调用 sleep() 方法：</span><br><span class="line"></span><br><span class="line">FootballPlayer footballPlayer = new FootballPlayer();</span><br><span class="line">footballPlayer.sleep();</span><br></pre></td></tr></table></figure>
+<p>2）我们需要在抽象类中定义好 API，然后在子类中扩展实现。比如说，AbstractPlayer  抽象类中有一个抽象方法 play()，定义所有运动员都可以从事某项运动，但需要对应子类去扩展实现。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbstractPlayer &#123;</span><br><span class="line">    abstract void play();</span><br><span class="line">&#125;</span><br><span class="line">BasketballPlayer 继承了 AbstractPlayer 类，扩展实现了自己的 play() 方法。</span><br><span class="line"></span><br><span class="line">public class BasketballPlayer extends AbstractPlayer &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void <span class="function"><span class="title">play</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是张伯伦，我篮球场上得过 100 分，"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">FootballPlayer 继承了 AbstractPlayer 类，扩展实现了自己的 play() 方法。</span><br><span class="line"></span><br><span class="line">public class FootballPlayer extends AbstractPlayer &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void <span class="function"><span class="title">play</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是C罗，我能接住任意高度的头球"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3）如果父类与子类之间的关系符合 is-a 的层次关系，就可以使用抽象类，比如说篮球运动员是运动员，足球运动员是运动员。</p>
+<h1 id="03、具体示例"><a href="#03、具体示例" class="headerlink" title="03、具体示例"></a>03、具体示例</h1><p>为了进一步展示抽象类的特性，我们再来看一个具体的示例。假设现在有一个文件，里面的内容非常简单——“Hello World”，现在需要有一个读取器将内容读取出来，最好能按照大写的方式，或者小写的方式。</p>
+<p>这时候，最好定义一个抽象类，比如说 BaseFileReader：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public abstract class BaseFileReader &#123;</span><br><span class="line">    protected Path filePath;</span><br><span class="line"></span><br><span class="line">    protected BaseFileReader(Path filePath) &#123;</span><br><span class="line">        this.filePath = filePath;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;String&gt; readFile() throws IOException &#123;</span><br><span class="line">        <span class="built_in">return</span> Files.lines(filePath)</span><br><span class="line">                .map(this::mapFileLine).collect(Collectors.toList());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected abstract String mapFileLine(String line);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>filePath 为文件路径，使用 protected 修饰，表明该成员变量可以在需要时被子类访问。</p>
+<p>readFile() 方法用来读取文件，方法体里面调用了抽象方法 mapFileLine()——需要子类扩展实现大小写的方式。</p>
+<p>你看，BaseFileReader 设计的就非常合理，并且易于扩展，子类只需要专注于具体的大小写实现方式就可以了。</p>
+<p>小写的方式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class LowercaseFileReader extends BaseFileReader &#123;</span><br><span class="line">    protected LowercaseFileReader(Path filePath) &#123;</span><br><span class="line">        super(filePath);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected String mapFileLine(String line) &#123;</span><br><span class="line">        <span class="built_in">return</span> line.toLowerCase();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">大写的方式：</span><br><span class="line"></span><br><span class="line">public class UppercaseFileReader extends BaseFileReader &#123;</span><br><span class="line">    protected UppercaseFileReader(Path filePath) &#123;</span><br><span class="line">        super(filePath);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected String mapFileLine(String line) &#123;</span><br><span class="line">        <span class="built_in">return</span> line.toUpperCase();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你看，从文件里面一行一行读取内容的代码被子类复用了——抽象类 BaseFileReader 类中定义的普通方法 readFile()。与此同时，子类只需要专注于自己该做的工作，LowercaseFileReader 以小写的方式读取文件内容，UppercaseFileReader 以大写的方式读取文件内容。</p>
+<p>接下来，我们来新建一个测试类 FileReaderTest：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class FileReaderTest &#123;</span><br><span class="line">    public static void main(String[] args) throws URISyntaxException, IOException &#123;</span><br><span class="line">        URL location = FileReaderTest.class.getClassLoader().getResource(<span class="string">"helloworld.txt"</span>);</span><br><span class="line">        Path path = Paths.get(location.toURI());</span><br><span class="line">        BaseFileReader lowercaseFileReader = new LowercaseFileReader(path);</span><br><span class="line">        BaseFileReader uppercaseFileReader = new UppercaseFileReader(path);</span><br><span class="line">        System.out.println(lowercaseFileReader.readFile());</span><br><span class="line">        System.out.println(uppercaseFileReader.readFile());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>项目的 resource 目录下有一个文本文件，名字叫 helloworld.txt。</p>
+<p>可以通过 ClassLoader.getResource() 的方式获取到该文件的 URI 路径，然后就可以使用 LowercaseFileReader 和 UppercaseFileReader 两种方式读取到文本内容了。</p>
+<p>输出结果如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[hello world]</span><br><span class="line">[HELLO WORLD]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -539,7 +642,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-15 14:58:34" itemprop="dateModified" datetime="2020-07-15T14:58:34+08:00">2020-07-15</time>
+                <time title="Modified: 2020-07-15 14:59:16" itemprop="dateModified" datetime="2020-07-15T14:59:16+08:00">2020-07-15</time>
               </span>
 
           
@@ -984,81 +1087,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/14/swagger%E7%9A%84%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/14/swagger%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">swagger的使用</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-14 18:20:03" itemprop="dateCreated datePublished" datetime="2020-05-14T18:20:03+08:00">2020-05-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-15 15:45:34" itemprop="dateModified" datetime="2020-05-15T15:45:34+08:00">2020-05-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Mac首选brew安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap go-swagger/go-swagger</span><br><span class="line">brew install go-swagger</span><br></pre></td></tr></table></figure>
-
-<p>使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">swagger generate spec -o ./swagger.json --scan-models</span><br><span class="line">swagger serve -F=swagger swagger.json</span><br></pre></td></tr></table></figure>
-<p>其中 swagger.json文件是使用过命令行来生成的，然后进去编写自己的规则。</p>
-<p>小编直接拉去别的项目swagger.json文件时，跑起来出错了，你只需要通过swagger命令行创建后再复制内容进去即可。<br><code>No operations defined in spec!</code></p>
-<p><img src="/2020/05/14/swagger%E7%9A%84%E4%BD%BF%E7%94%A8/swagger01.png" alt="swagger01.png"></p>
-<p>资料：</p>
-<p><a href="https://zhuanlan.zhihu.com/p/136521497" target="_blank" rel="noopener">如何使用 SwaggerUI 创建 Golang API 文档？</a></p>
-<p><a href="https://blog.csdn.net/qq_37493556/article/details/104081138" target="_blank" rel="noopener">go-swagger安装及使用</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1109,7 +1137,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

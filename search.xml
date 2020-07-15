@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java 到底是值传递还是引用传递</title>
+    <url>/2020/07/15/Java-%E5%88%B0%E5%BA%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/</url>
+    <content><![CDATA[<p>将参数传递给方法有两种常见的方式，一种是“值传递”，一种是“引用传递”。C 语言本身只支持值传递，它的衍生品 C++ 既支持值传递，也支持引用传递，而 Java 只支持值传递。</p>
+<h1 id="01、值传递-VS-引用传递"><a href="#01、值传递-VS-引用传递" class="headerlink" title="01、值传递 VS 引用传递"></a>01、值传递 VS 引用传递</h1><p>首先，我们必须要搞清楚，到底什么是值传递，什么是引用传递，否则，讨论 Java 到底是值传递还是引用传递就显得毫无意义。</p>
+<p>当一个参数按照值的方式在两个方法之间传递时，调用者和被调用者其实是用的两个不同的变量——被调用者中的变量（原始值）是调用者中变量的一份拷贝，对它们当中的任何一个变量修改都不会影响到另外一个变量。</p>
+<p>而当一个参数按照引用传递的方式在两个方法之间传递时，调用者和被调用者其实用的是同一个变量，当该变量被修改时，双方都是可见的。</p>
+<p>Java 程序员之所以容易搞混值传递和引用传递，主要是因为 Java 有两种数据类型，一种是基本类型，比如说 int，另外一种是引用类型，比如说 String。</p>
+<p>基本类型的变量存储的都是实际的值，而引用类型的变量存储的是对象的引用——指向了对象在内存中的地址。值和引用存储在 stack（栈）中，而对象存储在 heap（堆）中。<br><img src="/2020/07/15/Java-%E5%88%B0%E5%BA%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/%E4%BC%A0%E9%80%9201.png" alt></p>
+<p>之所以有这个区别，是因为：</p>
+<ul>
+<li>栈的优势是，存取速度比堆要快，仅次于直接位于 CPU 中的寄存器。但缺点是，栈中的数据大小与生存周期必须是确定的。</li>
+<li>堆的优势是可以动态地分配内存大小，生存周期也不必事先告诉编译器，Java 的垃圾回收器会自动收走那些不再使用的数据。但由于要在运行时动态分配内存，存取速度较慢。</li>
+</ul>
+<h1 id="02、基本类型的参数传递"><a href="#02、基本类型的参数传递" class="headerlink" title="02、基本类型的参数传递"></a>02、基本类型的参数传递</h1><p>众所周知，Java 有 8 种基本数据类型，分别是 int、long、byte、short、float、double 、char 和 boolean。它们的值直接存储在栈中，每当作为参数传递时，都会将原始值（实参）复制一份新的出来，给形参用。形参将会在被调用方法结束时从栈中清除。</p>
+<p>来看下面这段代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class PrimitiveTypeDemo &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int age = 18;</span><br><span class="line">        modify(age);</span><br><span class="line">        System.out.println(age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void modify(int age1) &#123;</span><br><span class="line">        age1 = 30;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1）main 方法中的 age 是基本类型，所以它的值 18 直接存储在栈中。</p>
+<p>2）调用 modify() 方法的时候，将为实参 age 创建一个副本（形参 age1），它的值也为 18，不过是在栈中的其他位置。</p>
+<p>3）对形参 age 的任何修改都只会影响它自身而不会影响实参。</p>
+<p><img src="/2020/07/15/Java-%E5%88%B0%E5%BA%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/%E4%BC%A0%E9%80%9202.png" alt></p>
+<h1 id="03、引用类型的参数传递"><a href="#03、引用类型的参数传递" class="headerlink" title="03、引用类型的参数传递"></a>03、引用类型的参数传递</h1><p>来看一段创建引用类型变量的代码：</p>
+<p><code>Writer writer = new Writer(18, &quot;沉默王二&quot;);</code><br>writer 是对象吗？还是对象的引用？为了搞清楚这个问题，我们可以把上面的代码拆分为两行代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Writer writer;</span><br><span class="line">writer = new Writer(18, <span class="string">"沉默王二"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>假如 writer 是对象的话，就不需要通过 new 关键字创建对象了，对吧？那也就是说，writer 并不是对象，在“=”操作符执行之前，它仅仅是一个变量。那谁是对象呢？<code>new Writer(18, &quot;沉默王二&quot;)</code>，它是对象，存储于堆中；然后，“=”操作符将对象的引用赋值给了 writer 变量，于是 writer 此时应该叫<code>对象引用，它存储在栈中，保存了对象在堆中的地址</code>。</p>
+<p>每当引用类型作为参数传递时，都会创建一个对象引用（实参）的副本（形参），该形参保存的地址和实参一样。</p>
+<p>来看下面这段代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class ReferenceTypeDemo &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Writer a = new Writer(18);</span><br><span class="line">        Writer b = new Writer(18);</span><br><span class="line">        modify(a, b);</span><br><span class="line"></span><br><span class="line">        System.out.println(a.getAge());</span><br><span class="line">        System.out.println(b.getAge());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void modify(Writer a1, Writer b1) &#123;</span><br><span class="line">        a1.setAge(30);</span><br><span class="line"></span><br><span class="line">        b1 = new Writer(18);</span><br><span class="line">        b1.setAge(30);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1）在调用 <code>modify()</code> 方法之前，实参 a 和 b 指向的对象是不一样的，尽管 age 都为 18。<br><img src="/2020/07/15/Java-%E5%88%B0%E5%BA%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/%E4%BC%A0%E9%80%9203.png" alt></p>
+<p>2）在调用 <code>modify()</code> 方法时，实参 a 和 b 都在栈中创建了一个新的副本，分别是 a1 和 b1，但指向的对象是一致的（a 和 a1 指向对象 a，b 和 b1 指向对象 b）。</p>
+<p><img src="/2020/07/15/Java-%E5%88%B0%E5%BA%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/%E4%BC%A0%E9%80%9204.png" alt></p>
+<p>3）在 <code>modify()</code> 方法中，修改了形参 a1 的 age 为 30，意味着对象 a 的 age 从 18 变成了 30，而实参 a 指向的也是对象 a，所以 a 的 age 也变成了 30；形参 b1 指向了一个新的对象，随后 b1 的 age 被修改为 30。<br><img src="/2020/07/15/Java-%E5%88%B0%E5%BA%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/%E4%BC%A0%E9%80%9205.png" alt></p>
+<p>修改 a1 的 age，意味着同时修改了 a 的 age，因为它们指向的对象是一个；修改 b1 的 age，对 b 却没有影响，因为它们指向的对象是两个。</p>
+<p>程序输出的结果如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">30</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
+
+<p>果然和我们的分析是吻合的。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java 关于IntelliJ IDEA的使用</title>
     <url>/2020/07/15/Java-%E5%85%B3%E4%BA%8EIntelliJ-IDEA%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[]]></content>
@@ -207,7 +251,24 @@ CheckTypeHandler 转换器的类源码如下：
   <entry>
     <title>Java super 关键字</title>
     <url>/2020/07/07/Java-super-%E5%85%B3%E9%94%AE%E5%AD%97/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>简而言之，super 关键字就是用来访问父类的。</p>
+<p>先来看父类：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class SuperBase &#123;</span><br><span class="line">    String message = <span class="string">"父类"</span>;</span><br><span class="line"></span><br><span class="line">    public SuperBase(String message) &#123;</span><br><span class="line">        this.message = message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="function"><span class="title">SuperBase</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">printMessage</span></span>() &#123;</span><br><span class="line">        System.out.println(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再来看子类：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class SuperSub extends SuperBase &#123;</span><br><span class="line">    String message = <span class="string">"子类"</span>;</span><br><span class="line"></span><br><span class="line">    public SuperSub(String message) &#123;</span><br><span class="line">        super(message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="function"><span class="title">SuperSub</span></span>() &#123;</span><br><span class="line">        super.printMessage();</span><br><span class="line">        printMessage();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">getParentMessage</span></span>() &#123;</span><br><span class="line">        System.out.println(super.message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">printMessage</span></span>() &#123;</span><br><span class="line">        System.out.println(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1）super 关键字可用于访问父类的构造方法</p>
+<p>你看，子类可以通过 super(message) 来调用父类的构造方法。现在来新建一个 SuperSub 对象，看看输出结果是什么：</p>
+<p><code>SuperSub superSub = new SuperSub(&quot;子类的message&quot;);</code><br>new 关键字在调用构造方法创建子类对象的时候，会通过 super 关键字初始化父类的 message，所以此此时父类的 message 会输出“子类的message”。</p>
+<p>2）super 关键字可以访问父类的变量</p>
+<p>上述例子中的 SuperSub 类中就有，getParentMessage() 通过 super.message 方法父类的同名成员变量 message。</p>
+<p>3）当方法发生重写时，super 关键字可以访问父类的同名方法</p>
+<p>上述例子中的 SuperSub 类中就有，无参的构造方法 SuperSub() 中就使用 super.printMessage() 调用了父类的同名方法。</p>
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java this 关键字</title>

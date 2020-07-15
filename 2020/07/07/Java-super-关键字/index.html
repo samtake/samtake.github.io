@@ -52,12 +52,15 @@
   };
 </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="简而言之，super 关键字就是用来访问父类的。 先来看父类： 1234567891011121314public class SuperBase &amp;#123;    String message = &quot;父类&quot;;    public SuperBase(String message) &amp;#123;        this.message = message;    &amp;#125;    public">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java super 关键字">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;07&#x2F;Java-super-%E5%85%B3%E9%94%AE%E5%AD%97&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
+<meta property="og:description" content="简而言之，super 关键字就是用来访问父类的。 先来看父类： 1234567891011121314public class SuperBase &amp;#123;    String message = &quot;父类&quot;;    public SuperBase(String message) &amp;#123;        this.message = message;    &amp;#125;    public">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-07T09:12:06.521Z">
+<meta property="og:updated_time" content="2020-07-15T07:04:38.079Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/07/07/Java-super-%E5%85%B3%E9%94%AE%E5%AD%97/">
@@ -239,6 +242,13 @@
 
               <time title="Created: 2020-07-07 17:12:06" itemprop="dateCreated datePublished" datetime="2020-07-07T17:12:06+08:00">2020-07-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 15:04:38" itemprop="dateModified" datetime="2020-07-15T15:04:38+08:00">2020-07-15</time>
+              </span>
 
           
 
@@ -251,7 +261,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>简而言之，super 关键字就是用来访问父类的。</p>
+<p>先来看父类：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class SuperBase &#123;</span><br><span class="line">    String message = <span class="string">"父类"</span>;</span><br><span class="line"></span><br><span class="line">    public SuperBase(String message) &#123;</span><br><span class="line">        this.message = message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="function"><span class="title">SuperBase</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">printMessage</span></span>() &#123;</span><br><span class="line">        System.out.println(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再来看子类：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class SuperSub extends SuperBase &#123;</span><br><span class="line">    String message = <span class="string">"子类"</span>;</span><br><span class="line"></span><br><span class="line">    public SuperSub(String message) &#123;</span><br><span class="line">        super(message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="function"><span class="title">SuperSub</span></span>() &#123;</span><br><span class="line">        super.printMessage();</span><br><span class="line">        printMessage();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">getParentMessage</span></span>() &#123;</span><br><span class="line">        System.out.println(super.message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">printMessage</span></span>() &#123;</span><br><span class="line">        System.out.println(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1）super 关键字可用于访问父类的构造方法</p>
+<p>你看，子类可以通过 super(message) 来调用父类的构造方法。现在来新建一个 SuperSub 对象，看看输出结果是什么：</p>
+<p><code>SuperSub superSub = new SuperSub(&quot;子类的message&quot;);</code><br>new 关键字在调用构造方法创建子类对象的时候，会通过 super 关键字初始化父类的 message，所以此此时父类的 message 会输出“子类的message”。</p>
+<p>2）super 关键字可以访问父类的变量</p>
+<p>上述例子中的 SuperSub 类中就有，getParentMessage() 通过 super.message 方法父类的同名成员变量 message。</p>
+<p>3）当方法发生重写时，super 关键字可以访问父类的同名方法</p>
+<p>上述例子中的 SuperSub 类中就有，无参的构造方法 SuperSub() 中就使用 super.printMessage() 调用了父类的同名方法。</p>
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
+
     </div>
 
     
@@ -259,6 +283,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
 
         
 
@@ -328,7 +355,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
