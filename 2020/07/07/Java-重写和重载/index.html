@@ -52,12 +52,15 @@
   };
 </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="先来看一段重写的代码吧。 1234567891011class LaoWang&amp;#123;    public void write() &amp;#123;        System.out.println(&quot;老王写了一本《基督山伯爵》&quot;);    &amp;#125;&amp;#125;public class XiaoWang extends LaoWang &amp;#123;    @Override    publ">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java 重写和重载">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;07&#x2F;Java-%E9%87%8D%E5%86%99%E5%92%8C%E9%87%8D%E8%BD%BD&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
+<meta property="og:description" content="先来看一段重写的代码吧。 1234567891011class LaoWang&amp;#123;    public void write() &amp;#123;        System.out.println(&quot;老王写了一本《基督山伯爵》&quot;);    &amp;#125;&amp;#125;public class XiaoWang extends LaoWang &amp;#123;    @Override    publ">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-07T09:12:17.665Z">
+<meta property="og:updated_time" content="2020-07-15T02:21:18.858Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/07/07/Java-%E9%87%8D%E5%86%99%E5%92%8C%E9%87%8D%E8%BD%BD/">
@@ -239,6 +242,13 @@
 
               <time title="Created: 2020-07-07 17:12:17" itemprop="dateCreated datePublished" datetime="2020-07-07T17:12:17+08:00">2020-07-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 10:21:18" itemprop="dateModified" datetime="2020-07-15T10:21:18+08:00">2020-07-15</time>
+              </span>
 
           
 
@@ -251,7 +261,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>先来看一段重写的代码吧。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class LaoWang&#123;</span><br><span class="line">    public void <span class="function"><span class="title">write</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"老王写了一本《基督山伯爵》"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class XiaoWang extends LaoWang &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void <span class="function"><span class="title">write</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"小王写了一本《茶花女》"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重写的两个方法名相同，方法参数的个数也相同；不过一个方法在父类中，另外一个在子类中。就好像父类 LaoWang 有一个 write() 方法（无参），方法体是写一本《基督山伯爵》；子类 XiaoWang 重写了父类的 write() 方法（无参），但方法体是写一本《茶花女》。</p>
+<p>来写一段测试代码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class OverridingTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        LaoWang wang = new XiaoWang();</span><br><span class="line">        wang.write();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>大家猜结果是什么？</p>
+<p>小王写了一本《茶花女》<br>在上面的代码中，们声明了一个类型为 LaoWang 的变量 wang。在编译期间，编译器会检查 LaoWang 类是否包含了 write() 方法，发现 LaoWang 类有，于是编译通过。在运行期间，new 了一个 XiaoWang 对象，并将其赋值给 wang，此时 Java 虚拟机知道 wang 引用的是 XiaoWang 对象，所以调用的是子类 XiaoWang 中的 write() 方法而不是父类 LaoWang  中的 write() 方法，因此输出结果为“小王写了一本《茶花女》”。</p>
+<p>再来看一段重载的代码吧。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class LaoWang&#123;</span><br><span class="line">    public void <span class="function"><span class="title">read</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"老王读了一本《Web全栈开发进阶之路》"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="built_in">read</span>(String bookname) &#123;</span><br><span class="line">        System.out.println(<span class="string">"老王读了一本《"</span> + bookname + <span class="string">"》"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重载的两个方法名相同，但方法参数的个数不同，另外也不涉及到继承，两个方法在同一个类中。就好像类 LaoWang 有两个方法，名字都是 read()，但一个有参数（书名），另外一个没有（只能读写死的一本书）。</p>
+<p>来写一段测试代码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class OverloadingTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        LaoWang wang = new LaoWang();</span><br><span class="line">        wang.read();</span><br><span class="line">        wang.read(<span class="string">"金瓶梅"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这结果就不用猜了。变量 wang 的类型为 LaoWang，wang.read() 调用的是无参的 read() 方法，因此先输出“老王读了一本《Web全栈开发进阶之路》”；wang.read(“金瓶梅”) 调用的是有参的 read(bookname) 方法，因此后输出“老王读了一本《金瓶梅》”。在编译期间，编译器就知道这两个 read() 方法时不同的，因为它们的方法签名（=方法名称+方法参数）不同。</p>
+<p>简单的来总结一下：</p>
+<p>1）编译器无法决定调用哪个重写的方法，因为只从变量的类型上是无法做出判断的，要在运行时才能决定；但编译器可以明确地知道该调用哪个重载的方法，因为引用类型是确定的，参数个数决定了该调用哪个方法。</p>
+<p>2）多态针对的是重写，而不是重载。</p>
+<p>另外，我想要告诉大家的是，重写（Override）和重载（Overload）是 Java 中两个非常重要的概念，新手经常会被它们俩迷惑，因为它们俩的英文名字太像了，中文翻译也只差一个字。难，太难了。</p>
+
     </div>
 
     
@@ -259,6 +286,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
 
         
 
