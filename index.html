@@ -990,7 +990,7 @@ CheckTypeHandler 转换器的类源码如下：
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-15 10:14:40" itemprop="dateModified" datetime="2020-07-15T10:14:40+08:00">2020-07-15</time>
+                <time title="Modified: 2020-07-15 17:01:53" itemprop="dateModified" datetime="2020-07-15T17:01:53+08:00">2020-07-15</time>
               </span>
 
           
@@ -1006,7 +1006,7 @@ CheckTypeHandler 转换器的类源码如下：
       
           <p>在 Java 中，一个类可以继承另外一个类或者实现多个接口，我想这一点，大部分的读者应该都知道了。还有一点，我不确定大家是否知道，就是一个接口也可以继承另外一个接口，就像下面这样：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public interface OneInterface extends Cloneable &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样做有什么好处呢？我想有一部分读者应该已经猜出来了，就是实现了 OneInterface 接口的类，也可以使用 Object.clone() 方法了。</p>
+<p>这样做有什么好处呢？我想有一部分读者应该已经猜出来了，就是实现了 OneInterface 接口的类，也可以使用  <code>Object.clone()</code> 方法了。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class TestInterface implements OneInterface &#123;</span><br><span class="line">    public static void main(String[] args) throws CloneNotSupportedException &#123;</span><br><span class="line">        TestInterface c1 = new TestInterface();</span><br><span class="line">        TestInterface c2 = (TestInterface) c1.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>除此之外，我们还可以在 OneInterface 接口中定义其他一些抽象方法（比如说深拷贝），使该接口拥有 Cloneable 所不具有的功能。</p>
@@ -1018,23 +1018,24 @@ CheckTypeHandler 转换器的类源码如下：
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Wangxiaoer extends Wanger&#123;</span><br><span class="line">    @Override</span><br><span class="line">    void <span class="function"><span class="title">write</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我写了本《茶花女》"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我们可以将通用的方法和成员变量放在父类中，达到代码复用的目的；然后将特殊的方法和成员变量放在子类中，除此之外，子类还可以覆盖父类的方法（比如<code>write()</code> 方法）。这样，子类也就焕发出了新的生命力。</p>
-<p>Java 只支持单一继承，这一点，我在上一篇接口的文章中已经提到过了。如果一个类在定义的时候没有使用 extends 关键字，那么它隐式地继承了 <code>java.lang.Object</code> 类——在我看来，这恐怕就是 Java 号称万物皆对象的真正原因了。</p>
+<p><code>Java 只支持单一继承</code>，这一点，我在上一篇接口的文章中已经提到过了。如果一个类在定义的时候没有使用 extends 关键字，那么它隐式地继承了 <code>java.lang.Object</code> 类——在我看来，这恐怕就是 Java 号称万物皆对象的真正原因了。</p>
 <p>那究竟子类继承了父类的什么呢？</p>
 <p>子类可以继承父类的非 <code>private</code> 成员变量，为了验证这一点，我们来看下面这个示例。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Wanger &#123;</span><br><span class="line">    String defaultName;</span><br><span class="line">    private String privateName;</span><br><span class="line">    public String publicName;</span><br><span class="line">    protected String protectedName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>父类 Wanger 定义了四种类型的成员变量，缺省的 defaultName、私有的 privateName、共有的 publicName、受保护的 protectedName。</p>
-<p>在子类 Wangxiaoer 中定义一个测试方法 testVariable()：</p>
+<p>在子类 Wangxiaoer 中定义一个测试方法 <code>testVariable()</code>：<br><img src="/2020/07/07/Java-%E7%BB%A7%E6%89%BF/1.png" alt></p>
 <p>可以确认，除了私有的 privateName，其他三种类型的成员变量都可以继承到。</p>
 <p>同理，子类可以继承父类的非 private 方法，为了验证这一点，我们来看下面这个示例。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Wanger &#123;</span><br><span class="line">    void <span class="function"><span class="title">write</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void <span class="function"><span class="title">privateWrite</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">publicWrite</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected void <span class="function"><span class="title">protectedWrite</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>父类 Wanger 定义了四种类型的方法，缺省的 write、私有的 privateWrite()、共有的 publicWrite()、受保护的 protectedWrite()。</p>
-<p>在子类 Wangxiaoer 中定义一个 main 方法，并使用 new 关键字新建一个子类对象：</p>
+<p>在子类 Wangxiaoer 中定义一个 <code>main</code> 方法，并使用 <code>new</code> 关键字新建一个子类对象：</p>
+<p><img src="/2020/07/07/Java-%E7%BB%A7%E6%89%BF/2.png" alt></p>
 <p>可以确认，除了私有的 privateWrite()，其他三种类型的方法都可以继承到。</p>
 <p>不过，子类无法继承父类的构造方法。如果父类的构造方法是带有参数的，代码如下所示：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Wanger &#123;</span><br><span class="line">    int age;</span><br><span class="line">    String name;</span><br><span class="line"></span><br><span class="line">    public Wanger(int age, String name) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>则必须在子类的构造器中显式地通过 super 关键字进行调用，否则编译器将提示以下错误：</p>
+<p>则必须在子类的构造器中显式地通过 super 关键字进行调用，否则编译器将提示以下错误：<br><img src="/2020/07/07/Java-%E7%BB%A7%E6%89%BF/3.png" alt></p>
 <p>修复后的代码如下所示：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Wangxiaoer extends Wanger&#123;</span><br><span class="line">    public Wangxiaoer(int age, String name) &#123;</span><br><span class="line">        super(age, name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>is-a 是继承的一个明显特征，就是说子类的对象引用类型可以是一个父类类型。</p>
@@ -1050,12 +1051,14 @@ CheckTypeHandler 转换器的类源码如下：
 
 <p>RunInterface 是一个会跑的接口，里面也有一个签名为 sleep() 的默认方法：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public interface RunInterface &#123;</span><br><span class="line">    void run();</span><br><span class="line">    default void <span class="function"><span class="title">sleep</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"睡着跑"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Pig 类实现了 FlyInterface 和 RunInterface 两个接口，但这时候编译出错了。</p>
+<p>Pig 类实现了 FlyInterface 和 RunInterface 两个接口，但这时候编译出错了。<br><img src="/2020/07/07/Java-%E7%BB%A7%E6%89%BF/4.png" alt></p>
 <p>原本，default 方法就是为实现该接口而不覆盖该方法的类提供默认实现的，现在，相同方法签名的 sleep() 方法把编译器搞懵逼了，只能重写了。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Pig implements FlyInterface, RunInterface &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void <span class="function"><span class="title">fly</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"会飞的猪"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void <span class="function"><span class="title">sleep</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"只能重写了"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"会跑的猪"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>类虽然不能继承多个类，但接口却可以继承多个接口，这一点，我不知道有没有触及到一些读者的知识盲区。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface WalkInterface extends FlyInterface,RunInterface&#123;</span><br><span class="line">    void walk();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
 
       
     </div>
