@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java 关于IntelliJ IDEA的使用</title>
+    <url>/2020/07/15/Java-%E5%85%B3%E4%BA%8EIntelliJ-IDEA%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Java final 关键字</title>
     <url>/2020/07/07/Java-final-%E5%85%B3%E9%94%AE%E5%AD%97/</url>
     <content><![CDATA[<p>尽管继承可以让我们重用现有代码，但有时处于某些原因，我们确实需要对可扩展性进行限制，final 关键字可以帮助我们做到这一点。</p>
@@ -661,12 +666,14 @@ CheckTypeHandler 转换器的类源码如下：
 <h1 id="07、double"><a href="#07、double" class="headerlink" title="07、double"></a>07、double</h1><p>double 是双精度的浮点数，遵循 IEEE 754（二进制浮点数算术标准），取值范围也是无限的，默认值为 0.0。double 同样不适合用于精确的数值，比如说货币。代码示例：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">double d1 = 12.3</span><br></pre></td></tr></table></figure>
 <p>那精确的数值用什么表示呢？最好使用 BigDecimal，它可以表示一个任意大小且精度完全准确的浮点数。针对货币类型的数值，也可以先乘以 100 转成整形进行处理。</p>
-<p>Tips：单精度是这样的格式，1 位符号，8 位指数，23 位小数，有效位数为 7 位。<br><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4TbicpHDicMXVQjYk6bOk13VPchuw8vz7kaB6sukCj9JzxE2G5gWLWibCg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
+<p>Tips：单精度是这样的格式，1 位符号，8 位指数，23 位小数，有效位数为 7 位。<br><img src="/2020/07/07/Java-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/double01" alt></p>
 <p>双精度是这样的格式，1 位符号，11 位指数，52 为小数，有效位数为 16 位。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4OGQDpVOWgiaKD5a74SiaThVvlrr6As1okvvy3vdfQ54Z2ZniaV8DE2rRg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt><br>取值范围取决于指数位，计算精度取决于小数位（尾数）。小数位越多，则能表示的数越大，那么计算精度则越高。</p>
+<p><img src="/2020/07/07/Java-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/double02" alt><br>取值范围取决于指数位，计算精度取决于小数位（尾数）。小数位越多，则能表示的数越大，那么计算精度则越高。</p>
 <p>一个数由若干位数字组成，其中影响测量精度的数字称作有效数字，也称有效数位。有效数字指科学计算中用以表示一个浮点数精度的那些数字。一般地，指一个用小数形式表示的浮点数中，从第一个非零的数字算起的所有数字。如 1.24 和 0.00124 的有效数字都有 3 位。</p>
 <h1 id="08、char"><a href="#08、char" class="headerlink" title="08、char"></a>08、char</h1><p>char 可以表示一个 16 位的 Unicode 字符，其值范围在 ‘\u0000’（0）和 ‘\uffff’（65,535）（包含）之间。代码示例：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">char letterA = <span class="string">'A'</span>; // 用英文的单引号包裹住。</span><br></pre></td></tr></table></figure>
+
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
 ]]></content>
       <tags>
         <tag>Java</tag>

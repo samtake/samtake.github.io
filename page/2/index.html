@@ -213,6 +213,93 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Java 构造方法</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-07 16:45:01" itemprop="dateCreated datePublished" datetime="2020-07-07T16:45:01+08:00">2020-07-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 10:33:25" itemprop="dateModified" datetime="2020-07-15T10:33:25+08:00">2020-07-15</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>假设现在有一个 Writer 类，它有两个字段，姓名和年纪：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Writer &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String <span class="function"><span class="title">toString</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"Writer&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\'</span><span class="string">' +</span></span><br><span class="line"><span class="string">                ", age=" + age +</span></span><br><span class="line"><span class="string">                '</span>&#125;<span class="string">';</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>重写了 toString() 方法，用于打印 Writer 类的详情。由于没有构造方法，意味着当我们创建 Writer 对象时，它的字段值并没有初始化：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Writer writer = new Writer();</span><br><span class="line">System.out.println(writer.toString());</span><br></pre></td></tr></table></figure>
+<p>输出结果如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Writer&#123;name=<span class="string">'null'</span>, age=0&#125;</span><br></pre></td></tr></table></figure>
+<p>name 是字符串类型，所以默认值为 null，age 为 int 类型，所以默认值为 0。</p>
+<p>让我们为 Writer 类主动加一个无参的构造方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public <span class="function"><span class="title">Writer</span></span>() &#123;</span><br><span class="line">    this.name = <span class="string">""</span>;</span><br><span class="line">    this.age = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>构造方法也是一个方法，只不过它没有返回值，默认返回创建对象的类型。需要注意的是，当前构造方法没有参数，它被称为无参构造方法。如果我们没有主动创建无参构造方法的话，编译器会隐式地自动添加一个无参的构造方法。这就是为什么，一开始虽然没有构造方法，却可以使用 new Writer() 创建对象的原因，只不过，所有的字段都被初始化成了默认值。</p>
+<p>接下来，让我们添加一个有参的构造方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public Writer(String name, int age) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，我们创建 Writer 对象的时候就可以通过对字段值初始化值了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Writer writer1 = new Writer(<span class="string">"沉默王二"</span>,18);</span><br><span class="line">System.out.println(writer1.toString());</span><br></pre></td></tr></table></figure>
+<p>来看一下打印结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Writer&#123;name=<span class="string">'沉默王二'</span>, age=18&#125;</span><br></pre></td></tr></table></figure>
+<p>可以根据字段的数量添加不同参数数量的构造方法，比如说，我们可以单独为 name 字段添加一个构造方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Writer(String name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了能够兼顾 age 字段，我们可以通过 this 关键字调用其他的构造方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Writer(String name) &#123;</span><br><span class="line">    this(name,18);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>把作者的年龄都默认初始化为 18。如果需要使用父类的构造方法，还可以使用 super 关键字，手册后面有详细的介绍。</p>
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -444,10 +531,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-07-07 15:48:52 / Modified: 16:10:06" itemprop="dateCreated datePublished" datetime="2020-07-07T15:48:52+08:00">2020-07-07</time>
+              <time title="Created: 2020-07-07 15:48:52" itemprop="dateCreated datePublished" datetime="2020-07-07T15:48:52+08:00">2020-07-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 14:56:59" itemprop="dateModified" datetime="2020-07-15T14:56:59+08:00">2020-07-15</time>
+              </span>
 
           
 
@@ -527,12 +620,14 @@
 <h1 id="07、double"><a href="#07、double" class="headerlink" title="07、double"></a>07、double</h1><p>double 是双精度的浮点数，遵循 IEEE 754（二进制浮点数算术标准），取值范围也是无限的，默认值为 0.0。double 同样不适合用于精确的数值，比如说货币。代码示例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">double d1 = 12.3</span><br></pre></td></tr></table></figure>
 <p>那精确的数值用什么表示呢？最好使用 BigDecimal，它可以表示一个任意大小且精度完全准确的浮点数。针对货币类型的数值，也可以先乘以 100 转成整形进行处理。</p>
-<p>Tips：单精度是这样的格式，1 位符号，8 位指数，23 位小数，有效位数为 7 位。<br><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4TbicpHDicMXVQjYk6bOk13VPchuw8vz7kaB6sukCj9JzxE2G5gWLWibCg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
+<p>Tips：单精度是这样的格式，1 位符号，8 位指数，23 位小数，有效位数为 7 位。<br><img src="/2020/07/07/Java-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/double01" alt></p>
 <p>双精度是这样的格式，1 位符号，11 位指数，52 为小数，有效位数为 16 位。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4OGQDpVOWgiaKD5a74SiaThVvlrr6As1okvvy3vdfQ54Z2ZniaV8DE2rRg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt><br>取值范围取决于指数位，计算精度取决于小数位（尾数）。小数位越多，则能表示的数越大，那么计算精度则越高。</p>
+<p><img src="/2020/07/07/Java-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/double02" alt><br>取值范围取决于指数位，计算精度取决于小数位（尾数）。小数位越多，则能表示的数越大，那么计算精度则越高。</p>
 <p>一个数由若干位数字组成，其中影响测量精度的数字称作有效数字，也称有效数位。有效数字指科学计算中用以表示一个浮点数精度的那些数字。一般地，指一个用小数形式表示的浮点数中，从第一个非零的数字算起的所有数字。如 1.24 和 0.00124 的有效数字都有 3 位。</p>
 <h1 id="08、char"><a href="#08、char" class="headerlink" title="08、char"></a>08、char</h1><p>char 可以表示一个 16 位的 Unicode 字符，其值范围在 ‘\u0000’（0）和 ‘\uffff’（65,535）（包含）之间。代码示例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">char letterA = <span class="string">'A'</span>; // 用英文的单引号包裹住。</span><br></pre></td></tr></table></figure>
+
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
 
       
     </div>
@@ -964,560 +1059,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" class="post-title-link" itemprop="url">数据库设计</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-13 10:14:22 / Modified: 15:05:49" itemprop="dateCreated datePublished" datetime="2020-05-13T10:14:22+08:00">2020-05-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>表设计</p>
-<ul>
-<li>DDL（Data Definition Language）数据库模式定义语言</li>
-<li>表字段类型选择。</li>
-<li>3范式，三种表间关系：一对一，一对多，多对多。</li>
-</ul>
-<p>表使用</p>
-<ul>
-<li>基本查询语句。</li>
-<li>SQL语句优先级。</li>
-<li>链接查询：子查询，组合查询。</li>
-<li>select…from…where…group by…having…order by..limit</li>
-</ul>
-<h1 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h1><p>库的创建<br><code>create database 库名；</code><br><code>create database if not existe 库名；</code></p>
-<p>更改库的字符集<br><code>alter database books character set gbk；</code></p>
-<p>库的删除<br><code>drop database if exists 库名；</code></p>
-<p>表的创建</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create table 表名（</span><br><span class="line">    列名  列的类型【（长度）约束】</span><br><span class="line">    列名  列的类型【（长度）约束】</span><br><span class="line">   .......</span><br><span class="line">    列名  列的类型【（长度）约束】）</span><br><span class="line"></span><br><span class="line">create table book(</span><br><span class="line">    id  int,</span><br><span class="line">    bname varchar(20),</span><br><span class="line">    prince double,</span><br><span class="line">    authorid int,</span><br><span class="line">    publishbate datetime)</span><br></pre></td></tr></table></figure>
-
-
-<p>表的修改<br><code>alter table 表名 add/drop/modify/change column 列名 列类型 约束；</code></p>
-<ul>
-<li>修改列名 <code>alter table 表名 change column 旧列名 新列名 类型；</code></li>
-<li>修改列的类型及约束 <code>alter table 表名 modify column 列名 要修改的类型</code></li>
-<li>添加新列 <code>alter table author add column annual double；</code></li>
-<li>删除列 <code>alter table author drop column annual ；</code></li>
-<li>修改表名 <code>alter table  author rename to bookauthor;</code></li>
-<li>表的删除 <code>drop table if exists 表名；</code></li>
-<li>查看 <code>show tables</code> </li>
-</ul>
-<ul>
-<li><p>通用的写法</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">drop database <span class="keyword">if</span> exists 旧库名；</span><br><span class="line"></span><br><span class="line">create batabase 新库名；</span><br><span class="line"></span><br><span class="line">drop table <span class="keyword">if</span> exists 旧表名；</span><br><span class="line"></span><br><span class="line">create table 表名（）；</span><br><span class="line"></span><br><span class="line">desc 表名 （查看表结构）</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表的复制 </p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.仅仅复制表的结构</span></span><br><span class="line">create table 新表名  like  author；</span><br><span class="line"><span class="comment">#2.复制表的结构+数据</span></span><br><span class="line">create table 新表名</span><br><span class="line">select *from 旧表名；</span><br><span class="line"><span class="comment">#3.只复制部分数据</span></span><br><span class="line">create teble 新表名</span><br><span class="line">select 列名，..</span><br><span class="line">from 旧表名</span><br><span class="line"><span class="built_in">where</span> 筛选条件；</span><br><span class="line"><span class="comment">#4.仅仅复制某些结构</span></span><br><span class="line">create table 新表名 </span><br><span class="line">select 列名，..</span><br><span class="line">from 旧表名</span><br><span class="line"><span class="built_in">where</span>  0（谁都不满足的条件）；</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h1 id="表字段类型"><a href="#表字段类型" class="headerlink" title="表字段类型"></a>表字段类型</h1><h2 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h2><table>
-<thead>
-<tr>
-<th align="left">场景</th>
-<th align="left">类型</th>
-<th align="left">字节</th>
-<th align="left">举例</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">-</td>
-<td align="left">tinyint</td>
-<td align="left">1</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">smallint</td>
-<td align="left">2</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">mediumint</td>
-<td align="left">3</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">int<br>integer</td>
-<td align="left">4<br>4</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">bigint</td>
-<td align="left">1</td>
-<td align="left">8</td>
-<td align="left">-</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>如何设置有符号和无符号<br>  默认是有符号，设置无符号追加unsigned</p>
-</li>
-<li><p>插入数值超出整型范围<br>  报异常：out of range，并且插入的是临界值</p>
-</li>
-<li><p>如果不设置长度会有默认的长度<br>  zerofill（零填充，默认无符号），显示结果的最大宽度，不过会在左边用0填充</p>
-</li>
-</ul>
-<h2 id="小数"><a href="#小数" class="headerlink" title="小数"></a>小数</h2><table>
-<thead>
-<tr>
-<th align="left">场景</th>
-<th align="left">类型</th>
-<th align="left">举例</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">-</td>
-<td align="left">dec<br>decimal</td>
-<td align="left">dec(M,D)<br>decimal(M,D)</td>
-<td align="left">定点型</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">float<br>double</td>
-<td align="left">float(M,D)<br>double(M,D)</td>
-<td align="left">浮点型</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>M是整数部位加小数部位的总长度，D是小数点后保留的位数<br>  超过插入的是临界值</p>
-</li>
-<li><p>M和D都可省略，如果是decimal，M默认为10，D默认为0<br>  如果是float和double，则会根据插入的数值决定</p>
-</li>
-<li><p>定点型精确度较高，要求插入数值精度较高优先用，如货币运算等则等<br>  其他一般用float就可以。</p>
-</li>
-<li><p>选择类型越简单越好，保存数值越小越好</p>
-</li>
-</ul>
-<h2 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h2><table>
-<thead>
-<tr>
-<th align="left">场景</th>
-<th align="left">类型</th>
-<th align="left">举例</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">较短的文本</td>
-<td align="left">char<br>varchar</td>
-<td align="left">char(M)<br>varchar(M)</td>
-<td align="left">M表示最大的字符数，可省略，默认为1 固定长度的字符 比较耗费空间 <br> M表示最大的字符数，不可省略 可变长度的字符 比较节省空间</td>
-</tr>
-<tr>
-<td align="left">较长的文本</td>
-<td align="left">text<br>blob</td>
-<td align="left">-</td>
-<td align="left">较长的二进制数据</td>
-</tr>
-</tbody></table>
-<h2 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h2><table>
-<thead>
-<tr>
-<th align="left">场景</th>
-<th align="left">类型</th>
-<th align="left">举例</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">-</td>
-<td align="left">date</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">datetime</td>
-<td align="left">-</td>
-<td align="left">datetime范围1000-1-1—-9999-12-31，不受时区影响</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">timestamp</td>
-<td align="left">-</td>
-<td align="left">受时区影响</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">time</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">year</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-</tbody></table>
-<h2 id="常见约束"><a href="#常见约束" class="headerlink" title="常见约束"></a>常见约束</h2><table>
-<thead>
-<tr>
-<th align="left">场景</th>
-<th align="left">字段</th>
-<th align="left">举例</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">-</td>
-<td align="left">not null</td>
-<td align="left">-</td>
-<td align="left">非空，用于保证该字段的值不能为空，如姓名、学号</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">default</td>
-<td align="left">-</td>
-<td align="left">默认，用于保证该字段有默认值，如性别</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">primary key</td>
-<td align="left">-</td>
-<td align="left">主键，用于保证该字段的值具有唯一性，并且非空，如学号、员工编号</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">unique</td>
-<td align="left">-</td>
-<td align="left">唯一、用于保证该字段的值具有唯一性，可以为空，如座位号</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">check</td>
-<td align="left">-</td>
-<td align="left">检查约束，mysql中不支持，如年龄、性别</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">foreign key</td>
-<td align="left">-</td>
-<td align="left">外键，用于限制两个表的关系，用于保证该字段的值必须来自主表的关联列的值。在从表添加外键约束，用于引用主表中某列的值。</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>添加约束的时机：创建表时/修改表时</p>
-</li>
-<li><p>约束的添加分类：</p>
-<ul>
-<li>列级约束：六大约束语法都支持但外键约束没有效果</li>
-<li>表级约束;除了非空、默认，其他的都支持</li>
-</ul>
-</li>
-</ul>
-<h1 id="创建表时添加约束"><a href="#创建表时添加约束" class="headerlink" title="创建表时添加约束"></a>创建表时添加约束</h1><h2 id="添加列级约束"><a href="#添加列级约束" class="headerlink" title="添加列级约束"></a>添加列级约束</h2><p>直接在字段名和类型后面追加 约束类型即可<br>只支持：默认、非空、主键、唯一</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create table 表名（</span><br><span class="line">         字段名   字段类型   列级约束，</span><br><span class="line">       字段名  字段类型，</span><br><span class="line">       表级约束</span><br><span class="line">）</span><br><span class="line">create table stuinfo（</span><br><span class="line">    id  int primary  key,</span><br><span class="line">    stuname  varchar(20)  not  null,</span><br><span class="line">    gender   char(1)  check(gender=<span class="string">'男'</span> or gender = <span class="string">'女'</span>），</span><br><span class="line">    age  int default  18</span><br><span class="line">   majorid  int foreign key references major（id）</span><br><span class="line">）；</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="添加表级约束"><a href="#添加表级约束" class="headerlink" title="添加表级约束"></a>添加表级约束</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">create table stuinfo（</span><br><span class="line">    id  int ,</span><br><span class="line">    stuname  varchar(20) ,</span><br><span class="line">    gender   char(1) ，</span><br><span class="line">    age  int，</span><br><span class="line">   majorid  int，</span><br><span class="line">   </span><br><span class="line">   constraint pk primary  key（id）,<span class="comment">#主键</span></span><br><span class="line">   constraint uq unique（seat），<span class="comment">#唯一键</span></span><br><span class="line">   constraint ck check(gender=<span class="string">'男'</span> or gender = <span class="string">'女'</span>），</span><br><span class="line">   constraint fk_syuinfo_major   foreign key(majorid) references major（id）<span class="comment">#外键</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>在各个字段的最下面添加：&lt;<code>constraint</code> 约束名&gt; 约束类型（字段名）</p>
-<h1 id="主键与唯一的对比"><a href="#主键与唯一的对比" class="headerlink" title="主键与唯一的对比"></a>主键与唯一的对比</h1><ul>
-<li>主键：保持唯一性 / 不允许为空/一个表中只至少有一个/两个列可以组合为一个主键但不推荐</li>
-<li>唯一：保持唯一性 / 允许为空 /可以有多个/可以组合但不推荐</li>
-</ul>
-<h1 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h1><ul>
-<li><p>要求在从表设置外键关系</p>
-</li>
-<li><p>从表的外键列的类型和主表的关联列的类型要求一致或兼容，名称无要求</p>
-</li>
-<li><p>主表的关联列必须是一个key（一般是主键或唯一）</p>
-</li>
-<li><p>插入数据时，先插入主表数据再插入从表</p>
-</li>
-<li><p>删除数据先删除从表再删除主表</p>
-</li>
-</ul>
-<h1 id="修改表时添加约束"><a href="#修改表时添加约束" class="headerlink" title="修改表时添加约束"></a>修改表时添加约束</h1><p>列级约束：<code>alter table 表名 modify column 字段名 字段类型 新约束；</code></p>
-<p>表级约束：<code>alter table 表名 add &lt;constriaint 约束名&gt; 约束类型（字段名）&lt;外键的引用&gt;；</code></p>
-<ul>
-<li><p>添加非空约束 <code>alter table 表名 modify column 列名 要修改的类型  not null</code></p>
-</li>
-<li><p>默认约束 <code>alter table 表名 modify column 列名 int default 18</code></p>
-</li>
-<li><p>添加主键<br>  <code>列级约束 alter table 表名 modify column 列名 int default key；</code><br>  <code>表级约束  alter table 表名 add primary key(列名)</code></p>
-</li>
-<li><p>添加唯一<br>  <code>列级约束  alter table 表名 add primary key(列名) 要修改的类型  notnull</code><br>  <code>表级约束   alter table 表名 add unique（列名）</code> </p>
-</li>
-<li><p>添加外键 <code>alter table 表名 add foreign key（majorid） references major（id）</code></p>
-</li>
-</ul>
-<h1 id="修改表时删除约束"><a href="#修改表时删除约束" class="headerlink" title="修改表时删除约束"></a>修改表时删除约束</h1><p>删除非空 <code>alter table 表名 modify column 列名 varchar（20） null；</code><br>删除默认约束 <code>alter table 表名 modify column 列名  int；</code><br>删除主键 <code>alter table 表名 drop primary key；</code><br>删除唯一 <code>alter table 表名 drop index 列名；</code><br>删除外键 <code>alter table 表名 drop foreign key 列名；</code></p>
-<h1 id="3范式"><a href="#3范式" class="headerlink" title="3范式"></a>3范式</h1><h2 id="第一范式（1NF）"><a href="#第一范式（1NF）" class="headerlink" title="第一范式（1NF）"></a>第一范式（1NF）</h2><p>保证每列的原子性。如果数据库表中的所有字段值都是不可分解的原子值，就说明该数据库满足了第一范式。</p>
-<p>例如将地址的拆分：</p>
-<table>
-<thead>
-<tr>
-<th align="left">编号</th>
-<th align="left">姓名</th>
-<th align="left">地址</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">张三</td>
-<td align="left">广东广州天河</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">李四</td>
-<td align="left">广东佛山禅城</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">王五</td>
-<td align="left">广东广州科学城</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="left">编号</th>
-<th align="left">姓名</th>
-<th align="left">省份</th>
-<th align="left">城市</th>
-<th align="left">地址</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">张三</td>
-<td align="left">广东</td>
-<td align="left">广州</td>
-<td align="left">天河</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">李四</td>
-<td align="left">广东</td>
-<td align="left">佛山</td>
-<td align="left">禅城</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">王五</td>
-<td align="left">广东</td>
-<td align="left">广州</td>
-<td align="left">科学城</td>
-</tr>
-</tbody></table>
-<h2 id="第二范式（2NF）"><a href="#第二范式（2NF）" class="headerlink" title="第二范式（2NF）"></a>第二范式（2NF）</h2><p>保证一张表只描述一件事情。<br>在满足第一范式的基础上，数据库表中不存在非关键字段对任一候选关键字段的部分函数依赖，也即所有非关键字段都完全依赖于任一组候选关键字。</p>
-<p>举例：<br>| 学号    | 姓名    | 年龄 | 课程 | 成绩 | 学分 |<br>| :—–| :—–| :—-|  :—-|  :—-|  :—-|<br>| 1 | 张三  | 20 | 数学 | 90 | 1 |<br>| 2 | 李四  | 20 | 语文 | 90 | 1 |<br>| 3 | 王五  | 20 | 英语 | 50 | 1 |</p>
-<p>上表满足第一范式，即每个字段不可再分，但这张表的设计并不满足第二范式。因为这张表里面描述了两件事情：学生信息、课程信息，”学分”完全依赖于”课程名称”、”姓名”与”年龄”完全依赖于”学号”。这么做的后果是：</p>
-<ul>
-<li><p>数据冗余：同一门课程由n个学生选修，”学分”重复n-1次；同一个学生选修了m门课程，姓名和年龄重复m-1次</p>
-</li>
-<li><p>更新异常：若调整了某门课程的学分，数据表中所有行的”学分”值都需要更新，否则会出现同一门课程学分不同的情况</p>
-</li>
-<li><p>插入异常：假设要开一门新课程，暂时没有人选修，那么由于没有”学号”关键字，”课程”与”学分”也无法记录入数据库</p>
-</li>
-<li><p>删除异常：假设一批学生已经完成课程的选修，这些选修记录就应该从数据库表中删除。但是，与此同时，”课程”和”学分”也被删除了，显然，这最终可能会导致插入异常</p>
-</li>
-</ul>
-<p>优化后的表设计如下：<br>| 学号    | 姓名    | 年龄 |<br>| :—–| :—–| :—-|<br>| 1 | 张三  | 20 |<br>| 2 | 李四  | 20 |<br>| 3 | 王五  | 20 |</p>
-<table>
-<thead>
-<tr>
-<th align="left">课程</th>
-<th align="left">学分</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">数学</td>
-<td align="left">1</td>
-</tr>
-<tr>
-<td align="left">语文</td>
-<td align="left">1</td>
-</tr>
-<tr>
-<td align="left">英语</td>
-<td align="left">1</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="left">学号</th>
-<th align="left">课程</th>
-<th align="left">成绩</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">数学</td>
-<td align="left">90</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">语文</td>
-<td align="left">90</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">英语</td>
-<td align="left">50</td>
-</tr>
-</tbody></table>
-<p>增加了表，将学生信息与课程信息通过一张中间表关联，很好地解决了上面的几个问题，这就是第二范式的中心—-保证一张表只讲一件事情。</p>
-<h2 id="第三范式（3NF）"><a href="#第三范式（3NF）" class="headerlink" title="第三范式（3NF）"></a>第三范式（3NF）</h2><p>数据库表中如果不存在非关键字段任一候选关键字段的传递函数依赖则符合第三范式，所谓传递函数依赖指的是如果存在”A–&gt;B–&gt;C”的决定关系，则C传递函数依赖于A。也就是说<code>中的字段和主键直接对应不依靠其他中间字段，说白了就是，决定某字段值的必须是主键。</code></p>
-<p>举例：</p>
-<table>
-<thead>
-<tr>
-<th align="left">学号</th>
-<th align="left">姓名</th>
-<th align="left">年龄</th>
-<th align="left">学院地点</th>
-<th align="left">学院电话</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">张三</td>
-<td align="left">20</td>
-<td align="left">计算机学院</td>
-<td align="left">9号楼</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">李四</td>
-<td align="left">20</td>
-<td align="left">计算机学院</td>
-<td align="left">9号楼</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">王五</td>
-<td align="left">20</td>
-<td align="left">计算机学院</td>
-<td align="left">9号楼</td>
-</tr>
-</tbody></table>
-<p>从这张数据库表结构中可以看出：</p>
-<ul>
-<li><p>“姓名”、”年龄”、”学院”和主键”学号”直接关联。</p>
-</li>
-<li><p>但是”学院地点”、”学院电话”却不直接和主键”学号”相关联，和”学院电话”直接相关联的是”学院”。</p>
-</li>
-<li><p>如果表结构这么设计，同样会造成和第二范式一样的数据冗余、更新异常、插入异常、删除异常的问题。</p>
-</li>
-</ul>
-<p>优化后的表设计：</p>
-<table>
-<thead>
-<tr>
-<th align="left">学院</th>
-<th align="left">学院地点</th>
-<th align="left">学院电话</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">计算机学院</td>
-<td align="left">9号楼</td>
-<td align="left">11111</td>
-</tr>
-<tr>
-<td align="left">艺术学院</td>
-<td align="left">8号楼</td>
-<td align="left">11112</td>
-</tr>
-<tr>
-<td align="left">机电学院</td>
-<td align="left">7号楼</td>
-<td align="left">11113</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="left">学号</th>
-<th align="left">姓名</th>
-<th align="left">年龄</th>
-<th align="left">学院</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">张三</td>
-<td align="left">20</td>
-<td align="left">计算机学院</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">李四</td>
-<td align="left">20</td>
-<td align="left">计算机学院</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">王五</td>
-<td align="left">20</td>
-<td align="left">计算机学院</td>
-</tr>
-</tbody></table>
-<p>文章参考：<br><a href="https://zhuanlan.zhihu.com/p/72197799" target="_blank" rel="noopener">MySQL数据库三范式</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1568,7 +1109,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

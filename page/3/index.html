@@ -213,6 +213,560 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" class="post-title-link" itemprop="url">数据库设计</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-13 10:14:22 / Modified: 15:05:49" itemprop="dateCreated datePublished" datetime="2020-05-13T10:14:22+08:00">2020-05-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>表设计</p>
+<ul>
+<li>DDL（Data Definition Language）数据库模式定义语言</li>
+<li>表字段类型选择。</li>
+<li>3范式，三种表间关系：一对一，一对多，多对多。</li>
+</ul>
+<p>表使用</p>
+<ul>
+<li>基本查询语句。</li>
+<li>SQL语句优先级。</li>
+<li>链接查询：子查询，组合查询。</li>
+<li>select…from…where…group by…having…order by..limit</li>
+</ul>
+<h1 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h1><p>库的创建<br><code>create database 库名；</code><br><code>create database if not existe 库名；</code></p>
+<p>更改库的字符集<br><code>alter database books character set gbk；</code></p>
+<p>库的删除<br><code>drop database if exists 库名；</code></p>
+<p>表的创建</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create table 表名（</span><br><span class="line">    列名  列的类型【（长度）约束】</span><br><span class="line">    列名  列的类型【（长度）约束】</span><br><span class="line">   .......</span><br><span class="line">    列名  列的类型【（长度）约束】）</span><br><span class="line"></span><br><span class="line">create table book(</span><br><span class="line">    id  int,</span><br><span class="line">    bname varchar(20),</span><br><span class="line">    prince double,</span><br><span class="line">    authorid int,</span><br><span class="line">    publishbate datetime)</span><br></pre></td></tr></table></figure>
+
+
+<p>表的修改<br><code>alter table 表名 add/drop/modify/change column 列名 列类型 约束；</code></p>
+<ul>
+<li>修改列名 <code>alter table 表名 change column 旧列名 新列名 类型；</code></li>
+<li>修改列的类型及约束 <code>alter table 表名 modify column 列名 要修改的类型</code></li>
+<li>添加新列 <code>alter table author add column annual double；</code></li>
+<li>删除列 <code>alter table author drop column annual ；</code></li>
+<li>修改表名 <code>alter table  author rename to bookauthor;</code></li>
+<li>表的删除 <code>drop table if exists 表名；</code></li>
+<li>查看 <code>show tables</code> </li>
+</ul>
+<ul>
+<li><p>通用的写法</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">drop database <span class="keyword">if</span> exists 旧库名；</span><br><span class="line"></span><br><span class="line">create batabase 新库名；</span><br><span class="line"></span><br><span class="line">drop table <span class="keyword">if</span> exists 旧表名；</span><br><span class="line"></span><br><span class="line">create table 表名（）；</span><br><span class="line"></span><br><span class="line">desc 表名 （查看表结构）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表的复制 </p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.仅仅复制表的结构</span></span><br><span class="line">create table 新表名  like  author；</span><br><span class="line"><span class="comment">#2.复制表的结构+数据</span></span><br><span class="line">create table 新表名</span><br><span class="line">select *from 旧表名；</span><br><span class="line"><span class="comment">#3.只复制部分数据</span></span><br><span class="line">create teble 新表名</span><br><span class="line">select 列名，..</span><br><span class="line">from 旧表名</span><br><span class="line"><span class="built_in">where</span> 筛选条件；</span><br><span class="line"><span class="comment">#4.仅仅复制某些结构</span></span><br><span class="line">create table 新表名 </span><br><span class="line">select 列名，..</span><br><span class="line">from 旧表名</span><br><span class="line"><span class="built_in">where</span>  0（谁都不满足的条件）；</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h1 id="表字段类型"><a href="#表字段类型" class="headerlink" title="表字段类型"></a>表字段类型</h1><h2 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h2><table>
+<thead>
+<tr>
+<th align="left">场景</th>
+<th align="left">类型</th>
+<th align="left">字节</th>
+<th align="left">举例</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">tinyint</td>
+<td align="left">1</td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">smallint</td>
+<td align="left">2</td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">mediumint</td>
+<td align="left">3</td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">int<br>integer</td>
+<td align="left">4<br>4</td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">bigint</td>
+<td align="left">1</td>
+<td align="left">8</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>如何设置有符号和无符号<br>  默认是有符号，设置无符号追加unsigned</p>
+</li>
+<li><p>插入数值超出整型范围<br>  报异常：out of range，并且插入的是临界值</p>
+</li>
+<li><p>如果不设置长度会有默认的长度<br>  zerofill（零填充，默认无符号），显示结果的最大宽度，不过会在左边用0填充</p>
+</li>
+</ul>
+<h2 id="小数"><a href="#小数" class="headerlink" title="小数"></a>小数</h2><table>
+<thead>
+<tr>
+<th align="left">场景</th>
+<th align="left">类型</th>
+<th align="left">举例</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">dec<br>decimal</td>
+<td align="left">dec(M,D)<br>decimal(M,D)</td>
+<td align="left">定点型</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">float<br>double</td>
+<td align="left">float(M,D)<br>double(M,D)</td>
+<td align="left">浮点型</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>M是整数部位加小数部位的总长度，D是小数点后保留的位数<br>  超过插入的是临界值</p>
+</li>
+<li><p>M和D都可省略，如果是decimal，M默认为10，D默认为0<br>  如果是float和double，则会根据插入的数值决定</p>
+</li>
+<li><p>定点型精确度较高，要求插入数值精度较高优先用，如货币运算等则等<br>  其他一般用float就可以。</p>
+</li>
+<li><p>选择类型越简单越好，保存数值越小越好</p>
+</li>
+</ul>
+<h2 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h2><table>
+<thead>
+<tr>
+<th align="left">场景</th>
+<th align="left">类型</th>
+<th align="left">举例</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">较短的文本</td>
+<td align="left">char<br>varchar</td>
+<td align="left">char(M)<br>varchar(M)</td>
+<td align="left">M表示最大的字符数，可省略，默认为1 固定长度的字符 比较耗费空间 <br> M表示最大的字符数，不可省略 可变长度的字符 比较节省空间</td>
+</tr>
+<tr>
+<td align="left">较长的文本</td>
+<td align="left">text<br>blob</td>
+<td align="left">-</td>
+<td align="left">较长的二进制数据</td>
+</tr>
+</tbody></table>
+<h2 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h2><table>
+<thead>
+<tr>
+<th align="left">场景</th>
+<th align="left">类型</th>
+<th align="left">举例</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">date</td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">datetime</td>
+<td align="left">-</td>
+<td align="left">datetime范围1000-1-1—-9999-12-31，不受时区影响</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">timestamp</td>
+<td align="left">-</td>
+<td align="left">受时区影响</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">time</td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">year</td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h2 id="常见约束"><a href="#常见约束" class="headerlink" title="常见约束"></a>常见约束</h2><table>
+<thead>
+<tr>
+<th align="left">场景</th>
+<th align="left">字段</th>
+<th align="left">举例</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">not null</td>
+<td align="left">-</td>
+<td align="left">非空，用于保证该字段的值不能为空，如姓名、学号</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">default</td>
+<td align="left">-</td>
+<td align="left">默认，用于保证该字段有默认值，如性别</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">primary key</td>
+<td align="left">-</td>
+<td align="left">主键，用于保证该字段的值具有唯一性，并且非空，如学号、员工编号</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">unique</td>
+<td align="left">-</td>
+<td align="left">唯一、用于保证该字段的值具有唯一性，可以为空，如座位号</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">check</td>
+<td align="left">-</td>
+<td align="left">检查约束，mysql中不支持，如年龄、性别</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">foreign key</td>
+<td align="left">-</td>
+<td align="left">外键，用于限制两个表的关系，用于保证该字段的值必须来自主表的关联列的值。在从表添加外键约束，用于引用主表中某列的值。</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>添加约束的时机：创建表时/修改表时</p>
+</li>
+<li><p>约束的添加分类：</p>
+<ul>
+<li>列级约束：六大约束语法都支持但外键约束没有效果</li>
+<li>表级约束;除了非空、默认，其他的都支持</li>
+</ul>
+</li>
+</ul>
+<h1 id="创建表时添加约束"><a href="#创建表时添加约束" class="headerlink" title="创建表时添加约束"></a>创建表时添加约束</h1><h2 id="添加列级约束"><a href="#添加列级约束" class="headerlink" title="添加列级约束"></a>添加列级约束</h2><p>直接在字段名和类型后面追加 约束类型即可<br>只支持：默认、非空、主键、唯一</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create table 表名（</span><br><span class="line">         字段名   字段类型   列级约束，</span><br><span class="line">       字段名  字段类型，</span><br><span class="line">       表级约束</span><br><span class="line">）</span><br><span class="line">create table stuinfo（</span><br><span class="line">    id  int primary  key,</span><br><span class="line">    stuname  varchar(20)  not  null,</span><br><span class="line">    gender   char(1)  check(gender=<span class="string">'男'</span> or gender = <span class="string">'女'</span>），</span><br><span class="line">    age  int default  18</span><br><span class="line">   majorid  int foreign key references major（id）</span><br><span class="line">）；</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="添加表级约束"><a href="#添加表级约束" class="headerlink" title="添加表级约束"></a>添加表级约束</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">create table stuinfo（</span><br><span class="line">    id  int ,</span><br><span class="line">    stuname  varchar(20) ,</span><br><span class="line">    gender   char(1) ，</span><br><span class="line">    age  int，</span><br><span class="line">   majorid  int，</span><br><span class="line">   </span><br><span class="line">   constraint pk primary  key（id）,<span class="comment">#主键</span></span><br><span class="line">   constraint uq unique（seat），<span class="comment">#唯一键</span></span><br><span class="line">   constraint ck check(gender=<span class="string">'男'</span> or gender = <span class="string">'女'</span>），</span><br><span class="line">   constraint fk_syuinfo_major   foreign key(majorid) references major（id）<span class="comment">#外键</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>在各个字段的最下面添加：&lt;<code>constraint</code> 约束名&gt; 约束类型（字段名）</p>
+<h1 id="主键与唯一的对比"><a href="#主键与唯一的对比" class="headerlink" title="主键与唯一的对比"></a>主键与唯一的对比</h1><ul>
+<li>主键：保持唯一性 / 不允许为空/一个表中只至少有一个/两个列可以组合为一个主键但不推荐</li>
+<li>唯一：保持唯一性 / 允许为空 /可以有多个/可以组合但不推荐</li>
+</ul>
+<h1 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h1><ul>
+<li><p>要求在从表设置外键关系</p>
+</li>
+<li><p>从表的外键列的类型和主表的关联列的类型要求一致或兼容，名称无要求</p>
+</li>
+<li><p>主表的关联列必须是一个key（一般是主键或唯一）</p>
+</li>
+<li><p>插入数据时，先插入主表数据再插入从表</p>
+</li>
+<li><p>删除数据先删除从表再删除主表</p>
+</li>
+</ul>
+<h1 id="修改表时添加约束"><a href="#修改表时添加约束" class="headerlink" title="修改表时添加约束"></a>修改表时添加约束</h1><p>列级约束：<code>alter table 表名 modify column 字段名 字段类型 新约束；</code></p>
+<p>表级约束：<code>alter table 表名 add &lt;constriaint 约束名&gt; 约束类型（字段名）&lt;外键的引用&gt;；</code></p>
+<ul>
+<li><p>添加非空约束 <code>alter table 表名 modify column 列名 要修改的类型  not null</code></p>
+</li>
+<li><p>默认约束 <code>alter table 表名 modify column 列名 int default 18</code></p>
+</li>
+<li><p>添加主键<br>  <code>列级约束 alter table 表名 modify column 列名 int default key；</code><br>  <code>表级约束  alter table 表名 add primary key(列名)</code></p>
+</li>
+<li><p>添加唯一<br>  <code>列级约束  alter table 表名 add primary key(列名) 要修改的类型  notnull</code><br>  <code>表级约束   alter table 表名 add unique（列名）</code> </p>
+</li>
+<li><p>添加外键 <code>alter table 表名 add foreign key（majorid） references major（id）</code></p>
+</li>
+</ul>
+<h1 id="修改表时删除约束"><a href="#修改表时删除约束" class="headerlink" title="修改表时删除约束"></a>修改表时删除约束</h1><p>删除非空 <code>alter table 表名 modify column 列名 varchar（20） null；</code><br>删除默认约束 <code>alter table 表名 modify column 列名  int；</code><br>删除主键 <code>alter table 表名 drop primary key；</code><br>删除唯一 <code>alter table 表名 drop index 列名；</code><br>删除外键 <code>alter table 表名 drop foreign key 列名；</code></p>
+<h1 id="3范式"><a href="#3范式" class="headerlink" title="3范式"></a>3范式</h1><h2 id="第一范式（1NF）"><a href="#第一范式（1NF）" class="headerlink" title="第一范式（1NF）"></a>第一范式（1NF）</h2><p>保证每列的原子性。如果数据库表中的所有字段值都是不可分解的原子值，就说明该数据库满足了第一范式。</p>
+<p>例如将地址的拆分：</p>
+<table>
+<thead>
+<tr>
+<th align="left">编号</th>
+<th align="left">姓名</th>
+<th align="left">地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">张三</td>
+<td align="left">广东广州天河</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">李四</td>
+<td align="left">广东佛山禅城</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">王五</td>
+<td align="left">广东广州科学城</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">编号</th>
+<th align="left">姓名</th>
+<th align="left">省份</th>
+<th align="left">城市</th>
+<th align="left">地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">张三</td>
+<td align="left">广东</td>
+<td align="left">广州</td>
+<td align="left">天河</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">李四</td>
+<td align="left">广东</td>
+<td align="left">佛山</td>
+<td align="left">禅城</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">王五</td>
+<td align="left">广东</td>
+<td align="left">广州</td>
+<td align="left">科学城</td>
+</tr>
+</tbody></table>
+<h2 id="第二范式（2NF）"><a href="#第二范式（2NF）" class="headerlink" title="第二范式（2NF）"></a>第二范式（2NF）</h2><p>保证一张表只描述一件事情。<br>在满足第一范式的基础上，数据库表中不存在非关键字段对任一候选关键字段的部分函数依赖，也即所有非关键字段都完全依赖于任一组候选关键字。</p>
+<p>举例：<br>| 学号    | 姓名    | 年龄 | 课程 | 成绩 | 学分 |<br>| :—–| :—–| :—-|  :—-|  :—-|  :—-|<br>| 1 | 张三  | 20 | 数学 | 90 | 1 |<br>| 2 | 李四  | 20 | 语文 | 90 | 1 |<br>| 3 | 王五  | 20 | 英语 | 50 | 1 |</p>
+<p>上表满足第一范式，即每个字段不可再分，但这张表的设计并不满足第二范式。因为这张表里面描述了两件事情：学生信息、课程信息，”学分”完全依赖于”课程名称”、”姓名”与”年龄”完全依赖于”学号”。这么做的后果是：</p>
+<ul>
+<li><p>数据冗余：同一门课程由n个学生选修，”学分”重复n-1次；同一个学生选修了m门课程，姓名和年龄重复m-1次</p>
+</li>
+<li><p>更新异常：若调整了某门课程的学分，数据表中所有行的”学分”值都需要更新，否则会出现同一门课程学分不同的情况</p>
+</li>
+<li><p>插入异常：假设要开一门新课程，暂时没有人选修，那么由于没有”学号”关键字，”课程”与”学分”也无法记录入数据库</p>
+</li>
+<li><p>删除异常：假设一批学生已经完成课程的选修，这些选修记录就应该从数据库表中删除。但是，与此同时，”课程”和”学分”也被删除了，显然，这最终可能会导致插入异常</p>
+</li>
+</ul>
+<p>优化后的表设计如下：<br>| 学号    | 姓名    | 年龄 |<br>| :—–| :—–| :—-|<br>| 1 | 张三  | 20 |<br>| 2 | 李四  | 20 |<br>| 3 | 王五  | 20 |</p>
+<table>
+<thead>
+<tr>
+<th align="left">课程</th>
+<th align="left">学分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">数学</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">语文</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">英语</td>
+<td align="left">1</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">学号</th>
+<th align="left">课程</th>
+<th align="left">成绩</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">数学</td>
+<td align="left">90</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">语文</td>
+<td align="left">90</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">英语</td>
+<td align="left">50</td>
+</tr>
+</tbody></table>
+<p>增加了表，将学生信息与课程信息通过一张中间表关联，很好地解决了上面的几个问题，这就是第二范式的中心—-保证一张表只讲一件事情。</p>
+<h2 id="第三范式（3NF）"><a href="#第三范式（3NF）" class="headerlink" title="第三范式（3NF）"></a>第三范式（3NF）</h2><p>数据库表中如果不存在非关键字段任一候选关键字段的传递函数依赖则符合第三范式，所谓传递函数依赖指的是如果存在”A–&gt;B–&gt;C”的决定关系，则C传递函数依赖于A。也就是说<code>中的字段和主键直接对应不依靠其他中间字段，说白了就是，决定某字段值的必须是主键。</code></p>
+<p>举例：</p>
+<table>
+<thead>
+<tr>
+<th align="left">学号</th>
+<th align="left">姓名</th>
+<th align="left">年龄</th>
+<th align="left">学院地点</th>
+<th align="left">学院电话</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">张三</td>
+<td align="left">20</td>
+<td align="left">计算机学院</td>
+<td align="left">9号楼</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">李四</td>
+<td align="left">20</td>
+<td align="left">计算机学院</td>
+<td align="left">9号楼</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">王五</td>
+<td align="left">20</td>
+<td align="left">计算机学院</td>
+<td align="left">9号楼</td>
+</tr>
+</tbody></table>
+<p>从这张数据库表结构中可以看出：</p>
+<ul>
+<li><p>“姓名”、”年龄”、”学院”和主键”学号”直接关联。</p>
+</li>
+<li><p>但是”学院地点”、”学院电话”却不直接和主键”学号”相关联，和”学院电话”直接相关联的是”学院”。</p>
+</li>
+<li><p>如果表结构这么设计，同样会造成和第二范式一样的数据冗余、更新异常、插入异常、删除异常的问题。</p>
+</li>
+</ul>
+<p>优化后的表设计：</p>
+<table>
+<thead>
+<tr>
+<th align="left">学院</th>
+<th align="left">学院地点</th>
+<th align="left">学院电话</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">计算机学院</td>
+<td align="left">9号楼</td>
+<td align="left">11111</td>
+</tr>
+<tr>
+<td align="left">艺术学院</td>
+<td align="left">8号楼</td>
+<td align="left">11112</td>
+</tr>
+<tr>
+<td align="left">机电学院</td>
+<td align="left">7号楼</td>
+<td align="left">11113</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">学号</th>
+<th align="left">姓名</th>
+<th align="left">年龄</th>
+<th align="left">学院</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">张三</td>
+<td align="left">20</td>
+<td align="left">计算机学院</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">李四</td>
+<td align="left">20</td>
+<td align="left">计算机学院</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">王五</td>
+<td align="left">20</td>
+<td align="left">计算机学院</td>
+</tr>
+</tbody></table>
+<p>文章参考：<br><a href="https://zhuanlan.zhihu.com/p/72197799" target="_blank" rel="noopener">MySQL数据库三范式</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/05/Life-is-simple-i-learn-Python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1450,95 +2004,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/10/dto%E4%B8%8Edao/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/10/dto%E4%B8%8Edao/" class="post-title-link" itemprop="url">dto与dao</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-04-10 21:33:56" itemprop="dateCreated datePublished" datetime="2020-04-10T21:33:56+08:00">2020-04-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-19 15:31:24" itemprop="dateModified" datetime="2020-05-19T15:31:24+08:00">2020-05-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Golang/" itemprop="url" rel="index">
-                    <span itemprop="name">Golang</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="dto"><a href="#dto" class="headerlink" title="dto"></a>dto</h1><p><code>dto</code>数据传输对象(Data Transfer Object)，是一种设计模式之间传输数据的软件应用系统。数据传输目标往往是数据访问对象从数据库中检索数据。数据传输对象与数据交互对象或数据访问对象之间的差异是一个以不具有任何行为除了存储和检索的数据（访问和存取器）。</p>
-<p>在golang中目前我遇到是用于控制返回的字段，如：在User中由多个字段，我希望只返回<code>Name</code>和<code>Telephone</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package dto</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"gin_vue_bs/model"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//UserDto .</span><br><span class="line"><span class="built_in">type</span> UserDto struct &#123;</span><br><span class="line">	Name      string `json:<span class="string">"name"</span>`</span><br><span class="line">	Telephone string `json:<span class="string">"telephone"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//ToUserDto .</span><br><span class="line">func ToUserDto(user model.User) UserDto &#123;</span><br><span class="line">	<span class="built_in">return</span> UserDto&#123;</span><br><span class="line">		Name:      user.Name,</span><br><span class="line">		Telephone: user.Telephone,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	Name      string `gorm:<span class="string">"type:varchar(20);not null"</span>`</span><br><span class="line">	Telephone string `gorm:<span class="string">"varchar(110;not null;unique"</span>`</span><br><span class="line">	Password  string `gorm:<span class="string">"size:255;not null"</span>`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.JSON(http.StatusOK, gin.H&#123;<span class="string">"code"</span>: 200, <span class="string">"data"</span>: gin.H&#123;<span class="string">"user"</span>: dto.ToUserDto(user.(model.User))&#125;&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="dao"><a href="#dao" class="headerlink" title="dao"></a>dao</h1><p><a href="https://baike.sogou.com/v6708028.htm?fromTitle=dao" target="_blank" rel="noopener">dao</a>就叫它数据访问接口吧。</p>
-<p>举一个例子先，例如我们比较常见的 Service 层和 DAO 层的操作，Service 处理完逻辑之后，交给 DAO 层进行持久化，或者需要调用 DAO 层从持久化中获取一些必要的数据；在测试的时候，我们很多时候不希望真的持久化或者从持久化中获取数据，那么就会对 DAO 层进行一些 Mock。</p>
-<p>还有深刻的理解，相关资料：</p>
-<p><a href="http://www.imooc.com/article/33236" target="_blank" rel="noopener">http://www.imooc.com/article/33236</a><br><a href="https://www.cnblogs.com/makor/p/ut-in-go-lang.html" target="_blank" rel="noopener">https://www.cnblogs.com/makor/p/ut-in-go-lang.html</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1589,7 +2054,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
