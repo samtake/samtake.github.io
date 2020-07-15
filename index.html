@@ -643,7 +643,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-08 17:53:36" itemprop="dateModified" datetime="2020-07-08T17:53:36+08:00">2020-07-08</time>
+                <time title="Modified: 2020-07-08 17:56:55" itemprop="dateModified" datetime="2020-07-08T17:56:55+08:00">2020-07-08</time>
               </span>
 
           
@@ -657,7 +657,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>接口是通过 interface 关键字定义的，它可以包含一些常量和方法，来看下面这个示例。</p>
+          <p>对于面向对象编程来说，抽象是一个极具魅力的特征。如果一个程序员的抽象思维很差，那他在编程中就会遇到很多困难，无法把业务变成具体的代码。在 Java 中，可以通过两种形式来达到抽象的目的，一种是抽象类，另外一种就是接口。</p>
+<p>如果你现在就想知道抽象类与接口之间的区别，我可以提前给你说一个：</p>
+<p>一个类只能继承一个抽象类，但却可以实现多个接口。<br>当然了，在没有搞清楚接口到底是什么，它可以做什么之前，这个区别理解起来会有点难度。</p>
+<h1 id="01、接口是什么"><a href="#01、接口是什么" class="headerlink" title="01、接口是什么"></a>01、接口是什么</h1><p>接口是通过 <code>interface</code> 关键字定义的，它可以包含一些常量和方法，来看下面这个示例。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public interface Electronic &#123;</span><br><span class="line">    // 常量</span><br><span class="line">    String LED = <span class="string">"LED"</span>;</span><br><span class="line"></span><br><span class="line">    // 抽象方法</span><br><span class="line">    int getElectricityUse();</span><br><span class="line"></span><br><span class="line">    // 静态方法</span><br><span class="line">    static boolean isEnergyEfficient(String electtronicType) &#123;</span><br><span class="line">        <span class="built_in">return</span> electtronicType.equals(LED);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 默认方法</span><br><span class="line">    default void <span class="function"><span class="title">printDescription</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"电子"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>1）接口中定义的变量会在编译的时候自动加上 <code>public static final</code> 修饰符，也就是说 LED 变量其实是一个常量。</p>
@@ -676,8 +679,7 @@
 <p>来看一下 Electronic 接口反编译后的字节码吧，你会发现，接口中定义的所有变量或者方法，都会自动添加上 public 关键字——假如你想知道编译器在背后都默默做了哪些辅助，记住反编译字节码就对了。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public interface Electronic</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    public abstract int getElectricityUse();</span><br><span class="line"></span><br><span class="line">    public static boolean isEnergyEfficient(String electtronicType)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> electtronicType.equals(<span class="string">"LED"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void printDescription()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"\u7535\u5B50"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static final String LED = <span class="string">"LED"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>有些读者可能会问，“二哥，为什么我反编译后的字节码和你的不一样，你用了什么反编译工具？”其实没有什么秘密，微信搜「沉默王二」回复关键字「JAD」就可以免费获取了，超级好用。</p>
-<p>02、定义接口的注意事项</p>
-<p>由之前的例子我们就可以得出下面这些结论：</p>
+<h1 id="02、定义接口的注意事项"><a href="#02、定义接口的注意事项" class="headerlink" title="02、定义接口的注意事项"></a>02、定义接口的注意事项</h1><p>由之前的例子我们就可以得出下面这些结论：</p>
 <ul>
 <li>接口中允许定义变量</li>
 <li>接口中允许定义抽象方法</li>
