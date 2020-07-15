@@ -563,11 +563,11 @@ CheckTypeHandler 转换器的类源码如下：
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public Pig(String color) &#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这时候，再查看反编译后的字节码时，你会发现缺省的无参构造方法消失了——和源代码一模一样。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public Pig(String color) &#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这意味着无法通过 new Pig() 来创建对象了——编译器会提醒你追加参数。<br><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4qlT4mDRicCQaibG0ZE7cNz2eicA1ZqsQogETnw965kn345ZMKOCQ8kpJA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
+<p>这意味着无法通过 new Pig() 来创建对象了——编译器会提醒你追加参数。<br><img src="/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/1.png" alt></p>
 <p>比如说你将代码修改为 new Pig(“纯白色”)，或者添加无参的构造方法。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public Pig(String color) &#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="function"><span class="title">Pig</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>使用无参构造方法创建的对象状态默认值为 null（color 字符串为引用类型），如果是基本类型的话，默认值为对应基本类型的默认值，比如说 int 为 0，更详细的见下图。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4Tx5gfpmYOxmM9MD0G0cma6hMeZGNthibEtk4WKeEaBCINn3vz9v1Gyg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
+<p><img src="/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/2.png" alt></p>
 <p>（图片中有一处错误，boolean 的默认值为 false）</p>
 <p>接下来，我们来创建多个 Pig 对象，它的颜色各不相同。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class PigTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Pig pigNoColor = new Pig();</span><br><span class="line">        Pig pigWhite = new Pig(<span class="string">"纯白色"</span>);</span><br><span class="line">        Pig pigBlack = new Pig(<span class="string">"纯黑色"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -585,16 +585,17 @@ CheckTypeHandler 转换器的类源码如下：
 <p>一个类只能使用 public 或者 default 修饰，public 修饰的类你之前已经见到过了，现在我来定义一个缺省权限修饰符的类给你欣赏一下。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Dog &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>哈哈，其实也没啥可以欣赏的。缺省意味着这个类可以被同一个包下的其他类进行访问；而 public 意味着这个类可以被所有包下的类进行访问。</p>
-<p>假如硬要通过 private 和 protected 来修饰类的话，编译器会生气的，它不同意。<br><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4kXJf6Eib5g1EowI1m1cbhy5ib9fCnsj54H60dtg1pQTPtUn2mlIB8U5A/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
+<p>假如硬要通过 private 和 protected 来修饰类的话，编译器会生气的，它不同意。<br><img src="/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/3.png" alt></p>
 <p>private 可以用来修饰类的构造方法、字段和方法，只能被当前类进行访问。protected 也可以用来修饰类的构造方法、字段和方法，但它的权限范围更宽一些，可以被同一个包中的类进行访问，或者当前类的子类。</p>
 <p>可以通过下面这张图来对比一下四个权限修饰符之间的差别：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/z40lCFUAHpn5MxJ7KBB7cna6lev4sgY4sicJJJBlGyVFfCibicE0LsViab6xX4tImpdlvOexIfTRE6gtribUISkae5A/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
+<p><img src="/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/4.png" alt></p>
 <ul>
 <li>同一个类中，不管是哪种权限修饰符，都可以访问；</li>
 <li>同一个包下，private 修饰的无法访问；</li>
 <li>子类可以访问 public 和 protected 修饰的；</li>
 <li>public 修饰符面向世界，哈哈，可以被所有的地方访问到。</li>
 </ul>
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
 ]]></content>
       <tags>
         <tag>Java</tag>
