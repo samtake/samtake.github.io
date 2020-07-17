@@ -213,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/OpenGL-%E7%9D%80%E8%89%B2%E5%99%A8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/iOS-VIPER%E6%9E%B6%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -227,7 +227,100 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/28/OpenGL-%E7%9D%80%E8%89%B2%E5%99%A8/" class="post-title-link" itemprop="url">OpenGL-着色器</a>
+            <a href="/2020/04/24/iOS-VIPER%E6%9E%B6%E6%9E%84/" class="post-title-link" itemprop="url">iOS VIPER架构</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-24 02:10:23 / Modified: 19:28:22" itemprop="dateCreated datePublished" datetime="2020-04-24T02:10:23+08:00">2020-04-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="查了一下资料"><a href="#查了一下资料" class="headerlink" title="查了一下资料"></a>查了一下资料</h1><p><code>VIPER</code> View-Interactor-Presenter-Entity-Router</p>
+<p>View</p>
+<ul>
+<li>提供完整的视图，负责视图的组合、布局、更新</li>
+<li>向Presenter提供更新视图的接口</li>
+<li>将View相关的事件发送给Presenter</li>
+</ul>
+<p>Presenter</p>
+<ul>
+<li>接收并处理来自View的事件</li>
+<li>向Interactor请求调用业务逻辑</li>
+<li>向Interactor提供View中的数据</li>
+<li>接收并处理来自Interactor的数据回调事件</li>
+<li>通知View进行更新操作</li>
+<li>通过Router跳转到其他View</li>
+</ul>
+<p>Router（路由）</p>
+<ul>
+<li>提供View之间的跳转功能，减少了模块间的耦合</li>
+<li>初始化VIPER的各个模块</li>
+</ul>
+<p>Interactor（交互器）</p>
+<ul>
+<li>维护主要的业务逻辑功能，向Presenter提供现有的业务用例</li>
+<li>维护、获取、更新Entity</li>
+<li>当有业务相关的事件发生时，处理事件，并通知Presenter</li>
+</ul>
+<p>Entity（实体）</p>
+<ul>
+<li>和Model一样的数据模型</li>
+</ul>
+<blockquote>
+<p>VIPER把MVC中的Controller进一步拆分成了Presenter、Router和Interactor。和MVP中负责业务逻辑的Presenter不同，VIPER的Presenter的主要工作是在View和Interactor之间传递事件，并管理一些View的展示逻辑，主要的业务逻辑实现代码都放在了Interactor里。Interactor的设计里提出了”用例”的概念，也就是把每一个会出现的业务流程封装好，这样可测试性会大大提高。而Router则进一步解决了不同模块之间的耦合。</p>
+</blockquote>
+<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p>ok!!那就按照上面的意思来写个 demo 呗～～</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/22/%E5%9F%BA%E4%BA%8ERBAC%E8%A7%92%E8%89%B2%E7%9A%84%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/22/%E5%9F%BA%E4%BA%8ERBAC%E8%A7%92%E8%89%B2%E7%9A%84%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6/" class="post-title-link" itemprop="url">基于RBAC角色的访问控制</a>
         </h1>
 
         <div class="post-meta">
@@ -237,26 +330,15 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-03-28 16:54:55" itemprop="dateCreated datePublished" datetime="2020-03-28T16:54:55+08:00">2020-03-28</time>
+              <time title="Created: 2020-04-22 14:48:41" itemprop="dateCreated datePublished" datetime="2020-04-22T14:48:41+08:00">2020-04-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-29 23:40:38" itemprop="dateModified" datetime="2020-03-29T23:40:38+08:00">2020-03-29</time>
+                <time title="Modified: 2020-04-28 10:33:35" itemprop="dateModified" datetime="2020-04-28T10:33:35+08:00">2020-04-28</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenGL</span>
-                  </a>
-                </span>
-            </span>
 
           
 
@@ -269,369 +351,53 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>OpenGL分为两个部分：CPU上C++编写，GPU采用GLSL语言编写，后者就是着色器的编写方式。</p>
-<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><table>
-<thead>
-<tr>
-<th align="left">类型</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">float</td>
-<td align="left">ieee 32 位浮点数</td>
-</tr>
-<tr>
-<td align="left">double</td>
-<td align="left">ieee 64 位浮点数</td>
-</tr>
-<tr>
-<td align="left">int</td>
-<td align="left">有符号二进制补码的 32 位整数</td>
-</tr>
-<tr>
-<td align="left">uint</td>
-<td align="left">无符号的32位整数</td>
-</tr>
-<tr>
-<td align="left">bool</td>
-<td align="left">布尔值</td>
-</tr>
-</tbody></table>
-<h1 id="变量初始化"><a href="#变量初始化" class="headerlink" title="变量初始化"></a>变量初始化</h1><p>所有变量都必须在声明的同时进行初始化</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int i,nums = 1500;</span><br><span class="line"><span class="built_in">float</span> force,g = -9.8;</span><br><span class="line">bool falling = <span class="literal">true</span>;</span><br><span class="line">double pi = 3.145555LF;</span><br></pre></td></tr></table></figure>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><code>RBAC</code>（Role-Based Access Control ）基于角色的访问控制。</p>
+<p><code>casbin</code>是一个强大的、高效的开源访问控制框架，其权限管理机制支持多种访问控制模型。</p>
+<p><code>gorm-adapter</code>使用这个库,Casbin可以从Gorm加载政策支持的数据库或保存政策。</p>
+<h1 id="理解casbin的使用"><a href="#理解casbin的使用" class="headerlink" title="理解casbin的使用"></a>理解casbin的使用</h1><p>具体可以看这篇文章：<a href="https://zupzup.org/casbin-http-role-auth/" target="_blank" rel="noopener">Basic Role-Based HTTP Authorization in Go with Casbin</a>(中文翻译为<a href="https://studygolang.com/articles/12323" target="_blank" rel="noopener">在 Go 语言中使用 casbin 实现基于角色的 HTTP 权限控制</a>)，具体<a href="https://github.com/samtake/casbin-demo" target="_blank" rel="noopener">demo</a>我也加了详细注释。</p>
+<p>这里有几个需要弄懂的：</p>
+<p>模型文件的配置<code>auth_model.conf</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[request_definition]</span><br><span class="line">r = sub, obj, act</span><br><span class="line"></span><br><span class="line">[policy_definition]</span><br><span class="line">p = sub, obj, act</span><br><span class="line"></span><br><span class="line">[policy_effect]</span><br><span class="line">e = some(<span class="built_in">where</span> (p.eft == allow))</span><br><span class="line"></span><br><span class="line">[matchers]</span><br><span class="line">m = r.sub == p.sub &amp;&amp; keyMatch(r.obj, p.obj) &amp;&amp; (r.act == p.act || p.act == <span class="string">"*"</span>)</span><br></pre></td></tr></table></figure>
 
-<h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><p>所有其他的数值转换都需要提供显示的转换构造函数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> f = 10.0;</span><br><span class="line">int ten = int(f);</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="聚合类型"><a href="#聚合类型" class="headerlink" title="聚合类型"></a>聚合类型</h1><p>GLSL的向量与矩阵类型 </p>
-<table>
-<thead>
-<tr>
-<th align="left">基本数据类型</th>
-<th align="left">2D向量</th>
-<th align="left">3D向量</th>
-<th align="left">矩阵类型</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">float</td>
-<td align="left">vec2</td>
-<td align="left">vec3</td>
-<td align="left">..</td>
-</tr>
-<tr>
-<td align="left">double</td>
-<td align="left">dvec2</td>
-<td align="left">dvec3</td>
-<td align="left">..</td>
-</tr>
-<tr>
-<td align="left">int</td>
-<td align="left">ivec2</td>
-<td align="left">ivec3</td>
-<td align="left">..</td>
-</tr>
-<tr>
-<td align="left">uint</td>
-<td align="left">uvec2</td>
-<td align="left">uvec3</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">bool</td>
-<td align="left">bvec2</td>
-<td align="left">bvec3</td>
-<td align="left">-</td>
-</tr>
-</tbody></table>
-<p>类型声明的变量的初始化：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vec3 velocity = vec3(0.0, 2.0, 3.0);</span><br></pre></td></tr></table></figure>
-
-
-<p>类型之间的等价转换：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ivec3 steps = ivec3(velocity);</span><br></pre></td></tr></table></figure>
-
-
-<p>向量之间的转换：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 减短</span></span><br><span class="line">vec4 color;</span><br><span class="line">vec3 RGB = vec3(color);//只取了color的前面三个分量R、G、B</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加长</span></span><br><span class="line">vec3 white = vec3(1.0);//white = (1.0, 1.0, 1.0)</span><br><span class="line"></span><br><span class="line">vec4 translate = vec4(white, 0.5);</span><br></pre></td></tr></table></figure>
-
-
-<p>注意⚠️：传入的数据将首先填充列，再填充行。</p>
-<h1 id="访问向量和矩阵中的元素"><a href="#访问向量和矩阵中的元素" class="headerlink" title="访问向量和矩阵中的元素"></a>访问向量和矩阵中的元素</h1><p>向量中的各个分量可以通过名称访问：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> red = color.r;</span><br><span class="line"><span class="built_in">float</span> v_y = velocity.y;</span><br></pre></td></tr></table></figure>
-
-<p>或者通过一个从0开始的索引：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> red = color[0];</span><br><span class="line"><span class="built_in">float</span> v_y = velocity[1];</span><br></pre></td></tr></table></figure>
-
-<p>向量分量的访问符</p>
-<table>
-<thead>
-<tr>
-<th align="left">分量访问符</th>
-<th align="left">符号描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">(X,Y,Z,W)</td>
-<td align="left">与位置相关的分量</td>
-</tr>
-<tr>
-<td align="left">(r,g,b,a)</td>
-<td align="left">与颜色相关的分量</td>
-</tr>
-<tr>
-<td align="left">(s,t,p,q)</td>
-<td align="left">与纹理坐标相关的分量</td>
-</tr>
-</tbody></table>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vec3 luminance = color.rrr; <span class="comment"># 输入颜色的红色分量来设置一个亮度值</span></span><br><span class="line"></span><br><span class="line">color = colot.abgr; <span class="comment"># 反转color的每个分量</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">struct Partical &#123;</span><br><span class="line">    <span class="built_in">float</span> lifetime;</span><br><span class="line">    vec3 position;</span><br><span class="line">    vec3 velocity;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Partical p = Partical(1.0, pos, vel); <span class="comment"># pos、 vel均为vec3类型</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>数组的声明</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> coffee[3];        <span class="comment">#有三个float元素的数组</span></span><br><span class="line"><span class="built_in">float</span>[3]  coffee;       <span class="comment">#同上</span></span><br><span class="line">int indices;            <span class="comment">#为定义维数</span></span><br></pre></td></tr></table></figure>
-
-<p>静态初始化一个数组的值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> coffee[3]  = <span class="built_in">float</span>[3](2.00, 3.00, 5.23);</span><br></pre></td></tr></table></figure>
-<p>操作一个数组中的所有值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(int i = 0; i&lt;coffee.length(); i++)&#123;</span><br><span class="line">    coffee[i] *= 2.0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>获取列数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mat3x4 m;</span><br><span class="line">int c = m.length();         <span class="comment"># m包含的列数为3</span></span><br><span class="line">int r = m[0].length();      <span class="comment"># 第0个列向量中分量的个数为4</span></span><br></pre></td></tr></table></figure>
-<h1 id="存储限制符"><a href="#存储限制符" class="headerlink" title="存储限制符"></a>存储限制符</h1><table>
-<thead>
-<tr>
-<th align="left">类型修饰符</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">const</td>
-<td align="left">将一个变量定义为只读形式。如果它初始化时用的是一个编译时变量，那么它本身也会成为编译时常量</td>
-</tr>
-<tr>
-<td align="left">in</td>
-<td align="left">设置这个变量为着色器阶段的输入变量</td>
-</tr>
-<tr>
-<td align="left">out</td>
-<td align="left">设置这个变量为着色器阶段的输出变量</td>
-</tr>
-<tr>
-<td align="left">uniform</td>
-<td align="left">设置这个变量为用户应用程序传递给着色器的数据，它对于给定的图元而言是一个常量</td>
-</tr>
-<tr>
-<td align="left">buffer</td>
-<td align="left">设置应用程序共享的一块可读写的内存。这块内存也作为着色器中的存储缓存使用</td>
-</tr>
-<tr>
-<td align="left">shared</td>
-<td align="left">设置变量是本地工作组中共享的。它只能用于计算着色器中</td>
-</tr>
-</tbody></table>
-<p>获取uniform变量的索引并且设置具体值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GLint timeLoc;                                      <span class="comment">#着色器中的uniform变量time的索引</span></span><br><span class="line">GLfloat timeValue;                                  <span class="comment">#程序运行的时间</span></span><br><span class="line">timeLoc = glGetUniformLocation(program, <span class="string">"time"</span>)     <span class="comment">#返回着色器中nuiform变量time对应的索引值</span></span><br><span class="line">glUniformlf(timeLoc, timeValue);                    <span class="comment">#设置uniform变量timeLoc的值</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="算术操作符"><a href="#算术操作符" class="headerlink" title="算术操作符"></a>算术操作符</h1><table>
-<thead>
-<tr>
-<th align="left">优先级</th>
-<th align="left">操作符</th>
-<th align="left">可用类型</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">()</td>
-<td align="left">-</td>
-<td align="left">成组的操作</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left"><br>[]<br> <br>f()<br>  <br>.<br> <br>++、–<br></td>
-<td align="left"><br>[数组、矩阵、向量]<br> <br>函数<br>  <br>结构体<br> <br>算术类型<br></td>
-<td align="left"><br>数组的下标<br> <br>函数的调用、构造函数<br>  <br>访问结构体的域变量/方法<br> <br>后置递增/递减<br></td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left"><br>++、–<br> <br>+、-<br>  <br>~<br> <br>!<br></td>
-<td align="left"><br>算术类型<br> <br>算术类型<br>  <br>整型<br> <br>布尔型<br></td>
-<td align="left"><br>前置递增/递减<br> <br><br>  <br><br> <br><br></td>
-</tr>
-<tr>
-<td align="left">4</td>
-<td align="left"><code>*、/、%</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">5</td>
-<td align="left"><code>+、-</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">6</td>
-<td align="left"><code>&lt;&lt;、&gt;&gt;</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">7</td>
-<td align="left"><code>&lt;、&gt;、&lt;=、&gt;=</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">8</td>
-<td align="left"><code>==、!=</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">9</td>
-<td align="left"><code>&amp;</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">10</td>
-<td align="left"><code>^</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">11</td>
-<td align="left">`</td>
-<td align="left">`</td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">12</td>
-<td align="left"><code>&amp;&amp;</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">13</td>
-<td align="left"><code>^^</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">14</td>
-<td align="left">`</td>
-<td align="left"></td>
-<td align="left">`</td>
-</tr>
-<tr>
-<td align="left">15</td>
-<td align="left"><code>a?b:c</code></td>
-<td align="left"><br><br></td>
-<td align="left"><br><br></td>
-</tr>
-<tr>
-<td align="left">16</td>
-<td align="left"><br><code>==</code><br> <br><code>+=、-=</code><br>  <br><code>*=、/=</code><br> <br><code>%=、&lt;&lt;=、&gt;&gt;=</code><br> <br>`&amp;=、^=、</td>
-<td align="left">=`<br></td>
-<td align="left"><br>任意<br> <br>算术类型<br>  <br>算术类型<br>  <br>整型<br> <br>整型<br></td>
-</tr>
-<tr>
-<td align="left">17</td>
-<td align="left"><code>,</code></td>
-<td align="left">任意</td>
-<td align="left">操作符序列</td>
-</tr>
-</tbody></table>
-<h1 id="操作符重载"><a href="#操作符重载" class="headerlink" title="操作符重载"></a>操作符重载</h1><h1 id="流控制"><a href="#流控制" class="headerlink" title="流控制"></a>流控制</h1><table>
-<thead>
-<tr>
-<th align="left">语句</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">break</td>
-<td align="left">终止循环体的运行，并且继续执行循环体外的内容</td>
-</tr>
-<tr>
-<td align="left">continue</td>
-<td align="left">终止循环体内当前迭代过程的执行，跳转到代码块开始部分并继续执行下一次迭代的内容</td>
-</tr>
-<tr>
-<td align="left">return</td>
-<td align="left">从当前子例程返回，可以待会一个函数返回值</td>
-</tr>
-<tr>
-<td align="left">discard</td>
-<td align="left">丢弃当前的片元，终止着色器的执行。discard语句只在片元着色器中有效</td>
-</tr>
-</tbody></table>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> HornerEval(<span class="built_in">float</span> coffee[10], <span class="built_in">float</span> x);</span><br><span class="line"></span><br><span class="line"><span class="built_in">float</span> HornerEval(<span class="built_in">float</span> coffee[10], <span class="built_in">float</span> x)&#123;</span><br><span class="line">    ...+</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="计算的不变性"><a href="#计算的不变性" class="headerlink" title="计算的不变性"></a>计算的不变性</h1><p>GLSL无法保证在不同的着色器中，两个完全相同的计算式会得到完全一样的结果。为了解决这个问题，需要用到<code>invariant</code>或者<code>precise</code>关键字。</p>
-<h2 id="invariant"><a href="#invariant" class="headerlink" title="invariant"></a>invariant</h2><p>将一个内置的输出变量声明为<code>invariant</code>，也可以声明一个用户自定义的变量为<code>invariant</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">invariant gl_Position;</span><br><span class="line">invariant centroid out vec3 Color</span><br></pre></td></tr></table></figure>
-
-<p>在调试过程中，可能需要将着色器中的所有可变量都设置为<code>invariant</code>。可以通过顶点着色器的预编译命令<code>pragma</code>来完成：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pragma STDGL invariant(all)</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="precise"><a href="#precise" class="headerlink" title="precise"></a>precise</h2><p><code>precise</code>限制符可以设置任何计算中的变量或者函数的返回值。它的作用是增加计算的可复用性</p>
-<h1 id="着色器的预处理器"><a href="#着色器的预处理器" class="headerlink" title="着色器的预处理器"></a>着色器的预处理器</h1><h2 id="预处理命令"><a href="#预处理命令" class="headerlink" title="预处理命令"></a>预处理命令</h2><p>控制常量与宏的定义</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define</span></span><br><span class="line"><span class="comment">#undef</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">代码的条件编译</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line"><span class="comment">#if</span></span><br><span class="line"><span class="comment">#ifdef</span></span><br><span class="line"><span class="comment">#ifndef</span></span><br><span class="line"><span class="comment">#else</span></span><br><span class="line"><span class="comment">#elif</span></span><br><span class="line"><span class="comment">#endif</span></span><br></pre></td></tr></table></figure>
-
-<p>强制比那一起将text文字内容插入到着色器的信息日志中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#error text</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>控制编译器的选项</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pragma options</span></span><br></pre></td></tr></table></figure>
-
-<p>设置编译器支持特定GLSL扩展功能</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#extension options</span></span><br></pre></td></tr></table></figure>
-
-<p>设置当前使用的GLSL版本名称</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#version number</span></span><br></pre></td></tr></table></figure>
-
-
-<p>设置诊断行号</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#line options</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define NUM_ELEMENTS 10</span></span><br></pre></td></tr></table></figure>
-
-<p>取消之前定义过的宏</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#undef LPos</span></span><br></pre></td></tr></table></figure>
-
-
-<h1 id="数据快接口"><a href="#数据快接口" class="headerlink" title="数据快接口"></a>数据快接口</h1><p>着色器与应用程序之间，或者着色器个阶段之间共享的变量可以组织为变量块的形式。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">uniform b &#123;     //限定符可以为：uniform、<span class="keyword">in</span>、out、buffer</span><br><span class="line">    vec4 v1;    //块中的变量列表</span><br><span class="line">    vec1 v2;    //</span><br><span class="line">&#125;;              //访问匿名块成员时使用v1、v2</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">uniform b &#123;     //</span><br><span class="line">    vec4 v1;    //</span><br><span class="line">    vec1 v2;    //</span><br><span class="line">&#125;name;          ////访问匿名块成员时使用name.v1、name.v2</span><br></pre></td></tr></table></figure>
-
-<h1 id="着色器的编译"><a href="#着色器的编译" class="headerlink" title="着色器的编译"></a>着色器的编译</h1><p>创建着色器对象且通过链接生成可执行着色器程序的流程：（两部分）</p>
-<p>（第一部分）对于每个着色器都会：</p>
 <ul>
-<li>创建一个着色器对象。</li>
-<li>将着色器源代码编译为对象。</li>
-<li>验证着色器的比那一是否成功。</li>
+<li><p>Model CONF 至少应包含四个部分:<code>[request_definition]</code>, <code>[policy_definition]</code>, <code>[policy_effect]</code>, <code>[matchers]</code></p>
+</li>
+<li><p>如果 model 使用 RBAC, 还需要添加<code>[role_definition]</code>部分。</p>
+</li>
+<li><p>sub, obj, act 表示经典三元组: 访问实体 (Subject)，访问资源 (Object) 和访问方法 (Action)</p>
+</li>
+<li><p><a href="https://casbin.org/docs/zh-CN/syntax-for-models" target="_blank" rel="noopener">更具体的可以直接看官方文档</a></p>
+</li>
 </ul>
-<p>（第二部分）将多个着色器对象链接为一个着色器程序：</p>
+<p>策略文件<code>policy.csv</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p, admin, /*, *</span><br><span class="line">p, anonymous, /login, *</span><br><span class="line">p, member, /<span class="built_in">logout</span>, *</span><br><span class="line">p, member, /member/*, *</span><br></pre></td></tr></table></figure>
 <ul>
-<li>创建一个着色器程序。</li>
-<li>将着色器对象关联到着色器程序。</li>
-<li>链接着色器程序。</li>
-<li>判断着色器的链接过程是否成功完成。</li>
-<li>使用着色器来处理顶点和片元。</li>
+<li>admin 角色可以访问所有内容</li>
+<li>member 角色可以访问以 /member/ 开头的路径和 logout 路径</li>
+<li>未认证用户可以登陆</li>
 </ul>
-<h1 id="着色器子程序"><a href="#着色器子程序" class="headerlink" title="着色器子程序"></a>着色器子程序</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//第一步</span><br><span class="line">subroutine vec4 LightFunc(vec4);</span><br><span class="line"></span><br><span class="line">//第二步</span><br><span class="line">subroutine (LightFunc) vec4 ambient(vec3 n) </span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">return</span> Materials.ambient;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">subroutine (LightFunc) vec4 diffuse(vec3 n)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">return</span> Materials.diffuse * max(dot (normalize(n), LightVec.xyz), 0.0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//第三步</span><br><span class="line">subroutine uniform LightFunc materialShader;</span><br></pre></td></tr></table></figure>
+<h1 id="gorm-adapter"><a href="#gorm-adapter" class="headerlink" title="gorm-adapter"></a>gorm-adapter</h1><p>在上个个例子中，策略文件就是一个简单的 csv 文件，描述了哪些角色可以访问哪些路径等。但在实际项目中策略文件一般都会存储在数据库，这时候就用到了<a href="https://github.com/casbin/gorm-adapter" target="_blank" rel="noopener">gorm-adapter</a></p>
+<p>直接看官方给出的demo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"github.com/casbin/casbin/v2"</span></span><br><span class="line">	gormadapter <span class="string">"github.com/casbin/gorm-adapter/v2"</span></span><br><span class="line">	_ <span class="string">"github.com/go-sql-driver/mysql"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    //初始化一个Gorm adapter 并在Casbin enforcer中使用它:</span><br><span class="line">    //Gorm adapter会使用一个名叫casbin的MySQL数据库</span><br><span class="line">    //如果不存在，将会自动创建</span><br><span class="line">    //或者通过 gormadapter.NewAdapterByDB(gormInstance)读取一个已经存在的数据库  </span><br><span class="line"></span><br><span class="line">	a, _ := gormadapter.NewAdapter(<span class="string">"mysql"</span>, <span class="string">"mysql_username:mysql_password@tcp(127.0.0.1:3306)/"</span>)</span><br><span class="line">	e, _ := casbin.NewEnforcer(<span class="string">"examples/rbac_model.conf"</span>, a)</span><br><span class="line">	</span><br><span class="line">	// Or you can use an existing DB <span class="string">"abc"</span> like this:</span><br><span class="line">	// The adapter will use the table named <span class="string">"casbin_rule"</span>.</span><br><span class="line">	// If it doesn<span class="string">'t exist, the adapter will create it automatically.</span></span><br><span class="line"><span class="string">	// a := gormadapter.NewAdapter("mysql", "mysql_username:mysql_password@tcp(127.0.0.1:3306)/abc", true)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	e.LoadPolicy()//从数据库加载策略</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	e.Enforce("alice", "data1", "read")// 检查许可</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	// 更改策略</span></span><br><span class="line"><span class="string">	// e.AddPolicy(...)</span></span><br><span class="line"><span class="string">	// e.RemovePolicy(...)</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	e.SavePolicy()//保存策略</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
 
+
+<h1 id="实际项目举例"><a href="#实际项目举例" class="headerlink" title="实际项目举例"></a>实际项目举例</h1><p><code>rbac_model.conf</code>模型文件配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[request_definition]</span><br><span class="line">r = sub, obj, act</span><br><span class="line"></span><br><span class="line">[policy_definition]</span><br><span class="line">p = sub, obj, act</span><br><span class="line"></span><br><span class="line">[role_definition]</span><br><span class="line">g = _, _</span><br><span class="line"></span><br><span class="line">[policy_effect]</span><br><span class="line">e = some(<span class="built_in">where</span> (p.eft == allow))</span><br><span class="line"></span><br><span class="line">[matchers]</span><br><span class="line">m = r.sub == p.sub &amp;&amp; ParamsMatch(r.obj,p.obj) &amp;&amp; r.act == p.act</span><br></pre></td></tr></table></figure>
+
+<p><code>qmplus.sql</code>表的定义并通过sql往数据库添加数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> Navicat Premium Data Transfer</span><br><span class="line"></span><br><span class="line"> Source Server         : qmplus</span><br><span class="line"> Source Server Type    : MySQL</span><br><span class="line"> Source Server Version : 50644</span><br><span class="line"> Source Host           : localhost:3306</span><br><span class="line"> Source Schema         : qmplus</span><br><span class="line"></span><br><span class="line"> Target Server Type    : MySQL</span><br><span class="line"> Target Server Version : 50644</span><br><span class="line"> File Encoding         : 65001</span><br><span class="line"></span><br><span class="line"> Date: 15/04/2020 17:48:50</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">SET NAMES utf8mb4;</span><br><span class="line">SET FOREIGN_KEY_CHECKS = 0;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Table structure <span class="keyword">for</span> casbin_rule</span><br><span class="line">-- ----------------------------</span><br><span class="line">DROP TABLE IF EXISTS `casbin_rule`;</span><br><span class="line">CREATE TABLE `casbin_rule`  (</span><br><span class="line">  `p_type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v0` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v1` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v2` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v3` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v4` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v5` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL</span><br><span class="line">) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Records of casbin_rule</span><br><span class="line">-- ----------------------------</span><br><span class="line">INSERT INTO `casbin_rule` VALUES (<span class="string">'p'</span>, <span class="string">'8881'</span>, <span class="string">'/base/login'</span>, <span class="string">'POST'</span>, <span class="string">''</span>, <span class="string">''</span>, <span class="string">''</span>);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>更新Casbin规则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func UpdateCasbinApi(oldPath string, newPath string, oldMethod string, newMethod string) error &#123;</span><br><span class="line">	var cs []model.CasbinModel</span><br><span class="line">	err := global.GVA_DB.Table(<span class="string">"casbin_rule"</span>).Where(<span class="string">"v1 = ? AND v2 = ?"</span>, oldPath, oldMethod).Find(&amp;cs).Updates(map[string]string&#123;</span><br><span class="line">		<span class="string">"v1"</span>: newPath,</span><br><span class="line">		<span class="string">"v2"</span>: newMethod,</span><br><span class="line">	&#125;).Error</span><br><span class="line">	<span class="built_in">return</span> err</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>GVA_DB</code>就是全局定义的gorm.DB实例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var (</span><br><span class="line">	GVA_DB     *gorm.DB</span><br><span class="line">	...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>资料</p>
+<p><a href="https://zhuanlan.zhihu.com/p/63769951" target="_blank" rel="noopener">RBAC用户、角色、权限、组设计方案</a><br><a href="https://casbin.org/docs/zh-CN/rbac" target="_blank" rel="noopener">casbin 基于角色的访问控制</a></p>
 
       
     </div>
@@ -651,7 +417,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/OpenGL%EF%BC%88%E4%B8%89%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/Gin-JWT-Middleware/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -665,7 +431,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/28/OpenGL%EF%BC%88%E4%B8%89%EF%BC%89/" class="post-title-link" itemprop="url">OpenGL（三）</a>
+            <a href="/2020/04/18/Gin-JWT-Middleware/" class="post-title-link" itemprop="url">Gin JWT Middleware</a>
         </h1>
 
         <div class="post-meta">
@@ -676,18 +442,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-03-28 14:27:25 / Modified: 16:42:05" itemprop="dateCreated datePublished" datetime="2020-03-28T14:27:25+08:00">2020-03-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenGL</span>
-                  </a>
-                </span>
+              <time title="Created: 2020-04-18 17:08:17 / Modified: 20:37:04" itemprop="dateCreated datePublished" datetime="2020-04-18T17:08:17+08:00">2020-04-18</time>
             </span>
 
           
@@ -701,35 +456,55 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>从这篇开始，我们就跟着课本源码边调试边熟悉OpenGL函数的使用了。里面涉及的C++语法后面会在《C++重温》这里作补充。拿到课本源码，我们需要通过Cmake编译出Mac上运行的Xcode程序。</p>
-<blockquote>
-<p>01-keypress.cpp</p>
-</blockquote>
-<h1 id="程序概括"><a href="#程序概括" class="headerlink" title="程序概括"></a>程序概括</h1><p>程序先执行init函数<code>void KeyPressExample::Initialize(const char * title)</code>再执行display函数<code>void KeyPressExample::Display(bool auto_redraw)</code>.</p>
-<p>按下键盘会调用<code>void KeyPressExample::OnKey(int key, int scancode, int action, int mods)</code></p>
-<p>程序窗口缩放<code>void KeyPressExample::Resize(int width, int height)</code></p>
-<h1 id="init函数说明"><a href="#init函数说明" class="headerlink" title="init函数说明"></a>init函数说明</h1><p><code>glGenVertexArrays( NumVAOs, VAOs );</code><br>分配NumVAOs个未使用的对象名到数组VAOs中，用作顶点数组对象。再看下其数组定义：GLuint  VAOs[NumVAOs];</p>
-<p><code>glBindVertexArray( VAOs[Triangles] );</code><br>VAOs[Triangles]</p>
-<ul>
-<li>输入的变量array非0，且为<code>glGenVertexArrays</code>所分配时，激活顶点数组对象，并直接影响对象中所保存的顶点数组状态。</li>
-<li>array为0，OpenGL不再使用之前绑定的顶点数组。</li>
-<li>array不是<code>glGenVertexArrays</code>所分配的，或者它已经被<code>glDeleteVertexArray</code>函数释放了，这时会产生一个无效错误。</li>
+          <p>在<a href="https://samtake.github.io/2020/04/09/jwt-go/" target="_blank" rel="noopener">jwt-go</a>中我记录了手动封装一个认证中间件，然后今天在看<a href="https://github.com/wenjianzhang/go-admin" target="_blank" rel="noopener">go-admin</a>后台管理系统源码的时候发现作者用到了一个第三方库<a href="https://github.com/appleboy/gin-jwt" target="_blank" rel="noopener">gin-jwt</a>实现了同样的功能，今天就一起来看一下吧！</p>
+<h1 id="gin-jwt能做什么？"><a href="#gin-jwt能做什么？" class="headerlink" title="gin-jwt能做什么？"></a>gin-jwt能做什么？</h1><ul>
+<li><p><code>gin-jwt</code>是基于<code>jwt-go</code>实现的一个认证中间件，同时也是专为Gin框架实现的。</p>
+</li>
+<li><p><code>gin-jwt</code>提供了额外的函数功能：给登录接口生成token令牌，以及用于刷新token的函数。</p>
+</li>
 </ul>
-<p><code>glGenBuffers( NumBuffers, Buffers );</code><br>分配NumBuffers个当前未使用的缓存对象名称，并保存到Buffers数组中。</p>
-<p><code>glBindBuffer( GL_ARRAY_BUFFER, Buffers[ArrayBuffer] );</code></p>
-<ul>
-<li>如果绑定到一个已经创建的缓存对象，那么他将成为当前GL_ARRAY_BUFFER中被激活的缓存对象。</li>
-<li>如果绑定的Buffers[ArrayBuffer]值为0，那么OpenGL将不再对当前GL_ARRAY_BUFFER使用任何缓存对象。</li>
-</ul>
-<p><code>glBufferData( GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW );</code><br>将数据载入缓存对象。</p>
-<p><code>glVertexAttribPointer( vPosition, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0) );</code><br>将输入顶点着色器的数据 关联到 一个顶点属性的数组。</p>
-<p><code>glEnableVertexAttribArray( vPosition );</code><br>启用顶点属性数组。</p>
-<h1 id="display函数说明"><a href="#display函数说明" class="headerlink" title="display函数说明"></a>display函数说明</h1><p><code>glClear( GL_COLOR_BUFFER_BIT );</code><br>清屏。</p>
-<p><code>glBindVertexArray( VAOs[Triangles] );</code></p>
-<p><code>glDrawArrays( GL_TRIANGLES, 0, NumVertices );</code><br>开始绘制。</p>
-<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p>程序默认效果<br><img src="/2020/03/28/OpenGL%EF%BC%88%E4%B8%89%EF%BC%89/keypress1.png" alt="keypress1.png"></p>
-<p>按下键盘字母M的效果<br><img src="/2020/03/28/OpenGL%EF%BC%88%E4%B8%89%EF%BC%89/keypress2.png" alt="keypress2.png"></p>
-<h1 id="详细源码"><a href="#详细源码" class="headerlink" title="详细源码"></a>详细源码</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line">//////////////////////////////////////////////////////////////////////////////</span><br><span class="line">//</span><br><span class="line">//  Triangles.cpp</span><br><span class="line">//</span><br><span class="line">//////////////////////////////////////////////////////////////////////////////</span><br><span class="line"></span><br><span class="line"><span class="comment">#include &lt;vermilion.h&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#include "vgl.h"</span></span><br><span class="line"><span class="comment">#include "vapp.h"</span></span><br><span class="line"><span class="comment">#include "LoadShaders.h"</span></span><br><span class="line"></span><br><span class="line">enum VAO_IDs &#123; Triangles, NumVAOs &#125;;</span><br><span class="line">enum Buffer_IDs &#123; ArrayBuffer, NumBuffers &#125;;</span><br><span class="line">enum Attrib_IDs &#123; vPosition = 0 &#125;;</span><br><span class="line"></span><br><span class="line">GLuint  VAOs[NumVAOs];</span><br><span class="line">GLuint  Buffers[NumBuffers];</span><br><span class="line"></span><br><span class="line">const GLuint  NumVertices = 6;</span><br><span class="line"></span><br><span class="line">BEGIN_APP_DECLARATION(KeyPressExample)</span><br><span class="line">    virtual void Initialize(const char * title);</span><br><span class="line">    virtual void Display(bool auto_redraw);</span><br><span class="line">    virtual void Finalize(void);</span><br><span class="line">    virtual void Resize(int width, int height);</span><br><span class="line">    void OnKey(int key, int scancode, int action, int mods);</span><br><span class="line">END_APP_DECLARATION()</span><br><span class="line"></span><br><span class="line">DEFINE_APP(KeyPressExample, <span class="string">"Key Press Example"</span>)</span><br><span class="line">//----------------------------------------------------------------------------</span><br><span class="line">//</span><br><span class="line">// init</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">void KeyPressExample::Initialize(const char * title)</span><br><span class="line">&#123;</span><br><span class="line">    //typedef class VermilionApplication base</span><br><span class="line">    base::Initialize(title);</span><br><span class="line"></span><br><span class="line">    glGenVertexArrays( NumVAOs, VAOs );</span><br><span class="line">    glBindVertexArray( VAOs[Triangles] );</span><br><span class="line"></span><br><span class="line">    GLfloat  vertices[NumVertices][2] = &#123;</span><br><span class="line">        &#123; -0.90f, -0.90f &#125;, &#123;  0.85f, -0.90f &#125;, &#123; -0.90f,  0.85f &#125;,  // Triangle 1</span><br><span class="line">        &#123;  0.90f, -0.85f &#125;, &#123;  0.90f,  0.90f &#125;, &#123; -0.85f,  0.90f &#125;   // Triangle 2</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    glGenBuffers( NumBuffers, Buffers );</span><br><span class="line">    glBindBuffer( GL_ARRAY_BUFFER, Buffers[ArrayBuffer] );</span><br><span class="line">    glBufferData( GL_ARRAY_BUFFER, sizeof(vertices),</span><br><span class="line">                  vertices, GL_STATIC_DRAW );</span><br><span class="line"></span><br><span class="line">    ShaderInfo  shaders[] = &#123;</span><br><span class="line">        &#123; GL_VERTEX_SHADER, <span class="string">"../media/shaders/keypress/keypress.vert"</span> &#125;,</span><br><span class="line">        &#123; GL_FRAGMENT_SHADER, <span class="string">"../media/shaders/keypress/keypress.frag"</span> &#125;,</span><br><span class="line">        &#123; GL_NONE, NULL &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    GLuint program = LoadShaders( shaders );</span><br><span class="line">    glUseProgram( program );</span><br><span class="line"></span><br><span class="line">    glVertexAttribPointer( vPosition, 2, GL_FLOAT,</span><br><span class="line">                           GL_FALSE, 0, BUFFER_OFFSET(0) );</span><br><span class="line">    glEnableVertexAttribArray( vPosition );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void KeyPressExample::OnKey(int key, int scancode, int action, int mods)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (action == GLFW_PRESS)</span><br><span class="line">    &#123;</span><br><span class="line">        switch (key)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> GLFW_KEY_M:</span><br><span class="line">                &#123;</span><br><span class="line">                    static GLenum  mode = GL_FILL;</span><br><span class="line"></span><br><span class="line">                    mode = ( mode == GL_FILL ? GL_LINE : GL_FILL );</span><br><span class="line">                    glPolygonMode( GL_FRONT_AND_BACK, mode );</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    base::OnKey(key, scancode, action, mods);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//----------------------------------------------------------------------------</span><br><span class="line">//</span><br><span class="line">// display</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">void KeyPressExample::Display(bool auto_redraw)</span><br><span class="line">&#123;</span><br><span class="line">    glClear( GL_COLOR_BUFFER_BIT );</span><br><span class="line"></span><br><span class="line">    glBindVertexArray( VAOs[Triangles] );</span><br><span class="line">    // GL_TRIANGLES并没有指定是画三角形的边沿还是内部也画，</span><br><span class="line">    glDrawArrays( GL_TRIANGLES, 0, NumVertices );</span><br><span class="line"></span><br><span class="line">    base::Display(auto_redraw);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void KeyPressExample::Resize(int width, int height)</span><br><span class="line">&#123;</span><br><span class="line">    glViewport(0, 0, width, height);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void KeyPressExample::Finalize(void)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><p>整个框架就一个<a href="https://github.com/appleboy/gin-jwt/blob/master/auth_jwt.go" target="_blank" rel="noopener">auth_jwt.go</a>文件，共747行代码。我们从头往下看：</p>
+<p>先定义了一个返回值为map类型的接口<br><code>type MapClaims map[string]interface{}</code></p>
+<p>接着就是一个结构体<code>GinJWTMiddleware</code>,还记得我们在使用jwt-go的时候，也会定义一个结构体，里面存放了关于生成token的一些信息，包括：token发放时间、是谁发放的token、主题等，这里也一样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> GinJWTMiddleware struct &#123;</span><br><span class="line">	// Realm name to display to the user. Required.</span><br><span class="line">	Realm string</span><br><span class="line"></span><br><span class="line">	// 算法类型： HS256, HS384, HS512默认是 HS256.</span><br><span class="line">	SigningAlgorithm string</span><br><span class="line"></span><br><span class="line">	// 加密密钥.</span><br><span class="line">	Key []byte</span><br><span class="line"></span><br><span class="line">	// 刷新Token有效期.默认一个小时</span><br><span class="line">	MaxRefresh time.Duration</span><br><span class="line"></span><br><span class="line">	// 认证回调函数</span><br><span class="line">	Authenticator func(c *gin.Context) (interface&#123;&#125;, error)</span><br><span class="line"></span><br><span class="line">	// 通过认证后的处理函数</span><br><span class="line">	Authorizator func(data interface&#123;&#125;, c *gin.Context) bool</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	// 认证失败的回调函数</span><br><span class="line">	Unauthorized func(*gin.Context, int, string)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//登录响应函数</span><br><span class="line">	LoginResponse func(*gin.Context, int, string, time.Time)</span><br><span class="line"></span><br><span class="line">	// 超时响应函数</span><br><span class="line">	LogoutResponse func(*gin.Context, int)</span><br><span class="line"></span><br><span class="line">	// 刷新响应函数</span><br><span class="line">	RefreshResponse func(*gin.Context, int, string, time.Time)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数(只列了几个目前见到的)</p>
+<p>登录返回token</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// LoginHandler can be used by clients to get a jwt token.</span><br><span class="line">// Payload needs to be json <span class="keyword">in</span> the form of &#123;<span class="string">"username"</span>: <span class="string">"USERNAME"</span>, <span class="string">"password"</span>: <span class="string">"PASSWORD"</span>&#125;.</span><br><span class="line">// Reply will be of the form &#123;<span class="string">"token"</span>: <span class="string">"TOKEN"</span>&#125;.</span><br><span class="line">func (mw *GinJWTMiddleware) LoginHandler(c *gin.Context) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>刷新token</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// RefreshHandler can be used to refresh a token. The token still needs to be valid on refresh.</span><br><span class="line">// Shall be put under an endpoint that is using the GinJWTMiddleware.</span><br><span class="line">// Reply will be of the form &#123;<span class="string">"token"</span>: <span class="string">"TOKEN"</span>&#125;.</span><br><span class="line">func (mw *GinJWTMiddleware) RefreshHandler(c *gin.Context) &#123;</span><br><span class="line">	tokenString, expire, err := mw.RefreshToken(c)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		mw.unauthorized(c, http.StatusUnauthorized, mw.HTTPStatusMessageFunc(err, c))</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	mw.RefreshResponse(c, http.StatusOK, tokenString, expire)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>验证API时需要用到，例如检测权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// MiddlewareFunc makes GinJWTMiddleware implement the Middleware interface.</span><br><span class="line">func (mw *GinJWTMiddleware) MiddlewareFunc() gin.HandlerFunc &#123;</span><br><span class="line">	<span class="built_in">return</span> func(c *gin.Context) &#123;</span><br><span class="line">		mw.middlewareImpl(c)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><h2 id="测试官方demo"><a href="#测试官方demo" class="headerlink" title="测试官方demo"></a>测试官方demo</h2><p>源码地址：<a href="https://github.com/samtake/gin-jwt-demo" target="_blank" rel="noopener">https://github.com/samtake/gin-jwt-demo</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[GIN] 2020/04/18 - 18:29:51 | 200 |    1.502204ms |             ::1 | POST     <span class="string">"/login"</span></span><br><span class="line">[GIN] 2020/04/18 - 18:30:50 | 401 |     112.029µs |             ::1 | GET      <span class="string">"/auth/hello"</span></span><br><span class="line">[GIN] 2020/04/18 - 18:32:55 | 200 |     346.218µs |             ::1 | GET      <span class="string">"/auth/hello"</span></span><br></pre></td></tr></table></figure>
+
+<p>直接请求401</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: 401,</span><br><span class="line">    <span class="string">"message"</span>: <span class="string">"cookie token is empty"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>登录返回token</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: 200,</span><br><span class="line">    <span class="string">"expire"</span>: <span class="string">"2020-04-18T19:29:51+08:00"</span>,</span><br><span class="line">    <span class="string">"token"</span>: <span class="string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODcyMDkzOTEsImlkIjoiYWRtaW4iLCJvcmlnX2lhdCI6MTU4NzIwNTc5MX0.o55urrL-qhUqpqEKK8k8KF8yBqrgZo_EtKmuOW1bHnc"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>携带token请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"text"</span>: <span class="string">"Hello World."</span>,</span><br><span class="line">    <span class="string">"userID"</span>: <span class="string">"admin"</span>,</span><br><span class="line">    <span class="string">"userName"</span>: <span class="string">"admin"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="go-admin中的使用"><a href="#go-admin中的使用" class="headerlink" title="go-admin中的使用"></a>go-admin中的使用</h2><p>这里也就记录别人在项目中是怎么使用的，以及有没有可以学习的地方。</p>
+<p><code>auth.go</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package middleware</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	config2 <span class="string">"go-admin/config"</span></span><br><span class="line">	<span class="string">"go-admin/handler"</span></span><br><span class="line">	jwt <span class="string">"go-admin/pkg/jwtauth"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func AuthInit() (*jwt.GinJWTMiddleware, error) &#123;</span><br><span class="line">	<span class="built_in">return</span> jwt.New(&amp;jwt.GinJWTMiddleware&#123;</span><br><span class="line">		Realm:           <span class="string">"test zone"</span>,</span><br><span class="line">		Key:             []byte(<span class="string">"secret key"</span>),</span><br><span class="line">		Timeout:         time.Hour,</span><br><span class="line">		MaxRefresh:      time.Hour,</span><br><span class="line">		IdentityKey:     config2.ApplicationConfig.JwtSecret,</span><br><span class="line">		PayloadFunc:     handler.PayloadFunc,</span><br><span class="line">		IdentityHandler: handler.IdentityHandler,</span><br><span class="line">		Authenticator:   handler.Authenticator,</span><br><span class="line">		Authorizator:    handler.Authorizator,</span><br><span class="line">		Unauthorized:    handler.Unauthorized,</span><br><span class="line">		TokenLookup:     <span class="string">"header: Authorization, query: token, cookie: jwt"</span>,</span><br><span class="line">		TokenHeadName:   <span class="string">"Bearer"</span>,</span><br><span class="line">		TimeFunc:        time.Now,</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>permission.go</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package middleware</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">	<span class="string">"go-admin/pkg"</span></span><br><span class="line">	mycasbin <span class="string">"go-admin/pkg/casbin"</span></span><br><span class="line">	<span class="string">"go-admin/pkg/jwtauth"</span></span><br><span class="line">	_ <span class="string">"go-admin/pkg/jwtauth"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//权限检查中间件</span><br><span class="line">func AuthCheckRole() gin.HandlerFunc &#123;</span><br><span class="line">	<span class="built_in">return</span> func(c *gin.Context) &#123;</span><br><span class="line">		data, _ := c.Get(<span class="string">"JWT_PAYLOAD"</span>)</span><br><span class="line">		v := data.(jwtauth.MapClaims)</span><br><span class="line">		e, err := mycasbin.Casbin()</span><br><span class="line">		pkg.HasError(err,<span class="string">""</span>,500)</span><br><span class="line">		//检查权限</span><br><span class="line">		res, err := e.Enforce(v[<span class="string">"rolekey"</span>], c.Request.URL.Path, c.Request.Method)</span><br><span class="line">		log.Println(<span class="string">"----------------"</span>, v[<span class="string">"rolekey"</span>], c.Request.URL.Path, c.Request.Method)</span><br><span class="line"></span><br><span class="line">			pkg.HasError(err,<span class="string">""</span>,500)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> res &#123;</span><br><span class="line">			c.Next()</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">				<span class="string">"status"</span>: 401,</span><br><span class="line">				<span class="string">"msg"</span>:    <span class="string">"对不起，您没有该接口访问权限，请联系管理员"</span>,</span><br><span class="line">			&#125;)</span><br><span class="line">			c.Abort()</span><br><span class="line">			<span class="built_in">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>router.go</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">func InitRouter() *gin.Engine &#123;</span><br><span class="line"></span><br><span class="line">	// the jwt middleware</span><br><span class="line">	authMiddleware, err := middleware.AuthInit()//初始化</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		_ = fmt.Errorf(<span class="string">"JWT Error"</span>, err.Error())</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	r.POST(<span class="string">"/login"</span>, authMiddleware.LoginHandler)  //框架自带</span><br><span class="line"></span><br><span class="line">	// Refresh time can be longer than token timeout</span><br><span class="line">	r.GET(<span class="string">"/refresh_token"</span>, authMiddleware.RefreshHandler)//框架自带</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    apiv1 := r.Group(<span class="string">"/api/v1"</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		apiv1.GET(<span class="string">"/monitor/server"</span>, monitor.ServerInfo)</span><br><span class="line">		...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    auth := r.Group(<span class="string">"/api/v1"</span>)</span><br><span class="line">	auth.Use(authMiddleware.MiddlewareFunc()).Use(middleware.AuthCheckRole())//检测权限</span><br><span class="line">	&#123;</span><br><span class="line">		auth.GET(<span class="string">"/deptList"</span>, system.GetDeptList)</span><br><span class="line">		...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>写到最后发现这里有篇博客写的挺好的，可以看看～<br><a href="https://blog.firerain.me/article/18" target="_blank" rel="noopener">https://blog.firerain.me/article/18</a></p>
+<p>.end</p>
+
       
     </div>
 
@@ -748,7 +523,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/17/Golang%E8%B0%83%E7%94%A8shell%E8%84%9A%E6%9C%AC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -762,7 +537,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">OpenGL（二）</a>
+            <a href="/2020/04/17/Golang%E8%B0%83%E7%94%A8shell%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">Golang调用shell脚本</a>
         </h1>
 
         <div class="post-meta">
@@ -773,7 +548,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-03-27 18:33:03 / Modified: 21:58:57" itemprop="dateCreated datePublished" datetime="2020-03-27T18:33:03+08:00">2020-03-27</time>
+              <time title="Created: 2020-04-17 18:02:51 / Modified: 20:51:58" itemprop="dateCreated datePublished" datetime="2020-04-17T18:02:51+08:00">2020-04-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -781,8 +556,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenGL</span>
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
                   </a>
                 </span>
             </span>
@@ -798,119 +573,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>在<a href="https://samtake.github.io/2020/03/27/OpenGL/" target="_blank" rel="noopener">上篇</a>我们停留在概念上的，现在动手写写代码。</p>
-<p>在<a href="https://www.khronos.org/opengl/wiki/Getting_Started#macOS" target="_blank" rel="noopener">OpenGL官网</a>我们可以看到这么一段话：</p>
-<blockquote>
-<p>macOS<br>Unlike other platforms, where the Operating System and OpenGL implementations are often updated separately, OpenGL updates are included as part of macOS system updates. To obtain the latest OpenGL on macOS, users should upgrade to the latest OS release, which can be found at Apple.com.</p>
-</blockquote>
-<p>换句话来说OpenGL已经集成在我们的Mac系统中，但是我们还需要一些执行窗口任务或者处理用户输入的函数，这里需要用到的库有：</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天在用一些工具处理文件的时候，批量手动操作真会累死人，时间成本不划算，想着怎么用脚本做成自动化，思路大概是每个脚本处理不同的功能，也就没必要将所有功能写到一个脚本了，担心万一某个模块出了问题影响整个流程。然后其中一个功能需要调用某个网页的接口处理，想了好久，请教了下一些前辈，给出的建议就是破解接口，这时候我立刻想到了Go…大概分三步：</p>
 <ul>
-<li>GLEW</li>
-<li><a href="https://www.glfw.org/docs/latest/quick_guide.html" target="_blank" rel="noopener">GLFW</a></li>
-<li><a href="https://glad.dav1d.de/" target="_blank" rel="noopener">GLAD</a></li>
+<li>shell调用工具拿到处理好的数据</li>
+<li>再由Go实现对接口的数据请求…</li>
+<li>请求回来接口之后再交由shell调用工具做最后的处理，从而完成整个模块的工作。</li>
 </ul>
-<h1 id="安装GLEW、GLEW"><a href="#安装GLEW、GLEW" class="headerlink" title="安装GLEW、GLEW"></a>安装GLEW、GLEW</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">➜  blogs brew install glfw3</span><br><span class="line">Updating Homebrew...</span><br><span class="line">==&gt; Downloading https://homebrew.bintray.com/bottles/glfw-3.3.2.mojave.bottle.tar.gz</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring glfw-3.3.2.mojave.bottle.tar.gz</span><br><span class="line">🍺  /usr/<span class="built_in">local</span>/Cellar/glfw/3.3.2: 14 files, 492.8KB   <span class="comment">#安装位置</span></span><br><span class="line">➜  blogs brew install glew </span><br><span class="line">Updating Homebrew...</span><br><span class="line">==&gt; Downloading https://homebrew.bintray.com/bottles/glew-2.1.0_1.mojave.bottle.tar.gz</span><br><span class="line">==&gt; Downloading from https://akamai.bintray.com/66/66638564b5b9d2d915b97841ef1cc117f701c7ec34707734fa1ce11919c28</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring glew-2.1.0_1.mojave.bottle.tar.gz</span><br><span class="line">🍺  /usr/<span class="built_in">local</span>/Cellar/glew/2.1.0_1: 38 files, 3MB  <span class="comment">#安装位置</span></span><br></pre></td></tr></table></figure>
+<p>这里记住一点：shell脚本无非就做成参数形式。</p>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><code>os/exec</code>包可用于从Go触发任何OS命令。 相同的可用于触发.sh文件。</p>
+<p>具体函数接口参考官方文档<a href="https://pkg.go.dev/os/exec?tab=doc" target="_blank" rel="noopener">package exec </a></p>
+<h1 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h1><p>首先，在同一目录中创建一个test.sh文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">your_name=<span class="string">"start test ..."</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$your_name</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="在Xcode配置GLEW、GLEW"><a href="#在Xcode配置GLEW、GLEW" class="headerlink" title="在Xcode配置GLEW、GLEW"></a>在Xcode配置GLEW、GLEW</h1><p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode1.png" alt="opengl2-xcode1.png"></p>
-<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode2.png" alt="opengl2-xcode2.png"></p>
-<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode3.png" alt="opengl2-xcode3.png"></p>
-<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode4.png" alt="opengl2-xcode4.png"></p>
-<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode5.png" alt="opengl2-xcode5.png"></p>
-<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode6.png" alt="opengl2-xcode6.png"></p>
-<p>添加两个dylib文件的方法时，没有在framework中搜索到这两个文件时，点击add other，然后点击shift+command+G进入<code>/usr/local</code>文件夹对应的安装路径找。</p>
-<h1 id="下载GLAD库"><a href="#下载GLAD库" class="headerlink" title="下载GLAD库"></a>下载GLAD库</h1><p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/glad1.png" alt="glad1.png"></p>
-<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/glad2.png" alt="glad2.png"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ <span class="built_in">cd</span> /Users/samtake/Downloads/glad </span><br><span class="line">➜  glad ls</span><br><span class="line">include src</span><br><span class="line">➜  glad <span class="built_in">alias</span> tree=<span class="string">"find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"</span></span><br><span class="line">➜  glad tree </span><br><span class="line">|____include</span><br><span class="line">| |____KHR</span><br><span class="line">| | |____khrplatform.h</span><br><span class="line">| |____glad</span><br><span class="line">| | |____glad.h</span><br><span class="line">|____src</span><br><span class="line">| |____glad.c</span><br><span class="line">➜  glad</span><br></pre></td></tr></table></figure>
-<p>将include文件夹中的两个文件复制到<code>/usr/local/include</code>内，然后添加<code>glad.c</code>文件到XCode工程中.</p>
-<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p>复制源码代替原有的main.cpp文件，build一下编译通过即可。</p>
-<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/demo.png" alt="demo.png"></p>
-<p><a href="https://github.com/samtake/helloOpenGL/tree/master/%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA" target="_blank" rel="noopener">demo源码</a></p>
+<p>执行<code>chmod +x test.sh</code>，不然会因为没有执行权限报错：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Execute Shell:./test.sh failed with error:<span class="built_in">exit</span> status 126%</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+<p>调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"os/exec"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	fmt.Println(<span class="string">"1"</span>)</span><br><span class="line"></span><br><span class="line">	<span class="built_in">command</span> := `./test.sh .`</span><br><span class="line">	cmd := exec.Command(<span class="string">"/bin/bash"</span>, <span class="string">"-c"</span>, <span class="built_in">command</span>)</span><br><span class="line"></span><br><span class="line">	output, err := cmd.Output()</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"Execute Shell:%s failed with error:%s"</span>, <span class="built_in">command</span>, err.Error())</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">"Execute Shell:%s finished with output:\n%s"</span>, <span class="built_in">command</span>, string(output))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/27/OpenGL/">
+<p>输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">Execute Shell:./test.sh . finished with output:</span><br><span class="line">start <span class="built_in">test</span> ...</span><br></pre></td></tr></table></figure>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/27/OpenGL/" class="post-title-link" itemprop="url">OpenGL</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-03-27 17:21:15 / Modified: 18:21:05" itemprop="dateCreated datePublished" datetime="2020-03-27T17:21:15+08:00">2020-03-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenGL</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/2020/03/27/OpenGL/opengl-book.jpeg" alt="opengl-book.jpeg"></p>
-<p>啃书了！这本书买了很久都没看完，也忘的差不多了。现在试着用简洁的语言记录学习过程。</p>
-<h1 id="什么是OpenGL"><a href="#什么是OpenGL" class="headerlink" title="什么是OpenGL?"></a>什么是OpenGL?</h1><p>OpenGL是一种可以对图形进行访问的软件库。它的接口与硬件无关，自身不包含任何执行窗口任务或者处理用户输入的函数（这些操作我们需要系统提供的接口来实现）。</p>
-<h1 id="通过OpenGL渲染图像的主要操作-详细参考：渲染管线流程"><a href="#通过OpenGL渲染图像的主要操作-详细参考：渲染管线流程" class="headerlink" title="通过OpenGL渲染图像的主要操作(详细参考：渲染管线流程)"></a>通过OpenGL渲染图像的主要操作(详细参考：渲染管线流程)</h1><ul>
-<li>设置数据，构建形状</li>
-<li>着色器</li>
-<li>光栅栏化，产生每个片元</li>
-<li>执行片元着色器</li>
-</ul>
-<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p><code>光栅化（rasterization）</code>将输入图元的数学描述转换为与屏幕位置对应的像素片元。<br><code>渲染（render）</code>计算机从模型创建到最终图像的过程。<br><code>像素（pixel）</code>显示器上最小的可见单元。</p>
-<p><code>着色器（shader）</code>专为图形处理单元编译的一种小型程序。</p>
-<ul>
-<li><code>定点着色器（vertex shader）</code>处理定点数据</li>
-<li><code>片元着色器</code>处理光栅化的片元数据</li>
-</ul>
-<p><code>渲染管线（rendering pipeline）</code>OpenGL一系列数据处理过程，并且将应用程序的数据转换到最终渲染的图像。</p>
-<h1 id="渲染管线流程"><a href="#渲染管线流程" class="headerlink" title="渲染管线流程"></a>渲染管线流程</h1><p><img src="/2020/03/27/OpenGL/rendering-pipeline.jpeg" alt="rendering-pipeline.jpeg"></p>
+<p><a href="https://golangbyexample.com//" target="_blank" rel="noopener">https://golangbyexample.com//</a></p>
 
       
     </div>
@@ -930,7 +615,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/24/FFmpeg%EF%BC%88%E5%85%AD%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/E-R%E5%9B%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -944,227 +629,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/24/FFmpeg%EF%BC%88%E5%85%AD%EF%BC%89/" class="post-title-link" itemprop="url">FFmpeg（六）</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-03-24 15:27:29 / Modified: 16:55:11" itemprop="dateCreated datePublished" datetime="2020-03-24T15:27:29+08:00">2020-03-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
-                    <span itemprop="name">FFmpeg</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="通过FFmpeg源码使用脚本编译出可以在iOS下使用的SDK"><a href="#通过FFmpeg源码使用脚本编译出可以在iOS下使用的SDK" class="headerlink" title="通过FFmpeg源码使用脚本编译出可以在iOS下使用的SDK"></a>通过FFmpeg源码使用脚本编译出可以在iOS下使用的SDK</h1><p>具体脚本链接：<a href="https://github.com/kewlbear/FFmpeg-iOS-build-script" target="_blank" rel="noopener">FFmpeg-iOS-build-script</a></p>
-<ul>
-<li>在FFmpeg源码的上一级目录添加<code>build-ffmpeg.sh</code>文件</li>
-<li>命令行执行：<code>./build-ffmpeg.sh</code></li>
-<li>如果无执行权限的话执行：<code>chmod 777 ./build-ffmpeg.sh</code></li>
-<li>注意：打包上传到商店时使用的SDK只需要真机的</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/24/FFmpeg%EF%BC%88%E4%BA%94%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/24/FFmpeg%EF%BC%88%E4%BA%94%EF%BC%89/" class="post-title-link" itemprop="url">FFmpeg（五）</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-03-24 15:23:19 / Modified: 15:27:17" itemprop="dateCreated datePublished" datetime="2020-03-24T15:23:19+08:00">2020-03-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
-                    <span itemprop="name">FFmpeg</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>FFmpeg与SDL结合，实现多媒体播放器，内容有：多线程与锁， 锁与条件变量在实际中的应用，音视频同步，seek等。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/24/FFmpeg%EF%BC%88%E5%9B%9B%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/24/FFmpeg%EF%BC%88%E5%9B%9B%EF%BC%89/" class="post-title-link" itemprop="url">FFmpeg（四）</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-03-24 14:16:30 / Modified: 15:24:37" itemprop="dateCreated datePublished" datetime="2020-03-24T14:16:30+08:00">2020-03-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
-                    <span itemprop="name">FFmpeg</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://samtake.github.io/2019/11/04/FFmpeg/" target="_blank" rel="noopener">FFmpeg-安装及基本概念</a><br><a href="https://samtake.github.io/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="noopener">FFmpeg-命令</a><br><a href="https://samtake.github.io/2020/03/23/FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89/" target="_blank" rel="noopener">通过 C语言 操作FFmpeg对多媒体文件的处理</a></p>
-<h1 id="SDL简介"><a href="#SDL简介" class="headerlink" title="SDL简介"></a>SDL简介</h1><p><a href="http://libsdl.org/download-2.0.php" target="_blank" rel="noopener">SDL</a>可以对音视频进行渲染，这里主要部分有：安装SDL、使用SDL的基本步骤、SDL窗口渲染、SDL事件处理、SDL纹理渲染。</p>
-<h1 id="安装SDL"><a href="#安装SDL" class="headerlink" title="安装SDL"></a>安装SDL</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ brew info SDl2</span><br><span class="line">➜  ~ brew info SDl2</span><br><span class="line">SDl2: stable 2.0.10 (bottled), HEAD</span><br><span class="line">Low-level access to audio, keyboard, mouse, joystick, and graphics</span><br><span class="line">https://www.libsdl.org/</span><br><span class="line">/usr/<span class="built_in">local</span>/Cellar/SDl2/2.0.10 (87 files, 4.6MB)</span><br><span class="line">  Poured from bottle on 2020-03-24 at 14:13:57</span><br><span class="line">From: git://mirrors.ustc.edu.cn/homebrew-core.git//Formula/sdl2.rb</span><br><span class="line">==&gt; Options</span><br><span class="line">--HEAD</span><br><span class="line">	Install HEAD version</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="使用SDL的基本步骤"><a href="#使用SDL的基本步骤" class="headerlink" title="使用SDL的基本步骤"></a>使用SDL的基本步骤</h1><h1 id="SDL窗口渲染"><a href="#SDL窗口渲染" class="headerlink" title="SDL窗口渲染"></a>SDL窗口渲染</h1><h1 id="SDL事件处理"><a href="#SDL事件处理" class="headerlink" title="SDL事件处理"></a>SDL事件处理</h1><h1 id="SDL彻底理解纹理渲染"><a href="#SDL彻底理解纹理渲染" class="headerlink" title="SDL彻底理解纹理渲染"></a>SDL彻底理解纹理渲染</h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/23/FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/23/FFmpeg%EF%BC%88%E4%B8%89%EF%BC%89/" class="post-title-link" itemprop="url">FFmpeg（三）</a>
+            <a href="/2020/04/12/E-R%E5%9B%BE/" class="post-title-link" itemprop="url">E-R图</a>
         </h1>
 
         <div class="post-meta">
@@ -1174,26 +639,15 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-03-23 17:57:25" itemprop="dateCreated datePublished" datetime="2020-03-23T17:57:25+08:00">2020-03-23</time>
+              <time title="Created: 2020-04-12 14:46:13" itemprop="dateCreated datePublished" datetime="2020-04-12T14:46:13+08:00">2020-04-12</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-24 13:53:43" itemprop="dateModified" datetime="2020-03-24T13:53:43+08:00">2020-03-24</time>
+                <time title="Modified: 2020-04-13 14:41:46" itemprop="dateModified" datetime="2020-04-13T14:41:46+08:00">2020-04-13</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
-                    <span itemprop="name">FFmpeg</span>
-                  </a>
-                </span>
-            </span>
 
           
 
@@ -1206,109 +660,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a href="https://samtake.github.io/2019/11/04/FFmpeg/" target="_blank" rel="noopener">FFmpeg-安装及基本概念</a><br><a href="https://samtake.github.io/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="noopener">FFmpeg-命令</a><br><a href="https://github.com/samtake/FFmpeg-demo" target="_blank" rel="noopener">FFmpeg-demo源码地址</a><br>这里记录通过 C语言 操作FFmpeg对多媒体文件的处理</p>
-<h1 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h1><p>常用日志级别（级别由高到底排列）<br>1.AV_LOFG_ERROR<br>2.AV_LOG_WARNING<br>3.AV_LOG_INFO</p>
-<p>启用步骤</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">include &lt;libavutil/log.h&gt;</span><br><span class="line">av_log_set_level(AV_LOG_DEBUG) <span class="comment">#只有该级别以及该级别之上的日志才会打印</span></span><br><span class="line">av_log(NULL,AV_LOG_INFO,<span class="string">"hello world:%s\n"</span>,<span class="string">"op"</span> )</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) clang -g -o ffmpeg_log ffmpeg_log.c -lavutil</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./ffmpeg_log</span><br><span class="line">hello world!</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="文件的删除-amp-重命名"><a href="#文件的删除-amp-重命名" class="headerlink" title="文件的删除&amp;重命名"></a>文件的删除&amp;重命名</h1><p><code>avpriv_io_move(&quot;111.txt&quot;,&quot;222.txt&quot;);</code>重命名<br><code>avpriv_io_delete(&quot;./mytestfile.txt&quot;);</code>删除</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o ffmpeg_del ffmpeg_file.c `pkg-config --libs libavformat`</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ pkg-config --libs libavformat  <span class="comment">#这一命令的作用时：在系统中寻找到libavformat库所在的位置</span></span><br><span class="line">-L/usr/<span class="built_in">local</span>/Cellar/ffmpeg/4.2.2_2/lib -lavformat</span><br></pre></td></tr></table></figure>
-
-<h1 id="操作目录"><a href="#操作目录" class="headerlink" title="操作目录"></a>操作目录</h1><p><code>avio_open_dir</code><br><code>avio_read_dir</code><br><code>avio_free_directory_entry</code><br><code>avio_close_dir</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">av_log(NULL, AV_LOG_INFO, <span class="string">"%12"</span>PRId64<span class="string">"%s \n"</span>,entry-&gt;size,entry-&gt;name);</span><br><span class="line"></span><br><span class="line"><span class="comment"># PRId64 是ffmpeg里面定义的一个宏，ffmpeg里面读取的文件也是64位的。</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o list ffmpeg_list.c `pkg-config --libs libavformat libavutil`</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./list</span><br><span class="line">         186ffmpeg_log.c </span><br><span class="line">        2442build_ffmpeg_for_android.sh </span><br><span class="line">        4433list.c </span><br><span class="line">         818ffmpeg_list.c </span><br><span class="line">          96list.dSYM </span><br><span class="line">          96ffmpeg_del.dSYM </span><br><span class="line">        5209encode_audio.c </span><br><span class="line">        1051read_file.c </span><br><span class="line">       11151extr_video.c </span><br><span class="line">       11027avmerge.c </span><br><span class="line">        9532decode_video.c </span><br><span class="line">        5747cutvideo.c </span><br><span class="line">        8760ffmpeg_del </span><br><span class="line">        4265encode_video.c </span><br><span class="line">        8760ffmpeg_log </span><br><span class="line">        6500extr_audio.c </span><br><span class="line">        9380list </span><br><span class="line">          96android </span><br><span class="line">        1073mediainfo.c </span><br><span class="line">        7020decode_audio.c </span><br><span class="line">         541ffmpeg_file.c </span><br><span class="line">        5132remuxing.c </span><br><span class="line">         448.git </span><br><span class="line">          96ffmpeg_log.dSYM </span><br><span class="line">         803write_file.c </span><br><span class="line">        5066extra_audio_ffapi.c </span><br><span class="line">         288player</span><br></pre></td></tr></table></figure>
-
-<h1 id="打印音视频meta信息"><a href="#打印音视频meta信息" class="headerlink" title="打印音视频meta信息"></a>打印音视频meta信息</h1><p><code>av_register_all</code><br><code>avformat_open_input</code><br><code>av_dump_format(fmt_ctx, 0, &quot;./test.mp4&quot;, 0/**输入信息*/);</code></p>
-<p>输入信息 填0<br>输入信息 填1</p>
-<p><code>avformat_close_input</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o mediainfo mediainfo.c `pkg-config --libs libavutil libavformat`</span><br><span class="line">mediainfo.c:17:5: warning: <span class="string">'av_register_all'</span> is deprecated [-Wdeprecated-declarations]</span><br><span class="line">    av_register_all();</span><br><span class="line">    ^</span><br><span class="line">/usr/<span class="built_in">local</span>/include/libavformat/avformat.h:2049:1: note: <span class="string">'av_register_all'</span> has been explicitly marked deprecated here</span><br><span class="line">attribute_deprecated</span><br><span class="line">^</span><br><span class="line">/usr/<span class="built_in">local</span>/include/libavutil/attributes.h:94:49: note: expanded from macro <span class="string">'attribute_deprecated'</span></span><br><span class="line"><span class="comment">#    define attribute_deprecated __attribute__((deprecated))</span></span><br><span class="line">                                                ^</span><br><span class="line">1 warning generated.</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./mediainfo</span><br><span class="line">Input <span class="comment">#0, mov,mp4,m4a,3gp,3g2,mj2, from './test.mp4':</span></span><br><span class="line">  Metadata:</span><br><span class="line">    major_brand     : mp42</span><br><span class="line">    minor_version   : 0</span><br><span class="line">    compatible_brands: isommp42</span><br><span class="line">    creation_time   : 2020-03-19T07:15:55.000000Z</span><br><span class="line">  Duration: 00:00:55.51, start: 0.000000, bitrate: 8422 kb/s</span><br><span class="line">    Stream <span class="comment">#0:0(eng): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 380 kb/s (default)</span></span><br><span class="line">    Metadata:</span><br><span class="line">      creation_time   : 2020-03-19T07:15:55.000000Z</span><br><span class="line">      handler_name    : Mainconcept MP4 Sound Media Handler</span><br><span class="line">    Stream <span class="comment">#0:1(eng): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709), 1280x720 [SAR 1:1 DAR 16:9], 8040 kb/s, 50 fps, 50 tbr, 50k tbn, 100 tbc (default)</span></span><br><span class="line">    Metadata:</span><br><span class="line">      creation_time   : 2020-03-19T07:15:55.000000Z</span><br><span class="line">      handler_name    : Mainconcept MP4 Video Media Handler</span><br><span class="line">      encoder         : AVC Cod</span><br></pre></td></tr></table></figure>
-
-<h1 id="抽取多媒体中的音频数据"><a href="#抽取多媒体中的音频数据" class="headerlink" title="抽取多媒体中的音频数据"></a>抽取多媒体中的音频数据</h1><p>av_init_packet(&amp;pkt);</p>
-<p>av_find_best_stream</p>
-<p>av_read_frame/av_packet_unref</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o extr_audio  extr_audio.c `pkg-config --libs libavutil libavformat`</span><br><span class="line">./extr_audio  ./test.mp4  ./test.aac  </span><br><span class="line">ffplay test.aac</span><br></pre></td></tr></table></figure>
-
-<h1 id="抽取多媒体中的H264视频数据"><a href="#抽取多媒体中的H264视频数据" class="headerlink" title="抽取多媒体中的H264视频数据"></a>抽取多媒体中的H264视频数据</h1><p>先要知道的三点：<br>1.将多媒体中的H264视频数据抽取后，它其实是由一帧一帧压缩后的视频帧组成的，如何区分这一帧一帧的视频帧呢？两种方法：</p>
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>E-R图也称实体-联系图(Entity Relationship Diagram)，也就是概念模型，可以用来做数据库设计。今天先记录下该怎么看E-R图，至于软件的操作下次补充记录～</p>
+<p>作图工具在Mac端可以用<a href="https://dbeaver.io/download/" target="_blank" rel="noopener">dbeaver</a>,原因呢主要是免费吧。</p>
+<p>然后说说今天我为什么怎么就扯到了E-R图呢？是我在撸一个golang项目的时候，发觉对后台数据库不知道怎么设计，然后就查了下资料，如何设计也算说的很明了，对应的关系就是用E-R图来画的。</p>
+<h1 id="如何看图"><a href="#如何看图" class="headerlink" title="如何看图"></a>如何看图</h1><p><img src="/2020/04/12/E-R%E5%9B%BE/ER01.png" alt="ER01.png"></p>
+<p>上面👆概念数据模型中包含了：权限、角色、用户、文章、栏目、评论和两个桥表，其中1对1或1对多等关系在模型中体现。其中：</p>
 <ul>
-<li>在每一帧的长度前面加一个真的长度，当读取第一帧的时候先读取这一帧的长度，根据这一帧的长度在读取帧的数据长度，依次下去。。。</li>
-<li>在每一帧的前面加关键字（特征码），只要遇到特征码就知道这一帧开始了，上一帧结束了。</li>
+<li><code>PK</code>primary key</li>
+<li><code>箭头</code>代表的是关联关系</li>
+<li><code>虚线</code>代表的是备注说明</li>
 </ul>
-<p>2.SPS/PPS（它只有几个字节，不会增加网络负担）<br>解码的视频参数，以及视频帧的宽高（也就是常说的视频分辨率），等等都是存在于SPS/PPS。</p>
-<p>视频播放时，每次切换分辨率都要更新SPS/PPS。</p>
-<p>而在视频直播时，在每个关键帧里面都会有一个SPS/PPS。</p>
-<p>3.ffmpeg如何获取SPS/PPS？<br>codec-&gt;extradata</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o extr_video  extr_video.c `pkg-config --libs libavutil libavformat`</span><br><span class="line">./extr_video ./test.mp4  test.h264</span><br><span class="line">ffplay test.h264</span><br></pre></td></tr></table></figure>
-
-<h1 id="mp4转flv"><a href="#mp4转flv" class="headerlink" title="mp4转flv"></a>mp4转flv</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">avformat_alloc_output_context2/avformat_free_context</span><br><span class="line"></span><br><span class="line">avformat_new_stream</span><br><span class="line"></span><br><span class="line">avcodec_parameters_copy</span><br><span class="line"></span><br><span class="line">avformat_write_header  <span class="comment">#头</span></span><br><span class="line"></span><br><span class="line">av_interleaved_write_frame  <span class="comment">#头数据</span></span><br><span class="line"></span><br><span class="line">av_write_trailer   <span class="comment">#尾</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o remuxing  remuxing.c `pkg-config --libs  libavformat`</span><br><span class="line">./remuxing ./test.mp4 test.flv   </span><br><span class="line">ffplay  test.flv</span><br></pre></td></tr></table></figure>
-
-<h1 id="音视频裁剪"><a href="#音视频裁剪" class="headerlink" title="音视频裁剪"></a>音视频裁剪</h1><p>av_seek_frame</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o cutvideo  cutvideo.c `pkg-config --libs  libavformat  libavcodec`</span><br><span class="line">./cutvideo  10  20  ./test.mp4 cutvideo.mp4</span><br><span class="line">ffplay cutvideo.mp4</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="FFmpeg编解码概括"><a href="#FFmpeg编解码概括" class="headerlink" title="FFmpeg编解码概括"></a>FFmpeg编解码概括</h1><p>类型：</p>
+<p>具体举例（红框部分）：<br><img src="/2020/04/12/E-R%E5%9B%BE/ER02.png" alt="ER02.png"></p>
 <ul>
-<li>H264解码</li>
-<li>H264编码</li>
-<li>AAC解码</li>
-<li>AAC编码</li>
+<li>用户角色表(cms_user_role) 同时属于用户表(cms_user)和角色表(cms_role)</li>
+<li>说白了，就是一个用户会有多个角色</li>
 </ul>
-<p>用到的头文件：</p>
-<ul>
-<li>libavcodec/avcodec.h</li>
-</ul>
-<p>用到的结构体：</p>
-<ul>
-<li>AVCodec编解码结构体</li>
-<li>AVCodecContext 编解码器上下文</li>
-<li>AVFrame 解码后的帧</li>
-</ul>
-<p>结构体内存的分配和释放API：</p>
-<ul>
-<li>av_frame_alloc/av_frame_free()</li>
-<li>avcodec_alloc_context3()</li>
-<li>avcodec_free_context()</li>
-</ul>
-<p>解码步骤：</p>
-<ul>
-<li><code>avcodec_find_decoder</code>查找解码器</li>
-<li><code>avcodec_open2</code>打开解码器</li>
-<li><code>avcodec_decode_video2</code>解码，得到RGB或者YUV数据</li>
-</ul>
-<h1 id="H264编码"><a href="#H264编码" class="headerlink" title="H264编码"></a>H264编码</h1><p>步骤：</p>
-<ul>
-<li><code>avcodec_find_encoder_by_name</code>查看编码器</li>
-<li><code>avcodec_open2</code>设置编码参数，并打开编码器</li>
-<li><code>avcodec_encode_video2</code>编码</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o encode_video  encode_video.c `pkg-config --libs  libavcodec` </span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./encode_video  </span><br><span class="line">Usage: ./encode_video &lt;output file&gt; &lt;codec name&gt;</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./encode_video  encode_video.h264 libx264</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ffplay encode_video.h264</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/12/E-R%E5%9B%BE/%E7%94%A8%E4%BE%8B01.png" alt="用例01.png"><br>读者可以进行阅读、注册、登录等操作。登录状态下又可以进行评论与阅读操作。</p>
+<p><img src="/2020/04/12/E-R%E5%9B%BE/%E7%94%A8%E4%BE%8B02.png" alt="用例02.png"><br>小编是作者身份，可以对自己的文章进行管理。</p>
+<p><img src="/2020/04/12/E-R%E5%9B%BE/%E7%94%A8%E4%BE%8B03.png" alt="用例03.png"><br>超级管理员拥有系统最大权限(或者所有权限)，可以进行栏目管理、文章管理（文章管理隐式的包含了拥有阅读权限）、权限管理、角色管理、评论审核等操作。可对文章进行审核，权限管理下可对角色进行管理。</p>
+<h1 id="gorm的实现"><a href="#gorm的实现" class="headerlink" title="gorm的实现"></a>gorm的实现</h1><p>gorm文档中，我们可以找到对模型建立关系的的文档：<a href="https://gorm.io/zh_CN/docs/belongs_to.html" target="_blank" rel="noopener">https://gorm.io/zh_CN/docs/belongs_to.html</a></p>
+<p>依旧以<code>cms_user_role</code>  <code>cms_user</code> <code>cms_role</code> 这三个表为例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//在gorm中，模型的结构以驼峰命名方式书写，在数据表会自动转成对应下划线</span><br><span class="line"></span><br><span class="line">//CmsUserRole .</span><br><span class="line"><span class="built_in">type</span> CmsUserRole struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID     string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	UserID string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"user_id"</span>`</span><br><span class="line">	RoleID string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"role_id"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//CmsUser .</span><br><span class="line"><span class="built_in">type</span> CmsUser struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID       string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	UserName string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"username"</span>`</span><br><span class="line">	Password string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"password"</span>`</span><br><span class="line">	CmsUserRole CmsUserRole `gorm:<span class="string">"foreignkey:CmsUserRoleRefer"</span>` // 将 CmsUserRoleRefer 作为外键</span><br><span class="line">	CmsUserRoleRefer uint</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//CmsRole .</span><br><span class="line"><span class="built_in">type</span> CmsRole struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID          string      `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	Name        string      `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"name"</span>`</span><br><span class="line">	CmsUserRole CmsUserRole `gorm:<span class="string">"foreignkey:CmsUserRoleRefer"</span>` // 将 CmsUserRoleRefer 作为外键</span><br><span class="line">	CmsUserRoleRefer uint</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="视频转图片"><a href="#视频转图片" class="headerlink" title="视频转图片"></a>视频转图片</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  FFmpeg-demo git:(master) ✗ clang -g -o decode_video  decode_video.c `pkg-config --libs  libavformat libavutil libavcodec libswscale`</span><br><span class="line">➜  FFmpeg-demo git:(master) ✗ ./decode_video ./test.mp4 ./</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="AAC编码"><a href="#AAC编码" class="headerlink" title="AAC编码"></a>AAC编码</h1><p>avcodec_encodec_audio2</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clang -g -o encode_audio encode_audio.c `pkg-config --libs libavcodec`</span><br><span class="line">./encode_audio encode_audio.aac</span><br><span class="line">ffplay  encode_audio.aac</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
+<p>到这，你也会发觉用户角色表其实是个中间件。</p>
+<h1 id="资料："><a href="#资料：" class="headerlink" title="资料："></a>资料：</h1><p><a href="https://blog.csdn.net/qq_41306364/article/details/103135904" target="_blank" rel="noopener">【管理系统课程设计】美少女手把手教你后台管理</a><br><a href="https://www.zhihu.com/question/19973018" target="_blank" rel="noopener">在mac上有没有类似PowerDesigner的软件？</a><br><a href="https://www.bilibili.com/video/BV1X7411L7kc?from=search&seid=1650702711585721122" target="_blank" rel="noopener">第1节：7分钟上手ER图</a><br><a href="https://zhuanlan.zhihu.com/p/50448125" target="_blank" rel="noopener">通俗数据库设计（2）E-R图</a><br><a href="https://www.zhihu.com/question/20680795/answer/91850640" target="_blank" rel="noopener">如何使用 MySQL workbench 生成 EER 图？</a><br><a href="https://www.zhihu.com/topic/19630983/top-answers" target="_blank" rel="noopener">E-R图专栏</a><br><a href="https://www.bilibili.com/video/BV1dE411q7Xf?from=search&seid=12985731220509939471" target="_blank" rel="noopener">visio-数据库模型图</a></p>
 
       
     </div>
@@ -1328,7 +703,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/10/%E9%80%9A%E8%BF%87viper%E8%AF%BB%E5%8F%96%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1342,7 +717,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">FFmpeg（二）</a>
+            <a href="/2020/04/10/%E9%80%9A%E8%BF%87viper%E8%AF%BB%E5%8F%96%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">通过viper读取项目配置文件</a>
         </h1>
 
         <div class="post-meta">
@@ -1353,7 +728,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-03-23 08:48:46 / Modified: 17:54:12" itemprop="dateCreated datePublished" datetime="2020-03-23T08:48:46+08:00">2020-03-23</time>
+              <time title="Created: 2020-04-10 22:31:12 / Modified: 22:35:59" itemprop="dateCreated datePublished" datetime="2020-04-10T22:31:12+08:00">2020-04-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1361,8 +736,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
-                    <span itemprop="name">FFmpeg</span>
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
                   </a>
                 </span>
             </span>
@@ -1378,201 +753,104 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>接着<a href="https://samtake.github.io/2019/11/04/FFmpeg/" target="_blank" rel="noopener">FFmpeg这一篇</a>，这里记录FFmpeg的命令。</p>
-<h1 id="命令分成以下几类："><a href="#命令分成以下几类：" class="headerlink" title="命令分成以下几类："></a>命令分成以下几类：</h1><ul>
-<li>基本信息查询命令</li>
-<li>录制</li>
-<li>分解/复用</li>
-<li>处理原始数据</li>
-<li>滤镜</li>
-<li>切割与合并</li>
-<li>图／视互转</li>
-<li>直播相关<br>除了 FFMPEG 的基本信息查询命令外，其它命令都按下图所示的流程处理音视频。</li>
-</ul>
-<p><img src="/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/ffmpeg%E6%92%AD%E6%94%BE%E5%A4%9A%E5%AA%92%E4%BD%93%E6%96%87%E4%BB%B6%E7%9A%84%E6%B5%81%E7%A8%8B.png" alt="ffmpeg播放多媒体文件的流程"></p>
-<p>然后将编码的数据包传送给解码器（除非为数据流选择了流拷贝，请参阅进一步描述）。 解码器产生未压缩的帧（原始视频/ PCM音频/ …），可以通过滤波进一步处理（见下一节）。 在过滤之后，帧被传递到编码器，编码器并输出编码的数据包。 最后，这些传递给复用器，将编码的数据包写入输出文件。<br>默认情况下，ffmpeg只包含输入文件中每种类型（视频，音频，字幕）的一个流，并将其添加到每个输出文件中。 它根据以下标准挑选每一个的“最佳”：对于视频，它是具有最高分辨率的流，对于音频，它是具有最多channel的流，对于字幕，是第一个字幕流。 在相同类型的几个流相等的情况下，选择具有最低索引的流。<br>您可以通过使用-vn / -an / -sn / -dn选项来禁用某些默认设置。 要进行全面的手动控制，请使用-map选项，该选项禁用刚描述的默认设置。<br>下面我们就来详细介绍一下这些命令。</p>
-<h1 id="基本信息查询命令"><a href="#基本信息查询命令" class="headerlink" title="基本信息查询命令"></a>基本信息查询命令</h1><h2 id="基本信息查询"><a href="#基本信息查询" class="headerlink" title="基本信息查询"></a>基本信息查询</h2><p>FFMPEG 可以使用下面的参数进行基本信息查询。例如，想查询一下现在使用的 FFMPEG 都支持哪些 filter，就可以用 ffmpeg -filters 来查询。详细参数说明如下：</p>
-<table>
-<thead>
-<tr>
-<th align="left">参数</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">-version</td>
-<td align="left">显示版本。</td>
-</tr>
-<tr>
-<td align="left">-formats</td>
-<td align="left">显示可用的格式（包括设备）。</td>
-</tr>
-<tr>
-<td align="left">-demuxers</td>
-<td align="left">显示可用的demuxers。</td>
-</tr>
-<tr>
-<td align="left">-muxers</td>
-<td align="left">显示可用的muxers。</td>
-</tr>
-<tr>
-<td align="left">-devices</td>
-<td align="left">显示可用的设备。</td>
-</tr>
-<tr>
-<td align="left">-codecs</td>
-<td align="left">显示libavcodec已知的所有编解码器。</td>
-</tr>
-<tr>
-<td align="left">-decoders</td>
-<td align="left">显示可用的解码器。</td>
-</tr>
-<tr>
-<td align="left">-encoders</td>
-<td align="left">显示所有可用的编码器。</td>
-</tr>
-<tr>
-<td align="left">-bsfs</td>
-<td align="left">显示可用的比特流filter。</td>
-</tr>
-<tr>
-<td align="left">-protocols</td>
-<td align="left">显示可用的协议。</td>
-</tr>
-<tr>
-<td align="left">-filters</td>
-<td align="left">显示可用的libavfilter过滤器。</td>
-</tr>
-<tr>
-<td align="left">-pix_fmts</td>
-<td align="left">显示可用的像素格式。</td>
-</tr>
-<tr>
-<td align="left">-sample_fmts</td>
-<td align="left">显示可用的采样格式。</td>
-</tr>
-<tr>
-<td align="left">-layouts</td>
-<td align="left">显示channel名称和标准channel布局。</td>
-</tr>
-<tr>
-<td align="left">-colors</td>
-<td align="left">显示识别的颜色名称。</td>
-</tr>
-</tbody></table>
-<h2 id="命令格式与参数"><a href="#命令格式与参数" class="headerlink" title="命令格式与参数"></a>命令格式与参数</h2><p>接下来介绍的是 FFMPEG 处理音视频时使用的命令格式与参数。<br>下面是 FFMPEG 的基本命令格式：<br><code>ffmpeg [global_options] {[input_file_options] -i input_url} ...</code><br>                        <code>{[output_file_options] output_url} ...</code></p>
-<p><code>ffmpeg 通过 -i 选项读取输任意数量的输入“文件”（可以是常规文件，管道，网络流，抓取设备等，并写入任意数量的输出“文件”。</code></p>
-<p>原则上，每个输入/输出“文件”都可以包含任意数量的不同类型的视频流（视频/音频/字幕/附件/数据）。 流的数量和/或类型是由容器格式来限制。 选择从哪个输入进入到哪个输出将自动完成或使用 -map 选项。<br>要引用选项中的输入文件，您必须使用它们的索引（从0开始）。 例如。 第一个输入文件是0，第二个输入文件是1，等等。类似地，文件内的流被它们的索引引用。 例如。 2：3是指第三个输入文件中的第四个流。<br>上面就是 FFMPEG 处理音视频的常用命令，下面是一些常用参数：</p>
-<h2 id="主要参数"><a href="#主要参数" class="headerlink" title="主要参数"></a>主要参数</h2><p>参数    说明<br><code>-f fmt（输入/输出）</code>    强制输入或输出文件格式。 格式通常是自动检测输入文件，并从输出文件的文件扩展名中猜测出来，所以在大多数情况下这个选项是不需要的。<br><code>-i url（输入）</code>    输入文件的网址<br><code>-y（全局参数）</code>    覆盖输出文件而不询问。<br><code>-n（全局参数）</code>    不要覆盖输出文件，如果指定的输出文件已经存在，请立即退出。<br><code>-c [：stream_specifier] codec（输入/输出，每个流）</code>    选择一个编码器（当在输出文件之前使用）或解码器（当在输入文件之前使用时）用于一个或多个流。codec 是解码器/编码器的名称或 copy（仅输出）以指示该流不被重新编码。如：ffmpeg -i INPUT -map 0 -c:v libx264 -c:a copy OUTPUT<br><code>-codec [：stream_specifier]编解码器（输入/输出，每个流）    同 -c</code>-t duration（输入/输出）<code>当用作输入选项（在-i之前）时，限制从输入文件读取的数据的持续时间。当用作输出选项时（在输出url之前），在持续时间到达持续时间之后停止输出。</code>-ss位置（输入/输出）`    当用作输入选项时（在-i之前），在这个输入文件中寻找位置。 请注意，在大多数格式中，不可能精确搜索，因此ffmpeg将在位置之前寻找最近的搜索点。 当转码和-accurate_seek被启用时（默认），搜索点和位置之间的这个额外的分段将被解码和丢弃。 当进行流式复制或使用-noaccurate_seek时，它将被保留。当用作输出选项（在输出url之前）时，解码但丢弃输入，直到时间戳到达位置。</p>
-<p><code>-frames [：stream_specifier] framecount（output，per-stream）</code>    停止在帧计数帧之后写入流。</p>
-<p><code>-filter [：stream_specifier] filtergraph（output，per-stream）</code>    创建由filtergraph指定的过滤器图，并使用它来过滤流。filtergraph是应用于流的filtergraph的描述，并且必须具有相同类型的流的单个输入和单个输出。在过滤器图形中，输入与标签中的标签相关联，标签中的输出与标签相关联。有关filtergraph语法的更多信息，请参阅ffmpeg-filters手册。</p>
-<h2 id="视频参数"><a href="#视频参数" class="headerlink" title="视频参数"></a>视频参数</h2><p>参数    说明<br><code>-vframes num（输出）</code>    设置要输出的视频帧的数量。对于-frames：v，这是一个过时的别名，您应该使用它。<br><code>-r [：stream_specifier] fps（输入/输出，每个流）</code>    设置帧率（Hz值，分数或缩写）。作为输入选项，忽略存储在文件中的任何时间戳，根据速率生成新的时间戳。这与用于-framerate选项不同（它在FFmpeg的旧版本中使用的是相同的）。如果有疑问，请使用-framerate而不是输入选项-r。作为输出选项，复制或丢弃输入帧以实现恒定输出帧频fps。<br><code>-s [：stream_specifier]大小（输入/输出，每个流）</code>    设置窗口大小。作为输入选项，这是video_size专用选项的快捷方式，由某些分帧器识别，其帧尺寸未被存储在文件中。作为输出选项，这会将缩放视频过滤器插入到相应过滤器图形的末尾。请直接使用比例过滤器将其插入到开头或其他地方。格式是’wxh’（默认 - 与源相同）。<br><code>-aspect [：stream_specifier] 宽高比（输出，每个流）</code>    设置方面指定的视频显示宽高比。aspect可以是浮点数字符串，也可以是num：den形式的字符串，其中num和den是宽高比的分子和分母。例如“4：3”，“16：9”，“1.3333”和“1.7777”是有效的参数值。如果与-vcodec副本一起使用，则会影响存储在容器级别的宽高比，但不会影响存储在编码帧中的宽高比（如果存在）。<br><code>-vn（输出）</code>    禁用视频录制。<br><code>-vcodec编解码器（输出）</code>    设置视频编解码器。这是-codec：v的别名。<br><code>-vf filtergraph（输出）</code>    创建由filtergraph指定的过滤器图，并使用它来过滤流。</p>
-<h2 id="音频参数"><a href="#音频参数" class="headerlink" title="音频参数"></a>音频参数</h2><p>参数    说明<br><code>-aframes（输出）</code>    设置要输出的音频帧的数量。这是-frames：a的一个过时的别名。<br><code>-ar [：stream_specifier] freq（输入/输出，每个流）</code>    设置音频采样频率。对于输出流，它默认设置为相应输入流的频率。对于输入流，此选项仅适用于音频捕获设备和原始分路器，并映射到相应的分路器选件。<br><code>-ac [：stream_specifier]通道（输入/输出，每个流）</code>    设置音频通道的数量。对于输出流，它默认设置为输入音频通道的数量。对于输入流，此选项仅适用于音频捕获设备和原始分路器，并映射到相应的分路器选件。<br><code>-an（输出）</code>    禁用录音。<br><code>-acodec编解码器（输入/输出）</code>    设置音频编解码器。这是-codec的别名：a。<br><code>-sample_fmt [：stream_specifier] sample_fmt（输出，每个流）</code>    设置音频采样格式。使用-sample_fmts获取支持的样本格式列表。<br><code>-af filtergraph（输出）</code>    创建由filtergraph指定的过滤器图，并使用它来过滤流。<br>了解了这些基本信息后，接下来我们看看 FFMPEG 具体都能干些什么吧。</p>
-<h2 id="录制"><a href="#录制" class="headerlink" title="录制"></a>录制</h2><p>首先通过下面的命令查看一下 mac 上都有哪些设备。<br><code>ffmpeg -f avfoundation -list_devices true -i &quot;&quot;</code></p>
-<h3 id="录屏"><a href="#录屏" class="headerlink" title="录屏"></a>录屏</h3><p><code>ffmpeg -f avfoundation -i 1 -r 30 out.yuv</code></p>
-<ul>
-<li>-f 指定使用 avfoundation 采集数据。</li>
-<li>-i 指定从哪儿采集数据，它是一个文件索引号。在我的MAC上，1代表桌面（可以通过上面的命令查询设备索引号）。</li>
-<li>-r 指定帧率。按ffmpeg官方文档说-r与-framerate作用相同，但实际测试时发现不同。-framerate 用于限制输入，而-r用于限制输出。<br>注意，桌面的输入对帧率没有要求，所以不用限制桌面的帧率。其实限制了也没用。</li>
-</ul>
-<h3 id="录屏-声音"><a href="#录屏-声音" class="headerlink" title="录屏+声音"></a>录屏+声音</h3><p><code>ffmpeg  -f avfoundation -i 1:0  -r 29.97 -c:v libx264 -crf 0 -c:a libfdk_aac -profile:a aac_he_v2 -b:a 32k  out.flv</code></p>
-<ul>
-<li>-i 1:0 冒号前面的 “1” 代表的屏幕索引号。冒号后面的”0”代表的声音索相号。</li>
-<li>-c:v 与参数 -vcodec 一样，表示视频编码器。c 是 codec 的缩写，v 是video的缩写。</li>
-<li>-crf 是 x264 的参数。 0 表式无损压缩。</li>
-<li>-c:a 与参数 -acodec 一样，表示音频编码器。</li>
-<li>-profile 是 fdk_aac 的参数。 aac_he_v2 表式使用 AAC_HE v2 压缩数据。</li>
-<li>-b:a 指定音频码率。 b 是 bitrate的缩写, a是 audio的缩与。</li>
-</ul>
-<h3 id="录视频"><a href="#录视频" class="headerlink" title="录视频"></a>录视频</h3><p><code>ffmpeg -framerate 30 -f avfoundation -i 0 out.mp4</code> </p>
-<ul>
-<li>-framerate 限制视频的采集帧率。这个必须要根据提示要求进行设置，如果不设置就会报错。</li>
-<li>-f 指定使用 avfoundation 采集数据。</li>
-<li>-i 指定视频设备的索引号。</li>
-</ul>
-<h3 id="视频-音频"><a href="#视频-音频" class="headerlink" title="视频+音频"></a>视频+音频</h3><p><code>ffmpeg -framerate 30 -f avfoundation -i 0:0 out.mp4</code> </p>
-<h3 id="录音"><a href="#录音" class="headerlink" title="录音"></a>录音</h3><p><code>ffmpeg -f avfoundation -i :0 out.wav</code></p>
-<h3 id="录制音频裸数据"><a href="#录制音频裸数据" class="headerlink" title="录制音频裸数据"></a>录制音频裸数据</h3><p><code>ffmpeg  -f avfoundation -i :0 -ar 44100 -f s16le out.pcm</code></p>
-<h2 id="分解与复用"><a href="#分解与复用" class="headerlink" title="分解与复用"></a>分解与复用</h2><p>流拷贝是通过将 copy 参数提供给-codec选项来选择流的模式。它使得ffmpeg省略了指定流的解码和编码步骤，所以它只能进行多路分解和多路复用。 这对于更改容器格式或修改容器级元数据很有用。 在这种情况下，上图将简化为：</p>
-<p><img src="/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/%E5%88%86%E8%A7%A3%E4%B8%8E%E5%A4%8D%E7%94%A8.png" alt="分解与复用"></p>
-<p>由于没有解码或编码，速度非常快，没有质量损失。 但是，由于许多因素，在某些情况下可能无法正常工作。 应用过滤器显然也是不可能的，因为过滤器处理未压缩的数据。</p>
-<h3 id="抽取音频流"><a href="#抽取音频流" class="headerlink" title="抽取音频流"></a>抽取音频流</h3><p><code>ffmpeg -i input.mp4 -acodec copy -vn out.aac</code></p>
-<ul>
-<li>acodec: 指定音频编码器，copy 指明只拷贝，不做编解码。</li>
-<li>vn: v 代表视频，n 代表 no 也就是无视频的意思。</li>
-</ul>
-<h3 id="抽取视频流"><a href="#抽取视频流" class="headerlink" title="抽取视频流"></a>抽取视频流</h3><p><code>ffmpeg -i input.mp4 -vcodec copy -an out.h264</code></p>
-<ul>
-<li>vcodec: 指定视频编码器，copy 指明只拷贝，不做编解码。</li>
-<li>an: a 代表视频，n 代表 no 也就是无音频的意思。</li>
-</ul>
-<h3 id="转格式"><a href="#转格式" class="headerlink" title="转格式"></a>转格式</h3><p><code>ffmpeg -i out.mp4 -vcodec copy -acodec copy out.flv</code><br>上面的命令表式的是音频、视频都直接 copy，只是将 mp4 的封装格式转成了flv。</p>
-<h3 id="音视频合并"><a href="#音视频合并" class="headerlink" title="音视频合并"></a>音视频合并</h3><p><code>ffmpeg -i out.h264 -i out.aac -vcodec copy -acodec copy out.mp4</code></p>
-<h2 id="处理原始数据"><a href="#处理原始数据" class="headerlink" title="处理原始数据"></a>处理原始数据</h2><h3 id="提取YUV数据"><a href="#提取YUV数据" class="headerlink" title="提取YUV数据"></a>提取YUV数据</h3><p><code>ffmpeg -i input.mp4 -an -c:v rawvideo -pixel_format yuv420p out.yuv
-ffplay -s wxh out.yuv</code></p>
-<ul>
-<li>-c:v rawvideo 指定将视频转成原始数据</li>
-<li>-pixel_format yuv420p 指定转换格式为yuv420p</li>
-</ul>
-<h3 id="YUV转H264"><a href="#YUV转H264" class="headerlink" title="YUV转H264"></a>YUV转H264</h3><p><code>ffmpeg -f rawvideo -pix_fmt yuv420p -s 320x240 -r 30 -i out.yuv -c:v libx264 -f rawvideo out.h264</code></p>
-<h3 id="提取PCM数据"><a href="#提取PCM数据" class="headerlink" title="提取PCM数据"></a>提取PCM数据</h3><p><code>ffmpeg -i out.mp4 -vn -ar 44100 -ac 2 -f s16le out.pcm
-ffplay -ar 44100 -ac 2 -f s16le -i out.pcm</code></p>
-<h3 id="PCM转WAV"><a href="#PCM转WAV" class="headerlink" title="PCM转WAV"></a>PCM转WAV</h3><p><code>ffmpeg -f s16be -ar 8000 -ac 2 -acodec pcm_s16be -i input.raw output.wav</code></p>
-<h2 id="滤镜"><a href="#滤镜" class="headerlink" title="滤镜"></a>滤镜</h2><p>在编码之前，ffmpeg可以使用libavfilter库中的过滤器处理原始音频和视频帧。 几个链式过滤器形成一个过滤器图形。 ffmpeg区分两种类型的过滤器图形：简单和复杂。</p>
-<h3 id="简单滤镜"><a href="#简单滤镜" class="headerlink" title="简单滤镜"></a>简单滤镜</h3><p>简单的过滤器图是那些只有一个输入和输出，都是相同的类型。 在上面的图中，它们可以通过在解码和编码之间插入一个额外的步骤来表示：</p>
-<p><img src="/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/%E7%AE%80%E5%8D%95%E6%BB%A4%E9%95%9C1.png" alt="简单滤镜1"></p>
-<p>简单的filtergraphs配置了per-stream-filter选项（分别为视频和音频使用-vf和-af别名）。 一个简单的视频filtergraph可以看起来像这样的例子：</p>
-<p><img src="/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/%E7%AE%80%E5%8D%95%E6%BB%A4%E9%95%9C2.png" alt="简单滤镜2"></p>
-<p>请注意，某些滤镜会更改帧属性，但不会改变帧内容。 例如。 上例中的fps过滤器会改变帧数，但不会触及帧内容。 另一个例子是setpts过滤器，它只设置时间戳，否则不改变帧。</p>
-<h3 id="复杂滤镜"><a href="#复杂滤镜" class="headerlink" title="复杂滤镜"></a>复杂滤镜</h3><p>复杂的过滤器图是那些不能简单描述为应用于一个流的线性处理链的过滤器图。 例如，当图形有多个输入和/或输出，或者当输出流类型与输入不同时，就是这种情况。 他们可以用下图来表示：</p>
-<p><img src="/2020/03/23/FFmpeg%EF%BC%88%E4%BA%8C%EF%BC%89/%E5%A4%8D%E6%9D%82%E6%BB%A4%E9%95%9C1.png" alt="复杂滤镜1.png"></p>
-<p>复杂的过滤器图使用-filter_complex选项进行配置。 请注意，此选项是全局性的，因为复杂的过滤器图形本质上不能与单个流或文件明确关联。<br>-lavfi选项等同于-filter_complex。<br>一个复杂的过滤器图的一个简单的例子是覆盖过滤器，它有两个视频输入和一个视频输出，包含一个视频叠加在另一个上面。 它的音频对应是amix滤波器。</p>
-<h3 id="添加水印"><a href="#添加水印" class="headerlink" title="添加水印"></a>添加水印</h3><p><code>ffmpeg -i out.mp4  -vf &quot;movie=logo.png,scale=64:48[watermask];[in][watermask] overlay=30:10 [out]&quot; water.mp4</code></p>
-<ul>
-<li>-vf中的 movie 指定logo位置。scale 指定 logo 大小。overlay 指定 logo 摆放的位置。<h3 id="删除水印"><a href="#删除水印" class="headerlink" title="删除水印"></a>删除水印</h3>先通过 ffplay 找到要删除 LOGO 的位置<br><code>ffplay -i test.flv -vf delogo=x=806:y=20:w=70:h=80:show=1</code><br>使用 delogo 滤镜删除 LOGO<br><code>ffmpeg -i test.flv -vf delogo=x=806:y=20:w=70:h=80 output.flv</code><h3 id="视频缩小一倍"><a href="#视频缩小一倍" class="headerlink" title="视频缩小一倍"></a>视频缩小一倍</h3><code>ffmpeg -i out.mp4 -vf scale=iw/2:-1 scale.mp4</code></li>
-<li>vf scale 指定使用简单过滤器 scale，iw/2:-1 中的 iw 指定按整型取视频的宽度。 -1 表示高度随宽度一起变化。<h3 id="视频裁剪"><a href="#视频裁剪" class="headerlink" title="视频裁剪"></a>视频裁剪</h3><code>ffmpeg -i VR.mov  -vf crop=in_w-200:in_h-200 -c:v libx264 -c:a copy -video_size 1280x720 vr_new.mp4</code><br>crop 格式：crop=out_w:out_h:x:y</li>
-<li>out_w: 输出的宽度。可以使用 in_w 表式输入视频的宽度。</li>
-<li>out_h: 输出的高度。可以使用 in_h 表式输入视频的高度。</li>
-<li>x : X坐标</li>
-<li>y : Y坐标</li>
-</ul>
-<p>如果 x和y 设置为 0,说明从左上角开始裁剪。如果不写是从中心点裁剪。</p>
-<h3 id="倍速播放"><a href="#倍速播放" class="headerlink" title="倍速播放"></a>倍速播放</h3><p><code>ffmpeg -i out.mp4 -filter_complex &quot;[0:v]setpts=0.5*PTS[v];[0:a]atempo=2.0[a]&quot; -map &quot;[v]&quot; -map &quot;[a]&quot; speed2.0.mp4</code></p>
-<ul>
-<li>-filter_complex 复杂滤镜，[0:v]表示第一个（文件索引号是0）文件的视频作为输入。setpts=0.5*PTS表示每帧视频的pts时间戳都乘0.5 ，也就是差少一半。[v]表示输出的别名。音频同理就不详述了。</li>
-<li>map 可用于处理复杂输出，如可以将指定的多路流输出到一个输出文件，也可以指定输出到多个文件。”[v]” 复杂滤镜输出的别名作为输出文件的一路流。上面 map的用法是将复杂滤镜输出的视频和音频输出到指定文件中。</li>
-</ul>
-<h3 id="对称视频"><a href="#对称视频" class="headerlink" title="对称视频"></a>对称视频</h3><p><code>ffmpeg  -i out.mp4 -filter_complex &quot;[0:v]pad=w=2*iw[a];[0:v]hflip[b];[a][b]overlay=x=w&quot; duicheng.mp4</code></p>
-<ul>
-<li>hflip 水平翻转<br>如果要修改为垂直翻转可以用vflip。<h3 id="画中画"><a href="#画中画" class="headerlink" title="画中画"></a>画中画</h3><code>ffmpeg -i out.mp4 -i out1.mp4 -filter_complex &quot;[1:v]scale=w=176:h=144:force_original_aspect_ratio=decrease[ckout];[0:v][ckout]overlay=x=W-w-10:y=0[out]&quot; -map &quot;[out]&quot; -movflags faststart new.mp4</code></li>
-</ul>
-<h3 id="录制画中画"><a href="#录制画中画" class="headerlink" title="录制画中画"></a>录制画中画</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg  -f avfoundation -i <span class="string">"1"</span> -framerate 30 -f avfoundation -i <span class="string">"0:0"</span></span><br><span class="line">-r 30 -c:v libx264 -preset ultrafast </span><br><span class="line">-c:a libfdk_aac -profile:a aac_he_v2 -ar 44100 -ac 2 </span><br><span class="line">-filter_complex <span class="string">"[1:v]scale=w=176:h=144:force_original_aspect_ratio=decrease[a];[0:v][a]overlay=x=W-w-10:y=0[out]"</span> </span><br><span class="line">-map <span class="string">"[out]"</span> -movflags faststart -map 1:a b.mp4</span><br></pre></td></tr></table></figure>
+          <p><a href="https://github.com/spf13/viper" target="_blank" rel="noopener">https://github.com/spf13/viper</a></p>
+<p>在项目中创建一个<code>config</code>文件夹，新建一个<code>application.yml</code>文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 8099</span><br><span class="line">datasource:</span><br><span class="line">  driverName: mysql</span><br><span class="line">  host: 127.0.0.1</span><br><span class="line">  port: 3306</span><br><span class="line">  database: gin_vue_bs</span><br><span class="line">  username: root</span><br><span class="line">  password: 123456</span><br><span class="line">  charset: utf8</span><br></pre></td></tr></table></figure>
 
-<h3 id="多路视频拼接"><a href="#多路视频拼接" class="headerlink" title="多路视频拼接"></a>多路视频拼接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg  -f avfoundation -i <span class="string">"1"</span> -framerate 30 -f avfoundation   -i <span class="string">"0:0"</span> -r 30 -c:v libx264 -preset ultrafast -c:a libfdk_aac -profile:a aac_he_v2 -ar 44100 -ac 2 -filter_complex <span class="string">"[0:v]scale=320:240[a];[a]pad=640:240[b];[b][1:v]overlay=320:0[out]"</span> -map <span class="string">"[out]"</span> -movflags faststart  -map 1:a  c.mp4</span><br></pre></td></tr></table></figure>
+<p>初始化配置文件,要在初始化数据库之前调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//InitConfig 初始化配置文件.</span><br><span class="line">func <span class="function"><span class="title">InitConfig</span></span>() &#123;</span><br><span class="line">	workDir, _ := os.Getwd()                 //工程项目目录</span><br><span class="line">	viper.SetConfigName(<span class="string">"application"</span>)       //配置文件名</span><br><span class="line">	viper.SetConfigType(<span class="string">"yml"</span>)               //配置文件类型</span><br><span class="line">	viper.AddConfigPath(workDir + <span class="string">"/config"</span>) //配置文件目录</span><br><span class="line">	err := viper.ReadInConfig()</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		panic(err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="音视频的拼接与裁剪"><a href="#音视频的拼接与裁剪" class="headerlink" title="音视频的拼接与裁剪"></a>音视频的拼接与裁剪</h2><h3 id="裁剪"><a href="#裁剪" class="headerlink" title="裁剪"></a>裁剪</h3><p><code>ffmpeg -i out.mp4 -ss 00:00:00 -t 10 out1.mp4</code></p>
-<ul>
-<li>-ss 指定裁剪的开始时间，精确到秒</li>
-<li>-t 被裁剪后的时长。</li>
-</ul>
-<h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><p>首先创建一个 inputs.txt 文件，文件内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">file <span class="string">'1.flv'</span></span><br><span class="line">file <span class="string">'2.flv'</span></span><br><span class="line">file <span class="string">'3.flv'</span></span><br></pre></td></tr></table></figure>
-<p>然后执行下面的命令：<br><code>ffmpeg -f concat -i inputs.txt -c copy output.flv</code></p>
-<p>hls切片<br><code>ffmpeg -i out.mp4 -c:v libx264 -c:a libfdk_aac -strict -2 -f hls  out.m3u8</code></p>
-<ul>
-<li>-strict -2 指明音频使有AAC。</li>
-<li>-f hls 转成 m3u8 格式。</li>
-</ul>
-<h2 id="视频图片互转"><a href="#视频图片互转" class="headerlink" title="视频图片互转"></a>视频图片互转</h2><h3 id="视频转JPEG"><a href="#视频转JPEG" class="headerlink" title="视频转JPEG"></a>视频转JPEG</h3><p><code>ffmpeg -i test.flv -r 1 -f image2 image-%3d.jpeg</code></p>
-<h3 id="视频转gif"><a href="#视频转gif" class="headerlink" title="视频转gif"></a>视频转gif</h3><p><code>ffmpeg -i out.mp4 -ss 00:00:00 -t 10 out.gif</code></p>
-<h3 id="图片转视频"><a href="#图片转视频" class="headerlink" title="图片转视频"></a>图片转视频</h3><p><code>ffmpeg  -f image2 -i image-%3d.jpeg images.mp4</code></p>
-<h2 id="直播相关"><a href="#直播相关" class="headerlink" title="直播相关"></a>直播相关</h2><h3 id="推流"><a href="#推流" class="headerlink" title="推流"></a>推流</h3><p><code>ffmpeg -re -i out.mp4 -c copy -f flv rtmp://server/live/streamName</code></p>
-<h3 id="拉流保存"><a href="#拉流保存" class="headerlink" title="拉流保存"></a>拉流保存</h3><p><code>ffmpeg -i rtmp://server/live/streamName -c copy dump.flv</code></p>
-<h3 id="转流"><a href="#转流" class="headerlink" title="转流"></a>转流</h3><p><code>ffmpeg -i rtmp://server/live/originalStream -c:a copy -c:v copy -f flv rtmp://server/live/h264Stream</code></p>
-<h3 id="实时推流"><a href="#实时推流" class="headerlink" title="实时推流"></a>实时推流</h3><p><code>ffmpeg -framerate 15 -f avfoundation -i &quot;1&quot; -s 1280x720 -c:v libx264  -f  flv rtmp://localhost:1935/live/room
-ffplay</code></p>
-<h3 id="播放YUV-数据"><a href="#播放YUV-数据" class="headerlink" title="播放YUV 数据"></a>播放YUV 数据</h3><p><code>ffplay -pix_fmt nv12 -s 192x144 1.yuv</code></p>
-<h3 id="播放YUV中的-Y平面"><a href="#播放YUV中的-Y平面" class="headerlink" title="播放YUV中的 Y平面"></a>播放YUV中的 Y平面</h3><p><code>ffplay -pix_fmt nv21 -s 640x480 -vf extractplanes=&#39;y&#39; 1.yuv</code></p>
+
+<p>调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//InitDB .</span><br><span class="line">func InitDB() *gorm.DB &#123;</span><br><span class="line">	driverName := viper.GetString(<span class="string">"datasource.driverName"</span>)</span><br><span class="line">	host := viper.GetString(<span class="string">"datasource.host"</span>)</span><br><span class="line">	port := viper.GetString(<span class="string">"datasource.port"</span>)</span><br><span class="line">	database := viper.GetString(<span class="string">"datasource.database"</span>)</span><br><span class="line">	username := viper.GetString(<span class="string">"datasource.username"</span>)</span><br><span class="line">	passwoed := viper.GetString(<span class="string">"datasource.password"</span>)</span><br><span class="line">	charset := <span class="string">"utf8"</span></span><br><span class="line">	args := fmt.Sprintf(<span class="string">"%s:%s@tcp(%s:%s)/%s?charset=%s&amp;parseTime=true"</span>,</span><br><span class="line">		username,</span><br><span class="line">		passwoed,</span><br><span class="line">		host,</span><br><span class="line">		port,</span><br><span class="line">		database,</span><br><span class="line">		charset)</span><br><span class="line"></span><br><span class="line">	db, err := gorm.Open(driverName, args)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		panic(<span class="string">"failed to connect database,err"</span> + err.Error())</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//创建数据表</span><br><span class="line">	db.AutoMigrate(&amp;model.User&#123;&#125;)</span><br><span class="line"></span><br><span class="line">	DB = db</span><br><span class="line">	<span class="built_in">return</span> db</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/10/dto%E4%B8%8Edao/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/10/dto%E4%B8%8Edao/" class="post-title-link" itemprop="url">dto与dao</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-10 21:33:56" itemprop="dateCreated datePublished" datetime="2020-04-10T21:33:56+08:00">2020-04-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-19 15:31:24" itemprop="dateModified" datetime="2020-05-19T15:31:24+08:00">2020-05-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="dto"><a href="#dto" class="headerlink" title="dto"></a>dto</h1><p><code>dto</code>数据传输对象(Data Transfer Object)，是一种设计模式之间传输数据的软件应用系统。数据传输目标往往是数据访问对象从数据库中检索数据。数据传输对象与数据交互对象或数据访问对象之间的差异是一个以不具有任何行为除了存储和检索的数据（访问和存取器）。</p>
+<p>在golang中目前我遇到是用于控制返回的字段，如：在User中由多个字段，我希望只返回<code>Name</code>和<code>Telephone</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package dto</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"gin_vue_bs/model"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//UserDto .</span><br><span class="line"><span class="built_in">type</span> UserDto struct &#123;</span><br><span class="line">	Name      string `json:<span class="string">"name"</span>`</span><br><span class="line">	Telephone string `json:<span class="string">"telephone"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//ToUserDto .</span><br><span class="line">func ToUserDto(user model.User) UserDto &#123;</span><br><span class="line">	<span class="built_in">return</span> UserDto&#123;</span><br><span class="line">		Name:      user.Name,</span><br><span class="line">		Telephone: user.Telephone,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	Name      string `gorm:<span class="string">"type:varchar(20);not null"</span>`</span><br><span class="line">	Telephone string `gorm:<span class="string">"varchar(110;not null;unique"</span>`</span><br><span class="line">	Password  string `gorm:<span class="string">"size:255;not null"</span>`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.JSON(http.StatusOK, gin.H&#123;<span class="string">"code"</span>: 200, <span class="string">"data"</span>: gin.H&#123;<span class="string">"user"</span>: dto.ToUserDto(user.(model.User))&#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="dao"><a href="#dao" class="headerlink" title="dao"></a>dao</h1><p><a href="https://baike.sogou.com/v6708028.htm?fromTitle=dao" target="_blank" rel="noopener">dao</a>就叫它数据访问接口吧。</p>
+<p>举一个例子先，例如我们比较常见的 Service 层和 DAO 层的操作，Service 处理完逻辑之后，交给 DAO 层进行持久化，或者需要调用 DAO 层从持久化中获取一些必要的数据；在测试的时候，我们很多时候不希望真的持久化或者从持久化中获取数据，那么就会对 DAO 层进行一些 Mock。</p>
+<p>还有深刻的理解，相关资料：</p>
+<p><a href="http://www.imooc.com/article/33236" target="_blank" rel="noopener">http://www.imooc.com/article/33236</a><br><a href="https://www.cnblogs.com/makor/p/ut-in-go-lang.html" target="_blank" rel="noopener">https://www.cnblogs.com/makor/p/ut-in-go-lang.html</a></p>
 
       
     </div>
@@ -1592,7 +870,7 @@ ffplay</code></p>
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/22/WebRTC%EF%BC%88%E4%BA%8C%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/jwt-go/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1606,7 +884,7 @@ ffplay</code></p>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/22/WebRTC%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">WebRTC（二）</a>
+            <a href="/2020/04/09/jwt-go/" class="post-title-link" itemprop="url">jwt-go</a>
         </h1>
 
         <div class="post-meta">
@@ -1615,18 +893,24 @@ ffplay</code></p>
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-03-22 20:58:37 / Modified: 23:20:45" itemprop="dateCreated datePublished" datetime="2020-03-22T20:58:37+08:00">2020-03-22</time>
+              <time title="Created: 2020-04-09 23:27:28" itemprop="dateCreated datePublished" datetime="2020-04-09T23:27:28+08:00">2020-04-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-10 00:19:32" itemprop="dateModified" datetime="2020-04-10T00:19:32+08:00">2020-04-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WebRTC/" itemprop="url" rel="index">
-                    <span itemprop="name">WebRTC</span>
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
                   </a>
                 </span>
             </span>
@@ -1642,32 +926,180 @@ ffplay</code></p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在<a href="https://samtake.github.io/2019/11/04/WebRTC/" target="_blank" rel="noopener">前一篇</a>有对WebRTC以及用到的协议做了一些简单介绍。</p>
-<p>先回忆下WebRTC终端的五个流程：</p>
-<ul>
-<li>获取权限（摄像头、麦克风）</li>
-<li>本地视频的采集与展示</li>
-<li>创建<code>RTCPeerConnection</code></li>
-<li>媒体协商</li>
-<li>远端视频的展示</li>
-</ul>
-<h1 id="媒体协商"><a href="#媒体协商" class="headerlink" title="媒体协商"></a>媒体协商</h1><p>在双方通信时，双方必须清楚彼此使用的编解码器是什么，也必须知道传输过来的音视频流的 SSRC。媒体协商的作用就是让双方找到共同支持的媒体能力，如双方都支持的编解码器，从而最终实现彼此之间的音视频通信。</p>
-<p>步骤：</p>
-<ul>
-<li>创建一个 RTCPeerConnection 对象</li>
-<li>createOffer ，创建 Offer；</li>
-<li>createAnswer，创建 Answer；</li>
-<li>setLocalDescription，设置本地 SDP 信息；</li>
-<li>setRemoteDescription，设置远端的 SDP 信息。</li>
-</ul>
-<p>流程叙述：</p>
-<p>首先，呼叫方创建 Offer 类型的 SDP 消息。创建完成后，调用 setLocalDescriptoin 方法将该 Offer 保存到本地 Local 域，然后通过信令将 Offer 发送给被呼叫方。</p>
-<p>被呼叫方收到 Offer 类型的 SDP 消息后，调用 setRemoteDescription 方法将 Offer 保存到它的 Remote 域。作为应答，被呼叫方要创建 Answer 类型的 SDP 消息，Answer 消息创建成功后，再调用 setLocalDescription 方法将 Answer 类型的 SDP 消息保存到本地的 Local 域。最后，被呼叫方将 Answer 消息通过信令发送给呼叫方。至此，被呼叫方的工作就完部完成了。</p>
-<p>接下来是呼叫方的收尾工作，呼叫方收到 Answer 类型的消息后，调用 RTCPeerConnecton 对象的 setRemoteDescription 方法，将 Answer 保存到它的 Remote 域。</p>
-<p>至此，整个媒体协商过程处理完毕。</p>
-<h1 id="WebRTC建立连接"><a href="#WebRTC建立连接" class="headerlink" title="WebRTC建立连接"></a>WebRTC建立连接</h1><p><img src="/2020/03/22/WebRTC%EF%BC%88%E4%BA%8C%EF%BC%89/1to1-connected.png" alt></p>
-<p>首先会尝试 NAT 穿越，即尝试端到端直连。如果能够穿越成功，那双方就通过直连的方式传输数据，这是最高效的。但如果 NAT 穿越失败，为了保障通信双方的连通性，WebRTC 会使用中继方式，当然使用这种方式传输效率会低一些。</p>
-<p>在整个过程中，WebRTC 使用优先级的方法去建立连接，即局域网内的优先级最高，其次是 NAT 穿越，再次是通过中继服务器进行中转，这样就巧妙地实现了“既要高效传输，又能保证连通率”这个目标。</p>
+          <p><a href="https://github.com/dgrijalva/jwt-go" target="_blank" rel="noopener">github</a></p>
+<p><a href="https://godoc.org/github.com/dgrijalva/jwt-go" target="_blank" rel="noopener">Documentation</a></p>
+<p>引入包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get <span class="string">"github.com/dgrijalva/jwt-go"</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package common</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"gin_vue_bs/model"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/dgrijalva/jwt-go"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//定义 jwt 加密密钥</span><br><span class="line">var jwtKey = []byte(<span class="string">"a_secret_crect"</span>)</span><br><span class="line"></span><br><span class="line">//Claims .</span><br><span class="line"><span class="built_in">type</span> Claims struct &#123;</span><br><span class="line">	UserID uint</span><br><span class="line">	jwt.StandardClaims</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//ReleaseToken 登录成功则调用该方法发放token.</span><br><span class="line">func ReleaseToken(user model.User) (string, error) &#123;</span><br><span class="line">	expirationTime := time.Now().Add(7 * 24 * time.Hour) //token的过期时间7天</span><br><span class="line">	claims := &amp;Claims&#123;</span><br><span class="line">		UserID: user.ID,</span><br><span class="line">		StandardClaims: jwt.StandardClaims&#123;</span><br><span class="line">			ExpiresAt: expirationTime.Unix(),</span><br><span class="line">			IssuedAt:  time.Now().Unix(), //token发放时间</span><br><span class="line">			Issuer:    <span class="string">"samtake"</span>,         //是谁发放的token</span><br><span class="line">			Subject:   <span class="string">"user token"</span>,      //主题</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)</span><br><span class="line">	tokenString, err := token.SignedString(jwtKey)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">""</span>, err</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> tokenString, nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>返回</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: <span class="string">"200"</span>,</span><br><span class="line">    <span class="string">"data"</span>: &#123;</span><br><span class="line">        <span class="string">"token"</span>: <span class="string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOjMsImV4cCI6MTU4NzA1MjA0MiwiaWF0IjoxNTg2NDQ3MjQyLCJpc3MiOiJzYW10YWtlIiwic3ViIjoidXNlciB0b2tlbiJ9.6a50w6SfsQH7XZBW7zu3_FEGFcrWHRAh2DFYTh9hbCo"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"msg"</span>: <span class="string">"登录成功"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>所返回的token由三部分组成：协议头（token的加密协议）、 源码claims储存的信息 、（前面两部分+jwtKey）的哈希值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  blogs <span class="built_in">echo</span> eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9  | base64 -D                                                                                                                                                         </span><br><span class="line">&#123;<span class="string">"alg"</span>:<span class="string">"HS256"</span>,<span class="string">"typ"</span>:<span class="string">"JWT"</span>&#125;%</span><br><span class="line">➜  blogs <span class="built_in">echo</span> eyJVc2VySUQiOjMsImV4cCI6MTU4NzA1MjA0MiwiaWF0IjoxNTg2NDQ3MjQyLCJpc3MiOiJzYW10YWtlIiwic3ViIjoidXNlciB0b2tlbiJ9 | base64 -D     </span><br><span class="line">&#123;<span class="string">"UserID"</span>:3,<span class="string">"exp"</span>:1587052042,<span class="string">"iat"</span>:1586447242,<span class="string">"iss"</span>:<span class="string">"samtake"</span>,<span class="string">"sub"</span>:<span class="string">"user token"</span>&#125;%</span><br><span class="line">➜  blogs <span class="built_in">echo</span> 6a50w6SfsQH7XZBW7zu3_FEGFcrWHRAh2DFYTh9hbCo  | base64 -D     </span><br><span class="line">?tä???]?V?;??Q??!?1XNa%</span><br><span class="line">➜  blogs</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/gorm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/09/gorm/" class="post-title-link" itemprop="url">gorm</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-09 18:31:28" itemprop="dateCreated datePublished" datetime="2020-04-09T18:31:28+08:00">2020-04-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-11 15:07:11" itemprop="dateModified" datetime="2020-04-11T15:07:11+08:00">2020-04-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://gorm.io" target="_blank" rel="noopener">https://gorm.io</a></p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><code>ORM</code>分别代表：<br>|O|R|M|<br>|:—-|:—|:—-|<br>|Object|Relational|Mapping|<br>|对象|关系|映射|<br>|程序中的对象/实例|关系型数据库|-|<br>|例如Go中的结构体实例|例如MySQL|-|</p>
+<p>MySQL与 Go的对应关系：<br>数据表     &lt;-&gt;     结构体<br>数据行     &lt;-&gt;     结构体实例<br>字段     &lt;-&gt;     结构体字段    </p>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"math/rand"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/e421083458/gorm"</span> //https://gorm.io</span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">	_ <span class="string">"github.com/go-sql-driver/mysql"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	Name      string `gorm:<span class="string">"type:varchar(20);not null"</span>`</span><br><span class="line">	Telephone string `gorm:<span class="string">"varchar(110;not null;unique"</span>`</span><br><span class="line">	Password  string `gorm:<span class="string">"size:255;not null"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">	db := InitDb()</span><br><span class="line">	defer db.Close()</span><br><span class="line"></span><br><span class="line">	r := gin.New()</span><br><span class="line">	r.Use(gin.Logger())</span><br><span class="line"></span><br><span class="line">	r.Use(gin.Recovery())</span><br><span class="line"></span><br><span class="line">	r.POST(<span class="string">"/api/auth/register"</span>, func(ctx *gin.Context) &#123;</span><br><span class="line">		//获取参数</span><br><span class="line">		name := ctx.PostForm(<span class="string">"name"</span>)</span><br><span class="line">		telephone := ctx.PostForm(<span class="string">"telephone"</span>)</span><br><span class="line">		password := ctx.PostForm(<span class="string">"password"</span>)</span><br><span class="line"></span><br><span class="line">		//验证数据</span><br><span class="line">		<span class="keyword">if</span> len(telephone) != 11 &#123;</span><br><span class="line">			ctx.JSON(http.StatusServiceUnavailable,</span><br><span class="line">				gin.H&#123;<span class="string">"code"</span>: 422, <span class="string">"msg"</span>: <span class="string">"手机号必须为11为"</span>&#125;)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> len(password) &lt; 6 &#123;</span><br><span class="line">			ctx.JSON(http.StatusUnprocessableEntity,</span><br><span class="line">				gin.H&#123;<span class="string">"code"</span>: 422, <span class="string">"msg"</span>: <span class="string">"密码不能少于6位"</span>&#125;)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		//名称如果没有传，则返回随机字符串</span><br><span class="line">		<span class="keyword">if</span> len(name) == 0 &#123;</span><br><span class="line">			name = RandomString(10)</span><br><span class="line">		&#125;</span><br><span class="line">		//判断手机号是否存在</span><br><span class="line">		<span class="keyword">if</span> isTelephoneExist(db, telephone) &#123;</span><br><span class="line">			ctx.JSON(http.StatusUnprocessableEntity,</span><br><span class="line">				gin.H&#123;<span class="string">"code"</span>: 422, <span class="string">"msg"</span>: <span class="string">"用户已经存在"</span>&#125;)</span><br><span class="line">			<span class="built_in">return</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		//创建用户</span><br><span class="line">		newUser := User&#123;</span><br><span class="line">			Name:      name,</span><br><span class="line">			Telephone: telephone,</span><br><span class="line">			Password:  password,</span><br><span class="line">		&#125;</span><br><span class="line">		db.Create(&amp;newUser)</span><br><span class="line"></span><br><span class="line">		//返回结果</span><br><span class="line">		ctx.JSON(200, gin.H&#123;</span><br><span class="line">			<span class="string">"msg"</span>: <span class="string">"注册成功"</span>,</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	panic(r.Run(<span class="string">":8099"</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func isTelephoneExist(db *gorm.DB, telephone string) bool &#123;</span><br><span class="line">	var user User</span><br><span class="line">	db.Where(<span class="string">"telephone = ?"</span>, telephone).First(&amp;user)</span><br><span class="line">	<span class="keyword">if</span> user.ID != 0 &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//返回随机字符串</span><br><span class="line">func RandomString(n int) string &#123;</span><br><span class="line">	var letters = []byte(<span class="string">"iasdhjklfhascvxnjklasdfhjkasdfklasdfhnjklasdfjklasdfjklfasdsdfjk"</span>)</span><br><span class="line">	result := make([]byte, n)</span><br><span class="line"></span><br><span class="line">	rand.Seed(time.Now().Unix())</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := range result &#123;</span><br><span class="line">		result[i] = letters[rand.Intn(len(letters))]</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> string(result)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func InitDb() *gorm.DB &#123;</span><br><span class="line">	driverName := <span class="string">"mysql"</span></span><br><span class="line">	host := <span class="string">"127.0.0.1"</span></span><br><span class="line">	port := <span class="string">"3306"</span></span><br><span class="line">	database := <span class="string">"gin_vue_bs"</span></span><br><span class="line">	username := <span class="string">"root"</span></span><br><span class="line">	passwoed := <span class="string">"123456"</span></span><br><span class="line">	charset := <span class="string">"utf8"</span></span><br><span class="line">	args := fmt.Sprintf(<span class="string">"%s:%s@tcp(%s:%s)/%s?charset=%s&amp;parseTime=true"</span>,</span><br><span class="line">		username,</span><br><span class="line">		passwoed,</span><br><span class="line">		host,</span><br><span class="line">		port,</span><br><span class="line">		database,</span><br><span class="line">		charset)</span><br><span class="line"></span><br><span class="line">	db, err := gorm.Open(driverName, args)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		panic(<span class="string">"failed to connect database,err"</span> + err.Error())</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//创建数据表</span><br><span class="line">	db.AutoMigrate(&amp;User&#123;&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> db</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/04/09/gorm/gorm01.png" alt="gorm01.png"></p>
+<p><img src="/2020/04/09/gorm/gorm02.png" alt="gorm02.png"></p>
+<p>#</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/30/OpenGL-%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/30/OpenGL-%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">OpenGL-学习教程</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-30 01:14:44" itemprop="dateCreated datePublished" datetime="2020-03-30T01:14:44+08:00">2020-03-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-09 18:37:13" itemprop="dateModified" datetime="2020-04-09T18:37:13+08:00">2020-04-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenGL</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>世界上最好的OpenGL教程，没有之一：<a href="https://learnopengl-cn.github.io" target="_blank" rel="noopener">LearnOpenGL CN</a></p>
+<p>好好努力！勤奋敲码！</p>
 
       
     </div>
@@ -1687,7 +1119,7 @@ ffplay</code></p>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1733,7 +1165,7 @@ ffplay</code></p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
