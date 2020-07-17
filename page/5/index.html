@@ -213,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/iOS-VIPER%E6%9E%B6%E6%9E%84/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E6%8A%BD%E8%B1%A1%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -227,7 +227,317 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/24/iOS-VIPER%E6%9E%B6%E6%9E%84/" class="post-title-link" itemprop="url">iOS VIPER架构</a>
+            <a href="/2020/07/07/Java-%E6%8A%BD%E8%B1%A1%E7%B1%BB/" class="post-title-link" itemprop="url">Java 抽象类</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-07 16:48:03" itemprop="dateCreated datePublished" datetime="2020-07-07T16:48:03+08:00">2020-07-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 16:10:52" itemprop="dateModified" datetime="2020-07-15T16:10:52+08:00">2020-07-15</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>当我们要完成的任务是确定的，但具体的方式需要随后开个会投票的话，Java 的抽象类就派上用场了。这句话怎么理解呢？搬个小板凳坐好，听我来给你讲讲。</p>
+<h1 id="01、抽象类的-5-个关键点"><a href="#01、抽象类的-5-个关键点" class="headerlink" title="01、抽象类的 5 个关键点"></a>01、抽象类的 5 个关键点</h1><p>1）定义抽象类的时候需要用到关键字 abstract，放在 class 关键字前。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbstractPlayer &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于抽象类的命名，阿里出品的 Java 开发手册上有强调，<code>抽象类命名要使用 Abstract 或 Base 开头</code>，记住了哦。</p>
+<p>2）抽象类不能被实例化，但可以有子类。</p>
+<p>尝试通过 <code>new</code> 关键字实例化的话，编译器会报错，提示“类是抽象的，不能实例化”。</p>
+<p><img src="/2020/07/07/Java-%E6%8A%BD%E8%B1%A1%E7%B1%BB/1.png" alt></p>
+<p>通过 <code>extends</code> 关键字可以继承抽象类，继承后，BasketballPlayer 类就是 AbstractPlayer 的子类。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public class BasketballPlayer extends AbstractPlayer &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3）如果一个类定义了一个或多个抽象方法，那么这个类必须是抽象类。</p>
+<p>当在一个普通类（没有使用 <code>abstract</code> 关键字修饰）中定义了抽象方法，编译器就会有两处错误提示。</p>
+<p>第一处在类级别上，提醒你“这个类必须通过 abstract 关键字定义”，or 的那个信息没必要，见下图。</p>
+<p><img src="/2020/07/07/Java-%E6%8A%BD%E8%B1%A1%E7%B1%BB/2.png" alt></p>
+<p>第二处在方法级别上，提醒你“抽象方法所在的类不是抽象的”，见下图。<br><img src="/2020/07/07/Java-%E6%8A%BD%E8%B1%A1%E7%B1%BB/3.png" alt></p>
+<p>4）抽象类可以同时声明抽象方法和具体方法，也可以什么方法都没有，但没必要。就像下面这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbstractPlayer &#123;</span><br><span class="line">    abstract void play();</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">sleep</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"运动员也要休息而不是挑战极限"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5）抽象类派生的子类必须实现父类中定义的抽象方法。比如说，抽象类中定义了 play() 方法，子类中就必须实现。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class BasketballPlayer extends AbstractPlayer &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void <span class="function"><span class="title">play</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是张伯伦，篮球场上得过 100 分"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果没有实现的话，编译器会提醒你“子类必须实现抽象方法”，见下图。</p>
+<p><img src="/2020/07/07/Java-%E6%8A%BD%E8%B1%A1%E7%B1%BB/4.png" alt></p>
+<h1 id="02、什么时候用抽象类"><a href="#02、什么时候用抽象类" class="headerlink" title="02、什么时候用抽象类"></a>02、什么时候用抽象类</h1><p>与抽象类息息相关的还有一个概念，就是接口，我们留到下一篇文章中详细说，因为要说的知识点还是蛮多的。你现在只需要有这样一个概念就好，接口是对行为的抽象，抽象类是对整个类（包含成员变量和行为）进行抽象。</p>
+<p>（是不是有点明白又有点不明白，别着急，翘首以盼地等下一篇文章出炉吧）</p>
+<p>除了接口之外，还有一个概念就是具体的类，就是不通过 abstract 修饰的普通类，见下面这段代码中的定义。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class BasketballPlayer &#123;</span><br><span class="line">   public void <span class="function"><span class="title">play</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是詹姆斯，现役第一人"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有接口，有具体类，那什么时候该使用抽象类呢？</p>
+<p>1）我们希望一些通用的功能被多个子类复用。比如说，AbstractPlayer 抽象类中有一个普通的方法 sleep()，表明所有运动员都需要休息，那么这个方法就可以被子类复用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbstractPlayer &#123;</span><br><span class="line">    public void <span class="function"><span class="title">sleep</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"运动员也要休息而不是挑战极限"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然 AbstractPlayer 类可以不是抽象类——把 <code>abstract</code> 修饰符去掉也能满足这种场景。但 AbstractPlayer 类可能还会有一个或者多个抽象方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">BasketballPlayer 继承了 AbstractPlayer 类，也就拥有了 sleep() 方法。</span><br><span class="line"></span><br><span class="line">public class BasketballPlayer extends AbstractPlayer &#123;</span><br><span class="line">&#125;</span><br><span class="line">BasketballPlayer 对象可以直接调用 sleep() 方法：</span><br><span class="line"></span><br><span class="line">BasketballPlayer basketballPlayer = new BasketballPlayer();</span><br><span class="line">basketballPlayer.sleep();</span><br><span class="line">FootballPlayer 继承了 AbstractPlayer 类，也就拥有了 sleep() 方法。</span><br><span class="line"></span><br><span class="line">public class FootballPlayer extends AbstractPlayer &#123;</span><br><span class="line">&#125;</span><br><span class="line">FootballPlayer 对象也可以直接调用 sleep() 方法：</span><br><span class="line"></span><br><span class="line">FootballPlayer footballPlayer = new FootballPlayer();</span><br><span class="line">footballPlayer.sleep();</span><br></pre></td></tr></table></figure>
+<p>2）我们需要在抽象类中定义好 API，然后在子类中扩展实现。比如说，AbstractPlayer  抽象类中有一个抽象方法 play()，定义所有运动员都可以从事某项运动，但需要对应子类去扩展实现。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbstractPlayer &#123;</span><br><span class="line">    abstract void play();</span><br><span class="line">&#125;</span><br><span class="line">BasketballPlayer 继承了 AbstractPlayer 类，扩展实现了自己的 play() 方法。</span><br><span class="line"></span><br><span class="line">public class BasketballPlayer extends AbstractPlayer &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void <span class="function"><span class="title">play</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是张伯伦，我篮球场上得过 100 分，"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">FootballPlayer 继承了 AbstractPlayer 类，扩展实现了自己的 play() 方法。</span><br><span class="line"></span><br><span class="line">public class FootballPlayer extends AbstractPlayer &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void <span class="function"><span class="title">play</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是C罗，我能接住任意高度的头球"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3）如果父类与子类之间的关系符合 <code>is-a</code> 的层次关系，就可以使用抽象类，比如说篮球运动员是运动员，足球运动员是运动员。</p>
+<h1 id="03、具体示例"><a href="#03、具体示例" class="headerlink" title="03、具体示例"></a>03、具体示例</h1><p>为了进一步展示抽象类的特性，我们再来看一个具体的示例。假设现在有一个文件，里面的内容非常简单——“Hello World”，现在需要有一个读取器将内容读取出来，最好能按照大写的方式，或者小写的方式。</p>
+<p>这时候，最好定义一个抽象类，比如说 BaseFileReader：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public abstract class BaseFileReader &#123;</span><br><span class="line">    protected Path filePath;</span><br><span class="line"></span><br><span class="line">    protected BaseFileReader(Path filePath) &#123;</span><br><span class="line">        this.filePath = filePath;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;String&gt; readFile() throws IOException &#123;</span><br><span class="line">        <span class="built_in">return</span> Files.lines(filePath)</span><br><span class="line">                .map(this::mapFileLine).collect(Collectors.toList());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected abstract String mapFileLine(String line);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>filePath 为文件路径，使用 protected 修饰，表明该成员变量可以在需要时被子类访问。</p>
+<p>readFile() 方法用来读取文件，方法体里面调用了抽象方法 mapFileLine()——需要子类扩展实现大小写的方式。</p>
+<p>你看，BaseFileReader 设计的就非常合理，并且易于扩展，子类只需要专注于具体的大小写实现方式就可以了。</p>
+<p>小写的方式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class LowercaseFileReader extends BaseFileReader &#123;</span><br><span class="line">    protected LowercaseFileReader(Path filePath) &#123;</span><br><span class="line">        super(filePath);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected String mapFileLine(String line) &#123;</span><br><span class="line">        <span class="built_in">return</span> line.toLowerCase();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">大写的方式：</span><br><span class="line"></span><br><span class="line">public class UppercaseFileReader extends BaseFileReader &#123;</span><br><span class="line">    protected UppercaseFileReader(Path filePath) &#123;</span><br><span class="line">        super(filePath);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected String mapFileLine(String line) &#123;</span><br><span class="line">        <span class="built_in">return</span> line.toUpperCase();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你看，从文件里面一行一行读取内容的代码被子类复用了——抽象类 BaseFileReader 类中定义的普通方法 readFile()。与此同时，子类只需要专注于自己该做的工作，LowercaseFileReader 以小写的方式读取文件内容，UppercaseFileReader 以大写的方式读取文件内容。</p>
+<p>接下来，我们来新建一个测试类 FileReaderTest：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class FileReaderTest &#123;</span><br><span class="line">    public static void main(String[] args) throws URISyntaxException, IOException &#123;</span><br><span class="line">        URL location = FileReaderTest.class.getClassLoader().getResource(<span class="string">"helloworld.txt"</span>);</span><br><span class="line">        Path path = Paths.get(location.toURI());</span><br><span class="line">        BaseFileReader lowercaseFileReader = new LowercaseFileReader(path);</span><br><span class="line">        BaseFileReader uppercaseFileReader = new UppercaseFileReader(path);</span><br><span class="line">        System.out.println(lowercaseFileReader.readFile());</span><br><span class="line">        System.out.println(uppercaseFileReader.readFile());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>项目的 resource 目录下有一个文本文件，名字叫 helloworld.txt。<br><img src="/2020/07/07/Java-%E6%8A%BD%E8%B1%A1%E7%B1%BB/5.png" alt></p>
+<p>可以通过 ClassLoader.getResource() 的方式获取到该文件的 URI 路径，然后就可以使用 LowercaseFileReader 和 UppercaseFileReader 两种方式读取到文本内容了。</p>
+<p>输出结果如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[hello world]</span><br><span class="line">[HELLO WORLD]</span><br></pre></td></tr></table></figure>
+
+
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Java 构造方法</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-07 16:45:01" itemprop="dateCreated datePublished" datetime="2020-07-07T16:45:01+08:00">2020-07-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 10:33:25" itemprop="dateModified" datetime="2020-07-15T10:33:25+08:00">2020-07-15</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>假设现在有一个 Writer 类，它有两个字段，姓名和年纪：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Writer &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String <span class="function"><span class="title">toString</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"Writer&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\'</span><span class="string">' +</span></span><br><span class="line"><span class="string">                ", age=" + age +</span></span><br><span class="line"><span class="string">                '</span>&#125;<span class="string">';</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>重写了 toString() 方法，用于打印 Writer 类的详情。由于没有构造方法，意味着当我们创建 Writer 对象时，它的字段值并没有初始化：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Writer writer = new Writer();</span><br><span class="line">System.out.println(writer.toString());</span><br></pre></td></tr></table></figure>
+<p>输出结果如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Writer&#123;name=<span class="string">'null'</span>, age=0&#125;</span><br></pre></td></tr></table></figure>
+<p>name 是字符串类型，所以默认值为 null，age 为 int 类型，所以默认值为 0。</p>
+<p>让我们为 Writer 类主动加一个无参的构造方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public <span class="function"><span class="title">Writer</span></span>() &#123;</span><br><span class="line">    this.name = <span class="string">""</span>;</span><br><span class="line">    this.age = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>构造方法也是一个方法，只不过它没有返回值，默认返回创建对象的类型。需要注意的是，当前构造方法没有参数，它被称为无参构造方法。如果我们没有主动创建无参构造方法的话，编译器会隐式地自动添加一个无参的构造方法。这就是为什么，一开始虽然没有构造方法，却可以使用 new Writer() 创建对象的原因，只不过，所有的字段都被初始化成了默认值。</p>
+<p>接下来，让我们添加一个有参的构造方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public Writer(String name, int age) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，我们创建 Writer 对象的时候就可以通过对字段值初始化值了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Writer writer1 = new Writer(<span class="string">"沉默王二"</span>,18);</span><br><span class="line">System.out.println(writer1.toString());</span><br></pre></td></tr></table></figure>
+<p>来看一下打印结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Writer&#123;name=<span class="string">'沉默王二'</span>, age=18&#125;</span><br></pre></td></tr></table></figure>
+<p>可以根据字段的数量添加不同参数数量的构造方法，比如说，我们可以单独为 name 字段添加一个构造方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Writer(String name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了能够兼顾 age 字段，我们可以通过 this 关键字调用其他的构造方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Writer(String name) &#123;</span><br><span class="line">    this(name,18);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>把作者的年龄都默认初始化为 18。如果需要使用父类的构造方法，还可以使用 super 关键字，手册后面有详细的介绍。</p>
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">Java 的类和对象</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-07 16:36:53" itemprop="dateCreated datePublished" datetime="2020-07-07T16:36:53+08:00">2020-07-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 15:37:07" itemprop="dateModified" datetime="2020-07-15T15:37:07+08:00">2020-07-15</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>类和对象是 Java 中最基本的两个概念，可以说撑起了面向对象编程（OOP）的一片天。对象可以是现实中看得见的任何物体（一只特立独行的猪），也可以是想象中的任何虚拟物体（能七十二变的孙悟空），Java 通过类（class）来定义这些物体，有什么状态（通过字段，或者叫成员变量定义，比如说猪的颜色是纯色还是花色），有什么行为（通过方法定义，比如说猪会吃，会睡觉）。</p>
+<p>来，让我来定义一个简单的类给你看看。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>默认情况下，每个 Java 类都会有一个空的构造方法，尽管它在源代码中是缺省的，但却可以通过反编译字节码看到它。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public <span class="function"><span class="title">Pig</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>没错，就是多出来的那个 public Pig() {}，参数是空的，方法体是空的。我们可以通过 new 关键字利用这个构造方法来创建一个对象，代码如下所示：</p>
+<p><code>Pig pig = new Pig();</code><br>当然了，我们也可以主动添加带参的构造方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public Pig(String color) &#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时候，再查看反编译后的字节码时，你会发现缺省的无参构造方法消失了——和源代码一模一样。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public Pig(String color) &#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这意味着无法通过 new Pig() 来创建对象了——编译器会提醒你追加参数。<br><img src="/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/1.png" alt></p>
+<p>比如说你将代码修改为 new Pig(“纯白色”)，或者添加无参的构造方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Pig &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public Pig(String color) &#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="function"><span class="title">Pig</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">eat</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用无参构造方法创建的对象状态默认值为 null（color 字符串为引用类型），如果是基本类型的话，默认值为对应基本类型的默认值，比如说 int 为 0，更详细的见下图。</p>
+<p><img src="/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/2.png" alt></p>
+<p>（图片中有一处错误，boolean 的默认值为 false）</p>
+<p>接下来，我们来创建多个 Pig 对象，它的颜色各不相同。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class PigTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Pig pigNoColor = new Pig();</span><br><span class="line">        Pig pigWhite = new Pig(<span class="string">"纯白色"</span>);</span><br><span class="line">        Pig pigBlack = new Pig(<span class="string">"纯黑色"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你看，我们创建了 3 个不同花色的 Pig 对象，全部来自于一个类，由此可见类的重要性，只需要定义一次，就可以多次使用。</p>
+<p>那假如我想改变对象的状态呢？该怎么办？目前毫无办法，因为没有任何可以更改状态的方法，直接修改 color 是行不通的，因为它的访问权限修饰符是 private 的。</p>
+<p>最好的办法就是为 Pig 类追加 getter/setter 方法，就像下面这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public String <span class="function"><span class="title">getColor</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> color;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void setColor(String color) &#123;</span><br><span class="line">    this.color = color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过 setColor() 方法来修改，通过 getColor() 方法获取状态，它们的权限修饰符是 public 的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Pig pigNoColor = new Pig();</span><br><span class="line">pigNoColor.setColor(<span class="string">"花色"</span>);</span><br><span class="line">System.out.println(pigNoColor.getColor()); // 花色</span><br></pre></td></tr></table></figure>
+<p>为什么要这样设计呢？可以直接将 color 字段的访问权限修饰符换成是 public 的啊，不就和 getter/setter 一样的效果了吗？</p>
+<p>因为有些情况，某些字段是不允许被随意修改的，它只有在对象创建的时候初始化一次，比如说猪的年龄，它只能每年长一岁（举个例子），没有月光宝盒让它变回去。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private int age;</span><br><span class="line"></span><br><span class="line">public int <span class="function"><span class="title">getAge</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void <span class="function"><span class="title">increaseAge</span></span>() &#123;</span><br><span class="line">    this.age++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你看，age 就没有 setter 方法，只有一个每年可以调用一次的 increaseAge() 方法和 getter 方法。如果把 age 的访问权限修饰符更改为 public，age 就完全失去控制了，可以随意将其重置为 0 或者负数。</p>
+<p>访问权限修饰符对于 Java 来说，非常重要，目前共有四种：public、private、protected 和 default（缺省）。</p>
+<p>一个类只能使用 public 或者 default 修饰，public 修饰的类你之前已经见到过了，现在我来定义一个缺省权限修饰符的类给你欣赏一下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class Dog &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>哈哈，其实也没啥可以欣赏的。缺省意味着这个类可以被同一个包下的其他类进行访问；而 public 意味着这个类可以被所有包下的类进行访问。</p>
+<p>假如硬要通过 private 和 protected 来修饰类的话，编译器会生气的，它不同意。<br><img src="/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/3.png" alt></p>
+<p>private 可以用来修饰类的构造方法、字段和方法，只能被当前类进行访问。protected 也可以用来修饰类的构造方法、字段和方法，但它的权限范围更宽一些，可以被同一个包中的类进行访问，或者当前类的子类。</p>
+<p>可以通过下面这张图来对比一下四个权限修饰符之间的差别：</p>
+<p><img src="/2020/07/07/Java-%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/4.png" alt></p>
+<ul>
+<li>同一个类中，不管是哪种权限修饰符，都可以访问；</li>
+<li>同一个包下，private 修饰的无法访问；</li>
+<li>子类可以访问 public 和 protected 修饰的；</li>
+<li>public 修饰符面向世界，哈哈，可以被所有的地方访问到。</li>
+</ul>
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E5%85%B3%E9%94%AE%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-%E5%85%B3%E9%94%AE%E5%AD%97/" class="post-title-link" itemprop="url">Java 关键字</a>
         </h1>
 
         <div class="post-meta">
@@ -238,7 +548,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-04-24 02:10:23 / Modified: 19:28:22" itemprop="dateCreated datePublished" datetime="2020-04-24T02:10:23+08:00">2020-04-24</time>
+              <time title="Created: 2020-07-07 16:10:38 / Modified: 16:15:05" itemprop="dateCreated datePublished" datetime="2020-07-07T16:10:38+08:00">2020-07-07</time>
             </span>
 
           
@@ -252,41 +562,55 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="查了一下资料"><a href="#查了一下资料" class="headerlink" title="查了一下资料"></a>查了一下资料</h1><p><code>VIPER</code> View-Interactor-Presenter-Entity-Router</p>
-<p>View</p>
-<ul>
-<li>提供完整的视图，负责视图的组合、布局、更新</li>
-<li>向Presenter提供更新视图的接口</li>
-<li>将View相关的事件发送给Presenter</li>
-</ul>
-<p>Presenter</p>
-<ul>
-<li>接收并处理来自View的事件</li>
-<li>向Interactor请求调用业务逻辑</li>
-<li>向Interactor提供View中的数据</li>
-<li>接收并处理来自Interactor的数据回调事件</li>
-<li>通知View进行更新操作</li>
-<li>通过Router跳转到其他View</li>
-</ul>
-<p>Router（路由）</p>
-<ul>
-<li>提供View之间的跳转功能，减少了模块间的耦合</li>
-<li>初始化VIPER的各个模块</li>
-</ul>
-<p>Interactor（交互器）</p>
-<ul>
-<li>维护主要的业务逻辑功能，向Presenter提供现有的业务用例</li>
-<li>维护、获取、更新Entity</li>
-<li>当有业务相关的事件发生时，处理事件，并通知Presenter</li>
-</ul>
-<p>Entity（实体）</p>
-<ul>
-<li>和Model一样的数据模型</li>
-</ul>
-<blockquote>
-<p>VIPER把MVC中的Controller进一步拆分成了Presenter、Router和Interactor。和MVP中负责业务逻辑的Presenter不同，VIPER的Presenter的主要工作是在View和Interactor之间传递事件，并管理一些View的展示逻辑，主要的业务逻辑实现代码都放在了Interactor里。Interactor的设计里提出了”用例”的概念，也就是把每一个会出现的业务流程封装好，这样可测试性会大大提高。而Router则进一步解决了不同模块之间的耦合。</p>
-</blockquote>
-<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p>ok!!那就按照上面的意思来写个 demo 呗～～</p>
+          <p>关键字属于保留字，在 Java 中具有特殊的含义，比如说 public、final、static、new 等等，它们不能用来作为变量名。为了便于你作为参照，我列举了 48 个常用的关键字，你可以瞅一瞅。</p>
+<p><code>abstract：</code> abstract 关键字用于声明抽象类——可以有抽象和非抽象方法。</p>
+<p><code>boolean：</code> boolean 关键字用于将变量声明为布尔值类型，它只有 true 和 false 两个值。</p>
+<p><code>break：</code> break 关键字用于中断循环或 switch 语句。</p>
+<p><code>byte：</code> byte 关键字用于声明一个可以容纳 8 个比特的变量。</p>
+<p><code>case：</code>  case 关键字用于在 switch 语句中标记条件的值。</p>
+<p><code>catch：</code>  catch 关键字用于捕获 try 语句中的异常。</p>
+<p><code>char：</code>  char 关键字用于声明一个可以容纳无符号 16 位比特的 Unicode 字符的变量。</p>
+<p><code>class：</code>  class 关键字用于声明一个类。</p>
+<p><code>continue：</code>  continue 关键字用于继续下一个循环。它可以在指定条件下跳过其余代码。</p>
+<p><code>default：</code>  default 关键字用于指定 switch 语句中除去 case 条件之外的默认代码块。</p>
+<p><code>do：</code>  do 关键字通常和 while 关键字配合使用，do 后紧跟循环体。</p>
+<p><code>double：</code> double 关键字用于声明一个可以容纳 64 位浮点数的变量。</p>
+<p><code>else：</code>  else 关键字用于指示 if 语句中的备用分支。</p>
+<p><code>enum：</code>  enum（枚举）关键字用于定义一组固定的常量。</p>
+<p><code>extends：</code>  extends 关键字用于指示一个类是从另一个类或接口继承的。</p>
+<p><code>final：</code>  final 关键字用于指示该变量是不可更改的。</p>
+<p><code>finally：</code>  finally 关键字和 try-catch 配合使用，表示无论是否处理异常，总是执行 finally 块中的代码。</p>
+<p><code>float：</code>  float 关键字用于声明一个可以容纳 32 位浮点数的变量。</p>
+<p><code>for：</code>  for 关键字用于启动一个 for 循环，如果循环次数是固定的，建议使用 for 循环。</p>
+<p><code>if：</code>  if 关键字用于指定条件，如果条件为真，则执行对应代码。</p>
+<p><code>implements：</code>  implements 关键字用于实现接口。</p>
+<p><code>import：</code>  import 关键字用于导入对应的类或者接口。</p>
+<p><code>instanceof：</code>  instanceof 关键字用于判断对象是否属于某个类型（class）。</p>
+<p><code>int：</code>  int 关键字用于声明一个可以容纳 32 位带符号的整数变量。</p>
+<p><code>interface：</code>  interface 关键字用于声明接口——只能具有抽象方法。</p>
+<p><code>long：</code>  long 关键字用于声明一个可以容纳 64 位整数的变量。</p>
+<p><code>native：</code>  native 关键字用于指定一个方法是通过调用本机接口（非 Java）实现的。</p>
+<p><code>new：</code>  new 关键字用于创建一个新的对象。</p>
+<p><code>null：</code>  如果一个变量是空的（什么引用也没有指向），就可以将它赋值为 null。</p>
+<p><code>package：</code>  package 关键字用于声明类所在的包。</p>
+<p><code>private：</code>  private 关键字是一个访问修饰符，表示方法或变量只对当前类可见。</p>
+<p><code>protected：</code>  protected 关键字也是一个访问修饰符，表示方法或变量对同一包内的类和所有子类可见。</p>
+<p><code>public：</code>  public 关键字是另外一个访问修饰符，除了可以声明方法和变量（所有类可见），还可以声明类。main() 方法必须声明为 public。</p>
+<p><code>return：</code>  return 关键字用于在代码执行完成后返回（一个值）。</p>
+<p><code>short：</code> short 关键字用于声明一个可以容纳 16 位整数的变量。</p>
+<p><code>static：</code>  static 关键字表示该变量或方法是静态变量或静态方法。</p>
+<p><code>strictfp：</code>   strictfp 关键字并不常见，通常用于修饰一个方法，确保方法体内的浮点数运算在每个平台上执行的结果相同。</p>
+<p><code>super：</code>  super 关键字可用于调用父类的方法或者变量。</p>
+<p><code>switch：</code>  switch 关键字通常用于三个（以上）的条件判断。</p>
+<p><code>synchronized：</code>  synchronized 关键字用于指定多线程代码中的同步方法、变量或者代码块。</p>
+<p><code>this：</code>  this 关键字可用于在方法或构造函数中引用当前对象。</p>
+<p><code>throw：</code>  throw 关键字主动抛出异常。</p>
+<p><code>throws：</code>  throws 关键字用于声明异常。</p>
+<p><code>transient：</code>  transient 关键字在序列化的使用用到，它修饰的字段不会被序列化。</p>
+<p><code>try：</code>  try 关键字用于包裹要捕获异常的代码块。</p>
+<p><code>void：</code>  void 关键字用于指定方法没有返回值。</p>
+<p><code>volatile：</code>  volatile 关键字保证了不同线程对它修饰的变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。</p>
+<p><code>while：</code>  如果循环次数不固定，建议使用 while 循环。</p>
 
       
     </div>
@@ -306,7 +630,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/22/%E5%9F%BA%E4%BA%8ERBAC%E8%A7%92%E8%89%B2%E7%9A%84%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -320,7 +644,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/22/%E5%9F%BA%E4%BA%8ERBAC%E8%A7%92%E8%89%B2%E7%9A%84%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6/" class="post-title-link" itemprop="url">基于RBAC角色的访问控制</a>
+            <a href="/2020/07/07/Java-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">Java 基本数据类型</a>
         </h1>
 
         <div class="post-meta">
@@ -330,14 +654,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-04-22 14:48:41" itemprop="dateCreated datePublished" datetime="2020-04-22T14:48:41+08:00">2020-04-22</time>
+              <time title="Created: 2020-07-07 15:48:52" itemprop="dateCreated datePublished" datetime="2020-07-07T15:48:52+08:00">2020-07-07</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-28 10:33:35" itemprop="dateModified" datetime="2020-04-28T10:33:35+08:00">2020-04-28</time>
+                <time title="Modified: 2020-07-15 14:59:16" itemprop="dateModified" datetime="2020-07-15T14:59:16+08:00">2020-07-15</time>
               </span>
 
           
@@ -351,53 +675,81 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><code>RBAC</code>（Role-Based Access Control ）基于角色的访问控制。</p>
-<p><code>casbin</code>是一个强大的、高效的开源访问控制框架，其权限管理机制支持多种访问控制模型。</p>
-<p><code>gorm-adapter</code>使用这个库,Casbin可以从Gorm加载政策支持的数据库或保存政策。</p>
-<h1 id="理解casbin的使用"><a href="#理解casbin的使用" class="headerlink" title="理解casbin的使用"></a>理解casbin的使用</h1><p>具体可以看这篇文章：<a href="https://zupzup.org/casbin-http-role-auth/" target="_blank" rel="noopener">Basic Role-Based HTTP Authorization in Go with Casbin</a>(中文翻译为<a href="https://studygolang.com/articles/12323" target="_blank" rel="noopener">在 Go 语言中使用 casbin 实现基于角色的 HTTP 权限控制</a>)，具体<a href="https://github.com/samtake/casbin-demo" target="_blank" rel="noopener">demo</a>我也加了详细注释。</p>
-<p>这里有几个需要弄懂的：</p>
-<p>模型文件的配置<code>auth_model.conf</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[request_definition]</span><br><span class="line">r = sub, obj, act</span><br><span class="line"></span><br><span class="line">[policy_definition]</span><br><span class="line">p = sub, obj, act</span><br><span class="line"></span><br><span class="line">[policy_effect]</span><br><span class="line">e = some(<span class="built_in">where</span> (p.eft == allow))</span><br><span class="line"></span><br><span class="line">[matchers]</span><br><span class="line">m = r.sub == p.sub &amp;&amp; keyMatch(r.obj, p.obj) &amp;&amp; (r.act == p.act || p.act == <span class="string">"*"</span>)</span><br></pre></td></tr></table></figure>
+          <table>
+<thead>
+<tr>
+<th align="left">数据类型</th>
+<th align="center">默认值</th>
+<th align="center">大小</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">boolean</td>
+<td align="center">false</td>
+<td align="center">1比特</td>
+</tr>
+<tr>
+<td align="left">char</td>
+<td align="center">‘\u0000’</td>
+<td align="center">2字节</td>
+</tr>
+<tr>
+<td align="left">byte</td>
+<td align="center">0</td>
+<td align="center">1字节</td>
+</tr>
+<tr>
+<td align="left">short</td>
+<td align="center">0</td>
+<td align="center">2字节</td>
+</tr>
+<tr>
+<td align="left">int</td>
+<td align="center">0</td>
+<td align="center">4字节</td>
+</tr>
+<tr>
+<td align="left">long</td>
+<td align="center">0L</td>
+<td align="center">8字节</td>
+</tr>
+<tr>
+<td align="left">float</td>
+<td align="center">0.0f</td>
+<td align="center">4字节</td>
+</tr>
+<tr>
+<td align="left">double</td>
+<td align="center">0.0</td>
+<td align="center">8字节</td>
+</tr>
+</tbody></table>
+<h1 id="01、布尔"><a href="#01、布尔" class="headerlink" title="01、布尔"></a>01、布尔</h1><p>布尔（boolean）仅用于存储两个值：true 和 false，也就是真和假，通常用于条件的判断。代码示例：</p>
+<p><code>boolean flag = true;</code></p>
+<h1 id="02、byte"><a href="#02、byte" class="headerlink" title="02、byte"></a>02、byte</h1><p>byte 的取值范围在 -128 和 127 之间，包含 127。最小值为 -128，最大值为 127，默认值为 0。</p>
+<p>在网络传输的过程中，为了节省空间，常用字节来作为数据的传输方式。代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">byte a = 10;</span><br><span class="line">byte b = -10;</span><br></pre></td></tr></table></figure>
+<h1 id="03、short"><a href="#03、short" class="headerlink" title="03、short"></a>03、short</h1><p>short 的取值范围在 -32,768 和 32,767 之间，包含 32,767。最小值为 -32,768，最大值为 32,767，默认值为 0。代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">short s = 10000;</span><br><span class="line">short r = -5000;</span><br></pre></td></tr></table></figure>
+<h1 id="04、int"><a href="#04、int" class="headerlink" title="04、int"></a>04、int</h1><p>int 的取值范围在 -2,147,483,648（-2 ^ 31）和 2,147,483,647（2 ^ 31 -1）（含）之间，默认值为 0。如果没有特殊需求，整形数据就用 int。代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a = 100000;</span><br><span class="line">int b = -200000;</span><br></pre></td></tr></table></figure>
+<h1 id="05、long"><a href="#05、long" class="headerlink" title="05、long"></a>05、long</h1><p>long 的取值范围在 -9,223,372,036,854,775,808(-2^63) 和 9,223,372,036,854,775,807(2^63 -1)（含）之间，默认值为 0。如果 int 存储不下，就用 long，整形数据就用 int。代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">long a = 100000L; </span><br><span class="line">long b = -200000L;</span><br></pre></td></tr></table></figure>
+<p>为了和 int 作区分，long 型变量在声明的时候，末尾要带上大写的“L”。不用小写的“l”，是因为小写的“l”容易和数字“1”混淆。</p>
+<h1 id="06、float"><a href="#06、float" class="headerlink" title="06、float"></a>06、float</h1><p>float 是单精度的浮点数，遵循 IEEE 754（二进制浮点数算术标准），取值范围是无限的，默认值为 0.0f。float 不适合用于精确的数值，比如说货币。代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> f1 = 234.5f;</span><br></pre></td></tr></table></figure>
+<p>为了和 double 作区分，float 型变量在声明的时候，末尾要带上小写的“f”。不需要使用大写的“F”，是因为小写的“f”很容易辨别。</p>
+<h1 id="07、double"><a href="#07、double" class="headerlink" title="07、double"></a>07、double</h1><p>double 是双精度的浮点数，遵循 IEEE 754（二进制浮点数算术标准），取值范围也是无限的，默认值为 0.0。double 同样不适合用于精确的数值，比如说货币。代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">double d1 = 12.3</span><br></pre></td></tr></table></figure>
+<p>那精确的数值用什么表示呢？最好使用 BigDecimal，它可以表示一个任意大小且精度完全准确的浮点数。针对货币类型的数值，也可以先乘以 100 转成整形进行处理。</p>
+<p>Tips：单精度是这样的格式，1 位符号，8 位指数，23 位小数，有效位数为 7 位。<br><img src="/2020/07/07/Java-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/double01.png" alt></p>
+<p>双精度是这样的格式，1 位符号，11 位指数，52 为小数，有效位数为 16 位。</p>
+<p><img src="/2020/07/07/Java-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/double02.png" alt><br>取值范围取决于指数位，计算精度取决于小数位（尾数）。小数位越多，则能表示的数越大，那么计算精度则越高。</p>
+<p>一个数由若干位数字组成，其中影响测量精度的数字称作有效数字，也称有效数位。有效数字指科学计算中用以表示一个浮点数精度的那些数字。一般地，指一个用小数形式表示的浮点数中，从第一个非零的数字算起的所有数字。如 1.24 和 0.00124 的有效数字都有 3 位。</p>
+<h1 id="08、char"><a href="#08、char" class="headerlink" title="08、char"></a>08、char</h1><p>char 可以表示一个 16 位的 Unicode 字符，其值范围在 ‘\u0000’（0）和 ‘\uffff’（65,535）（包含）之间。代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">char letterA = <span class="string">'A'</span>; // 用英文的单引号包裹住。</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><p>Model CONF 至少应包含四个部分:<code>[request_definition]</code>, <code>[policy_definition]</code>, <code>[policy_effect]</code>, <code>[matchers]</code></p>
-</li>
-<li><p>如果 model 使用 RBAC, 还需要添加<code>[role_definition]</code>部分。</p>
-</li>
-<li><p>sub, obj, act 表示经典三元组: 访问实体 (Subject)，访问资源 (Object) 和访问方法 (Action)</p>
-</li>
-<li><p><a href="https://casbin.org/docs/zh-CN/syntax-for-models" target="_blank" rel="noopener">更具体的可以直接看官方文档</a></p>
-</li>
-</ul>
-<p>策略文件<code>policy.csv</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p, admin, /*, *</span><br><span class="line">p, anonymous, /login, *</span><br><span class="line">p, member, /<span class="built_in">logout</span>, *</span><br><span class="line">p, member, /member/*, *</span><br></pre></td></tr></table></figure>
-<ul>
-<li>admin 角色可以访问所有内容</li>
-<li>member 角色可以访问以 /member/ 开头的路径和 logout 路径</li>
-<li>未认证用户可以登陆</li>
-</ul>
-<h1 id="gorm-adapter"><a href="#gorm-adapter" class="headerlink" title="gorm-adapter"></a>gorm-adapter</h1><p>在上个个例子中，策略文件就是一个简单的 csv 文件，描述了哪些角色可以访问哪些路径等。但在实际项目中策略文件一般都会存储在数据库，这时候就用到了<a href="https://github.com/casbin/gorm-adapter" target="_blank" rel="noopener">gorm-adapter</a></p>
-<p>直接看官方给出的demo</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"github.com/casbin/casbin/v2"</span></span><br><span class="line">	gormadapter <span class="string">"github.com/casbin/gorm-adapter/v2"</span></span><br><span class="line">	_ <span class="string">"github.com/go-sql-driver/mysql"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    //初始化一个Gorm adapter 并在Casbin enforcer中使用它:</span><br><span class="line">    //Gorm adapter会使用一个名叫casbin的MySQL数据库</span><br><span class="line">    //如果不存在，将会自动创建</span><br><span class="line">    //或者通过 gormadapter.NewAdapterByDB(gormInstance)读取一个已经存在的数据库  </span><br><span class="line"></span><br><span class="line">	a, _ := gormadapter.NewAdapter(<span class="string">"mysql"</span>, <span class="string">"mysql_username:mysql_password@tcp(127.0.0.1:3306)/"</span>)</span><br><span class="line">	e, _ := casbin.NewEnforcer(<span class="string">"examples/rbac_model.conf"</span>, a)</span><br><span class="line">	</span><br><span class="line">	// Or you can use an existing DB <span class="string">"abc"</span> like this:</span><br><span class="line">	// The adapter will use the table named <span class="string">"casbin_rule"</span>.</span><br><span class="line">	// If it doesn<span class="string">'t exist, the adapter will create it automatically.</span></span><br><span class="line"><span class="string">	// a := gormadapter.NewAdapter("mysql", "mysql_username:mysql_password@tcp(127.0.0.1:3306)/abc", true)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	e.LoadPolicy()//从数据库加载策略</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	e.Enforce("alice", "data1", "read")// 检查许可</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	// 更改策略</span></span><br><span class="line"><span class="string">	// e.AddPolicy(...)</span></span><br><span class="line"><span class="string">	// e.RemovePolicy(...)</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	e.SavePolicy()//保存策略</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
-
-
-<h1 id="实际项目举例"><a href="#实际项目举例" class="headerlink" title="实际项目举例"></a>实际项目举例</h1><p><code>rbac_model.conf</code>模型文件配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[request_definition]</span><br><span class="line">r = sub, obj, act</span><br><span class="line"></span><br><span class="line">[policy_definition]</span><br><span class="line">p = sub, obj, act</span><br><span class="line"></span><br><span class="line">[role_definition]</span><br><span class="line">g = _, _</span><br><span class="line"></span><br><span class="line">[policy_effect]</span><br><span class="line">e = some(<span class="built_in">where</span> (p.eft == allow))</span><br><span class="line"></span><br><span class="line">[matchers]</span><br><span class="line">m = r.sub == p.sub &amp;&amp; ParamsMatch(r.obj,p.obj) &amp;&amp; r.act == p.act</span><br></pre></td></tr></table></figure>
-
-<p><code>qmplus.sql</code>表的定义并通过sql往数据库添加数据</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> Navicat Premium Data Transfer</span><br><span class="line"></span><br><span class="line"> Source Server         : qmplus</span><br><span class="line"> Source Server Type    : MySQL</span><br><span class="line"> Source Server Version : 50644</span><br><span class="line"> Source Host           : localhost:3306</span><br><span class="line"> Source Schema         : qmplus</span><br><span class="line"></span><br><span class="line"> Target Server Type    : MySQL</span><br><span class="line"> Target Server Version : 50644</span><br><span class="line"> File Encoding         : 65001</span><br><span class="line"></span><br><span class="line"> Date: 15/04/2020 17:48:50</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">SET NAMES utf8mb4;</span><br><span class="line">SET FOREIGN_KEY_CHECKS = 0;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Table structure <span class="keyword">for</span> casbin_rule</span><br><span class="line">-- ----------------------------</span><br><span class="line">DROP TABLE IF EXISTS `casbin_rule`;</span><br><span class="line">CREATE TABLE `casbin_rule`  (</span><br><span class="line">  `p_type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v0` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v1` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v2` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v3` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v4` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v5` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL</span><br><span class="line">) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Records of casbin_rule</span><br><span class="line">-- ----------------------------</span><br><span class="line">INSERT INTO `casbin_rule` VALUES (<span class="string">'p'</span>, <span class="string">'8881'</span>, <span class="string">'/base/login'</span>, <span class="string">'POST'</span>, <span class="string">''</span>, <span class="string">''</span>, <span class="string">''</span>);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>更新Casbin规则</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func UpdateCasbinApi(oldPath string, newPath string, oldMethod string, newMethod string) error &#123;</span><br><span class="line">	var cs []model.CasbinModel</span><br><span class="line">	err := global.GVA_DB.Table(<span class="string">"casbin_rule"</span>).Where(<span class="string">"v1 = ? AND v2 = ?"</span>, oldPath, oldMethod).Find(&amp;cs).Updates(map[string]string&#123;</span><br><span class="line">		<span class="string">"v1"</span>: newPath,</span><br><span class="line">		<span class="string">"v2"</span>: newMethod,</span><br><span class="line">	&#125;).Error</span><br><span class="line">	<span class="built_in">return</span> err</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中<code>GVA_DB</code>就是全局定义的gorm.DB实例</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var (</span><br><span class="line">	GVA_DB     *gorm.DB</span><br><span class="line">	...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<p>资料</p>
-<p><a href="https://zhuanlan.zhihu.com/p/63769951" target="_blank" rel="noopener">RBAC用户、角色、权限、组设计方案</a><br><a href="https://casbin.org/docs/zh-CN/rbac" target="_blank" rel="noopener">casbin 基于角色的访问控制</a></p>
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
 
       
     </div>
@@ -417,7 +769,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/Gin-JWT-Middleware/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-main/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -431,7 +783,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/18/Gin-JWT-Middleware/" class="post-title-link" itemprop="url">Gin JWT Middleware</a>
+            <a href="/2020/07/07/Java-main/" class="post-title-link" itemprop="url">Java main()</a>
         </h1>
 
         <div class="post-meta">
@@ -442,7 +794,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-04-18 17:08:17 / Modified: 20:37:04" itemprop="dateCreated datePublished" datetime="2020-04-18T17:08:17+08:00">2020-04-18</time>
+              <time title="Created: 2020-07-07 15:45:28 / Modified: 15:48:01" itemprop="dateCreated datePublished" datetime="2020-07-07T15:45:28+08:00">2020-07-07</time>
             </span>
 
           
@@ -456,54 +808,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>在<a href="https://samtake.github.io/2020/04/09/jwt-go/" target="_blank" rel="noopener">jwt-go</a>中我记录了手动封装一个认证中间件，然后今天在看<a href="https://github.com/wenjianzhang/go-admin" target="_blank" rel="noopener">go-admin</a>后台管理系统源码的时候发现作者用到了一个第三方库<a href="https://github.com/appleboy/gin-jwt" target="_blank" rel="noopener">gin-jwt</a>实现了同样的功能，今天就一起来看一下吧！</p>
-<h1 id="gin-jwt能做什么？"><a href="#gin-jwt能做什么？" class="headerlink" title="gin-jwt能做什么？"></a>gin-jwt能做什么？</h1><ul>
-<li><p><code>gin-jwt</code>是基于<code>jwt-go</code>实现的一个认证中间件，同时也是专为Gin框架实现的。</p>
-</li>
-<li><p><code>gin-jwt</code>提供了额外的函数功能：给登录接口生成token令牌，以及用于刷新token的函数。</p>
-</li>
-</ul>
-<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><p>整个框架就一个<a href="https://github.com/appleboy/gin-jwt/blob/master/auth_jwt.go" target="_blank" rel="noopener">auth_jwt.go</a>文件，共747行代码。我们从头往下看：</p>
-<p>先定义了一个返回值为map类型的接口<br><code>type MapClaims map[string]interface{}</code></p>
-<p>接着就是一个结构体<code>GinJWTMiddleware</code>,还记得我们在使用jwt-go的时候，也会定义一个结构体，里面存放了关于生成token的一些信息，包括：token发放时间、是谁发放的token、主题等，这里也一样：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> GinJWTMiddleware struct &#123;</span><br><span class="line">	// Realm name to display to the user. Required.</span><br><span class="line">	Realm string</span><br><span class="line"></span><br><span class="line">	// 算法类型： HS256, HS384, HS512默认是 HS256.</span><br><span class="line">	SigningAlgorithm string</span><br><span class="line"></span><br><span class="line">	// 加密密钥.</span><br><span class="line">	Key []byte</span><br><span class="line"></span><br><span class="line">	// 刷新Token有效期.默认一个小时</span><br><span class="line">	MaxRefresh time.Duration</span><br><span class="line"></span><br><span class="line">	// 认证回调函数</span><br><span class="line">	Authenticator func(c *gin.Context) (interface&#123;&#125;, error)</span><br><span class="line"></span><br><span class="line">	// 通过认证后的处理函数</span><br><span class="line">	Authorizator func(data interface&#123;&#125;, c *gin.Context) bool</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	// 认证失败的回调函数</span><br><span class="line">	Unauthorized func(*gin.Context, int, string)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//登录响应函数</span><br><span class="line">	LoginResponse func(*gin.Context, int, string, time.Time)</span><br><span class="line"></span><br><span class="line">	// 超时响应函数</span><br><span class="line">	LogoutResponse func(*gin.Context, int)</span><br><span class="line"></span><br><span class="line">	// 刷新响应函数</span><br><span class="line">	RefreshResponse func(*gin.Context, int, string, time.Time)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <p>每个程序都需要一个入口，对于 Java 程序来说，入口就是 main 方法。</p>
+<p>public static void main(<code>String[] args</code>) {}<br>public、static、void 这 3 个关键字在前面的内容已经介绍过了，如果觉得回去找比较麻烦的话，这里再贴一下：</p>
+<p>public 关键字是另外一个访问修饰符，除了可以声明方法和变量（所有类可见），还可以声明类。main() 方法必须声明为 public。</p>
+<p>static 关键字表示该变量或方法是静态变量或静态方法，可以直接通过类访问，不需要实例化对象来访问。</p>
+<p>void 关键字用于指定方法没有返回值。</p>
+<p>另外，main 关键字为方法的名字，Java 虚拟机在执行程序时会寻找这个标识符；args 为 main() 方法的参数名，它的类型为一个 String 数组，也就是说，在使用 java 命令执行程序的时候，可以给 main() 方法传递字符串数组作为参数。</p>
+<p>java HelloWorld 沉默王二 沉默王三<br>javac 命令用来编译程序，java 命令用来执行程序，HelloWorld 为这段程序的类名，沉默王二和沉默王三为字符串数组，中间通过空格隔开，然后就可以在 main() 方法中通过 args[0] 和 args[1] 获取传递的参数值了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class HelloWorld &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"沉默王二"</span>.equals(args[0])) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"沉默王三"</span>.equals(args[1])) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>函数(只列了几个目前见到的)</p>
-<p>登录返回token</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// LoginHandler can be used by clients to get a jwt token.</span><br><span class="line">// Payload needs to be json <span class="keyword">in</span> the form of &#123;<span class="string">"username"</span>: <span class="string">"USERNAME"</span>, <span class="string">"password"</span>: <span class="string">"PASSWORD"</span>&#125;.</span><br><span class="line">// Reply will be of the form &#123;<span class="string">"token"</span>: <span class="string">"TOKEN"</span>&#125;.</span><br><span class="line">func (mw *GinJWTMiddleware) LoginHandler(c *gin.Context) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>刷新token</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// RefreshHandler can be used to refresh a token. The token still needs to be valid on refresh.</span><br><span class="line">// Shall be put under an endpoint that is using the GinJWTMiddleware.</span><br><span class="line">// Reply will be of the form &#123;<span class="string">"token"</span>: <span class="string">"TOKEN"</span>&#125;.</span><br><span class="line">func (mw *GinJWTMiddleware) RefreshHandler(c *gin.Context) &#123;</span><br><span class="line">	tokenString, expire, err := mw.RefreshToken(c)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		mw.unauthorized(c, http.StatusUnauthorized, mw.HTTPStatusMessageFunc(err, c))</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	mw.RefreshResponse(c, http.StatusOK, tokenString, expire)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>验证API时需要用到，例如检测权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// MiddlewareFunc makes GinJWTMiddleware implement the Middleware interface.</span><br><span class="line">func (mw *GinJWTMiddleware) MiddlewareFunc() gin.HandlerFunc &#123;</span><br><span class="line">	<span class="built_in">return</span> func(c *gin.Context) &#123;</span><br><span class="line">		mw.middlewareImpl(c)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><h2 id="测试官方demo"><a href="#测试官方demo" class="headerlink" title="测试官方demo"></a>测试官方demo</h2><p>源码地址：<a href="https://github.com/samtake/gin-jwt-demo" target="_blank" rel="noopener">https://github.com/samtake/gin-jwt-demo</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[GIN] 2020/04/18 - 18:29:51 | 200 |    1.502204ms |             ::1 | POST     <span class="string">"/login"</span></span><br><span class="line">[GIN] 2020/04/18 - 18:30:50 | 401 |     112.029µs |             ::1 | GET      <span class="string">"/auth/hello"</span></span><br><span class="line">[GIN] 2020/04/18 - 18:32:55 | 200 |     346.218µs |             ::1 | GET      <span class="string">"/auth/hello"</span></span><br></pre></td></tr></table></figure>
-
-<p>直接请求401</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: 401,</span><br><span class="line">    <span class="string">"message"</span>: <span class="string">"cookie token is empty"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>登录返回token</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: 200,</span><br><span class="line">    <span class="string">"expire"</span>: <span class="string">"2020-04-18T19:29:51+08:00"</span>,</span><br><span class="line">    <span class="string">"token"</span>: <span class="string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODcyMDkzOTEsImlkIjoiYWRtaW4iLCJvcmlnX2lhdCI6MTU4NzIwNTc5MX0.o55urrL-qhUqpqEKK8k8KF8yBqrgZo_EtKmuOW1bHnc"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>携带token请求</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"text"</span>: <span class="string">"Hello World."</span>,</span><br><span class="line">    <span class="string">"userID"</span>: <span class="string">"admin"</span>,</span><br><span class="line">    <span class="string">"userName"</span>: <span class="string">"admin"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="go-admin中的使用"><a href="#go-admin中的使用" class="headerlink" title="go-admin中的使用"></a>go-admin中的使用</h2><p>这里也就记录别人在项目中是怎么使用的，以及有没有可以学习的地方。</p>
-<p><code>auth.go</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package middleware</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	config2 <span class="string">"go-admin/config"</span></span><br><span class="line">	<span class="string">"go-admin/handler"</span></span><br><span class="line">	jwt <span class="string">"go-admin/pkg/jwtauth"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func AuthInit() (*jwt.GinJWTMiddleware, error) &#123;</span><br><span class="line">	<span class="built_in">return</span> jwt.New(&amp;jwt.GinJWTMiddleware&#123;</span><br><span class="line">		Realm:           <span class="string">"test zone"</span>,</span><br><span class="line">		Key:             []byte(<span class="string">"secret key"</span>),</span><br><span class="line">		Timeout:         time.Hour,</span><br><span class="line">		MaxRefresh:      time.Hour,</span><br><span class="line">		IdentityKey:     config2.ApplicationConfig.JwtSecret,</span><br><span class="line">		PayloadFunc:     handler.PayloadFunc,</span><br><span class="line">		IdentityHandler: handler.IdentityHandler,</span><br><span class="line">		Authenticator:   handler.Authenticator,</span><br><span class="line">		Authorizator:    handler.Authorizator,</span><br><span class="line">		Unauthorized:    handler.Unauthorized,</span><br><span class="line">		TokenLookup:     <span class="string">"header: Authorization, query: token, cookie: jwt"</span>,</span><br><span class="line">		TokenHeadName:   <span class="string">"Bearer"</span>,</span><br><span class="line">		TimeFunc:        time.Now,</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>permission.go</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package middleware</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">	<span class="string">"go-admin/pkg"</span></span><br><span class="line">	mycasbin <span class="string">"go-admin/pkg/casbin"</span></span><br><span class="line">	<span class="string">"go-admin/pkg/jwtauth"</span></span><br><span class="line">	_ <span class="string">"go-admin/pkg/jwtauth"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//权限检查中间件</span><br><span class="line">func AuthCheckRole() gin.HandlerFunc &#123;</span><br><span class="line">	<span class="built_in">return</span> func(c *gin.Context) &#123;</span><br><span class="line">		data, _ := c.Get(<span class="string">"JWT_PAYLOAD"</span>)</span><br><span class="line">		v := data.(jwtauth.MapClaims)</span><br><span class="line">		e, err := mycasbin.Casbin()</span><br><span class="line">		pkg.HasError(err,<span class="string">""</span>,500)</span><br><span class="line">		//检查权限</span><br><span class="line">		res, err := e.Enforce(v[<span class="string">"rolekey"</span>], c.Request.URL.Path, c.Request.Method)</span><br><span class="line">		log.Println(<span class="string">"----------------"</span>, v[<span class="string">"rolekey"</span>], c.Request.URL.Path, c.Request.Method)</span><br><span class="line"></span><br><span class="line">			pkg.HasError(err,<span class="string">""</span>,500)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> res &#123;</span><br><span class="line">			c.Next()</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">				<span class="string">"status"</span>: 401,</span><br><span class="line">				<span class="string">"msg"</span>:    <span class="string">"对不起，您没有该接口访问权限，请联系管理员"</span>,</span><br><span class="line">			&#125;)</span><br><span class="line">			c.Abort()</span><br><span class="line">			<span class="built_in">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>router.go</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">func InitRouter() *gin.Engine &#123;</span><br><span class="line"></span><br><span class="line">	// the jwt middleware</span><br><span class="line">	authMiddleware, err := middleware.AuthInit()//初始化</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		_ = fmt.Errorf(<span class="string">"JWT Error"</span>, err.Error())</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	r.POST(<span class="string">"/login"</span>, authMiddleware.LoginHandler)  //框架自带</span><br><span class="line"></span><br><span class="line">	// Refresh time can be longer than token timeout</span><br><span class="line">	r.GET(<span class="string">"/refresh_token"</span>, authMiddleware.RefreshHandler)//框架自带</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    apiv1 := r.Group(<span class="string">"/api/v1"</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		apiv1.GET(<span class="string">"/monitor/server"</span>, monitor.ServerInfo)</span><br><span class="line">		...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    auth := r.Group(<span class="string">"/api/v1"</span>)</span><br><span class="line">	auth.Use(authMiddleware.MiddlewareFunc()).Use(middleware.AuthCheckRole())//检测权限</span><br><span class="line">	&#123;</span><br><span class="line">		auth.GET(<span class="string">"/deptList"</span>, system.GetDeptList)</span><br><span class="line">		...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>写到最后发现这里有篇博客写的挺好的，可以看看～<br><a href="https://blog.firerain.me/article/18" target="_blank" rel="noopener">https://blog.firerain.me/article/18</a></p>
-<p>.end</p>
+<p>main() 方法的写法并不是唯一的，还有其他几种变体，尽管它们可能并不常见，可以简单来了解一下。</p>
+<p>第二种，把方括号 [] 往 args 靠近而不是 String 靠近：</p>
+<p><code>public static void main(String []args) { }</code><br>第三种，把方括号 [] 放在 args 的右侧：</p>
+<p><code>public static void main(String args[]) { }</code><br>第四种，还可以把数组形式换成可变参数的形式：</p>
+<p><code>public static void main(String...args) { }</code><br>第五种，在 main() 方法上添加另外一个修饰符 strictfp，用于强调在处理浮点数时的兼容性：</p>
+<p><code>public strictfp static void main(String[] args) { }</code><br>也可以在 main() 方法上添加 final 关键字或者 synchronized 关键字。</p>
+<p>第六种，还可以为 args 参数添加 final 关键字：</p>
+<p><code>public static void main(final String[] args) { }</code><br>第七种，最复杂的一种，所有可以添加的关键字统统添加上：</p>
+<p><code>final static synchronized strictfp void main(final String[] args) { }</code><br>当然了，并不需要为了装逼特意把 main() 方法写成上面提到的这些形式，使用 IDE 提供的默认形式就可以了。</p>
 
       
     </div>
@@ -523,7 +845,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/17/Golang%E8%B0%83%E7%94%A8shell%E8%84%9A%E6%9C%AC/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E5%8C%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -537,7 +859,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/17/Golang%E8%B0%83%E7%94%A8shell%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">Golang调用shell脚本</a>
+            <a href="/2020/07/07/Java-%E5%8C%85/" class="post-title-link" itemprop="url">Java 包</a>
         </h1>
 
         <div class="post-meta">
@@ -548,18 +870,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-04-17 18:02:51 / Modified: 20:51:58" itemprop="dateCreated datePublished" datetime="2020-04-17T18:02:51+08:00">2020-04-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Golang/" itemprop="url" rel="index">
-                    <span itemprop="name">Golang</span>
-                  </a>
-                </span>
+              <time title="Created: 2020-07-07 15:10:31 / Modified: 15:45:49" itemprop="dateCreated datePublished" datetime="2020-07-07T15:10:31+08:00">2020-07-07</time>
             </span>
 
           
@@ -573,30 +884,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天在用一些工具处理文件的时候，批量手动操作真会累死人，时间成本不划算，想着怎么用脚本做成自动化，思路大概是每个脚本处理不同的功能，也就没必要将所有功能写到一个脚本了，担心万一某个模块出了问题影响整个流程。然后其中一个功能需要调用某个网页的接口处理，想了好久，请教了下一些前辈，给出的建议就是破解接口，这时候我立刻想到了Go…大概分三步：</p>
-<ul>
-<li>shell调用工具拿到处理好的数据</li>
-<li>再由Go实现对接口的数据请求…</li>
-<li>请求回来接口之后再交由shell调用工具做最后的处理，从而完成整个模块的工作。</li>
-</ul>
-<p>这里记住一点：shell脚本无非就做成参数形式。</p>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><code>os/exec</code>包可用于从Go触发任何OS命令。 相同的可用于触发.sh文件。</p>
-<p>具体函数接口参考官方文档<a href="https://pkg.go.dev/os/exec?tab=doc" target="_blank" rel="noopener">package exec </a></p>
-<h1 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h1><p>首先，在同一目录中创建一个test.sh文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">your_name=<span class="string">"start test ..."</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$your_name</span></span><br></pre></td></tr></table></figure>
-
-<p>执行<code>chmod +x test.sh</code>，不然会因为没有执行权限报错：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Execute Shell:./test.sh failed with error:<span class="built_in">exit</span> status 126%</span><br></pre></td></tr></table></figure>
-
-
-<p>调用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"os/exec"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	fmt.Println(<span class="string">"1"</span>)</span><br><span class="line"></span><br><span class="line">	<span class="built_in">command</span> := `./test.sh .`</span><br><span class="line">	cmd := exec.Command(<span class="string">"/bin/bash"</span>, <span class="string">"-c"</span>, <span class="built_in">command</span>)</span><br><span class="line"></span><br><span class="line">	output, err := cmd.Output()</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"Execute Shell:%s failed with error:%s"</span>, <span class="built_in">command</span>, err.Error())</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">"Execute Shell:%s finished with output:\n%s"</span>, <span class="built_in">command</span>, string(output))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">Execute Shell:./test.sh . finished with output:</span><br><span class="line">start <span class="built_in">test</span> ...</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://golangbyexample.com//" target="_blank" rel="noopener">https://golangbyexample.com//</a></p>
-
+          <p>在 Java 中，我们使用 package（包）对相关的类、接口和子包进行分组。这样做的好处有：</p>
+<p>使相关类型更容易查找<br>避免命名冲突，比如说 <code>com.itwanger.Hello</code> 和 <code>com.itwangsan.Hello</code> 不同<br>通过包和访问权限控制符来限定类的可见性</p>
+<h1 id="01、创建一个包"><a href="#01、创建一个包" class="headerlink" title="01、创建一个包"></a>01、创建一个包</h1><p>package com.itwanger;<br>可以使用 package 关键字来定义一个包名，需要注意的是，这行代码必须处于一个类中的第一行。强烈建议在包中声明类，不要缺省，否则就失去了包结构的带来的好处。</p>
+<p>包的命名应该遵守以下规则：</p>
+<p>应该全部是小写字母<br>可以包含多个单词，单词之间使用“.”连接，比如说 java.lang<br>名称由公司名或者组织名确定，采用倒序的方式，比如说，我个人博客的域名是 <a href="http://www.itwanger.com，所以我创建的包名是就是" target="_blank" rel="noopener">www.itwanger.com，所以我创建的包名是就是</a> com.itwanger.xxxx。<br>每个包或者子包都在磁盘上有自己的目录结构，如果 Java 文件时在 com.itwanger.xxxx 包下，那么该文件所在的目录结构就应该是 com-&gt;itwanger-&gt;xxxx。</p>
+<h1 id="02、使用包"><a href="#02、使用包" class="headerlink" title="02、使用包"></a>02、使用包</h1><p>让我们在名为 test 的子包里新建一个 Cmower 类：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package com.itwanger.test;</span><br><span class="line"></span><br><span class="line">public class Cmower &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果需要在另外一个包中使用 Cmower 类，就需要通过 import 关键字将其引入。有两种方式可供选择，第一种，<code>使用 * 导入包下所有的类：</code></p>
+<p><code>import com.itwanger.test.*;</code></p>
+<p>第二种，使用类名导入该类：</p>
+<p>import com.itwanger.test.Cmower;<br>Java 和第三方类库提供了很多包可供使用，可以通过上述的方式导入类库使用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package com.itwanger.test;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class CmowerTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        List&lt;Cmower&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">        list.add(new Cmower());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="03、全名"><a href="#03、全名" class="headerlink" title="03、全名"></a>03、全名</h1><p>有时，我们可能会使用来自不同包下的两个具有相同名称的类。例如，我们可能同时使用 java.sql.Date 和 java.util.Date。<code>当我们遇到命名冲突时，我们需要对至少一个类使用全名（包名+类名）。</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;com.itwanger.test.Cmower&gt; list1 = new ArrayList&lt;&gt;();</span><br><span class="line">list.add(new com.itwanger.test.Cmower());</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -615,7 +916,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/E-R%E5%9B%BE/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/Python%E6%A0%B9%E6%8D%AEexcel%E8%A1%A8%E6%A0%BC%E7%BC%96%E5%8F%B7%E5%8C%B9%E9%85%8Dcsv%E7%9A%84url/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -629,95 +930,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/12/E-R%E5%9B%BE/" class="post-title-link" itemprop="url">E-R图</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-04-12 14:46:13" itemprop="dateCreated datePublished" datetime="2020-04-12T14:46:13+08:00">2020-04-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-13 14:41:46" itemprop="dateModified" datetime="2020-04-13T14:41:46+08:00">2020-04-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>E-R图也称实体-联系图(Entity Relationship Diagram)，也就是概念模型，可以用来做数据库设计。今天先记录下该怎么看E-R图，至于软件的操作下次补充记录～</p>
-<p>作图工具在Mac端可以用<a href="https://dbeaver.io/download/" target="_blank" rel="noopener">dbeaver</a>,原因呢主要是免费吧。</p>
-<p>然后说说今天我为什么怎么就扯到了E-R图呢？是我在撸一个golang项目的时候，发觉对后台数据库不知道怎么设计，然后就查了下资料，如何设计也算说的很明了，对应的关系就是用E-R图来画的。</p>
-<h1 id="如何看图"><a href="#如何看图" class="headerlink" title="如何看图"></a>如何看图</h1><p><img src="/2020/04/12/E-R%E5%9B%BE/ER01.png" alt="ER01.png"></p>
-<p>上面👆概念数据模型中包含了：权限、角色、用户、文章、栏目、评论和两个桥表，其中1对1或1对多等关系在模型中体现。其中：</p>
-<ul>
-<li><code>PK</code>primary key</li>
-<li><code>箭头</code>代表的是关联关系</li>
-<li><code>虚线</code>代表的是备注说明</li>
-</ul>
-<p>具体举例（红框部分）：<br><img src="/2020/04/12/E-R%E5%9B%BE/ER02.png" alt="ER02.png"></p>
-<ul>
-<li>用户角色表(cms_user_role) 同时属于用户表(cms_user)和角色表(cms_role)</li>
-<li>说白了，就是一个用户会有多个角色</li>
-</ul>
-<p><img src="/2020/04/12/E-R%E5%9B%BE/%E7%94%A8%E4%BE%8B01.png" alt="用例01.png"><br>读者可以进行阅读、注册、登录等操作。登录状态下又可以进行评论与阅读操作。</p>
-<p><img src="/2020/04/12/E-R%E5%9B%BE/%E7%94%A8%E4%BE%8B02.png" alt="用例02.png"><br>小编是作者身份，可以对自己的文章进行管理。</p>
-<p><img src="/2020/04/12/E-R%E5%9B%BE/%E7%94%A8%E4%BE%8B03.png" alt="用例03.png"><br>超级管理员拥有系统最大权限(或者所有权限)，可以进行栏目管理、文章管理（文章管理隐式的包含了拥有阅读权限）、权限管理、角色管理、评论审核等操作。可对文章进行审核，权限管理下可对角色进行管理。</p>
-<h1 id="gorm的实现"><a href="#gorm的实现" class="headerlink" title="gorm的实现"></a>gorm的实现</h1><p>gorm文档中，我们可以找到对模型建立关系的的文档：<a href="https://gorm.io/zh_CN/docs/belongs_to.html" target="_blank" rel="noopener">https://gorm.io/zh_CN/docs/belongs_to.html</a></p>
-<p>依旧以<code>cms_user_role</code>  <code>cms_user</code> <code>cms_role</code> 这三个表为例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//在gorm中，模型的结构以驼峰命名方式书写，在数据表会自动转成对应下划线</span><br><span class="line"></span><br><span class="line">//CmsUserRole .</span><br><span class="line"><span class="built_in">type</span> CmsUserRole struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID     string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	UserID string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"user_id"</span>`</span><br><span class="line">	RoleID string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"role_id"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//CmsUser .</span><br><span class="line"><span class="built_in">type</span> CmsUser struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID       string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	UserName string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"username"</span>`</span><br><span class="line">	Password string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"password"</span>`</span><br><span class="line">	CmsUserRole CmsUserRole `gorm:<span class="string">"foreignkey:CmsUserRoleRefer"</span>` // 将 CmsUserRoleRefer 作为外键</span><br><span class="line">	CmsUserRoleRefer uint</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//CmsRole .</span><br><span class="line"><span class="built_in">type</span> CmsRole struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID          string      `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	Name        string      `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"name"</span>`</span><br><span class="line">	CmsUserRole CmsUserRole `gorm:<span class="string">"foreignkey:CmsUserRoleRefer"</span>` // 将 CmsUserRoleRefer 作为外键</span><br><span class="line">	CmsUserRoleRefer uint</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>到这，你也会发觉用户角色表其实是个中间件。</p>
-<h1 id="资料："><a href="#资料：" class="headerlink" title="资料："></a>资料：</h1><p><a href="https://blog.csdn.net/qq_41306364/article/details/103135904" target="_blank" rel="noopener">【管理系统课程设计】美少女手把手教你后台管理</a><br><a href="https://www.zhihu.com/question/19973018" target="_blank" rel="noopener">在mac上有没有类似PowerDesigner的软件？</a><br><a href="https://www.bilibili.com/video/BV1X7411L7kc?from=search&seid=1650702711585721122" target="_blank" rel="noopener">第1节：7分钟上手ER图</a><br><a href="https://zhuanlan.zhihu.com/p/50448125" target="_blank" rel="noopener">通俗数据库设计（2）E-R图</a><br><a href="https://www.zhihu.com/question/20680795/answer/91850640" target="_blank" rel="noopener">如何使用 MySQL workbench 生成 EER 图？</a><br><a href="https://www.zhihu.com/topic/19630983/top-answers" target="_blank" rel="noopener">E-R图专栏</a><br><a href="https://www.bilibili.com/video/BV1dE411q7Xf?from=search&seid=12985731220509939471" target="_blank" rel="noopener">visio-数据库模型图</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/10/%E9%80%9A%E8%BF%87viper%E8%AF%BB%E5%8F%96%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/10/%E9%80%9A%E8%BF%87viper%E8%AF%BB%E5%8F%96%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">通过viper读取项目配置文件</a>
+            <a href="/2020/06/24/Python%E6%A0%B9%E6%8D%AEexcel%E8%A1%A8%E6%A0%BC%E7%BC%96%E5%8F%B7%E5%8C%B9%E9%85%8Dcsv%E7%9A%84url/" class="post-title-link" itemprop="url">Python根据excel表格编号匹配csv的url</a>
         </h1>
 
         <div class="post-meta">
@@ -728,18 +941,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-04-10 22:31:12 / Modified: 22:35:59" itemprop="dateCreated datePublished" datetime="2020-04-10T22:31:12+08:00">2020-04-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Golang/" itemprop="url" rel="index">
-                    <span itemprop="name">Golang</span>
-                  </a>
-                </span>
+              <time title="Created: 2020-06-24 10:57:23 / Modified: 11:06:54" itemprop="dateCreated datePublished" datetime="2020-06-24T10:57:23+08:00">2020-06-24</time>
             </span>
 
           
@@ -753,16 +955,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a href="https://github.com/spf13/viper" target="_blank" rel="noopener">https://github.com/spf13/viper</a></p>
-<p>在项目中创建一个<code>config</code>文件夹，新建一个<code>application.yml</code>文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 8099</span><br><span class="line">datasource:</span><br><span class="line">  driverName: mysql</span><br><span class="line">  host: 127.0.0.1</span><br><span class="line">  port: 3306</span><br><span class="line">  database: gin_vue_bs</span><br><span class="line">  username: root</span><br><span class="line">  password: 123456</span><br><span class="line">  charset: utf8</span><br></pre></td></tr></table></figure>
-
-<p>初始化配置文件,要在初始化数据库之前调用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//InitConfig 初始化配置文件.</span><br><span class="line">func <span class="function"><span class="title">InitConfig</span></span>() &#123;</span><br><span class="line">	workDir, _ := os.Getwd()                 //工程项目目录</span><br><span class="line">	viper.SetConfigName(<span class="string">"application"</span>)       //配置文件名</span><br><span class="line">	viper.SetConfigType(<span class="string">"yml"</span>)               //配置文件类型</span><br><span class="line">	viper.AddConfigPath(workDir + <span class="string">"/config"</span>) //配置文件目录</span><br><span class="line">	err := viper.ReadInConfig()</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		panic(err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>调用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//InitDB .</span><br><span class="line">func InitDB() *gorm.DB &#123;</span><br><span class="line">	driverName := viper.GetString(<span class="string">"datasource.driverName"</span>)</span><br><span class="line">	host := viper.GetString(<span class="string">"datasource.host"</span>)</span><br><span class="line">	port := viper.GetString(<span class="string">"datasource.port"</span>)</span><br><span class="line">	database := viper.GetString(<span class="string">"datasource.database"</span>)</span><br><span class="line">	username := viper.GetString(<span class="string">"datasource.username"</span>)</span><br><span class="line">	passwoed := viper.GetString(<span class="string">"datasource.password"</span>)</span><br><span class="line">	charset := <span class="string">"utf8"</span></span><br><span class="line">	args := fmt.Sprintf(<span class="string">"%s:%s@tcp(%s:%s)/%s?charset=%s&amp;parseTime=true"</span>,</span><br><span class="line">		username,</span><br><span class="line">		passwoed,</span><br><span class="line">		host,</span><br><span class="line">		port,</span><br><span class="line">		database,</span><br><span class="line">		charset)</span><br><span class="line"></span><br><span class="line">	db, err := gorm.Open(driverName, args)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		panic(<span class="string">"failed to connect database,err"</span> + err.Error())</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//创建数据表</span><br><span class="line">	db.AutoMigrate(&amp;model.User&#123;&#125;)</span><br><span class="line"></span><br><span class="line">	DB = db</span><br><span class="line">	<span class="built_in">return</span> db</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <ul>
+<li><p><code>export_urls.csv</code>是阿里云oss导出的url表，其中有四个列表字段，依次是：id,barcode,type,serial,img_url</p>
+</li>
+<li><p><code>2.xlsx</code> 是所依据的excel表格，固定的第一列是barcode。</p>
+</li>
+<li><p><code>data.xlsx</code>是生成的结果数据。</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line">import re</span><br><span class="line">import pandas as pd</span><br><span class="line">from openpyxl import Workbook</span><br><span class="line"></span><br><span class="line">rz = re.compile(r<span class="string">'/(\d+-\d)-.+jpg'</span>)</span><br><span class="line"></span><br><span class="line">d = &#123;&#125;</span><br><span class="line"></span><br><span class="line">dkey = &#123;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def open_csv():</span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> file_paths:</span><br><span class="line">        ex = pd.read_csv(file)</span><br><span class="line">        exs = ex.values.tolist()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> exs:</span><br><span class="line">            url = i[4]</span><br><span class="line">            url_id = rz.findall(url)</span><br><span class="line">            <span class="built_in">print</span>(url_id)</span><br><span class="line">            <span class="keyword">if</span> len(url_id)== 0 :</span><br><span class="line">                <span class="built_in">continue</span></span><br><span class="line">            url_id = url_id[0]</span><br><span class="line">            <span class="keyword">if</span> url_id not <span class="keyword">in</span> d:</span><br><span class="line">                d.update(&#123;url_id: [url]&#125;)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                d[url_id].append(url)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items():</span><br><span class="line">        ks = str(k).split(<span class="string">'-'</span>)</span><br><span class="line">        k1 = ks[0]</span><br><span class="line">        k2 = ks[1]</span><br><span class="line">        <span class="keyword">if</span> k1 not <span class="keyword">in</span> dkey:</span><br><span class="line">            <span class="keyword">if</span> str(k2) == <span class="string">'1'</span>:</span><br><span class="line">                dkey.update(&#123;k1: &#123;<span class="string">'0'</span>: [], <span class="string">'1'</span>: v&#125;&#125;)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dkey.update(&#123;k1: &#123;<span class="string">'0'</span>: v, <span class="string">'1'</span>: []&#125;&#125;)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> str(k2) == <span class="string">'1'</span>:</span><br><span class="line">                dkey[k1][<span class="string">'1'</span>].extend(v)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dkey[k1][<span class="string">'0'</span>].extend(v)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> k, v <span class="keyword">in</span> dkey.items():</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">type</span>(k), v)</span><br><span class="line">        wb.append([str(k), str(v[<span class="string">'0'</span>]), str(v[<span class="string">'1'</span>])])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> orl_key:</span><br><span class="line">        <span class="keyword">if</span> str(i) not <span class="keyword">in</span> dkey:</span><br><span class="line">            <span class="built_in">print</span>(<span class="built_in">type</span>(i), <span class="string">'iii'</span>)</span><br><span class="line">            wb.append([str(i)])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    orl_urlids = pd.read_excel(r<span class="string">'2.xlsx'</span>)</span><br><span class="line">    orl_urls = orl_urlids.values.tolist()</span><br><span class="line">    orl_key = [i[0] <span class="keyword">for</span> i <span class="keyword">in</span> orl_urls]</span><br><span class="line"></span><br><span class="line">    wk = Workbook()</span><br><span class="line">    wb = wk.active</span><br><span class="line"></span><br><span class="line">    file_paths = [<span class="string">'./export_urls.csv'</span>]</span><br><span class="line">    open_csv()</span><br><span class="line">    wk.save(r<span class="string">'data.xlsx'</span>)</span><br><span class="line">    <span class="comment"># """</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -781,7 +982,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/10/dto%E4%B8%8Edao/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/20/gorm-Model%E7%9A%84%E5%8C%85%E5%90%AB%E5%AD%97%E6%AE%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -795,7 +996,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/10/dto%E4%B8%8Edao/" class="post-title-link" itemprop="url">dto与dao</a>
+            <a href="/2020/05/20/gorm-Model%E7%9A%84%E5%8C%85%E5%90%AB%E5%AD%97%E6%AE%B5/" class="post-title-link" itemprop="url">gorm.Model的包含字段</a>
         </h1>
 
         <div class="post-meta">
@@ -804,26 +1005,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-04-10 21:33:56" itemprop="dateCreated datePublished" datetime="2020-04-10T21:33:56+08:00">2020-04-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-19 15:31:24" itemprop="dateModified" datetime="2020-05-19T15:31:24+08:00">2020-05-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Golang/" itemprop="url" rel="index">
-                    <span itemprop="name">Golang</span>
-                  </a>
-                </span>
+              <time title="Created: 2020-05-20 10:31:06 / Modified: 10:38:18" itemprop="dateCreated datePublished" datetime="2020-05-20T10:31:06+08:00">2020-05-20</time>
             </span>
 
           
@@ -837,21 +1021,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="dto"><a href="#dto" class="headerlink" title="dto"></a>dto</h1><p><code>dto</code>数据传输对象(Data Transfer Object)，是一种设计模式之间传输数据的软件应用系统。数据传输目标往往是数据访问对象从数据库中检索数据。数据传输对象与数据交互对象或数据访问对象之间的差异是一个以不具有任何行为除了存储和检索的数据（访问和存取器）。</p>
-<p>在golang中目前我遇到是用于控制返回的字段，如：在User中由多个字段，我希望只返回<code>Name</code>和<code>Telephone</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package dto</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"gin_vue_bs/model"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//UserDto .</span><br><span class="line"><span class="built_in">type</span> UserDto struct &#123;</span><br><span class="line">	Name      string `json:<span class="string">"name"</span>`</span><br><span class="line">	Telephone string `json:<span class="string">"telephone"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//ToUserDto .</span><br><span class="line">func ToUserDto(user model.User) UserDto &#123;</span><br><span class="line">	<span class="built_in">return</span> UserDto&#123;</span><br><span class="line">		Name:      user.Name,</span><br><span class="line">		Telephone: user.Telephone,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <p><a href="https://github.com/jinzhu/gorm/blob/master/model.go" target="_blank" rel="noopener">gorm.Model</a>源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package gorm</span><br><span class="line"></span><br><span class="line">import <span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">// Model base model definition, including fields `ID`, `CreatedAt`, `UpdatedAt`, `DeletedAt`, <span class="built_in">which</span> could be embedded <span class="keyword">in</span> your models</span><br><span class="line">//    <span class="built_in">type</span> User struct &#123;</span><br><span class="line">//      gorm.Model</span><br><span class="line">//    &#125;</span><br><span class="line"><span class="built_in">type</span> Model struct &#123;</span><br><span class="line">	ID        uint `gorm:<span class="string">"primary_key"</span>`</span><br><span class="line">	CreatedAt time.Time</span><br><span class="line">	UpdatedAt time.Time</span><br><span class="line">	DeletedAt *time.Time `sql:<span class="string">"index"</span>`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	Name      string `gorm:<span class="string">"type:varchar(20);not null"</span>`</span><br><span class="line">	Telephone string `gorm:<span class="string">"varchar(110;not null;unique"</span>`</span><br><span class="line">	Password  string `gorm:<span class="string">"size:255;not null"</span>`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以我们创建结构体的时候的就不需要包含这几个字段了，不然后会报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import (</span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	Id            int        `json:<span class="string">"id"</span> form:<span class="string">"id"</span> gorm:<span class="string">"primary_key"</span>` // 主键ID</span><br><span class="line">	CreatedAt     time.Time  `gorm:<span class="string">""</span>json:<span class="string">"createdAt"</span>`                // 创建时间</span><br><span class="line">	UpdatedAt     time.Time  `gorm:<span class="string">""</span>json:<span class="string">"updatedAt"</span>`                // 更新时间</span><br><span class="line">	DeletedAt     *time.Time `gorm:<span class="string">"index"</span>json:<span class="string">"deletedAt"</span>`           // 删除时间</span><br><span class="line">	Name          string     `gorm:<span class="string">"not null;"</span>json:<span class="string">"name"</span>`            // 姓名</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (*User) TableName() string &#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"user"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (m *User) IsAdministrator() bool &#123;</span><br><span class="line">	<span class="keyword">if</span> m == nil || m.Id &lt;= 0 &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> m.Role == 0 || m.Role == 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.JSON(http.StatusOK, gin.H&#123;<span class="string">"code"</span>: 200, <span class="string">"data"</span>: gin.H&#123;<span class="string">"user"</span>: dto.ToUserDto(user.(model.User))&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">panic: Error 1146: Table <span class="string">'XXXX.user'</span> doesn<span class="string">'t exist</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">goroutine 1 [running]:</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.mysql.HasIndex(0x1a3ebc0, 0xc0000fe240, 0x203000, 0x19037e8, 0x4, 0xc00059ddc0, 0x13, 0x30c8300)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/dialect_mysql.go:189 +0x31f</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).addIndex(0xc0004ec380, 0x18ecd00, 0xc00059ddc0, 0x13, 0xc00037b5a0, 0x2, 0x2)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1212 +0x8d</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*DB).AddIndex(0xc00001dee0, 0xc00059ddc0, 0x13, 0xc00037b5a0, 0x2, 0x2, 0x1)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/main.go:706 +0xac</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).autoIndex(0xc000559900, 0xc000559900)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1312 +0x9a0</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).createTable(0xc000559900, 0x19037e8)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1194 +0x792</span></span><br></pre></td></tr></table></figure>
 
-
-
-<h1 id="dao"><a href="#dao" class="headerlink" title="dao"></a>dao</h1><p><a href="https://baike.sogou.com/v6708028.htm?fromTitle=dao" target="_blank" rel="noopener">dao</a>就叫它数据访问接口吧。</p>
-<p>举一个例子先，例如我们比较常见的 Service 层和 DAO 层的操作，Service 处理完逻辑之后，交给 DAO 层进行持久化，或者需要调用 DAO 层从持久化中获取一些必要的数据；在测试的时候，我们很多时候不希望真的持久化或者从持久化中获取数据，那么就会对 DAO 层进行一些 Mock。</p>
-<p>还有深刻的理解，相关资料：</p>
-<p><a href="http://www.imooc.com/article/33236" target="_blank" rel="noopener">http://www.imooc.com/article/33236</a><br><a href="https://www.cnblogs.com/makor/p/ut-in-go-lang.html" target="_blank" rel="noopener">https://www.cnblogs.com/makor/p/ut-in-go-lang.html</a></p>
-
+<p>改成</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import (</span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/jinzhu/gorm"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	Name          string    `gorm:<span class="string">"not null;"</span>json:<span class="string">"name"</span>`     // 姓名</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (*User) TableName() string &#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"user"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (m *User) IsAdministrator() bool &#123;</span><br><span class="line">	<span class="keyword">if</span> m == nil || m.ID &lt;= 0 &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> m.Role == 0 || m.Role == 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -870,7 +1050,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/jwt-go/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -884,7 +1064,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/09/jwt-go/" class="post-title-link" itemprop="url">jwt-go</a>
+            <a href="/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/" class="post-title-link" itemprop="url">通过drawio插件在vs code上画流程图</a>
         </h1>
 
         <div class="post-meta">
@@ -893,26 +1073,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-04-09 23:27:28" itemprop="dateCreated datePublished" datetime="2020-04-09T23:27:28+08:00">2020-04-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-10 00:19:32" itemprop="dateModified" datetime="2020-04-10T00:19:32+08:00">2020-04-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Golang/" itemprop="url" rel="index">
-                    <span itemprop="name">Golang</span>
-                  </a>
-                </span>
+              <time title="Created: 2020-05-19 15:38:21 / Modified: 15:40:50" itemprop="dateCreated datePublished" datetime="2020-05-19T15:38:21+08:00">2020-05-19</time>
             </span>
 
           
@@ -926,180 +1089,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a href="https://github.com/dgrijalva/jwt-go" target="_blank" rel="noopener">github</a></p>
-<p><a href="https://godoc.org/github.com/dgrijalva/jwt-go" target="_blank" rel="noopener">Documentation</a></p>
-<p>引入包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get <span class="string">"github.com/dgrijalva/jwt-go"</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package common</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"gin_vue_bs/model"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/dgrijalva/jwt-go"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//定义 jwt 加密密钥</span><br><span class="line">var jwtKey = []byte(<span class="string">"a_secret_crect"</span>)</span><br><span class="line"></span><br><span class="line">//Claims .</span><br><span class="line"><span class="built_in">type</span> Claims struct &#123;</span><br><span class="line">	UserID uint</span><br><span class="line">	jwt.StandardClaims</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//ReleaseToken 登录成功则调用该方法发放token.</span><br><span class="line">func ReleaseToken(user model.User) (string, error) &#123;</span><br><span class="line">	expirationTime := time.Now().Add(7 * 24 * time.Hour) //token的过期时间7天</span><br><span class="line">	claims := &amp;Claims&#123;</span><br><span class="line">		UserID: user.ID,</span><br><span class="line">		StandardClaims: jwt.StandardClaims&#123;</span><br><span class="line">			ExpiresAt: expirationTime.Unix(),</span><br><span class="line">			IssuedAt:  time.Now().Unix(), //token发放时间</span><br><span class="line">			Issuer:    <span class="string">"samtake"</span>,         //是谁发放的token</span><br><span class="line">			Subject:   <span class="string">"user token"</span>,      //主题</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)</span><br><span class="line">	tokenString, err := token.SignedString(jwtKey)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">""</span>, err</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> tokenString, nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>返回</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: <span class="string">"200"</span>,</span><br><span class="line">    <span class="string">"data"</span>: &#123;</span><br><span class="line">        <span class="string">"token"</span>: <span class="string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOjMsImV4cCI6MTU4NzA1MjA0MiwiaWF0IjoxNTg2NDQ3MjQyLCJpc3MiOiJzYW10YWtlIiwic3ViIjoidXNlciB0b2tlbiJ9.6a50w6SfsQH7XZBW7zu3_FEGFcrWHRAh2DFYTh9hbCo"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"msg"</span>: <span class="string">"登录成功"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>所返回的token由三部分组成：协议头（token的加密协议）、 源码claims储存的信息 、（前面两部分+jwtKey）的哈希值：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  blogs <span class="built_in">echo</span> eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9  | base64 -D                                                                                                                                                         </span><br><span class="line">&#123;<span class="string">"alg"</span>:<span class="string">"HS256"</span>,<span class="string">"typ"</span>:<span class="string">"JWT"</span>&#125;%</span><br><span class="line">➜  blogs <span class="built_in">echo</span> eyJVc2VySUQiOjMsImV4cCI6MTU4NzA1MjA0MiwiaWF0IjoxNTg2NDQ3MjQyLCJpc3MiOiJzYW10YWtlIiwic3ViIjoidXNlciB0b2tlbiJ9 | base64 -D     </span><br><span class="line">&#123;<span class="string">"UserID"</span>:3,<span class="string">"exp"</span>:1587052042,<span class="string">"iat"</span>:1586447242,<span class="string">"iss"</span>:<span class="string">"samtake"</span>,<span class="string">"sub"</span>:<span class="string">"user token"</span>&#125;%</span><br><span class="line">➜  blogs <span class="built_in">echo</span> 6a50w6SfsQH7XZBW7zu3_FEGFcrWHRAh2DFYTh9hbCo  | base64 -D     </span><br><span class="line">?tä???]?V?;??Q??!?1XNa%</span><br><span class="line">➜  blogs</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/gorm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/09/gorm/" class="post-title-link" itemprop="url">gorm</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-04-09 18:31:28" itemprop="dateCreated datePublished" datetime="2020-04-09T18:31:28+08:00">2020-04-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-11 15:07:11" itemprop="dateModified" datetime="2020-04-11T15:07:11+08:00">2020-04-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Golang/" itemprop="url" rel="index">
-                    <span itemprop="name">Golang</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://gorm.io" target="_blank" rel="noopener">https://gorm.io</a></p>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><code>ORM</code>分别代表：<br>|O|R|M|<br>|:—-|:—|:—-|<br>|Object|Relational|Mapping|<br>|对象|关系|映射|<br>|程序中的对象/实例|关系型数据库|-|<br>|例如Go中的结构体实例|例如MySQL|-|</p>
-<p>MySQL与 Go的对应关系：<br>数据表     &lt;-&gt;     结构体<br>数据行     &lt;-&gt;     结构体实例<br>字段     &lt;-&gt;     结构体字段    </p>
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"math/rand"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/e421083458/gorm"</span> //https://gorm.io</span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">	_ <span class="string">"github.com/go-sql-driver/mysql"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	Name      string `gorm:<span class="string">"type:varchar(20);not null"</span>`</span><br><span class="line">	Telephone string `gorm:<span class="string">"varchar(110;not null;unique"</span>`</span><br><span class="line">	Password  string `gorm:<span class="string">"size:255;not null"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">	db := InitDb()</span><br><span class="line">	defer db.Close()</span><br><span class="line"></span><br><span class="line">	r := gin.New()</span><br><span class="line">	r.Use(gin.Logger())</span><br><span class="line"></span><br><span class="line">	r.Use(gin.Recovery())</span><br><span class="line"></span><br><span class="line">	r.POST(<span class="string">"/api/auth/register"</span>, func(ctx *gin.Context) &#123;</span><br><span class="line">		//获取参数</span><br><span class="line">		name := ctx.PostForm(<span class="string">"name"</span>)</span><br><span class="line">		telephone := ctx.PostForm(<span class="string">"telephone"</span>)</span><br><span class="line">		password := ctx.PostForm(<span class="string">"password"</span>)</span><br><span class="line"></span><br><span class="line">		//验证数据</span><br><span class="line">		<span class="keyword">if</span> len(telephone) != 11 &#123;</span><br><span class="line">			ctx.JSON(http.StatusServiceUnavailable,</span><br><span class="line">				gin.H&#123;<span class="string">"code"</span>: 422, <span class="string">"msg"</span>: <span class="string">"手机号必须为11为"</span>&#125;)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> len(password) &lt; 6 &#123;</span><br><span class="line">			ctx.JSON(http.StatusUnprocessableEntity,</span><br><span class="line">				gin.H&#123;<span class="string">"code"</span>: 422, <span class="string">"msg"</span>: <span class="string">"密码不能少于6位"</span>&#125;)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		//名称如果没有传，则返回随机字符串</span><br><span class="line">		<span class="keyword">if</span> len(name) == 0 &#123;</span><br><span class="line">			name = RandomString(10)</span><br><span class="line">		&#125;</span><br><span class="line">		//判断手机号是否存在</span><br><span class="line">		<span class="keyword">if</span> isTelephoneExist(db, telephone) &#123;</span><br><span class="line">			ctx.JSON(http.StatusUnprocessableEntity,</span><br><span class="line">				gin.H&#123;<span class="string">"code"</span>: 422, <span class="string">"msg"</span>: <span class="string">"用户已经存在"</span>&#125;)</span><br><span class="line">			<span class="built_in">return</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		//创建用户</span><br><span class="line">		newUser := User&#123;</span><br><span class="line">			Name:      name,</span><br><span class="line">			Telephone: telephone,</span><br><span class="line">			Password:  password,</span><br><span class="line">		&#125;</span><br><span class="line">		db.Create(&amp;newUser)</span><br><span class="line"></span><br><span class="line">		//返回结果</span><br><span class="line">		ctx.JSON(200, gin.H&#123;</span><br><span class="line">			<span class="string">"msg"</span>: <span class="string">"注册成功"</span>,</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	panic(r.Run(<span class="string">":8099"</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func isTelephoneExist(db *gorm.DB, telephone string) bool &#123;</span><br><span class="line">	var user User</span><br><span class="line">	db.Where(<span class="string">"telephone = ?"</span>, telephone).First(&amp;user)</span><br><span class="line">	<span class="keyword">if</span> user.ID != 0 &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//返回随机字符串</span><br><span class="line">func RandomString(n int) string &#123;</span><br><span class="line">	var letters = []byte(<span class="string">"iasdhjklfhascvxnjklasdfhjkasdfklasdfhnjklasdfjklasdfjklfasdsdfjk"</span>)</span><br><span class="line">	result := make([]byte, n)</span><br><span class="line"></span><br><span class="line">	rand.Seed(time.Now().Unix())</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := range result &#123;</span><br><span class="line">		result[i] = letters[rand.Intn(len(letters))]</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> string(result)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func InitDb() *gorm.DB &#123;</span><br><span class="line">	driverName := <span class="string">"mysql"</span></span><br><span class="line">	host := <span class="string">"127.0.0.1"</span></span><br><span class="line">	port := <span class="string">"3306"</span></span><br><span class="line">	database := <span class="string">"gin_vue_bs"</span></span><br><span class="line">	username := <span class="string">"root"</span></span><br><span class="line">	passwoed := <span class="string">"123456"</span></span><br><span class="line">	charset := <span class="string">"utf8"</span></span><br><span class="line">	args := fmt.Sprintf(<span class="string">"%s:%s@tcp(%s:%s)/%s?charset=%s&amp;parseTime=true"</span>,</span><br><span class="line">		username,</span><br><span class="line">		passwoed,</span><br><span class="line">		host,</span><br><span class="line">		port,</span><br><span class="line">		database,</span><br><span class="line">		charset)</span><br><span class="line"></span><br><span class="line">	db, err := gorm.Open(driverName, args)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		panic(<span class="string">"failed to connect database,err"</span> + err.Error())</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//创建数据表</span><br><span class="line">	db.AutoMigrate(&amp;User&#123;&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> db</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/2020/04/09/gorm/gorm01.png" alt="gorm01.png"></p>
-<p><img src="/2020/04/09/gorm/gorm02.png" alt="gorm02.png"></p>
-<p>#</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/30/OpenGL-%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/30/OpenGL-%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">OpenGL-学习教程</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-03-30 01:14:44" itemprop="dateCreated datePublished" datetime="2020-03-30T01:14:44+08:00">2020-03-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-09 18:37:13" itemprop="dateModified" datetime="2020-04-09T18:37:13+08:00">2020-04-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenGL</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>世界上最好的OpenGL教程，没有之一：<a href="https://learnopengl-cn.github.io" target="_blank" rel="noopener">LearnOpenGL CN</a></p>
-<p>好好努力！勤奋敲码！</p>
+          <h1 id="打开vs-code-搜索并安装插件drawio"><a href="#打开vs-code-搜索并安装插件drawio" class="headerlink" title="打开vs code 搜索并安装插件drawio"></a>打开vs code 搜索并安装插件drawio</h1><p><img src="/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/drawio01.png" alt="drawio01"></p>
+<h1 id="创建一个后缀为drawio的文件，即可惊醒流程图的编辑"><a href="#创建一个后缀为drawio的文件，即可惊醒流程图的编辑" class="headerlink" title="创建一个后缀为drawio的文件，即可惊醒流程图的编辑"></a>创建一个后缀为drawio的文件，即可惊醒流程图的编辑</h1><p><img src="/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/drawio02.png" alt="drawio02"></p>
 
       
     </div>
@@ -1119,7 +1110,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1165,7 +1156,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-count">107</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

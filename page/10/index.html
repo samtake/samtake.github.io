@@ -213,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/01/Swift%E5%9F%BA%E7%A1%8001/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/14/Gin%E5%9F%BA%E6%9C%AC%E4%BA%86%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -227,7 +227,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2019/11/01/Swift%E5%9F%BA%E7%A1%8001/" class="post-title-link" itemprop="url">Swift基础01</a>
+            <a href="/2020/02/14/Gin%E5%9F%BA%E6%9C%AC%E4%BA%86%E8%A7%A3/" class="post-title-link" itemprop="url">Gin基本了解</a>
         </h1>
 
         <div class="post-meta">
@@ -237,14 +237,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-11-01 23:59:54" itemprop="dateCreated datePublished" datetime="2019-11-01T23:59:54+08:00">2019-11-01</time>
+              <time title="Created: 2020-02-14 17:39:54" itemprop="dateCreated datePublished" datetime="2020-02-14T17:39:54+08:00">2020-02-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-14 01:04:25" itemprop="dateModified" datetime="2019-11-14T01:04:25+08:00">2019-11-14</time>
+                <time title="Modified: 2020-02-28 00:55:42" itemprop="dateModified" datetime="2020-02-28T00:55:42+08:00">2020-02-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,8 +252,14 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
+                  <a href="/categories/Gin/" itemprop="url" rel="index">
+                    <span itemprop="name">Gin</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Gin/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
                   </a>
                 </span>
             </span>
@@ -269,175 +275,1079 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h2><h3 id="使用let关键字来声明常量"><a href="#使用let关键字来声明常量" class="headerlink" title="使用let关键字来声明常量"></a>使用let关键字来声明常量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> temp = 10</span><br></pre></td></tr></table></figure>
-<h3 id="使用var关键字来声明变量"><a href="#使用var关键字来声明变量" class="headerlink" title="使用var关键字来声明变量"></a>使用var关键字来声明变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var temp = 0</span><br><span class="line">temp = 10</span><br></pre></td></tr></table></figure>
-<h3 id="可以在一行中声明多个变量或常量，用逗号分隔"><a href="#可以在一行中声明多个变量或常量，用逗号分隔" class="headerlink" title="可以在一行中声明多个变量或常量，用逗号分隔"></a>可以在一行中声明多个变量或常量，用逗号分隔</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var x=0.1, y=10.1, z=1.0</span><br></pre></td></tr></table></figure>
-<h3 id="类型标注"><a href="#类型标注" class="headerlink" title="类型标注"></a>类型标注</h3><p>在声明一个变量或常量的时候提供类型标注，来明确变量或常量能够储存值的类型</p>
-<p>添加类型标注的方法是在变量或常量的名字后边加一个冒号，再跟一个空格，最后加上要使用的类型名称</p>
-<p>可以在一行中定义多个相关的变量为相同类型，用逗号分隔，只要在最后的变量名字后边加上类型标注</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var msg: String</span><br><span class="line">msg = <span class="string">"message"</span></span><br></pre></td></tr></table></figure>
+          <p>学习资料:<br><a href="https://github.com/gin-gonic/gin" target="_blank" rel="noopener">gin项目地址</a><br><a href="https://gin-gonic.com/zh-cn/" target="_blank" rel="noopener">gin中文文档</a><br><a href="https://www.imooc.com/learn/1175" target="_blank" rel="noopener">Gin入门实战</a><br><a href="https://github.com/samtake/gin-demo" target="_blank" rel="noopener">文中demo</a></p>
+<h2 id="Gin运行流程"><a href="#Gin运行流程" class="headerlink" title="Gin运行流程"></a>Gin运行流程</h2><p><img src="/2020/02/14/Gin%E5%9F%BA%E6%9C%AC%E4%BA%86%E8%A7%A3/gin.png" alt></p>
+<p><code>engine</code>:实现了ServeHTTP接口的handler<br><code>methodTree</code>:根据http请求方法分别维护的路由树<br><code>routerGroup</code>:将路由表分组，方便中间件统一处理<br><code>Context</code>:Gin的上下文，在handler之间传递参数</p>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><p>Router ：路由规则定义</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import (</span><br><span class="line">	hdl <span class="string">"filestore-server/handler"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">// Router ：路由规则定义</span><br><span class="line">func Router() *gin.Engine &#123;</span><br><span class="line">	// gin framework</span><br><span class="line">	router := gin.Default()</span><br><span class="line"></span><br><span class="line">	// 静态资源处理</span><br><span class="line">	router.Static(<span class="string">"/static/"</span>, <span class="string">"./static"</span>)</span><br><span class="line"></span><br><span class="line">	// 定义接口</span><br><span class="line">	router.GET(<span class="string">"/user/signup"</span>, hdl.SignupHandler)</span><br><span class="line">    router.POST(<span class="string">"/user/signup"</span>, hdl.DoSignupHandler)</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> router</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="变量和常量命名"><a href="#变量和常量命名" class="headerlink" title="变量和常量命名"></a>变量和常量命名</h3><p>几乎可以使用任何自负，甚至包括Unicode字符</p>
-<p>不能包括空白字符、数学符号、箭头、保留的（或无效的）Unicode码位、连线和制表符。也不能以数字开头。</p>
-<h3 id="打印常量和变量"><a href="#打印常量和变量" class="headerlink" title="打印常量和变量"></a>打印常量和变量</h3><p>print</p>
-<p>字符串插值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> str = <span class="string">"show string"</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"显示str\(str)"</span>)</span><br></pre></td></tr></table></figure>
 
-<h2 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h2><h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><p>8，16，32，64位编码的有符号和无符号整数（例如：UInt8,Int8）</p>
-<p>通过min和max属性访问每个整数类型的最小值和最大值</p>
-<p>Int，拥有与当前平台的原生字相同的长度；UInt，与平台长度相关的无符号整数。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"UInt8 min \(UInt8.min), UInt8 max \(UInt8.max)"</span>)</span><br></pre></td></tr></table></figure>
+<p>handler</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// SignupHandler : 处理用户注册请求</span><br><span class="line">func SignupHandler(c *gin.Context) &#123;</span><br><span class="line">	c.Redirect(http.StatusFound, <span class="string">"http://"</span>+c.Request.Host+<span class="string">"/static/view/signup.html"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><p> Double 64位浮点数，至少有15位数字的精度</p>
-<p> Float 32位浮点数，至少有6位数字的精度</p>
-<h3 id="Bool"><a href="#Bool" class="headerlink" title="Bool"></a>Bool</h3><p>表示true和false</p>
-<p>Swift的类型安全机制会阻止你用一个非布尔量的值替代掉Bool</p>
-<h3 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h3><p><img src="/2019/11/01/Swift%E5%9F%BA%E7%A1%8001/Swift_%E6%95%B0%E5%80%BC%E8%8C%83%E5%9B%B4.png" alt="Swift_数值范围"></p>
-<h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3><p> 类型别名是一个为已存在类型定义的一个可选择的名字<br> <code>typealias</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typealias AudioSample = UInt8</span><br><span class="line"><span class="built_in">let</span> sample: AudioSample = 32</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// DoSignupHandler : 处理用户注册请求</span><br><span class="line">func DoSignupHandler(c *gin.Context) &#123;</span><br><span class="line">	username := c.Request.FormValue(<span class="string">"username"</span>)</span><br><span class="line">	passwd := c.Request.FormValue(<span class="string">"password"</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> len(username) &lt; 3 || len(passwd) &lt; 5 &#123;</span><br><span class="line">		c.JSON(http.StatusOK,</span><br><span class="line">			gin.H&#123;</span><br><span class="line">				<span class="string">"msg"</span>: <span class="string">"Invalid parameter"</span>,</span><br><span class="line">			&#125;)</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 对密码进行加盐及取Sha1值加密</span><br><span class="line">	encPasswd := util.Sha1([]byte(passwd + pwdSalt))</span><br><span class="line">	// 将用户信息注册到用户表中</span><br><span class="line">	suc := dblayer.UserSignup(username, encPasswd)</span><br><span class="line">	<span class="keyword">if</span> suc &#123;</span><br><span class="line">		c.JSON(http.StatusOK,</span><br><span class="line">			gin.H&#123;</span><br><span class="line">				<span class="string">"code"</span>:    0,</span><br><span class="line">				<span class="string">"msg"</span>:     <span class="string">"注册成功"</span>,</span><br><span class="line">				<span class="string">"data"</span>:    nil,</span><br><span class="line">				<span class="string">"forward"</span>: <span class="string">"/user/signin"</span>,</span><br><span class="line">			&#125;)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		c.JSON(http.StatusOK,</span><br><span class="line">			gin.H&#123;</span><br><span class="line">				<span class="string">"code"</span>: 0,</span><br><span class="line">				<span class="string">"msg"</span>:  <span class="string">"注册失败"</span>,</span><br><span class="line">				<span class="string">"data"</span>: nil,</span><br><span class="line">			&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h2><h3 id="使用Tuple组合多个值"><a href="#使用Tuple组合多个值" class="headerlink" title="使用Tuple组合多个值"></a>使用Tuple组合多个值</h3><p>元组把多个值合并成单一的复合型的值</p>
-<p>元组内的值可以是任何类型，而且可以不必是同一类型</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> error = (1, <span class="string">"没有权限"</span>)</span><br><span class="line"><span class="built_in">print</span>(error.0)</span><br><span class="line"><span class="built_in">print</span>(error.1)</span><br></pre></td></tr></table></figure>
-<h3 id="元素命名"><a href="#元素命名" class="headerlink" title="元素命名"></a>元素命名</h3><p>元组中的每一个元素可以制定对应的元素名称</p>
-<p>如果没有制定名称的元素也可以使用下标的方式来引用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> error = (error: 1,  errorMsg: <span class="string">"没有权限"</span>)</span><br><span class="line"><span class="built_in">print</span>(error.error)</span><br><span class="line"><span class="built_in">print</span>(error.errorMsg)</span><br></pre></td></tr></table></figure>
-<h3 id="Tuple修改"><a href="#Tuple修改" class="headerlink" title="Tuple修改"></a>Tuple修改</h3><p>用var定义的元组就是可变元组，let定义的就是不可变元组</p>
-<p><code>不管是可变还是不可变元组，元组在创建后就不能增加和删除元素</code></p>
-<p>可以对可变元组的元素进行修改，但是不能改变其类型</p>
-<p>Any类型可以改为任何类型</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var error:(errorCode: Int, errorMsg:Any) = (errorCode: 1, errorMsg: <span class="string">"没有权限"</span>)</span><br><span class="line">error.errorCode = 2</span><br><span class="line">error.errorMsg = 3</span><br><span class="line"><span class="built_in">print</span>(error)</span><br></pre></td></tr></table></figure>
-<h3 id="分解"><a href="#分解" class="headerlink" title="分解"></a>分解</h3><p>可以将一个元组的内容分解成单独的常量或变量</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> error = (1, <span class="string">"没有权限"</span>)</span><br><span class="line"><span class="built_in">let</span> (error, errorMsg) = error</span><br><span class="line"><span class="built_in">print</span>(error)</span><br><span class="line"><span class="built_in">print</span>(errorMsg)</span><br></pre></td></tr></table></figure>
-<p>如果只需要使用其中的一部分数据，不需要的数据可以用下划线<code>_</code>代替</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> error = (1, <span class="string">"没有权限"</span>)</span><br><span class="line"><span class="built_in">let</span> (_, errorMsg) = error</span><br><span class="line"><span class="built_in">print</span>(errorMsg)</span><br></pre></td></tr></table></figure>
-<h3 id="作为函数返回值"><a href="#作为函数返回值" class="headerlink" title="作为函数返回值"></a>作为函数返回值</h3><p>使用Tuple为函数返回多个值</p>
-<p>返回值的Tuple可以在函数的返回类型部分被命名</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func requestWithUrl(url: String) -&gt; (errorCode: Int, errorMsg: String) &#123;</span><br><span class="line">    <span class="built_in">return</span> (1, <span class="string">"没有权限"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> error = requestWithUrl(url: <span class="string">""</span>)</span><br><span class="line"><span class="built_in">print</span>(error)</span><br></pre></td></tr></table></figure>
+<p>最终main.go可简洁为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	// gin framework</span><br><span class="line">	router := route.Router()</span><br><span class="line"></span><br><span class="line">	// 启动服务并监听端口</span><br><span class="line">	err := router.Run(config.UploadServiceHost)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"Failed to start server, err:%s\n"</span>, err.Error())</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h2><p>通过在变量类型后面加<code>?</code>表示：这里有一个值，它表示x，或者这里根本没有值</p>
-<p>可以通过给可选变量赋值一个nil来将之设置为没有值</p>
-<p>在Swift中，nil不是指针，他是值缺失的一种特殊类型，任何类型的可选类项都可以设置成nil而不仅仅是对西那个类型</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var str : String? = nil</span><br></pre></td></tr></table></figure>
 
-<h3 id="Optional-if"><a href="#Optional-if" class="headerlink" title="Optional-if"></a>Optional-if</h3><p>可选项是没法直接食用的，需要用!展开之后才能使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str : String? = <span class="string">"abc"</span></span><br><span class="line"><span class="keyword">if</span> str != nil &#123;</span><br><span class="line">    <span class="built_in">let</span> cont = str!.count</span><br><span class="line">    <span class="built_in">print</span>(count)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Optional-绑定"><a href="#Optional-绑定" class="headerlink" title="Optional-绑定"></a>Optional-绑定</h3><p>可以使用可选项的绑定来判断是否包含值，如果包含就把值赋给一个临时的常量或者变量</p>
-<p>可选绑定可以与if和while的语句使用来检查可选项内部的值，并赋值给一个变量或常量 </p>
-<p>同一个if语句中包含多个可选项绑定时，用逗号分隔开即可。如果人一个选项绑定结果是nil或者布尔值为false，那么整个if判断会被看作false</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str : String? = <span class="string">"abc"</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">let</span> actualStr = str &#123;</span><br><span class="line">    <span class="built_in">let</span> cont = str!.count</span><br><span class="line">    <span class="built_in">print</span>(count)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	r := gin.New()</span><br><span class="line">	r.Use(gin.Logger())</span><br><span class="line"></span><br><span class="line">	r.Use(gin.Recovery())</span><br><span class="line"></span><br><span class="line">	r.GET(<span class="string">"first"</span>, func(c *gin.Context) &#123;</span><br><span class="line">		fmt.Println(<span class="string">"first ........."</span>)</span><br><span class="line">		c.JSON(200, gin.H&#123;</span><br><span class="line">			<span class="string">"message"</span>: <span class="string">"pong"</span>,</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	authorized := r.Group(<span class="string">"/try"</span>)</span><br><span class="line"></span><br><span class="line">	authorized.POST(<span class="string">"/second"</span>, second)</span><br><span class="line">	authorized.POST(<span class="string">"/third"</span>, third)</span><br><span class="line"></span><br><span class="line">	// 嵌套路由组</span><br><span class="line">	testing := authorized.Group(<span class="string">"testing"</span>)</span><br><span class="line">	testing.GET(<span class="string">"/forth"</span>, fourth)</span><br><span class="line"></span><br><span class="line">	// 监听并在 0.0.0.0:8080 上启动服务</span><br><span class="line">	r.Run(<span class="string">":8080"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func second(c *gin.Context) &#123;</span><br><span class="line">	fmt.Println(<span class="string">"second ........."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func third(c *gin.Context) &#123;</span><br><span class="line">	fmt.Println(<span class="string">"third ........."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func fourth(c *gin.Context) &#123;</span><br><span class="line">	fmt.Println(<span class="string">"fourth ........."</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Optional-隐式展开"><a href="#Optional-隐式展开" class="headerlink" title="Optional-隐式展开"></a>Optional-隐式展开</h3><p>有些可选项一旦被设定值之后，就会一直拥有值，在这种情况下，就可以去掉检查的需求，也不必每次访问的时候都进行展开</p>
-<p>通过在声明的类型后边添加一个叹号<code>!</code>而非问好来书写隐式展开可选项</p>
-<p>隐式展开可选项主要被用于Swift类的初始化过程中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str : String! = <span class="string">"abc"</span></span><br><span class="line"><span class="built_in">let</span> cont = str!.count</span><br><span class="line"><span class="built_in">print</span>(count)</span><br></pre></td></tr></table></figure>
 
-<h3 id="Optional-可选链"><a href="#Optional-可选链" class="headerlink" title="Optional-可选链"></a>Optional-可选链</h3><p>可选项后面加问号</p>
-<p>如果可选项不为nil，返回一个可选项结果，否则返回nil</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var str : String? = <span class="string">"abc"</span></span><br><span class="line"><span class="built_in">let</span> cont = str?.count</span><br><span class="line"><span class="keyword">if</span> count != nil &#123;</span><br><span class="line">    <span class="built_in">let</span> lastIndex = count! - 1</span><br><span class="line">    <span class="built_in">print</span>(lastIndex)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="初始化空串"><a href="#初始化空串" class="headerlink" title="初始化空串"></a>初始化空串</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var emptyString = <span class="string">""</span></span><br><span class="line">var anotherEmptyString = String()</span><br><span class="line"><span class="keyword">if</span> emptyString.isEmpty &#123;</span><br><span class="line">    <span class="built_in">print</span>(Noting<span class="string">")</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">➜  gin-demo git:(master) ✗ lsof -i tcp:8080    </span><br><span class="line">COMMAND     PID    USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME</span><br><span class="line">QQ          327 samtake   29u  IPv4 0xfdcbb6b79716f31f      0t0  TCP huangloshansmbp:50202-&gt;157.255.13.190:http-alt (ESTABLISHED)</span><br><span class="line">QQ          327 samtake   48u  IPv4 0xfdcbb6b79716f31f      0t0  TCP huangloshansmbp:50202-&gt;157.255.13.190:http-alt (ESTABLISHED)</span><br><span class="line">Google      420 samtake   26u  IPv4 0xfdcbb6b793e58fb7      0t0  TCP localhost:51492-&gt;localhost:http-alt (ESTABLISHED)</span><br><span class="line">Postman   66875 samtake   67u  IPv4 0xfdcbb6b778668ca7      0t0  TCP localhost:51499-&gt;localhost:http-alt (ESTABLISHED)</span><br><span class="line">main      67553 samtake    3u  IPv6 0xfdcbb6b793ea9b8f      0t0  TCP *:http-alt (LISTEN)</span><br><span class="line">main      67553 samtake    7u  IPv6 0xfdcbb6b793eac3cf      0t0  TCP localhost:http-alt-&gt;localhost:51492 (ESTABLISHED)</span><br><span class="line">main      67553 samtake    8u  IPv6 0xfdcbb6b7912a55cf      0t0  TCP localhost:http-alt-&gt;localhost:51499 (ESTABLISHED)</span><br><span class="line">➜  gin-demo git:(master) ✗ <span class="built_in">kill</span> -9  67553      </span><br><span class="line">➜  gin-demo git:(master) ✗ go run start/main.go</span><br><span class="line">[GIN-debug] [WARNING] Running <span class="keyword">in</span> <span class="string">"debug"</span> mode. Switch to <span class="string">"release"</span> mode <span class="keyword">in</span> production.</span><br><span class="line"> - using env:   <span class="built_in">export</span> GIN_MODE=release</span><br><span class="line"> - using code:  gin.SetMode(gin.ReleaseMode)</span><br><span class="line"></span><br><span class="line">[GIN-debug] GET    /first                    --&gt; main.main.func1 (3 handlers)</span><br><span class="line">[GIN-debug] POST   /try/second               --&gt; main.second (3 handlers)</span><br><span class="line">[GIN-debug] POST   /try/third                --&gt; main.third (3 handlers)</span><br><span class="line">[GIN-debug] GET    /try/testing/forth        --&gt; main.fourth (3 handlers)</span><br><span class="line">[GIN-debug] Listening and serving HTTP on :8080</span><br><span class="line">first .........</span><br><span class="line">[GIN] 2020/02/25 - 11:51:19 | 200 |     176.613µs |       127.0.0.1 | GET      /first</span><br></pre></td></tr></table></figure>
 
-<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><p>字符串字面亮是被双引号<code>&quot;</code>包裹的固定顺序的文本字符</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var str = <span class="string">"some string"</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2020/02/14/Gin%E5%9F%BA%E6%9C%AC%E4%BA%86%E8%A7%A3/gin-first.png" alt></p>
+<h2 id="1-请求路由"><a href="#1-请求路由" class="headerlink" title="1.请求路由"></a>1.请求路由</h2><h3 id="多种请求"><a href="#多种请求" class="headerlink" title="多种请求"></a>多种请求</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line"></span><br><span class="line">	r.GET(<span class="string">"get"</span>, func(c *gin.Context) &#123;</span><br><span class="line">		c.String(200, <span class="string">"get"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.POST(<span class="string">"post"</span>, func(c *gin.Context) &#123;</span><br><span class="line">		c.String(200, <span class="string">"post"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.DELETE(<span class="string">"delete"</span>, func(c *gin.Context) &#123;</span><br><span class="line">		c.String(200, <span class="string">"delete"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.Any(<span class="string">"/any"</span>, func(c *gin.Context) &#123;</span><br><span class="line">		c.String(200, <span class="string">"any"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="多行字面量"><a href="#多行字面量" class="headerlink" title="多行字面量"></a>多行字面量</h3><p>字多行符串字面量是被三个双引号<code>&quot;&quot;&quot;</code>引起来的一系列字符</p>
-<p>开始和结束默认不会有换行符</p>
-<p>反斜杠只会在代码阅读上方便，输出时没有实际的换行功能<code>\</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> str = <span class="string">""</span><span class="string">"var emptyString = "</span><span class="string">" \</span></span><br><span class="line"><span class="string">var anotherEmptyString = String() \</span></span><br><span class="line"><span class="string">if emptyString.isEmpty &#123; \</span></span><br><span class="line"><span class="string">    print(Noting"</span>) \</span><br><span class="line"><span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">print(str)</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="字符串里的特殊字符"><a href="#字符串里的特殊字符" class="headerlink" title="字符串里的特殊字符"></a>字符串里的特殊字符</h3><p>转义特殊字符</p>
-<p>任意的Unicode标量  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>给我们创建的any请求几乎覆盖了所有种类的请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[GIN-debug] GET    /get                      --&gt; main.main.func1 (3 handlers)</span><br><span class="line">[GIN-debug] POST   /post                     --&gt; main.main.func2 (3 handlers)</span><br><span class="line">[GIN-debug] DELETE /delete                   --&gt; main.main.func3 (3 handlers)</span><br><span class="line">[GIN-debug] GET    /any                      --&gt; main.main.func4 (3 handlers)</span><br><span class="line">[GIN-debug] POST   /any                      --&gt; main.main.func4 (3 handlers)</span><br><span class="line">[GIN-debug] PUT    /any                      --&gt; main.main.func4 (3 handlers)</span><br><span class="line">[GIN-debug] PATCH  /any                      --&gt; main.main.func4 (3 handlers)</span><br><span class="line">[GIN-debug] HEAD   /any                      --&gt; main.main.func4 (3 handlers)</span><br><span class="line">[GIN-debug] OPTIONS /any                      --&gt; main.main.func4 (3 handlers)</span><br><span class="line">[GIN-debug] DELETE /any                      --&gt; main.main.func4 (3 handlers)</span><br><span class="line">[GIN-debug] CONNECT /any                      --&gt; main.main.func4 (3 handlers)</span><br><span class="line">[GIN-debug] TRACE  /any                      --&gt; main.main.func4 (3 handlers)</span><br><span class="line">[GIN-debug] Environment variable PORT is undefined. Using port :8080 by default</span><br><span class="line">[GIN-debug] Listening and serving HTTP on :8080</span><br></pre></td></tr></table></figure>
 
-<h3 id="扩展字符串分隔符"><a href="#扩展字符串分隔符" class="headerlink" title="扩展字符串分隔符"></a>扩展字符串分隔符</h3><p>在字符串字面量中放置扩展分隔符来在字符串中包含特殊字符而不让它们真的生效</p>
-<p>将字符串放在双引号内并由井号#包裹</p>
-<p>如果字符串里有”#则首尾需要两个##(首尾##与包含的”#不一样即可)</p>
-<p>如果你需要字符串中某个特殊符号的效果，使用匹配你包裹的#号数量的#号，并在前面添加转义符号\</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> str = <span class="comment">#"122\n\n444"#</span></span><br><span class="line"><span class="built_in">let</span> str = <span class="comment">#"122\#n\n444"#</span></span><br></pre></td></tr></table></figure>
+<h3 id="静态文件夹"><a href="#静态文件夹" class="headerlink" title="静态文件夹"></a>静态文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	// 静态文件夹绑定+路由，有两种写法：</span><br><span class="line">	r.Static(<span class="string">"/assets"</span>, <span class="string">"./assets"</span>)</span><br><span class="line">	r.StaticFS(<span class="string">"/static"</span>, http.Dir(<span class="string">"static"</span>))</span><br><span class="line"></span><br><span class="line">	//又或者路由+资源</span><br><span class="line">	r.StaticFile(<span class="string">"/favicon.ico"</span>, <span class="string">"/favicon.ico"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>go build -o router_static &amp;&amp; ./router_static</code>这需要在routerstatic文件夹下运行，不然找不到资源文件，最后访问<code>http://localhost:8080/assets/a.html</code>以及<code>http://localhost:8080/static/b.html</code>测试即可。</p>
+<h3 id="参数作为url"><a href="#参数作为url" class="headerlink" title="参数作为url"></a>参数作为url</h3><p>Get请求<code>http://localhost:8080/Sam/520</code>即可得到相应参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"id"</span>: <span class="string">"520"</span>,</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"Sam"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="字符串的可变形"><a href="#字符串的可变形" class="headerlink" title="字符串的可变形"></a>字符串的可变形</h3><p>var 可修改<br>let 不可修改</p>
-<h3 id="字符串是值类型"><a href="#字符串是值类型" class="headerlink" title="字符串是值类型"></a>字符串是值类型</h3><p>String 值在传递给方法或者函数的时候会被复制过去</p>
-<p>赋值给常量和变量的时候也是一样</p>
-<h3 id="操作字符"><a href="#操作字符" class="headerlink" title="操作字符"></a>操作字符</h3><p>for-in 循环遍历String中的每一个独立的Character</p>
-<p>Character类型</p>
-<p>String值可以通过传入Character 数组来构造</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> character <span class="keyword">in</span> <span class="string">"abcdef"</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(character)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> tempCharacters: [Character] = [<span class="string">"d"</span>,<span class="string">"f"</span>,<span class="string">"d"</span>,<span class="string">"h"</span>]</span><br><span class="line"><span class="built_in">let</span> str = String(tempCharacters)</span><br></pre></td></tr></table></figure>
 
-<h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><p>通过加运算符<code>+</code>创建新字符串</p>
-<p>使用加赋值符号<code>+=</code>在已经存在的String值末尾追加一个String值</p>
-<p>使用String类型的<code>append()</code>方法来给一个String变量的末尾追加character值</p>
-<h3 id="字符串插值"><a href="#字符串插值" class="headerlink" title="字符串插值"></a>字符串插值</h3><p><code>\(some)</code> some代表：混合常量、变量、字面量和表达式的字符串面量</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="comment">#"1 * 3 = \#(1*3)."#)</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-获取请求参数"><a href="#2-获取请求参数" class="headerlink" title="2.获取请求参数"></a>2.获取请求参数</h2><ul>
+<li>获取get请求参数</li>
+<li>获取post请求参数</li>
+<li>获取body值</li>
+<li>获取参数绑定结构体</li>
+</ul>
+<h3 id="泛绑定"><a href="#泛绑定" class="headerlink" title="泛绑定"></a>泛绑定</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.GET(<span class="string">"/user/*action"</span>, func(c *gin.Context) &#123; //设置获取name和id的参数</span><br><span class="line">		c.String(200, <span class="string">"泛绑定～"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所有user前缀的请求都能请求到：<code>http://localhost:8080/user/&lt;XXXX&gt;</code></p>
+<h3 id="获取get参数"><a href="#获取get参数" class="headerlink" title="获取get参数"></a>获取get参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.GET(<span class="string">"/testGetParam"</span>, func(c *gin.Context) &#123; //设置获取name和id的参数</span><br><span class="line">		param1 := c.Query(<span class="string">"parm1"</span>)</span><br><span class="line">		param2 := c.Query(<span class="string">"parm2"</span>)</span><br><span class="line"></span><br><span class="line">		c.String(http.StatusOK, <span class="string">"%s, %s"</span>, param1, param2)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="字符串索引"><a href="#字符串索引" class="headerlink" title="字符串索引"></a>字符串索引</h3><p>每个String值都有相关的索引类型，String.index，它相当于每个Character在字符串重的位置</p>
-<p>startIndex属性来访问String中第一个Character的位置。endIndex属性就是String中最后一个字符后的位置</p>
-<p>endIndex属性并不是字符串下表脚本的合法实际参数</p>
-<p>如果String为空，则startIndex与endIndex相等</p>
-<p>使用index(before:)和index(after:)方法来访问给定索引的前后</p>
-<p>要访问给定索引更远的索引，你可以使用index(_:offsetBy:)</p>
-<p>使用indices属性来访问字符串中每个字符的索引</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> hello = <span class="string">"hello"</span></span><br><span class="line">hello[hello.startIndex]</span><br><span class="line">hello[hello.index(before: hello.endIndex)]</span><br><span class="line">hello[hello.index(after: hello.startIndex)]</span><br><span class="line"><span class="built_in">let</span> index = hello.index(hello.startIndex, offsetBy: 2)</span><br><span class="line">hello[index]</span><br></pre></td></tr></table></figure>
 
-<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>插入字符，使用insert(_:at:)方法</p>
-<p>插入另一个字符串的内容到特定的索引，使用insert(contentsOs:at:)方法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var welcome = <span class="string">"hello"</span></span><br><span class="line">welcome.insert(<span class="string">"!"</span>, at: welcome.endIndex)</span><br><span class="line"></span><br><span class="line">welcome.insert(contentsOf: <span class="string">"ererer"</span>, at: welcome.index(before: welcome.endIndex))</span><br></pre></td></tr></table></figure>
 
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>移除字符串remove(at:)</p>
-<p>移除特定范围的字符串removeSubrange(range)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">welcome.remove(at: welcome.index(before: welcome.endIndex))</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> range = welcome.index(welcome.endIndex, offsetBy: -1)..&lt;welcome.endIndex</span><br><span class="line">welcome.removeSubrange(range)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ curl -X GET <span class="string">'http://127.0.0.1:8080/testGetParam?parm1=11111'</span> </span><br><span class="line">11111, %  </span><br><span class="line">➜  ~ curl -X GET <span class="string">'http://127.0.0.1:8080/testGetParam?parm1=11111&amp;parm2=2222'</span></span><br><span class="line">11111, 2222%</span><br></pre></td></tr></table></figure>
 
-<h3 id="子字符串"><a href="#子字符串" class="headerlink" title="子字符串"></a>子字符串</h3><p>使用下表或者累死prefix(_:)的方法得到的子字符串是SubString类型</p>
-<p>SubString拥有String的大部分方法</p>
-<p>SubString可以转成String类型</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> index3 = hello.lastIndex(of: <span class="string">"o"</span>) ?? hello.endIndex</span><br><span class="line"><span class="built_in">let</span> begin = hello[..&lt;index3]</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> newHello = String(begin)</span><br></pre></td></tr></table></figure>
 
-<h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3><p>字符串和字符相等性(==和==)</p>
-<p>前缀相等hasPrefix(_:)</p>
-<p>后缀相等hasSuffix(_:)</p>
-<h2 id="赋值和算术运算符"><a href="#赋值和算术运算符" class="headerlink" title="赋值和算术运算符"></a>赋值和算术运算符</h2><p>一元运算符、二元运算符、三元运算符</p>
-<p>赋值运算符不会返回值</p>
-<h2 id="如何处理算术结果溢出"><a href="#如何处理算术结果溢出" class="headerlink" title="如何处理算术结果溢出"></a>如何处理算术结果溢出</h2><p>在默认情况下，当一个整数赋超过它容量的值时，Swift会报错而不是生成一个无效的数，给我们操作过大或者过小的数的时候提供了额外的安全性</p>
-<p>同时提供了三个算术溢出运算符来让系统支持整数溢出的运算</p>
-<p>溢出加法<code>&amp;+</code></p>
-<p>溢出减法<code>&amp;-</code></p>
-<p>溢出乘法<code>&amp;*</code></p>
-<h3 id="值溢出"><a href="#值溢出" class="headerlink" title="值溢出"></a>值溢出</h3><p>溢出也会发生在有符号整形数值上</p>
-<p>对于无符号与有符号整形数值来说，当出现上溢时，它们会从数值所能容纳的最大数变成最小的数。同样，当发生下溢时，它们会从所能容纳的最小数变成最大的数。</p>
-<h2 id="合并空值运算符"><a href="#合并空值运算符" class="headerlink" title="合并空值运算符??"></a>合并空值运算符<code>??</code></h2><p>合并空值运算符(a??b)如果选项a有值则展开，如果没有值，是nil，则返回默认值b</p>
-<p>表达式a必须是一个可选类型。表达式b必须与a的存储类型相同。</p>
-<p>实际上它就是相当于三目运算符<code>_?_:_</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func addTwoNum(num1: Int?, num2: Int2?) -&gt; Int &#123;</span><br><span class="line">    <span class="built_in">return</span> (num1 ?? 0) +(num2 ?? 0)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="区间运算符"><a href="#区间运算符" class="headerlink" title="区间运算符"></a>区间运算符</h2><h3 id="闭区间运算符a-b"><a href="#闭区间运算符a-b" class="headerlink" title="闭区间运算符a...b"></a>闭区间运算符<code>a...b</code></h3><p>定义了从a到b的一组范围，并且包含a和b</p>
-<p>a的值不能大于b的值</p>
-<h3 id="半开区间运算符a-lt-b"><a href="#半开区间运算符a-lt-b" class="headerlink" title="半开区间运算符a..&lt;b"></a>半开区间运算符<code>a..&lt;b</code></h3><p>定义了从a到b但不包含b的区间</p>
-<p>a的值不能大于b的值，如果a与b的值相等，那返回的区间将会是空的</p>
-<h3 id="单侧区间"><a href="#单侧区间" class="headerlink" title="单侧区间"></a>单侧区间</h3><p>比如说，一个包含数组所有的元素的区间，从索引2到数组的结束。在这种情况下，你可以省略区间运算符一侧的值。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names[2...] &#123;</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names[...2] &#123;</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="获取body内容"><a href="#获取body内容" class="headerlink" title="获取body内容"></a>获取body内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.POST(<span class="string">"/parmBody"</span>, func(c *gin.Context) &#123;</span><br><span class="line">		bodyBytes, err := ioutil.ReadAll(c.Request.Body)</span><br><span class="line">		<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">			c.String(http.StatusBadRequest, err.Error())</span><br><span class="line">			c.Abort()</span><br><span class="line">		&#125;</span><br><span class="line">		c.Request.Body = ioutil.NopCloser(bytes.NewBuffer(bodyBytes)) //重新回写到缓存才能拿到parm1 parm2</span><br><span class="line">		parm1 := c.PostForm(<span class="string">"parm1"</span>)</span><br><span class="line">		parm2 := c.PostForm(<span class="string">"parm2"</span>)</span><br><span class="line">		c.String(http.StatusOK, <span class="string">"%s %s %s"</span>, parm1, parm2, string(bodyBytes))</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>倒序索引</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> (0..&lt;10&gt;).<span class="function"><span class="title">reversed</span></span>()&#123;</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>区间运算符在字符串上的运用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var welcome = <span class="string">"hello,world"</span></span><br><span class="line"><span class="built_in">let</span> range = welcome.startIndex...welcome.index(welcome.endIndex, offsetBy: -6)</span><br><span class="line">welcome.removeSubrange(range)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(welcome)]</span><br></pre></td></tr></table></figure>
 
-<p>区间运算符在比较类型上的运用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> welcome = <span class="string">"hello,world"</span></span><br><span class="line"><span class="built_in">let</span> interval = <span class="string">"a"</span>...<span class="string">"z"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> welcome &#123;</span><br><span class="line">    <span class="keyword">if</span> !interval.contains(String(c)) &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"\(c)不是小写字母"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ curl -X POST <span class="string">'http://127.0.0.1:8080/parmBody'</span> -d <span class="string">'parm1=value1&amp;parm2=value2'</span> </span><br><span class="line">value1 value2 parm1=value1&amp;parm2=value2%                                                                                                                               </span><br><span class="line">➜  ~ curl -X POST <span class="string">'http://127.0.0.1:8080/parmBody'</span> -d <span class="string">'&#123;"parm1":"value1","parm2":"value2"&#125;'</span></span><br><span class="line">  &#123;<span class="string">"parm1"</span>:<span class="string">"value1"</span>,<span class="string">"parm2"</span>:<span class="string">"value2"</span>&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><h3 id="位取反运算符"><a href="#位取反运算符" class="headerlink" title="位取反运算符"></a>位取反运算符</h3><p>位取反运算符(~)是对所有位的数字进行取反操作</p>
-<h3 id="位与运算符"><a href="#位与运算符" class="headerlink" title="位与运算符"></a>位与运算符</h3><p>位与运算符(&amp;)是对两个数的比特位进行合并。它会返回一个新的数，只有当这两个数都是1的时候才能返回1。</p>
-<h3 id="位或运算符"><a href="#位或运算符" class="headerlink" title="位或运算符"></a>位或运算符</h3><p>位或运算符(|)是对两个数的比特位进行比较。它会返回一个新的数，只要两个操作位任意一个为1时，那么对应的位数就为1。</p>
-<h3 id="位异或运算符"><a href="#位异或运算符" class="headerlink" title="位异或运算符"></a>位异或运算符</h3><p>位异或运算符(^))，当两个操作数的对应位不相同时，那么该数对应的位数就为1。</p>
-<h3 id="位左移和右移运算符"><a href="#位左移和右移运算符" class="headerlink" title="位左移和右移运算符"></a>位左移和右移运算符</h3><p>位左移(&lt;&lt;)和右移运算符(&gt;&gt;)可以吧所有位数的数字向左或向右移动一个确定的位数。</p>
-<p>位座椅和右移具有给整数乘以或除以二的效果。将一个数左移一位相当于把这个数翻倍，将一个数右移一位相当于把这个数减半。</p>
-<h3 id="无符号整数的唯一操作"><a href="#无符号整数的唯一操作" class="headerlink" title="无符号整数的唯一操作"></a>无符号整数的唯一操作</h3><p>用0填充左移或右移后产生的空白位</p>
-<h3 id="有符号整数的移位操作"><a href="#有符号整数的移位操作" class="headerlink" title="有符号整数的移位操作"></a>有符号整数的移位操作</h3><p>第一位表示整数还是负数（0正数，1负数）</p>
-<h3 id="位运算符应用"><a href="#位运算符应用" class="headerlink" title="位运算符应用"></a>位运算符应用</h3><ul>
-<li>两个数字交换</li>
-<li>求赋符号整形数二进制中1的个数</li>
-<li>判断一个整数是否为为2的整数次幂</li>
+
+
+<h3 id="获取bind参数"><a href="#获取bind参数" class="headerlink" title="获取bind参数"></a>获取bind参数</h3><p>同时响应post和get，同时访问到同一个回调方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> Person struct &#123;</span><br><span class="line">	Name     string    `form:<span class="string">"name"</span>` //设置tag `form`可以由参数转变成结构体</span><br><span class="line">	Address  string    `form:<span class="string">"address"</span>`</span><br><span class="line">	Birthday time.Time `form:<span class="string">"birthday"</span> time_format:<span class="string">"2006-01-03"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.GET(<span class="string">"/test"</span>, testHandler)</span><br><span class="line">	r.POST(<span class="string">"/test"</span>, testHandler)</span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func testHandler(c *gin.Context) &#123;</span><br><span class="line">	var person Person</span><br><span class="line">	//根据请求content-type来作不同的binding操作</span><br><span class="line">	<span class="keyword">if</span> err := c.ShouldBind(&amp;person); err == nil &#123;</span><br><span class="line">		c.String(200, <span class="string">"%v"</span>, person)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		c.String(200, <span class="string">"person bind error"</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ curl -X GET  <span class="string">'http://127.0.0.1:8080/test?name=samtake&amp;adress=gd'</span></span><br><span class="line">&#123;samtake  0001-01-01 00:00:00 +0000 UTC&#125;</span><br><span class="line">➜  ~ curl -X GET  <span class="string">'http://127.0.0.1:8080/test?name=samtake&amp;address=gd'</span></span><br><span class="line">&#123;samtake gd 0001-01-01 00:00:00 +0000 UTC&#125;%  </span><br><span class="line">➜  ~ curl -X POST  <span class="string">'http://127.0.0.1:8080/test?name=samtake&amp;address=gd&amp;birthday=2008-09-09'</span></span><br><span class="line">&#123;samtake gd 2008-09-01 09:00:00 +0800 CST&#125;%   </span><br><span class="line">➜  ~ curl -X POST  <span class="string">'http://127.0.0.1:8080/test'</span>  -d <span class="string">'name=samtake&amp;address=gd&amp;birthday=2008-09-09'</span></span><br><span class="line">&#123;samtake gd 2008-09-01 09:00:00 +0800 CST&#125;%   </span><br><span class="line">➜  ~ curl -H <span class="string">"Content-Type:application/json"</span>  -X POST <span class="string">"http://127.0.0.1:8080/test"</span>  -d <span class="string">'&#123;"name":"wang"&#125;'</span></span><br><span class="line">&#123;wang  0001-01-01 00:00:00 +0000 UTC&#125;%</span><br></pre></td></tr></table></figure>
+
+
+<p>这里有个坑：如果时间格式写成像<code>time_format:&quot;2006-01-03&quot;</code>这种会报错，解析不了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person <span class="built_in">bind</span> error%!(EXTRA *time.ParseError=parsing time <span class="string">"2008-00-08"</span> as <span class="string">"2011-01-03"</span>: cannot parse <span class="string">"-00-08"</span> as <span class="string">"1"</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="验证请求参数"><a href="#验证请求参数" class="headerlink" title="验证请求参数"></a>验证请求参数</h2><ul>
+<li>结构体验证</li>
+<li>自定义验证</li>
+<li>支持多语言错误信息</li>
+</ul>
+<h3 id="结构体验证"><a href="#结构体验证" class="headerlink" title="结构体验证"></a>结构体验证</h3><p><a href="https://godoc.org/gopkg.in/go-playground/validator.v9" target="_blank" rel="noopener">validate规则</a><br>binding条件满足</p>
+<p>坑的记录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> Person struct &#123;</span><br><span class="line">	Age     int    `form:<span class="string">"age"</span>  binding:<span class="string">"required,gt=10"</span>`</span><br><span class="line">	Name    string `form:<span class="string">"name"</span> binding:<span class="string">"required"</span>`</span><br><span class="line">	Address string `form:<span class="string">"address"</span> binding:<span class="string">"required"</span>`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/02/14/Gin%E5%9F%BA%E6%9C%AC%E4%BA%86%E8%A7%A3/validate-form.png" alt></p>
+<p>正确的完整源码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> Person struct &#123;</span><br><span class="line">	Age     int    `form:<span class="string">"Age"</span>  binding:<span class="string">"required,gt=10"</span>`</span><br><span class="line">	Name    string `form:<span class="string">"Name"</span> binding:<span class="string">"required"</span>`</span><br><span class="line">	Address string `form:<span class="string">"Address"</span> binding:<span class="string">"required"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.GET(<span class="string">"/test"</span>, testHandler)</span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func testHandler(c *gin.Context) &#123;</span><br><span class="line">	var person Person</span><br><span class="line">	//根据请求content-type来作不同的binding操作</span><br><span class="line">	<span class="keyword">if</span> err := c.ShouldBind(&amp;person); err != nil &#123;</span><br><span class="line">		c.String(500, <span class="string">"%v"</span>, err)</span><br><span class="line">		c.Abort()</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	c.String(200, <span class="string">"%v"</span>, person)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ curl -X GET  <span class="string">"http://127.0.0.1:8080/test?age=19&amp;name=samtake&amp;address=gd"</span></span><br><span class="line">Key: <span class="string">'Person.Age'</span> Error:Field validation <span class="keyword">for</span> <span class="string">'Age'</span> failed on the <span class="string">'required'</span> tag</span><br><span class="line">Key: <span class="string">'Person.Name'</span> Error:Field validation <span class="keyword">for</span> <span class="string">'Name'</span> failed on the <span class="string">'required'</span> tag</span><br><span class="line">Key: <span class="string">'Person.Address'</span> Error:Field validation <span class="keyword">for</span> <span class="string">'Address'</span> failed on the <span class="string">'required'</span> tag% </span><br><span class="line">➜  ~ curl -X GET  <span class="string">"http://127.0.0.1:8080/test?Age=19&amp;Name=samtake&amp;Address=gd"</span></span><br><span class="line">&#123;19 samtake gd&#125;%</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义验证"><a href="#自定义验证" class="headerlink" title="自定义验证"></a>自定义验证</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;reflect&quot;</span><br><span class="line">	&quot;time&quot;</span><br><span class="line"></span><br><span class="line">	&quot;github.com/gin-gonic/gin&quot;</span><br><span class="line">	&quot;github.com/gin-gonic/gin/binding&quot;</span><br><span class="line">	&quot;gopkg.in/go-playground/validator.v9&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type Booking struct &#123;</span><br><span class="line">	CheckIn  time.Time `form:&quot;check_in&quot;  binding:&quot;required,bookabledate&quot; time_format:&quot;2006-01-01&quot;`</span><br><span class="line">	CheckOut time.Time `form:&quot;check_out&quot;  binding:&quot;required,gtfield=checkIn&quot; time_format:&quot;2006-01-01&quot;`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func customFunc(v *validator.Validate, topStruct reflect.Value, currentStructOrField reflect.Value, field reflect.Value, fieldType reflect.Type, fieldKind reflect.Kind, param string) bool &#123;</span><br><span class="line">	if date, ok := field.Interface().(time.Time); ok &#123;</span><br><span class="line">		today := time.Now()</span><br><span class="line">		if date.Unix() &gt; today.Unix() &#123;</span><br><span class="line">			return true</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return false</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	if v, ok := binding.Validator.Engine().(*validator.Validate); ok &#123;</span><br><span class="line">		v.RegisterValidation(&quot;bookabledate&quot;, customFunc)</span><br><span class="line">	&#125;</span><br><span class="line">	r.GET(&quot;/bookable&quot;, testHandler)</span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func testHandler(c *gin.Context) &#123;</span><br><span class="line">	var b Booking</span><br><span class="line">	if err := c.ShouldBind(&amp;b); err != nil &#123;</span><br><span class="line">		c.JSON(500, gin.H&#123;&quot;error&quot;: err.Error()&#125;)</span><br><span class="line">		return</span><br><span class="line">	&#125;</span><br><span class="line">	c.JSON(200, gin.H&#123;&quot;message&quot;: &quot;ok!&quot;, &quot;booking&quot;: b&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里有个报错，我自己也还没弄明白，然而我看了下源码，上面的使用方法是正确的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># command-line-arguments</span></span><br><span class="line">validCustom/validCustom.go:30:24: cannot use customFunc (<span class="built_in">type</span> func(*validator.Validate, reflect.Value, reflect.Value, reflect.Value, reflect.Typ</span><br><span class="line">e, reflect.Kind, string) bool) as <span class="built_in">type</span> validator.Func <span class="keyword">in</span> argument to v.RegisterValidation</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// RegisterValidation adds a validation with the given tag</span><br><span class="line">//</span><br><span class="line">// NOTES:</span><br><span class="line">// - <span class="keyword">if</span> the key already exists, the previous validation <span class="keyword">function</span> will be replaced.</span><br><span class="line">// - this method is not thread-safe it is intended that these all be registered prior to any validation</span><br><span class="line">func (v *Validate) RegisterValidation(tag string, fn Func) error &#123;</span><br><span class="line">	<span class="built_in">return</span> v.RegisterValidationCtx(tag, wrapFunc(fn))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="支持多语言错误信息"><a href="#支持多语言错误信息" class="headerlink" title="支持多语言错误信息"></a>支持多语言错误信息</h3><h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><ul>
+<li>使用Gin中间件</li>
+<li>自定义<code>ip白名单</code>中间件</li>
+</ul>
+<h3 id="Gin中间件"><a href="#Gin中间件" class="headerlink" title="Gin中间件"></a>Gin中间件</h3><p><code>Logger</code>日志<br><code>Recovery</code>捕获panic</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	f, _ := os.Create(<span class="string">"gin.log"</span>)</span><br><span class="line">	gin.DefaultWriter = io.MultiWriter(f)</span><br><span class="line">	gin.DefaultErrorWriter = io.MultiWriter(f)</span><br><span class="line"></span><br><span class="line">	r := gin.New()</span><br><span class="line">	r.Use(gin.Logger(),gin.Recovery())</span><br><span class="line">	r.GET(<span class="string">"/test"</span>, func(c *gin.Context) &#123;</span><br><span class="line">		name := c.DefaultQuery(<span class="string">"name"</span>, <span class="string">"default_name"</span>)</span><br><span class="line">		c.String(200, <span class="string">"%s"</span>, name)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="白名单"><a href="#白名单" class="headerlink" title="白名单"></a>白名单</h3><p><code>r.User(IPAuthMiddleware())</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">func IPAuthMiddleware() gin.HandlerFunc &#123;</span><br><span class="line">	<span class="built_in">return</span> func(c *gin.Context) &#123;</span><br><span class="line">		ipList := []string&#123;</span><br><span class="line">			<span class="string">"127.0.0.1"</span>,</span><br><span class="line">		&#125;</span><br><span class="line">		flag := <span class="literal">false</span></span><br><span class="line">		clientIP := c.ClientIP()</span><br><span class="line">		<span class="keyword">for</span> _, host := range ipList &#123;</span><br><span class="line">			<span class="keyword">if</span> clientIP == host &#123;</span><br><span class="line">				flag = <span class="literal">true</span></span><br><span class="line">				<span class="built_in">break</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> !flag &#123;</span><br><span class="line">			c.String(401, <span class="string">"%s,not in iplist"</span>, clientIP)</span><br><span class="line">			c.Abort()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	r := gin.New()</span><br><span class="line">	r.Use(IPAuthMiddleware())</span><br><span class="line">	r.Use(gin.Logger(), gin.Recovery())</span><br><span class="line">	r.GET(<span class="string">"/test"</span>, func(c *gin.Context) &#123;</span><br><span class="line">		c.String(200, <span class="string">"%s"</span>, <span class="string">"hello test"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Gin延展"><a href="#Gin延展" class="headerlink" title="Gin延展"></a>Gin延展</h2><ul>
+<li>服务器优雅关停</li>
+<li>模版渲染</li>
+<li>自动证书配置</li>
+</ul>
+<h3 id="服务器关停"><a href="#服务器关停" class="headerlink" title="服务器关停"></a>服务器关停</h3><p><img src="/2020/02/14/Gin%E5%9F%BA%E6%9C%AC%E4%BA%86%E8%A7%A3/gin-server-stop.png" alt></p>
+<h3 id="模版渲染"><a href="#模版渲染" class="headerlink" title="模版渲染"></a>模版渲染</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.LoadHTMLGlob(<span class="string">"template/*"</span>)</span><br><span class="line">	r.GET(<span class="string">"/index"</span>, func(c *gin.Context) &#123;</span><br><span class="line">		c.HTML(200, <span class="string">"index.html"</span>, gin.H&#123;</span><br><span class="line">			<span class="string">"title"</span>: <span class="string">"index.html"</span>,</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ curl -X GET  <span class="string">"http://127.0.0.1:8080/index"</span></span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;h1&gt;</span><br><span class="line">        index.html</span><br><span class="line">    &lt;/h1&gt;</span><br><span class="line">&lt;/html&gt;%                                                                        </span><br><span class="line">➜  ~</span><br></pre></td></tr></table></figure>
+
+<h3 id="自动证书配置"><a href="#自动证书配置" class="headerlink" title="自动证书配置"></a>自动证书配置</h3><h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><p>项目地址：<br><a href="https://github.com/e421083458/gin_scaffold" target="_blank" rel="noopener">gin_scaffold</a><br><a href="https://github.com/e421083458/golang_common" target="_blank" rel="noopener">golang_common</a><br><a href="https://github.com/e421083458/vue-admin" target="_blank" rel="noopener">vue-admin</a></p>
+<h3 id="轻量级Golang类库"><a href="#轻量级Golang类库" class="headerlink" title="轻量级Golang类库"></a>轻量级Golang类库</h3><p>GORM:<a href="https://gorm.io/zh_CN/" target="_blank" rel="noopener">https://gorm.io/zh_CN/</a><br>redigo:<a href="https://godoc.org/github.com/gomodule/redigo/redis" target="_blank" rel="noopener">https://godoc.org/github.com/gomodule/redigo/redis</a></p>
+<p>├── README.md<br>├── conf   配置文件夹<br>│   └── dev<br>│       ├── base.toml<br>│       ├── mysql_map.toml<br>│       └── redis_map.toml<br>├── controller 控制器<br>│   └── demo.go<br>├── dao DB数据访问层<br>│   └── demo.go<br>├── dto  Bind结构体层<br>│   └── demo.go<br>├── gin_scaffold.inf.log  info日志<br>├── gin_scaffold.wf.log warning日志<br>├── go.mod go module管理文件<br>├── go.sum<br>├── main.go<br>├── middleware 中间件层<br>│   ├── panic.go<br>│   ├── response.go<br>│   ├── token_auth.go<br>│   └── translation.go<br>├── public  公共文件<br>│   ├── log.go<br>│   ├── mysql.go<br>│   └── validate.go<br>├── router  路由层<br>│   ├── httpserver.go<br>│   └── route.go<br>└── tmpl</p>
+<h3 id="输出格式统一封装"><a href="#输出格式统一封装" class="headerlink" title="输出格式统一封装"></a>输出格式统一封装</h3><h3 id="自定义中间件日志打印"><a href="#自定义中间件日志打印" class="headerlink" title="自定义中间件日志打印"></a>自定义中间件日志打印</h3><h3 id="请求数据绑定结构体与校验"><a href="#请求数据绑定结构体与校验" class="headerlink" title="请求数据绑定结构体与校验"></a>请求数据绑定结构体与校验</h3>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/" class="post-title-link" itemprop="url">通过Docker安装RabbitMQ</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-12 23:45:30" itemprop="dateCreated datePublished" datetime="2020-02-12T23:45:30+08:00">2020-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-14 02:07:22" itemprop="dateModified" datetime="2020-02-14T02:07:22+08:00">2020-02-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/RabbitMQ/" itemprop="url" rel="index">
+                    <span itemprop="name">RabbitMQ</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="RabbitMQ安装"><a href="#RabbitMQ安装" class="headerlink" title="RabbitMQ安装"></a>RabbitMQ安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /Users/samtake/Documents/GitHub/www/rabbitmq目录可自定义，主要用于目录挂载</span></span><br><span class="line">➜  ~ mkdir -p /Users/samtake/Documents/GitHub/www/rabbitmq</span><br><span class="line">➜  ~ docker run -d --hostname rabbit-node1 --name rabbit-node1 -p 5672:5672 -p15672:15672 -v /Users/samtake/Documents/GitHub/www/rabbitmq:/var/lib/rabbitmq rabbitmq:management</span><br><span class="line">Unable to find image <span class="string">'rabbitmq:management'</span> locally</span><br><span class="line">management: Pulling from library/rabbitmq</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>报错提示,手动添加一下docker分享目录即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">The path /www/rabbitmq</span><br><span class="line">is not shared from OS X and is not known to Docker.</span><br><span class="line">You can configure shared paths from Docker -&gt; Preferences... -&gt; File Sharing.</span><br><span class="line">See https://docs.docker.com/docker-for-mac/osxfs/<span class="comment">#namespaces for more info.</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ docker ps | grep rabbit</span><br><span class="line">75d0ec6821fc        rabbitmq:management   <span class="string">"docker-entrypoint.s…"</span>   About a minute ago   Up About a minute   4369/tcp, 5671/tcp, 0.0.0.0:5672-&gt;5672/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:15672-&gt;15672/tcp   rabbit-node1</span><br></pre></td></tr></table></figure>
+
+
+<p>浏览器打开登录rabbitmq, 入口:<a href="http://localhost:15672" target="_blank" rel="noopener">http://localhost:15672</a><br>默认用户名: guest 密码: guest</p>
+<h3 id="RabbitMQ的UI界面使用测试"><a href="#RabbitMQ的UI界面使用测试" class="headerlink" title="RabbitMQ的UI界面使用测试"></a>RabbitMQ的UI界面使用测试</h3><h3 id="RabbitMQ的工作原理和转发模式"><a href="#RabbitMQ的工作原理和转发模式" class="headerlink" title="RabbitMQ的工作原理和转发模式"></a>RabbitMQ的工作原理和转发模式</h3><p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/RabbitMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png" alt></p>
+<p>名词解析：<br><code>exchange</code>:消息交换机，决定消息按什么规则，路由到哪个队列。<br><code>queue</code>:消息载体，每个消息都会被投到一个或多个队列。<br><code>binding</code>:绑定，把exchange和queue按照路由规则绑定起来。<br><code>routing key</code>:路由关键字，exchange根据这关键字来投递消息。<br><code>channel</code>:消息通道，客户端的每个连接建立多个channnel。<br><code>producer</code>:消息生产者，用于投递消息的程序。<br><code>consumer</code>:消息消费者，用于接收消息的程序。</p>
+<p>exchange的工作模式<br><code>fanout</code>:类似广播，转发到所有绑定交换机的queue。<br><code>direct</code>:类似单播，routing key 和bingding key完美匹配。<br><code>topic</code>:类似组播，转发到符合通配符的queue。<br><code>headers</code>:请求头与消息匹配，才能接收消息。</p>
+<p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/fanout.png" alt></p>
+<p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/direct.png" alt></p>
+<p><img src="/2020/02/12/%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85RabbitMQ/topic.jpeg" alt></p>
+<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p>1.配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const (</span><br><span class="line">	// AsyncTransferEnable : 是否开启文件异步转移(默认同步)</span><br><span class="line">	AsyncTransferEnable = <span class="literal">true</span></span><br><span class="line">	// RabbitURL : rabbitmq服务的入口url</span><br><span class="line">	RabbitURL = <span class="string">"amqp://guest:guest@127.0.0.1:5672/"</span></span><br><span class="line">	// TransExchangeName : 用于文件transfer的交换机</span><br><span class="line">	TransExchangeName = <span class="string">"uploadserver.trans"</span></span><br><span class="line">	// TransOSSQueueName : oss转移队列名</span><br><span class="line">	TransOSSQueueName = <span class="string">"uploadserver.trans.oss"</span></span><br><span class="line">	// TransOSSErrQueueName : oss转移失败后写入另一个队列的队列名</span><br><span class="line">	TransOSSErrQueueName = <span class="string">"uploadserver.trans.oss.err"</span></span><br><span class="line">	// TransOSSRoutingKey : routingkey</span><br><span class="line">	TransOSSRoutingKey = <span class="string">"oss"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2.生产者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">init</span></span>() &#123;</span><br><span class="line">	// 是否开启异步转移功能，开启时才初始化rabbitMQ连接</span><br><span class="line">	<span class="keyword">if</span> !config.AsyncTransferEnable &#123;</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> <span class="function"><span class="title">initChannel</span></span>() &#123;</span><br><span class="line">		channel.NotifyClose(notifyClose)</span><br><span class="line">	&#125;</span><br><span class="line">	// 断线自动重连</span><br><span class="line">	go <span class="function"><span class="title">func</span></span>() &#123;</span><br><span class="line">		<span class="keyword">for</span> &#123;</span><br><span class="line">			select &#123;</span><br><span class="line">			<span class="keyword">case</span> msg := &lt;-notifyClose:</span><br><span class="line">				conn = nil</span><br><span class="line">				channel = nil</span><br><span class="line">				log.Printf(<span class="string">"onNotifyChannelClosed: %+v\n"</span>, msg)</span><br><span class="line">				initChannel()</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func initChannel() bool &#123;</span><br><span class="line">	//1.判断channel是否已经创建</span><br><span class="line">	<span class="keyword">if</span> channel != nil &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//2.获得rabbitMQ的一个连接</span><br><span class="line">	conn, err := amqp.Dial(config.RabbitURL)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Println(err.Error())</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//3.打开一个channel，用于消息的发布与接收等</span><br><span class="line">	channel, err = conn.Channel()</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Println(err.Error())</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Publish : 发布消息</span><br><span class="line">func Publish(exchange, routingKey string, msg []byte) bool &#123;</span><br><span class="line">	//1.判断channel是否正常</span><br><span class="line">	<span class="keyword">if</span> !<span class="function"><span class="title">initChannel</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//2.执行消息发布</span><br><span class="line">	err := channel.Publish(</span><br><span class="line">		exchange,</span><br><span class="line">		routingKey,</span><br><span class="line">		<span class="literal">false</span>, // 如果没有对应的queue, 就会丢弃这条消息</span><br><span class="line">		<span class="literal">false</span>, //</span><br><span class="line">		amqp.Publishing&#123;</span><br><span class="line">			ContentType: <span class="string">"text/plain"</span>, //明文编码</span><br><span class="line">			Body:        msg,</span><br><span class="line">		&#125;,</span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Println(err.Error())</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>3.消费者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">var <span class="keyword">done</span> chan bool</span><br><span class="line"></span><br><span class="line">// StartConsume : 开始监听队列，获取消息</span><br><span class="line">func StartConsume(qName, cName string, callback func(msg []byte) bool) &#123;</span><br><span class="line">	//1.通过channel.Consume获得消息信道</span><br><span class="line">	msgs, err := channel.Consume(</span><br><span class="line">		qName,</span><br><span class="line">		cName,</span><br><span class="line">		<span class="literal">true</span>,  //自动应答</span><br><span class="line">		<span class="literal">false</span>, // 非唯一的消费者</span><br><span class="line">		<span class="literal">false</span>, // rabbitMQ只能设置为<span class="literal">false</span></span><br><span class="line">		<span class="literal">false</span>, // noWait, <span class="literal">false</span>表示会阻塞直到有消息过来</span><br><span class="line">		nil)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">done</span> = make(chan bool)</span><br><span class="line"></span><br><span class="line">	go <span class="function"><span class="title">func</span></span>() &#123;</span><br><span class="line">		// 2.循环读取channel的数据</span><br><span class="line">		<span class="keyword">for</span> d := range msgs &#123;</span><br><span class="line">			//3.调用callback方法来处理新的消息</span><br><span class="line">			processErr := callback(d.Body)</span><br><span class="line">			<span class="keyword">if</span> processErr &#123;</span><br><span class="line">				// TODO: 将任务写入另一个队列，用于异常情况的重试</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	// 接收<span class="keyword">done</span>的信号, 没有信息过来则会一直阻塞，避免该函数退出</span><br><span class="line">	&lt;-<span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">	// 关闭通道</span><br><span class="line">	channel.Close()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// StopConsume : 停止监听队列</span><br><span class="line">func <span class="function"><span class="title">StopConsume</span></span>() &#123;</span><br><span class="line">	<span class="keyword">done</span> &lt;- <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><a href="https://github.com/samtake/goRedisDemo" target="_blank" rel="noopener">demo</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/Redis%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/12/Redis%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Redis入门</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-12 17:03:51 / Modified: 19:48:41" itemprop="dateCreated datePublished" datetime="2020-02-12T17:03:51+08:00">2020-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Docker-安装-Redis"><a href="#Docker-安装-Redis" class="headerlink" title="Docker 安装 Redis"></a>Docker 安装 Redis</h3><p><code>docker pull redis:latest</code><br>取最新版的 Redis 镜像</p>
+<p><code>docker images</code><br>查看是否已安装了 redis</p>
+<p>运行 redis 容器<br><code>docker run -itd --name redis-test -p 6379:6379 redis</code><br>或者运行redis并设置密码<br><code>docker run -d --name myredis -p 6379:6379 redis --requirepass &quot;mypassword&quot;</code></p>
+<p>其中-p 6379:6379：映射容器服务的 6379 端口到宿主机的 6379 端口。外部可以直接通过宿主机ip:6379 访问到 Redis 的服务。</p>
+<p><code>docker ps</code> 查看容器的运行信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  Desktop docker ps </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                               NAMES</span><br><span class="line">d1f67d1e5fda        redis               <span class="string">"docker-entrypoint.s…"</span>   About a minute ago   Up About a minute   0.0.0.0:6379-&gt;6379/tcp              redis-test</span><br><span class="line">0eee2c1708be        mysql:5.7           <span class="string">"docker-entrypoint.s…"</span>   8 hours ago          Up 8 hours          0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   happy_chandrasekhar</span><br></pre></td></tr></table></figure>
+
+
+<p>最后，通过过 redis-cli 连接测试使用 redis 服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  Desktop docker <span class="built_in">exec</span> -it redis-test /bin/bash</span><br><span class="line">root@d1f67d1e5fda:/data<span class="comment"># redis-cli</span></span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> <span class="built_in">test</span> 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>可以存储的值</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>STRING</td>
+<td>字符串、整数或者浮点数</td>
+<td>对整个字符串或者字符串的其中一部分执行操作；对整数和浮点数执行自增或者自减操作；</td>
+</tr>
+<tr>
+<td>LIST</td>
+<td>列表</td>
+<td>从两端压入或者弹出元素；读取单个或者多个元素；进行修剪，只保留一个范围内的元素；</td>
+</tr>
+<tr>
+<td>SET</td>
+<td>无序集合</td>
+<td>添加、获取、移除单个元素；检查一个元素是否存在于集合中；计算交集、并集、差集；从集合里面随机获取元素；</td>
+</tr>
+<tr>
+<td>HASH</td>
+<td>包含键值对的无序散列表</td>
+<td>添加、获取、删除单个键值对；获取所有键值对；检查某个健是否存在；</td>
+</tr>
+<tr>
+<td>ZSET</td>
+<td>有序集合</td>
+<td>添加、获取、删除元素；根据分值范围或者成员来获取元素；计算一个键的排名；</td>
+</tr>
+</tbody></table>
+<h4 id="STRING"><a href="#STRING" class="headerlink" title="STRING"></a>STRING</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>获取存储在给定健中的值</td>
+</tr>
+<tr>
+<td>SET</td>
+<td>设置存储在给定健中的值</td>
+</tr>
+<tr>
+<td>DEL</td>
+<td>删除存储在给定健中的值（这个命令可以用于所有类型）</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name longshan</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">"longshan"</span></span><br><span class="line">127.0.0.1:6379&gt; del name</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">(nil)</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="LIST"><a href="#LIST" class="headerlink" title="LIST"></a>LIST</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rpush</td>
+<td>获取存储在给定键中的值</td>
+</tr>
+<tr>
+<td>lrange</td>
+<td>设置存储在给定键中的值</td>
+</tr>
+<tr>
+<td>lindex</td>
+<td>删除存储在给定键中的值（这个命令可以用于所有类型）</td>
+</tr>
+<tr>
+<td>lpop</td>
+<td>删除存储在给定键中的值（这个命令可以用于所有类型）</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange list 0-1</span><br><span class="line">(error) ERR wrong number of arguments <span class="keyword">for</span> <span class="string">'lrange'</span> <span class="built_in">command</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 0 -1</span><br><span class="line">1) <span class="string">"item1"</span></span><br><span class="line">2) <span class="string">"item2"</span></span><br><span class="line">3) <span class="string">"item3"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 1</span><br><span class="line">(error) ERR wrong number of arguments <span class="keyword">for</span> <span class="string">'lrange'</span> <span class="built_in">command</span></span><br><span class="line">127.0.0.1:6379&gt; lindex list 1</span><br><span class="line"><span class="string">"item2"</span></span><br><span class="line">127.0.0.1:6379&gt; lpop list</span><br><span class="line"><span class="string">"item1"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange list 0 -1</span><br><span class="line">1) <span class="string">"item2"</span></span><br><span class="line">2) <span class="string">"item3"</span></span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h4><p>命令    | 行为<br>-|-|-<br>sadd    | 添加一个或多个元素到集合里<br>smembers |    获取集合里面的所有元素<br>sismember |    确定一个给定的值是一个集合的成员<br>srem    | 从集合里删除一个或多个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item1</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item3</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> item3</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; smember <span class="built_in">set</span></span><br><span class="line">(error) ERR unknown <span class="built_in">command</span> `smember`, with args beginning with: `<span class="built_in">set</span>`, </span><br><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"item3"</span></span><br><span class="line">2) <span class="string">"item1"</span></span><br><span class="line">3) <span class="string">"item2"</span></span><br><span class="line">127.0.0.1:6379&gt; sismember <span class="built_in">set</span> item5</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; srem <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; srem <span class="built_in">set</span> item2</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; smenbers <span class="built_in">set</span></span><br><span class="line">(error) ERR unknown <span class="built_in">command</span> `smenbers`, with args beginning with: `<span class="built_in">set</span>`, </span><br><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"item3"</span></span><br><span class="line">2) <span class="string">"item1"</span></span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="HASH"><a href="#HASH" class="headerlink" title="HASH"></a>HASH</h4><p>命令    | 行为<br>-|-|-<br>hset    | 设置 hash 里面一个字段的值<br>hget    | 获取 hash 中域的值<br>hgetall    | 从 hash 中读取全部的域和值<br>hdel    | 删除一个或多个域</p>
+<h4 id="ZSET"><a href="#ZSET" class="headerlink" title="ZSET"></a>ZSET</h4><p>命令    | 行为<br>-|-|-<br>ZADD    | 添加到有序 set 的一个或多个成员，或更新的分数，如果它已经存在<br>ZRANGE    | 根据指定的 index 返回，返回 sorted set 的成员列表<br>ZRANGEBYSCORE    | 返回有序集合中指定分数区间内的成员，分数由低到高排序。<br>ZREM    | 从排序的集合中删除一个或多个成员</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li><p>缓存 - 将热点数据放到内存中，设置内存的最大使用量以及过期淘汰策略来保证缓存的命中率。</p>
+</li>
+<li><p>计数器 - Redis 这种内存数据库能支持计数器频繁的读写操作。</p>
+</li>
+<li><p>应用限流 - 限制一个网站访问流量。</p>
+</li>
+<li><p>消息队列 - 使用 List 数据类型，它是双向链表。</p>
+</li>
+<li><p>查找表 - 使用 HASH 数据类型。</p>
+</li>
+<li><p>交集运算 - 使用 SET 类型，例如求两个用户的共同好友。</p>
+</li>
+<li><p>排行榜 - 使用 ZSET 数据类型。</p>
+</li>
+<li><p>分布式 Session - 多个应用服务器的 Session 都存储到 Redis 中来保证 Session 的一致性。</p>
+</li>
+<li><p>分布式锁 - 除了可以使用 SETNX 实现分布式锁之外，还可以使用官方提供的 RedLock 分布式锁实现。</p>
+</li>
+</ul>
+<h3 id="通过go语言使用Redis"><a href="#通过go语言使用Redis" class="headerlink" title="通过go语言使用Redis"></a>通过go语言使用Redis</h3><p>1.设置一下Redis密码然后测试连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">➜  egoshop docker rm -f cd93e4361dff                                                 </span><br><span class="line">cd93e4361dff</span><br><span class="line"></span><br><span class="line">➜  egoshop docker run -d --name myredis -p 6379:6379 redis --requirepass <span class="string">"mypassword"</span></span><br><span class="line">f21ed92618bc5a48a95a05fcf73d1fb911b3020616dfd4950b4827dc9559814e</span><br><span class="line">➜  egoshop docker ps                                                                 </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">f21ed92618bc        redis               <span class="string">"docker-entrypoint.s…"</span>   3 seconds ago       Up 1 second         0.0.0.0:6379-&gt;6379/tcp              myredis</span><br><span class="line">0eee2c1708be        mysql:5.7           <span class="string">"docker-entrypoint.s…"</span>   10 hours ago        Up 10 hours         0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   happy_chandrasekhar</span><br><span class="line">➜  egoshop docker <span class="built_in">exec</span> -it myredis /bin/bash</span><br><span class="line">root@f21ed92618bc:/data<span class="comment"># redis-cli</span></span><br><span class="line">127.0.0.1:6379&gt; auth <span class="string">"mypassword"</span></span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>2.创建连接池</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">func newRedisPool() *redis.Pool &#123;</span><br><span class="line">	<span class="built_in">return</span> &amp;redis.Pool&#123;</span><br><span class="line">		MaxIdle:     50,</span><br><span class="line">		MaxActive:   30,</span><br><span class="line">		IdleTimeout: 300 * time.Second,</span><br><span class="line">		Dial: func() (redis.Conn, error) &#123;</span><br><span class="line">			// 1. 打开连接</span><br><span class="line">			c, err := redis.Dial(<span class="string">"tcp"</span>, redisHost)</span><br><span class="line">			<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">				fmt.Println(err)</span><br><span class="line">				<span class="built_in">return</span> nil, err</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			// 2. 访问认证</span><br><span class="line">			<span class="keyword">if</span> _, err = c.Do(<span class="string">"AUTH"</span>, redisPass); err != nil &#123;</span><br><span class="line">				c.Close()</span><br><span class="line">				<span class="built_in">return</span> nil, err</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> c, nil</span><br><span class="line">		&#125;,</span><br><span class="line">		TestOnBorrow: func(conn redis.Conn, t time.Time) error &#123;</span><br><span class="line">			<span class="keyword">if</span> time.Since(t) &lt; time.Minute &#123;</span><br><span class="line">				<span class="built_in">return</span> nil</span><br><span class="line">			&#125;</span><br><span class="line">			_, err := conn.Do(<span class="string">"PING"</span>)</span><br><span class="line">			<span class="built_in">return</span> err</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">init</span></span>() &#123;</span><br><span class="line">	pool = newRedisPool()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func RedisPool() *redis.Pool &#123;</span><br><span class="line">	<span class="built_in">return</span> pool</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.添加数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">UploadHandler</span></span>() &#123;</span><br><span class="line">	// 获得redis的一个连接</span><br><span class="line">	rConn := rPool.RedisPool().Get()</span><br><span class="line">	defer rConn.Close()</span><br><span class="line"></span><br><span class="line">	// 将初信息写入到redis缓存</span><br><span class="line">	rConn.Do(<span class="string">"sadd"</span>, <span class="string">"set"</span>, <span class="string">"uploadHandler"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.查看是否有添加数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"upload1"</span></span><br><span class="line">2) <span class="string">"uploadHandler"</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/samtake/goRedisDemo" target="_blank" rel="noopener">具体demo源码</a></p>
+<p>参考资料<br><a href="https://www.runoob.com/redis/redis-intro.html" target="_blank" rel="noopener">Redis 简介</a><br><a href="https://www.runoob.com/docker/docker-install-redis.html" target="_blank" rel="noopener">Docker 安装 Redis</a><br><a href="https://mp.weixin.qq.com/s?src=11&timestamp=1581497616&ver=2153&signature=wJL6PdenqSUgK7dgiXas*bbrDcJzwBzrYoKKYFFfsxW*dYcRnVHqpFKbcYqLDd-bp7DY50iIvxGq8jNMAbQXau-uLB0hPqUJc4erX3MDhbuOrvvtCbw7KY3147aW3KBr&new=1" target="_blank" rel="noopener">Redis 入门指南</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/" class="post-title-link" itemprop="url">Navicat使用资料</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-12 00:35:14" itemprop="dateCreated datePublished" datetime="2020-02-12T00:35:14+08:00">2020-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-15 16:56:40" itemprop="dateModified" datetime="2020-02-15T16:56:40+08:00">2020-02-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>实操一下</p>
+<p>通过docker来启动一个mysql容器应用<br><code>docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</code></p>
+<h3 id="通过docker-exec-it-容器id-bash-来操作mysql"><a href="#通过docker-exec-it-容器id-bash-来操作mysql" class="headerlink" title="通过docker exec -it 容器id bash 来操作mysql"></a>通过docker exec -it 容器id bash 来操作mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">➜  blogs docker ps                      </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">0eee2c1708be        mysql:5.7           <span class="string">"docker-entrypoint.s…"</span>   41 minutes ago      Up 41 minutes       0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   happy_chandrasekhar</span><br><span class="line">➜  blogs docker <span class="built_in">exec</span> -it  0eee2c1708be bash            </span><br><span class="line">root@0eee2c1708be:/<span class="comment"># mysql -uroot -p</span></span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 765627</span><br><span class="line">Server version: 5.7.29 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysql&gt; status;</span><br><span class="line">--------------</span><br><span class="line">mysql  Ver 14.14 Distrib 5.7.29, <span class="keyword">for</span> Linux (x86_64) using  EditLine wrapper</span><br><span class="line"></span><br><span class="line">Connection id:		765627</span><br><span class="line">Current database:	</span><br><span class="line">Current user:		root@localhost</span><br><span class="line">SSL:			Not <span class="keyword">in</span> use</span><br><span class="line">Current pager:		stdout</span><br><span class="line">Using outfile:		<span class="string">''</span></span><br><span class="line">Using delimiter:	;</span><br><span class="line">Server version:		5.7.29 MySQL Community Server (GPL)</span><br><span class="line">Protocol version:	10</span><br><span class="line">Connection:		Localhost via UNIX socket</span><br><span class="line">Server characterset:	latin1</span><br><span class="line">Db     characterset:	latin1</span><br><span class="line">Client characterset:	latin1</span><br><span class="line">Conn.  characterset:	latin1</span><br><span class="line">UNIX socket:		/var/run/mysqld/mysqld.sock</span><br><span class="line">Uptime:			1 hour 2 min 0 sec</span><br><span class="line"></span><br><span class="line">Threads: 2  Questions: 6  Slow queries: 0  Opens: 105  Flush tables: 1  Open tables: 98  Queries per second avg: 0.001</span><br><span class="line">--------------</span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="在navicat中使用sql语句创建表"><a href="#在navicat中使用sql语句创建表" class="headerlink" title="在navicat中使用sql语句创建表"></a>在navicat中使用sql语句创建表</h3><p>1.进行命令行操作</p>
+<p><img src="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/navicate-console.jpeg" alt></p>
+<p>2.输入mysql<br><img src="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/navicate-soule-mysql.png" alt></p>
+<p>3.右键refresh一下即可见到刚才新建的表tbl_user<br><img src="/2020/02/12/Navicat%E4%BD%BF%E7%94%A8%E8%B5%84%E6%96%99/tbl_user.png" alt></p>
+<h3 id="通过navicat连接MySQL"><a href="#通过navicat连接MySQL" class="headerlink" title="通过navicat连接MySQL"></a>通过navicat连接MySQL</h3><p>创建数据库时，一般字符集选择utf8，排序规则选择utf8_general_ci </p>
+<p><a href="https://zhuanlan.zhihu.com/p/44348694" target="_blank" rel="noopener">在Navicat中如何新建数据库和表并做查询</a><br><a href="https://www.navicat.com.cn/manual/online_manual/cn/navicat/win_manual/index.html#/about_0" target="_blank" rel="noopener">Navicat使用手册</a> </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/Ubuntu%E4%B8%AD%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%E4%B8%BB%E4%BB%8E%E8%8A%82%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/09/Ubuntu%E4%B8%AD%E9%80%9A%E8%BF%87Docker%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%E4%B8%BB%E4%BB%8E%E8%8A%82%E7%82%B9/" class="post-title-link" itemprop="url">Ubuntu中通过Docker安装配置MySQL主从节点</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-09 15:37:14" itemprop="dateCreated datePublished" datetime="2020-02-09T15:37:14+08:00">2020-02-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-16 19:51:05" itemprop="dateModified" datetime="2020-02-16T19:51:05+08:00">2020-02-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-拉取MySQL5-7镜像到本地"><a href="#1-拉取MySQL5-7镜像到本地" class="headerlink" title="1.拉取MySQL5.7镜像到本地"></a>1.拉取MySQL5.7镜像到本地</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:5.7</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果你只需要跑一个mysql实例，不做主从，那么执行以下命令即可，不用再做后面的参考步骤: docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7 </span></span><br><span class="line"><span class="comment"># 然后用shell或客户端软件通过配置( 用户名:root 密码:132456 IP:你的本机ip 端口:3306)来登录即可</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-准备MySQL的配置文件"><a href="#2-准备MySQL的配置文件" class="headerlink" title="2.准备MySQL的配置文件"></a>2.准备MySQL的配置文件</h3><p>MySQL5.7安装之后的默认配置文件在/etc/mysql/my.cnf，而自定义的配置文件一般放在/etc/mysql/config.d这个路径下。<br>在本地host主机上自定义的某个目录下（如/data/mysql/conf/），先创建两个文件master.conf和slave.conf，分别用于配置主从两个节点。</p>
+<ul>
+<li>/data/mysql/conf/master.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[client] </span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysql] </span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysqld] </span><br><span class="line">log_bin = <span class="built_in">log</span> <span class="comment">#开启二进制日志，用于从节点的历史复制回放 </span></span><br><span class="line">collation-server = utf8_unicode_ci </span><br><span class="line">init-connect=<span class="string">'SET NAMES utf8'</span> </span><br><span class="line">character-set-server = utf8 </span><br><span class="line">server_id = 1 <span class="comment">#需保证主库和从库的server_id不同， 假设主库设为1 </span></span><br><span class="line">replicate-do-db=fileserver <span class="comment">#需要复制的数据库名，需复制多个数据库的话则重复设置这个选项</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li>/data/mysql/conf/slave.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[client] </span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysql] </span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysqld] </span><br><span class="line">log_bin = <span class="built_in">log</span> <span class="comment">#开启二进制日志，用于从节点的历史复制回放 </span></span><br><span class="line">collation-server = utf8_unicode_ci </span><br><span class="line">init-connect=<span class="string">'SET NAMES utf8'</span> </span><br><span class="line">character-set-server = utf8 </span><br><span class="line">server_id = 2 <span class="comment">#需保证主库和从库的server_id不同， 假设从库设为2 </span></span><br><span class="line">replicate-do-db=fileserver <span class="comment">#需要复制的数据库名，需复制多个数据库的话则重复设置这个选项</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h3 id="3-Docker分别运行MySQL主-从两个容器"><a href="#3-Docker分别运行MySQL主-从两个容器" class="headerlink" title="3. Docker分别运行MySQL主/从两个容器"></a>3. Docker分别运行MySQL主/从两个容器</h3><p>将mysql主节点运行起来 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/mysql/datam </span><br><span class="line">docker run -d --name mysql-master -p 13306:3306 -v /data/mysql/conf/master.conf:/etc/mysql/mysql.conf.d/mysqld.cnf -v /data/mysql/datam:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</span><br></pre></td></tr></table></figure>
+<p>运行参数说明:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">–name mysql-master: 容器的名称设为mysql-master </span><br><span class="line">-p 13306:3306: 将host的13306端口映射到容器的3306端口 </span><br><span class="line">-v /data/mysql/conf/master.conf:/etc/mysql/mysql.conf.d/mysqld.cnf ： master.conf配置文件挂载 </span><br><span class="line">-v /data/mysql/datam:/var/lib/mysql ： mysql容器内数据挂载到host的/data/mysql/datam， 用于持久化 </span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 : mysql的root登录密码为123456</span><br></pre></td></tr></table></figure>
+
+<p> 将mysql从节点运行起来<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/mysql/datas </span><br><span class="line">docker run -d --name mysql-slave -p 13307:3306 -v /data/mysql/conf/slave.conf:/etc/mysql/mysql.conf.d/mysqld.cnf -v /data/mysql/datas:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</span><br></pre></td></tr></table></figure></p>
+<p> 运行参数说明: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">–name mysql-slave: 容器的名称设为mysql-slave </span><br><span class="line">-p 13307:3306: 将host的13307端口映射到容器的3306端口 </span><br><span class="line">-v /data/mysql/conf/master.conf:/etc/mysql/mysql.conf.d/mysqld.cnf ： master.conf配置文件挂载</span><br><span class="line">-v /data/mysql/datam:/var/lib/mysql ： mysql容器内数据挂载到host的/data/mysql/datam， 用于持久化 </span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 : mysql的root登录密码为123456</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-登录MySQL主节点配置同步信息"><a href="#4-登录MySQL主节点配置同步信息" class="headerlink" title="4.登录MySQL主节点配置同步信息"></a>4.登录MySQL主节点配置同步信息</h3><p>宿主机安装mysql客户端 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y mysql-client</span><br></pre></td></tr></table></figure>
+
+<p>登录mysql </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 192.168.1.xx 是你本机的内网ip </span></span><br><span class="line">mysql -u root -h 192.168.1.xx -P13306 -p123456</span><br></pre></td></tr></table></figure>
+
+<p>在mysql client中执行 (创建用于访问主节点来同步数据的帐号) </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create user slave identified by <span class="string">'slave'</span>; </span><br><span class="line">mysql&gt; GRANT REPLICATION SLAVE ON *.* TO <span class="string">'slave'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'slave'</span>; </span><br><span class="line">mysql&gt; flush privileges; </span><br><span class="line">mysql&gt; create database fileserver default character <span class="built_in">set</span> utf8mb4;</span><br></pre></td></tr></table></figure>
+<p>再获取status, 得到类似如下的输出: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show master status\G; </span><br><span class="line">*************************** 1. row *************************** </span><br><span class="line">File: log.000025 </span><br><span class="line">Position: 155 Binlog_Do_DB: </span><br><span class="line">Binlog_Ignore_DB: </span><br><span class="line">Executed_Gtid_Set: 1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="5-登录MySQL从节点配置同步信息"><a href="#5-登录MySQL从节点配置同步信息" class="headerlink" title="5.登录MySQL从节点配置同步信息"></a>5.登录MySQL从节点配置同步信息</h3><ul>
+<li><p>查看mysql master的容器独立ip地址 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker inspect --format=<span class="string">'&#123;&#123;.NetworkSettings.IPAddress&#125;&#125;'</span> mysql-master </span><br><span class="line"><span class="comment"># 比如输出得到: 172.17.0.2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>另开一个tab登录mysql </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 192.168.1.xx 是你本机的内网ip </span></span><br><span class="line">mysql -u root -h 192.168.1.xx -P13307 -p123456</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在mysql client中操作: </p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; stop slave; </span><br><span class="line">mysql&gt; create database fileserver default character <span class="built_in">set</span> utf8mb4; </span><br><span class="line"><span class="comment">#注意其中的日志文件和数值要和上面show master status的值对应 </span></span><br><span class="line">mysql&gt; CHANGE MASTER TO MASTER_HOST=<span class="string">'前两个步骤中获得的mysql master ip'</span>,MASTER_PORT=3306,MASTER_USER=<span class="string">'slave'</span>,MASTER_PASSWORD=<span class="string">'slave'</span>,MASTER_LOG_FILE=<span class="string">'log.000025'</span>,MASTER_LOG_POS=155; </span><br><span class="line">mysql&gt; start slave;</span><br></pre></td></tr></table></figure>
+
+<p>再获取status, 正常应该得到类似如下的输出:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show slave status \G; </span><br><span class="line">// ... </span><br><span class="line">Slave_IO_Running: Yes </span><br><span class="line">Slave_SQL_Running: Yes </span><br><span class="line">// ...</span><br></pre></td></tr></table></figure>
+
+
+
+<p>到这时说明主从配置已经完成，可以尝试在主mysql的fileserver数据库里建表操作下，然后在从节点上检查数据是否已经同步过来。</p>
+<h3 id="几个指令"><a href="#几个指令" class="headerlink" title="几个指令"></a>几个指令</h3><p><code>sudo netstat -antup -antup | grep docker</code> 查看docker占用端口<br><code>ifconfig</code> 查看本机ip</p>
+<h3 id="通过docker-compose方式实现"><a href="#通过docker-compose方式实现" class="headerlink" title="通过docker compose方式实现"></a>通过docker compose方式实现</h3><p><a href="https://github.com/mayinghan/mysql-master-slave-service" target="_blank" rel="noopener">https://github.com/mayinghan/mysql-master-slave-service</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/20/%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8mysql%E5%AE%B9%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/20/%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8mysql%E5%AE%B9%E5%99%A8/" class="post-title-link" itemprop="url">通过Docker启动MySQL容器</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-20 23:11:48" itemprop="dateCreated datePublished" datetime="2019-12-20T23:11:48+08:00">2019-12-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-22 18:01:29" itemprop="dateModified" datetime="2020-02-22T18:01:29+08:00">2020-02-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>拉取mysql</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
+
+<p>在后台启动mysql容器(–name指定了容器的名称，方便之后进入容器的命令行，MYSQL_ROOT_PASSWORD=hls123指定了mysql的root密码，-d表示在后台运行)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --name=mysql -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql</span><br></pre></td></tr></table></figure>
+
+<p>进入容器bash并进入mysql命令行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql bash</span><br></pre></td></tr></table></figure>
+<p>验证容器状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+
+
+<p>创建mysql容器 1master+1个slave</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name=mysql-master -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql</span><br></pre></td></tr></table></figure>
+
+<p>–name 为容器指定名称，这里是mysql-master</p>
+<p>-p 将容器的指定端口映射到主机的指定端口，这里是将容器的3306端口映射到主机的3306端口</p>
+<p>-e 设置环境变量，这里是指定root账号的密码为hls123</p>
+<p>-d 后台运行容器，并返回容器ID</p>
+<p>docker run –name=mysql-master -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql:[版本号]<br>mysql:版本号 指定运行的mysql版本号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name=mysql-slave1 -it -p 3307:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/Docker%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/11/Docker%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">Docker学习</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-11 16:37:47" itemprop="dateCreated datePublished" datetime="2019-12-11T16:37:47+08:00">2019-12-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-24 02:08:21" itemprop="dateModified" datetime="2020-04-24T02:08:21+08:00">2020-04-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><p>安装<br>1.通过<a href="官网">wwww.docker.com</a>下载桌面版docker<br>2.<a href="https://www.daocloud.io/mirror" target="_blank" rel="noopener">配置Docker镜像站</a><br>3.执行<code>docker run hello-world</code>，看输出完美运行～</p>
+<p>基本概念</p>
+<ul>
+<li>镜像（Image）</li>
+<li>容器（Container）</li>
+<li>仓库（Repository）</li>
+</ul>
+<p>镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
+<p>常用操作</p>
+<p>拉取镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//下载官方nginx镜像源，等同于docker pull docker.io/nginx</span><br><span class="line">//也等同于docker pull docker.io/nginx.io/nginx:latest</span><br><span class="line">docker pull nginx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//下载国内镜像源的ubuntu镜像，并制定版本</span><br><span class="line">docker pull registry.docker-cn.com/library/ubuntu:18.04</span><br></pre></td></tr></table></figure>
+
+<p>推送镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//推送镜像到docker hub,需要先注册账号</span><br><span class="line">docker push &lt;你的用户名&gt;/&lt;你打包时定义的镜像名&gt;:&lt;标签，版本号&gt;</span><br><span class="line"></span><br><span class="line">//推送镜像到私有镜像库，需要提前搭建好仓库服务（比如用harbor来搭建）</span><br><span class="line">docker push &lt;私有镜像库域名，如a.b.com&gt;/&lt;项目名称&gt;/镜像名:&lt;标签&gt;</span><br></pre></td></tr></table></figure>
+
+<p>打包镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//提前准备好一个Dockerfile，在Dockerfile相同路径下执行：</span><br><span class="line">docker build -t &lt;指定一个完整的镜像名，比如testdemo:v1.0&gt;</span><br><span class="line">//即可打包出一个本地镜像，然后再通过docker push 就可以推送到远端镜像仓库</span><br></pre></td></tr></table></figure>
+
+<p>启动容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -d //-d 表示通过daemon方式来启动</span><br><span class="line">-p 13306:3306 //端口映射，将host主机的13306端口和docker容器的3306端口映射起来</span><br><span class="line">-v /etc/mysql:/var/mysql //目录挂载，将容器内的/var/mysql目录挂载到host主机的/etc/mysql目录，可以实现容器内这个目录下的数据持久化，mysql为镜像名（指定加载哪个镜像）</span><br></pre></td></tr></table></figure>
+
+<p>重启或停止或删除容器应用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker ps  //列出目前正在运行的容器列表</span><br><span class="line">docker ps -a //列出所有的容器列表</span><br><span class="line">docker start &lt;容器id&gt;  //通过容器id来重启某个容器，批量操作的话，直接在参数后面再跟对应容器id即可</span><br><span class="line">docker stop &lt;容器id&gt;  //通过容器id来关闭某个容器，批量操作的话，直接在参数后面再跟对应容器id即可</span><br><span class="line">docker rm &lt;容器id&gt;  //通过容器id来删除掉某个已经停止的容器</span><br><span class="line">docker rm -f &lt;容器id&gt;  //通过容器id来删除掉某个正在运行的容器</span><br><span class="line">docker container rm  [trusting_newton]</span><br></pre></td></tr></table></figure>
+
+<p>删除本地镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker rmo &lt;镜像id&gt;</span><br><span class="line">docker rmi -f &lt;镜像id&gt; //强制删除</span><br></pre></td></tr></table></figure>
+
+<p>查看容器日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f &lt;容器id&gt;</span><br><span class="line">docker inspect &lt;容器id&gt; //从返回结果中找到LogPath,运行的历史日志会在这个文件里找到</span><br></pre></td></tr></table></figure>
+
+<p>进入容器内</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker  <span class="built_in">exec</span>  -it &lt;容器id&gt;  /bin/bash  //进入容器内并进入它的shell终端</span><br><span class="line">docker  <span class="built_in">exec</span>  -it &lt;容器id&gt; &lt;shell命令&gt;  //在容器内执行shell命令</span><br><span class="line">docker  <span class="built_in">exec</span>  -it &lt;容器id&gt; ls -l        //查看容器内系统跟目录下所有文件或文件夹</span><br><span class="line"><span class="comment"># 进入容器后，可以直接通过exit命令推出容器</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="服务器Linux下安装Docker社区版-Centos7为例"><a href="#服务器Linux下安装Docker社区版-Centos7为例" class="headerlink" title="服务器Linux下安装Docker社区版(Centos7为例)"></a>服务器Linux下安装Docker社区版(Centos7为例)</h3><ul>
+<li>yum源使用阿里云的源</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/yum.repos.d/</span><br><span class="line"><span class="comment"># 下载阿里云的yum源</span></span><br><span class="line">wget http<span class="string">"mirrors.aliyun.com/repo/Centos-7.repo</span></span><br><span class="line"><span class="string">mv CentOS-Base.repo CentOS-Base.repo.back</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">mv Centos-7.repo CentOS-Base.repo</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>重置yum源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br><span class="line">yum-config-manager --add-repo http://mirros.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装docker</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看阿里云上docker 源信息</span></span><br><span class="line">yum list docker-ce</span><br><span class="line"><span class="comment">#安装docker最新社区版</span></span><br><span class="line">yum -y install docker-ce</span><br><span class="line"><span class="comment">#查看docker信息</span></span><br><span class="line">docker -v</span><br><span class="line"><span class="comment">#启动docker</span></span><br><span class="line">systemctl start docker</span><br><span class="line"><span class="comment">#查看docker详细状态信息</span></span><br><span class="line">docker info</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+<p>参考资料<br><a href="https://github.com/yeasy/docker_practice" target="_blank" rel="noopener">Docker — 从入门到实践</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/ElasticSearch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/11/ElasticSearch/" class="post-title-link" itemprop="url">ElasticSearch</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-11 12:15:14 / Modified: 23:21:50" itemprop="dateCreated datePublished" datetime="2019-12-11T12:15:14+08:00">2019-12-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ElasticSearch/" itemprop="url" rel="index">
+                    <span itemprop="name">ElasticSearch</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>ElasticSearch：全文搜索引擎，它可以快速存储，搜索和分析海量数据，用户包括：维基百科、Stack Overflow、GitHub</p>
+<p>特点：不需要简表，配置字段等；只需要存json的文档；</p>
+<p>通过docker安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull docker.elastic.co/elasticsearch/elasticsearch:7.5.0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 9200:9200 -p 9300:9300 -e <span class="string">"discovery.type=single-node"</span> docker.elastic.co/elasticsearch/elasticsearch:7.5.0</span><br></pre></td></tr></table></figure>
+
+<p>安装成功之后访问<code>http://localhost:9200/</code>即可见到对应信息</p>
+<p>链接参考<br><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html" target="_blank" rel="noopener">docker安装ElasticSearch</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/Golang%E4%BA%91%E5%AD%98%E5%82%A8%E5%AE%9E%E6%88%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/10/Golang%E4%BA%91%E5%AD%98%E5%82%A8%E5%AE%9E%E6%88%98/" class="post-title-link" itemprop="url">Golang云存储实战</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-10 01:44:24" itemprop="dateCreated datePublished" datetime="2019-12-10T01:44:24+08:00">2019-12-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-04 19:49:12" itemprop="dateModified" datetime="2020-06-04T19:49:12+08:00">2020-06-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="3mysql"><a href="#3mysql" class="headerlink" title="3mysql"></a>3mysql</h3><p>数据库分表<br>水平分表：假设分成256张文件表，按文件Sha1值后两位来切分，则以：tb_${FILE_SHA1}[:-2]的规则到对应表进行存取。</p>
+<p>// OnFileUploadFinished : 文件上传完成，保存meta （插入）<br>// GetFileMeta : 从mysql获取文件元信息（查询）<br>// UpdateFileLocation : 更新文件的存储地址(如文件被转移了)  （更新）<br>涉及源码：db(file.go   mysql(conn.go))</p>
+<p>使用MySQL小结：<br>通过sql.DB来管理数据连接对象<br>通过sql.Open来创建协程安全的sql.DB<br>优先使用Prepared Statement</p>
+<h3 id="4-1用户系统用户表设计-注册和登录"><a href="#4-1用户系统用户表设计-注册和登录" class="headerlink" title="4-1用户系统用户表设计(注册和登录)"></a>4-1用户系统用户表设计(注册和登录)</h3><p>由于原有情况下,唯一索引用在了字段phone上. 而当前插入表的sql语句中, user_name才是应该要保持唯一的, 因此相对于视频所演示的建表语句进行了更新, 具体如下: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `tbl_user` ( </span><br><span class="line">    `id` int(11) NOT NULL AUTO_INCREMENT, </span><br><span class="line">    `user_name` varchar(64) NOT NULL DEFAULT <span class="string">''</span> COMMENT <span class="string">'用户名'</span>, </span><br><span class="line">    `user_pwd` varchar(256) NOT NULL DEFAULT <span class="string">''</span> COMMENT <span class="string">'用户encoded密码'</span>, </span><br><span class="line">    `email` varchar(64) DEFAULT <span class="string">''</span> COMMENT <span class="string">'邮箱'</span>, </span><br><span class="line">    `phone` varchar(128) DEFAULT <span class="string">''</span> COMMENT <span class="string">'手机号'</span>, </span><br><span class="line">    `email_validated` tinyint(1) DEFAULT 0 COMMENT <span class="string">'邮箱是否已验证'</span>, </span><br><span class="line">    `phone_validated` tinyint(1) DEFAULT 0 COMMENT <span class="string">'手机号是否已验证'</span>, </span><br><span class="line">    `signup_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT <span class="string">'注册日期'</span>, </span><br><span class="line">    `last_active` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT <span class="string">'最后活跃时间戳'</span>, </span><br><span class="line">    `profile` text COMMENT <span class="string">'用户属性'</span>, </span><br><span class="line">    `status` int(11) NOT NULL DEFAULT <span class="string">'0'</span> COMMENT <span class="string">'账户状态(启用/禁用/锁定/标记删除等)'</span>, </span><br><span class="line">    PRIMARY KEY (`id`), </span><br><span class="line">    UNIQUE KEY `idx_username` (`user_name`), </span><br><span class="line">    KEY `idx_status` (`status`) </span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</span><br></pre></td></tr></table></figure>
+
+<p>登录<br>// 1. 校验用户名及密码<br>// 2. 生成访问凭证(token)<br>// 3. 登录成功后重定向到首页<br>涉及源码：<br>db(user.go )<br>handle(user.go)</p>
+<p>访问鉴权（验证token的拦截器）<br>handler(auth.go)</p>
+<h3 id="5-hash算法对比以及秒传原理"><a href="#5-hash算法对比以及秒传原理" class="headerlink" title="5.hash算法对比以及秒传原理"></a>5.hash算法对比以及秒传原理</h3><h3 id="6-Redis"><a href="#6-Redis" class="headerlink" title="6.Redis"></a>6.Redis</h3><p>分块上传与断点续传<br>分块上传：文件切成多块，独立上传，上传完成后合并（初始化上传-&gt;上传分块（并行）-&gt;通知上传完成）<br>断点续传：传输暂停或一场终端后，可基于原来进度重传</p>
+<p>小文件不建议分块上传<br>可以并行上传分块，并且可以无序传输<br>分块上传能极大提高传输效率<br>减少传输失败后重试的流量和时间</p>
+<p>初始化分块信息<br>上传分块<br>通知分块上传完成<br>取消上传分块<br>查看分块上传的整体状态</p>
+<p>涉及源码：<br>cache(redis(conn.go))</p>
+<p>handler(mpupload.go)</p>
+<h3 id="7-Ceph"><a href="#7-Ceph" class="headerlink" title="7.Ceph"></a>7.Ceph</h3><p>Ceph:redhat开源出来的分布式存储系统</p>
+<h3 id="8-阿里云对象存储OSS"><a href="#8-阿里云对象存储OSS" class="headerlink" title="8.阿里云对象存储OSS"></a>8.阿里云对象存储OSS</h3><h4 id="8-3-OSS术语"><a href="#8-3-OSS术语" class="headerlink" title="8-3 OSS术语"></a>8-3 OSS术语</h4><p><img src="/2019/12/10/Golang%E4%BA%91%E5%AD%98%E5%82%A8%E5%AE%9E%E6%88%98/oss01.png" alt="oss01.png"></p>
+<h4 id="8-4-OSS网页具体操作"><a href="#8-4-OSS网页具体操作" class="headerlink" title="8-4 OSS网页具体操作"></a>8-4 OSS网页具体操作</h4><h3 id="9-RabbitMQ"><a href="#9-RabbitMQ" class="headerlink" title="9.RabbitMQ"></a>9.RabbitMQ</h3><p>RabbitMQ:一种开源的消息代理</p>
+<h3 id="10-微服务"><a href="#10-微服务" class="headerlink" title="10.微服务"></a>10.微服务</h3><p><img src="/2019/12/10/Golang%E4%BA%91%E5%AD%98%E5%82%A8%E5%AE%9E%E6%88%98/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E5%9B%BE.jpeg" alt="微服务架构图"></p>
+<h4 id="基于gin改造用户service"><a href="#基于gin改造用户service" class="headerlink" title="基于gin改造用户service"></a>基于gin改造用户service</h4><h4 id="go-micro"><a href="#go-micro" class="headerlink" title="go-micro"></a>go-micro</h4><h3 id="源码说明"><a href="#源码说明" class="headerlink" title="源码说明:"></a>源码说明:</h3><ul>
+<li>master分支: 通过原生net/http实现各接口功能</li>
+<li>gin分支: 通过Gin框架来改造(微服务化章节之后主要基于Gin框架来进行演示)</li>
+<li>pkg分支: 通过go-bindata等工具实现静态资源打包的一个示例</li>
+<li>第九章(RabbitMQ异步存储)章节的代码，可以下载标签为<code>v0.3</code>的版本</li>
+<li>第八章(OSS)及之前章节的代码，可以下载标签为<code>v0.2</code>的版本</li>
+</ul>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li>Go入门: <a href="https://tour.go-zh.org/welcome/1" target="_blank" rel="noopener">语言之旅</a></li>
+<li>MySQL: <a href="https://chhy2009.github.io/document/mysql-reference-manual.pdf" target="_blank" rel="noopener">偶然翻到的一位大牛翻译的使用手册</a></li>
+<li>Redis: <a href="http://redisdoc.com/" target="_blank" rel="noopener">命令手册</a></li>
+<li>Ceph: <a href="http://ceph.org.cn/" target="_blank" rel="noopener">中文社区</a> <a href="http://docs.ceph.org.cn/" target="_blank" rel="noopener">中文文档</a></li>
+<li>RabbitMQ: <a href="http://www.rabbitmq.com/getstarted.html" target="_blank" rel="noopener">英文官方</a> <a href="http://rabbitmq.mr-ping.com/" target="_blank" rel="noopener">一个中文版文档</a></li>
+<li>阿里云OSS: <a href="https://help.aliyun.com/product/31815.html?spm=a2c4g.750001.3.1.47287b13LQI3Ah" target="_blank" rel="noopener">文档首页</a></li>
+<li>gRPC: <a href="http://doc.oschina.net/grpc?t=56831" target="_blank" rel="noopener">官方文档中文版</a></li>
+<li>k8s: <a href="https://www.kubernetes.org.cn/docs" target="_blank" rel="noopener">中文社区</a></li>
+<li>我的手记博客 <a href="http://www.imooc.com/u/6198190" target="_blank" rel="noopener">http://www.imooc.com/u/6198190</a></li>
 </ul>
 
       
@@ -458,7 +1368,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/01/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/15/AFN%E8%A1%A8%E5%8D%95%E5%BD%A2%E5%BC%8F%E6%8F%90%E4%BA%A4%E5%9B%BE%E7%89%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -472,7 +1382,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2019/11/01/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+            <a href="/2019/11/15/AFN%E8%A1%A8%E5%8D%95%E5%BD%A2%E5%BC%8F%E6%8F%90%E4%BA%A4%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">AFN表单形式提交图片</a>
         </h1>
 
         <div class="post-meta">
@@ -482,15 +1392,8 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-11-01 18:28:06" itemprop="dateCreated datePublished" datetime="2019-11-01T18:28:06+08:00">2019-11-01</time>
+              <time title="Created: 2019-11-15 14:47:43" itemprop="dateCreated datePublished" datetime="2019-11-15T14:47:43+08:00">2019-11-15</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-06 20:37:38" itemprop="dateModified" datetime="2020-05-06T20:37:38+08:00">2020-05-06</time>
-              </span>
 
           
 
@@ -503,44 +1406,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"new page title"</span></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line"></span><br><span class="line">$ hexo d --g</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<p>Markdown 表格<br><code>-:</code> 设置内容和标题栏居右对齐。<br><code>:-</code> 设置内容和标题栏居左对齐。<br><code>:-:</code> 设置内容和标题栏居中对齐。</p>
-<table>
-<thead>
-<tr>
-<th align="left">左对齐</th>
-<th align="right">右对齐</th>
-<th align="center">居中对齐</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-<tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-</tbody></table>
-<p><a href="http://support.typora.io/Draw-Diagrams-With-Markdown/" target="_blank" rel="noopener">tyora 流程图文档</a></p>
-
+          
       
     </div>
 
@@ -559,7 +1425,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -605,7 +1471,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-count">107</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
