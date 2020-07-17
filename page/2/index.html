@@ -213,6 +213,87 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E9%87%8D%E5%86%99%E5%92%8C%E9%87%8D%E8%BD%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-%E9%87%8D%E5%86%99%E5%92%8C%E9%87%8D%E8%BD%BD/" class="post-title-link" itemprop="url">Java 重写和重载</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-07 17:12:17" itemprop="dateCreated datePublished" datetime="2020-07-07T17:12:17+08:00">2020-07-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 10:21:18" itemprop="dateModified" datetime="2020-07-15T10:21:18+08:00">2020-07-15</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>先来看一段重写的代码吧。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class LaoWang&#123;</span><br><span class="line">    public void <span class="function"><span class="title">write</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"老王写了一本《基督山伯爵》"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class XiaoWang extends LaoWang &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void <span class="function"><span class="title">write</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"小王写了一本《茶花女》"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重写的两个方法名相同，方法参数的个数也相同；不过一个方法在父类中，另外一个在子类中。就好像父类 LaoWang 有一个 write() 方法（无参），方法体是写一本《基督山伯爵》；子类 XiaoWang 重写了父类的 write() 方法（无参），但方法体是写一本《茶花女》。</p>
+<p>来写一段测试代码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class OverridingTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        LaoWang wang = new XiaoWang();</span><br><span class="line">        wang.write();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>大家猜结果是什么？</p>
+<p>小王写了一本《茶花女》<br>在上面的代码中，们声明了一个类型为 LaoWang 的变量 wang。在编译期间，编译器会检查 LaoWang 类是否包含了 write() 方法，发现 LaoWang 类有，于是编译通过。在运行期间，new 了一个 XiaoWang 对象，并将其赋值给 wang，此时 Java 虚拟机知道 wang 引用的是 XiaoWang 对象，所以调用的是子类 XiaoWang 中的 write() 方法而不是父类 LaoWang  中的 write() 方法，因此输出结果为“小王写了一本《茶花女》”。</p>
+<p>再来看一段重载的代码吧。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class LaoWang&#123;</span><br><span class="line">    public void <span class="function"><span class="title">read</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"老王读了一本《Web全栈开发进阶之路》"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="built_in">read</span>(String bookname) &#123;</span><br><span class="line">        System.out.println(<span class="string">"老王读了一本《"</span> + bookname + <span class="string">"》"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重载的两个方法名相同，但方法参数的个数不同，另外也不涉及到继承，两个方法在同一个类中。就好像类 LaoWang 有两个方法，名字都是 read()，但一个有参数（书名），另外一个没有（只能读写死的一本书）。</p>
+<p>来写一段测试代码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class OverloadingTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        LaoWang wang = new LaoWang();</span><br><span class="line">        wang.read();</span><br><span class="line">        wang.read(<span class="string">"金瓶梅"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这结果就不用猜了。变量 wang 的类型为 LaoWang，wang.read() 调用的是无参的 read() 方法，因此先输出“老王读了一本《Web全栈开发进阶之路》”；wang.read(“金瓶梅”) 调用的是有参的 read(bookname) 方法，因此后输出“老王读了一本《金瓶梅》”。在编译期间，编译器就知道这两个 read() 方法时不同的，因为它们的方法签名（=方法名称+方法参数）不同。</p>
+<p>简单的来总结一下：</p>
+<p>1）编译器无法决定调用哪个重写的方法，因为只从变量的类型上是无法做出判断的，要在运行时才能决定；但编译器可以明确地知道该调用哪个重载的方法，因为引用类型是确定的，参数个数决定了该调用哪个方法。</p>
+<p>2）多态针对的是重写，而不是重载。</p>
+<p>另外，我想要告诉大家的是，重写（Override）和重载（Overload）是 Java 中两个非常重要的概念，新手经常会被它们俩迷惑，因为它们俩的英文名字太像了，中文翻译也只差一个字。难，太难了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-super-%E5%85%B3%E9%94%AE%E5%AD%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1213,82 +1294,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-main/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/07/Java-main/" class="post-title-link" itemprop="url">Java main()</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-07 15:45:28 / Modified: 15:48:01" itemprop="dateCreated datePublished" datetime="2020-07-07T15:45:28+08:00">2020-07-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>每个程序都需要一个入口，对于 Java 程序来说，入口就是 main 方法。</p>
-<p>public static void main(<code>String[] args</code>) {}<br>public、static、void 这 3 个关键字在前面的内容已经介绍过了，如果觉得回去找比较麻烦的话，这里再贴一下：</p>
-<p>public 关键字是另外一个访问修饰符，除了可以声明方法和变量（所有类可见），还可以声明类。main() 方法必须声明为 public。</p>
-<p>static 关键字表示该变量或方法是静态变量或静态方法，可以直接通过类访问，不需要实例化对象来访问。</p>
-<p>void 关键字用于指定方法没有返回值。</p>
-<p>另外，main 关键字为方法的名字，Java 虚拟机在执行程序时会寻找这个标识符；args 为 main() 方法的参数名，它的类型为一个 String 数组，也就是说，在使用 java 命令执行程序的时候，可以给 main() 方法传递字符串数组作为参数。</p>
-<p>java HelloWorld 沉默王二 沉默王三<br>javac 命令用来编译程序，java 命令用来执行程序，HelloWorld 为这段程序的类名，沉默王二和沉默王三为字符串数组，中间通过空格隔开，然后就可以在 main() 方法中通过 args[0] 和 args[1] 获取传递的参数值了。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class HelloWorld &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"沉默王二"</span>.equals(args[0])) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"沉默王三"</span>.equals(args[1])) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>main() 方法的写法并不是唯一的，还有其他几种变体，尽管它们可能并不常见，可以简单来了解一下。</p>
-<p>第二种，把方括号 [] 往 args 靠近而不是 String 靠近：</p>
-<p><code>public static void main(String []args) { }</code><br>第三种，把方括号 [] 放在 args 的右侧：</p>
-<p><code>public static void main(String args[]) { }</code><br>第四种，还可以把数组形式换成可变参数的形式：</p>
-<p><code>public static void main(String...args) { }</code><br>第五种，在 main() 方法上添加另外一个修饰符 strictfp，用于强调在处理浮点数时的兼容性：</p>
-<p><code>public strictfp static void main(String[] args) { }</code><br>也可以在 main() 方法上添加 final 关键字或者 synchronized 关键字。</p>
-<p>第六种，还可以为 args 参数添加 final 关键字：</p>
-<p><code>public static void main(final String[] args) { }</code><br>第七种，最复杂的一种，所有可以添加的关键字统统添加上：</p>
-<p><code>final static synchronized strictfp void main(final String[] args) { }</code><br>当然了，并不需要为了装逼特意把 main() 方法写成上面提到的这些形式，使用 IDE 提供的默认形式就可以了。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1339,7 +1344,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

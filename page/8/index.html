@@ -213,6 +213,109 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/20/%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8mysql%E5%AE%B9%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/20/%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8mysql%E5%AE%B9%E5%99%A8/" class="post-title-link" itemprop="url">通过Docker启动MySQL容器</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-20 23:11:48" itemprop="dateCreated datePublished" datetime="2019-12-20T23:11:48+08:00">2019-12-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-22 18:01:29" itemprop="dateModified" datetime="2020-02-22T18:01:29+08:00">2020-02-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>拉取mysql</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
+
+<p>在后台启动mysql容器(–name指定了容器的名称，方便之后进入容器的命令行，MYSQL_ROOT_PASSWORD=hls123指定了mysql的root密码，-d表示在后台运行)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --name=mysql -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql</span><br></pre></td></tr></table></figure>
+
+<p>进入容器bash并进入mysql命令行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql bash</span><br></pre></td></tr></table></figure>
+<p>验证容器状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+
+
+<p>创建mysql容器 1master+1个slave</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name=mysql-master -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql</span><br></pre></td></tr></table></figure>
+
+<p>–name 为容器指定名称，这里是mysql-master</p>
+<p>-p 将容器的指定端口映射到主机的指定端口，这里是将容器的3306端口映射到主机的3306端口</p>
+<p>-e 设置环境变量，这里是指定root账号的密码为hls123</p>
+<p>-d 后台运行容器，并返回容器ID</p>
+<p>docker run –name=mysql-master -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql:[版本号]<br>mysql:版本号 指定运行的mysql版本号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name=mysql-slave1 -it -p 3307:3306 -e MYSQL_ROOT_PASSWORD=hls123 -d mysql</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/Docker%E5%AD%A6%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1646,251 +1749,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/01/Swift%E5%9F%BA%E7%A1%8001/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/01/Swift%E5%9F%BA%E7%A1%8001/" class="post-title-link" itemprop="url">Swift基础01</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-11-01 23:59:54" itemprop="dateCreated datePublished" datetime="2019-11-01T23:59:54+08:00">2019-11-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-14 01:04:25" itemprop="dateModified" datetime="2019-11-14T01:04:25+08:00">2019-11-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h2><h3 id="使用let关键字来声明常量"><a href="#使用let关键字来声明常量" class="headerlink" title="使用let关键字来声明常量"></a>使用let关键字来声明常量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> temp = 10</span><br></pre></td></tr></table></figure>
-<h3 id="使用var关键字来声明变量"><a href="#使用var关键字来声明变量" class="headerlink" title="使用var关键字来声明变量"></a>使用var关键字来声明变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var temp = 0</span><br><span class="line">temp = 10</span><br></pre></td></tr></table></figure>
-<h3 id="可以在一行中声明多个变量或常量，用逗号分隔"><a href="#可以在一行中声明多个变量或常量，用逗号分隔" class="headerlink" title="可以在一行中声明多个变量或常量，用逗号分隔"></a>可以在一行中声明多个变量或常量，用逗号分隔</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var x=0.1, y=10.1, z=1.0</span><br></pre></td></tr></table></figure>
-<h3 id="类型标注"><a href="#类型标注" class="headerlink" title="类型标注"></a>类型标注</h3><p>在声明一个变量或常量的时候提供类型标注，来明确变量或常量能够储存值的类型</p>
-<p>添加类型标注的方法是在变量或常量的名字后边加一个冒号，再跟一个空格，最后加上要使用的类型名称</p>
-<p>可以在一行中定义多个相关的变量为相同类型，用逗号分隔，只要在最后的变量名字后边加上类型标注</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var msg: String</span><br><span class="line">msg = <span class="string">"message"</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="变量和常量命名"><a href="#变量和常量命名" class="headerlink" title="变量和常量命名"></a>变量和常量命名</h3><p>几乎可以使用任何自负，甚至包括Unicode字符</p>
-<p>不能包括空白字符、数学符号、箭头、保留的（或无效的）Unicode码位、连线和制表符。也不能以数字开头。</p>
-<h3 id="打印常量和变量"><a href="#打印常量和变量" class="headerlink" title="打印常量和变量"></a>打印常量和变量</h3><p>print</p>
-<p>字符串插值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> str = <span class="string">"show string"</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"显示str\(str)"</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h2><h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><p>8，16，32，64位编码的有符号和无符号整数（例如：UInt8,Int8）</p>
-<p>通过min和max属性访问每个整数类型的最小值和最大值</p>
-<p>Int，拥有与当前平台的原生字相同的长度；UInt，与平台长度相关的无符号整数。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"UInt8 min \(UInt8.min), UInt8 max \(UInt8.max)"</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><p> Double 64位浮点数，至少有15位数字的精度</p>
-<p> Float 32位浮点数，至少有6位数字的精度</p>
-<h3 id="Bool"><a href="#Bool" class="headerlink" title="Bool"></a>Bool</h3><p>表示true和false</p>
-<p>Swift的类型安全机制会阻止你用一个非布尔量的值替代掉Bool</p>
-<h3 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h3><p><img src="/2019/11/01/Swift%E5%9F%BA%E7%A1%8001/Swift_%E6%95%B0%E5%80%BC%E8%8C%83%E5%9B%B4.png" alt="Swift_数值范围"></p>
-<h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3><p> 类型别名是一个为已存在类型定义的一个可选择的名字<br> <code>typealias</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typealias AudioSample = UInt8</span><br><span class="line"><span class="built_in">let</span> sample: AudioSample = 32</span><br></pre></td></tr></table></figure>
-
-<h2 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h2><h3 id="使用Tuple组合多个值"><a href="#使用Tuple组合多个值" class="headerlink" title="使用Tuple组合多个值"></a>使用Tuple组合多个值</h3><p>元组把多个值合并成单一的复合型的值</p>
-<p>元组内的值可以是任何类型，而且可以不必是同一类型</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> error = (1, <span class="string">"没有权限"</span>)</span><br><span class="line"><span class="built_in">print</span>(error.0)</span><br><span class="line"><span class="built_in">print</span>(error.1)</span><br></pre></td></tr></table></figure>
-<h3 id="元素命名"><a href="#元素命名" class="headerlink" title="元素命名"></a>元素命名</h3><p>元组中的每一个元素可以制定对应的元素名称</p>
-<p>如果没有制定名称的元素也可以使用下标的方式来引用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> error = (error: 1,  errorMsg: <span class="string">"没有权限"</span>)</span><br><span class="line"><span class="built_in">print</span>(error.error)</span><br><span class="line"><span class="built_in">print</span>(error.errorMsg)</span><br></pre></td></tr></table></figure>
-<h3 id="Tuple修改"><a href="#Tuple修改" class="headerlink" title="Tuple修改"></a>Tuple修改</h3><p>用var定义的元组就是可变元组，let定义的就是不可变元组</p>
-<p><code>不管是可变还是不可变元组，元组在创建后就不能增加和删除元素</code></p>
-<p>可以对可变元组的元素进行修改，但是不能改变其类型</p>
-<p>Any类型可以改为任何类型</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var error:(errorCode: Int, errorMsg:Any) = (errorCode: 1, errorMsg: <span class="string">"没有权限"</span>)</span><br><span class="line">error.errorCode = 2</span><br><span class="line">error.errorMsg = 3</span><br><span class="line"><span class="built_in">print</span>(error)</span><br></pre></td></tr></table></figure>
-<h3 id="分解"><a href="#分解" class="headerlink" title="分解"></a>分解</h3><p>可以将一个元组的内容分解成单独的常量或变量</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> error = (1, <span class="string">"没有权限"</span>)</span><br><span class="line"><span class="built_in">let</span> (error, errorMsg) = error</span><br><span class="line"><span class="built_in">print</span>(error)</span><br><span class="line"><span class="built_in">print</span>(errorMsg)</span><br></pre></td></tr></table></figure>
-<p>如果只需要使用其中的一部分数据，不需要的数据可以用下划线<code>_</code>代替</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> error = (1, <span class="string">"没有权限"</span>)</span><br><span class="line"><span class="built_in">let</span> (_, errorMsg) = error</span><br><span class="line"><span class="built_in">print</span>(errorMsg)</span><br></pre></td></tr></table></figure>
-<h3 id="作为函数返回值"><a href="#作为函数返回值" class="headerlink" title="作为函数返回值"></a>作为函数返回值</h3><p>使用Tuple为函数返回多个值</p>
-<p>返回值的Tuple可以在函数的返回类型部分被命名</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func requestWithUrl(url: String) -&gt; (errorCode: Int, errorMsg: String) &#123;</span><br><span class="line">    <span class="built_in">return</span> (1, <span class="string">"没有权限"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> error = requestWithUrl(url: <span class="string">""</span>)</span><br><span class="line"><span class="built_in">print</span>(error)</span><br></pre></td></tr></table></figure>
-
-<h2 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h2><p>通过在变量类型后面加<code>?</code>表示：这里有一个值，它表示x，或者这里根本没有值</p>
-<p>可以通过给可选变量赋值一个nil来将之设置为没有值</p>
-<p>在Swift中，nil不是指针，他是值缺失的一种特殊类型，任何类型的可选类项都可以设置成nil而不仅仅是对西那个类型</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var str : String? = nil</span><br></pre></td></tr></table></figure>
-
-<h3 id="Optional-if"><a href="#Optional-if" class="headerlink" title="Optional-if"></a>Optional-if</h3><p>可选项是没法直接食用的，需要用!展开之后才能使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str : String? = <span class="string">"abc"</span></span><br><span class="line"><span class="keyword">if</span> str != nil &#123;</span><br><span class="line">    <span class="built_in">let</span> cont = str!.count</span><br><span class="line">    <span class="built_in">print</span>(count)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Optional-绑定"><a href="#Optional-绑定" class="headerlink" title="Optional-绑定"></a>Optional-绑定</h3><p>可以使用可选项的绑定来判断是否包含值，如果包含就把值赋给一个临时的常量或者变量</p>
-<p>可选绑定可以与if和while的语句使用来检查可选项内部的值，并赋值给一个变量或常量 </p>
-<p>同一个if语句中包含多个可选项绑定时，用逗号分隔开即可。如果人一个选项绑定结果是nil或者布尔值为false，那么整个if判断会被看作false</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str : String? = <span class="string">"abc"</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">let</span> actualStr = str &#123;</span><br><span class="line">    <span class="built_in">let</span> cont = str!.count</span><br><span class="line">    <span class="built_in">print</span>(count)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Optional-隐式展开"><a href="#Optional-隐式展开" class="headerlink" title="Optional-隐式展开"></a>Optional-隐式展开</h3><p>有些可选项一旦被设定值之后，就会一直拥有值，在这种情况下，就可以去掉检查的需求，也不必每次访问的时候都进行展开</p>
-<p>通过在声明的类型后边添加一个叹号<code>!</code>而非问好来书写隐式展开可选项</p>
-<p>隐式展开可选项主要被用于Swift类的初始化过程中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str : String! = <span class="string">"abc"</span></span><br><span class="line"><span class="built_in">let</span> cont = str!.count</span><br><span class="line"><span class="built_in">print</span>(count)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Optional-可选链"><a href="#Optional-可选链" class="headerlink" title="Optional-可选链"></a>Optional-可选链</h3><p>可选项后面加问号</p>
-<p>如果可选项不为nil，返回一个可选项结果，否则返回nil</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var str : String? = <span class="string">"abc"</span></span><br><span class="line"><span class="built_in">let</span> cont = str?.count</span><br><span class="line"><span class="keyword">if</span> count != nil &#123;</span><br><span class="line">    <span class="built_in">let</span> lastIndex = count! - 1</span><br><span class="line">    <span class="built_in">print</span>(lastIndex)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="初始化空串"><a href="#初始化空串" class="headerlink" title="初始化空串"></a>初始化空串</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var emptyString = <span class="string">""</span></span><br><span class="line">var anotherEmptyString = String()</span><br><span class="line"><span class="keyword">if</span> emptyString.isEmpty &#123;</span><br><span class="line">    <span class="built_in">print</span>(Noting<span class="string">")</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><p>字符串字面亮是被双引号<code>&quot;</code>包裹的固定顺序的文本字符</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var str = <span class="string">"some string"</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="多行字面量"><a href="#多行字面量" class="headerlink" title="多行字面量"></a>多行字面量</h3><p>字多行符串字面量是被三个双引号<code>&quot;&quot;&quot;</code>引起来的一系列字符</p>
-<p>开始和结束默认不会有换行符</p>
-<p>反斜杠只会在代码阅读上方便，输出时没有实际的换行功能<code>\</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> str = <span class="string">""</span><span class="string">"var emptyString = "</span><span class="string">" \</span></span><br><span class="line"><span class="string">var anotherEmptyString = String() \</span></span><br><span class="line"><span class="string">if emptyString.isEmpty &#123; \</span></span><br><span class="line"><span class="string">    print(Noting"</span>) \</span><br><span class="line"><span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">print(str)</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="字符串里的特殊字符"><a href="#字符串里的特殊字符" class="headerlink" title="字符串里的特殊字符"></a>字符串里的特殊字符</h3><p>转义特殊字符</p>
-<p>任意的Unicode标量  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="扩展字符串分隔符"><a href="#扩展字符串分隔符" class="headerlink" title="扩展字符串分隔符"></a>扩展字符串分隔符</h3><p>在字符串字面量中放置扩展分隔符来在字符串中包含特殊字符而不让它们真的生效</p>
-<p>将字符串放在双引号内并由井号#包裹</p>
-<p>如果字符串里有”#则首尾需要两个##(首尾##与包含的”#不一样即可)</p>
-<p>如果你需要字符串中某个特殊符号的效果，使用匹配你包裹的#号数量的#号，并在前面添加转义符号\</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> str = <span class="comment">#"122\n\n444"#</span></span><br><span class="line"><span class="built_in">let</span> str = <span class="comment">#"122\#n\n444"#</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="字符串的可变形"><a href="#字符串的可变形" class="headerlink" title="字符串的可变形"></a>字符串的可变形</h3><p>var 可修改<br>let 不可修改</p>
-<h3 id="字符串是值类型"><a href="#字符串是值类型" class="headerlink" title="字符串是值类型"></a>字符串是值类型</h3><p>String 值在传递给方法或者函数的时候会被复制过去</p>
-<p>赋值给常量和变量的时候也是一样</p>
-<h3 id="操作字符"><a href="#操作字符" class="headerlink" title="操作字符"></a>操作字符</h3><p>for-in 循环遍历String中的每一个独立的Character</p>
-<p>Character类型</p>
-<p>String值可以通过传入Character 数组来构造</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> character <span class="keyword">in</span> <span class="string">"abcdef"</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(character)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> tempCharacters: [Character] = [<span class="string">"d"</span>,<span class="string">"f"</span>,<span class="string">"d"</span>,<span class="string">"h"</span>]</span><br><span class="line"><span class="built_in">let</span> str = String(tempCharacters)</span><br></pre></td></tr></table></figure>
-
-<h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><p>通过加运算符<code>+</code>创建新字符串</p>
-<p>使用加赋值符号<code>+=</code>在已经存在的String值末尾追加一个String值</p>
-<p>使用String类型的<code>append()</code>方法来给一个String变量的末尾追加character值</p>
-<h3 id="字符串插值"><a href="#字符串插值" class="headerlink" title="字符串插值"></a>字符串插值</h3><p><code>\(some)</code> some代表：混合常量、变量、字面量和表达式的字符串面量</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="comment">#"1 * 3 = \#(1*3)."#)</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="字符串索引"><a href="#字符串索引" class="headerlink" title="字符串索引"></a>字符串索引</h3><p>每个String值都有相关的索引类型，String.index，它相当于每个Character在字符串重的位置</p>
-<p>startIndex属性来访问String中第一个Character的位置。endIndex属性就是String中最后一个字符后的位置</p>
-<p>endIndex属性并不是字符串下表脚本的合法实际参数</p>
-<p>如果String为空，则startIndex与endIndex相等</p>
-<p>使用index(before:)和index(after:)方法来访问给定索引的前后</p>
-<p>要访问给定索引更远的索引，你可以使用index(_:offsetBy:)</p>
-<p>使用indices属性来访问字符串中每个字符的索引</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> hello = <span class="string">"hello"</span></span><br><span class="line">hello[hello.startIndex]</span><br><span class="line">hello[hello.index(before: hello.endIndex)]</span><br><span class="line">hello[hello.index(after: hello.startIndex)]</span><br><span class="line"><span class="built_in">let</span> index = hello.index(hello.startIndex, offsetBy: 2)</span><br><span class="line">hello[index]</span><br></pre></td></tr></table></figure>
-
-<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>插入字符，使用insert(_:at:)方法</p>
-<p>插入另一个字符串的内容到特定的索引，使用insert(contentsOs:at:)方法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var welcome = <span class="string">"hello"</span></span><br><span class="line">welcome.insert(<span class="string">"!"</span>, at: welcome.endIndex)</span><br><span class="line"></span><br><span class="line">welcome.insert(contentsOf: <span class="string">"ererer"</span>, at: welcome.index(before: welcome.endIndex))</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>移除字符串remove(at:)</p>
-<p>移除特定范围的字符串removeSubrange(range)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">welcome.remove(at: welcome.index(before: welcome.endIndex))</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> range = welcome.index(welcome.endIndex, offsetBy: -1)..&lt;welcome.endIndex</span><br><span class="line">welcome.removeSubrange(range)</span><br></pre></td></tr></table></figure>
-
-<h3 id="子字符串"><a href="#子字符串" class="headerlink" title="子字符串"></a>子字符串</h3><p>使用下表或者累死prefix(_:)的方法得到的子字符串是SubString类型</p>
-<p>SubString拥有String的大部分方法</p>
-<p>SubString可以转成String类型</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> index3 = hello.lastIndex(of: <span class="string">"o"</span>) ?? hello.endIndex</span><br><span class="line"><span class="built_in">let</span> begin = hello[..&lt;index3]</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> newHello = String(begin)</span><br></pre></td></tr></table></figure>
-
-<h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3><p>字符串和字符相等性(==和==)</p>
-<p>前缀相等hasPrefix(_:)</p>
-<p>后缀相等hasSuffix(_:)</p>
-<h2 id="赋值和算术运算符"><a href="#赋值和算术运算符" class="headerlink" title="赋值和算术运算符"></a>赋值和算术运算符</h2><p>一元运算符、二元运算符、三元运算符</p>
-<p>赋值运算符不会返回值</p>
-<h2 id="如何处理算术结果溢出"><a href="#如何处理算术结果溢出" class="headerlink" title="如何处理算术结果溢出"></a>如何处理算术结果溢出</h2><p>在默认情况下，当一个整数赋超过它容量的值时，Swift会报错而不是生成一个无效的数，给我们操作过大或者过小的数的时候提供了额外的安全性</p>
-<p>同时提供了三个算术溢出运算符来让系统支持整数溢出的运算</p>
-<p>溢出加法<code>&amp;+</code></p>
-<p>溢出减法<code>&amp;-</code></p>
-<p>溢出乘法<code>&amp;*</code></p>
-<h3 id="值溢出"><a href="#值溢出" class="headerlink" title="值溢出"></a>值溢出</h3><p>溢出也会发生在有符号整形数值上</p>
-<p>对于无符号与有符号整形数值来说，当出现上溢时，它们会从数值所能容纳的最大数变成最小的数。同样，当发生下溢时，它们会从所能容纳的最小数变成最大的数。</p>
-<h2 id="合并空值运算符"><a href="#合并空值运算符" class="headerlink" title="合并空值运算符??"></a>合并空值运算符<code>??</code></h2><p>合并空值运算符(a??b)如果选项a有值则展开，如果没有值，是nil，则返回默认值b</p>
-<p>表达式a必须是一个可选类型。表达式b必须与a的存储类型相同。</p>
-<p>实际上它就是相当于三目运算符<code>_?_:_</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func addTwoNum(num1: Int?, num2: Int2?) -&gt; Int &#123;</span><br><span class="line">    <span class="built_in">return</span> (num1 ?? 0) +(num2 ?? 0)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="区间运算符"><a href="#区间运算符" class="headerlink" title="区间运算符"></a>区间运算符</h2><h3 id="闭区间运算符a-b"><a href="#闭区间运算符a-b" class="headerlink" title="闭区间运算符a...b"></a>闭区间运算符<code>a...b</code></h3><p>定义了从a到b的一组范围，并且包含a和b</p>
-<p>a的值不能大于b的值</p>
-<h3 id="半开区间运算符a-lt-b"><a href="#半开区间运算符a-lt-b" class="headerlink" title="半开区间运算符a..&lt;b"></a>半开区间运算符<code>a..&lt;b</code></h3><p>定义了从a到b但不包含b的区间</p>
-<p>a的值不能大于b的值，如果a与b的值相等，那返回的区间将会是空的</p>
-<h3 id="单侧区间"><a href="#单侧区间" class="headerlink" title="单侧区间"></a>单侧区间</h3><p>比如说，一个包含数组所有的元素的区间，从索引2到数组的结束。在这种情况下，你可以省略区间运算符一侧的值。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names[2...] &#123;</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names[...2] &#123;</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>倒序索引</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> (0..&lt;10&gt;).<span class="function"><span class="title">reversed</span></span>()&#123;</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>区间运算符在字符串上的运用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var welcome = <span class="string">"hello,world"</span></span><br><span class="line"><span class="built_in">let</span> range = welcome.startIndex...welcome.index(welcome.endIndex, offsetBy: -6)</span><br><span class="line">welcome.removeSubrange(range)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(welcome)]</span><br></pre></td></tr></table></figure>
-
-<p>区间运算符在比较类型上的运用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> welcome = <span class="string">"hello,world"</span></span><br><span class="line"><span class="built_in">let</span> interval = <span class="string">"a"</span>...<span class="string">"z"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> welcome &#123;</span><br><span class="line">    <span class="keyword">if</span> !interval.contains(String(c)) &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"\(c)不是小写字母"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><h3 id="位取反运算符"><a href="#位取反运算符" class="headerlink" title="位取反运算符"></a>位取反运算符</h3><p>位取反运算符(~)是对所有位的数字进行取反操作</p>
-<h3 id="位与运算符"><a href="#位与运算符" class="headerlink" title="位与运算符"></a>位与运算符</h3><p>位与运算符(&amp;)是对两个数的比特位进行合并。它会返回一个新的数，只有当这两个数都是1的时候才能返回1。</p>
-<h3 id="位或运算符"><a href="#位或运算符" class="headerlink" title="位或运算符"></a>位或运算符</h3><p>位或运算符(|)是对两个数的比特位进行比较。它会返回一个新的数，只要两个操作位任意一个为1时，那么对应的位数就为1。</p>
-<h3 id="位异或运算符"><a href="#位异或运算符" class="headerlink" title="位异或运算符"></a>位异或运算符</h3><p>位异或运算符(^))，当两个操作数的对应位不相同时，那么该数对应的位数就为1。</p>
-<h3 id="位左移和右移运算符"><a href="#位左移和右移运算符" class="headerlink" title="位左移和右移运算符"></a>位左移和右移运算符</h3><p>位左移(&lt;&lt;)和右移运算符(&gt;&gt;)可以吧所有位数的数字向左或向右移动一个确定的位数。</p>
-<p>位座椅和右移具有给整数乘以或除以二的效果。将一个数左移一位相当于把这个数翻倍，将一个数右移一位相当于把这个数减半。</p>
-<h3 id="无符号整数的唯一操作"><a href="#无符号整数的唯一操作" class="headerlink" title="无符号整数的唯一操作"></a>无符号整数的唯一操作</h3><p>用0填充左移或右移后产生的空白位</p>
-<h3 id="有符号整数的移位操作"><a href="#有符号整数的移位操作" class="headerlink" title="有符号整数的移位操作"></a>有符号整数的移位操作</h3><p>第一位表示整数还是负数（0正数，1负数）</p>
-<h3 id="位运算符应用"><a href="#位运算符应用" class="headerlink" title="位运算符应用"></a>位运算符应用</h3><ul>
-<li>两个数字交换</li>
-<li>求赋符号整形数二进制中1的个数</li>
-<li>判断一个整数是否为为2的整数次幂</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1941,7 +1799,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
