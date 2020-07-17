@@ -213,6 +213,134 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/20/gorm-Model%E7%9A%84%E5%8C%85%E5%90%AB%E5%AD%97%E6%AE%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/20/gorm-Model%E7%9A%84%E5%8C%85%E5%90%AB%E5%AD%97%E6%AE%B5/" class="post-title-link" itemprop="url">gorm.Model的包含字段</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-20 10:31:06 / Modified: 10:38:18" itemprop="dateCreated datePublished" datetime="2020-05-20T10:31:06+08:00">2020-05-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://github.com/jinzhu/gorm/blob/master/model.go" target="_blank" rel="noopener">gorm.Model</a>源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package gorm</span><br><span class="line"></span><br><span class="line">import <span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">// Model base model definition, including fields `ID`, `CreatedAt`, `UpdatedAt`, `DeletedAt`, <span class="built_in">which</span> could be embedded <span class="keyword">in</span> your models</span><br><span class="line">//    <span class="built_in">type</span> User struct &#123;</span><br><span class="line">//      gorm.Model</span><br><span class="line">//    &#125;</span><br><span class="line"><span class="built_in">type</span> Model struct &#123;</span><br><span class="line">	ID        uint `gorm:<span class="string">"primary_key"</span>`</span><br><span class="line">	CreatedAt time.Time</span><br><span class="line">	UpdatedAt time.Time</span><br><span class="line">	DeletedAt *time.Time `sql:<span class="string">"index"</span>`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以我们创建结构体的时候的就不需要包含这几个字段了，不然后会报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import (</span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	Id            int        `json:<span class="string">"id"</span> form:<span class="string">"id"</span> gorm:<span class="string">"primary_key"</span>` // 主键ID</span><br><span class="line">	CreatedAt     time.Time  `gorm:<span class="string">""</span>json:<span class="string">"createdAt"</span>`                // 创建时间</span><br><span class="line">	UpdatedAt     time.Time  `gorm:<span class="string">""</span>json:<span class="string">"updatedAt"</span>`                // 更新时间</span><br><span class="line">	DeletedAt     *time.Time `gorm:<span class="string">"index"</span>json:<span class="string">"deletedAt"</span>`           // 删除时间</span><br><span class="line">	Name          string     `gorm:<span class="string">"not null;"</span>json:<span class="string">"name"</span>`            // 姓名</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (*User) TableName() string &#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"user"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (m *User) IsAdministrator() bool &#123;</span><br><span class="line">	<span class="keyword">if</span> m == nil || m.Id &lt;= 0 &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> m.Role == 0 || m.Role == 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">panic: Error 1146: Table <span class="string">'XXXX.user'</span> doesn<span class="string">'t exist</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">goroutine 1 [running]:</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.mysql.HasIndex(0x1a3ebc0, 0xc0000fe240, 0x203000, 0x19037e8, 0x4, 0xc00059ddc0, 0x13, 0x30c8300)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/dialect_mysql.go:189 +0x31f</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).addIndex(0xc0004ec380, 0x18ecd00, 0xc00059ddc0, 0x13, 0xc00037b5a0, 0x2, 0x2)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1212 +0x8d</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*DB).AddIndex(0xc00001dee0, 0xc00059ddc0, 0x13, 0xc00037b5a0, 0x2, 0x2, 0x1)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/main.go:706 +0xac</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).autoIndex(0xc000559900, 0xc000559900)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1312 +0x9a0</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).createTable(0xc000559900, 0x19037e8)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1194 +0x792</span></span><br></pre></td></tr></table></figure>
+
+<p>改成</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import (</span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/jinzhu/gorm"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	Name          string    `gorm:<span class="string">"not null;"</span>json:<span class="string">"name"</span>`     // 姓名</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (*User) TableName() string &#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"user"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (m *User) IsAdministrator() bool &#123;</span><br><span class="line">	<span class="keyword">if</span> m == nil || m.ID &lt;= 0 &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> m.Role == 0 || m.Role == 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/" class="post-title-link" itemprop="url">通过drawio插件在vs code上画流程图</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-19 15:38:21 / Modified: 15:40:50" itemprop="dateCreated datePublished" datetime="2020-05-19T15:38:21+08:00">2020-05-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="打开vs-code-搜索并安装插件drawio"><a href="#打开vs-code-搜索并安装插件drawio" class="headerlink" title="打开vs code 搜索并安装插件drawio"></a>打开vs code 搜索并安装插件drawio</h1><p><img src="/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/drawio01.png" alt="drawio01"></p>
+<h1 id="创建一个后缀为drawio的文件，即可惊醒流程图的编辑"><a href="#创建一个后缀为drawio的文件，即可惊醒流程图的编辑" class="headerlink" title="创建一个后缀为drawio的文件，即可惊醒流程图的编辑"></a>创建一个后缀为drawio的文件，即可惊醒流程图的编辑</h1><p><img src="/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/drawio02.png" alt="drawio02"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/14/swagger%E7%9A%84%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1821,186 +1949,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/17/Golang%E8%B0%83%E7%94%A8shell%E8%84%9A%E6%9C%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/17/Golang%E8%B0%83%E7%94%A8shell%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">Golang调用shell脚本</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-17 18:02:51 / Modified: 20:51:58" itemprop="dateCreated datePublished" datetime="2020-04-17T18:02:51+08:00">2020-04-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Golang/" itemprop="url" rel="index">
-                    <span itemprop="name">Golang</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天在用一些工具处理文件的时候，批量手动操作真会累死人，时间成本不划算，想着怎么用脚本做成自动化，思路大概是每个脚本处理不同的功能，也就没必要将所有功能写到一个脚本了，担心万一某个模块出了问题影响整个流程。然后其中一个功能需要调用某个网页的接口处理，想了好久，请教了下一些前辈，给出的建议就是破解接口，这时候我立刻想到了Go…大概分三步：</p>
-<ul>
-<li>shell调用工具拿到处理好的数据</li>
-<li>再由Go实现对接口的数据请求…</li>
-<li>请求回来接口之后再交由shell调用工具做最后的处理，从而完成整个模块的工作。</li>
-</ul>
-<p>这里记住一点：shell脚本无非就做成参数形式。</p>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><code>os/exec</code>包可用于从Go触发任何OS命令。 相同的可用于触发.sh文件。</p>
-<p>具体函数接口参考官方文档<a href="https://pkg.go.dev/os/exec?tab=doc" target="_blank" rel="noopener">package exec </a></p>
-<h1 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h1><p>首先，在同一目录中创建一个test.sh文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">your_name=<span class="string">"start test ..."</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$your_name</span></span><br></pre></td></tr></table></figure>
-
-<p>执行<code>chmod +x test.sh</code>，不然会因为没有执行权限报错：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Execute Shell:./test.sh failed with error:<span class="built_in">exit</span> status 126%</span><br></pre></td></tr></table></figure>
-
-
-<p>调用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"os/exec"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	fmt.Println(<span class="string">"1"</span>)</span><br><span class="line"></span><br><span class="line">	<span class="built_in">command</span> := `./test.sh .`</span><br><span class="line">	cmd := exec.Command(<span class="string">"/bin/bash"</span>, <span class="string">"-c"</span>, <span class="built_in">command</span>)</span><br><span class="line"></span><br><span class="line">	output, err := cmd.Output()</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"Execute Shell:%s failed with error:%s"</span>, <span class="built_in">command</span>, err.Error())</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">"Execute Shell:%s finished with output:\n%s"</span>, <span class="built_in">command</span>, string(output))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">Execute Shell:./test.sh . finished with output:</span><br><span class="line">start <span class="built_in">test</span> ...</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://golangbyexample.com//" target="_blank" rel="noopener">https://golangbyexample.com//</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/E-R%E5%9B%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/12/E-R%E5%9B%BE/" class="post-title-link" itemprop="url">E-R图</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-04-12 14:46:13" itemprop="dateCreated datePublished" datetime="2020-04-12T14:46:13+08:00">2020-04-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-13 14:41:46" itemprop="dateModified" datetime="2020-04-13T14:41:46+08:00">2020-04-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>E-R图也称实体-联系图(Entity Relationship Diagram)，也就是概念模型，可以用来做数据库设计。今天先记录下该怎么看E-R图，至于软件的操作下次补充记录～</p>
-<p>作图工具在Mac端可以用<a href="https://dbeaver.io/download/" target="_blank" rel="noopener">dbeaver</a>,原因呢主要是免费吧。</p>
-<p>然后说说今天我为什么怎么就扯到了E-R图呢？是我在撸一个golang项目的时候，发觉对后台数据库不知道怎么设计，然后就查了下资料，如何设计也算说的很明了，对应的关系就是用E-R图来画的。</p>
-<h1 id="如何看图"><a href="#如何看图" class="headerlink" title="如何看图"></a>如何看图</h1><p><img src="/2020/04/12/E-R%E5%9B%BE/ER01.png" alt="ER01.png"></p>
-<p>上面👆概念数据模型中包含了：权限、角色、用户、文章、栏目、评论和两个桥表，其中1对1或1对多等关系在模型中体现。其中：</p>
-<ul>
-<li><code>PK</code>primary key</li>
-<li><code>箭头</code>代表的是关联关系</li>
-<li><code>虚线</code>代表的是备注说明</li>
-</ul>
-<p>具体举例（红框部分）：<br><img src="/2020/04/12/E-R%E5%9B%BE/ER02.png" alt="ER02.png"></p>
-<ul>
-<li>用户角色表(cms_user_role) 同时属于用户表(cms_user)和角色表(cms_role)</li>
-<li>说白了，就是一个用户会有多个角色</li>
-</ul>
-<p><img src="/2020/04/12/E-R%E5%9B%BE/%E7%94%A8%E4%BE%8B01.png" alt="用例01.png"><br>读者可以进行阅读、注册、登录等操作。登录状态下又可以进行评论与阅读操作。</p>
-<p><img src="/2020/04/12/E-R%E5%9B%BE/%E7%94%A8%E4%BE%8B02.png" alt="用例02.png"><br>小编是作者身份，可以对自己的文章进行管理。</p>
-<p><img src="/2020/04/12/E-R%E5%9B%BE/%E7%94%A8%E4%BE%8B03.png" alt="用例03.png"><br>超级管理员拥有系统最大权限(或者所有权限)，可以进行栏目管理、文章管理（文章管理隐式的包含了拥有阅读权限）、权限管理、角色管理、评论审核等操作。可对文章进行审核，权限管理下可对角色进行管理。</p>
-<h1 id="gorm的实现"><a href="#gorm的实现" class="headerlink" title="gorm的实现"></a>gorm的实现</h1><p>gorm文档中，我们可以找到对模型建立关系的的文档：<a href="https://gorm.io/zh_CN/docs/belongs_to.html" target="_blank" rel="noopener">https://gorm.io/zh_CN/docs/belongs_to.html</a></p>
-<p>依旧以<code>cms_user_role</code>  <code>cms_user</code> <code>cms_role</code> 这三个表为例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//在gorm中，模型的结构以驼峰命名方式书写，在数据表会自动转成对应下划线</span><br><span class="line"></span><br><span class="line">//CmsUserRole .</span><br><span class="line"><span class="built_in">type</span> CmsUserRole struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID     string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	UserID string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"user_id"</span>`</span><br><span class="line">	RoleID string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"role_id"</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//CmsUser .</span><br><span class="line"><span class="built_in">type</span> CmsUser struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID       string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	UserName string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"username"</span>`</span><br><span class="line">	Password string `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"password"</span>`</span><br><span class="line">	CmsUserRole CmsUserRole `gorm:<span class="string">"foreignkey:CmsUserRoleRefer"</span>` // 将 CmsUserRoleRefer 作为外键</span><br><span class="line">	CmsUserRoleRefer uint</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//CmsRole .</span><br><span class="line"><span class="built_in">type</span> CmsRole struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	ID          string      `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"id"</span>`</span><br><span class="line">	Name        string      `gorm:<span class="string">"type:varchar(100);not null"</span>json:<span class="string">"name"</span>`</span><br><span class="line">	CmsUserRole CmsUserRole `gorm:<span class="string">"foreignkey:CmsUserRoleRefer"</span>` // 将 CmsUserRoleRefer 作为外键</span><br><span class="line">	CmsUserRoleRefer uint</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>到这，你也会发觉用户角色表其实是个中间件。</p>
-<h1 id="资料："><a href="#资料：" class="headerlink" title="资料："></a>资料：</h1><p><a href="https://blog.csdn.net/qq_41306364/article/details/103135904" target="_blank" rel="noopener">【管理系统课程设计】美少女手把手教你后台管理</a><br><a href="https://www.zhihu.com/question/19973018" target="_blank" rel="noopener">在mac上有没有类似PowerDesigner的软件？</a><br><a href="https://www.bilibili.com/video/BV1X7411L7kc?from=search&seid=1650702711585721122" target="_blank" rel="noopener">第1节：7分钟上手ER图</a><br><a href="https://zhuanlan.zhihu.com/p/50448125" target="_blank" rel="noopener">通俗数据库设计（2）E-R图</a><br><a href="https://www.zhihu.com/question/20680795/answer/91850640" target="_blank" rel="noopener">如何使用 MySQL workbench 生成 EER 图？</a><br><a href="https://www.zhihu.com/topic/19630983/top-answers" target="_blank" rel="noopener">E-R图专栏</a><br><a href="https://www.bilibili.com/video/BV1dE411q7Xf?from=search&seid=12985731220509939471" target="_blank" rel="noopener">visio-数据库模型图</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -2051,7 +1999,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
