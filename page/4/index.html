@@ -213,6 +213,223 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/22/%E5%9F%BA%E4%BA%8ERBAC%E8%A7%92%E8%89%B2%E7%9A%84%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/22/%E5%9F%BA%E4%BA%8ERBAC%E8%A7%92%E8%89%B2%E7%9A%84%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6/" class="post-title-link" itemprop="url">基于RBAC角色的访问控制</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-22 14:48:41" itemprop="dateCreated datePublished" datetime="2020-04-22T14:48:41+08:00">2020-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-28 10:33:35" itemprop="dateModified" datetime="2020-04-28T10:33:35+08:00">2020-04-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><code>RBAC</code>（Role-Based Access Control ）基于角色的访问控制。</p>
+<p><code>casbin</code>是一个强大的、高效的开源访问控制框架，其权限管理机制支持多种访问控制模型。</p>
+<p><code>gorm-adapter</code>使用这个库,Casbin可以从Gorm加载政策支持的数据库或保存政策。</p>
+<h1 id="理解casbin的使用"><a href="#理解casbin的使用" class="headerlink" title="理解casbin的使用"></a>理解casbin的使用</h1><p>具体可以看这篇文章：<a href="https://zupzup.org/casbin-http-role-auth/" target="_blank" rel="noopener">Basic Role-Based HTTP Authorization in Go with Casbin</a>(中文翻译为<a href="https://studygolang.com/articles/12323" target="_blank" rel="noopener">在 Go 语言中使用 casbin 实现基于角色的 HTTP 权限控制</a>)，具体<a href="https://github.com/samtake/casbin-demo" target="_blank" rel="noopener">demo</a>我也加了详细注释。</p>
+<p>这里有几个需要弄懂的：</p>
+<p>模型文件的配置<code>auth_model.conf</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[request_definition]</span><br><span class="line">r = sub, obj, act</span><br><span class="line"></span><br><span class="line">[policy_definition]</span><br><span class="line">p = sub, obj, act</span><br><span class="line"></span><br><span class="line">[policy_effect]</span><br><span class="line">e = some(<span class="built_in">where</span> (p.eft == allow))</span><br><span class="line"></span><br><span class="line">[matchers]</span><br><span class="line">m = r.sub == p.sub &amp;&amp; keyMatch(r.obj, p.obj) &amp;&amp; (r.act == p.act || p.act == <span class="string">"*"</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Model CONF 至少应包含四个部分:<code>[request_definition]</code>, <code>[policy_definition]</code>, <code>[policy_effect]</code>, <code>[matchers]</code></p>
+</li>
+<li><p>如果 model 使用 RBAC, 还需要添加<code>[role_definition]</code>部分。</p>
+</li>
+<li><p>sub, obj, act 表示经典三元组: 访问实体 (Subject)，访问资源 (Object) 和访问方法 (Action)</p>
+</li>
+<li><p><a href="https://casbin.org/docs/zh-CN/syntax-for-models" target="_blank" rel="noopener">更具体的可以直接看官方文档</a></p>
+</li>
+</ul>
+<p>策略文件<code>policy.csv</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p, admin, /*, *</span><br><span class="line">p, anonymous, /login, *</span><br><span class="line">p, member, /<span class="built_in">logout</span>, *</span><br><span class="line">p, member, /member/*, *</span><br></pre></td></tr></table></figure>
+<ul>
+<li>admin 角色可以访问所有内容</li>
+<li>member 角色可以访问以 /member/ 开头的路径和 logout 路径</li>
+<li>未认证用户可以登陆</li>
+</ul>
+<h1 id="gorm-adapter"><a href="#gorm-adapter" class="headerlink" title="gorm-adapter"></a>gorm-adapter</h1><p>在上个个例子中，策略文件就是一个简单的 csv 文件，描述了哪些角色可以访问哪些路径等。但在实际项目中策略文件一般都会存储在数据库，这时候就用到了<a href="https://github.com/casbin/gorm-adapter" target="_blank" rel="noopener">gorm-adapter</a></p>
+<p>直接看官方给出的demo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"github.com/casbin/casbin/v2"</span></span><br><span class="line">	gormadapter <span class="string">"github.com/casbin/gorm-adapter/v2"</span></span><br><span class="line">	_ <span class="string">"github.com/go-sql-driver/mysql"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    //初始化一个Gorm adapter 并在Casbin enforcer中使用它:</span><br><span class="line">    //Gorm adapter会使用一个名叫casbin的MySQL数据库</span><br><span class="line">    //如果不存在，将会自动创建</span><br><span class="line">    //或者通过 gormadapter.NewAdapterByDB(gormInstance)读取一个已经存在的数据库  </span><br><span class="line"></span><br><span class="line">	a, _ := gormadapter.NewAdapter(<span class="string">"mysql"</span>, <span class="string">"mysql_username:mysql_password@tcp(127.0.0.1:3306)/"</span>)</span><br><span class="line">	e, _ := casbin.NewEnforcer(<span class="string">"examples/rbac_model.conf"</span>, a)</span><br><span class="line">	</span><br><span class="line">	// Or you can use an existing DB <span class="string">"abc"</span> like this:</span><br><span class="line">	// The adapter will use the table named <span class="string">"casbin_rule"</span>.</span><br><span class="line">	// If it doesn<span class="string">'t exist, the adapter will create it automatically.</span></span><br><span class="line"><span class="string">	// a := gormadapter.NewAdapter("mysql", "mysql_username:mysql_password@tcp(127.0.0.1:3306)/abc", true)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	e.LoadPolicy()//从数据库加载策略</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	e.Enforce("alice", "data1", "read")// 检查许可</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	// 更改策略</span></span><br><span class="line"><span class="string">	// e.AddPolicy(...)</span></span><br><span class="line"><span class="string">	// e.RemovePolicy(...)</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	e.SavePolicy()//保存策略</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="实际项目举例"><a href="#实际项目举例" class="headerlink" title="实际项目举例"></a>实际项目举例</h1><p><code>rbac_model.conf</code>模型文件配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[request_definition]</span><br><span class="line">r = sub, obj, act</span><br><span class="line"></span><br><span class="line">[policy_definition]</span><br><span class="line">p = sub, obj, act</span><br><span class="line"></span><br><span class="line">[role_definition]</span><br><span class="line">g = _, _</span><br><span class="line"></span><br><span class="line">[policy_effect]</span><br><span class="line">e = some(<span class="built_in">where</span> (p.eft == allow))</span><br><span class="line"></span><br><span class="line">[matchers]</span><br><span class="line">m = r.sub == p.sub &amp;&amp; ParamsMatch(r.obj,p.obj) &amp;&amp; r.act == p.act</span><br></pre></td></tr></table></figure>
+
+<p><code>qmplus.sql</code>表的定义并通过sql往数据库添加数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> Navicat Premium Data Transfer</span><br><span class="line"></span><br><span class="line"> Source Server         : qmplus</span><br><span class="line"> Source Server Type    : MySQL</span><br><span class="line"> Source Server Version : 50644</span><br><span class="line"> Source Host           : localhost:3306</span><br><span class="line"> Source Schema         : qmplus</span><br><span class="line"></span><br><span class="line"> Target Server Type    : MySQL</span><br><span class="line"> Target Server Version : 50644</span><br><span class="line"> File Encoding         : 65001</span><br><span class="line"></span><br><span class="line"> Date: 15/04/2020 17:48:50</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">SET NAMES utf8mb4;</span><br><span class="line">SET FOREIGN_KEY_CHECKS = 0;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Table structure <span class="keyword">for</span> casbin_rule</span><br><span class="line">-- ----------------------------</span><br><span class="line">DROP TABLE IF EXISTS `casbin_rule`;</span><br><span class="line">CREATE TABLE `casbin_rule`  (</span><br><span class="line">  `p_type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v0` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v1` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v2` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v3` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v4` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `v5` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL</span><br><span class="line">) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Records of casbin_rule</span><br><span class="line">-- ----------------------------</span><br><span class="line">INSERT INTO `casbin_rule` VALUES (<span class="string">'p'</span>, <span class="string">'8881'</span>, <span class="string">'/base/login'</span>, <span class="string">'POST'</span>, <span class="string">''</span>, <span class="string">''</span>, <span class="string">''</span>);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>更新Casbin规则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func UpdateCasbinApi(oldPath string, newPath string, oldMethod string, newMethod string) error &#123;</span><br><span class="line">	var cs []model.CasbinModel</span><br><span class="line">	err := global.GVA_DB.Table(<span class="string">"casbin_rule"</span>).Where(<span class="string">"v1 = ? AND v2 = ?"</span>, oldPath, oldMethod).Find(&amp;cs).Updates(map[string]string&#123;</span><br><span class="line">		<span class="string">"v1"</span>: newPath,</span><br><span class="line">		<span class="string">"v2"</span>: newMethod,</span><br><span class="line">	&#125;).Error</span><br><span class="line">	<span class="built_in">return</span> err</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>GVA_DB</code>就是全局定义的gorm.DB实例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var (</span><br><span class="line">	GVA_DB     *gorm.DB</span><br><span class="line">	...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>资料</p>
+<p><a href="https://zhuanlan.zhihu.com/p/63769951" target="_blank" rel="noopener">RBAC用户、角色、权限、组设计方案</a><br><a href="https://casbin.org/docs/zh-CN/rbac" target="_blank" rel="noopener">casbin 基于角色的访问控制</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/Gin-JWT-Middleware/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/18/Gin-JWT-Middleware/" class="post-title-link" itemprop="url">Gin JWT Middleware</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-18 17:08:17 / Modified: 20:37:04" itemprop="dateCreated datePublished" datetime="2020-04-18T17:08:17+08:00">2020-04-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在<a href="https://samtake.github.io/2020/04/09/jwt-go/" target="_blank" rel="noopener">jwt-go</a>中我记录了手动封装一个认证中间件，然后今天在看<a href="https://github.com/wenjianzhang/go-admin" target="_blank" rel="noopener">go-admin</a>后台管理系统源码的时候发现作者用到了一个第三方库<a href="https://github.com/appleboy/gin-jwt" target="_blank" rel="noopener">gin-jwt</a>实现了同样的功能，今天就一起来看一下吧！</p>
+<h1 id="gin-jwt能做什么？"><a href="#gin-jwt能做什么？" class="headerlink" title="gin-jwt能做什么？"></a>gin-jwt能做什么？</h1><ul>
+<li><p><code>gin-jwt</code>是基于<code>jwt-go</code>实现的一个认证中间件，同时也是专为Gin框架实现的。</p>
+</li>
+<li><p><code>gin-jwt</code>提供了额外的函数功能：给登录接口生成token令牌，以及用于刷新token的函数。</p>
+</li>
+</ul>
+<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><p>整个框架就一个<a href="https://github.com/appleboy/gin-jwt/blob/master/auth_jwt.go" target="_blank" rel="noopener">auth_jwt.go</a>文件，共747行代码。我们从头往下看：</p>
+<p>先定义了一个返回值为map类型的接口<br><code>type MapClaims map[string]interface{}</code></p>
+<p>接着就是一个结构体<code>GinJWTMiddleware</code>,还记得我们在使用jwt-go的时候，也会定义一个结构体，里面存放了关于生成token的一些信息，包括：token发放时间、是谁发放的token、主题等，这里也一样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> GinJWTMiddleware struct &#123;</span><br><span class="line">	// Realm name to display to the user. Required.</span><br><span class="line">	Realm string</span><br><span class="line"></span><br><span class="line">	// 算法类型： HS256, HS384, HS512默认是 HS256.</span><br><span class="line">	SigningAlgorithm string</span><br><span class="line"></span><br><span class="line">	// 加密密钥.</span><br><span class="line">	Key []byte</span><br><span class="line"></span><br><span class="line">	// 刷新Token有效期.默认一个小时</span><br><span class="line">	MaxRefresh time.Duration</span><br><span class="line"></span><br><span class="line">	// 认证回调函数</span><br><span class="line">	Authenticator func(c *gin.Context) (interface&#123;&#125;, error)</span><br><span class="line"></span><br><span class="line">	// 通过认证后的处理函数</span><br><span class="line">	Authorizator func(data interface&#123;&#125;, c *gin.Context) bool</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	// 认证失败的回调函数</span><br><span class="line">	Unauthorized func(*gin.Context, int, string)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//登录响应函数</span><br><span class="line">	LoginResponse func(*gin.Context, int, string, time.Time)</span><br><span class="line"></span><br><span class="line">	// 超时响应函数</span><br><span class="line">	LogoutResponse func(*gin.Context, int)</span><br><span class="line"></span><br><span class="line">	// 刷新响应函数</span><br><span class="line">	RefreshResponse func(*gin.Context, int, string, time.Time)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数(只列了几个目前见到的)</p>
+<p>登录返回token</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// LoginHandler can be used by clients to get a jwt token.</span><br><span class="line">// Payload needs to be json <span class="keyword">in</span> the form of &#123;<span class="string">"username"</span>: <span class="string">"USERNAME"</span>, <span class="string">"password"</span>: <span class="string">"PASSWORD"</span>&#125;.</span><br><span class="line">// Reply will be of the form &#123;<span class="string">"token"</span>: <span class="string">"TOKEN"</span>&#125;.</span><br><span class="line">func (mw *GinJWTMiddleware) LoginHandler(c *gin.Context) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>刷新token</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// RefreshHandler can be used to refresh a token. The token still needs to be valid on refresh.</span><br><span class="line">// Shall be put under an endpoint that is using the GinJWTMiddleware.</span><br><span class="line">// Reply will be of the form &#123;<span class="string">"token"</span>: <span class="string">"TOKEN"</span>&#125;.</span><br><span class="line">func (mw *GinJWTMiddleware) RefreshHandler(c *gin.Context) &#123;</span><br><span class="line">	tokenString, expire, err := mw.RefreshToken(c)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		mw.unauthorized(c, http.StatusUnauthorized, mw.HTTPStatusMessageFunc(err, c))</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	mw.RefreshResponse(c, http.StatusOK, tokenString, expire)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>验证API时需要用到，例如检测权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// MiddlewareFunc makes GinJWTMiddleware implement the Middleware interface.</span><br><span class="line">func (mw *GinJWTMiddleware) MiddlewareFunc() gin.HandlerFunc &#123;</span><br><span class="line">	<span class="built_in">return</span> func(c *gin.Context) &#123;</span><br><span class="line">		mw.middlewareImpl(c)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><h2 id="测试官方demo"><a href="#测试官方demo" class="headerlink" title="测试官方demo"></a>测试官方demo</h2><p>源码地址：<a href="https://github.com/samtake/gin-jwt-demo" target="_blank" rel="noopener">https://github.com/samtake/gin-jwt-demo</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[GIN] 2020/04/18 - 18:29:51 | 200 |    1.502204ms |             ::1 | POST     <span class="string">"/login"</span></span><br><span class="line">[GIN] 2020/04/18 - 18:30:50 | 401 |     112.029µs |             ::1 | GET      <span class="string">"/auth/hello"</span></span><br><span class="line">[GIN] 2020/04/18 - 18:32:55 | 200 |     346.218µs |             ::1 | GET      <span class="string">"/auth/hello"</span></span><br></pre></td></tr></table></figure>
+
+<p>直接请求401</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: 401,</span><br><span class="line">    <span class="string">"message"</span>: <span class="string">"cookie token is empty"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>登录返回token</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: 200,</span><br><span class="line">    <span class="string">"expire"</span>: <span class="string">"2020-04-18T19:29:51+08:00"</span>,</span><br><span class="line">    <span class="string">"token"</span>: <span class="string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODcyMDkzOTEsImlkIjoiYWRtaW4iLCJvcmlnX2lhdCI6MTU4NzIwNTc5MX0.o55urrL-qhUqpqEKK8k8KF8yBqrgZo_EtKmuOW1bHnc"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>携带token请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"text"</span>: <span class="string">"Hello World."</span>,</span><br><span class="line">    <span class="string">"userID"</span>: <span class="string">"admin"</span>,</span><br><span class="line">    <span class="string">"userName"</span>: <span class="string">"admin"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="go-admin中的使用"><a href="#go-admin中的使用" class="headerlink" title="go-admin中的使用"></a>go-admin中的使用</h2><p>这里也就记录别人在项目中是怎么使用的，以及有没有可以学习的地方。</p>
+<p><code>auth.go</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package middleware</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	config2 <span class="string">"go-admin/config"</span></span><br><span class="line">	<span class="string">"go-admin/handler"</span></span><br><span class="line">	jwt <span class="string">"go-admin/pkg/jwtauth"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func AuthInit() (*jwt.GinJWTMiddleware, error) &#123;</span><br><span class="line">	<span class="built_in">return</span> jwt.New(&amp;jwt.GinJWTMiddleware&#123;</span><br><span class="line">		Realm:           <span class="string">"test zone"</span>,</span><br><span class="line">		Key:             []byte(<span class="string">"secret key"</span>),</span><br><span class="line">		Timeout:         time.Hour,</span><br><span class="line">		MaxRefresh:      time.Hour,</span><br><span class="line">		IdentityKey:     config2.ApplicationConfig.JwtSecret,</span><br><span class="line">		PayloadFunc:     handler.PayloadFunc,</span><br><span class="line">		IdentityHandler: handler.IdentityHandler,</span><br><span class="line">		Authenticator:   handler.Authenticator,</span><br><span class="line">		Authorizator:    handler.Authorizator,</span><br><span class="line">		Unauthorized:    handler.Unauthorized,</span><br><span class="line">		TokenLookup:     <span class="string">"header: Authorization, query: token, cookie: jwt"</span>,</span><br><span class="line">		TokenHeadName:   <span class="string">"Bearer"</span>,</span><br><span class="line">		TimeFunc:        time.Now,</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>permission.go</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package middleware</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">	<span class="string">"go-admin/pkg"</span></span><br><span class="line">	mycasbin <span class="string">"go-admin/pkg/casbin"</span></span><br><span class="line">	<span class="string">"go-admin/pkg/jwtauth"</span></span><br><span class="line">	_ <span class="string">"go-admin/pkg/jwtauth"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//权限检查中间件</span><br><span class="line">func AuthCheckRole() gin.HandlerFunc &#123;</span><br><span class="line">	<span class="built_in">return</span> func(c *gin.Context) &#123;</span><br><span class="line">		data, _ := c.Get(<span class="string">"JWT_PAYLOAD"</span>)</span><br><span class="line">		v := data.(jwtauth.MapClaims)</span><br><span class="line">		e, err := mycasbin.Casbin()</span><br><span class="line">		pkg.HasError(err,<span class="string">""</span>,500)</span><br><span class="line">		//检查权限</span><br><span class="line">		res, err := e.Enforce(v[<span class="string">"rolekey"</span>], c.Request.URL.Path, c.Request.Method)</span><br><span class="line">		log.Println(<span class="string">"----------------"</span>, v[<span class="string">"rolekey"</span>], c.Request.URL.Path, c.Request.Method)</span><br><span class="line"></span><br><span class="line">			pkg.HasError(err,<span class="string">""</span>,500)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> res &#123;</span><br><span class="line">			c.Next()</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">				<span class="string">"status"</span>: 401,</span><br><span class="line">				<span class="string">"msg"</span>:    <span class="string">"对不起，您没有该接口访问权限，请联系管理员"</span>,</span><br><span class="line">			&#125;)</span><br><span class="line">			c.Abort()</span><br><span class="line">			<span class="built_in">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>router.go</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">func InitRouter() *gin.Engine &#123;</span><br><span class="line"></span><br><span class="line">	// the jwt middleware</span><br><span class="line">	authMiddleware, err := middleware.AuthInit()//初始化</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		_ = fmt.Errorf(<span class="string">"JWT Error"</span>, err.Error())</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	r.POST(<span class="string">"/login"</span>, authMiddleware.LoginHandler)  //框架自带</span><br><span class="line"></span><br><span class="line">	// Refresh time can be longer than token timeout</span><br><span class="line">	r.GET(<span class="string">"/refresh_token"</span>, authMiddleware.RefreshHandler)//框架自带</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    apiv1 := r.Group(<span class="string">"/api/v1"</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		apiv1.GET(<span class="string">"/monitor/server"</span>, monitor.ServerInfo)</span><br><span class="line">		...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    auth := r.Group(<span class="string">"/api/v1"</span>)</span><br><span class="line">	auth.Use(authMiddleware.MiddlewareFunc()).Use(middleware.AuthCheckRole())//检测权限</span><br><span class="line">	&#123;</span><br><span class="line">		auth.GET(<span class="string">"/deptList"</span>, system.GetDeptList)</span><br><span class="line">		...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>写到最后发现这里有篇博客写的挺好的，可以看看～<br><a href="https://blog.firerain.me/article/18" target="_blank" rel="noopener">https://blog.firerain.me/article/18</a></p>
+<p>.end</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/17/Golang%E8%B0%83%E7%94%A8shell%E8%84%9A%E6%9C%AC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1243,204 +1460,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/OpenGL%EF%BC%88%E4%B8%89%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/28/OpenGL%EF%BC%88%E4%B8%89%EF%BC%89/" class="post-title-link" itemprop="url">OpenGL（三）</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-03-28 14:27:25 / Modified: 16:42:05" itemprop="dateCreated datePublished" datetime="2020-03-28T14:27:25+08:00">2020-03-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenGL</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>从这篇开始，我们就跟着课本源码边调试边熟悉OpenGL函数的使用了。里面涉及的C++语法后面会在《C++重温》这里作补充。拿到课本源码，我们需要通过Cmake编译出Mac上运行的Xcode程序。</p>
-<blockquote>
-<p>01-keypress.cpp</p>
-</blockquote>
-<h1 id="程序概括"><a href="#程序概括" class="headerlink" title="程序概括"></a>程序概括</h1><p>程序先执行init函数<code>void KeyPressExample::Initialize(const char * title)</code>再执行display函数<code>void KeyPressExample::Display(bool auto_redraw)</code>.</p>
-<p>按下键盘会调用<code>void KeyPressExample::OnKey(int key, int scancode, int action, int mods)</code></p>
-<p>程序窗口缩放<code>void KeyPressExample::Resize(int width, int height)</code></p>
-<h1 id="init函数说明"><a href="#init函数说明" class="headerlink" title="init函数说明"></a>init函数说明</h1><p><code>glGenVertexArrays( NumVAOs, VAOs );</code><br>分配NumVAOs个未使用的对象名到数组VAOs中，用作顶点数组对象。再看下其数组定义：GLuint  VAOs[NumVAOs];</p>
-<p><code>glBindVertexArray( VAOs[Triangles] );</code><br>VAOs[Triangles]</p>
-<ul>
-<li>输入的变量array非0，且为<code>glGenVertexArrays</code>所分配时，激活顶点数组对象，并直接影响对象中所保存的顶点数组状态。</li>
-<li>array为0，OpenGL不再使用之前绑定的顶点数组。</li>
-<li>array不是<code>glGenVertexArrays</code>所分配的，或者它已经被<code>glDeleteVertexArray</code>函数释放了，这时会产生一个无效错误。</li>
-</ul>
-<p><code>glGenBuffers( NumBuffers, Buffers );</code><br>分配NumBuffers个当前未使用的缓存对象名称，并保存到Buffers数组中。</p>
-<p><code>glBindBuffer( GL_ARRAY_BUFFER, Buffers[ArrayBuffer] );</code></p>
-<ul>
-<li>如果绑定到一个已经创建的缓存对象，那么他将成为当前GL_ARRAY_BUFFER中被激活的缓存对象。</li>
-<li>如果绑定的Buffers[ArrayBuffer]值为0，那么OpenGL将不再对当前GL_ARRAY_BUFFER使用任何缓存对象。</li>
-</ul>
-<p><code>glBufferData( GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW );</code><br>将数据载入缓存对象。</p>
-<p><code>glVertexAttribPointer( vPosition, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0) );</code><br>将输入顶点着色器的数据 关联到 一个顶点属性的数组。</p>
-<p><code>glEnableVertexAttribArray( vPosition );</code><br>启用顶点属性数组。</p>
-<h1 id="display函数说明"><a href="#display函数说明" class="headerlink" title="display函数说明"></a>display函数说明</h1><p><code>glClear( GL_COLOR_BUFFER_BIT );</code><br>清屏。</p>
-<p><code>glBindVertexArray( VAOs[Triangles] );</code></p>
-<p><code>glDrawArrays( GL_TRIANGLES, 0, NumVertices );</code><br>开始绘制。</p>
-<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p>程序默认效果<br><img src="/2020/03/28/OpenGL%EF%BC%88%E4%B8%89%EF%BC%89/keypress1.png" alt="keypress1.png"></p>
-<p>按下键盘字母M的效果<br><img src="/2020/03/28/OpenGL%EF%BC%88%E4%B8%89%EF%BC%89/keypress2.png" alt="keypress2.png"></p>
-<h1 id="详细源码"><a href="#详细源码" class="headerlink" title="详细源码"></a>详细源码</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line">//////////////////////////////////////////////////////////////////////////////</span><br><span class="line">//</span><br><span class="line">//  Triangles.cpp</span><br><span class="line">//</span><br><span class="line">//////////////////////////////////////////////////////////////////////////////</span><br><span class="line"></span><br><span class="line"><span class="comment">#include &lt;vermilion.h&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#include "vgl.h"</span></span><br><span class="line"><span class="comment">#include "vapp.h"</span></span><br><span class="line"><span class="comment">#include "LoadShaders.h"</span></span><br><span class="line"></span><br><span class="line">enum VAO_IDs &#123; Triangles, NumVAOs &#125;;</span><br><span class="line">enum Buffer_IDs &#123; ArrayBuffer, NumBuffers &#125;;</span><br><span class="line">enum Attrib_IDs &#123; vPosition = 0 &#125;;</span><br><span class="line"></span><br><span class="line">GLuint  VAOs[NumVAOs];</span><br><span class="line">GLuint  Buffers[NumBuffers];</span><br><span class="line"></span><br><span class="line">const GLuint  NumVertices = 6;</span><br><span class="line"></span><br><span class="line">BEGIN_APP_DECLARATION(KeyPressExample)</span><br><span class="line">    virtual void Initialize(const char * title);</span><br><span class="line">    virtual void Display(bool auto_redraw);</span><br><span class="line">    virtual void Finalize(void);</span><br><span class="line">    virtual void Resize(int width, int height);</span><br><span class="line">    void OnKey(int key, int scancode, int action, int mods);</span><br><span class="line">END_APP_DECLARATION()</span><br><span class="line"></span><br><span class="line">DEFINE_APP(KeyPressExample, <span class="string">"Key Press Example"</span>)</span><br><span class="line">//----------------------------------------------------------------------------</span><br><span class="line">//</span><br><span class="line">// init</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">void KeyPressExample::Initialize(const char * title)</span><br><span class="line">&#123;</span><br><span class="line">    //typedef class VermilionApplication base</span><br><span class="line">    base::Initialize(title);</span><br><span class="line"></span><br><span class="line">    glGenVertexArrays( NumVAOs, VAOs );</span><br><span class="line">    glBindVertexArray( VAOs[Triangles] );</span><br><span class="line"></span><br><span class="line">    GLfloat  vertices[NumVertices][2] = &#123;</span><br><span class="line">        &#123; -0.90f, -0.90f &#125;, &#123;  0.85f, -0.90f &#125;, &#123; -0.90f,  0.85f &#125;,  // Triangle 1</span><br><span class="line">        &#123;  0.90f, -0.85f &#125;, &#123;  0.90f,  0.90f &#125;, &#123; -0.85f,  0.90f &#125;   // Triangle 2</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    glGenBuffers( NumBuffers, Buffers );</span><br><span class="line">    glBindBuffer( GL_ARRAY_BUFFER, Buffers[ArrayBuffer] );</span><br><span class="line">    glBufferData( GL_ARRAY_BUFFER, sizeof(vertices),</span><br><span class="line">                  vertices, GL_STATIC_DRAW );</span><br><span class="line"></span><br><span class="line">    ShaderInfo  shaders[] = &#123;</span><br><span class="line">        &#123; GL_VERTEX_SHADER, <span class="string">"../media/shaders/keypress/keypress.vert"</span> &#125;,</span><br><span class="line">        &#123; GL_FRAGMENT_SHADER, <span class="string">"../media/shaders/keypress/keypress.frag"</span> &#125;,</span><br><span class="line">        &#123; GL_NONE, NULL &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    GLuint program = LoadShaders( shaders );</span><br><span class="line">    glUseProgram( program );</span><br><span class="line"></span><br><span class="line">    glVertexAttribPointer( vPosition, 2, GL_FLOAT,</span><br><span class="line">                           GL_FALSE, 0, BUFFER_OFFSET(0) );</span><br><span class="line">    glEnableVertexAttribArray( vPosition );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void KeyPressExample::OnKey(int key, int scancode, int action, int mods)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (action == GLFW_PRESS)</span><br><span class="line">    &#123;</span><br><span class="line">        switch (key)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> GLFW_KEY_M:</span><br><span class="line">                &#123;</span><br><span class="line">                    static GLenum  mode = GL_FILL;</span><br><span class="line"></span><br><span class="line">                    mode = ( mode == GL_FILL ? GL_LINE : GL_FILL );</span><br><span class="line">                    glPolygonMode( GL_FRONT_AND_BACK, mode );</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    base::OnKey(key, scancode, action, mods);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//----------------------------------------------------------------------------</span><br><span class="line">//</span><br><span class="line">// display</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">void KeyPressExample::Display(bool auto_redraw)</span><br><span class="line">&#123;</span><br><span class="line">    glClear( GL_COLOR_BUFFER_BIT );</span><br><span class="line"></span><br><span class="line">    glBindVertexArray( VAOs[Triangles] );</span><br><span class="line">    // GL_TRIANGLES并没有指定是画三角形的边沿还是内部也画，</span><br><span class="line">    glDrawArrays( GL_TRIANGLES, 0, NumVertices );</span><br><span class="line"></span><br><span class="line">    base::Display(auto_redraw);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void KeyPressExample::Resize(int width, int height)</span><br><span class="line">&#123;</span><br><span class="line">    glViewport(0, 0, width, height);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void KeyPressExample::Finalize(void)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">OpenGL（二）</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-03-27 18:33:03 / Modified: 21:58:57" itemprop="dateCreated datePublished" datetime="2020-03-27T18:33:03+08:00">2020-03-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenGL</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在<a href="https://samtake.github.io/2020/03/27/OpenGL/" target="_blank" rel="noopener">上篇</a>我们停留在概念上的，现在动手写写代码。</p>
-<p>在<a href="https://www.khronos.org/opengl/wiki/Getting_Started#macOS" target="_blank" rel="noopener">OpenGL官网</a>我们可以看到这么一段话：</p>
-<blockquote>
-<p>macOS<br>Unlike other platforms, where the Operating System and OpenGL implementations are often updated separately, OpenGL updates are included as part of macOS system updates. To obtain the latest OpenGL on macOS, users should upgrade to the latest OS release, which can be found at Apple.com.</p>
-</blockquote>
-<p>换句话来说OpenGL已经集成在我们的Mac系统中，但是我们还需要一些执行窗口任务或者处理用户输入的函数，这里需要用到的库有：</p>
-<ul>
-<li>GLEW</li>
-<li><a href="https://www.glfw.org/docs/latest/quick_guide.html" target="_blank" rel="noopener">GLFW</a></li>
-<li><a href="https://glad.dav1d.de/" target="_blank" rel="noopener">GLAD</a></li>
-</ul>
-<h1 id="安装GLEW、GLEW"><a href="#安装GLEW、GLEW" class="headerlink" title="安装GLEW、GLEW"></a>安装GLEW、GLEW</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">➜  blogs brew install glfw3</span><br><span class="line">Updating Homebrew...</span><br><span class="line">==&gt; Downloading https://homebrew.bintray.com/bottles/glfw-3.3.2.mojave.bottle.tar.gz</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring glfw-3.3.2.mojave.bottle.tar.gz</span><br><span class="line">🍺  /usr/<span class="built_in">local</span>/Cellar/glfw/3.3.2: 14 files, 492.8KB   <span class="comment">#安装位置</span></span><br><span class="line">➜  blogs brew install glew </span><br><span class="line">Updating Homebrew...</span><br><span class="line">==&gt; Downloading https://homebrew.bintray.com/bottles/glew-2.1.0_1.mojave.bottle.tar.gz</span><br><span class="line">==&gt; Downloading from https://akamai.bintray.com/66/66638564b5b9d2d915b97841ef1cc117f701c7ec34707734fa1ce11919c28</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring glew-2.1.0_1.mojave.bottle.tar.gz</span><br><span class="line">🍺  /usr/<span class="built_in">local</span>/Cellar/glew/2.1.0_1: 38 files, 3MB  <span class="comment">#安装位置</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="在Xcode配置GLEW、GLEW"><a href="#在Xcode配置GLEW、GLEW" class="headerlink" title="在Xcode配置GLEW、GLEW"></a>在Xcode配置GLEW、GLEW</h1><p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode1.png" alt="opengl2-xcode1.png"></p>
-<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode2.png" alt="opengl2-xcode2.png"></p>
-<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode3.png" alt="opengl2-xcode3.png"></p>
-<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode4.png" alt="opengl2-xcode4.png"></p>
-<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode5.png" alt="opengl2-xcode5.png"></p>
-<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/opengl2-xcode6.png" alt="opengl2-xcode6.png"></p>
-<p>添加两个dylib文件的方法时，没有在framework中搜索到这两个文件时，点击add other，然后点击shift+command+G进入<code>/usr/local</code>文件夹对应的安装路径找。</p>
-<h1 id="下载GLAD库"><a href="#下载GLAD库" class="headerlink" title="下载GLAD库"></a>下载GLAD库</h1><p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/glad1.png" alt="glad1.png"></p>
-<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/glad2.png" alt="glad2.png"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ <span class="built_in">cd</span> /Users/samtake/Downloads/glad </span><br><span class="line">➜  glad ls</span><br><span class="line">include src</span><br><span class="line">➜  glad <span class="built_in">alias</span> tree=<span class="string">"find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"</span></span><br><span class="line">➜  glad tree </span><br><span class="line">|____include</span><br><span class="line">| |____KHR</span><br><span class="line">| | |____khrplatform.h</span><br><span class="line">| |____glad</span><br><span class="line">| | |____glad.h</span><br><span class="line">|____src</span><br><span class="line">| |____glad.c</span><br><span class="line">➜  glad</span><br></pre></td></tr></table></figure>
-<p>将include文件夹中的两个文件复制到<code>/usr/local/include</code>内，然后添加<code>glad.c</code>文件到XCode工程中.</p>
-<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p>复制源码代替原有的main.cpp文件，build一下编译通过即可。</p>
-<p><img src="/2020/03/27/OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/demo.png" alt="demo.png"></p>
-<p><a href="https://github.com/samtake/helloOpenGL/tree/master/%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA" target="_blank" rel="noopener">demo源码</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1486,7 +1510,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
