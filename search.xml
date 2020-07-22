@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>电商数据表设计参考</title>
+    <url>/2020/07/22/%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%AE%BE%E8%AE%A1%E5%8F%82%E8%80%83/</url>
+    <content><![CDATA[<p><a href="https://linlinjava.gitbook.io/litemall/database" target="_blank" rel="noopener">https://linlinjava.gitbook.io/litemall/database</a></p>
+]]></content>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java Actuator应用监控快速入门</title>
     <url>/2020/07/17/Java-Actuator%E5%BA%94%E7%94%A8%E7%9B%91%E6%8E%A7%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[]]></content>
@@ -317,6 +326,7 @@ CheckTypeHandler 转换器的类源码如下：
 
 <p>CheckTypeHandler 的核心功能就是调用 CheckType 枚举类的 parse() 方法对数据库字段进行转换。</p>
 <p>恕我直言，我觉得小伙伴们肯定会用 Java 枚举了，如果还不会，就过来砍我！</p>
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
 ]]></content>
       <tags>
         <tag>Java</tag>
@@ -394,6 +404,7 @@ CheckTypeHandler 转换器的类源码如下：
 <p>1）编译器无法决定调用哪个重写的方法，因为只从变量的类型上是无法做出判断的，要在运行时才能决定；但编译器可以明确地知道该调用哪个重载的方法，因为引用类型是确定的，参数个数决定了该调用哪个方法。</p>
 <p>2）多态针对的是重写，而不是重载。</p>
 <p>另外，我想要告诉大家的是，重写（Override）和重载（Overload）是 Java 中两个非常重要的概念，新手经常会被它们俩迷惑，因为它们俩的英文名字太像了，中文翻译也只差一个字。难，太难了。</p>
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
 ]]></content>
       <tags>
         <tag>Java</tag>
@@ -817,6 +828,7 @@ CheckTypeHandler 转换器的类源码如下：
 <p><code>void：</code>  void 关键字用于指定方法没有返回值。</p>
 <p><code>volatile：</code>  volatile 关键字保证了不同线程对它修饰的变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。</p>
 <p><code>while：</code>  如果循环次数不固定，建议使用 while 循环。</p>
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
 ]]></content>
       <tags>
         <tag>Java</tag>
@@ -926,6 +938,7 @@ CheckTypeHandler 转换器的类源码如下：
 <p>第六种，还可以为 args 参数添加 final 关键字：</p>
 <p><code>public static void main(final String[] args) { }</code><br>第七种，最复杂的一种，所有可以添加的关键字统统添加上：</p>
 <p><code>final static synchronized strictfp void main(final String[] args) { }</code><br>当然了，并不需要为了装逼特意把 main() 方法写成上面提到的这些形式，使用 IDE 提供的默认形式就可以了。</p>
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
 ]]></content>
       <tags>
         <tag>Java</tag>
@@ -936,18 +949,25 @@ CheckTypeHandler 转换器的类源码如下：
     <url>/2020/07/07/Java-%E5%8C%85/</url>
     <content><![CDATA[<p>在 Java 中，我们使用 package（包）对相关的类、接口和子包进行分组。这样做的好处有：</p>
 <p>使相关类型更容易查找<br>避免命名冲突，比如说 <code>com.itwanger.Hello</code> 和 <code>com.itwangsan.Hello</code> 不同<br>通过包和访问权限控制符来限定类的可见性</p>
-<h1 id="01、创建一个包"><a href="#01、创建一个包" class="headerlink" title="01、创建一个包"></a>01、创建一个包</h1><p>package com.itwanger;<br>可以使用 package 关键字来定义一个包名，需要注意的是，这行代码必须处于一个类中的第一行。强烈建议在包中声明类，不要缺省，否则就失去了包结构的带来的好处。</p>
+<h1 id="01、创建一个包"><a href="#01、创建一个包" class="headerlink" title="01、创建一个包"></a>01、创建一个包</h1><p><code>package com.itwanger;</code><br>可以使用 <code>package</code> 关键字来定义一个包名，需要注意的是，这行代码必须处于一个类中的第一行。强烈建议在包中声明类，不要缺省，否则就失去了包结构的带来的好处。</p>
 <p>包的命名应该遵守以下规则：</p>
-<p>应该全部是小写字母<br>可以包含多个单词，单词之间使用“.”连接，比如说 java.lang<br>名称由公司名或者组织名确定，采用倒序的方式，比如说，我个人博客的域名是 <a href="http://www.itwanger.com，所以我创建的包名是就是" target="_blank" rel="noopener">www.itwanger.com，所以我创建的包名是就是</a> com.itwanger.xxxx。<br>每个包或者子包都在磁盘上有自己的目录结构，如果 Java 文件时在 com.itwanger.xxxx 包下，那么该文件所在的目录结构就应该是 com-&gt;itwanger-&gt;xxxx。</p>
+<ul>
+<li>应该全部是小写字母</li>
+<li>可以包含多个单词，单词之间使用“.”连接，比如说 java.lang</li>
+<li>名称由公司名或者组织名确定，采用倒序的方式，比如说，我个人博客的域名是 <code>www.itwanger.com</code>，所以我创建的包名是就是 <code>com.itwanger.xxxx</code>。<br>每个包或者子包都在磁盘上有自己的目录结构，如果 Java 文件时在 <code>com.itwanger.xxxx</code> 包下，那么该文件所在的目录结构就应该是 <code>com-&gt;itwanger-&gt;xxxx</code>。</li>
+</ul>
 <h1 id="02、使用包"><a href="#02、使用包" class="headerlink" title="02、使用包"></a>02、使用包</h1><p>让我们在名为 test 的子包里新建一个 Cmower 类：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">package com.itwanger.test;</span><br><span class="line"></span><br><span class="line">public class Cmower &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果需要在另外一个包中使用 Cmower 类，就需要通过 import 关键字将其引入。有两种方式可供选择，第一种，<code>使用 * 导入包下所有的类：</code></p>
+<p>如果需要在另外一个包中使用 Cmower 类，就需要通过 import 关键字将其引入。有两种方式可供选择，第一种，使用 <code>*</code> 导入包下所有的类：</p>
 <p><code>import com.itwanger.test.*;</code></p>
 <p>第二种，使用类名导入该类：</p>
-<p>import com.itwanger.test.Cmower;<br>Java 和第三方类库提供了很多包可供使用，可以通过上述的方式导入类库使用。</p>
+<p><code>import com.itwanger.test.Cmower;</code><br>Java 和第三方类库提供了很多包可供使用，可以通过上述的方式导入类库使用。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">package com.itwanger.test;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class CmowerTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        List&lt;Cmower&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">        list.add(new Cmower());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="03、全名"><a href="#03、全名" class="headerlink" title="03、全名"></a>03、全名</h1><p>有时，我们可能会使用来自不同包下的两个具有相同名称的类。例如，我们可能同时使用 java.sql.Date 和 java.util.Date。<code>当我们遇到命名冲突时，我们需要对至少一个类使用全名（包名+类名）。</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">List&lt;com.itwanger.test.Cmower&gt; list1 = new ArrayList&lt;&gt;();</span><br><span class="line">list.add(new com.itwanger.test.Cmower());</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">List&lt;com.itwanger.test.Cmower&gt; list1 = new ArrayList&lt;&gt;();</span><br><span class="line">list.add(new com.itwanger.test.Cmower());</span><br></pre></td></tr></table></figure>
+
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
+]]></content>
       <tags>
         <tag>Java</tag>
       </tags>
@@ -4235,8 +4255,8 @@ ffplay</code></p>
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>Golang</tag>
         <tag>Gin</tag>
+        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>
