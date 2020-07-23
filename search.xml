@@ -236,7 +236,15 @@
   <entry>
     <title>Java 关于IntelliJ IDEA的使用</title>
     <url>/2020/07/15/Java-%E5%85%B3%E4%BA%8EIntelliJ-IDEA%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="IDEA环境下代码热部署热加载：devtools"><a href="#IDEA环境下代码热部署热加载：devtools" class="headerlink" title="IDEA环境下代码热部署热加载：devtools"></a>IDEA环境下代码热部署热加载：devtools</h1><p>配置</p>
+<p><img src="/2020/07/15/Java-%E5%85%B3%E4%BA%8EIntelliJ-IDEA%E7%9A%84%E4%BD%BF%E7%94%A8/1.png" alt></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</span><br><span class="line">   &lt;optional&gt;<span class="literal">true</span>&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/07/15/Java-%E5%85%B3%E4%BA%8EIntelliJ-IDEA%E7%9A%84%E4%BD%BF%E7%94%A8/2.png" alt><br><code>Shift+Ctrl+Alt+/</code>，选择 <code>Registry</code> ，选中打勾 <code>compiler.automake.allow.when.app.running</code> 。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java final 关键字</title>

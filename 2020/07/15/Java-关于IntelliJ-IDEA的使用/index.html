@@ -52,13 +52,19 @@
   };
 </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="IDEA环境下代码热部署热加载：devtools配置  12345&amp;lt;dependency&amp;gt;   &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;&#x2F;groupId&amp;gt;   &amp;lt;artifactId&amp;gt;spring-boot-devtools&amp;lt;&#x2F;artifactId&amp;gt;   &amp;lt;optional&amp;gt;true&amp;lt;&#x2F;opt">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java 关于IntelliJ IDEA的使用">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;15&#x2F;Java-%E5%85%B3%E4%BA%8EIntelliJ-IDEA%E7%9A%84%E4%BD%BF%E7%94%A8&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
+<meta property="og:description" content="IDEA环境下代码热部署热加载：devtools配置  12345&amp;lt;dependency&amp;gt;   &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;&#x2F;groupId&amp;gt;   &amp;lt;artifactId&amp;gt;spring-boot-devtools&amp;lt;&#x2F;artifactId&amp;gt;   &amp;lt;optional&amp;gt;true&amp;lt;&#x2F;opt">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-15T03:31:14.085Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;15&#x2F;Java-%E5%85%B3%E4%BA%8EIntelliJ-IDEA%E7%9A%84%E4%BD%BF%E7%94%A8&#x2F;1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;15&#x2F;Java-%E5%85%B3%E4%BA%8EIntelliJ-IDEA%E7%9A%84%E4%BD%BF%E7%94%A8&#x2F;2.png">
+<meta property="og:updated_time" content="2020-07-23T07:43:49.846Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;15&#x2F;Java-%E5%85%B3%E4%BA%8EIntelliJ-IDEA%E7%9A%84%E4%BD%BF%E7%94%A8&#x2F;1.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/07/15/Java-%E5%85%B3%E4%BA%8EIntelliJ-IDEA%E7%9A%84%E4%BD%BF%E7%94%A8/">
 
@@ -239,6 +245,13 @@
 
               <time title="Created: 2020-07-15 11:31:14" itemprop="dateCreated datePublished" datetime="2020-07-15T11:31:14+08:00">2020-07-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-23 15:43:49" itemprop="dateModified" datetime="2020-07-23T15:43:49+08:00">2020-07-23</time>
+              </span>
 
           
 
@@ -251,7 +264,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="IDEA环境下代码热部署热加载：devtools"><a href="#IDEA环境下代码热部署热加载：devtools" class="headerlink" title="IDEA环境下代码热部署热加载：devtools"></a>IDEA环境下代码热部署热加载：devtools</h1><p>配置</p>
+<p><img src="/2020/07/15/Java-%E5%85%B3%E4%BA%8EIntelliJ-IDEA%E7%9A%84%E4%BD%BF%E7%94%A8/1.png" alt></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</span><br><span class="line">   &lt;optional&gt;<span class="literal">true</span>&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/07/15/Java-%E5%85%B3%E4%BA%8EIntelliJ-IDEA%E7%9A%84%E4%BD%BF%E7%94%A8/2.png" alt><br><code>Shift+Ctrl+Alt+/</code>，选择 <code>Registry</code> ，选中打勾 <code>compiler.automake.allow.when.app.running</code> 。</p>
+
     </div>
 
     
@@ -259,6 +277,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
 
         
 
@@ -313,6 +334,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IDEA环境下代码热部署热加载：devtools"><span class="nav-number">1.</span> <span class="nav-text">IDEA环境下代码热部署热加载：devtools</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
