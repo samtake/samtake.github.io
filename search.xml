@@ -147,7 +147,29 @@
   <entry>
     <title>Java lombok插件</title>
     <url>/2020/07/17/Java-lombok%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p><img src="/2020/07/17/Java-lombok%E6%8F%92%E4%BB%B6/1.png" alt></p>
+<h1 id="配置插件"><a href="#配置插件" class="headerlink" title="配置插件"></a>配置插件</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">            &lt;optional&gt;<span class="literal">true</span>&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/07/17/Java-lombok%E6%8F%92%E4%BB%B6/2.png" alt></p>
+<blockquote>
+<p>在Spring Boot项目里面不需要加入版本号，spring Boot父项目会代为管理。如果是其他项目，请自行添加版本号！</p>
+</blockquote>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ul>
+<li>Data</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">package com.samjava.mall.model;</span><br><span class="line">import lombok.Data;</span><br><span class="line">@Data</span><br><span class="line">public class LombokPOJO &#123;</span><br><span class="line">    private  String name;</span><br><span class="line"></span><br><span class="line">    private  String age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/07/17/Java-lombok%E6%8F%92%E4%BB%B6/3.png" alt></p>
+<ul>
+<li>Slf4j</li>
+<li>Builder</li>
+<li>AllArgsConstructor</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java Spring boot2.0 helloworld</title>
@@ -156,6 +178,7 @@
 <p><img src="/2020/07/17/Java-Spring-boot2-0-helloworld/2.png" alt></p>
 <p><img src="/2020/07/17/Java-Spring-boot2-0-helloworld/3.png" alt></p>
 <h1 id="配置启动端口"><a href="#配置启动端口" class="headerlink" title="配置启动端口"></a>配置启动端口</h1><p><img src="/2020/07/17/Java-Spring-boot2-0-helloworld/4.png" alt></p>
+<h1 id="启动程序"><a href="#启动程序" class="headerlink" title="启动程序"></a>启动程序</h1><p><img src="/2020/07/17/Java-Spring-boot2-0-helloworld/5.png" alt></p>
 ]]></content>
       <tags>
         <tag>Java</tag>
@@ -164,7 +187,7 @@
   <entry>
     <title>Java Maven使用</title>
     <url>/2020/07/17/Java-Maven%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装maven</span></span><br><span class="line">brew install maven</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装依赖库</span></span><br><span class="line">mvn install    </span><br><span class="line"></span><br><span class="line"><span class="comment">#编译项目：此时，litemall-wx-api等模块多了target文件夹，里面是编译出的文件。</span></span><br><span class="line">mvn compile  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 清除包</span></span><br><span class="line">mvn clean package</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动jar包项目</span></span><br><span class="line">java -Dfile.encoding=UTF-8 -jar litemall-all/target/litemall-all-0.1.0-exec.jar</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>Java 到底是值传递还是引用传递</title>
