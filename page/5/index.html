@@ -213,6 +213,125 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E7%BB%A7%E6%89%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/Java-%E7%BB%A7%E6%89%BF/" class="post-title-link" itemprop="url">Java 继承</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-07 17:11:36" itemprop="dateCreated datePublished" datetime="2020-07-07T17:11:36+08:00">2020-07-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 17:01:53" itemprop="dateModified" datetime="2020-07-15T17:01:53+08:00">2020-07-15</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在 Java 中，一个类可以继承另外一个类或者实现多个接口，我想这一点，大部分的读者应该都知道了。还有一点，我不确定大家是否知道，就是一个接口也可以继承另外一个接口，就像下面这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public interface OneInterface extends Cloneable &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样做有什么好处呢？我想有一部分读者应该已经猜出来了，就是实现了 OneInterface 接口的类，也可以使用  <code>Object.clone()</code> 方法了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class TestInterface implements OneInterface &#123;</span><br><span class="line">    public static void main(String[] args) throws CloneNotSupportedException &#123;</span><br><span class="line">        TestInterface c1 = new TestInterface();</span><br><span class="line">        TestInterface c2 = (TestInterface) c1.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>除此之外，我们还可以在 OneInterface 接口中定义其他一些抽象方法（比如说深拷贝），使该接口拥有 Cloneable 所不具有的功能。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface OneInterface extends Cloneable &#123;</span><br><span class="line">    void deepClone();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看到了吧？这就是继承的好处：<code>子接口拥有了父接口的方法，使得子接口具有了父接口相同的行为；同时，子接口还可以在此基础上自由发挥，添加属于自己的行为。</code><br>以上，把“接口”换成“类”，结论同样成立。让我们来定义一个普通的父类 Wanger</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Wanger &#123;</span><br><span class="line">    int age;</span><br><span class="line">    String name;</span><br><span class="line">    void <span class="function"><span class="title">write</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我写了本《基督山伯爵》"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后，我们再来定义一个子类 Wangxiaoer，使用关键字 extends 来继承父类 Wanger：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Wangxiaoer extends Wanger&#123;</span><br><span class="line">    @Override</span><br><span class="line">    void <span class="function"><span class="title">write</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"我写了本《茶花女》"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以将通用的方法和成员变量放在父类中，达到代码复用的目的；然后将特殊的方法和成员变量放在子类中，除此之外，子类还可以覆盖父类的方法（比如<code>write()</code> 方法）。这样，子类也就焕发出了新的生命力。</p>
+<p><code>Java 只支持单一继承</code>，这一点，我在上一篇接口的文章中已经提到过了。如果一个类在定义的时候没有使用 extends 关键字，那么它隐式地继承了 <code>java.lang.Object</code> 类——在我看来，这恐怕就是 Java 号称万物皆对象的真正原因了。</p>
+<p>那究竟子类继承了父类的什么呢？</p>
+<p>子类可以继承父类的非 <code>private</code> 成员变量，为了验证这一点，我们来看下面这个示例。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Wanger &#123;</span><br><span class="line">    String defaultName;</span><br><span class="line">    private String privateName;</span><br><span class="line">    public String publicName;</span><br><span class="line">    protected String protectedName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>父类 Wanger 定义了四种类型的成员变量，缺省的 defaultName、私有的 privateName、共有的 publicName、受保护的 protectedName。</p>
+<p>在子类 Wangxiaoer 中定义一个测试方法 <code>testVariable()</code>：<br><img src="/2020/07/07/Java-%E7%BB%A7%E6%89%BF/1.png" alt></p>
+<p>可以确认，除了私有的 privateName，其他三种类型的成员变量都可以继承到。</p>
+<p>同理，子类可以继承父类的非 private 方法，为了验证这一点，我们来看下面这个示例。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Wanger &#123;</span><br><span class="line">    void <span class="function"><span class="title">write</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void <span class="function"><span class="title">privateWrite</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void <span class="function"><span class="title">publicWrite</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected void <span class="function"><span class="title">protectedWrite</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>父类 Wanger 定义了四种类型的方法，缺省的 write、私有的 privateWrite()、共有的 publicWrite()、受保护的 protectedWrite()。</p>
+<p>在子类 Wangxiaoer 中定义一个 <code>main</code> 方法，并使用 <code>new</code> 关键字新建一个子类对象：</p>
+<p><img src="/2020/07/07/Java-%E7%BB%A7%E6%89%BF/2.png" alt></p>
+<p>可以确认，除了私有的 privateWrite()，其他三种类型的方法都可以继承到。</p>
+<p>不过，子类无法继承父类的构造方法。如果父类的构造方法是带有参数的，代码如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Wanger &#123;</span><br><span class="line">    int age;</span><br><span class="line">    String name;</span><br><span class="line"></span><br><span class="line">    public Wanger(int age, String name) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>则必须在子类的构造器中显式地通过 super 关键字进行调用，否则编译器将提示以下错误：<br><img src="/2020/07/07/Java-%E7%BB%A7%E6%89%BF/3.png" alt></p>
+<p>修复后的代码如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Wangxiaoer extends Wanger&#123;</span><br><span class="line">    public Wangxiaoer(int age, String name) &#123;</span><br><span class="line">        super(age, name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>is-a 是继承的一个明显特征，就是说子类的对象引用类型可以是一个父类类型。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Wangxiaoer extends Wanger&#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Wanger wangxiaoer = new Wangxiaoer();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同理，子接口的实现类的对象引用类型也可以是一个父接口类型。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public interface OneInterface extends Cloneable &#123;</span><br><span class="line">&#125;</span><br><span class="line">public class TestInterface implements OneInterface &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Cloneable c1 = new TestInterface();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>尽管一个类只能继承一个类，但一个类却可以实现多个接口，这一点，我在上一篇文章也提到过了。另外，还有一点我也提到了，就是 Java 8 之后，接口中可以定义 default 方法，这很方便，但也带来了新的问题：</p>
+<blockquote>
+<p>如果一个类实现了多个接口，而这些接口中定义了相同签名的 default 方法，那么这个类就要重写该方法，否则编译无法通过。</p>
+</blockquote>
+<p>FlyInterface 是一个会飞的接口，里面有一个签名为 sleep() 的默认方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public interface FlyInterface &#123;</span><br><span class="line">    void fly();</span><br><span class="line">    default void <span class="function"><span class="title">sleep</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"睡着飞"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>RunInterface 是一个会跑的接口，里面也有一个签名为 sleep() 的默认方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public interface RunInterface &#123;</span><br><span class="line">    void run();</span><br><span class="line">    default void <span class="function"><span class="title">sleep</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"睡着跑"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Pig 类实现了 FlyInterface 和 RunInterface 两个接口，但这时候编译出错了。<br><img src="/2020/07/07/Java-%E7%BB%A7%E6%89%BF/4.png" alt></p>
+<p>原本，default 方法就是为实现该接口而不覆盖该方法的类提供默认实现的，现在，相同方法签名的 sleep() 方法把编译器搞懵逼了，只能重写了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Pig implements FlyInterface, RunInterface &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void <span class="function"><span class="title">fly</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"会飞的猪"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void <span class="function"><span class="title">sleep</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"只能重写了"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"会跑的猪"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类虽然不能继承多个类，但接口却可以继承多个接口，这一点，我不知道有没有触及到一些读者的知识盲区。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface WalkInterface extends FlyInterface,RunInterface&#123;</span><br><span class="line">    void walk();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-%E6%8E%A5%E5%8F%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1161,74 +1280,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/20/gorm-Model%E7%9A%84%E5%8C%85%E5%90%AB%E5%AD%97%E6%AE%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/20/gorm-Model%E7%9A%84%E5%8C%85%E5%90%AB%E5%AD%97%E6%AE%B5/" class="post-title-link" itemprop="url">gorm.Model的包含字段</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-20 10:31:06 / Modified: 10:38:18" itemprop="dateCreated datePublished" datetime="2020-05-20T10:31:06+08:00">2020-05-20</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://github.com/jinzhu/gorm/blob/master/model.go" target="_blank" rel="noopener">gorm.Model</a>源码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package gorm</span><br><span class="line"></span><br><span class="line">import <span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">// Model base model definition, including fields `ID`, `CreatedAt`, `UpdatedAt`, `DeletedAt`, <span class="built_in">which</span> could be embedded <span class="keyword">in</span> your models</span><br><span class="line">//    <span class="built_in">type</span> User struct &#123;</span><br><span class="line">//      gorm.Model</span><br><span class="line">//    &#125;</span><br><span class="line"><span class="built_in">type</span> Model struct &#123;</span><br><span class="line">	ID        uint `gorm:<span class="string">"primary_key"</span>`</span><br><span class="line">	CreatedAt time.Time</span><br><span class="line">	UpdatedAt time.Time</span><br><span class="line">	DeletedAt *time.Time `sql:<span class="string">"index"</span>`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>所以我们创建结构体的时候的就不需要包含这几个字段了，不然后会报错</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import (</span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	Id            int        `json:<span class="string">"id"</span> form:<span class="string">"id"</span> gorm:<span class="string">"primary_key"</span>` // 主键ID</span><br><span class="line">	CreatedAt     time.Time  `gorm:<span class="string">""</span>json:<span class="string">"createdAt"</span>`                // 创建时间</span><br><span class="line">	UpdatedAt     time.Time  `gorm:<span class="string">""</span>json:<span class="string">"updatedAt"</span>`                // 更新时间</span><br><span class="line">	DeletedAt     *time.Time `gorm:<span class="string">"index"</span>json:<span class="string">"deletedAt"</span>`           // 删除时间</span><br><span class="line">	Name          string     `gorm:<span class="string">"not null;"</span>json:<span class="string">"name"</span>`            // 姓名</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (*User) TableName() string &#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"user"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (m *User) IsAdministrator() bool &#123;</span><br><span class="line">	<span class="keyword">if</span> m == nil || m.Id &lt;= 0 &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> m.Role == 0 || m.Role == 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>报错</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">panic: Error 1146: Table <span class="string">'XXXX.user'</span> doesn<span class="string">'t exist</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">goroutine 1 [running]:</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.mysql.HasIndex(0x1a3ebc0, 0xc0000fe240, 0x203000, 0x19037e8, 0x4, 0xc00059ddc0, 0x13, 0x30c8300)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/dialect_mysql.go:189 +0x31f</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).addIndex(0xc0004ec380, 0x18ecd00, 0xc00059ddc0, 0x13, 0xc00037b5a0, 0x2, 0x2)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1212 +0x8d</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*DB).AddIndex(0xc00001dee0, 0xc00059ddc0, 0x13, 0xc00037b5a0, 0x2, 0x2, 0x1)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/main.go:706 +0xac</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).autoIndex(0xc000559900, 0xc000559900)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1312 +0x9a0</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).createTable(0xc000559900, 0x19037e8)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1194 +0x792</span></span><br></pre></td></tr></table></figure>
-
-<p>改成</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import (</span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/jinzhu/gorm"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	Name          string    `gorm:<span class="string">"not null;"</span>json:<span class="string">"name"</span>`     // 姓名</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (*User) TableName() string &#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"user"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (m *User) IsAdministrator() bool &#123;</span><br><span class="line">	<span class="keyword">if</span> m == nil || m.ID &lt;= 0 &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> m.Role == 0 || m.Role == 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1279,7 +1330,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

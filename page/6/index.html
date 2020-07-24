@@ -213,6 +213,74 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/20/gorm-Model%E7%9A%84%E5%8C%85%E5%90%AB%E5%AD%97%E6%AE%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/20/gorm-Model%E7%9A%84%E5%8C%85%E5%90%AB%E5%AD%97%E6%AE%B5/" class="post-title-link" itemprop="url">gorm.Model的包含字段</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-20 10:31:06 / Modified: 10:38:18" itemprop="dateCreated datePublished" datetime="2020-05-20T10:31:06+08:00">2020-05-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://github.com/jinzhu/gorm/blob/master/model.go" target="_blank" rel="noopener">gorm.Model</a>源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package gorm</span><br><span class="line"></span><br><span class="line">import <span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">// Model base model definition, including fields `ID`, `CreatedAt`, `UpdatedAt`, `DeletedAt`, <span class="built_in">which</span> could be embedded <span class="keyword">in</span> your models</span><br><span class="line">//    <span class="built_in">type</span> User struct &#123;</span><br><span class="line">//      gorm.Model</span><br><span class="line">//    &#125;</span><br><span class="line"><span class="built_in">type</span> Model struct &#123;</span><br><span class="line">	ID        uint `gorm:<span class="string">"primary_key"</span>`</span><br><span class="line">	CreatedAt time.Time</span><br><span class="line">	UpdatedAt time.Time</span><br><span class="line">	DeletedAt *time.Time `sql:<span class="string">"index"</span>`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以我们创建结构体的时候的就不需要包含这几个字段了，不然后会报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import (</span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	Id            int        `json:<span class="string">"id"</span> form:<span class="string">"id"</span> gorm:<span class="string">"primary_key"</span>` // 主键ID</span><br><span class="line">	CreatedAt     time.Time  `gorm:<span class="string">""</span>json:<span class="string">"createdAt"</span>`                // 创建时间</span><br><span class="line">	UpdatedAt     time.Time  `gorm:<span class="string">""</span>json:<span class="string">"updatedAt"</span>`                // 更新时间</span><br><span class="line">	DeletedAt     *time.Time `gorm:<span class="string">"index"</span>json:<span class="string">"deletedAt"</span>`           // 删除时间</span><br><span class="line">	Name          string     `gorm:<span class="string">"not null;"</span>json:<span class="string">"name"</span>`            // 姓名</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (*User) TableName() string &#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"user"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (m *User) IsAdministrator() bool &#123;</span><br><span class="line">	<span class="keyword">if</span> m == nil || m.Id &lt;= 0 &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> m.Role == 0 || m.Role == 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">panic: Error 1146: Table <span class="string">'XXXX.user'</span> doesn<span class="string">'t exist</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">goroutine 1 [running]:</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.mysql.HasIndex(0x1a3ebc0, 0xc0000fe240, 0x203000, 0x19037e8, 0x4, 0xc00059ddc0, 0x13, 0x30c8300)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/dialect_mysql.go:189 +0x31f</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).addIndex(0xc0004ec380, 0x18ecd00, 0xc00059ddc0, 0x13, 0xc00037b5a0, 0x2, 0x2)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1212 +0x8d</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*DB).AddIndex(0xc00001dee0, 0xc00059ddc0, 0x13, 0xc00037b5a0, 0x2, 0x2, 0x1)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/main.go:706 +0xac</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).autoIndex(0xc000559900, 0xc000559900)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1312 +0x9a0</span></span><br><span class="line"><span class="string">github.com/jinzhu/gorm.(*Scope).createTable(0xc000559900, 0x19037e8)</span></span><br><span class="line"><span class="string">        /Users/samtake/go/pkg/mod/github.com/jinzhu/gorm@v1.9.12/scope.go:1194 +0x792</span></span><br></pre></td></tr></table></figure>
+
+<p>改成</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import (</span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/jinzhu/gorm"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> User struct &#123;</span><br><span class="line">	gorm.Model</span><br><span class="line">	Name          string    `gorm:<span class="string">"not null;"</span>json:<span class="string">"name"</span>`     // 姓名</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (*User) TableName() string &#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"user"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (m *User) IsAdministrator() bool &#123;</span><br><span class="line">	<span class="keyword">if</span> m == nil || m.ID &lt;= 0 &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> m.Role == 0 || m.Role == 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/19/%E9%80%9A%E8%BF%87drawio%E6%8F%92%E4%BB%B6%E5%9C%A8vs-code%E4%B8%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1881,98 +1949,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/17/Golang%E8%B0%83%E7%94%A8shell%E8%84%9A%E6%9C%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/17/Golang%E8%B0%83%E7%94%A8shell%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">Golang调用shell脚本</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-17 18:02:51 / Modified: 20:51:58" itemprop="dateCreated datePublished" datetime="2020-04-17T18:02:51+08:00">2020-04-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Golang/" itemprop="url" rel="index">
-                    <span itemprop="name">Golang</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天在用一些工具处理文件的时候，批量手动操作真会累死人，时间成本不划算，想着怎么用脚本做成自动化，思路大概是每个脚本处理不同的功能，也就没必要将所有功能写到一个脚本了，担心万一某个模块出了问题影响整个流程。然后其中一个功能需要调用某个网页的接口处理，想了好久，请教了下一些前辈，给出的建议就是破解接口，这时候我立刻想到了Go…大概分三步：</p>
-<ul>
-<li>shell调用工具拿到处理好的数据</li>
-<li>再由Go实现对接口的数据请求…</li>
-<li>请求回来接口之后再交由shell调用工具做最后的处理，从而完成整个模块的工作。</li>
-</ul>
-<p>这里记住一点：shell脚本无非就做成参数形式。</p>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><code>os/exec</code>包可用于从Go触发任何OS命令。 相同的可用于触发.sh文件。</p>
-<p>具体函数接口参考官方文档<a href="https://pkg.go.dev/os/exec?tab=doc" target="_blank" rel="noopener">package exec </a></p>
-<h1 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h1><p>首先，在同一目录中创建一个test.sh文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">your_name=<span class="string">"start test ..."</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$your_name</span></span><br></pre></td></tr></table></figure>
-
-<p>执行<code>chmod +x test.sh</code>，不然会因为没有执行权限报错：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Execute Shell:./test.sh failed with error:<span class="built_in">exit</span> status 126%</span><br></pre></td></tr></table></figure>
-
-
-<p>调用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"os/exec"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	fmt.Println(<span class="string">"1"</span>)</span><br><span class="line"></span><br><span class="line">	<span class="built_in">command</span> := `./test.sh .`</span><br><span class="line">	cmd := exec.Command(<span class="string">"/bin/bash"</span>, <span class="string">"-c"</span>, <span class="built_in">command</span>)</span><br><span class="line"></span><br><span class="line">	output, err := cmd.Output()</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"Execute Shell:%s failed with error:%s"</span>, <span class="built_in">command</span>, err.Error())</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">"Execute Shell:%s finished with output:\n%s"</span>, <span class="built_in">command</span>, string(output))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">Execute Shell:./test.sh . finished with output:</span><br><span class="line">start <span class="built_in">test</span> ...</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://golangbyexample.com//" target="_blank" rel="noopener">https://golangbyexample.com//</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -2023,7 +1999,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
