@@ -581,6 +581,13 @@
 
               <time title="Created: 2020-07-17 16:26:20" itemprop="dateCreated datePublished" datetime="2020-07-17T16:26:20+08:00">2020-07-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-24 16:24:08" itemprop="dateModified" datetime="2020-07-24T16:24:08+08:00">2020-07-24</time>
+              </span>
 
           
 
@@ -593,7 +600,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h1 id="针对接口编写单元测试"><a href="#针对接口编写单元测试" class="headerlink" title="针对接口编写单元测试"></a>针对接口编写单元测试</h1><p>MockMvc对象有以下几个基本的方法:</p>
+<p><code>perform</code> : 模拟执行一个RequestBuilder构建的HTTP请求，会执行SpringMVC的流程并映射到相应的控制器Controller执行。<br><code>contentType</code>：发送请求内容的序列化的格式，”application/json”表示JSON数据格式<br><code>andExpect</code>: 添加RequsetMatcher验证规则，验证控制器执行完成后结果是否正确，或者说是结果是否与我们期望（Expect）的一致。<br><code>andDo</code>: 添加ResultHandler结果处理器，比如调试时打印结果到控制台<br><code>andReturn</code>: 最后返回相应的MvcResult,然后进行自定义验证/进行下一步的异步处理</p>
+<blockquote>
+<p>上面的整个过程，我们都没有使用到Spring Context依赖注入、也没有启动tomcat web容器。整个测试的过程十分的轻量级，速度很快。</p>
+</blockquote>
+
       
     </div>
 

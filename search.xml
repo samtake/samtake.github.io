@@ -150,7 +150,15 @@
   <entry>
     <title>Java 单元测试</title>
     <url>/2020/07/17/Java-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="针对接口编写单元测试"><a href="#针对接口编写单元测试" class="headerlink" title="针对接口编写单元测试"></a>针对接口编写单元测试</h1><p>MockMvc对象有以下几个基本的方法:</p>
+<p><code>perform</code> : 模拟执行一个RequestBuilder构建的HTTP请求，会执行SpringMVC的流程并映射到相应的控制器Controller执行。<br><code>contentType</code>：发送请求内容的序列化的格式，”application/json”表示JSON数据格式<br><code>andExpect</code>: 添加RequsetMatcher验证规则，验证控制器执行完成后结果是否正确，或者说是结果是否与我们期望（Expect）的一致。<br><code>andDo</code>: 添加ResultHandler结果处理器，比如调试时打印结果到控制台<br><code>andReturn</code>: 最后返回相应的MvcResult,然后进行自定义验证/进行下一步的异步处理</p>
+<blockquote>
+<p>上面的整个过程，我们都没有使用到Spring Context依赖注入、也没有启动tomcat web容器。整个测试的过程十分的轻量级，速度很快。</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java jackson-JSON数据格式处理</title>
