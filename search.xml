@@ -155,7 +155,11 @@
   <entry>
     <title>Java jackson-JSON数据格式处理</title>
     <url>/2020/07/17/Java-jackson-JSON%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E5%A4%84%E7%90%86/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@Data</span><br><span class="line">@Builder</span><br><span class="line">@JsonPropertyOrder(value=&#123;<span class="string">"content"</span>,<span class="string">"title"</span>&#125;)  //返回字段顺序。</span><br><span class="line">public class Article &#123;</span><br><span class="line">    @JsonIgnore  //忽略字段。</span><br><span class="line">    private long id;</span><br><span class="line">    @JsonProperty(<span class="string">"auther"</span>)  //修改返回字段名称。</span><br><span class="line">    private  String author;</span><br><span class="line">    private  String title;</span><br><span class="line">    private  String content;</span><br><span class="line">    @JsonFormat(pattern = <span class="string">"yyyy/MM/dd HH:mm:ss"</span>,timezone = <span class="string">"GMT+8"</span>)   //改变默认配置格式。</span><br><span class="line">    private Date createTime;</span><br><span class="line">    @JsonInclude(JsonInclude.Include.NON_NULL)  //空的不返回。</span><br><span class="line">    private List&lt;Reader&gt; reader;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java Restful接口</title>
