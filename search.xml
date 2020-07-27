@@ -130,7 +130,19 @@
   <entry>
     <title>Java profile不同环境使用不同配置</title>
     <url>/2020/07/17/Java-profile%E4%B8%8D%E5%90%8C%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="通过配置application-yml"><a href="#通过配置application-yml" class="headerlink" title="通过配置application.yml"></a>通过配置application.yml</h1><p>application.yml是默认使用的配置文件，在其中通过spring.profiles.active设置使用哪一个配置文件，下面代码表示使用application-prod.yml配置，如果application-prod.yml和application.yml配置了相同的配置，比如都配置了运行端口，那application-prod.yml的优先级更高</p>
+<pre><code class="bash"><span class="comment">#需要使用的配置文件</span>
+spring:
+  profiles:
+    active: prod</code></pre>
+<h1 id="VM-options、Program-arguments、Active-Profile"><a href="#VM-options、Program-arguments、Active-Profile" class="headerlink" title="VM options、Program arguments、Active Profile"></a>VM options、Program arguments、Active Profile</h1><p>VM options设置启动参数 -Dspring.profiles.active=prod</p>
+<p>Program arguments设置 –spring.profiles.active=prod</p>
+<p>Active Profile 设置 prod</p>
+<h1 id="命令行方式"><a href="#命令行方式" class="headerlink" title="命令行方式"></a>命令行方式</h1><p>将项目打成jar包，在jar包的目录下打开命令行，使用如下命令启动：<br><code>java -jar spring-boot-profile.jar --spring.profiles.active=prod</code></p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java SpEL</title>

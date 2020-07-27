@@ -52,12 +52,15 @@
   };
 </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="通过配置application.ymlapplication.yml是默认使用的配置文件，在其中通过spring.profiles.active设置使用哪一个配置文件，下面代码表示使用application-prod.yml配置，如果application-prod.yml和application.yml配置了相同的配置，比如都配置了运行端口，那application-prod.yml的优先级更高">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java profile不同环境使用不同配置">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;17&#x2F;Java-profile%E4%B8%8D%E5%90%8C%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E9%85%8D%E7%BD%AE&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
+<meta property="og:description" content="通过配置application.ymlapplication.yml是默认使用的配置文件，在其中通过spring.profiles.active设置使用哪一个配置文件，下面代码表示使用application-prod.yml配置，如果application-prod.yml和application.yml配置了相同的配置，比如都配置了运行端口，那application-prod.yml的优先级更高">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-17T08:29:27.615Z">
+<meta property="og:updated_time" content="2020-07-27T04:04:26.829Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/07/17/Java-profile%E4%B8%8D%E5%90%8C%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E9%85%8D%E7%BD%AE/">
@@ -239,6 +242,13 @@
 
               <time title="Created: 2020-07-17 16:29:27" itemprop="dateCreated datePublished" datetime="2020-07-17T16:29:27+08:00">2020-07-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-27 12:04:26" itemprop="dateModified" datetime="2020-07-27T12:04:26+08:00">2020-07-27</time>
+              </span>
 
           
 
@@ -251,7 +261,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="通过配置application-yml"><a href="#通过配置application-yml" class="headerlink" title="通过配置application.yml"></a>通过配置application.yml</h1><p>application.yml是默认使用的配置文件，在其中通过spring.profiles.active设置使用哪一个配置文件，下面代码表示使用application-prod.yml配置，如果application-prod.yml和application.yml配置了相同的配置，比如都配置了运行端口，那application-prod.yml的优先级更高</p>
+<pre><code class="bash"><span class="comment">#需要使用的配置文件</span>
+spring:
+  profiles:
+    active: prod</code></pre>
+<h1 id="VM-options、Program-arguments、Active-Profile"><a href="#VM-options、Program-arguments、Active-Profile" class="headerlink" title="VM options、Program arguments、Active Profile"></a>VM options、Program arguments、Active Profile</h1><p>VM options设置启动参数 -Dspring.profiles.active=prod</p>
+<p>Program arguments设置 –spring.profiles.active=prod</p>
+<p>Active Profile 设置 prod</p>
+<h1 id="命令行方式"><a href="#命令行方式" class="headerlink" title="命令行方式"></a>命令行方式</h1><p>将项目打成jar包，在jar包的目录下打开命令行，使用如下命令启动：<br><code>java -jar spring-boot-profile.jar --spring.profiles.active=prod</code></p>
+
     </div>
 
     
@@ -259,6 +278,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
 
         
 
@@ -313,6 +335,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#通过配置application-yml"><span class="nav-number">1.</span> <span class="nav-text">通过配置application.yml</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VM-options、Program-arguments、Active-Profile"><span class="nav-number">2.</span> <span class="nav-text">VM options、Program arguments、Active Profile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令行方式"><span class="nav-number">3.</span> <span class="nav-text">命令行方式</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

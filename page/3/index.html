@@ -353,6 +353,13 @@
 
               <time title="Created: 2020-07-17 16:29:27" itemprop="dateCreated datePublished" datetime="2020-07-17T16:29:27+08:00">2020-07-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-27 12:04:26" itemprop="dateModified" datetime="2020-07-27T12:04:26+08:00">2020-07-27</time>
+              </span>
 
           
 
@@ -365,7 +372,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h1 id="通过配置application-yml"><a href="#通过配置application-yml" class="headerlink" title="通过配置application.yml"></a>通过配置application.yml</h1><p>application.yml是默认使用的配置文件，在其中通过spring.profiles.active设置使用哪一个配置文件，下面代码表示使用application-prod.yml配置，如果application-prod.yml和application.yml配置了相同的配置，比如都配置了运行端口，那application-prod.yml的优先级更高</p>
+<pre><code class="bash"><span class="comment">#需要使用的配置文件</span>
+spring:
+  profiles:
+    active: prod</code></pre>
+<h1 id="VM-options、Program-arguments、Active-Profile"><a href="#VM-options、Program-arguments、Active-Profile" class="headerlink" title="VM options、Program arguments、Active Profile"></a>VM options、Program arguments、Active Profile</h1><p>VM options设置启动参数 -Dspring.profiles.active=prod</p>
+<p>Program arguments设置 –spring.profiles.active=prod</p>
+<p>Active Profile 设置 prod</p>
+<h1 id="命令行方式"><a href="#命令行方式" class="headerlink" title="命令行方式"></a>命令行方式</h1><p>将项目打成jar包，在jar包的目录下打开命令行，使用如下命令启动：<br><code>java -jar spring-boot-profile.jar --spring.profiles.active=prod</code></p>
+
       
     </div>
 
