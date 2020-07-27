@@ -52,13 +52,18 @@
   };
 </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="pom.xml 1234567891011&amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;io.springfox&amp;lt;&#x2F;groupId&amp;gt;	&amp;lt;artifactId&amp;gt;springfox-swagger2&amp;lt;&#x2F;artifactId&amp;gt;	&amp;lt;version&amp;gt;2.6.1&amp;lt;&#x2F;version&amp;gt;&amp;lt;&#x2F;dependency&amp;gt;&amp;lt;d">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java swagger">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;17&#x2F;Java-swagger&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
+<meta property="og:description" content="pom.xml 1234567891011&amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;io.springfox&amp;lt;&#x2F;groupId&amp;gt;	&amp;lt;artifactId&amp;gt;springfox-swagger2&amp;lt;&#x2F;artifactId&amp;gt;	&amp;lt;version&amp;gt;2.6.1&amp;lt;&#x2F;version&amp;gt;&amp;lt;&#x2F;dependency&amp;gt;&amp;lt;d">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-17T08:27:00.159Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;17&#x2F;Java-swagger&#x2F;1.png">
+<meta property="og:updated_time" content="2020-07-24T08:56:16.542Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;17&#x2F;Java-swagger&#x2F;1.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/07/17/Java-swagger/">
 
@@ -239,6 +244,13 @@
 
               <time title="Created: 2020-07-17 16:27:00" itemprop="dateCreated datePublished" datetime="2020-07-17T16:27:00+08:00">2020-07-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-24 16:56:16" itemprop="dateModified" datetime="2020-07-24T16:56:16+08:00">2020-07-24</time>
+              </span>
 
           
 
@@ -251,7 +263,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>pom.xml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;2.6.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;2.6.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/07/17/Java-swagger/1.png" alt></p>
+<p>```bash<br>@Configuration<br>@EnableSwagger2<br>public class Swagger2 {</p>
+<pre><code>private ApiInfo apiInfo() {
+    return new ApiInfoBuilder()
+            .title(&quot;springboot利用swagger构建api文档&quot;)
+            .description(&quot;简单优雅的restfun风格&quot;)
+            .termsOfServiceUrl(&quot;http://www.zimug.com&quot;)
+            .version(&quot;1.0&quot;)
+            .build();
+}
+
+@Bean
+public Docket createRestApi() {
+    return new Docket(DocumentationType.SWAGGER_2)
+                    .apiInfo(apiInfo())
+                    .select()
+                    //扫描basePackage包下面的“/rest/”路径下的内容作为接口文档构建的目标
+                    .apis(RequestHandlerSelectors.basePackage(&quot;com.zimug.bootlaunch&quot;))
+                    .paths(PathSelectors.regex(&quot;/rest/.*&quot;))
+                    .build();
+}</code></pre><p>}<br><code>1</code></p>
+
     </div>
 
     
@@ -259,6 +295,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
 
         
 
@@ -328,7 +367,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">110</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

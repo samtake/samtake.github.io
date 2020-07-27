@@ -213,6 +213,118 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/03/ant-design%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/03/ant-design%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">ant-design学习</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-03 17:00:13" itemprop="dateCreated datePublished" datetime="2020-03-03T17:00:13+08:00">2020-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-04 03:07:53" itemprop="dateModified" datetime="2020-03-04T03:07:53+08:00">2020-03-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ant-design/" itemprop="url" rel="index">
+                    <span itemprop="name">ant-design</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>全篇下来太啰嗦，<a href="https://github.com/sorrycc/blog/issues/62" target="_blank" rel="noopener">umi + dva，完成用户管理的 CURD 应用</a>是重点，看这里就行了！！！</p>
+<h2 id="antd"><a href="#antd" class="headerlink" title="antd"></a>antd</h2><p><a href="https://ant.design/index-cn" target="_blank" rel="noopener">Ant Design</a>,<code>antd</code> 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品。</p>
+<h3 id="目录结构说明"><a href="#目录结构说明" class="headerlink" title="目录结构说明"></a>目录结构说明</h3><ul>
+<li><p>config：配置信息<br><code>config.js</code>全局配置，路由配置<br><code>defaultSettings.js</code>一些默认配置<br><code>plugin.config.js</code>插件配置</p>
+</li>
+<li><p>mock 模拟数据请求的</p>
+</li>
+<li><p>mode_modules 第三方库</p>
+</li>
+<li><p>public 放置第三方文件（比如说图片，第三方的json文件）</p>
+</li>
+<li><p>tests 做一些测试的</p>
+</li>
+<li><p>package.json</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"ant-design-pro"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"private"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">"An out-of-box UI solution for enterprise applications"</span>,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"analyze"</span>: <span class="string">"分析"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"编译"</span>,</span><br><span class="line">    <span class="string">"deploy"</span>: <span class="string">"部署"</span>,</span><br><span class="line">    <span class="string">"fetch:blocks"</span>: <span class="string">"从官网git里面去拉模块"</span>,</span><br><span class="line">    <span class="string">"format-imports"</span>: <span class="string">"代码格式（例如空格）"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"启动"</span>,</span><br><span class="line">    <span class="string">"start:no-mock"</span>: <span class="string">"cross-env MOCK=none umi dev"</span>,</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"测试"</span>,</span><br><span class="line">    <span class="string">"test:all"</span>: <span class="string">"node ./tests/run-tests.js"</span>,</span><br><span class="line">    <span class="string">"test:component"</span>: <span class="string">"umi test ./src/components"</span>,</span><br><span class="line">    <span class="string">"ui"</span>: <span class="string">"umi ui"</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>src</p>
+</li>
+</ul>
+<p><code>assets</code>静态资源<br><code>components</code>组件目录<br><code>e2e</code><br><code>layouts</code>布局<br><code>locales</code>多语言<br><code>models</code>模型目录<br><code>pages</code>页面<br><code>services</code>提供服务，给页面提供请求<br><code>utils</code>工具类<br><code>global.less</code><br><code>global.tsx</code><br><code>manifelst.json</code><br><code>service-worker.js</code><br><code>typings.d.ts</code></p>
+<h3 id="增加新页面"><a href="#增加新页面" class="headerlink" title="增加新页面"></a>增加新页面</h3><p>1.在config-config.js文件的routers节点添加代码</p>
+<p>{name: ‘demo’, path: ‘/demo’, component: ‘./demo’},</p>
+<p>2.在page目录下创建demo目录，并新建一个index.jsx文件。<br>3.添加源码。</p>
+<h2 id="dva"><a href="#dva" class="headerlink" title="dva"></a>dva</h2><ul>
+<li><a href="https://dvajs.com" target="_blank" rel="noopener">dva官网</a></li>
+<li><a href="https://www.bilibili.com/video/av55863089?from=search&seid=7612457114058753391" target="_blank" rel="noopener">dva视频教程</a>，以及练习<a href="https://github.com/samtake/dva" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://www.jianshu.com/p/0568a725f8f9" target="_blank" rel="noopener">dva.js的使用与说明</a></li>
+</ul>
+<h2 id="UmiJS"><a href="#UmiJS" class="headerlink" title="UmiJS"></a>UmiJS</h2><ul>
+<li><a href="https://umijs.org/zh-CN" target="_blank" rel="noopener">UmiJS</a></li>
+<li><a href="https://www.bilibili.com/video/av74033079?p=51" target="_blank" rel="noopener">UmiJS视频教程</a>，以及<a href="https://github.com/plter/ReactCourse20191031" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://www.cnblogs.com/lihuijuan/p/11242976.html" target="_blank" rel="noopener">Ant Design Pro 脚手架+umiJS 实践总结</a></li>
+</ul>
+<h2 id="dva-umi"><a href="#dva-umi" class="headerlink" title="dva + umi"></a>dva + umi</h2><p>主要搞懂model、service的关系</p>
+<ul>
+<li><a href="https://github.com/sorrycc/blog/issues/62" target="_blank" rel="noopener">umi + dva，完成用户管理的 CURD 应用</a></li>
+<li><a href="https://github.com/umijs/umi-example-dva-user-dashboard" target="_blank" rel="noopener">umi-example-dva-user-dashboard</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/02/Gitea/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1419,134 +1531,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/15/Dockerfile/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/15/Dockerfile/" class="post-title-link" itemprop="url">Dockerfile</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-15 14:07:18 / Modified: 15:19:34" itemprop="dateCreated datePublished" datetime="2020-02-15T14:07:18+08:00">2020-02-15</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index">
-                    <span itemprop="name">Docker</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Dockerfile 是一个用来构建镜像的文本文件，文本内容包含了一条条构建镜像所需的指令和说明。</p>
-<h3 id="主要指令"><a href="#主要指令" class="headerlink" title="主要指令"></a>主要指令</h3><table>
-<thead>
-<tr>
-<th>指令</th>
-<th>行为</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>FROM</td>
-<td>定制的镜像都是基于 FROM 的镜像，例如nginx</td>
-</tr>
-<tr>
-<td>WORKDIR</td>
-<td>指定下面的shell语句指定运行在哪个路径下</td>
-</tr>
-<tr>
-<td>COPY</td>
-<td>将宿主机下的目录文件复制到镜像中去</td>
-</tr>
-<tr>
-<td>RUN</td>
-<td>执行后面跟着的命令行命令</td>
-</tr>
-<tr>
-<td>CMD</td>
-<td>指定整个镜像运行起来后执行的脚本 (一般都是阻塞式的脚本)</td>
-</tr>
-</tbody></table>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM alpine</span><br><span class="line">WORKDIR /app</span><br><span class="line">COPY src/  /app</span><br><span class="line">RUN <span class="built_in">echo</span> 321 &gt;&gt; 1.txt</span><br><span class="line">CMD tail -f 1.txt</span><br></pre></td></tr></table></figure>
-
-<h3 id="COPY-vs-ADD"><a href="#COPY-vs-ADD" class="headerlink" title="COPY vs ADD"></a>COPY vs ADD</h3><p>两者功能差不多，但是ADD的源文件除了是本地文件资源，还可以是一个url</p>
-<h3 id="CMD-vs-ENTRYPOINT"><a href="#CMD-vs-ENTRYPOINT" class="headerlink" title="CMD vs ENTRYPOINT"></a>CMD vs ENTRYPOINT</h3><h4 id="ENTRYPOINT"><a href="#ENTRYPOINT" class="headerlink" title="ENTRYPOINT"></a>ENTRYPOINT</h4><p>类似于 CMD 指令，但其不会被 docker run 的命令行参数指定的指令所覆盖，而且这些命令行参数会被当作参数送给 ENTRYPOINT 指令指定的程序。</p>
-<p>但是, 如果运行 docker run 时使用了 –entrypoint 选项，此选项的参数可当作要运行的程序覆盖 ENTRYPOINT 指令指定的程序。</p>
-<p>优点：在执行 docker run 的时候可以指定 ENTRYPOINT 运行所需的参数。</p>
-<p>注意：如果 Dockerfile 中如果存在多个 ENTRYPOINT 指令，仅最后一个生效。</p>
-<p>在 Dockerfile 文件的存放目录下，通过<code>docker build -t &lt;镜像名&gt;:&lt;版本号&gt;</code>命令来执行。</p>
-<h4 id="当两者混用时"><a href="#当两者混用时" class="headerlink" title="当两者混用时"></a>当两者混用时</h4><ul>
-<li>entrypoint非json，则以entrypoint为准。</li>
-<li>如果entrypoint和cmd都是json，则以entrypoint+cmd拼接成的shell为准。</li>
-</ul>
-<h3 id="expose"><a href="#expose" class="headerlink" title="expose"></a>expose</h3><p>expose仅仅只是声明端口。</p>
-<p>作用：</p>
-<ul>
-<li>帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射。</li>
-<li>在运行时使用随机端口映射时，也就是 docker run -P 时，会自动随机映射 EXPOSE 的端口。</li>
-</ul>
-<h3 id="VOLUME"><a href="#VOLUME" class="headerlink" title="VOLUME"></a>VOLUME</h3><p>定义匿名数据卷。在启动容器时忘记挂载数据卷，会自动挂载到匿名卷。</p>
-<p>作用：</p>
-<ul>
-<li>避免重要的数据，因容器重启而丢失，这是非常致命的。</li>
-<li>避免容器不断变大。</li>
-</ul>
-<h3 id="ENV"><a href="#ENV" class="headerlink" title="ENV"></a>ENV</h3><p>设置环境变量，定义了环境变量，那么在后续的指令中，就可以使用这个环境变量。</p>
-<h3 id="ARG"><a href="#ARG" class="headerlink" title="ARG"></a>ARG</h3><p>构建参数，与 ENV 作用一至。不过作用域不一样。ARG 设置的环境变量仅对 Dockerfile 内有效，也就是说只有 docker build 的过程中有效，构建好的镜像内不存在此环境变量。</p>
-<h3 id="label"><a href="#label" class="headerlink" title="label"></a>label</h3><p>标识（没实际作用）</p>
-<h3 id="onbuild"><a href="#onbuild" class="headerlink" title="onbuild"></a>onbuild</h3><p><code>onbuild env C = 10</code></p>
-<p>在本次构建镜像的过程中不会执行（假设镜像为 test-build）。当有新的 Dockerfile 使用了之前构建的镜像 FROM test-build </p>
-<h3 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h3><p><a href="https://www.runoob.com/docker/docker-dockerfile.html" target="_blank" rel="noopener">Dockerfile</a><br><a href="https://www.bilibili.com/video/av85895204?from=search&seid=4835159816508980526" target="_blank" rel="noopener">Dockerfile用法全解析</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1597,7 +1581,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">110</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

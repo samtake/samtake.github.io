@@ -213,6 +213,89 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/17/Java-lombok%E6%8F%92%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="samtake">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/17/Java-lombok%E6%8F%92%E4%BB%B6/" class="post-title-link" itemprop="url">Java lombok插件</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-17 15:39:45" itemprop="dateCreated datePublished" datetime="2020-07-17T15:39:45+08:00">2020-07-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-23 15:40:40" itemprop="dateModified" datetime="2020-07-23T15:40:40+08:00">2020-07-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p><img src="/2020/07/17/Java-lombok%E6%8F%92%E4%BB%B6/1.png" alt></p>
+<h1 id="配置插件"><a href="#配置插件" class="headerlink" title="配置插件"></a>配置插件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">            &lt;optional&gt;<span class="literal">true</span>&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/07/17/Java-lombok%E6%8F%92%E4%BB%B6/2.png" alt></p>
+<blockquote>
+<p>在Spring Boot项目里面不需要加入版本号，spring Boot父项目会代为管理。如果是其他项目，请自行添加版本号！</p>
+</blockquote>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ul>
+<li>Data</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">package com.samjava.mall.model;</span><br><span class="line">import lombok.Data;</span><br><span class="line">@Data</span><br><span class="line">public class LombokPOJO &#123;</span><br><span class="line">    private  String name;</span><br><span class="line"></span><br><span class="line">    private  String age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/07/17/Java-lombok%E6%8F%92%E4%BB%B6/3.png" alt></p>
+<ul>
+<li>Slf4j</li>
+<li>Builder</li>
+<li>AllArgsConstructor</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/17/Java-Spring-boot2-0-helloworld/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1010,101 +1093,6 @@ CheckTypeHandler 转换器的类源码如下：
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Java-this-%E5%85%B3%E9%94%AE%E5%AD%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="samtake">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/07/Java-this-%E5%85%B3%E9%94%AE%E5%AD%97/" class="post-title-link" itemprop="url">Java this 关键字</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-07-07 17:11:51" itemprop="dateCreated datePublished" datetime="2020-07-07T17:11:51+08:00">2020-07-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-15 17:16:40" itemprop="dateModified" datetime="2020-07-15T17:16:40+08:00">2020-07-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在 Java 中，<code>this</code> 关键字指的是当前对象（它的方法正在被调用）的引用，能理解吧，各位亲？不理解的话，我们继续往下看。</p>
-<p>看完再不明白，你过来捶爆我，我保证不还手，只要不打脸。</p>
-<h1 id="01、消除字段歧义"><a href="#01、消除字段歧义" class="headerlink" title="01、消除字段歧义"></a>01、消除字段歧义</h1><p>我敢赌一毛钱，所有的读者，不管男女老少，应该都知道这种用法，毕竟写构造方法的时候经常用啊。谁要不知道，过来，我给你发一毛钱红包，只要你脸皮够厚。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Writer &#123;</span><br><span class="line">    private int age;</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public Writer(int age, String name) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Writer 类有两个成员变量，分别是 age 和 name，在使用有参构造函数的时候，如果参数名和成员变量的名字相同，就需要使用 <code>this</code> 关键字消除歧义：<code>this.age 是指成员变量，age 是指构造方法的参数</code>。</p>
-<h1 id="02、引用类的其他构造方法"><a href="#02、引用类的其他构造方法" class="headerlink" title="02、引用类的其他构造方法"></a>02、引用类的其他构造方法</h1><p>当一个类的构造方法有多个，并且它们之间有交集的话，就可以使用 <code>this</code> 关键字来调用不同的构造方法，从而减少代码量。</p>
-<p>比如说，在无参构造方法中调用有参构造方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Writer &#123;</span><br><span class="line">    private int age;</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public Writer(int age, String name) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="function"><span class="title">Writer</span></span>() &#123;</span><br><span class="line">        this(18, <span class="string">"沉默王二"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>也可以在有参构造方法中调用无参构造方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Writer &#123;</span><br><span class="line">    private int age;</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public Writer(int age, String name) &#123;</span><br><span class="line">        this();</span><br><span class="line">        this.age = age;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="function"><span class="title">Writer</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>需要注意的是，this() 必须是构造方法中的第一条语句，否则就会报错。</p>
-<p><img src="/2020/07/07/Java-this-%E5%85%B3%E9%94%AE%E5%AD%97/1.png" alt></p>
-<h1 id="03、作为参数传递"><a href="#03、作为参数传递" class="headerlink" title="03、作为参数传递"></a>03、作为参数传递</h1><p>在下例中，有一个无参的构造方法，里面调用了 print() 方法，参数只有一个 <code>this</code> 关键字。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class ThisTest &#123;</span><br><span class="line">    public <span class="function"><span class="title">ThisTest</span></span>() &#123;</span><br><span class="line">        <span class="built_in">print</span>(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void <span class="built_in">print</span>(ThisTest thisTest) &#123;</span><br><span class="line">        System.out.println(<span class="string">"print "</span> +thisTest);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ThisTest <span class="built_in">test</span> = new ThisTest();</span><br><span class="line">        System.out.println(<span class="string">"main "</span> + <span class="built_in">test</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>来打印看一下结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> com.cmower.baeldung.this1.ThisTest@573fd745</span><br><span class="line">main com.cmower.baeldung.this1.ThisTest@573fd745</span><br></pre></td></tr></table></figure>
-<p>从结果中可以看得出来，<code>this</code> 就是我们在 main() 方法中使用 new 关键字创建的 ThisTest 对象。</p>
-<h1 id="04、链式调用"><a href="#04、链式调用" class="headerlink" title="04、链式调用"></a>04、链式调用</h1><p>学过 JavaScript，或者 jQuery 的读者可能对链式调用比较熟悉，类似于 a.b().c().d()，仿佛能无穷无尽调用下去。</p>
-<p>在 Java 中，对应的专有名词叫 Builder 模式，来看一个示例。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class Writer &#123;</span><br><span class="line">    private int age;</span><br><span class="line">    private String name;</span><br><span class="line">    private String bookName;</span><br><span class="line"></span><br><span class="line">    public Writer(WriterBuilder builder) &#123;</span><br><span class="line">        this.age = builder.age;</span><br><span class="line">        this.name = builder.name;</span><br><span class="line">        this.bookName = builder.bookName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static class WriterBuilder &#123;</span><br><span class="line">        public String bookName;</span><br><span class="line">        private int age;</span><br><span class="line">        private String name;</span><br><span class="line"></span><br><span class="line">        public WriterBuilder(int age, String name) &#123;</span><br><span class="line">            this.age = age;</span><br><span class="line">            this.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public WriterBuilder writeBook(String bookName) &#123;</span><br><span class="line">            this.bookName = bookName;</span><br><span class="line">            <span class="built_in">return</span> this;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public Writer <span class="function"><span class="title">build</span></span>() &#123;</span><br><span class="line">            <span class="built_in">return</span> new Writer(this);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Writer 类有三个成员变量，分别是 age、name 和 bookName，还有它们仨对应的一个构造方法，参数是一个内部静态类 WriterBuilder。</p>
-<p>内部类 WriterBuilder 也有三个成员变量，和 Writer 类一致，不同的是，WriterBuilder 类的构造方法里面只有 age 和 name 赋值了，另外一个成员变量 bookName 通过单独的方法 writeBook() 来赋值，注意，该方法的返回类型是 WriterBuilder，最后使用 return 返回了 this 关键字。</p>
-<p>最后的 build() 方法用来创建一个 Writer 对象，参数为 <code>this</code> 关键字，也就是当前的 WriterBuilder 对象。</p>
-<p>这时候，创建 Writer 对象就可以通过链式调用的方式。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Writer writer = new Writer.WriterBuilder(18,<span class="string">"沉默王二"</span>)</span><br><span class="line">                .writeBook(<span class="string">"《Web全栈开发进阶之路》"</span>)</span><br><span class="line">                .build();</span><br></pre></td></tr></table></figure>
-
-<h1 id="05、在内部类中访问外部类对象"><a href="#05、在内部类中访问外部类对象" class="headerlink" title="05、在内部类中访问外部类对象"></a>05、在内部类中访问外部类对象</h1><p>说实话，自从 Java 8 的函数式编程出现后，就很少用到 <code>this</code> 在内部类中访问外部类对象了。来看一个示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class ThisInnerTest &#123;</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    class InnerClass &#123;</span><br><span class="line">        public <span class="function"><span class="title">InnerClass</span></span>() &#123;</span><br><span class="line">            ThisInnerTest thisInnerTest = ThisInnerTest.this;</span><br><span class="line">            String outerName = thisInnerTest.name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在内部类 InnerClass 的构造方法中，<code>通过外部类.this 可以获取到外部类对象</code>，然后就可以使用外部类的成员变量了，比如说 name。</p>
-<p>摘抄自：<a href="https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ySGMnBLhKtBnztivj_ImEg</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1155,7 +1143,7 @@ CheckTypeHandler 转换器的类源码如下：
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">110</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

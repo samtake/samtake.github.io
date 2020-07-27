@@ -52,12 +52,15 @@
   };
 </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="配置Demo1234567891011121314151617family:  family-name: &quot;happy family&quot;  father:    name: zimug    age: $&amp;#123;random.int&amp;#125;  mother:    alias:      - lovely      - ailice  child:    name: $&amp;#123;famil">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java YAML">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;17&#x2F;Java-YAML&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
+<meta property="og:description" content="配置Demo1234567891011121314151617family:  family-name: &quot;happy family&quot;  father:    name: zimug    age: $&amp;#123;random.int&amp;#125;  mother:    alias:      - lovely      - ailice  child:    name: $&amp;#123;famil">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-17T08:27:19.601Z">
+<meta property="og:updated_time" content="2020-07-27T02:45:44.922Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/07/17/Java-YAML/">
@@ -239,6 +242,13 @@
 
               <time title="Created: 2020-07-17 16:27:19" itemprop="dateCreated datePublished" datetime="2020-07-17T16:27:19+08:00">2020-07-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-27 10:45:44" itemprop="dateModified" datetime="2020-07-27T10:45:44+08:00">2020-07-27</time>
+              </span>
 
           
 
@@ -251,7 +261,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="配置Demo"><a href="#配置Demo" class="headerlink" title="配置Demo"></a>配置Demo</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">family:</span><br><span class="line">  family-name: <span class="string">"happy family"</span></span><br><span class="line">  father:</span><br><span class="line">    name: zimug</span><br><span class="line">    age: <span class="variable">$&#123;random.int&#125;</span></span><br><span class="line">  mother:</span><br><span class="line">    <span class="built_in">alias</span>:</span><br><span class="line">      - lovely</span><br><span class="line">      - ailice</span><br><span class="line">  child:</span><br><span class="line">    name: <span class="variable">$&#123;family.father.name:zimug2&#125;</span></span><br><span class="line">    age: 5</span><br><span class="line">    friends:</span><br><span class="line">      - hobby: football</span><br><span class="line">        sex:  male</span><br><span class="line">      - hobby: basketball</span><br><span class="line">        sex: female</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="YAML配置绑定变量两种方式"><a href="#YAML配置绑定变量两种方式" class="headerlink" title="YAML配置绑定变量两种方式"></a>YAML配置绑定变量两种方式</h1><ul>
+<li><p>通过@Value注解将family.family-name属性的值绑定到familyName成员变量上面。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">@Component</span><br><span class="line">public class Family &#123;</span><br><span class="line">    @Value(<span class="string">"<span class="variable">$&#123;family.family-name&#125;</span>"</span>)</span><br><span class="line">    private String familyName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用@ConfigurationProperties获取配置值</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">//   1. 一个家庭有爸爸、妈妈、孩子。</span><br><span class="line">//   2. 这个家庭有一个名字（family-name）叫做“happy family”</span><br><span class="line">@Data</span><br><span class="line">@Component</span><br><span class="line">@ConfigurationProperties(prefix = <span class="string">"family"</span>)   //表示配置的整体前缀</span><br><span class="line">public class Family &#123;</span><br><span class="line"></span><br><span class="line">    private String familyName;   //成员变量名称要和yml配置项key一一对应</span><br><span class="line">    private Father father;</span><br><span class="line">    private Mother mother;</span><br><span class="line">    private Child child;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 3. 爸爸有名字(name)和年龄（age）两个属性</span><br><span class="line">@Data</span><br><span class="line">public class Father &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//  4. 妈妈有两个别名</span><br><span class="line">@Data</span><br><span class="line">public class Mother &#123;</span><br><span class="line">    private String[] <span class="built_in">alias</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//5. 孩子除了名字(name)和年龄（age）两个属性，还有一个friends的集合</span><br><span class="line">@Data</span><br><span class="line">public class Child &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private List&lt;Friend&gt; friends;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//  6. 每个friend有两个属性：hobby(爱好)和性别(sex)</span><br><span class="line">@Data</span><br><span class="line">public class Friend &#123;</span><br><span class="line">    private String hobby;</span><br><span class="line">    private String sex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="对配置数值进行校验"><a href="#对配置数值进行校验" class="headerlink" title="对配置数值进行校验"></a>对配置数值进行校验</h1><ul>
+<li><p>在需要校验的属性装配类上加@Validated注解</p>
+</li>
+<li><p>校验父亲的年龄，必须大于21岁</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Father &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    @Min(21)</span><br><span class="line">    private Integer age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>校验familyName，必须不能为空</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@NotEmpty</span><br><span class="line">private String familyName;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>针对Family的属性校验，只需要写一个测试类，将Family类注入就可以。</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@ExtendWith(SpringExtension.class)  //Junit5</span><br><span class="line">@SpringBootTest</span><br><span class="line">public class CustomYamlTest &#123;</span><br><span class="line">    @Resource</span><br><span class="line">    Family family;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void <span class="function"><span class="title">hello</span></span>()&#123;</span><br><span class="line">        System.out.println(family.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>其他参考例子：</li>
+<li>@size (min=6, max=20, message=”密码长度只能在6-20之间”)</li>
+<li>@pattern (regexp=”[a-za-z0-9._%+-]+@[a-za-z0-9.-]+.[a-za-z]{2,4}”, message=”请输入正确的邮件格式”)</li>
+<li>@Length(min = 5, max = 20, message = “用户名长度必须位于5到20之间”)</li>
+<li>@Email(message = “请输入正确的邮箱”)</li>
+<li>@NotNull(message = “用户名称不能为空”)</li>
+<li>@Max(value = 100, message = “年龄不能大于100岁”)</li>
+<li>@Min(value= 18 ,message= “必须年满18岁！” )</li>
+<li>@AssertTrue(message = “bln4 must is true”)</li>
+<li>@AssertFalse(message = “blnf must is falase”)</li>
+<li>@DecimalMax(value=”100”,message=”decim最大值是100”)</li>
+<li>@DecimalMin(value=”100”,message=”decim最小值是100”)</li>
+<li>@NotNull(message = “身份证不能为空”)</li>
+<li>@Pattern(regexp=”^(\d{18,18}|\d{15,15}|(\d{17,17}[x|X]))$”, message=”身份证格式错误”)</li>
+</ul>
+
     </div>
 
     
@@ -259,6 +318,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
 
         
 
@@ -313,6 +375,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#配置Demo"><span class="nav-number">1.</span> <span class="nav-text">配置Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#YAML配置绑定变量两种方式"><span class="nav-number">2.</span> <span class="nav-text">YAML配置绑定变量两种方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对配置数值进行校验"><span class="nav-number">3.</span> <span class="nav-text">对配置数值进行校验</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -328,7 +391,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">110</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
