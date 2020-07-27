@@ -52,13 +52,18 @@
   };
 </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="Mybatisporm.xml配置，引入mybatis相关依赖包和mysql驱动包。 123456789&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;&#x2F;groupId&amp;gt;    &amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;&#x2F;artifactId&amp;gt;">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java Mybatis">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;17&#x2F;Java-Mybatis&#x2F;index.html">
 <meta property="og:site_name" content="samtake">
+<meta property="og:description" content="Mybatisporm.xml配置，引入mybatis相关依赖包和mysql驱动包。 123456789&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;&#x2F;groupId&amp;gt;    &amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;&#x2F;artifactId&amp;gt;">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-17T08:32:58.948Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;17&#x2F;Java-Mybatis&#x2F;1.png">
+<meta property="og:updated_time" content="2020-07-27T06:31:25.456Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;17&#x2F;Java-Mybatis&#x2F;1.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/07/17/Java-Mybatis/">
 
@@ -239,6 +244,13 @@
 
               <time title="Created: 2020-07-17 16:32:58" itemprop="dateCreated datePublished" datetime="2020-07-17T16:32:58+08:00">2020-07-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-27 14:31:25" itemprop="dateModified" datetime="2020-07-27T14:31:25+08:00">2020-07-27</time>
+              </span>
 
           
 
@@ -251,7 +263,51 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h1><p><code>porm.xml</code>配置，引入mybatis相关依赖包和mysql驱动包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.3.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>yml配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  datasource:</span><br><span class="line">    url: jdbc:mysql://192.168.161.3:3306/testdb?useUnicode=<span class="literal">true</span>&amp;characterEncoding=utf-8&amp;useSSL=<span class="literal">false</span></span><br><span class="line">    username: <span class="built_in">test</span></span><br><span class="line">    password: 4rfv<span class="variable">$RFV</span></span><br><span class="line">    driver-class-name: com.mysql.cj.jdbc.Driver</span><br><span class="line">mybatis:</span><br><span class="line">    mapper-locations: classpath:generator/*.xml   <span class="comment"># 表示去哪里扫描xml文件</span></span><br><span class="line">logging:</span><br><span class="line">    level:</span><br><span class="line">      com.zimug.bootlaunch: debug</span><br></pre></td></tr></table></figure>
+
+
+<p>配置Mybatis的Mapper类文件的包扫描路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@MapperScan(basePackages = &#123;<span class="string">"com.zimug.boot.launch.generator"</span>&#125;)</span><br><span class="line">public class BootLaunchApplication &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(BootLaunchApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装Mybatis-generator插件"><a href="#安装Mybatis-generator插件" class="headerlink" title="安装Mybatis generator插件"></a>安装Mybatis generator插件</h1><ul>
+<li>配置<br><code>better-mybatis-generator</code>这个插件将帮助我们根据数据库表结构生成Mybatis操作接口及实体类定义等内容。能极大的方便我们开发，减少手写代码量。</li>
+</ul>
+<p><img src="/2020/07/17/Java-Mybatis/1.png" alt></p>
+<ul>
+<li>CRUD 增删改查demo </li>
+</ul>
+<h1 id="mybatis-spring-boot-starter"><a href="#mybatis-spring-boot-starter" class="headerlink" title="mybatis-spring-boot-starter"></a>mybatis-spring-boot-starter</h1><ul>
+<li>配置</li>
+</ul>
+<ul>
+<li>demo</li>
+</ul>
+<h1 id="不同的场景方案"><a href="#不同的场景方案" class="headerlink" title="不同的场景方案"></a>不同的场景方案</h1><p>mybatis代码实现方式</p>
+<ol>
+<li>使用mybatis generator做代码自动生成，或者使用MybatisPlus解决方案</li>
+<li>使用XML方式实现</li>
+<li>使用注解方式实现</li>
+</ol>
+<ul>
+<li>单表的增删改查</li>
+</ul>
+<p>mybatis generator生成的代码，或者MybatisPlus能够完成90%的单表操作，而且不用自己去书写SQL。</p>
+<blockquote>
+<p>Mybatis Generator自动生成的代码 最大程度帮你完成单表操作。涉及到关联查询、继承，Mybatis文件和SQL还是要你自己写，但是不要在生成的代码基础上面改！</p>
+</blockquote>
+<ul>
+<li>多查询条件的查询(或多表关联查询)</li>
+</ul>
+<p>面对这种场景，就需要ORM框架对 动态SQL(根据传入参数不同，SQL会发生变化) 有很好的支持，包括书写的方便度等。从这个角度上讲，mybatis的xml的是实现方式独占鳌头。</p>
+<ul>
+<li>其它<br>其实除去上面两种场景，剩下的情况已经不多了，但是还是可以举几个例子：<br>比如：针对单表只有插入操作，你有不想因此生成一套完整的针对单表的操作代码。<br>比如：只是临时起意，写一个较为简单的SQL。</li>
+</ul>
+<h1 id="查询结果属性映射的最佳实践"><a href="#查询结果属性映射的最佳实践" class="headerlink" title="查询结果属性映射的最佳实践"></a>查询结果属性映射的最佳实践</h1><h1 id="使用-MapperScan而不是-mapper"><a href="#使用-MapperScan而不是-mapper" class="headerlink" title="使用@MapperScan而不是@mapper"></a>使用@MapperScan而不是@mapper</h1><h1 id="使用PageHelper分页插件"><a href="#使用PageHelper分页插件" class="headerlink" title="使用PageHelper分页插件"></a>使用PageHelper分页插件</h1>
     </div>
 
     
@@ -259,6 +315,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
 
         
 
@@ -313,6 +372,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mybatis"><span class="nav-number">1.</span> <span class="nav-text">Mybatis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Mybatis-generator插件"><span class="nav-number">2.</span> <span class="nav-text">安装Mybatis generator插件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mybatis-spring-boot-starter"><span class="nav-number">3.</span> <span class="nav-text">mybatis-spring-boot-starter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不同的场景方案"><span class="nav-number">4.</span> <span class="nav-text">不同的场景方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询结果属性映射的最佳实践"><span class="nav-number">5.</span> <span class="nav-text">查询结果属性映射的最佳实践</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-MapperScan而不是-mapper"><span class="nav-number">6.</span> <span class="nav-text">使用@MapperScan而不是@mapper</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用PageHelper分页插件"><span class="nav-number">7.</span> <span class="nav-text">使用PageHelper分页插件</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
