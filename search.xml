@@ -189,6 +189,7 @@
 <li>@NotNull(message = “身份证不能为空”)</li>
 <li>@Pattern(regexp=”^(\d{18,18}|\d{15,15}|(\d{17,17}[x|X]))$”, message=”身份证格式错误”)</li>
 </ul>
+<h1 id="加载额外配置文件（老旧项目文件）"><a href="#加载额外配置文件（老旧项目文件）" class="headerlink" title="加载额外配置文件（老旧项目文件）"></a>加载额外配置文件（老旧项目文件）</h1><p>- </p>
 ]]></content>
       <tags>
         <tag>Java</tag>
