@@ -17,8 +17,8 @@
 <p>yml</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">spring:</span><br><span class="line">  jackson:</span><br><span class="line">    date-format: yyyy-MM-dd HH:mm:ss</span><br><span class="line">    time-zone: GMT+8</span><br></pre></td></tr></table></figure>
 
-<h1 id="传参渠道"><a href="#传参渠道" class="headerlink" title="传参渠道"></a>传参渠道</h1><p><img src="/2020/07/23/Java-Restful%E6%8E%A5%E5%8F%A3-%E4%B8%BE%E4%BE%8B/1.jpeg" alt></p>
-]]></content>
+<h1 id="http协议与Spring参数接收注解"><a href="#http协议与Spring参数接收注解" class="headerlink" title="http协议与Spring参数接收注解"></a>http协议与Spring参数接收注解</h1><p><img src="/2020/07/23/Java-Restful%E6%8E%A5%E5%8F%A3-%E4%B8%BE%E4%BE%8B/1.jpeg" alt></p>
+<h1 id="Spring请求响应处理流程"><a href="#Spring请求响应处理流程" class="headerlink" title="Spring请求响应处理流程"></a>Spring请求响应处理流程</h1><h1 id="ResponseBody-amp-RequestBody"><a href="#ResponseBody-amp-RequestBody" class="headerlink" title="ResponseBody &amp; RequestBody"></a>ResponseBody &amp; RequestBody</h1>]]></content>
       <tags>
         <tag>Java</tag>
       </tags>
@@ -418,6 +418,8 @@ public Docket createRestApi() {
 <p><img src="/2020/07/17/Java-Spring-boot2-0-helloworld/3.png" alt></p>
 <h1 id="配置启动端口"><a href="#配置启动端口" class="headerlink" title="配置启动端口"></a>配置启动端口</h1><p><img src="/2020/07/17/Java-Spring-boot2-0-helloworld/4.png" alt></p>
 <h1 id="启动程序"><a href="#启动程序" class="headerlink" title="启动程序"></a>启动程序</h1><p><img src="/2020/07/17/Java-Spring-boot2-0-helloworld/5.png" alt></p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p><a href="http://localhost:8888/hello?name=kkk" target="_blank" rel="noopener">http://localhost:8888/hello?name=kkk</a></p>
+<p><img src="/2020/07/17/Java-Spring-boot2-0-helloworld/6.png" alt></p>
 ]]></content>
       <tags>
         <tag>Java</tag>
@@ -3881,7 +3883,12 @@ ffplay</code></p>
 <h2 id="接口的组合"><a href="#接口的组合" class="headerlink" title="接口的组合"></a>接口的组合</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">type</span> Retriver interface &#123;</span><br><span class="line">	Get(url string) string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> Poster interface &#123;</span><br><span class="line">	Post(url string, form map[string]string) string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const url = <span class="string">"http://www.imooc.com"</span></span><br><span class="line"></span><br><span class="line">func download(r Retriver) string &#123;</span><br><span class="line">	<span class="built_in">return</span> r.Get(url)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func poster(poster Poster) &#123;</span><br><span class="line">	poster.Post(url,</span><br><span class="line">		map[string]string&#123;</span><br><span class="line">			<span class="string">"name"</span>:     <span class="string">"sam"</span>,</span><br><span class="line">			<span class="string">"language"</span>: <span class="string">"golang"</span>,</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> RetriverPoster interface &#123;</span><br><span class="line">	Retriver</span><br><span class="line">	Poster</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func session(s RetriverPoster) string &#123;</span><br><span class="line">	s.Post(url, map[string]string&#123;</span><br><span class="line">		<span class="string">"contents"</span>: <span class="string">"another facked imooc.com"</span>,</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="built_in">return</span> s.Get(url)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="常用的系统接口"><a href="#常用的系统接口" class="headerlink" title="常用的系统接口"></a>常用的系统接口</h2><h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><p>参数、变量、返回值都可以是函数<br>高阶函数（函数的参数依旧是个函数）<br>函数闭包</p>
+<h2 id="常用的系统接口"><a href="#常用的系统接口" class="headerlink" title="常用的系统接口"></a>常用的系统接口</h2><p>只需要看系统函数的定义就可以了。</p>
+<ul>
+<li>Stringer</li>
+<li>Reader/Writer</li>
+</ul>
+<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><p>参数、变量、返回值都可以是函数<br>高阶函数（函数的参数依旧是个函数）<br>函数闭包</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//返回一个函数</span><br><span class="line">func adder() func(int) int &#123;</span><br><span class="line">	sum := 0</span><br><span class="line">	<span class="built_in">return</span> func(v int) int &#123;</span><br><span class="line">		sum += v</span><br><span class="line">		<span class="built_in">return</span> sum</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	a := adder()</span><br><span class="line">	<span class="keyword">for</span> i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">		fmt.Println((a(i)))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>斐波那契数列</p>
